@@ -57,6 +57,16 @@ hr.small {
   padding: 15px inherit;
 }
 
+.get-started-wrap {
+  text-align: center;
+}
+
+.get-started-btn {
+  padding: 15px 30px;
+  font-size: 26px;
+  margin-top: 10px;
+}
+
 .hideme {
   display: none;
 }
