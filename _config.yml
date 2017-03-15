@@ -67,7 +67,7 @@ footer-links-active:
   rss: false
   facebook: false
   email: false
-  twitter: flase
+  twitter: false
   google-plus: false
   github: true
   reddit: false
