@@ -23,12 +23,15 @@ description: Página web de la materia Taller de programación 2, Facultad de In
 
 # List of links in the navigation bar
 navbar-links:
-  About Me: "aboutme"
-  Resources:
-    - Beautiful Jekyll: "http://deanattali.com/beautiful-jekyll/"
-    - Learn markdown: "http://www.markdowntutorial.com/"
-    - GitHub Pages: "https://pages.github.com/"
-  Author's home: "http://deanattali.com"
+  Institucional:
+    - Profesores: "/institucional/profesores"
+    - Programa: "/institucional/programa"
+    - Reglamento: "/institucional/reglamento"
+  Trabajo Práctico:
+    - Enunciado: "/trabajo-practico/enunciado"
+    - Hall of Fame: "/trabajo-practico/hall-of-fame"
+    - Histórico: "/trabajo-practico/historico"
+  Contacto: "/contacto"
 
 # Image to show in the navigation bar - image must be a square (width = height)
 # Remove this parameter if you don't want an image in the navbar
@@ -43,7 +46,7 @@ avatar: "/img/avatar-icon.png"
 # Change all these values or delete the ones you don't want.
 # Important: you must keep the "name" parameter, everything else you can remove
 author:
-  name: Some Person
+  name: Taller de programación 2
   email: "youremail@domain.com"
   facebook: yourname  # eg. daattali
   github: taller-de-programacion-2    # eg. daattali
@@ -64,7 +67,7 @@ footer-links-active:
   rss: false
   facebook: false
   email: false
-  twitter: flasee
+  twitter: flase
   google-plus: false
   github: true
   reddit: false
@@ -86,7 +89,7 @@ share-links-active:
 
 # How to display the link to the website in the footer
 # Remove this if you don't want a link in the footer
-url-pretty: "MyWebsite.com"  # eg. "deanattali.com/beautiful-jekyll"
+url-pretty: "taller-de-programacion-2.github.io"  # eg. "deanattali.com/beautiful-jekyll"
 
 # --- Misc --- #
 # Fill in your Disqus shortname (NOT the userid) if you want to support Disqus comments
@@ -112,7 +115,7 @@ title-separator: "-"
 # --- Don't need to touch anything below here (but you can if you want) --- #
 
 # Output options (more information on Jekyll's site)
-timezone: "America/Vancouver"
+timezone: "America/Argentina"
 markdown: kramdown
 highlighter: rouge
 permalink: /:year-:month-:day-:title/
