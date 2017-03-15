@@ -1,21 +1,28 @@
 ---
 layout: page
-title: My website
-subtitle: This is where I will tell my friends way too much about me
+title: Taller de programación 2
+subtitle: Catedra Veiga - 1ro 2017
 use-site-title: true
 ---
+
+<div class="main-explain-area jumbotron">
+  <p>Esta es la p&aacute;gina web de la materia <strong>Taller de programaci&oacute;n 2</strong> de la facultad de ingeier&iacute;a de la Universidad de Buenos Aires.</p>
+  <div class="get-started-wrap">
+    <a class="btn btn-success btn-lg get-started-btn" href="https://goo.gl/forms/yWDcgrR0Cp5tMI6h1">¡Inscribite!</a>
+  </div>
+</div>
 
 <div class="posts-list">
   {% for post in paginator.posts %}
   <article class="post-preview">
     <a href="{{ post.url | prepend: site.baseurl }}">
-	  <h2 class="post-title">{{ post.title }}</h2>
+      <h2 class="post-title">{{ post.title }}</h2>
 
-	  {% if post.subtitle %}
-	  <h3 class="post-subtitle">
-	    {{ post.subtitle }}
-	  </h3>
-	  {% endif %}
+      {% if post.subtitle %}
+      <h3 class="post-subtitle">
+        {{ post.subtitle }}
+      </h3>
+      {% endif %}
     </a>
 
     <p class="post-meta">
