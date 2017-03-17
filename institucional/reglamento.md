@@ -7,15 +7,6 @@ subtitle: Información sobre la materia
 
 Link de inscripci&oacute;n: [`https://goo.gl/forms/yWDcgrR0Cp5tMI6h1`](https://goo.gl/forms/yWDcgrR0Cp5tMI6h1)
 
-### Docentes
-
-* Lic. Andr&eacute;s Veiga
-* [Ing. Christian Cal&oacute;nico](https://github.com/calonico)
-* [Ing. Gabriel Fusca](https://github.com/gfusca)
-* [Nicol&aacute;s Cisco](https://github.com/nickcis)
-* [Agust&iacute;n Rojas]()
-* [Juan Manuel Lambre](https://github.com/JuanmaLambre)
-
 ### Correlativas
 
 * 71.14 - Modelos y Optimizaci&oacute;n 1

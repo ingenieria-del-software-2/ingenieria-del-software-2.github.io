@@ -24,7 +24,7 @@ description: Página web de la materia Taller de programación 2, Facultad de In
 # List of links in the navigation bar
 navbar-links:
   Institucional:
-    - Profesores: "institucional/profesores"
+    - Docentes: "institucional/docentes"
     - Programa: "institucional/programa"
     - Reglamento: "institucional/reglamento"
   Trabajo Práctico:
