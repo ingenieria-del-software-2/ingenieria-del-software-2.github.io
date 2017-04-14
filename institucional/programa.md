@@ -8,7 +8,8 @@ subtitle: Cronograma de actividades
 A continuaci&oacute;n se lista los temas sobre los cuales se desarrollar&aacute;n las clases te&oacute;rico-pr&aacute;cticas.
 
 * **Clase I**: [Introducci&oacute;n a la materia](https://drive.google.com/open?id=0B7ZBqy_1wA07c3dtQlhDd0pRd3ZhQnFpQUxiR0JrU0dfQm1F)
-
+* **Clase II**:[Docker]()
+* **Clase III**: [Introducción a Cloud Computing & Heroku](https://drive.google.com/open?id=1hdwmcJst3JrgDyWXq3WVE9CsESYLWqno5Eo7s6BoyBM)
 ### Material de lectura
 
 #### REST
