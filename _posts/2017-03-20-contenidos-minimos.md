@@ -2,7 +2,6 @@
 layout: post
 title: Contenidos Minimos
 subtitle: Requerimientos para cada checkpoint
-bigimg: /img/path.jpg
 tags: [2017-1C]
 ---
 
