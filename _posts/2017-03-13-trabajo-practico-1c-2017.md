@@ -2,7 +2,6 @@
 layout: post
 title: music.io
 subtitle: Enunciado del Trabajo Práctico 1C 2017
-bigimg: /img/path.jpg
 tags: [trabajos-practicos, 2017-1C]
 ---
 
