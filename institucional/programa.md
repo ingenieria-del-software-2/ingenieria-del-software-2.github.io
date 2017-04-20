@@ -11,6 +11,8 @@ A continuaci&oacute;n se lista los temas sobre los cuales se desarrollar&aacute;
 * **Clase II**: [Desarrollo del trabajo práctico](https://docs.google.com/presentation/d/1XQkto1XUHUQdHM8y7qSowX96N2dWj-FX3MNcycldSeQ/edit?usp=sharing)
 * **Clase III**:[Docker]() e [Integración continua](https://docs.google.com/presentation/d/1KjtGyJPjWKTQ7udpCBzyXMbfYtq_uohMwGcuE6MAatY/edit?usp=sharing)
 * **Clase IV**: [Introducción a Cloud Computing & Heroku](https://drive.google.com/open?id=1hdwmcJst3JrgDyWXq3WVE9CsESYLWqno5Eo7s6BoyBM)
+* **Clase VII**: [User Experience](https://docs.google.com/presentation/d/1BmQUMUk3KUE9Mg-l-vzmECMNotgUNB7FrEerUq2K0AI/edit?usp=sharing)
+
 ### Material de lectura
 
 #### REST
