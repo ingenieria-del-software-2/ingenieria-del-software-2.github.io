@@ -37,6 +37,10 @@ A continuaci&oacute;n se lista los temas sobre los cuales se desarrollar&aacute;
 
 * [Docker para principiantes](https://prakhar.me/docker-curriculum/)
 
+#### NoSQL
+
+* [Choose SQL](https://stateofprogress.blog/choose-sql-d017cfc08870)
+
 ### Cronograma
 
 | Clase | Fecha | Contenido |
