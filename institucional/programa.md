@@ -13,6 +13,7 @@ A continuaci&oacute;n se lista los temas sobre los cuales se desarrollar&aacute;
 * **Clase IV**: [Introducción a Cloud Computing & Heroku](https://drive.google.com/open?id=1hdwmcJst3JrgDyWXq3WVE9CsESYLWqno5Eo7s6BoyBM)
 * **Clase IV**: [NoSQL y Firebase](https://docs.google.com/presentation/d/1pctvhJn_6pO9p7Zx8PFFMaObkw72dxv6rL0ZAJf3-cc/edit?usp=sharing)
 * **Clase VII**: [User Experience](https://docs.google.com/presentation/d/1BmQUMUk3KUE9Mg-l-vzmECMNotgUNB7FrEerUq2K0AI/edit?usp=sharing)
+* **Clase VIII**: [Interfaces de usuario](https://docs.google.com/presentation/d/1HeW58YlrJoend6hFP7ZbknET_y3a6ZPPQd2_Sj_05SE/edit?usp=sharing)
 
 ### Material de lectura
 
