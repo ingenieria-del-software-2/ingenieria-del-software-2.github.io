@@ -41,6 +41,11 @@ A continuaci&oacute;n se lista los temas sobre los cuales se desarrollar&aacute;
 
 * [Choose SQL](https://stateofprogress.blog/choose-sql-d017cfc08870)
 
+#### Cloud Computing
+
+* [Cloud Computing - Concepts, Architecture and Challenges](https://drive.google.com/open?id=0B3RbSZXZ7S-_VkwxOVl2ajVjQUE)
+
+
 ### Cronograma
 
 | Clase | Fecha | Contenido |
