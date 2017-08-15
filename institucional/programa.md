@@ -51,21 +51,21 @@ A continuaci&oacute;n se lista los temas sobre los cuales se desarrollar&aacute;
 
 | Clase | Fecha | Contenido |
 | ----- | ----- | --------- |
-| #1 | 9-Mar | Introducci&oacute;n |
-| #2 | 16-Mar | Tp tech #1 |
-| #3 | 23-Mar | Tp tech #2 |
-| #4 | 30-Mar | Tp tech #3 |
-| #5 | 6-Apr | **Checkpoint 1** |
-| #6 | 13-Apr | _Feriado_ |
-| #7 | 20-Apr | UX #1 |
-| #8 | 27-Apr | UX #2 |
-| #9 | 4-May | **Checkpoint 2** |
-| #10 | 11-May | **Parcial** |
-| #11 | 18-May | Soft Skills |
-| #12 | 25-May | _Feriado_ |
-| #13 | 1-Jun | **Checkpoint 3** |
-| #14 | 8-Jun | Recuperatorio / TBD |
-| #15 | 15-Jun | Clase: TBD |
-| #16 | 22-Jun | **Entrega Final (demo/defensa)** |
-| #I1 | 29-Jun | Exposici&oacute;n #1 / Recuperatorio TP |
-| #I2 | 6-Jul | Exposici&oacute;n #2 |
+| #1 | 17-Ago | Introducci&oacute;n |
+| #2 | 24-Ago | Tp tech #1 |
+| #3 | 31-Ago | Tp tech #2 |
+| #4 | 07-Sep | Tp tech #3 |
+| #5 | 14-Sep | **Checkpoint 1** |
+| #6 | 21-Sep | UX #1 |
+| #7 | 28-Sep | UX #2 |
+| #8 | 05-Oct | Consultas |
+| #9 | 12-Oct | **Checkpoint 2** |
+| #10 | 19-Oct | **Parcial** |
+| #11 | 26-Oct | Soft Skills |
+| #12 | 02-Nov | Consultas |
+| #13 | 09-Nov | **Checkpoint 3** |
+| #14 | 16-Nov | Recuperatorio / TBD |
+| #15 | 23-Nov | Clase: TBD |
+| #16 | 07-Dic | **Entrega Final (demo/defensa)** |
+| #I1 | TBD | Exposici&oacute;n #1 / Recuperatorio TP |
+| #I2 | TBD | Exposici&oacute;n #2 |
