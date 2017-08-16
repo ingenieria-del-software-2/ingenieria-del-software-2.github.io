@@ -7,14 +7,6 @@ subtitle: Cronograma de actividades
 
 A continuaci&oacute;n se lista los temas sobre los cuales se desarrollar&aacute;n las clases te&oacute;rico-pr&aacute;cticas.
 
-* **Clase I**: [Introducci&oacute;n a la materia](https://drive.google.com/open?id=0B7ZBqy_1wA07c3dtQlhDd0pRd3ZhQnFpQUxiR0JrU0dfQm1F)
-* **Clase II**: [Desarrollo del trabajo práctico](https://docs.google.com/presentation/d/1XQkto1XUHUQdHM8y7qSowX96N2dWj-FX3MNcycldSeQ/edit?usp=sharing)
-* **Clase III**:[Docker](https://github.com/mlafroce/mlafroce.github.io/tree/master/tutorials/es/docker-para-que) e [Integración continua](https://docs.google.com/presentation/d/1KjtGyJPjWKTQ7udpCBzyXMbfYtq_uohMwGcuE6MAatY/edit?usp=sharing)
-* **Clase IV**: [Introducción a Cloud Computing & Heroku](https://drive.google.com/open?id=1hdwmcJst3JrgDyWXq3WVE9CsESYLWqno5Eo7s6BoyBM)
-* **Clase IV**: [NoSQL y Firebase](https://docs.google.com/presentation/d/1pctvhJn_6pO9p7Zx8PFFMaObkw72dxv6rL0ZAJf3-cc/edit?usp=sharing)
-* **Clase VII**: [User Experience](https://docs.google.com/presentation/d/1BmQUMUk3KUE9Mg-l-vzmECMNotgUNB7FrEerUq2K0AI/edit?usp=sharing)
-* **Clase VIII**: [Interfaces de usuario](https://docs.google.com/presentation/d/1HeW58YlrJoend6hFP7ZbknET_y3a6ZPPQd2_Sj_05SE/edit?usp=sharing)
-
 ### Material de lectura
 
 #### REST
