@@ -94,7 +94,6 @@ En el sitio web se pondr&aacute; a disposici&oacute;n de los alumnos:
 
 * La c&aacute;tedra se reserva el derecho de realizar cambios sin previo aviso (fechas, docentes, alcance del trabajo pr&aacute;ctico, metodolog&iacute;a, etc.).
 * Es posible que, a fin de favorecer las exposiciones orales, las clases de exposici&oacute;n sean de mayor duraci&oacute;n (a confirmar).
-* El jueves 13 de abril _(clase 6)_ y el jueves 25 de mayo _(clase 12)_ son feriados nacionales, sin actividad.
 * La firma de libretas se llevar&aacute; a cabo en fechas/horarios/aulas a convenir, previa inscripci&oacute;n a alguna fecha de coloquio (para estar inscripto en alguna acta).
 * La participaci&oacute;n de los alumnos ser&aacute; considerada al momento de las calificaciones.
 Todas las entregas de trabajos individuales o grupales deben ser de creaci&oacute;n propia, sin excepci&oacute;n.
