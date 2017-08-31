@@ -9,6 +9,7 @@ A continuaci&oacute;n se lista los temas sobre los cuales se desarrollar&aacute;
 
 * [Clase 1 Introducción 17-08-17](https://drive.google.com/open?id=0B7ZBqy_1wA07dFBkbWpuaGp4dEM0VnF2ZHVRVjJYTHp0Ykhr)
 * [Clase 2 Metodología trabajo práctico 2C 2017](http://slides.com/gabrielfusca/tp-2c-2017#/)
+* [Clase 3 REST API en Python](https://slides.com/gabrielfusca/python-rest)
 
 ### Material de lectura
 
