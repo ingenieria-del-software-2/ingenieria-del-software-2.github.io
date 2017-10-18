@@ -10,6 +10,7 @@ A continuaci&oacute;n se lista los temas sobre los cuales se desarrollar&aacute;
 * [Clase 1 Introducción 17-08-17](https://drive.google.com/open?id=0B7ZBqy_1wA07dFBkbWpuaGp4dEM0VnF2ZHVRVjJYTHp0Ykhr)
 * [Clase 2 Metodología trabajo práctico 2C 2017](http://slides.com/gabrielfusca/tp-2c-2017#/)
 * [Clase 3 REST API en Python](https://slides.com/gabrielfusca/python-rest)
+* [Clase 4 Node Js y Heroku](https://docs.google.com/presentation/d/1vYZ59U4YHobg9qDt7_4flRW7mo7a-2Zz4Sc_LpDjI6c/edit?usp=sharing)
 
 ### Material de lectura
 
