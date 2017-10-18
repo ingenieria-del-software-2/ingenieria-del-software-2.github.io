@@ -43,6 +43,8 @@ A continuaci&oacute;n se lista los temas sobre los cuales se desarrollar&aacute;
 
 * [Cloud Computing - Concepts, Architecture and Challenges](https://drive.google.com/open?id=0B3RbSZXZ7S-_VkwxOVl2ajVjQUE)
 
+#### Nodejs
+* [How Does javascript Actually Work](https://blog.sessionstack.com/how-does-javascript-actually-work-part-1-b0bacc073cf)
 
 ### Cronograma
 
