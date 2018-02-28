@@ -40,6 +40,8 @@ A continuaci&oacute;n se lista los temas sobre los cuales se desarrollar&aacute;
 
 #### JavaScript
 * [How Does javascript Actually Work](https://blog.sessionstack.com/how-does-javascript-actually-work-part-1-b0bacc073cf)
+* [The long road to Async/Await in JavaScript](https://thomashunter.name/presentations/async-await-javascript-v1/)
+* [Testing async code with Mocha using callbacks and promises](https://medium.com/caffeine-and-testing/async-testing-with-mocha-with-callbacks-and-promises-5d0002661b3f)
 
 ### Cronograma
 
