@@ -43,24 +43,24 @@ A continuaci&oacute;n se lista los temas sobre los cuales se desarrollar&aacute;
 
 ### Cronograma
 
-Clase | Fecha | Contenido | Asignado 
-------- | -------- | ---------------- | -----
-1 | 15-Mar | Introducción a la materia | Christian / Gabi
-2 | 22-Mar | Introducción a servicios WEB | Gabi
-\#  | 29-Mar | Feriado | -
-3 | 05-Abr | Introducción a desarrollo mobile |
-4 | 12-Abr | Introducción a UX | Agustín
-5 | 19-Abr | Checkpoint 1 | -
-6 | 26-Abr | Introducción a testing | Agustín
-7 | 03-May | Introducción a programacion WEB | Nico
-8 | 10-May | Introducción a cloud computing | Gabi
-9 | 17-May | Checkpoint 2 | -
-10 | 24-May | Parcial | -
-11 | 31-May | Introducción a contenedores | Nico
-12 | 07-Jun | Soft Skills | Christian
-13 | 14-Jun | Checkpoint 3 | -
+Clase | Fecha | Contenido 
+------- | -------- | ---------------- 
+1 | 15-Mar | Introducción a la materia 
+2 | 22-Mar | Introducción a servicios WEB
+\#  | 29-Mar | Feriado
+3 | 05-Abr | Introducción a desarrollo mobile
+4 | 12-Abr | Introducción a UX
+5 | 19-Abr | Checkpoint 1
+6 | 26-Abr | Introducción a testing
+7 | 03-May | Introducción a programacion WEB
+8 | 10-May | Introducción a cloud computing
+9 | 17-May | Checkpoint 2 
+10 | 24-May | Parcial
+11 | 31-May | Introducción a contenedores
+12 | 07-Jun | Soft Skills
+13 | 14-Jun | Checkpoint 3
 14 | 21-Jun | Recuperatorio / TBD
-15 | 28-Jun | Clase: TBD (oratoria?) | Christian
-16 | 05-Jul | Entrega Final (demo/defensa) | -
-I1 | TBD | Exposición 1 / Recuperatorio TP | -
-I2 | TBD | Exposición 2 | -
+15 | 28-Jun | Clase: TBD (oratoria?) 
+16 | 05-Jul | Entrega Final (demo/defensa) 
+I1 | TBD | Exposición 1 / Recuperatorio TP 
+I2 | TBD | Exposición 2
