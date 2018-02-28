@@ -7,11 +7,6 @@ subtitle: Cronograma de actividades
 
 A continuaci&oacute;n se lista los temas sobre los cuales se desarrollar&aacute;n las clases te&oacute;rico-pr&aacute;cticas.
 
-* [Clase 1 Introducción 17-08-17](https://drive.google.com/open?id=0B7ZBqy_1wA07dFBkbWpuaGp4dEM0VnF2ZHVRVjJYTHp0Ykhr)
-* [Clase 2 Metodología trabajo práctico 2C 2017](http://slides.com/gabrielfusca/tp-2c-2017#/)
-* [Clase 3 REST API en Python](https://slides.com/gabrielfusca/python-rest)
-* [Clase 4 Node Js y Heroku](https://docs.google.com/presentation/d/1vYZ59U4YHobg9qDt7_4flRW7mo7a-2Zz4Sc_LpDjI6c/edit?usp=sharing)
-
 ### Material de lectura
 
 #### REST
@@ -48,23 +43,24 @@ A continuaci&oacute;n se lista los temas sobre los cuales se desarrollar&aacute;
 
 ### Cronograma
 
-| Clase | Fecha | Contenido |
-| ----- | ----- | --------- |
-| #1 | 17-Ago | Introducci&oacute;n |
-| #2 | 24-Ago | Tp tech #1 |
-| #3 | 31-Ago | Tp tech #2 |
-| #4 | 07-Sep | Tp tech #3 |
-| #5 | 14-Sep | **Checkpoint 1** |
-| #6 | 21-Sep | UX #1 |
-| #7 | 28-Sep | UX #2 |
-| #8 | 05-Oct | Consultas |
-| #9 | 12-Oct | **Checkpoint 2** |
-| #10 | 19-Oct | **Parcial** |
-| #11 | 26-Oct | Soft Skills |
-| #12 | 02-Nov | Consultas |
-| #13 | 09-Nov | **Checkpoint 3** |
-| #14 | 16-Nov | Recuperatorio / TBD |
-| #15 | 23-Nov | Clase: TBD |
-| #16 | 07-Dic | **Entrega Final (demo/defensa)** |
-| #I1 | TBD | Exposici&oacute;n #1 / Recuperatorio TP |
-| #I2 | TBD | Exposici&oacute;n #2 |
+Clase | Fecha | Contenido | Asignado 
+------- | -------- | ---------------- | -----
+1 | 15-Mar | Introducción a la materia | Christian / Gabi
+2 | 22-Mar | Introducción a servicios WEB | Gabi
+\#  | 29-Mar | Feriado | -
+3 | 05-Abr | Introducción a desarrollo mobile |
+4 | 12-Abr | Introducción a UX | Agustín
+5 | 19-Abr | Checkpoint 1 | -
+6 | 26-Abr | Introducción a testing | Agustín
+7 | 03-May | Introducción a programacion WEB | Nico
+8 | 10-May | Introducción a cloud computing | Gabi
+9 | 17-May | Checkpoint 2 | -
+10 | 24-May | Parcial | -
+11 | 31-May | Introducción a contenedores | Nico
+12 | 07-Jun | Soft Skills | Christian
+13 | 14-Jun | Checkpoint 3 | -
+14 | 21-Jun | Recuperatorio / TBD
+15 | 28-Jun | Clase: TBD (oratoria?) | Christian
+16 | 05-Jul | Entrega Final (demo/defensa) | -
+I1 | TBD | Exposición 1 / Recuperatorio TP | -
+I2 | TBD | Exposición 2 | -
