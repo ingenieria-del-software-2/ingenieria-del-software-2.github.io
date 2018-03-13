@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Llevame
+title: Stories
 subtitle: Enunciado del Trabajo Práctico 1C 2018
 bigimg: /img/path.jpg
 tags: [trabajos-practicos, 2017-2C]
