@@ -50,19 +50,18 @@ Clase | Fecha | Contenido
 1 | 15-Mar | Introducción a la materia 
 2 | 22-Mar | Introducción a servicios WEB
 \#  | 29-Mar | Feriado
-3 | 05-Abr | Introducción a desarrollo mobile
-4 | 12-Abr | Introducción a UX
-5 | 19-Abr | Checkpoint 1
-6 | 26-Abr | Introducción a testing
-7 | 03-May | Introducción a programacion WEB
-8 | 10-May | Introducción a cloud computing
-9 | 17-May | Checkpoint 2 
-10 | 24-May | Parcial
-11 | 31-May | Introducción a contenedores
-12 | 07-Jun | Soft Skills
-13 | 14-Jun | Checkpoint 3
-14 | 21-Jun | Recuperatorio / TBD
-15 | 28-Jun | Clase: TBD (oratoria?) 
-16 | 05-Jul | Entrega Final (demo/defensa) 
-I1 | TBD | Exposición 1 / Recuperatorio TP 
-I2 | TBD | Exposición 2
+4 | 05-Abr | Introducción a desarrollo mobile
+5 | 12-Abr | Introducción a UX
+6 | 19-Abr | Checkpoint 1
+7 | 26-Abr | Introducción a testing
+8 | 03-May | Introducción a programacion WEB
+9 | 10-May | Introducción a cloud computing
+10 | 17-May | Checkpoint 2 
+11 | 24-May | Parcial
+12 | 31-May | Introducción a contenedores
+13 | 07-Jun | Soft Skills
+14 | 14-Jun | Checkpoint 3
+15 | 21-Jun | Recuperatorio / TBD
+16 | 28-Jun | Entrega Final (demo/defensa) 
+I1 | 05-Jul | Exposición 1 / Recuperatorio TP  
+I2 | 12-Jul | Exposición 2
