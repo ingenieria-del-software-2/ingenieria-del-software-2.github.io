@@ -65,3 +65,57 @@ Clase | Fecha | Contenido
 16 | 28-Jun | Entrega Final (demo/defensa) 
 I1 | 05-Jul | Exposición 1 / Recuperatorio TP  
 I2 | 12-Jul | Exposición 2
+
+### Programa detallado
+
+#### Introducción a la materia
+  * Objetivo
+  * Calendario
+  * Modalidad
+  * Tecnologías
+  * Explicación del TP
+
+#### Introducción a servicios web
+  * Tipos de servicios web
+  * Introducción a protocolo HTTP
+  * Introducción a arquitectura REST
+  * Introducción a diseño de API REST
+
+#### Introducción a testing
+  * Introducción a TDD
+  * Buenas prácticas de testing
+  * Integración continua
+  * Despliegue continue
+  * Análisis estático de código:
+  * Code coverage
+  * Linting
+  * Type checking
+
+#### Introducción a contenedores
+  * Contenedores vs VM vs Bare metal
+  * Docker vs LXC vs Jails
+  * Orquestación: Docker Compose vs Docker Swarm vs K8s
+
+#### Introducción a programación Web
+  * Event Loop
+  * Programación asincrónica
+  * Transpiling & bundling
+
+#### Introducción a desarrollo mobile
+  * Empezando a hacer una app
+  * Organización del proyecto
+  * Sample app
+  * Librerías útiles
+
+#### Introducción a cloud computing
+  * SAAS vs PAAS vs IAAS vs CAAS
+  * Monolitos vs Microservicios vs Serverless
+
+#### Introducción a UX
+  * Kano model
+  * Usabilidad
+  * Interactive Design
+  * Data driven products
+  * User centered design
+
+#### Oratoria & soft skills
