@@ -5,7 +5,15 @@ subtitle: Información sobre la materia
 ---
 ### Inscripci&oacute;n
 
-Link de inscripci&oacute;n: [`https://goo.gl/forms/yWDcgrR0Cp5tMI6h1`](https://goo.gl/forms/yWDcgrR0Cp5tMI6h1)
+Link de inscripci&oacute;n: [`https://goo.gl/forms/gteuEYtIi13Ml67A3`](https://goo.gl/forms/gteuEYtIi13Ml67A3)
+
+### Docentes
+
+* Ing. Christián Calónico
+* Ing. Gabriel Fusca
+* Nicolás Cisco
+* Agustín Rojas
+* Juan Manuel Lambre
 
 ### Correlativas
 
@@ -28,29 +36,33 @@ Los objetivos que persigue esta materia son los siguientes:
 La materia contar&aacute; con las siguientes instancias de evaluaci&oacute;n, que deber&aacute;n ser apobadas por los alumnos:
 
 * **Parcial**: instancia de evaluaci&oacute;n te&oacute;rica, donde se evaluar&aacute;n los conocimientos adquiridos en las clases te&oacute;ricas y mediante el material de lectura obligatorio; asimismo, se evaluar&aacute;n conceptos y herramientas utilizados en el desarrollo del trabajo pr&aacute;ctico.
-  * **Fecha**: 19 de octubre _(clase 10)_
+  * **Fecha**: 24 de mayo  _(semana 11)_
 * **Trabajo Pr&aacute;ctico**: instancia de evaluaci&oacute;n pr&aacute;, quiz&aacute; la m&aacute;s importante del curso. Si bien se trata de una evaluaci&oaacute;n grupal, se considerar&aacute; tambi&eacute;n el desempe&ntilde;o de cada alumno en forma personal.
   Adem&aacute;s de la entrega, los equipos deber&aacute;n cumplir con tres presentaciones intermedias obligatorias _(checkpoints)_. En todas las instancias de evaluaci&oacute;n se espera ciertos contenidos m&iacute;nimos y una defensa grupal / personal en forma presencial. La falla en dos oportunidades significar&aacute; la p&eacute;rdida de la materia.
-  * **Checkpoint 1**: 14 de septiembre _(clase 5)_
-  * **Checkpoint 2**: 12 de octubre _(clase 9)_
-  * **Checkpoint 3**: 09 de noviembre _(clase 13)_
-  * **Checkpoint 4**: 07 de diciembre _(clase 16)_
+  * **Checkpoint 1**: 19 de abril _(semana 6)_
+  * **Checkpoint 2**: 17 de mayo _(semana 10)_
+  * **Checkpoint 3**: 14 de junio _(semana 14)_
+  * **Entrega final**: 28 de junio _(semana 16)_
+  
 * **Exposici&oacute;n del Trabajo Pr&aacute;ctico**: instancia de evaluaci&oacute;n oral; si bien se trata de una exposici&oacute;n grupal, donde el objetivo es que los alumnos practiquen y mejoren sus habilidades de oratoria, se considerar&aacute; el esfuerzo y dedicaci&oacute;n de cada alumno en forma personal.
-  * **Exposici&oacute;n**: 14 y 21 de diciembre _(primeras dos semanas de coloquio del per&iacute;odo)_
+  * **Exposici&oacute;n**: 5 y 12 de julio _(primeras dos semanas de coloquio del per&iacute;odo)_
 * **Ex&aacute;men final**: con la aprobaci&oacute;n del trabajo pr&aacute;ctico, el parcial y la exposici&oacute;n, los alumnos quedar&aacute;n eximidos del final de la materia _(la materia ser&iaacute;a promocionable)_.
 
 ### Contenido te&oacute;rico
 
 Se dictar&aacute;n siete clases te&oacute;ricas, los d&iacute;as jueves de 17hs a 19hs:
 
-* **Introducci&oacute;n a la materia**: 17 de agosto _(clase 1)_
-* **Temas relacionados con el desarrollo del trabajo pr&aacute;ctico**: 24 de agosto _(clase 2)_
-* **Temas relacionados con el desarrollo del trabajo pr&aacute;ctico**: 31 de agosto _(clase 3)_
-* **Temas relacionados con el desarrollo del trabajo pr&aacute;ctico**: 07 de septiembre _(clase 4)_
-* **UX**: 21 de septiembre _(clase 7)_
-* **UX**: 28 de septiembre _(clase 8)_
-* **Soft Skills**: 26 de septiembre _(clase 11)_
-* **TBD**: 23 de noviembre _(clase 15)_
+📅 15 de marzo (semana 1, introducción a la materia)
+📅 22 de marzo (semana 2, introducción al desarrollo de servicios web)
+📅 5 de abril (semana 4, introducción al desarrollo de aplicaciones mobile)
+📅 12 de abril (semana 5, introducción a UX)
+📅 26 de abril (semana 7, introducción a técnicas de testing)
+📅 3 de mayo (semana 8, introducción a programación web)
+📅 10 de mayo (semana 9, introducción a cloud computing)
+📅 31 de mayo (semana 12, introducción a contenedores)
+📅 7 de junio (semana 13, soft skills)
+📅 21 de junio (semana 15, a-definir/consultas/oratoria)
+
 
 Asimismo, los alumnos recibir&aacute;n material de lectura obligatoria que, junto con el restante contenido te&oacute;rico y pr&aacute;ctico, ser&aacute;n evaluados en las instancias correspondientes.
 
@@ -70,7 +82,7 @@ Durante todo el cuatrimestre, los docentes estar&aacute;n a disposici&oacute;n p
 ### Recuperatorios
 
 * El parcial tendr&aacute; una fecha de recuperaci&oacute;n, acorde al reglamento de la facultad.
-  * **Recuperatorio del parcial**: 16 de noviembre _(clase 14)_
+  * **Recuperatorio del parcial**: 21 de junio _(semana 15)_
 * Dadas las m&uacute;ltiples instancias de control que posee el trabajo pr&aacute;ctico, no se contempla una instancia de recuperaci&oacute;n luego de la entrega final. Para casos excepcionales, donde el docente considere conveniente solicitar cambios sobre la entrega final, el vencimiento ser&aacute; a las 18hs de la primera fecha de exposiciones orales.
 
 ### M&iacute;todo de comunicaci&oacute;n
@@ -78,7 +90,6 @@ Durante todo el cuatrimestre, los docentes estar&aacute;n a disposici&oacute;n p
 Independientemente de la forma de comunicaci&oacute;n que se establezca entre los equipos y el docente asignado, la c&aacute;tedra cuenta con los siguientes elementos:
 
 * **Sitio web**: [`https://taller-de-programacion-2.github.io`](https://taller-de-programacion-2.github.io)
-* **Lista de distribuci&oacute;n**: [`https://groups.google.com/forum/#!forum/7552tallerdeprogramacionii`](https://groups.google.com/forum/#!forum/7552tallerdeprogramacionii)
 * **Slack**: [`https://7552-tallerii.slack.com/`](https://7552-tallerii.slack.com/)
 
 Si bien se intenta informar por todos los medios posibles, lo comunicado verbalmente en clase no puede ignorarse.
@@ -96,4 +107,4 @@ En el sitio web se pondr&aacute; a disposici&oacute;n de los alumnos:
 * Es posible que, a fin de favorecer las exposiciones orales, las clases de exposici&oacute;n sean de mayor duraci&oacute;n (a confirmar).
 * La firma de libretas se llevar&aacute; a cabo en fechas/horarios/aulas a convenir, previa inscripci&oacute;n a alguna fecha de coloquio (para estar inscripto en alguna acta).
 * La participaci&oacute;n de los alumnos ser&aacute; considerada al momento de las calificaciones.
-Todas las entregas de trabajos individuales o grupales deben ser de creaci&oacute;n propia, sin excepci&oacute;n.
+* Todas las entregas de trabajos individuales o grupales deben ser de creaci&oacute;n propia, sin excepci&oacute;n.
