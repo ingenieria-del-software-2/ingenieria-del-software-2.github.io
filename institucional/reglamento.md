@@ -36,16 +36,24 @@ Los objetivos que persigue esta materia son los siguientes:
 La materia contar&aacute; con las siguientes instancias de evaluaci&oacute;n, que deber&aacute;n ser apobadas por los alumnos:
 
 * **Parcial**: instancia de evaluaci&oacute;n te&oacute;rica, donde se evaluar&aacute;n los conocimientos adquiridos en las clases te&oacute;ricas y mediante el material de lectura obligatorio; asimismo, se evaluar&aacute;n conceptos y herramientas utilizados en el desarrollo del trabajo pr&aacute;ctico.
+
   📅 **Fecha**: 24 de mayo  _(semana 11)_
+  
 * **Trabajo Pr&aacute;ctico**: instancia de evaluaci&oacute;n pr&aacute;, quiz&aacute; la m&aacute;s importante del curso. Si bien se trata de una evaluaci&oaacute;n grupal, se considerar&aacute; tambi&eacute;n el desempe&ntilde;o de cada alumno en forma personal.
   Adem&aacute;s de la entrega, los equipos deber&aacute;n cumplir con tres presentaciones intermedias obligatorias _(checkpoints)_. En todas las instancias de evaluaci&oacute;n se espera ciertos contenidos m&iacute;nimos y una defensa grupal / personal en forma presencial. La falla en dos oportunidades significar&aacute; la p&eacute;rdida de la materia.
+  
   📅 **Checkpoint 1**: 19 de abril _(semana 6)_
+  
   📅 **Checkpoint 2**: 17 de mayo _(semana 10)_
+  
   📅 **Checkpoint 3**: 14 de junio _(semana 14)_
+  
   📅 **Entrega final**: 28 de junio _(semana 16)_
 
 * **Exposici&oacute;n del Trabajo Pr&aacute;ctico**: instancia de evaluaci&oacute;n oral; si bien se trata de una exposici&oacute;n grupal, donde el objetivo es que los alumnos practiquen y mejoren sus habilidades de oratoria, se considerar&aacute; el esfuerzo y dedicaci&oacute;n de cada alumno en forma personal.
+
   📅 **Exposici&oacute;n**: 5 y 12 de julio _(primeras dos semanas de coloquio del per&iacute;odo)_
+  
 * **Ex&aacute;men final**: con la aprobaci&oacute;n del trabajo pr&aacute;ctico, el parcial y la exposici&oacute;n, los alumnos quedar&aacute;n eximidos del final de la materia _(la materia ser&iaacute;a promocionable)_.
 
 ### Contenido te&oacute;rico
@@ -91,7 +99,9 @@ Durante todo el cuatrimestre, los docentes estar&aacute;n a disposici&oacute;n p
 ### Recuperatorios
 
 * El parcial tendr&aacute; una fecha de recuperaci&oacute;n, acorde al reglamento de la facultad.
+
   📅 **Recuperatorio del parcial**: 21 de junio _(semana 15)_
+  
 * Dadas las m&uacute;ltiples instancias de control que posee el trabajo pr&aacute;ctico, no se contempla una instancia de recuperaci&oacute;n luego de la entrega final. Para casos excepcionales, donde el docente considere conveniente solicitar cambios sobre la entrega final, el vencimiento ser&aacute; a las 18hs de la primera fecha de exposiciones orales.
 
 ### M&iacute;todo de comunicaci&oacute;n
