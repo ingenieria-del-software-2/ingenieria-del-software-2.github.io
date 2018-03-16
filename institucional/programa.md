@@ -24,6 +24,9 @@ A continuaci&oacute;n se lista los temas sobre los cuales se desarrollar&aacute;
 * [API design guidance - Microsoft Docs](https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design)
 * [REST in Practice Hypermedia and Systems Architecture](http://shop.oreilly.com/product/9780596805838.do)
 
+#### Python 
+* [Uso de virtualenv y pip en python](http://docs.python-guide.org/en/latest/dev/virtualenvs/)
+
 #### Integraci&oacute;n Continua
 
 * [Continous Integration – Martin Fowler](http://www.martinfowler.com/articles/continuousIntegration.html)
