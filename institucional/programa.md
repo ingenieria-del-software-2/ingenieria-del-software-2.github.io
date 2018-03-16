@@ -9,12 +9,20 @@ A continuaci&oacute;n se lista los temas sobre los cuales se desarrollar&aacute;
 
 ### Material de lectura
 
-#### REST
+#### Web services
+* [Introducción a los web services](https://diego.com.es/introduccion-a-los-web-services)
 
+#### WSGI
+* [Resumen especificación WSGI - PyAR](http://www.python.org.ar/wiki/WSGI)
+* [WSGI Servers](https://www.fullstackpython.com/wsgi-servers.html)
+
+#### REST
+* [Rest api design modeling](https://www.thoughtworks.com/insights/blog/rest-api-design-resource-modeling)
 * [REST API Tutorial](http://www.restapitutorial.com/)
 * [Fielding Dissertation: CHAPTER 5: Representational State Transfer (REST)](https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm)
 * [Fielding Dissertation: CHAPTER 6: Experience and Evaluation](https://www.ics.uci.edu/~fielding/pubs/dissertation/evaluation.htm)
 * [API design guidance - Microsoft Docs](https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design)
+* [REST in Practice Hypermedia and Systems Architecture](http://shop.oreilly.com/product/9780596805838.do)
 
 #### Integraci&oacute;n Continua
 
