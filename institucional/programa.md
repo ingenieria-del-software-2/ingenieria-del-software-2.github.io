@@ -27,6 +27,8 @@ A continuaci&oacute;n se lista los temas sobre los cuales se desarrollar&aacute;
 #### Python 
 * [Uso de virtualenv y pip en python](http://docs.python-guide.org/en/latest/dev/virtualenvs/)
 
+#### JIT
+* (https://medium.com/basecs/a-most-perfect-union-just-in-time-compilers-2938712a9f6a)
 #### Integraci&oacute;n Continua
 
 * [Continous Integration – Martin Fowler](http://www.martinfowler.com/articles/continuousIntegration.html)
