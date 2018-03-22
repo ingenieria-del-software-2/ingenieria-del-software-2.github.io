@@ -9,13 +9,26 @@ A continuaci&oacute;n se lista los temas sobre los cuales se desarrollar&aacute;
 
 ### Material de lectura
 
-#### REST
+#### Web services
+* [Introducción a los web services](https://diego.com.es/introduccion-a-los-web-services)
 
+#### WSGI
+* [Resumen especificación WSGI - PyAR](http://www.python.org.ar/wiki/WSGI)
+* [WSGI Servers](https://www.fullstackpython.com/wsgi-servers.html)
+
+#### REST
+* [Rest api design modeling](https://www.thoughtworks.com/insights/blog/rest-api-design-resource-modeling)
 * [REST API Tutorial](http://www.restapitutorial.com/)
 * [Fielding Dissertation: CHAPTER 5: Representational State Transfer (REST)](https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm)
 * [Fielding Dissertation: CHAPTER 6: Experience and Evaluation](https://www.ics.uci.edu/~fielding/pubs/dissertation/evaluation.htm)
 * [API design guidance - Microsoft Docs](https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design)
+* [REST in Practice Hypermedia and Systems Architecture](http://shop.oreilly.com/product/9780596805838.do)
 
+#### Python 
+* [Uso de virtualenv y pip en python](http://docs.python-guide.org/en/latest/dev/virtualenvs/)
+
+#### JIT
+* (https://medium.com/basecs/a-most-perfect-union-just-in-time-compilers-2938712a9f6a)
 #### Integraci&oacute;n Continua
 
 * [Continous Integration – Martin Fowler](http://www.martinfowler.com/articles/continuousIntegration.html)
