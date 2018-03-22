@@ -9,7 +9,8 @@ A continuaci&oacute;n se lista los temas sobre los cuales se desarrollar&aacute;
 
 ### Material de lectura
 
-#### Web services
+#### Web services
+
 * [Introducción a los web services](https://diego.com.es/introduccion-a-los-web-services)
 
 #### WSGI
@@ -24,10 +25,10 @@ A continuaci&oacute;n se lista los temas sobre los cuales se desarrollar&aacute;
 * [API design guidance - Microsoft Docs](https://docs.microsoft.com/en-us/azure/architecture/best-practices/api-design)
 * [REST in Practice Hypermedia and Systems Architecture](http://shop.oreilly.com/product/9780596805838.do)
 
-#### Python 
+####  Python 
 * [Uso de virtualenv y pip en python](http://docs.python-guide.org/en/latest/dev/virtualenvs/)
 
-#### JIT
+####  JIT
 * (https://medium.com/basecs/a-most-perfect-union-just-in-time-compilers-2938712a9f6a)
 #### Integraci&oacute;n Continua
 
