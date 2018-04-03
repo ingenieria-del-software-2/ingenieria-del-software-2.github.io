@@ -31,20 +31,20 @@ tags:
     description: |
       Llamados que puede realizar los usuarios 
 paths:
-  /authorize:
+  /user:
      post:
       tags:
         - user
       security:
         - ApplicationToken: []
-      description: "Validar las credenciales de un usuario de aplicación"
+      description: "Registra creenciales de un usuario de aplicación"
       parameters: 
-        - description: "Credenciales"
+        - description: "informacion del usuario"
           in: body
           name: body
           required: true
           schema: 
-            $ref: "#/definitions/ApplicationUserCredentials"
+            $ref: '#/definitions/ApplicationUserWithPassword'
       responses: 
         200: 
           description: "Validación correcta"
@@ -66,7 +66,7 @@ paths:
           description: "Unexpected error"
           schema: 
             $ref: "#/definitions/Error"
-      summary: "Validar usuario de aplicación"
+      summary: "Registra usuario de aplicación"
   /token:
     post:
       tags:
@@ -583,7 +583,19 @@ definitions:
       username: 
         description: Nombre del usuario en la aplicación
         type: string
-        
+  ApplicationUserWithPassword: 
+    properties:
+      id:
+        $ref: '#/definitions/Id'
+      _rev:
+        $ref: '#/definitions/Ref'
+      password:
+        type: string
+      applicationOwner:
+        $ref: '#/definitions/Id'
+      username: 
+        description: Nombre del usuario en la aplicación
+        type: string     
   File:
     properties:
       id:
@@ -605,5 +617,3 @@ definitions:
       resource:
         description: url absoluta para poder acceder al recurso físico (archivo)
         type: string
-        
-        
