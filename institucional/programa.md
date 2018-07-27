@@ -61,24 +61,24 @@ A continuaci&oacute;n se lista los temas sobre los cuales se desarrollar&aacute;
 
 Clase | Fecha | Contenido 
 ------- | -------- | ---------------- 
-1 | 15-Mar | Introducción a la materia 
-2 | 22-Mar | Introducción a servicios WEB
-\#  | 29-Mar | Feriado
-4 | 05-Abr | Introducción a desarrollo mobile
-5 | 12-Abr | Introducción a UX
-6 | 19-Abr | Checkpoint 1
-7 | 26-Abr | Introducción a testing
-8 | 03-May | Introducción a programacion WEB
-9 | 10-May | Introducción a cloud computing
-10 | 17-May | Checkpoint 2 
-11 | 24-May | Parcial
-12 | 31-May | Introducción a contenedores
-13 | 07-Jun | Soft Skills
-14 | 14-Jun | Checkpoint 3
-15 | 21-Jun | Recuperatorio / TBD
-16 | 28-Jun | Entrega Final (demo/defensa) 
-I1 | 05-Jul | Exposición 1 / Recuperatorio TP  
-I2 | 12-Jul | Exposición 2
+1 | 23-Ago | Introducción a la materia 
+2 | 30-Ago | Introducción a servicios WEB
+3 | 06-Sep | Introducción a desarrollo mobile
+4 | 13-Sep | Checkpoint 1
+5 | 20-Sep | Introducción a testing
+6 | 27-Sep | Introducción a UX
+7 | 4-Oct  | Introducción a programacion WEB
+8 | 11-Oct | Checkpoint 2 
+9 | 18-Oct | Introducción a cloud computing
+10 | 25-Oct | Introducción a contenedores
+11 | 01-Nov | Parcial
+12 | 08-Nov | Checkpoint 3
+13 | 15-Nov | Soft Skills
+14 | 22-Nov | TBD
+15 | 29-Nov | Recuperatorio / TBD
+16 | 06-Dic | Entrega Final (demo/defensa) 
+I1 | 13-Dic | Exposición 1 / Recuperatorio TP  
+I2 | 20-Dic | Exposición 2
 
 ### Programa detallado
 
