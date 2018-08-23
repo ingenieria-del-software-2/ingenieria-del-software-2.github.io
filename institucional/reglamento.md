@@ -41,11 +41,11 @@ La materia contar&aacute; con las siguientes instancias de evaluaci&oacute;n, qu
 * **Trabajo Pr&aacute;ctico**: instancia de evaluaci&oacute;n pr&aacute;, quiz&aacute; la m&aacute;s importante del curso. Si bien se trata de una evaluaci&oaacute;n grupal, se considerar&aacute; tambi&eacute;n el desempe&ntilde;o de cada alumno en forma personal.
   Adem&aacute;s de la entrega, los equipos deber&aacute;n cumplir con tres presentaciones intermedias obligatorias _(checkpoints)_. En todas las instancias de evaluaci&oacute;n se espera ciertos contenidos m&iacute;nimos y una defensa grupal / personal en forma presencial. La falla en dos oportunidades significar&aacute; la p&eacute;rdida de la materia.
   
-  📅 **Checkpoint 1**: 27 de septiembre _(semana 6)_
+  📅 **Checkpoint 1**: 13 de septiembre _(semana 4)_
   
-  📅 **Checkpoint 2**: 25 de octubre _(semana 10)_
+  📅 **Checkpoint 2**: 11 de octubre _(semana 8)_
   
-  📅 **Checkpoint 3**: 22 de novimebre _(semana 14)_
+  📅 **Checkpoint 3**: 08 de novimebre _(semana 12)_
   
   📅 **Entrega final**: 06 de diciembre _(semana 16)_
 
