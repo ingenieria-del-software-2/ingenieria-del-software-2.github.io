@@ -5,7 +5,7 @@ subtitle: Información sobre la materia
 ---
 ### Inscripci&oacute;n
 
-Link de inscripci&oacute;n: [`https://goo.gl/forms/w0kubj7TUUhZbjRK2`](https://goo.gl/forms/w0kubj7TUUhZbjRK2)
+Link de inscripci&oacute;n: [`https://goo.gl/forms/D8RkNOkmx71OcbBh1`](https://goo.gl/forms/D8RkNOkmx71OcbBh1)
 
 ### Docentes
 
@@ -13,6 +13,8 @@ Link de inscripci&oacute;n: [`https://goo.gl/forms/w0kubj7TUUhZbjRK2`](https://g
 * Ing. Gabriel Fusca
 * Agustín Rojas
 * Juan Manuel Lambre
+* Matias Cano
+* Diego Kim
 
 ### Correlativas
 
@@ -36,18 +38,18 @@ La materia contar&aacute; con las siguientes instancias de evaluaci&oacute;n, qu
 
 * **Parcial**: instancia de evaluaci&oacute;n te&oacute;rica, donde se evaluar&aacute;n los conocimientos adquiridos en las clases te&oacute;ricas y mediante el material de lectura obligatorio; asimismo, se evaluar&aacute;n conceptos y herramientas utilizados en el desarrollo del trabajo pr&aacute;ctico.
 
-  📅 **Fecha**: 1 de novimebre  _(semana 11)_
+  📅 **Fecha**: 16 de Mayo  _(semana 11)_
   
 * **Trabajo Pr&aacute;ctico**: instancia de evaluaci&oacute;n pr&aacute;, quiz&aacute; la m&aacute;s importante del curso. Si bien se trata de una evaluaci&oaacute;n grupal, se considerar&aacute; tambi&eacute;n el desempe&ntilde;o de cada alumno en forma personal.
   Adem&aacute;s de la entrega, los equipos deber&aacute;n cumplir con tres presentaciones intermedias obligatorias _(checkpoints)_. En todas las instancias de evaluaci&oacute;n se espera ciertos contenidos m&iacute;nimos y una defensa grupal / personal en forma presencial. La falla en dos oportunidades significar&aacute; la p&eacute;rdida de la materia.
   
-  📅 **Checkpoint 1**: 13 de septiembre _(semana 4)_
+  📅 **Checkpoint 1**: 01 de abril _(semana 4)_
   
-  📅 **Checkpoint 2**: 11 de octubre _(semana 8)_
+  📅 **Checkpoint 2**: 02 de mayo _(semana 8)_
   
-  📅 **Checkpoint 3**: 08 de novimebre _(semana 12)_
+  📅 **Checkpoint 3**: 30 de mayo _(semana 12)_
   
-  📅 **Entrega final**: 06 de diciembre _(semana 16)_
+  📅 **Entrega final**: 27 de junio _(semana 16)_
 
 * **Exposici&oacute;n del Trabajo Pr&aacute;ctico**: instancia de evaluaci&oacute;n oral; si bien se trata de una exposici&oacute;n grupal, donde el objetivo es que los alumnos practiquen y mejoren sus habilidades de oratoria, se considerar&aacute; el esfuerzo y dedicaci&oacute;n de cada alumno en forma personal.
 
