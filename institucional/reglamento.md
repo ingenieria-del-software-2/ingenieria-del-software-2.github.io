@@ -90,7 +90,7 @@ Durante todo el cuatrimestre, los docentes estar&aacute;n a disposici&oacute;n p
 
 * El parcial tendr&aacute; una fecha de recuperaci&oacute;n, acorde al reglamento de la facultad.
 
-  📅 **Recuperatorio del parcial**: 29 de novimebre _(semana 15)_
+  📅 **Recuperatorio del parcial**:  _A definir_
   
 * Dadas las m&uacute;ltiples instancias de control que posee el trabajo pr&aacute;ctico, no se contempla una instancia de recuperaci&oacute;n luego de la entrega final. Para casos excepcionales, donde el docente considere conveniente solicitar cambios sobre la entrega final, el vencimiento ser&aacute; a las 18hs de la primera fecha de exposiciones orales.
 
