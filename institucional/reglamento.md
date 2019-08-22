@@ -5,7 +5,7 @@ subtitle: Información sobre la materia
 ---
 ### Inscripci&oacute;n
 
-Link de inscripci&oacute;n: [`https://goo.gl/forms/D8RkNOkmx71OcbBh1`](https://goo.gl/forms/D8RkNOkmx71OcbBh1)
+Link de inscripci&oacute;n: [`https://forms.gle/SinfY6Ancyn7d3hr9`](https://forms.gle/SinfY6Ancyn7d3hr9)
 
 ### Docentes
 
