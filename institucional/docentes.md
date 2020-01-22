@@ -19,8 +19,8 @@ subtitle:
     {% if mod == 0 %}<tr>{% endif %}
     <td>
       <div class='docente'>
-        {%if docente.mail%} <img src="{{site.baseurl}}{{docente.foto}}" title="{{docente.nombre}}" alt="{{docente.nombre}}" class="center-block img-rounded img-responsive" />
-        {% elsif !docente.mail%} <img src="/img/docentes/default.png" title="default" alt="default" class="center-block img-rounded img-responsive" />
+        {%if docente.foto%} <img src="{{site.baseurl}}{{docente.foto}}" title="{{docente.nombre}}" alt="{{docente.nombre}}" class="center-block img-rounded img-responsive" />
+        {% elsif !docente.foto%} <img src="/img/docentes/default.png" title="default" alt="default" class="center-block img-rounded img-responsive" />
         {%endif%}
         
         <span class="hidden-xxs">{{docente.nombre}}</span>
