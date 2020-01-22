@@ -20,7 +20,7 @@ subtitle:
     <td>
       <div class='docente'>
         {%if docente.foto%} <img src="{{site.baseurl}}{{docente.foto}}" title="{{docente.nombre}}" alt="{{docente.nombre}}" class="center-block img-rounded img-responsive" />
-        {% elsif !docente.foto%} <img src="/img/docentes/default.png" title="default" alt="default" class="center-block img-rounded img-responsive" />
+        {% elsif !docente.foto%} <b>Template</b>
         {%endif%}
         
         <span class="hidden-xxs">{{docente.nombre}}</span>
