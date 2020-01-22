@@ -6,8 +6,6 @@ bigimg: /img/path.jpg
 tags: [trabajos-practicos, 2019-2C]
 ---
 
-Ya se encuentra disponible el enunciado correspondiente al trabajo práctico.
-
 # Foodie
 
 Una importante empresa, AppMaker©, ha decidido encargarnos el desarrollo de una **plataforma para el delivery de comida/items alrededor del mundo**. El principal objetivo es permitir conectar en tiempo real a personas de todo el mundo. 
