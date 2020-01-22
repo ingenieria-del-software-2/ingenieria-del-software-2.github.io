@@ -21,9 +21,9 @@ subtitle: Cronograma de actividades
  
 ### Material
 
-* https://code.tutsplus.com/tutorials/http-the-protocol-every-web-developer-must-know-part-1--net-31177
-* http://www.python.org.ar/wiki/WSGI
-* https://blog.apollographql.com/graphql-explained-5844742f195e
+* [https://code.tutsplus.com/tutorials/http-the-protocol-every-web-developer-must-know-part-1--net-31177]
+* [http://www.python.org.ar/wiki/WSGI]
+* [https://blog.apollographql.com/graphql-explained-5844742f195e]
 
 ## Introducción a testing
   * Introducción a TDD
@@ -37,12 +37,12 @@ subtitle: Cronograma de actividades
   
 ### Material
 
-* https://medium.com/caffeine-and-testing/async-testing-with-mocha-with-callbacks-and-promises-5d0002661b3f
-* https://www.martinfowler.com/ieeeSoftware/failFast.pdf
-* https://www.eecs.yorku.ca/course_archive/2003-04/W/3311/sectionM/case_studies/money/KentBeck_TDD_byexample.pdf
-* https://medium.freecodecamp.org/why-end-to-end-testing-is-important-for-your-team-cb7eb0ec1504
-* https://www.python.org/dev/peps/pep-0008/
-* https://eslint.org/
+* [https://medium.com/caffeine-and-testing/async-testing-with-mocha-with-callbacks-and-promises-5d0002661b3f]
+* [https://www.martinfowler.com/ieeeSoftware/failFast.pdf]
+* [https://www.eecs.yorku.ca/course_archive/2003-04/W/3311/sectionM/case_studies/money/KentBeck_TDD_byexample.pdf]
+* [https://medium.freecodecamp.org/why-end-to-end-testing-is-important-for-your-team-cb7eb0ec1504]
+* [https://www.python.org/dev/peps/pep-0008/]
+* [https://eslint.org/]
 
 ## Introducción a contenedores
   * Contenedores vs VM vs Bare metal
@@ -50,7 +50,7 @@ subtitle: Cronograma de actividades
   * Orquestación: Docker Compose vs Docker Swarm vs K8s
 
 ### Material
- * https://chimeracoder.github.io/docker-without-docker/#1
+ * [https://chimeracoder.github.io/docker-without-docker/#1]
 
 ## Introducción a programación Web
   * Programación asincrónica utilizando javascript
@@ -59,13 +59,13 @@ subtitle: Cronograma de actividades
   * Modular bundlers (web pack)
 
 ### Material
- * https://blog.sessionstack.com/how-does-javascript-actually-work-part-1-b0bacc073cf?gi=4a54a151353c
- * https://thomashunter.name/presentations/async-await-javascript-v1/
- * https://scotch.io/tutorials/javascript-transpilers-what-they-are-why-we-need-them
- * https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/
- * https://webpack.js.org/configuration/
- * https://reactjs.org/docs/introducing-jsx.html
- * https://facebook.github.io/flux/
+ * [https://blog.sessionstack.com/how-does-javascript-actually-work-part-1-b0bacc073cf?gi=4a54a151353c]
+ * [https://thomashunter.name/presentations/async-await-javascript-v1/]
+ * [https://scotch.io/tutorials/javascript-transpilers-what-they-are-why-we-need-them]
+ * [https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/]
+ * [https://webpack.js.org/configuration/]
+ * [https://reactjs.org/docs/introducing-jsx.html]
+ * [https://facebook.github.io/flux/]
 
 
 ## Introducción a desarrollo mobile
@@ -76,9 +76,9 @@ subtitle: Cronograma de actividades
   
 ### Material
 
-* https://code.tutsplus.com/tutorials/http-the-protocol-every-web-developer-must-know-part-1--net-31177
-* http://www.python.org.ar/wiki/WSGI
-* https://blog.apollographql.com/graphql-explained-5844742f195e
+* [https://code.tutsplus.com/tutorials/http-the-protocol-every-web-developer-must-know-part-1--net-31177]
+* [http://www.python.org.ar/wiki/WSGI]
+* [https://blog.apollographql.com/graphql-explained-5844742f195e]
 
 
 ## Introducción a cloud computing
@@ -86,10 +86,10 @@ subtitle: Cronograma de actividades
   * Monolitos vs Microservicios vs Serverless
  
 ### Material
- * https://martinfowler.com/articles/microservices.html 
- * https://martinfowler.com/articles/serverless.html
- * https://auth0.com/blog/what-is-serverless/
- * https://impaddo.com/blog/serverless-architecture/
+ * [https://martinfowler.com/articles/microservices.html] 
+ * [https://martinfowler.com/articles/serverless.html]
+ * [https://auth0.com/blog/what-is-serverless/]
+ * [https://impaddo.com/blog/serverless-architecture/]
 
 ## Introducción a UX
   * Kano model
@@ -99,9 +99,7 @@ subtitle: Cronograma de actividades
   * User centered design
 
 ### Material
- * https://www.dropbox.com/s/4by9hnvijln464f/w2-2016-trabajo-practico-aplicacion-mobile.pdf?dl=0
- * https://uxdesign.cc/choosing-the-right-features-with-kano-model-cc0274b6a83
- * https://medium.com/vivareal-ux-chapter/why-ux-designers-should-care-more-about-a-b-testing-7ef88eaee3e9
- * https://uxdesign.cc/build-a-great-product-roadmap-with-the-kano-model-5feb605c3878
-
-## Oratoria & soft skills
+ * [https://www.dropbox.com/s/4by9hnvijln464f/w2-2016-trabajo-practico-aplicacion-mobile.pdf?dl=0]
+ * [https://uxdesign.cc/choosing-the-right-features-with-kano-model-cc0274b6a83]
+ * [https://medium.com/vivareal-ux-chapter/why-ux-designers-should-care-more-about-a-b-testing-7ef88eaee3e9]
+ * [https://uxdesign.cc/build-a-great-product-roadmap-with-the-kano-model-5feb605c3878]
