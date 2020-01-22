@@ -5,8 +5,8 @@ subtitle: Información sobre la materia
 ---
 
 * [Ing. Christian Cal&oacute;nico](https://github.com/calonico)
-* [Ing. Gabriel Fusca](https://github.com/gfusca)
 * [Agust&iacute;n Rojas](https://github.com/agrojas)
 * [Matias Cano](https://github.com/tutecano1995)
-* Maximiliano Suppes
+* [Maximiliano Suppes](https://github.com/MaxiSuppes)
+* [Gonzalo Petraglia](https://github.com)
 
