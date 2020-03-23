@@ -21,7 +21,7 @@ subtitle:
       <h3 class="text-center">{{docente.nombre}}</h3>
     </div>
     <div class="row justify-content-center" >
-        <div class="col-lg-4 col-md-4 col-sm-3"> 
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"> 
              <a href="https://7552-tallerii.slack.com" title="Slack">
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
@@ -29,7 +29,7 @@ subtitle:
               </span>
             </a>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-3"> 
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"> 
             <a href="https://github.com/{{docente.github}}" title="GitHub">
               <span class="fa-stack fa-lg">
                 <i class="fa fa-circle fa-stack-2x"></i>
@@ -37,7 +37,7 @@ subtitle:
               </span>
             </a>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-3"> 
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"> 
           <a href="mailto:{{docente.mail}}" title="Email">
 			      <span class="fa-stack fa-lg">
 				      <i class="fa fa-circle fa-stack-2x"></i>
