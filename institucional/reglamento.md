@@ -52,7 +52,7 @@ La materia contar&aacute; con las siguientes instancias de evaluaci&oacute;n, qu
 
 * **Exposici&oacute;n del Trabajo Pr&aacute;ctico**: instancia de evaluaci&oacute;n oral; si bien se trata de una exposici&oacute;n grupal, donde el objetivo es que los alumnos practiquen y mejoren sus habilidades de oratoria, se considerar&aacute; el esfuerzo y dedicaci&oacute;n de cada alumno en forma personal.
 
-  📅 **Exposici&oacute;n**: 13 y 20 de diciembre _(primeras dos semanas de coloquio del per&iacute;odo)_
+  📅 **Exposici&oacute;n**: _A definir_ _(primeras dos semanas de coloquio del per&iacute;odo)_
   
 * **Ex&aacute;men final**: con la aprobaci&oacute;n del trabajo pr&aacute;ctico, el parcial y la exposici&oacute;n, los alumnos quedar&aacute;n eximidos del final de la materia _(la materia ser&iaacute;a promocionable)_.
 
