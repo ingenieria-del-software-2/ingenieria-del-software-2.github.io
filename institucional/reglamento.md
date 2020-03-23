@@ -10,10 +10,10 @@ Link de inscripci&oacute;n: [`https://forms.gle/SinfY6Ancyn7d3hr9`](https://form
 ### Docentes
 
 * Ing. Christián Calónico
-* Ing. Gabriel Fusca
 * Agustín Rojas
 * Matias Cano
 * Maximiliano Suppes
+* Gonzalo Petraglia
 
 ### Correlativas
 
@@ -37,18 +37,18 @@ La materia contar&aacute; con las siguientes instancias de evaluaci&oacute;n, qu
 
 * **Parcial**: instancia de evaluaci&oacute;n te&oacute;rica, donde se evaluar&aacute;n los conocimientos adquiridos en las clases te&oacute;ricas y mediante el material de lectura obligatorio; asimismo, se evaluar&aacute;n conceptos y herramientas utilizados en el desarrollo del trabajo pr&aacute;ctico.
 
-  📅 **Fecha**: 17 de Octubre  _(semana 09)_
+  📅 **Fecha**: _A definir_
   
 * **Trabajo Pr&aacute;ctico**: instancia de evaluaci&oacute;n pr&aacute;, quiz&aacute; la m&aacute;s importante del curso. Si bien se trata de una evaluaci&oaacute;n grupal, se considerar&aacute; tambi&eacute;n el desempe&ntilde;o de cada alumno en forma personal.
   Adem&aacute;s de la entrega, los equipos deber&aacute;n cumplir con tres presentaciones intermedias obligatorias _(checkpoints)_. En todas las instancias de evaluaci&oacute;n se espera ciertos contenidos m&iacute;nimos y una defensa grupal / personal en forma presencial. La falla en dos oportunidades significar&aacute; la p&eacute;rdida de la materia.
   
-  📅 **Checkpoint 1**: 12 de septiembre _(semana 4)_
+  📅 **Checkpoint 1**: _A definir_
   
-  📅 **Checkpoint 2**: 10 de octubre _(semana 8)_
+  📅 **Checkpoint 2**: _A definir_
   
-  📅 **Checkpoint 3**: 07 de noviembre _(semana 12)_
+  📅 **Checkpoint 3**: _A definir_
   
-  📅 **Entrega final**: 05 de diciembre _(semana 16)_
+  📅 **Entrega final**: _A definir_
 
 * **Exposici&oacute;n del Trabajo Pr&aacute;ctico**: instancia de evaluaci&oacute;n oral; si bien se trata de una exposici&oacute;n grupal, donde el objetivo es que los alumnos practiquen y mejoren sus habilidades de oratoria, se considerar&aacute; el esfuerzo y dedicaci&oacute;n de cada alumno en forma personal.
 
