@@ -46,6 +46,7 @@ Este servicio permitirá dar de alta una reacción de un usuario a un video (me 
 
 #### Servicio de alta de comentario de video
 Este servicio permitirá enviar un comentario asociado a un video. El comentario tendrá la siguiente información:
+
 * Mensaje
 * Usuario que realizó el comentario
 * Hora y fecha
@@ -53,6 +54,7 @@ Este servicio permitirá enviar un comentario asociado a un video. El comentario
 
 #### Servicio de mensaje directo a usuario
 Este servicio permitirá enviar un mensaje a un usuario. Esto permitirá que los usuarios puedan mantener una conversación. El mensaje tendrá la siguiente información:
+
 * Mensaje
 * Usuario que envia el mensaje (emisor)
 * Usuario que recibe el mensaje (receptor)
@@ -66,6 +68,7 @@ Este servicio permitirá listar los videos disponibles para un usuario en su pan
 
 
 Las reglas deben permitir el cálculo de la importancia del video utilizando, entre otras cosas, la siguientes variables:
+
 * Actividad el usuario (publicaciones por día, cantidad de reacciones, horario de las publicaciones)
 * Cantidad de contactos
 * Día y horario
@@ -75,6 +78,7 @@ Las reglas deben permitir el cálculo de la importancia del video utilizando, en
 Ejemplo: 
 
 La importancia de una historia puede estar dada por:
+
 ```
  importancia = (
   0.1*(Cantidad de publicaciones por día) +
@@ -119,6 +123,7 @@ Este servicio debé ser consultado a traves de la URI /ping
 Este servicio deberá brindar datos acerca del uso del application server.
 
 Este servicio debé ser consultado a traves de la URI /stats y brindará información, como por ejemplo:
+
 - Cantidad de requests por minuto.
 - Tiempos de respuesta de los requests.
 - Desgloce de respuestas de códigos HTTP.
@@ -184,9 +189,10 @@ Este servidor será el encargado de proveer los distintos recursos multimedia qu
 #### Servicio para administración de recursos
 Servicio que permitirá administrar los recursos que contiene el _Media Server_ (alta, listado, baja).
 Cada archivo deberá contener la siguiente metadata asociada:
- * Nombre de archivo
- * Tamaño del archivo
- * Fecha de subida
+
+* Nombre de archivo
+* Tamaño del archivo
+* Fecha de subida
 
 Este servicio deberá devolver, entre sus datos, la url que permite acceder a este de forma remota.
 
