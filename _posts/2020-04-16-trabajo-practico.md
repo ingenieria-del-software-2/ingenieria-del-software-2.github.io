@@ -208,6 +208,10 @@ La interfaz WEB deberá solicitar usuario y contraseña para acceder a la admini
 Se deberá mostrar el listado de recursos disponibles en el servidor. Deberá mostrar la información asociada a cada archivo (ver definición de API para ver los datos a mostra). 
 Se deberá además permitir la administración de estos.
 
+##### Administración de usuarios
+Se deberá mostrar un listado de los usuarios registrados. Se deberá además permitir la administración de estos.
+
+
 ##### Administración de application servers
 Se deberá mostrar un listado de los application servers registrados. Se deberá además permitir la administración de estos.
 
