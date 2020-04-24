@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Clase 1
-subtitle: Diapositivas
+title: Presentación de la materia
+subtitle: Clase 1
 bigimg: /img/path.jpg
 tags: [clases 2020-1C]
 ---
