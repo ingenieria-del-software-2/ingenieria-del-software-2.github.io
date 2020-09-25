@@ -66,7 +66,7 @@ Se dictar&aacute;n siete clases te&oacute;ricas, los d&iacute;as jueves de 17hs 
 * Introducción a UX
 * Introducción a técnicas de testing
 * Introducción a programación web
-* Introducción a protocolos de autenticacion y autorizacin
+* Introducción a protocolos de autenticación y autorización
 * Introducción a contenedores
 * Soft skills
 
