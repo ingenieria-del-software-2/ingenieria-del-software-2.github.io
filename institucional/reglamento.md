@@ -5,7 +5,7 @@ subtitle: Información sobre la materia
 ---
 ### Inscripci&oacute;n
 
-Link de inscripci&oacute;n: [`https://forms.gle/SinfY6Ancyn7d3hr9`](https://forms.gle/SinfY6Ancyn7d3hr9)
+Link de inscripci&oacute;n: [`https://forms.gle/x95fDxtpKwqLxp6X8`](https://forms.gle/SinfY6Ancyn7d3hr9)
 
 ### Docentes
 
@@ -93,7 +93,7 @@ Durante todo el cuatrimestre, los docentes estar&aacute;n a disposici&oacute;n p
   
 * Dadas las m&uacute;ltiples instancias de control que posee el trabajo pr&aacute;ctico, no se contempla una instancia de recuperaci&oacute;n luego de la entrega final. Para casos excepcionales, donde el docente considere conveniente solicitar cambios sobre la entrega final, el vencimiento ser&aacute; a las 18hs de la primera fecha de exposiciones orales.
 
-### M&iacute;todo de comunicaci&oacute;n
+### Método de comunicaci&oacute;n
 
 Independientemente de la forma de comunicaci&oacute;n que se establezca entre los equipos y el docente asignado, la c&aacute;tedra cuenta con los siguientes elementos:
 
