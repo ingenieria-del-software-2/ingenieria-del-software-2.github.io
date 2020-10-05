@@ -34,11 +34,12 @@
     10. [Documentación](#documentación)
 4. [Instancias de entrega](#instancias-de-entrega)
 
-
+---
 ## Descripción
 
 Una importante empresa ha decidido encargarnos el desarrollo de una plataforma digital llamada Bookbnb dedicada a la oferta de alojamientos a particulares mediante la cual los anfitriones pueden publicitar y contratar el arriendo de sus propiedades con sus huéspedes.
 
+---
 ## Requisitos
 
 A continuación se describirán una serie de Épicas e Historias de usuario indicando la funcionalidad a cumplir por la plataforma. 
@@ -48,6 +49,7 @@ _En caso de que se observe alguna definición ambigua o la falta de la misma, es
 
 ### Epicas
 
+--- 
 <!-- Registro, login y perfil -->
 
 #### Usuarios
