@@ -195,12 +195,13 @@ Historias de usuario relacionadas:
 
 
 #### Bonus
+
 Las funcionalidades y requerimientos extras, estan siendo definidas por el cliente, pero en una primer captura de requisitos surgio lo siguiente
 
 Historias de usuario relacionadas:
 - [Uso de reglas para configurar disponibilidad geografica](#uso-de-reglas-para-configurar-disponibilidad-geografica)
 - [Cambios en el smart contract](#cambios-en-el-smart-contract)
-- [Uso de k8s](#uso-de-k8s)
+- [Uso de kubernetes](#uso-de-kubernetes)
 
 ___
 ### Historias de Usuario
@@ -786,8 +787,8 @@ ___
 
 **Criterios de aceptación**
 - CA : A definir
-___
 
+___
 
 #### Uso de reglas para configurar disponibilidad geografica
 
@@ -805,9 +806,10 @@ ___
 
 **Criterios de aceptación**
 - CA 1: A definir
+
 ___
 
-#### Uso de k8s
+#### Uso de kubernetes
 
 **Descripción**
 
