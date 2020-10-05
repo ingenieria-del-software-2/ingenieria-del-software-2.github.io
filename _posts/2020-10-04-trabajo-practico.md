@@ -447,6 +447,7 @@ ___
 **Criterios de aceptación**
 - CA 1: Recomendaciones por perfil de usuario
     - Los criterios de aceptacin de esta historia, deberán ser definidos junto con el corrector.
+
 ___
 
 #### Visualización de publicación
@@ -635,6 +636,7 @@ ___
 
 **Criterios de aceptación**
 - CA : A definir
+
 ___
 
 
@@ -671,6 +673,7 @@ ___
 **Criterios de aceptación**
 
 - CA 1: A definir
+
 ___
 
 #### Listado de publicaciones
@@ -789,7 +792,6 @@ ___
 - CA : A definir
 
 ___
-
 #### Uso de reglas para configurar disponibilidad geografica
 
 **Descripción**
@@ -797,6 +799,7 @@ ___
 
 **Criterios de aceptación**
 - CA 1: A definir
+
 ___
 
 #### Cambios en el smart contract
@@ -818,9 +821,8 @@ ___
 **Criterios de aceptación**
 
 - CA 1: A definir
+
 ___
-
-
 ## Requisitos No Funcionales
 
 ### Componentes
