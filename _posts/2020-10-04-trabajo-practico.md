@@ -33,7 +33,7 @@
     9. [UX](#ux)
     10. [Documentación](#documentación)
 4. [Instancias de entrega](#instancias-de-entrega)
-5. [Material de referencia](#material-de-referencia)
+
 
 ## Descripción
 
@@ -311,6 +311,7 @@ ___
 - CA 3: Sesión expirada
   - Cuando la sesión del usuario excede el tiempo de expiración
   - Entonces el sistema solicitará al usuario nuevamente el login
+  
 ___
 
 #### Recupero de contraseña
@@ -340,6 +341,7 @@ ___
   - En caso contrario se deberá mostrar un mensaje de error acorde al usuario.
 
 ___
+
 #### Visualización de perfil propio
 
 **Descripción**
@@ -398,6 +400,7 @@ ___
 - CA 2: Filtrado por cantidad de huespedes 
   - Cuando se realiza una búsqueda utilizando un filtrado por cantidad de huespedes del alojamiento
   - Entonces se deberán retornar las publicaciones que cumplan dichos filtros
+  
 ___
 
 #### Búsqueda de alojamiento por fechas
@@ -522,6 +525,7 @@ ___
 - CA 1: Calificación del alojamiento
   - Cuando un huesped realiza una calificación cuantitativa de un alojamiento en el cual se hospedo
   - Entonces esta calificación afectará la calificación del alojamiento 
+  
 ___
 
 #### Calificación cualitativa del alojamiento
@@ -534,6 +538,7 @@ ___
 - CA 1: Calificación
   - Cuando un huesped realiza una calificación con comentarios de un alojamiento en el cual se hospedo
   - Entonces esta calificación luego podrá ser visualizada por otros huspedes.
+  
 ___
 
 #### Calificación cuantitativa de huesped
@@ -557,6 +562,7 @@ ___
 - CA 1: Calificación
   - Cuando un anfitrion realiza una calificación con comentarios de un huesped al cual le reservo
   - Entonces esta calificación luego podrá ser visualizada en el perfil del huesped por otros anfitriones.
+  
 ___
 
 #### Historico de reservas
@@ -570,6 +576,7 @@ ___
 - CA 1: Listado de reservas
   - Cuando un huesped quiera visualizar sus reservas realizadas
   - Entonces se listarán todas las reservas que el huesped realizo, pudiendo filtrar las mismas
+  
 ___
 
 #### Reservas favoritas
@@ -589,6 +596,7 @@ ___
 #### Alta de publicación
 
 **Descripción**
+
 - Como anfitrion quiero poder dar de alta una publicacion de mi alojamiento para que realicen reservas del mismo y poder cobrar su uso
 
 **Criterios de aceptación**
@@ -606,7 +614,9 @@ ___
 
 **Criterios de aceptación**
 - CA 1: A definir
+
 ___
+
 #### Visualizacin de publicación
 
 **Descripción**
@@ -869,6 +879,7 @@ Se recomiendan como base de datos alguna de las siguientes
 - [MongoDB](https://www.mongodb.com/es)
 
 Esta elección será responsabilidad del grupo y la misma deberá estar consensuada junto al ayudante. Ademas quedará justificada en la documentación técnica que formará parte del TP.
+
 ___
 
 #### Backoffice web
