@@ -259,7 +259,7 @@ ___
 
 **Descripción**
 
-- Como Usuario quiero ingresar con mi cuenta en la plataforma con proveedores de identidad federada para acceder a las funcionalidades del sistema
+- Como Usuario quiero ingresar con mi cuenta en la plataforma con proveedores de [identidad federada](https://openid.net/connect/) para acceder a las funcionalidades del sistema
 
 **Criterios de aceptación**
 
