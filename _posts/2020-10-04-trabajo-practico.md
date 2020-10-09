@@ -1020,7 +1020,7 @@ ___
 
 | Instancia   |      Fecha      |  Alcance |
 |----------|:-------------:|------:|
-| Checkpoint 1 |  A definir | A definir |
-| Checkpoint 2 |  A definir | A definir |
-| Checkpoint 3 |  A definir | A definir |
-| Checkpoint 4 |  A definir | A definir |
+| Checkpoint 1 |  22/10/2020 | A definir |
+| Checkpoint 2 |  19/11/2020 | A definir |
+| Checkpoint 3 |  17/12/2020 | A definir |
+| Checkpoint 4 |  Febrero 2021 | A definir |
