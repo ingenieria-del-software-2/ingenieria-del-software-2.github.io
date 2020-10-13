@@ -136,9 +136,9 @@ Historias de usuario relacionadas:
 Como anfitrion quiero poder dar de alta, editar y visualizar una publicacion para que realicen reservas de mi alojamiento.
 
 Historias de usuario relacionadas:
- - [Alta de publicaciones](#alta-de-publicacion)
- - [Edición de publicaciones](#edicion-de-publicacion)
- - [Visualización de publicacion](#visualizacion-de-publicacion)
+ - [Alta de publicaciones](#alta-de-publicación)
+ - [Edición de publicaciones](#edicion-de-publicación)
+ - [Visualización de publicacion](#visualizacion-de-publicación)
  - [Listar de publicaciones](#listado-de-publicaciones)
 
  
