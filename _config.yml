@@ -24,17 +24,17 @@ description: Página web de la materia Taller de programación 2, Facultad de In
 # List of links in the navigation bar
 navbar-links:
   Institucional:
-    - Docentes: "institucional/docentes"
-    - Programa: "institucional/programa"
-    - Reglamento: "institucional/reglamento"
+    - Docentes: "institutional/professors"
+    - Programa: "institutional/program"
+    - Reglamento: "institutional/terms"
   Clases:
-    - Clases-2020: "clases/clases-2020"
-    - Clases-2021: "clases/clases-2021"
+    - Clases-2020: "lessons/lessons-2020"
+    - Clases-2021: "lessons/lessons-2021"
 
 
   Trabajo Práctico:
     - Enunciado: "2020-04-12-trabajo-practico"
-    - Histórico: "trabajo-practico/historico"
+    - Histórico: "works/historical"
   Contacto: "contacto"
 
 # Image to show in the navigation bar - image must be a square (width = height)
