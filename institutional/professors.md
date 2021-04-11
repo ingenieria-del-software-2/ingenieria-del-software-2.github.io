@@ -1,6 +1,6 @@
 ---
 layout: page
-title: professors
+title: Equipo
 subtitle: 
 ---
 
