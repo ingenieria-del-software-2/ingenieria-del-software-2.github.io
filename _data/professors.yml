@@ -1,39 +1,39 @@
 team:
 
     - name: Christian Calónico 
-      pic: /img/docentes/calonico.jpeg
+      pic: /img/professors/calonico.jpeg
       mail: calonico@gmail.com
       github: calonico
     
     
     - name: Agustín Rojas
-      pic: /img/docentes/rojas.jpeg
+      pic: /img/professors/rojas.jpeg
       mail: arojas@fi.uba.ar
       github: agrojas
     
     - name: Maximiliano Suppes
-      pic: /img/docentes/suppes.jpeg
+      pic: /img/professors/suppes.jpeg
       mail: maxisuppes@gmail.com
       github: MaxiSuppes
     
     - name: Gonzalo Petraglia
-      pic: /img/docentes/petraglia.jpg
+      pic: /img/professors/petraglia.jpg
       mail: gonzalpetraglia@gmail.com
       github: gonzalpetraglia
 
     - name: Santiago Gandolfo
-      pic: /img/docentes/gandolfo.jpeg
+      pic: /img/professors/gandolfo.jpeg
       mail: santiago.v.gandolfo@gmail.com
       github: santigandolfo
 
     - name: Matias Fonseca
-      pic: /img/docentes/fonseca.jpeg
+      pic: /img/professors/fonseca.jpeg
       mail: mfonseca@fi.uba.ar
       github: matfonseca
   
 
     - name: Jose Sbruzzi
-      pic: /img/docentes/sbruzzi.jpeg
+      pic: /img/professors/sbruzzi.jpeg
       mail: jose.sbru@gmail.com
       github: jisbruzzi
     
