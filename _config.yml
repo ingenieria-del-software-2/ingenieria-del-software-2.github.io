@@ -28,8 +28,8 @@ navbar-links:
     - Programa: "institucional/programa"
     - Reglamento: "institucional/reglamento"
   Clases:
-    - Clases-2020: "clases/clases-2020/"
-    - Clases-2021: "clases/clases-2021/"
+    - Clases-2020: "clases/clases-2020"
+    - Clases-2021: "clases/clases-2021"
 
 
   Trabajo Práctico:
