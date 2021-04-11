@@ -27,9 +27,13 @@ navbar-links:
     - Docentes: "institucional/docentes"
     - Programa: "institucional/programa"
     - Reglamento: "institucional/reglamento"
-  
+  Clases:
+    - Clases-2020: "clases/clases-2020/"
+    - Clases-2021: "clases/clases-2021/"
+
+
   Trabajo Práctico:
-    - Enunciado: "2020-10-04-trabajo-practico"
+    - Enunciado: "2020-04-12-trabajo-practico"
     - Histórico: "trabajo-practico/historico"
   Contacto: "contacto"
 

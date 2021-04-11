@@ -8,13 +8,8 @@ equipo:
     
     - nombre: Agustín Rojas
       foto: /img/docentes/rojas.jpeg
-      mail: rojasagustin90@gmail.com
+      mail: arojas
       github: agrojas
-    
-    - nombre: Matias Cano
-      foto: /img/docentes/cano.jpeg
-      mail: matiasjosecc@gmail.com
-      github: tutecano1995
     
     - nombre: Maximiliano Suppes
       foto: /img/docentes/suppes.jpeg
@@ -25,4 +20,22 @@ equipo:
       foto: /img/docentes/petraglia.jpg
       mail: gonzalpetraglia@gmail.com
       github: gonzalpetraglia
+
+    - nombre: Santiago Gandolfo
+      foto: /img/docentes/gandolfo.jpeg
+      mail: santiago.v.gandolfo@gmail.com
+      github: santigandolfo
+
+    - nombre: Matias Fonseca
+      foto: /img/docentes/fonseca.jpeg
+      mail: mfonseca@fi.uba.ar
+      github: matfonseca
+  
+
+    - nombre: Jose Sbruzzi
+      foto: /img/docentes/sbruzzi.jpeg
+      mail: jose.sbru@gmail.com
+      github: jisbruzzi
+    
+    
     
