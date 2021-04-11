@@ -31,6 +31,7 @@ navbar-links:
     - Clases-2020: "lessons/lessons-2020"
     - Clases-2021: "lessons/lessons-2021"
 
+  Posts: "_posts"
 
   Trabajo Práctico:
     - Enunciado: "2020-10-04-trabajo-practico"
