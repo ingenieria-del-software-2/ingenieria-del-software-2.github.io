@@ -9,7 +9,7 @@ ___
 
 
 {{ assign lessons = site.data.lessons | where_exp:"lesson", "if lesson.years contains 2021" }}
-
+{{lessons}}
 {% for lesson in lessons %}
 
 ## Clase {{lesson.title}}
