@@ -36,10 +36,19 @@ __{{lesson.sub-title}}__
 
 ### Video
 
+Videos relacionados a la clase
+
+{% for video in lesson.videos %}
+
+
+#### {{video.title}}
 <div class="responsive-wrap">
-<iframe src="https://drive.google.com/file/d/{{lesson.video-link}}/preview"
+<iframe src="https://drive.google.com/file/d/{{video.link}}/preview"
 width="960" height="569" allowfullscreen></iframe>
 </div>
+
+{% endfor %}
+
 {%endif%}
 
 {%if lesson.resources%}

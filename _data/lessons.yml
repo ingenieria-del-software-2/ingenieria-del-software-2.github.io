@@ -2,13 +2,68 @@
     year: 2020
     sub-title:
     slides-link: 1OMSz0tUGwcLMXR0PIU9zoDSkaJy4_piy9WEav2_r5XQ
-    video-link: 1HEYNmWdRHKtH4Zwkp-E-koyAQ_2e1q_l
-    
+    videos: 
+     - title: Grabacion de la clase de REST
+       link: 1HEYNmWdRHKtH4Zwkp-E-koyAQ_2e1q_l
   - title: Docker
     year: 2020
     sub-title: Clase con workshop
     slides-link: 1EF_lNIBDblI27o9iUJQtB_j6PMAUlK3-DWGaSRp6oMg
-    video-link: 1lcvKetXE0dQ7fWEbcObuj8BLV5TAQGRR
+    videos: 
+     - title: Grabacion del Workshop  
+       link: 1lcvKetXE0dQ7fWEbcObuj8BLV5TAQGRR
+     - title: Intro a k8s brindada por la gente de Eryx
+       link: 1snyGsWnXdQjb2sE888wQpWQnAtRuIj8b 
     resources:
       - title: Repositorio del Workshop
         link: https://github.com/tutecano1995/docker-workshop
+
+  - title: React
+    year: 2020
+    sub-title: Clase con workshop
+    slides-link: 1744McYIL_TiGuWIKE5yRwPGwwwFgn8uoLSt_N75ISZg
+    videos:
+      - title: Grabacion de la clase de React
+        link: 1quzmerWgv9DBdYbRZ1OasShA1VDwSpwf
+
+    resources:
+      - title: Repositorio del Workshop
+        link: https://github.com/taller-de-programacion-2/react-example
+
+  - title: React Native
+    year: 2020
+    sub-title: 
+    slides-link: 1n8klPeGM7igrGYOLwXRvHAnVgJ9jErfcDQpAwL7ULSQ
+    videos:
+      - title: Grabacion de la clase de React Native
+        link: 1snyGsWnXdQjb2sE888wQpWQnAtRuIj8b
+      
+  - title: OAuth
+    year: 2020
+    sub-title: 
+    slides-link: 1oY3a5hPx_MdCDFl3kS0BUWKQQ7AVcqzdim41wH3_G_0
+    videos:
+      - title: Grabacion de la clase intro a OAuth
+        link: 1aPovOHVthCCbREW4aEtjCsPNxwPnG_Xn
+
+      
+  - title: Android
+    year: 2020
+    sub-title: 
+    slides-link: 12JPDi8Xx61MVUkZjw31bYY_prsNJXa5OXR9BRyApLyo
+    videos:
+    - title: Grabacion de la clase de patrones de arquitectura aplicados a mobile
+      link: 1Sj0zdyXs0CEER9OwdlEqWp-tQbLPWTGg
+
+  - title: Smart Contracts
+    year: 2020
+    sub-title: 
+    videos:
+    - title: Grabacion de intro a Smart Contracts
+      link: 18NIC0cpQTB3bKKBUEt5dGmrtllIu0XQD
+    resources:
+      - title: Diapositivas de la clase
+        link: https://www.mentimeter.com/s/cabed39d080c44af4aba8f67a7cc6b18/a45528e11c8a
+     
+      
+      
