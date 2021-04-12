@@ -14,8 +14,6 @@ ___
   {%continue%}
 {%endif%}
 
-
-
 ## Clase {{lesson.title}}
 
 {%if lesson.sub-title%}
@@ -39,7 +37,7 @@ __{{lesson.sub-title}}__
 ### Video
 
 <div class="responsive-wrap">
-<iframe src="https://drive.google.com/file/d/{{lesson.video-link}}//preview"
+<iframe src="https://drive.google.com/file/d/{{lesson.video-link}}/preview"
 width="960" height="569" allowfullscreen></iframe>
 </div>
 {%endif%}
