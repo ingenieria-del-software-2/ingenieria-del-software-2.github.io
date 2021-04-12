@@ -10,7 +10,7 @@ ___
 
 {% for lesson in site.data.lessons %}
 
-{%if lesson.years contains 2021 %}
+{%if !lesson.years contains 2021 %}
   {%continue%}
 {%endif%}
 
