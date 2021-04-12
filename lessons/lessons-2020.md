@@ -11,9 +11,10 @@ ___
 
 <div class="row">
   {% for lesson in site.data.lessons %}
-  
+  {{lesson}}
+
   {%if lesson.year != "2020" %}
-    continue
+    {%continue%}
   {%endif%}
 
 
