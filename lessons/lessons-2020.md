@@ -31,19 +31,23 @@ ___
 
 ### Diapositivas
 
-- [https://github.com/tutecano1995/docker-workshop]
-
-### Video
+- [Repositorio del Workshop](https://github.com/tutecano1995/docker-workshop)
 
 <style>
 .responsive-wrap iframe{ max-width: 100%;}
 </style>
 <div class="responsive-wrap">
 <!-- this is the embed code provided by Google -->
-  <iframe src="https://docs.google.com/presentation/d/1oY3a5hPx_MdCDFl3kS0BUWKQQ7AVcqzdim41wH3_G_0/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+  <iframe src="https://docs.google.com/presentation/d/1EF_lNIBDblI27o9iUJQtB_j6PMAUlK3-DWGaSRp6oMg/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 <!-- Google embed ends -->
 </div>
 
+
+
+### Videos
+
+<iframe src="https://drive.google.com/file/d/1lcvKetXE0dQ7fWEbcObuj8BLV5TAQGRR/preview"
+width="960" height="569" allowfullscreen></iframe>
 ___
 
 ## Clase React
@@ -61,15 +65,8 @@ ___
 
 ### Video
 
-<style>
-.responsive-wrap iframe{ max-width: 100%;}
-</style>
-<div class="responsive-wrap">
-<!-- this is the embed code provided by Google -->
-  <iframe src="https://docs.google.com/presentation/d/1oY3a5hPx_MdCDFl3kS0BUWKQQ7AVcqzdim41wH3_G_0/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-<!-- Google embed ends -->
-</div>
-
+<iframe src="https://drive.google.com/file/d/1HEYNmWdRHKtH4Zwkp-E-koyAQ_2e1q_l//preview"
+width="640" height="480" allowfullscreen></iframe>
 ___
 
 ## Clase React Native
@@ -87,14 +84,8 @@ ___
 
 ### Video
 
-<style>
-.responsive-wrap iframe{ max-width: 100%;}
-</style>
-<div class="responsive-wrap">
-<!-- this is the embed code provided by Google -->
-  <iframe src="https://docs.google.com/presentation/d/1oY3a5hPx_MdCDFl3kS0BUWKQQ7AVcqzdim41wH3_G_0/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-<!-- Google embed ends -->
-</div>
+<iframe src="https://drive.google.com/file/d/1HEYNmWdRHKtH4Zwkp-E-koyAQ_2e1q_l//preview"
+width="640" height="480" allowfullscreen></iframe>
 
 ___
 
@@ -115,14 +106,8 @@ ___
 
 ### Video
 
-<style>
-.responsive-wrap iframe{ max-width: 100%;}
-</style>
-<div class="responsive-wrap">
-<!-- this is the embed code provided by Google -->
-  <iframe src="https://docs.google.com/presentation/d/1oY3a5hPx_MdCDFl3kS0BUWKQQ7AVcqzdim41wH3_G_0/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-<!-- Google embed ends -->
-</div>
+<iframe src="https://drive.google.com/file/d/1aPovOHVthCCbREW4aEtjCsPNxwPnG_Xn/preview"
+width="640" height="480" allowfullscreen></iframe>
 ___
 
 ## Clase Android
@@ -162,11 +147,5 @@ ___
 
 ### Video
 
-<style>
-.responsive-wrap iframe{ max-width: 100%;}
-</style>
-<div class="responsive-wrap">
-<!-- this is the embed code provided by Google -->
-  <iframe src="https://docs.google.com/presentation/d/1oY3a5hPx_MdCDFl3kS0BUWKQQ7AVcqzdim41wH3_G_0/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-<!-- Google embed ends -->
-</div>
+<iframe src="https://drive.google.com/file/d/1HEYNmWdRHKtH4Zwkp-E-koyAQ_2e1q_l//preview"
+width="640" height="480" allowfullscreen></iframe>
