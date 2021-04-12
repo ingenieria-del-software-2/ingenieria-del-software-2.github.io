@@ -1,14 +1,14 @@
 lessons:
   2020:
-    -   title: REST
-        sub-title: 
-        slides-link: 1OMSz0tUGwcLMXR0PIU9zoDSkaJy4_piy9WEav2_r5XQ
-        video-link: 1HEYNmWdRHKtH4Zwkp-E-koyAQ_2e1q_l
-        resources: []
-    -   title: Docker
-        sub-title: Clase con workshop 
-        slides-link: 1EF_lNIBDblI27o9iUJQtB_j6PMAUlK3-DWGaSRp6oMg
-        video-link: 1lcvKetXE0dQ7fWEbcObuj8BLV5TAQGRR
-        resources: 
-          - title: Repositorio del Workshop
-            link: https://github.com/tutecano1995/docker-workshop
+    - title: REST
+      sub-title:
+      slides-link: 1OMSz0tUGwcLMXR0PIU9zoDSkaJy4_piy9WEav2_r5XQ
+      video-link: 1HEYNmWdRHKtH4Zwkp-E-koyAQ_2e1q_l
+      resources: []
+    - title: Docker
+      sub-title: Clase con workshop
+      slides-link: 1EF_lNIBDblI27o9iUJQtB_j6PMAUlK3-DWGaSRp6oMg
+      video-link: 1lcvKetXE0dQ7fWEbcObuj8BLV5TAQGRR
+      resources:
+        - title: Repositorio del Workshop
+          link: https://github.com/tutecano1995/docker-workshop
