@@ -24,7 +24,8 @@ ___
 ### Video
 
 <iframe src="https://drive.google.com/file/d/1HEYNmWdRHKtH4Zwkp-E-koyAQ_2e1q_l//preview"
-width="640" height="480" allowfullscreen></iframe>
+width="960" height="569" allowfullscreen></iframe>
+
 ___
 
 ## Clase Docker
@@ -48,6 +49,7 @@ ___
 
 <iframe src="https://drive.google.com/file/d/1lcvKetXE0dQ7fWEbcObuj8BLV5TAQGRR/preview"
 width="960" height="569" allowfullscreen></iframe>
+
 ___
 
 ## Clase React
@@ -66,7 +68,8 @@ ___
 ### Video
 
 <iframe src="https://drive.google.com/file/d/1HEYNmWdRHKtH4Zwkp-E-koyAQ_2e1q_l//preview"
-width="640" height="480" allowfullscreen></iframe>
+width="960" height="569" allowfullscreen></iframe>
+
 ___
 
 ## Clase React Native
@@ -85,7 +88,7 @@ ___
 ### Video
 
 <iframe src="https://drive.google.com/file/d/1HEYNmWdRHKtH4Zwkp-E-koyAQ_2e1q_l//preview"
-width="640" height="480" allowfullscreen></iframe>
+width="960" height="569" allowfullscreen></iframe>
 
 ___
 
@@ -107,7 +110,8 @@ ___
 ### Video
 
 <iframe src="https://drive.google.com/file/d/1aPovOHVthCCbREW4aEtjCsPNxwPnG_Xn/preview"
-width="640" height="480" allowfullscreen></iframe>
+width="960" height="569" allowfullscreen></iframe>
+
 ___
 
 ## Clase Android
@@ -128,7 +132,8 @@ ___
 ### Video
 
 <iframe src="https://drive.google.com/file/d/1idv6PwEVIXF28U7D4Wkumm8SjuJRl4RS/preview"
-width="640" height="480" allowfullscreen></iframe>
+width="960" height="569" allowfullscreen></iframe>
+
 ___
 
 ## Clase Smart Contracts
@@ -148,4 +153,4 @@ ___
 ### Video
 
 <iframe src="https://drive.google.com/file/d/1HEYNmWdRHKtH4Zwkp-E-koyAQ_2e1q_l//preview"
-width="640" height="480" allowfullscreen></iframe>
+width="960" height="569" allowfullscreen></iframe>
