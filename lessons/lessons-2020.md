@@ -7,8 +7,16 @@ subtitle: Clases disponibles
 # Clases 2020
 ___
 
+{{site.data.lessons}}
+
 <div class="row">
-  {% for lesson in site.data.lessons.2020 %}
+  {% for lesson in site.data.lessons %}
+  
+  {%if lesson.year != "2020" %}
+    continue
+  {%endif%}
+
+
 
   ## Clase {{lesson.title}}
 
