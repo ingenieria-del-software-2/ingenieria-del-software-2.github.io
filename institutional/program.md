@@ -21,4 +21,6 @@ subtitle: Recursos utiles para complementar el contenido visto en clase
   {% for link in resource.links %}
   - [{{link}}]({{link}})
   {% endfor %}
+
+___
 {% endfor %}
