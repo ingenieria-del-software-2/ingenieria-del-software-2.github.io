@@ -10,7 +10,6 @@ ___
 {% for lesson in site.data.lessons %}
 
 {% unless lesson.years contains '2021' %}
-    year {{lesson.years}}
   {%continue%}
 {%endunless%}
 
@@ -32,7 +31,7 @@ __{{lesson.sub-title}}__
 
 {%endif%}
 
-{%if lesson.video-link%}
+{%if lesson.video%}
 
 ### Video
 

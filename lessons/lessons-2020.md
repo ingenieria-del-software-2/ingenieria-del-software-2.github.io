@@ -13,7 +13,6 @@ ___
 
 
 {% unless lesson.years contains '2020' %}
-year {{lesson.years}}
   {%continue%}
 {%endunless%}
 
@@ -35,7 +34,7 @@ __{{lesson.sub-title}}__
 
 {%endif%}
 
-{%if lesson.video-link%}
+{%if lesson.video%}
 
 ### Video
 
