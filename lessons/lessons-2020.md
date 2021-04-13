@@ -14,7 +14,7 @@ ___
 
 {% unless lesson.years contains '2020' %}
   {%continue%}
-{%endif%}
+{%endunless%}
 
 ## Clase {{lesson.title}}
 
