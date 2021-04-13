@@ -9,11 +9,15 @@ subtitle: Recursos utiles para complementar el contenido visto en clase
 {% for resource in site.data.resources %}
   
 ## {{resource.title}}
-  
+ 
+
+{%if resource.sub-title%}
   _{{resource.sub-title}}_
-  
+{%endif%}
+
 ### Temas relacionados
-  {% for topic in resource.topic %}
+
+  {% for topic in resource.topics %}
   - {{topic}}
   {% endfor %}
 
