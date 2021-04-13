@@ -13,6 +13,7 @@ ___
 
 
 {% unless lesson.years contains '2020' %}
+year {{lesson.years}}
   {%continue%}
 {%endunless%}
 
