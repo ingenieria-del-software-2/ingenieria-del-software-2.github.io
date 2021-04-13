@@ -100,7 +100,7 @@
   sub-title:
   topics:
     - Conceptos basicos
-    - Orquestación: Docker Compose vs K8s
+    - Orquestación - Docker Compose vs K8s
 
   links:
     - https://chimeracoder.github.io/docker-without-docker/#1
