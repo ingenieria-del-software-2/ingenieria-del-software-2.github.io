@@ -9,7 +9,7 @@ ___
 
 {% for lesson in site.data.lessons %}
 
-{%unless lesson.years contains '2021' %}
+{% unless lesson.years contains '2021' %}
   {%continue%}
 {%endif%}
 
