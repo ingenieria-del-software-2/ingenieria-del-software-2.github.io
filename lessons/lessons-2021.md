@@ -7,10 +7,11 @@ subtitle: Clases disponibles
 # Clases 2021
 ___
 
-
-{{ assign lessons = site.data.lessons | where_exp:"lesson", "if lesson.years contains '2021'" }}
-{{lessons}}
 {% for lesson in lessons %}
+
+{%unless lesson.years contains 2021 %}
+  {%continue%}
+{%endif%}
 
 ## Clase {{lesson.title}}
 
