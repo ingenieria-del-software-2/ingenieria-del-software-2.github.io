@@ -8,16 +8,16 @@ subtitle: Recursos utiles para complementar el contenido visto en clase
 
 {% for resource in site.data.resources %}
   
-  ## {{resource.title}}
+## {{resource.title}}
   
   _{{resource.sub-title}}_
   
-  ### Temas relacionados
+### Temas relacionados
   {% for topic in resource.topic %}
   - {{topic}}
   {% endfor %}
 
-  ### Links
+### Links
   {% for link in resource.links %}
   - [{{link}}]({{link}})
   {% endfor %}
