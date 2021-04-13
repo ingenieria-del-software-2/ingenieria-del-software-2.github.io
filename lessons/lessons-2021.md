@@ -7,9 +7,9 @@ subtitle: Clases disponibles
 # Clases 2021
 ___
 
-{% for lesson in lessons %}
+{% for lesson in site.data.lessons %}
 
-{%unless lesson.years contains 2021 %}
+{%unless lesson.years contains '2021' %}
   {%continue%}
 {%endif%}
 
