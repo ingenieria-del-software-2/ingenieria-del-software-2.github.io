@@ -34,7 +34,7 @@ __{{lesson.sub-title}}__
 
 {%endif%}
 
-{%if lesson.video%}
+{%if lesson.videos%}
 
 ### Video
 
