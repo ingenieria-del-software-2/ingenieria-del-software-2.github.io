@@ -1,3 +1,11 @@
+---
+layout: post
+title: Bookbnb
+subtitle: Enunciado del  2 Cuatrimestre 2020
+bigimg: /img/path.jpg
+tags: [trabajos-practicos, 2020-2C]
+---
+
 # Bookbnb
 
 ## Indice
