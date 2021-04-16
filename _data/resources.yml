@@ -175,10 +175,19 @@
 - title: Smart contracts
   sub-title:
   topics:
-    - TODO
+    - Blockchain
+    - Ethereum
+    - Smart Contracts
+    - DApps
+    - Solidity
+    - Hardhat
 
   links:
-    - TODO
+    - https://www.youtube.com/watch?v=bBC-nXj3Ng4&ab_channel=3Blue1Brown
+    - https://www.preethikasireddy.com/post/how-does-ethereum-work-anyway
+    - https://cryptozombies.io/es/course/
+    - https://docs.ethers.io/v5/
+    - https://infura.io/product/ethereum
 
 - title: Introducción a UX
   sub-title:
