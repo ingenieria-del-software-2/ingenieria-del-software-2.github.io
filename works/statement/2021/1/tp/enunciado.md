@@ -236,10 +236,12 @@ Historias de usuario relacionadas:
 - [Implementación de sistema de votos para veedores](#votos-veedores)
 
 ___
+
 ### Historias de Usuario
 
 <!-- Registro y login -->
 ___
+
 #### Registro de usuarios
 
 **Descripción**
@@ -412,6 +414,7 @@ ___
   - Entonces estos se visualizarán datos públicos del usuario
 
 <!-- Búsquedas -->  
+
 ___
 
 #### Búsqueda de proyecto geográficamente
@@ -430,6 +433,7 @@ ___
 - CA 3: Búsqueda sin resultados
   - Cuando se realiza una búsqueda utilizando un filtrado y no existen proyectos que cumplan tal condición
   - Entonces se deberá notificar al usuario que no existen resultados para su búsqueda.
+ 
 ___
 
 #### Búsqueda de proyecto por tipo de proyecto
@@ -445,6 +449,7 @@ ___
 - CA 2: Búsqueda sin resultados
   - Cuando se realiza una búsqueda utilizando un filtrado y no existen proyectos que cumplan tal condición
   - Entonces se deberá notificar al usuario que no existen resultados para su búsqueda.
+
 ___
 
 #### Búsqueda de proyecto por etapa
@@ -460,6 +465,7 @@ ___
 - CA 2: Búsqueda sin resultados
   - Cuando se realiza una búsqueda utilizando un filtrado y no existen proyectos que cumplan tal condición
   - Entonces se deberá notificar al usuario que no existen resultados para su búsqueda.
+
 ___
 
 #### Búsquedas por hashtag
