@@ -520,7 +520,7 @@ ___
 - CA 2: Recomendaciones por perfil de usuario con actividad
   - Cuando ya tengo actividad en mi cuenta y quiero recibir recomendaciones 
   - Entonces se deberán retornar recomendaciones en base a mi ubicación y gustos elegidos al crear mi cuenta, además se deberá tener en cuenta las últimas actividades del usuario
-  - 
+
 ___
 
 #### Histórico de patrocinios
@@ -611,6 +611,7 @@ ___
 - CA 2: Usuario sin proyectos
   - Cuando un emprendedor ingrese a "Mis proyectos"
   - Entonces tendrá una pantalla vacía
+
 ___
 
 #### Visualización de proyectos
@@ -654,6 +655,7 @@ ___
     - Retornar los pagos a los patrocinadores.
 
 ___
+
 <!-- Veedores-->
 
 #### Alta en proyecto
@@ -733,6 +735,7 @@ ___
 - CA 1: Calificación del proyecto
   - Cuando un patrocinador realiza una calificación cuantitativa de un proyecto en el cual aportó.
   - Entonces esta calificación afectará la calificación del proyecto 
+
 ___
 
 #### Calificación cualitativa del proyecto
@@ -784,6 +787,7 @@ ___
   - Entonces NO se podrá realizar el retiro de fondos
 
  <!-- Notificaciones -->
+
 ___
 
 #### Notificación por nuevo mensaje
@@ -798,6 +802,7 @@ ___
 - CA 2: Notificación push.
   - Cuando un usuario recibe un mensaje por una consulta pública o privada.
   - Entonces deberá recibir notificación push en la aplicación para acceder a dicho mensaje
+
 ___
 
 #### Notificación por flujo de proyecto
@@ -815,6 +820,7 @@ ___
 - CA 3: Notificación whatsapp:
   - Cuando un usuario tiene un proyecto asociado y este tiene un cambio en su flujo.
   - Entonces deberá poder recibir un mensaje de whatsapp para informarse de dicho cambio. 
+
 ___
 
 
@@ -861,6 +867,7 @@ ___
 
 
 <!-- Administración de proyectos -->
+
 ___
 
 #### Listado de proyectos
@@ -904,7 +911,8 @@ ___
  
  
 <!-- Administración de transacciones -->
- ___
+
+___
 
 #### Listar transacciones
 
@@ -975,6 +983,7 @@ ___
 - CA 1: Alta de Api Key
  - Cuando un administrador da de alta un nuevo servicio.
  - Entonces se genera un API key que deberá ser utilizada de manera interna en la plataforma para que un servicio pueda comunicarse con sus pares
+
 ___
 
 #### Bloqueo de servicios
@@ -988,6 +997,7 @@ ___
  - Entonces se deberá bloquear su API key asociada y tal servicio no podrá comunicarse con sus pares.
 
 <!-- Metricas -->
+
 ___
 
 #### Métricas de usuarios
@@ -1035,6 +1045,7 @@ ___
 
 **Criterios de aceptación**
 - CA 1: A definir
+
 ___
 
 #### Votos veedores
@@ -1107,6 +1118,7 @@ Se recomiendan como base de datos alguna de las siguientes
 - [MongoDB](https://www.mongodb.com/es)
 
 Esta elección será responsabilidad del grupo y la misma deberá estar consensuada junto al ayudante. Además quedará justificada en la documentación técnica que formará parte del TP.
+
 ___
 
 #### Backoffice web
