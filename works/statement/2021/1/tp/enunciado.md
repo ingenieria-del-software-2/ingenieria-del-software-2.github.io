@@ -383,6 +383,7 @@ ___
   - En caso contrario se deberá mostrar un mensaje de error acorde al usuario.
 
 ___
+
 #### Visualización de perfil propio
 
 **Descripción**
@@ -397,6 +398,7 @@ ___
   - En caso contrario se deberá mostrar un mensaje de error acorde al usuario.
 
 ___
+
 #### Visualización de perfil de otros usuarios
 
 **Descripción**
@@ -429,6 +431,7 @@ ___
   - Cuando se realiza una búsqueda utilizando un filtrado y no existen proyectos que cumplan tal condición
   - Entonces se deberá notificar al usuario que no existen resultados para su búsqueda.
 ___
+
 #### Búsqueda de proyecto por tipo de proyecto
 
 **Descripción**
@@ -443,6 +446,7 @@ ___
   - Cuando se realiza una búsqueda utilizando un filtrado y no existen proyectos que cumplan tal condición
   - Entonces se deberá notificar al usuario que no existen resultados para su búsqueda.
 ___
+
 #### Búsqueda de proyecto por etapa
 
 **Descripción**
@@ -457,6 +461,7 @@ ___
   - Cuando se realiza una búsqueda utilizando un filtrado y no existen proyectos que cumplan tal condición
   - Entonces se deberá notificar al usuario que no existen resultados para su búsqueda.
 ___
+
 #### Búsquedas por hashtag
 
 **Descripción**
@@ -474,6 +479,7 @@ ___
 <!-- Patrocinador -->
 
 ___
+
 #### Patrocinio de proyecto
 
 **Descripción**
@@ -495,6 +501,7 @@ ___
 - Entonces no se deberá el flujo de alta de patrocinador
 
 ___
+
 #### Recomendaciones de proyectos
 **Descripción**
 
@@ -507,6 +514,7 @@ ___
 - CA 2: Recomendaciones por perfil de usuario con actividad
   - Cuando ya tengo actividad en mi cuenta y quiero recibir recomendaciones 
   - Entonces se deberán retornar recomendaciones en base a mi ubicación y gustos elegidos al crear mi cuenta, además se deberá tener en cuenta las últimas actividades del usuario
+  - 
 ___
 
 #### Histórico de patrocinios
@@ -516,6 +524,7 @@ ___
 - CA 1: Listado de proyectos
   - Cuando un patrocinador quiera visualizar sus patrocinios realizados
   - Entonces se listarán todas las patrocinios que el patrocinador realizó, pudiendo filtrar los mismos
+  
 ___
 
 #### Proyectos favoritos
@@ -640,7 +649,6 @@ ___
 
 ___
 <!-- Veedores-->
-___
 
 #### Alta en proyecto
 **Descripción**
@@ -650,6 +658,7 @@ ___
 - CA 1: Alta del rol de veedor
  - Cuando un usuario acepta las condiciones para ser registrado como veedor
  - Entonces podrá ser asignado a cumplir dicha función en los distintos proyectos que lo dispongan. 
+
 ___
 
 #### Aceptar veedoria
@@ -663,6 +672,7 @@ ___
 - CA 2: Rechazo de nueva veeduría
   - Cuando un veedor acepta realizar la veeduría de un proyecto.
   - Entonces queda asociado al proyecto.
+
 ___
 
 #### Listado de proyectos veedor
@@ -681,6 +691,7 @@ ___
 <!-- Consultas-->
 
 ___
+
 #### Consultas públicas
 
 - Como patrocinador quiero poder realizar comentarios con consultas en una proyecto para poder consultarle al emprendedor mis dudas 
@@ -692,6 +703,7 @@ ___
   - Entonces todo aquel que entre a el proyecto podrá leerla y el emprendedor puede o no responderla
 
 ___
+
 #### Consultas privadas
 - Como patrocinador quiero poder realizar con consultas privadas a un emprendedor para poder consultarle mis dudas 
 
@@ -705,6 +717,7 @@ ___
 <!-- Calificaciones-->
 
 ___
+
 #### Calificación cuantitativa del proyecto
 
 **Descripción**
@@ -715,6 +728,7 @@ ___
   - Cuando un patrocinador realiza una calificación cuantitativa de un proyecto en el cual aportó.
   - Entonces esta calificación afectará la calificación del proyecto 
 ___
+
 #### Calificación cualitativa del proyecto
 
 **Descripción**
@@ -780,7 +794,6 @@ ___
   - Entonces deberá recibir notificación push en la aplicación para acceder a dicho mensaje
 ___
 
-
 #### Notificación por flujo de proyecto
 
 **Descripción**
@@ -802,6 +815,7 @@ ___
 <!-- Administración de usuarios -->
 
 ___
+
 #### Listar usuarios del sistema
 
 **Descripción**
@@ -813,6 +827,7 @@ ___
   - Entonces se listaran todos los usuarios del sistema.
 
 ___
+
 #### Visualizar perfil de usuario
 
 **Descripción**
@@ -824,6 +839,7 @@ ___
   - Entonces se listaran todos los usuarios del sistema.
 
 ___
+
 #### Bloquear usuario
 
 **Descripción**
@@ -855,6 +871,7 @@ ___
  - Entonces se deberán listar todos los proyectos existentes en el sistema que cumplan con dichos filtros
 
 ___
+
 #### Visualización de proyectos
 
 **Descripción**
@@ -865,6 +882,7 @@ ___
  - Cuando un administrador visualiza el un proyecto existente en la plataforma
  - Entonces se deberá poder visualizar todos sus datos asociados
 ___
+
 #### Bloqueo de proyectos
 
 **Descripción**
@@ -980,6 +998,7 @@ ___
 - CA 6: Metricas de recupero de contrasena  
 
 ___
+
 #### Métricas de proyectos
 
 **Descripción**
