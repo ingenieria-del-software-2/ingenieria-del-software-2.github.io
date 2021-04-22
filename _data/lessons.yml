@@ -70,7 +70,7 @@
     sub-title: 
     slides-link: 1NvHGY2QLqgH8c500p9lry1p8Czi_no-0He5ly5vbnKU
  
- - title: Metodologias
+  - title: Metodologias
     years: ["2021"]
     sub-title: Metodologias, BDD y 12 factors
     slides-link: 1qseTbpWPVGVAmQdUrx5OFeHX-vNgI8BDUpE0xSM56LE
@@ -78,7 +78,7 @@
     - title: Grabacion de la clase
       link: 19XPK_awi_VXSLgEBq-GZnGx0VgCe-ViM
     resources:
-      - title: Repositorio BDD
-        link: https://github.com/taller-de-programacion-2/Cucumber
-      - title: Repositorio 12 factors
-        link: https://github.com/taller-de-programacion-2/rest-python-flask
+     - title: Repositorio BDD
+       link: https://github.com/taller-de-programacion-2/Cucumber
+     - title: Repositorio 12 factors
+       link: https://github.com/taller-de-programacion-2/rest-python-flask
