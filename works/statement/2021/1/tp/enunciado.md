@@ -1142,7 +1142,7 @@ Para el uso del chat en tiempo real se recomienda utilizar el servicio provisto 
 ___
 
 #### Mensajeria
-Para el uso de mensajería se recomienda utilizar el servicio provisto por [Twilio](https://www.twilio.com/quest/github-education)
+Para el uso de mensajería se recomienda utilizar el servicio provisto por [Twilio](https://www.twilio.com/)
 
 ___
 
