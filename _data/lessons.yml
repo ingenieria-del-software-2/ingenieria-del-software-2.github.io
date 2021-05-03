@@ -82,3 +82,73 @@
        link: https://github.com/taller-de-programacion-2/Cucumber
      - title: Repositorio 12 factors
        link: https://github.com/taller-de-programacion-2/rest-python-flask
+  
+  - title: Rest
+    years: ["2021"]
+    sub-title: Introducción a REST
+    videos:
+    - title: Grabacion de la clase
+      link: 1hD2a203hhVRJl0kS1_LsvBdms5dYxU2Y
+    resources:
+     - title: Diapositivas de la clase
+       link: https://www.mentimeter.com/s/94f5317e4c5c48a63593bacbd92554e4/a2f5f59b45ec
+     - title: https://www.youtube.com/watch?v=6sUbt-Qp6Pg
+       link: https://www.youtube.com/watch?v=6sUbt-Qp6Pg
+     - title: https://www.oreilly.com/content/how-a-restful-api-represents-resources
+       link: https://www.oreilly.com/content/how-a-restful-api-represents-resources
+     - title: https://medium.com/hashmapinc/rest-good-practices-for-api-design-881439796dc9
+       link: https://medium.com/hashmapinc/rest-good-practices-for-api-design-881439796dc9
+     - title: https://martinfowler.com/articles/richardsonMaturityModel.html
+       link: https://martinfowler.com/articles/richardsonMaturityModel.html
+     - title: https://medium.com/@freddyerf/richardson-maturity-model-para-simples-mortales-bb23ca4a34e5
+       link: https://medium.com/@freddyerf/richardson-maturity-model-para-simples-mortales-bb23ca4a34e5
+     - title: https://www.openapis.org/
+       link: https://www.openapis.org/
+     - title: https://swagger.io/
+       link: https://swagger.io/
+     - title: https://www.programmableweb.com/api-university/what-are-apis-and-how-do-they-work
+       link: https://www.programmableweb.com/api-university/what-are-apis-and-how-do-they-work
+     - title: Apunte de la materia (WIP)
+       link: https://collectednotes.com/agrojas/la-no-guia-de-rest
+
+  - title: Introducción a arquitecturas
+    years: ["2021"]
+    sub-title: Monolito y micro servicios 
+    videos:
+    - title: Grabacion de la clase
+      link: 1Rqfg2CM9BY4iUXibbvni-UJ5BdSqt82r
+    resources:
+     - title: Diapositivas de la clase
+       link: https://slides.com/agustinrojas/deck-4372d9/fullscreen
+     - title: https://dzone.com/articles/layered-architecture-is-good
+       link: https://dzone.com/articles/layered-architecture-is-good
+     - title: https://alistair.cockburn.us/hexagonal-architecture/
+       link: https://alistair.cockburn.us/hexagonal-architecture/
+     - title: https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
+       link: https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
+     - title: https://adr.github.io/
+       link: https://adr.github.io/
+     - title: https://c4model.com/
+       link: https://c4model.com/
+     - title: https://medium.com/@shivendraodean/software-architecture-the-monolithic-approach-b948ded8c333
+       link: https://medium.com/@shivendraodean/software-architecture-the-monolithic-approach-b948ded8c333
+     - title: https://microservices.io/
+       link: https://microservices.io/
+     - title: https://martinfowler.com/articles/microservices.html
+       link: https://martinfowler.com/articles/microservices.html
+     - title: https://martinfowler.com/microservices/
+       link: https://martinfowler.com/microservices/
+     - title: https://microservices.io/patterns/apigateway.html
+       link: https://microservices.io/patterns/apigateway.html
+     - title: https://programmingisterrible.com/post/162346490883/how-do-you-cut-a-monolith-in-half
+       link: https://programmingisterrible.com/post/162346490883/how-do-you-cut-a-monolith-in-half
+     - title: https://towardsdatascience.com/looking-beyond-the-hype-is-modular-monolithic-software-architecture-really-dead-e386191610f8
+       link: https://towardsdatascience.com/looking-beyond-the-hype-is-modular-monolithic-software-architecture-really-dead-e386191610f8
+     - title: https://medium.com/@muneeb.ahmed20/building-a-reporting-service-in-microservice-architecture-8d5bf3b90fb7
+       link: https://medium.com/@muneeb.ahmed20/building-a-reporting-service-in-microservice-architecture-8d5bf3b90fb7
+     - title: https://towardsdatascience.com/effective-microservices-10-best-practices-c6e4ba0c6ee2
+       link: https://towardsdatascience.com/effective-microservices-10-best-practices-c6e4ba0c6ee2
+     - title: https://martinfowler.com/bliki/BoundedContext.html
+       link: https://martinfowler.com/bliki/BoundedContext.html
+     - title: https://adrianalonso.es/arquitectura-del-software/partiendo-monolito-bounded-context/
+       link: https://adrianalonso.es/arquitectura-del-software/partiendo-monolito-bounded-context/
