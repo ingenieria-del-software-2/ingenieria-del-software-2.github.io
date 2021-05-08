@@ -152,3 +152,17 @@
        link: https://martinfowler.com/bliki/BoundedContext.html
      - title: https://adrianalonso.es/arquitectura-del-software/partiendo-monolito-bounded-context/
        link: https://adrianalonso.es/arquitectura-del-software/partiendo-monolito-bounded-context/
+
+  - title: Docker, docker compose y kubernetes
+    years: ["2021"]
+    sub-title: Docker workshop
+    videos:
+    - title: Grabacion de la clase
+      link: 1v68iwPu8WR8R7Bx6U19mIGKPAm1v_Dme
+    resources:
+    - title: Diapositivas
+      link: 1eYAZZ4PnnSif9aORVXe1Vbo5B27Y-eyKdbx6wpol8rQ
+    - title: Link al repo del workshop
+      link: https://github.com/taller-de-programacion-2/docker-workshop-1
+    - title: Documentacion oficial docker
+      link: https://docs.docker.com/
