@@ -27,6 +27,8 @@ navbar-links:
     - Docentes: "institutional/professors"
     - Programa: "institutional/program"
     - Reglamento: "institutional/terms"
+  Calendario:
+    - Clases-1-2021: "lessons/calendars/2021-1C" 
   Clases:
     - Clases-2020: "lessons/lessons-2020"
     - Clases-2021: "lessons/lessons-2021"
