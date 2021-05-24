@@ -2,11 +2,109 @@
 
 Esta es la página web de la materia Taller de Programación 2 de la Facultad de Ingenieria de la Universidad de Buenos Aires.
 
-# Beautiful Jekyll 
+# How to add:
 
-Usa el _Jekyll Theme_  [Beautiful Jekyll](https://github.com/daattali/beautiful-jekyll)
+All pages should be Jekyll Friendly. First review [Add Content](#add-content)
+
+## New Post
+
+Add new file inside [posts](https://github.com/taller-de-programacion-2/taller-de-programacion-2.github.io/tree/master/_posts) with the next filename format
+
+```
+YYYY-MM-DD-TITLE.md
+```
+
+
+And use the next format  
+
+```
+---
+layout: post
+title: lorem ipsum 
+subtitle: lorem ipsum
+bigimg: /img/path.jpg
+tags: [tag-1 tag-2]
+---
+
+lorem ipsum
+
+```
+
+
+## New Lesson
+
+Add new section inside [lessons.yml](https://github.com/taller-de-programacion-2/taller-de-programacion-2.github.io/blob/master/_data/lessons.yml) with the next format:
+
+
+
+```
+- title: LESSON TITLE
+  years: ["YEAR"]
+  sub-title: SUB TITLE
+  videos:
+    - title: VIDEO TITLE
+      link: GOOGLE_DRIVE_MEETING_RECORDING_ID
+  resources:
+  - title: RESOURCE 1 TITLE
+    link: RESOURCE LINK
+```   
+   
+### How find meet recording ID (GOOGLE_DRIVE_MEETING_RECORDING_ID)?
+
+- First enable shared with all (Cualquier usuario de Internet con este enlace puede ver esto)
+- Copy the follow section inside the link
+
+
+```
+https://drive.google.com/file/d/1hD2a203hhVRJl0kS1_LsvBdms5dYxU2Y/view?usp=sharing
+```
+
+For example
+
+```
+https://drive.google.com/file/d/1hD2a203hhVRJl0kS1_LsvBdms5dYxU2Y/view?usp=sharing
+```
+
+Copy _1hD2a203hhVRJl0kS1_LsvBdms5dYxU2Y_
+
+## New NavBar Section
+
+
+Add new section inside *navbar-links* [config.yml](https://github.com/taller-de-programacion-2/taller-de-programacion-2.github.io/blob/master/_config.yml) 
+
+## New resource
+
+Add new section inside [resources.yml](https://github.com/taller-de-programacion-2/taller-de-programacion-2.github.io/blob/master/_data/resources.yml) with the next format:
+
+```
+- title: TITLE
+  sub-title: SUB TITLE
+  topics:
+    - TOPIC 1
+    - ...
+    - TOPIC N
+  links:
+    - LINK 1
+    - LINK N
+```
+
+## New Professor
+
+Add new section inside [professors.yml](https://github.com/taller-de-programacion-2/taller-de-programacion-2.github.io/blob/master/_data/professors.yml) with the next format:
+
+```
+- name: FIRST NAME LAST NAME 
+  pic: /img/professors/IMAGE.jpeg
+  mail: EMAIL
+  github: GITHUB PROFILE LINK
+
+```
+
 
 ## Add content
+
+
+Using _Jekyll Theme_  [Beautiful Jekyll](https://github.com/daattali/beautiful-jekyll)
 
 To add pages to your site, you can either write a markdown file (`.md`) or you can write an HTML file directly.  It is much easier to write markdown than HTML, so I suggest you do that (use the [tutorial I mentioned above](http://markdowntutorial.com/) if you need to learn markdown). You can look at some files on this site to get an idea of how to write markdown. To look at existing files, click on any file that ends in `.md`, for example [`aboutme.md`](./aboutme.md). On the next page you can see some nicely formatted text (there is a word in bold, a link, bullet points), and if you click on the pencil icon to edit the file, you will see the markdown that generated the pretty text. Very easy!
 
