@@ -166,3 +166,27 @@
       link: https://github.com/taller-de-programacion-2/docker-workshop-1
     - title: Documentacion oficial docker
       link: https://docs.docker.com/
+      
+  - title: Introducción a React
+    years: ["2021"]
+    sub-title: React workshop
+    videos:
+    - title: Grabacion de la clase
+      link: 1K4mPlD2gcBoUvoNWVxC3QEq-NWedptDE
+    resources:
+    - title: Diapositivas
+      link: https://docs.google.com/presentation/d/1744McYIL_TiGuWIKE5yRwPGwwwFgn8uoLSt_N75ISZg/edit?usp=sharing
+    - title: Link al repo del workshop
+      link: https://github.com/MaxiSuppes/intro-react
+
+  - title: Introducción a React Natice
+    years: ["2021"]
+    sub-title: React Natice workshop
+    videos:
+    - title: Grabacion de la clase
+      link: 16NbV0U3Ngcrh4zqXip9vuFuYkCUSBYLq
+    resources:
+    - title: Diapositivas
+      link: https://docs.google.com/presentation/d/1n8klPeGM7igrGYOLwXRvHAnVgJ9jErfcDQpAwL7ULSQ/edit?usp=sharing
+    - title: Link al repo del workshop
+      link: https://github.com/MaxiSuppes/intro-react-native
