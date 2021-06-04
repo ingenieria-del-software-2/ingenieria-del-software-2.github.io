@@ -95,7 +95,7 @@ Como patrocinador quiero poder realizar búsquedas de proyectos con distintos fi
 Historias de usuario relacionadas:
  - [Búsquedas geográficas](#búsqueda-de-proyecto-geográficamente)
  - [Búsquedas por tipo de proyecto](#búsqueda-de-proyecto-por-tipo-de-proyecto)
- - [Búsquedas por etapas](#búsqueda-de-proyecto-por-etapa)
+ - [Búsquedas por estado](#búsqueda-de-proyecto-por-estado)
  - [Búsquedas por hashtag](#búsquedas-por-hashtag)
  
 <!-- Patrocinador OK-->
@@ -452,16 +452,16 @@ ___
 
 ___
 
-#### Búsqueda de proyecto por etapa
+#### Búsqueda de proyecto por estado
 
 **Descripción**
 
-- Como patrocinador quiero poder realizar búsquedas de proyectos por etapa para visualizar las proyectos y así poder obtener más información sobre el mismo.
+- Como patrocinador quiero poder realizar búsquedas de proyectos por estado para visualizar las proyectos y así poder obtener más información sobre el mismo.
 
 **Criterios de aceptación**
-- CA 1: Filtrado etapa 
-  - Cuando se realiza una búsqueda utilizando como filtro una de las etapas de un proyecto
-  - Entonces se deberán retornar las proyectos que cumplan se encuentren en tal etapa.
+- CA 1: Filtrado estado 
+  - Cuando se realiza una búsqueda utilizando como filtro una de las estados de un proyecto
+  - Entonces se deberán retornar las proyectos que cumplan se encuentren en tal estado.
 - CA 2: Búsqueda sin resultados
   - Cuando se realiza una búsqueda utilizando un filtrado y no existen proyectos que cumplan tal condición
   - Entonces se deberá notificar al usuario que no existen resultados para su búsqueda.
@@ -1022,7 +1022,7 @@ ___
 
 **Criterios de aceptación**
 - CA 1: Métricas de nuevos proyectos
-- CA 2: Métricas de proyectos por etapas
+- CA 2: Métricas de proyectos por estado
 - CA 3: Métricas de proyectos por usuario
 
 ___
