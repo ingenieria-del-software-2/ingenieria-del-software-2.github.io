@@ -166,7 +166,16 @@
       link: https://github.com/taller-de-programacion-2/docker-workshop-1
     - title: Documentacion oficial docker
       link: https://docs.docker.com/
-      
+
+  - title: Smart Contracts
+    years: ["2021"]
+    sub-title: 
+    videos:
+    - title: Grabacion de intro a Smart Contracts
+      link: 13qMJ2tiMlmwGRQ01XlQwp6-ZsnXmnpAm
+    resources:
+      - title: Diapositivas de la clase
+        link: https://www.menti.com/s4r6b62acr
   - title: Introducción a React
     years: ["2021"]
     sub-title: React workshop
