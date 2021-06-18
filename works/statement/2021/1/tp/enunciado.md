@@ -581,7 +581,7 @@ ___
     - Otros .
 
   - Entonces este proyecto podrá ser visualizado y patrocinado por los patrocinadores. 
-  Además se generará una wallet asociada al proyecto, la cual contendrá los fondos recaudados y se asignará de manera aleatoria una cantidad de veedores determinada por la plataforma, para controlar el avance del mismo. 
+  Además se creara una entidad proyecto en el Smart Contract , la cual contendrá los fondos recaudados y se asignará un veedor determinado por la plataforma, para controlar el avance del mismo. 
 
 ___
 
