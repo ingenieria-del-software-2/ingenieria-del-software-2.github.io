@@ -26,7 +26,6 @@ En la siguiente tabla se definio la estimaciön de puntos para las historias de 
 | Búsquedas por etapas |  2 |
 | Búsquedas por hashtag |  2 |
 | Recomendaciones de proyectos |  3 |
-| Historico de patrocinios |  1 |
 | Proyectos favoritos |  3 |
 | Metricas de proyecto |  5 |
 | Cancelación de proyecto |  8 |
