@@ -199,3 +199,25 @@
       link: https://docs.google.com/presentation/d/1n8klPeGM7igrGYOLwXRvHAnVgJ9jErfcDQpAwL7ULSQ/edit?usp=sharing
     - title: Link al repo del workshop
       link: https://github.com/MaxiSuppes/intro-react-native
+
+
+  - title: Workshop UX
+    years: ["2021"]
+    sub-title: 
+    videos:
+    - title: Grabacion de la clase
+      link: 1gdcZcPCEtjc9-z8aoahwKpTeWISrXxD5
+
+
+  - title: Introducción a OAuth
+    years: ["2021"]
+    sub-title: OAuth workshop
+    videos:
+    - title: Grabacion de la clase
+      link: 1PyaZuzrHVbD3BC4MEoLdgJvgEHcBV5jr
+    resources:
+    - title: Diapositivas
+      link: https://docs.google.com/presentation/d/1sNrEX-bIOWcbZ97ICjSor27er2jMpJdqVvQ_JgzsF3w/edit?usp=sharing
+    - title: Link al repo del workshop
+      link: https://github.com/taller-de-programacion-2/oauth2-example
+
