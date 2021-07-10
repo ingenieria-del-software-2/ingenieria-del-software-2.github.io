@@ -33,7 +33,7 @@ En la siguiente tabla se definio la estimaciön de puntos para las historias de 
 | Consultas públicas |  3 |
 | Calificación cuantitativa de proyecto |  2 |
 | Calificación cualitativa de proyecto |  2 |
-| Notificacion por flujo de  mensaje |  3 |
+| Notificación por nuevo mensaje |  3 |
 | Bloquear usuario |  3 |
 | Listar transacciones |  1 |
 | Carga de saldo |  2 |
