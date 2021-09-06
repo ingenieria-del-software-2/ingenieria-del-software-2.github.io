@@ -32,10 +32,15 @@ team:
       github: matfonseca
   
 
-    - name: Jose Sbruzzi
-      pic: /img/professors/sbruzzi.jpeg
-      mail: jose.sbru@gmail.com
-      github: jisbruzzi
+    - name: Nicolás Pablo Fernández Theillet  
+      pic: /img/professors/nico.jpeg
+      mail: nflabo@gmail.com
+      github: npfernandeztheillet
+      
+    - name: Paulo Cuneo
+      pic: /img/professors/paulo.jpeg
+      mail: cuneo.paulo.cesar@gmail.com
+      github: pcuneo
     
     
     
