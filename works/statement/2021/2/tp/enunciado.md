@@ -1006,7 +1006,7 @@ ___
 
 **Criterios de aceptación**
 - CA 1: Calificación del curso
-  - Cuando un patrocinador realiza una calificación cuantitativa de un curso en el cual aportó.
+  - Cuando un estudiante realiza una calificación cuantitativa de un curso realizado.
   - Entonces esta calificación afectará la calificación del curso 
 
 ___
@@ -1019,8 +1019,8 @@ ___
 **Criterios de aceptación**
 
 - CA 1: Calificación
-  - Cuando un patrocinador realiza una calificación con comentarios de un curso en el cual aportó.
-  - Entonces esta calificación luego podrá ser visualizada por otros patrocinadores.
+  - Cuando un estudiante realiza una calificación con comentarios de un curso realizado.
+  - Entonces esta calificación luego podrá ser visualizada por otros estudiantes.
 
  <!-- Cobros y pagos -->
 
