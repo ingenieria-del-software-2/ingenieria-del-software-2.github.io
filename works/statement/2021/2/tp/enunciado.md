@@ -318,7 +318,7 @@ ___
 - CA 4: Usuario bloqueado
   - Cuando la cuenta del usuario se encuentra bloqueada por los administradores
   - Entonces el sistema no le permitirá loguearse al usuario
-  
+
 ___
 
 #### Login de usuarios con proveedores de identidad federada
@@ -342,7 +342,7 @@ ___
 - CA 4: Usuario bloqueado
   - Cuando la cuenta del usuario se encuentra bloqueada por los administradores
   - Entonces el sistema no le permitirá loguearse al usuario
-  
+
 ___
 
 #### Login con datos biométricos
@@ -634,6 +634,7 @@ ___
 - CA 1: Listado de cursos
   - Cuando un estudiante quiera visualizar sus cursos realizados
   - Entonces se listarán todos los cursos que el estudiante realizó, pudiendo filtrar los mismos
+
 ___
 
 #### Cursos favoritos
@@ -718,6 +719,7 @@ ___
 - CA 1: Alta del rol de colaborador
  - Cuando un creador asigna a un usuario como colaborador en un curso.
  - Entonces será asignado a cumplir dicha función en el curso. Pudiendo responder consultas y corregir exámenes.
+
 ___
 
 #### Baja de colaborador en curso
@@ -746,6 +748,7 @@ ___
 
 
 <!-- Examen-->
+
 ___
 
 #### Creación de examen
@@ -857,7 +860,7 @@ ___
 - CA 2: Examen completado con errores
   - Cuando un estudiante no completa un examen de manera exitosa debido a que ocurre un error en el sistema.
   - Entonces el estudiante no podrá completarlo nuevamente y se enviará el examen para su revisión.
-___
+
 
 <!-- Cursos-->
 
@@ -888,6 +891,7 @@ ___
 - CA 2: Listado de alumnos filtrado
   - Cuando un creador o colaborador ingresa al listado de alumnos y selecciona alguno de los filtros disponibles
   - Entonces se listaran todos los y las alumnas inscriptas en el curso que cumplan con el criterio del filtro.
+
 ___
 
 #### Listado de examenes
@@ -903,6 +907,7 @@ ___
 - CA 2: Listado de examenes filtrado
   - Cuando un creador o colaborador ingresa al listado de examenes y selecciona alguno de los filtros disponibles
   - Entonces se listaran todos los examenes dictados en el curso que cumplan con el criterio del filtro.
+
 ___
 
 #### Listado de profesores
@@ -965,6 +970,7 @@ ___
     - Otros.
 
 <!-- Consultas-->
+
 ___
 
 #### Consultas públicas
@@ -1166,6 +1172,7 @@ ___
  - Entonces se deberán listar todos los cursos existentes en el sistema que cumplan con dichos filtros
 
 ___
+
 #### Visualización de cursos
 
 **Descripción**
@@ -1175,7 +1182,9 @@ ___
 - CA 1: Visualización de curso 
  - Cuando un administrador visualiza el un curso existente en la plataforma
  - Entonces se deberá poder visualizar todos sus datos asociados
+
 ___
+
 #### Bloqueo de curso
 
 **Descripción**
@@ -1251,6 +1260,7 @@ ___
    - Fecha de creación.
    - Descripción.
    - Otros.
+
 ___
 
 #### Alta de servicio
@@ -1262,6 +1272,7 @@ ___
 - CA 1: Alta de Api Key
  - Cuando un administrador da de alta un nuevo servicio.
  - Entonces se genera un API key que deberá ser utilizada de manera interna en la plataforma para que un servicio pueda comunicarse con sus pares
+
 ___
 
 #### Bloqueo de servidor
@@ -1275,6 +1286,7 @@ ___
  - Entonces se deberá bloquear su API key asociada y tal servicio no podrá comunicarse con sus pares.
 
 <!-- Metricas -->
+
 ___
 
 #### Métricas de usuario
@@ -1291,6 +1303,7 @@ ___
 - CA 6: Metricas de recupero de contrasena  
 
 ___
+
 #### Métricas de cursos
 
 **Descripción**
