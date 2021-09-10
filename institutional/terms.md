@@ -5,19 +5,22 @@ subtitle: Información sobre la materia
 ---
 ### Inscripci&oacute;n
 
-Link de inscripci&oacute;n: [`https://forms.gle/x95fDxtpKwqLxp6X8`](https://forms.gle/SinfY6Ancyn7d3hr9)
+Link de inscripci&oacute;n: [`https://forms.gle/Mp4gPGLRBZGjU63c6`](https://forms.gle/Mp4gPGLRBZGjU63c6)
 
 ### Docentes
 
 * Ing. Christián Calónico
 * Agustín Rojas
-* Matias Cano
 * Maximiliano Suppes
 * Gonzalo Petraglia
+* Santiago Gandolfo
+* Matias Fonseca
+* Nicolas Fernandes Theillet
+* Paulo Cuneo
+* Lucas Lavandeira
 
 ### Correlativas
 
-* 71.14 - Modelos y Optimizaci&oacute;n 1
 * 75.07 - Algoritmos y Programaci&oacute;n 3
 * 75.42 - Taller de Programaci&oacute;n 1
 
