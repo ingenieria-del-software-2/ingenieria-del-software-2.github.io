@@ -1,6 +1,6 @@
 ---
 layout: post
-title: SeedyFiuba
+title: Ubademy
 subtitle: Enunciado del 2 Cuatrimestre 2021
 bigimg: /img/path.jpg
 tags: [trabajos-practicos, 2021-2C]
