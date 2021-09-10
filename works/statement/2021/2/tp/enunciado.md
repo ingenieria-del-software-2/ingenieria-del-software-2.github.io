@@ -379,6 +379,7 @@ ___
   - Entonces se deberá enviar un email con un link de recupero de contraseña, el cual tiene solo un uso y un tiempo de expiración
 
 ___
+
 #### Registro de administradores
 
 **Descripción**
@@ -397,6 +398,7 @@ ___
   - Entonces el sistema indicará un mensaje de error acorde al usuario.
 
 ___
+
 #### Login de administradores
 
 **Descripción**
@@ -415,6 +417,7 @@ ___
   - Entonces el sistema indicará un mensaje de error acorde al usuario.
 
 <!-- Perfil -->
+
 ___
 
 #### Edición de perfil
@@ -460,6 +463,7 @@ ___
   - Entonces estos se visualizarán datos públicos del usuario
 
 <!-- Búsquedas -->  
+
 ___
 
 
@@ -476,6 +480,7 @@ ___
 - CA 2: Búsqueda sin resultados
   - Cuando se realiza una búsqueda utilizando un filtrado y no existen cursos que cumplan tal condición
   - Entonces se deberá notificar al usuario que no existen resultados para su búsqueda.
+  
 ___
 
 #### Búsqueda de curso por suscripción
@@ -491,6 +496,7 @@ ___
 - CA 2: Búsqueda sin resultados
   - Cuando se realiza una búsqueda utilizando un filtrado y no existen cursos que cumplan tal condición
   - Entonces se deberá notificar al usuario que no existen resultados para su búsqueda.
+  
 ___
 
 #### Búsquedas por texto
@@ -696,7 +702,6 @@ ___
   - Cuando un creador ingrese a "Mis cursos"
   - Entonces tendrá una pantalla vacía
 
-___
 
 <!-- Colaborador -->
 
@@ -790,6 +795,7 @@ ___
 - CA 2: Corrección de examen fallida
   - Cuando un creador o colaborador inicia la corrección de un examen y esta no finaliza de manera correcta
   - Entonces se no corregirá el examen y se le informará al usuario el error correspondiente
+
 ___
 
 #### Listado de examenes
@@ -994,6 +1000,7 @@ ___
 - CA 1: Calificación del curso
   - Cuando un patrocinador realiza una calificación cuantitativa de un curso en el cual aportó.
   - Entonces esta calificación afectará la calificación del curso 
+
 ___
 
 #### Calificación cualitativa del curso
@@ -1044,6 +1051,7 @@ ___
   - Entonces NO se podrá realizar el retiro de fondos
 
  <!-- Notificaciones -->
+
 ___
 
 #### Notificación por nuevo mensaje
@@ -1058,6 +1066,7 @@ ___
 - CA 2: Notificación push.
   - Cuando un usuario recibe un mensaje por una consulta pública o privada.
   - Entonces deberá recibir notificación push en la aplicación para acceder a dicho mensaje
+
 ___
 
 
@@ -1364,6 +1373,7 @@ Se recomiendan como base de datos alguna de las siguientes
 - [MongoDB](https://www.mongodb.com/es)
 
 Esta elección será responsabilidad del grupo y la misma deberá estar consensuada junto al ayudante. Además quedará justificada en la documentación técnica que formará parte del TP.
+
 ___
 
 #### Backoffice web
