@@ -318,6 +318,7 @@ ___
 - CA 4: Usuario bloqueado
   - Cuando la cuenta del usuario se encuentra bloqueada por los administradores
   - Entonces el sistema no le permitirá loguearse al usuario
+  
 ___
 
 #### Login de usuarios con proveedores de identidad federada
@@ -341,6 +342,7 @@ ___
 - CA 4: Usuario bloqueado
   - Cuando la cuenta del usuario se encuentra bloqueada por los administradores
   - Entonces el sistema no le permitirá loguearse al usuario
+  
 ___
 
 #### Login con datos biométricos
