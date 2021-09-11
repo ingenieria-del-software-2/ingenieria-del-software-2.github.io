@@ -140,7 +140,7 @@ Como colaborador quiero poder participar en distintos cursos, pudiendo responder
 
 Historias de usuario relacionadas:
  - [Alta de colaborador en curso](#alta-de-colaborador-en-curso)
- - [Baja de colaborador en curso](#alta-de-colaborador-en-curso)
+ - [Baja de colaborador en curso](#baja-de-colaborador-en-curso)
  - [Listado de colaboraciones](#listado-de-colaboraciones)
 
  <!-- Examenes TODO-->
