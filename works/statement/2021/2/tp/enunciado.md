@@ -1392,7 +1392,7 @@ Esta elección será responsabilidad del grupo y la misma deberá estar consensu
 ___
 
 #### Backoffice web
-Para el desarrollo del backoffice web se utilizará React como biblioteca.
+Para el desarrollo del backoffice web se utilizará React o Vue.js como biblioteca.
 
 ___
 
