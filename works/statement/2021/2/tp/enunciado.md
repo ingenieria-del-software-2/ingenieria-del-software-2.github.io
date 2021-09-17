@@ -197,6 +197,7 @@ Como usuario quiero cobrar o retirar fondos según corresponda.
 Historias de usuario relacionadas:
  - [Pagos de suscripción](#pago-de-suscripción)
  - [Retiro de fondos](#retiro-de-fondos)
+ - [Utilizacion de stablecoin](#utilizacion-de-stablecoin)
  
 <!-- Notificaciones TODO-->
 
@@ -1057,6 +1058,28 @@ ___
 - CA 2: Retiro de fondos fallido
   - Cuando un creador solicita un retiro de fondos del curso y aún no se cumplen las regla de negocio pautadas.
   - Entonces NO se podrá realizar el retiro de fondos
+
+ <!-- Notificaciones -->
+___
+
+#### Utilizacion de stablecoin
+
+**Descripción**
+
+- Como usuario del sistema quiero que el sistema acepte una stablecoin como metodo de intercambio de valor para no preocuparme por la volatilidad del ETH
+**Criterios de aceptación**
+
+- CA 1: Retiro de fondos
+  - Cuando un creador solicita un retiro de fondos del curso y se cumplen las regla de negocio pautadas.
+  - Entonces el pago se ejecuta a traves de una stablecoin
+
+- CA 2: Pago de suscripcion
+  - Cuando un alumno paga una suscripción
+  - Entonces el pago se ejecuta a traves de una stablecoin
+
+- CA 1: Carga de saldo
+  - Cuando un administrador envia saldo a una usuario a traves del sistema
+  - Entonces el pago se ejecuta a traves de una stablecoin
 
  <!-- Notificaciones -->
 
