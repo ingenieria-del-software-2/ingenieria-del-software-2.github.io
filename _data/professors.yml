@@ -41,6 +41,11 @@ team:
       pic: /img/professors/paulo.jpeg
       mail: cuneo.paulo.cesar@gmail.com
       github: pcuneo
-    
+
+    - name: Daniel Bizari
+      pic: /img/professors/dani.jpeg
+      mail: dbizari@fi.uba.ar
+      github: dbizari
+        
     
     
