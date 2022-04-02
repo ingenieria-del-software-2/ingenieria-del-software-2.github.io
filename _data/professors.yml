@@ -11,11 +11,6 @@ team:
       mail: arojas@fi.uba.ar
       github: agrojas
     
-    - name: Maximiliano Suppes
-      pic: /img/professors/suppes.jpeg
-      mail: maxisuppes@gmail.com
-      github: MaxiSuppes
-    
     - name: Gonzalo Petraglia
       pic: /img/professors/petraglia.jpg
       mail: gonzalpetraglia@gmail.com
@@ -30,7 +25,6 @@ team:
       pic: /img/professors/fonseca.jpeg
       mail: mfonseca@fi.uba.ar
       github: matfonseca
-  
 
     - name: Nicolás Pablo Fernández Theillet  
       pic: /img/professors/nico.jpeg
@@ -42,10 +36,20 @@ team:
       mail: cuneo.paulo.cesar@gmail.com
       github: pcuneo
 
+    - name: Lucas Lavandeira
+      pic: /img/professors/lucas.jpeg
+      mail: lucaslavandeira@gmail.com
+      github: lucaslavandeira  
+    
+    - name: Rodrigo Echeconea
+      pic: /img/professors/rodri.jpeg
+      mail: recheconea@fi.uba.ar
+      github: recheconea  
+
     - name: Daniel Bizari
       pic: /img/professors/dani.jpeg
       mail: dbizari@fi.uba.ar
       github: dbizari
-        
+
     
     
