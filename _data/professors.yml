@@ -45,5 +45,11 @@ team:
       pic: /img/professors/rodri.jpeg
       mail: recheconea@fi.uba.ar
       github: recheconea  
+
+    - name: Daniel Bizari
+      pic: /img/professors/dani.jpeg
+      mail: dbizari@fi.uba.ar
+      github: dbizari
+
     
     
