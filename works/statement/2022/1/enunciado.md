@@ -230,7 +230,7 @@ Historias de usuario relacionadas:
  - [Alta de servicio](#alta-de-servicio)
  - [Bloqueo de servicio](#bloquear-de-servicio)
 
-<!-- Metricas TODO -->
+<!-- Métricas TODO -->
 
 #### Métricas
 
@@ -1239,7 +1239,7 @@ ___
   - Cuando un administrador bloquee un servicio.
   - Entonces se deberá bloquear su API key asociada y tal servicio no podrá comunicarse con sus pares.
 
-<!-- Metricas -->
+<!-- Métricas -->
 
 ___
 
@@ -1265,7 +1265,7 @@ ___
 
 **Criterios de aceptación**
 - CA 1: Métricas de nuevos contenidos
-- CA 2: Métricas de contenidos por categorias
+- CA 2: Métricas de contenidos por genero
 - CA 3: Métricas de contenidos por suscripciones
 - CA 4: Métricas de contenidos por usuario
 
@@ -1278,8 +1278,8 @@ ___
 - Como administrador del sistema quiero poder visualizar las métricas de transacciones para medir el uso de la plataforma y sus servicios
 
 **Criterios de aceptación**
-- CA 1: Metricas de pagos
-- CA 2: Metricas de cobros
+- CA 1: Métricas de pagos
+- CA 2: Métricas de cobros
 
 
 ___
@@ -1312,7 +1312,7 @@ La gestión de pagos de las transacciones se realizará utilizando un smart cont
 
 ___
 
-### Tecnologias
+### Tecnologías
 
 Stack de tecnologías recomendadas para el desarrollo de los distintos componentes.
 
