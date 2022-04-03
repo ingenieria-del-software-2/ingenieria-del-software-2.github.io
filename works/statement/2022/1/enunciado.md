@@ -13,7 +13,7 @@
        3. [Búsquedas](#búsquedas)
        4. [Listener](#listener)
        5. [Artista](#artista)
-       6. [Playlist](#Examen)
+       6. [Playlist](#playlist)
        7. [Mensajes](#mensajes)
        8. [Calificaciones](#calificaciones)
        9. [Cobros y pagos](#cobros-y-pagos)
@@ -969,38 +969,52 @@ ___
 ___
 
 
-#### Notificación por contenido exclusivo
+#### Notificación por nueva canción de artista
 
 **Descripción**
 - Como listener quiero poder recibir una notificación en caso de existir novedades exclusivas de mis artistas favoritos
 
 **Criterios de aceptación**
 - CA 1: Pantalla de notificaciones
-  - Cuando un listener esta suscripto en una categoria exclusiva 
+  - Cuando un listener esta suscripto en una categoría exclusiva 
   - Entonces deberá poder visualizar una notificación en la aplicación para acceder a dicho mensaje 
 - CA 2: Notificación push.
-  - Cuando un usuario tiene un contenido asociado y este tiene un cambio en su estado. y tenga habilitado el envio de notificaciones
+  - Cuando un usuario tiene un contenido asociado y este tiene un cambio en su estado. y tenga habilitado el envió de notificaciones
   - Entonces deberá recibir notificación push en la aplicación para acceder a dicho mensaje
 
 
 ___
 
-
-#### Notificación por flujo de examen
+#### Notificación por transmisión en directo
 
 **Descripción**
-- Como usuario quiero poder recibir una notificación en caso existir una modificación en el estado del examen
+- Como usuario quiero poder recibir una notificación en caso existir una transmisión en directo
 
 **Criterios de aceptación**
 - CA 1: Pantalla de notificaciones
-  - Cuando un usuario tiene un examen asociado y este tiene un cambio en su estado.
+  - Cuando un artista realiza una transmisión en directo.
+  - Entonces todo listener que cumpla con las condiciones de negocio deberá poder visualizar una notificación en la aplicación para acceder a dicho mensaje 
+- CA 2: Notificación push.
+  - Cuando un artista realiza una transmisión en directo.
+  - Entonces todo listener que cumpla con las condiciones de negocio deberá recibir notificación push en la aplicación para acceder a dicho mensaje
+
+___
+
+#### Notificación por hito de seguidores
+
+**Descripción**
+
+- Como artista quiero poder recibir una notificación en caso que nuevos usuarios empiecen a seguir mi perfil
+
+
+**Criterios de aceptación**
+- CA 1: Pantalla de notificaciones
+  - Cuando un artista logra nuevos seguidores.
   - Entonces deberá poder visualizar una notificación en la aplicación para acceder a dicho mensaje 
 - CA 2: Notificación push.
-  - Cuando un usuario tiene un examen asociado y este tiene un cambio en su estado.
+  - Cuando un artista logra nuevos seguidores.
   - Entonces deberá recibir notificación push en la aplicación para acceder a dicho mensaje
-- CA 3: Notificación whatsapp:
-  - Cuando un usuario tiene un contenido asociado y este tiene un cambio en su estado.
-  - Entonces deberá poder recibir un mensaje de whatsapp para informarse de dicho cambio.
+
 
 <!-- Administración de usuarios -->
 
