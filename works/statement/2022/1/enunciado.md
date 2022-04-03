@@ -1335,7 +1335,6 @@ Junto con sus respectivos frameworks. La cátedra recomienda alguno de estos
 - Python:
   - [FastAPI](https://fastapi.tiangolo.com/)
   - [Flask](https://flask.palletsprojects.com/en/1.1.x/)
-  - [Django](https://www.djangoproject.com/)
   - [Tornado](https://www.tornadoweb.org/en/stable/)
   
 - JavaScript:
