@@ -1339,7 +1339,9 @@ Junto con sus respectivos frameworks. La cátedra recomienda alguno de estos
   - [Tornado](https://www.tornadoweb.org/en/stable/)
   
 - JavaScript:
- - [NodeJs](https://nodejs.org/es/)
+  - [Express](https://expressjs.com/)
+  - [Fastify](https://www.fastify.io/)
+  - [Nest.js](https://nestjs.com/)
 
 Se recomiendan como base de datos alguna de las siguientes 
 - [PostgreSQL](https://www.postgresql.org/)
