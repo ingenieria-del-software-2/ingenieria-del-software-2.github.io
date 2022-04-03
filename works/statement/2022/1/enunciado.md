@@ -241,11 +241,13 @@ Historias de usuario relacionadas:
 - [Métricas de contenido](#métricas-de-contenido)
 - [Métricas de transacciones](#métricas-de-transacciones)
 
+
 ___
 
 ### Historias de Usuario
 
 <!-- Registro y login -->
+
 ___
 
 #### Registro de usuarios
@@ -288,6 +290,7 @@ _En el resto de los CA se utilizará la nomenclatura Usuario como un usuario reg
   - Cuando un usuario se registra de manera exitosa en la plataforma
   - Entonces deberá  recibir un mensaje de whatsapp con un PIN generado por la plataforma, para confirmar la registración 
 
+
 ___
 
 #### Login de usuarios con usuario y contraseña
@@ -311,6 +314,7 @@ ___
 - CA 4: Usuario bloqueado
   - Cuando la cuenta del usuario se encuentra bloqueada por los administradores
   - Entonces el sistema no le permitirá loguearse al usuario
+
 ___
 
 #### Login de usuarios con proveedores de identidad federada
@@ -334,6 +338,7 @@ ___
 - CA 4: Usuario bloqueado
   - Cuando la cuenta del usuario se encuentra bloqueada por los administradores
   - Entonces el sistema no le permitirá loguearse al usuario
+
 ___
 
 #### Login con datos biométricos
@@ -358,6 +363,7 @@ ___
   - Cuando la cuenta del usuario se encuentra bloqueada por los administradores
   - Entonces el sistema no le permitirá loguearse al usuario
 
+
 ___
 
 #### Recupero de contraseña
@@ -370,6 +376,7 @@ ___
 - CA 1: Recupero de contraseña exitoso
   - Cuando se realice un recupero de contraseña
   - Entonces se deberá enviar un email con un link de recupero de contraseña, el cual tiene solo un uso y un tiempo de expiración
+
 
 ___
 
@@ -389,6 +396,7 @@ ___
 - CA 3: Registro fallido
   - Cuando el registro del administrador falla debido a un error del servicio.
   - Entonces el sistema indicará un mensaje de error acorde al usuario.
+
 
 ___
 
@@ -410,6 +418,7 @@ ___
   - Entonces el sistema indicará un mensaje de error acorde al usuario.
 
 <!-- Perfil -->
+
 ___
 
 #### Edición de perfil
@@ -424,6 +433,7 @@ ___
   - Cuando se modifican los datos de la cuenta del Usuario de manera exitosa
   - Entonces estos nuevos datos serán los que se utilicen como datos de perfil de usuario
   - En caso contrario se deberá mostrar un mensaje de error acorde al usuario.
+
 
 ___
 
@@ -440,6 +450,7 @@ ___
   - Entonces estos se visualizarán datos públicos y privados del usuario.
   - En caso contrario se deberá mostrar un mensaje de error acorde al usuario.
 
+
 ___
 
 #### Visualización de perfil de otros usuarios
@@ -455,6 +466,7 @@ ___
   - Entonces estos se visualizarán datos públicos del usuario
 
 <!-- Búsquedas -->  
+
 ___
 
 
@@ -471,6 +483,7 @@ ___
 - CA 2: Búsqueda sin resultados
   - Cuando se realiza una búsqueda utilizando un filtrado y no existe contenido que cumpla tal condición
   - Entonces se deberá notificar al usuario que no existen resultados para su búsqueda.
+
 ___
 
 #### Búsqueda de canción o álbum por suscripción
@@ -488,6 +501,7 @@ ___
   - Cuando se realiza una búsqueda utilizando un filtrado y no existe contenido que cumplan tal condición
   - Entonces se deberá notificar al usuario que no existen resultados para su búsqueda.
 
+
 ___
 
 #### Búsqueda de canción o álbum por artista
@@ -503,6 +517,7 @@ ___
 - CA 2: Búsqueda sin resultados
   - Cuando se realiza una búsqueda utilizando un filtrado y no existe contenido que cumplan tal condición
   - Entonces se deberá notificar al usuario que no existen resultados para su búsqueda.
+
 ___
 
 #### Recomendación de canciones
@@ -518,6 +533,7 @@ ___
   - Se requiere recibir recomendaciones de canciones según mis intereses definidos al momento de registrarse y la interacción con la plataforma
 
 <!-- Listener -->
+
 
 ___
 
@@ -543,6 +559,7 @@ ___
 - Cuando se rechacen las condiciones para la inscripción a la suscripción o el sistema rechaza su inscripción. 
 - Entonces no se deberá el flujo de alta de suscripción
 
+
 ___
 
 #### Modificación de suscripción
@@ -564,6 +581,7 @@ ___
 - CA 3: Modificación fallida
 - Cuando se rechacen las condiciones para la modificación de la suscripción o el sistema rechaza esta. 
 - Entonces no se deberá el flujo de modificación de suscripción
+
 
 ___
 
@@ -588,6 +606,7 @@ ___
 - CA 3: Reproducción de playlist
   - Cuando se encuentra en la pantalla de reproducción de un album
   - Entonces se deberá acceder a las funciones de reproducción básicas (Ex:Play, pause, stop, next, back, volumen +/-) para poder interactuar con las canciones del mismo. Ademas se deberá visualizar información relacionada, tal como nombre, duración, autor, canciones, etc.
+
 ___
 
 #### Seguir artista
@@ -610,6 +629,7 @@ ___
 - CA 3: Listado de artistas seguidos
   - Cuando se ingrese a la pantalla de artistas seguidos
   - Entonces se deberá listar el total de los artistas que el usuario sigue.
+
 ___
 
 
@@ -637,6 +657,7 @@ ___
 
 
 <!-- Artista -->
+
 ___
 
 #### Creación de canción
@@ -656,6 +677,7 @@ ___
 - CA 2: Creación fallida
   - Cuando un artista realice una canción con información faltante y/o erronea.
   - Entonces el sistema deberá informarle que no es una operación permitida.
+
 
 ___
 
@@ -681,6 +703,7 @@ ___
   - Cuando un artista realice un nuevo album con información faltante y/o errónea.
   - Entonces el sistema deberá informarle que no es una operación permitida.
 
+
 ___
 
 #### Edición de album
@@ -696,6 +719,7 @@ ___
   - Cuando un artista realice la edición de datos con datos erróneos y/o inválidos.
   - Entonces el sistema deberá informarle que no es una operación permitida.
 
+
 ___
 
 #### Listado de álbumes
@@ -710,6 +734,7 @@ ___
 - CA 2: Usuario sin álbumes
   - Cuando un artista ingrese a "Mis álbumes"
   - Entonces tendrá una pantalla vacía
+
 
 
 ___
@@ -730,6 +755,7 @@ ___
   - Cuando un artista indique se una transmisión en directo puede ser guardada.
   - Entonces al finalizar, dicha transmisión deberá ser guardada en el dispositivo desde donde se realizó. 
 
+
 ___
 
 
@@ -746,6 +772,7 @@ ___
     - Canción mas escuchada.
     - Cantidad de favoritos.
     - Etc.
+
 ___
 
 
@@ -763,6 +790,7 @@ ___
 - CA 2: Aprobación como artista reconocido
   - Cuando un artista obtenga el reconocimiento de su identidad por parte de los administradores de la plataforma.
   - Entonces podrá indicar en su perfil que es un artista reconocido.
+
 ___
 
 <!-- Playlist -->
@@ -785,6 +813,7 @@ ___
 - CA 2: Creación fallida
   - Cuando un usuario realice una playlist con información faltante y/o erronea.
   - Entonces el sistema deberá informarle que no es una operación permitida
+
 ___
 
 #### Edición de playlist
@@ -800,6 +829,7 @@ ___
   - Cuando un usuario realice la modificación de datos con datos erróneos y/o inválidos.
   - Entonces el sistema deberá informarle que no es una operación permitida.
 
+
 ___
 
 #### Playlist colaborativa
@@ -811,6 +841,7 @@ ___
 - CA 1: Colaboración con nuevas canciones
   - Cuando un usuario agregue una nueva canción a una playlist
   - Entonces al confirmar los nuevos cambios, estos se verán reflejados en la playlist.
+
 
 ___
 
@@ -827,6 +858,7 @@ ___
 <!-- Comments-->
 
 
+
 ___
 
 #### Comentar un album
@@ -839,6 +871,7 @@ ___
 - CA 1: Comentario aceptado
   - Cuando se realiza un comentario público en un album 
   - Entonces todo aquel que entre a la sección de comentarios de un album podrán visualizarlo. 
+
 
 
 ___
@@ -854,6 +887,7 @@ ___
   - Cuando se selecciona remover comentarios público en un album 
   - Entonces dicho comentario ya no será visualizado en la sección correspondiente
 
+
 ___
 
 #### Mensajes privados
@@ -868,6 +902,7 @@ ___
 
 <!-- Calificaciones-->
 
+
 ___
 
 #### Calificación cuantitativa de un album
@@ -879,6 +914,7 @@ ___
 - CA 1: Calificación de album
   - Cuando un listener realiza una calificación cuantitativa de un album. Por ejemplo, utilizando una escala del 1 al 5
   - Entonces esta calificación afectará la calificación del album 
+
 ___
 
 #### Calificación cualitativa de un album
@@ -893,6 +929,7 @@ ___
   - Entonces esta calificación luego podrá ser visualizada por otros usuarios.
 
  <!-- Cobros y pagos -->
+
 
 ___
 
@@ -911,6 +948,7 @@ ___
   - Cuando un pago NO se realiza de manera exitosa.
   - Entonces NO se ejecutará el flujo correspondiente a un pago por una suscripción en el SC y deberá notificarse dicho error.
 
+
 ___
 
 #### Retiro de fondos
@@ -927,6 +965,7 @@ ___
 - CA 2: Retiro de fondos fallido
   - Cuando un artista solicita un retiro de fondos del contenido y aún no se cumplen las regla de negocio pautadas.
   - Entonces NO se podrá realizar el retiro de fondos
+
 
 ___
 
@@ -952,6 +991,7 @@ ___
 
 
  <!-- Notificaciones -->
+
 ___
 
 #### Notificación por nuevo mensaje
@@ -966,6 +1006,7 @@ ___
 - CA 2: Notificación push.
   - Cuando un usuario recibe un mensaje por una consulta pública o privada.
   - Entonces deberá recibir notificación push en la aplicación para acceder a dicho mensaje
+
 ___
 
 
@@ -983,6 +1024,7 @@ ___
   - Entonces deberá recibir notificación push en la aplicación para acceder a dicho mensaje
 
 
+
 ___
 
 #### Notificación por transmisión en directo
@@ -997,6 +1039,7 @@ ___
 - CA 2: Notificación push.
   - Cuando un artista realiza una transmisión en directo.
   - Entonces todo listener que cumpla con las condiciones de negocio deberá recibir notificación push en la aplicación para acceder a dicho mensaje
+
 
 ___
 
@@ -1018,6 +1061,7 @@ ___
 
 <!-- Administración de usuarios -->
 
+
 ___
 
 #### Listar usuarios del sistema
@@ -1029,6 +1073,7 @@ ___
 - CA 1: Listado de usuarios del sistema
   - Cuando un administrador del sistema ingrese a la sección de usuarios
   - Entonces se listaran todos los usuarios del sistema.
+
 
 ___
 
@@ -1042,6 +1087,7 @@ ___
   - Cuando un administrador del sistema ingrese a la sección de usuarios
   - Entonces se listaran todos los usuarios del sistema.
 
+
 ___
 
 #### Bloquear usuario
@@ -1051,14 +1097,15 @@ ___
 
 **Criterios de aceptación**
 - CA 1: Bloqueo exitoso
- - Cuando un administrador bloquea a un usuario.
- - Entonces se deberá visualizar que el usuario esta bloqueado y el usuario no deberá poder acceder a la plataforma
+  - Cuando un administrador bloquea a un usuario.
+  - Entonces se deberá visualizar que el usuario esta bloqueado y el usuario no deberá poder acceder a la plataforma
  - CA 2: Desbloqueo exitoso
- - Cuando un administrador desbloquea a un usuario.
- - Entonces se deberá visualizar que el usuario no esta bloqueado y el usuario deberá poder acceder a la plataforma
+    - Cuando un administrador desbloquea a un usuario.
+    - Entonces se deberá visualizar que el usuario no esta bloqueado y el usuario deberá poder acceder a la plataforma
 
 
 <!-- Administración de contenidos -->
+
 ___
 
 #### Listado de contenidos
@@ -1068,11 +1115,12 @@ ___
 
 **Criterios de aceptación**
 - CA 1: Listado con contenidos existentes
- - Cuando un administrador solicita visualizar el listado de contenidos en la plataforma
- - Entonces se deberán listar todos los contenidos existentes en el sistema
+  - Cuando un administrador solicita visualizar el listado de contenidos en la plataforma
+  - Entonces se deberán listar todos los contenidos existentes en el sistema
 - CA 2: Listado con contenidos existentes utilizando filtros
- - Cuando un administrador solicita visualizar el listado de contenidos en la plataforma y aplica un filtrado 
- - Entonces se deberán listar todos los contenidos existentes en el sistema que cumplan con dichos filtros
+  - Cuando un administrador solicita visualizar el listado de contenidos en la plataforma y aplica un filtrado 
+  - Entonces se deberán listar todos los contenidos existentes en el sistema que cumplan con dichos filtros
+
 
 ___
 #### Visualización de contenidos
@@ -1082,8 +1130,9 @@ ___
 
 **Criterios de aceptación**
 - CA 1: Visualización de contenido 
- - Cuando un administrador visualiza el un contenido existente en la plataforma
- - Entonces se deberá poder visualizar todos sus datos asociados
+  - Cuando un administrador visualiza el un contenido existente en la plataforma
+  - Entonces se deberá poder visualizar todos sus datos asociados
+
 ___
 #### Bloqueo de contenido
 
@@ -1092,14 +1141,15 @@ ___
 
 **Criterios de aceptación**
 - CA 1: Bloqueo exitoso 
- - Cuando un administrador realiza el bloqueo de un contenido existente en la plataforma
- - Entonces se deberá visualizar que el contenido está bloqueado y los usuarios no deberán poder acceder a él en la aplicación
+  - Cuando un administrador realiza el bloqueo de un contenido existente en la plataforma
+  - Entonces se deberá visualizar que el contenido está bloqueado y los usuarios no deberán poder acceder a él en la aplicación
 - CA 2: Desbloqueo exitoso 
- - Cuando un administrador realiza el desbloqueo de un contenido existente en la plataforma
- - Entonces se deberá visualizar que el contenido no esta bloqueado y los usuarios deberán poder acceder a el en la aplicación
+  - Cuando un administrador realiza el desbloqueo de un contenido existente en la plataforma
+  - Entonces se deberá visualizar que el contenido no esta bloqueado y los usuarios deberán poder acceder a el en la aplicación
  
  
 <!-- Administración de transacciones -->
+ 
  ___
 
 #### Listar transacciones
@@ -1110,11 +1160,12 @@ ___
 
 **Criterios de aceptación**
 - CA 1: Listado de transacciones
- - Cuando un administrador solicita visualizar el listado de transacciones en la plataforma
- - Entonces se deberán listar todas las transacciones existentes en el sistema
+  - Cuando un administrador solicita visualizar el listado de transacciones en la plataforma
+  - Entonces se deberán listar todas las transacciones existentes en el sistema
 - CA 2: Listado de transacciones existentes utilizando filtros
- - Cuando un administrador solicita visualizar el listado de transacciones en la plataforma y aplica un filtrado 
- - Entonces se deberán listar todas las transacciones existentes en el sistema que cumplan con dichos filtros
+  - Cuando un administrador solicita visualizar el listado de transacciones en la plataforma y aplica un filtrado 
+  - Entonces se deberán listar todas las transacciones existentes en el sistema que cumplan con dichos filtros
+
 
 ___
 
@@ -1126,10 +1177,11 @@ ___
 
 **Criterios de aceptación**
 - CA 1: Asignación de saldo exitosa
- - Cuando un administrador realiza una asignación de saldo en la billetera de un cliente
- - Entonces se deberá descontar este monto de la billetera asociada a la plataforma y se deberá adicionar tal monto en la billetera del cliente
+  - Cuando un administrador realiza una asignación de saldo en la billetera de un cliente
+  - Entonces se deberá descontar este monto de la billetera asociada a la plataforma y se deberá adicionar tal monto en la billetera del cliente
 
 <!-- Administración de servicios -->
+
 ___
 
 #### Listado de servicios
@@ -1139,11 +1191,12 @@ ___
 
 **Criterios de aceptación**
 - CA 1: Listado de servicios
- - Cuando un administrador solicita visualizar el listado de servicios en la plataforma
- - Entonces se deberán listar todos los servicios existentes en el sistema
+  - Cuando un administrador solicita visualizar el listado de servicios en la plataforma
+  - Entonces se deberán listar todos los servicios existentes en el sistema
 - CA 2: Listado de servicios existentes utilizando filtros
- - Cuando un administrador solicita visualizar el listado de servicios en la plataforma y aplica un filtrado 
- - Entonces se deberán listar todos los servicios existentes en el sistema que cumplan con dichos filtros
+  - Cuando un administrador solicita visualizar el listado de servicios en la plataforma y aplica un filtrado 
+  - Entonces se deberán listar todos los servicios existentes en el sistema que cumplan con dichos filtros
+
 
 ___
 
@@ -1154,12 +1207,13 @@ ___
 
 **Criterios de aceptación**
 - CA 1: Visualización de información de un servicio
- - Cuando un administrador ingresa a visualizar la información de un servicio
- - Entonces podrá encontrar datos como:
-   - Estado del servicio.
-   - Fecha de creación.
-   - Descripción.
-   - Otros.
+  - Cuando un administrador ingresa a visualizar la información de un servicio
+  - Entonces podrá encontrar datos como:
+    - Estado del servicio.
+    - Fecha de creación.
+    - Descripción.
+    - Otros.
+
 ___
 
 #### Alta de servicio
@@ -1169,8 +1223,9 @@ ___
 
 **Criterios de aceptación**
 - CA 1: Alta de Api Key
- - Cuando un administrador da de alta un nuevo servicio.
- - Entonces se genera un API key que deberá ser utilizada de manera interna en la plataforma para que un servicio pueda comunicarse con sus pares
+  - Cuando un administrador da de alta un nuevo servicio.
+  - Entonces se genera un API key que deberá ser utilizada de manera interna en la plataforma para que un servicio pueda comunicarse con sus pares
+
 ___
 
 #### Bloqueo de servidor
@@ -1179,11 +1234,13 @@ ___
 - Como administrador del sistema quiero poder bloquear un nuevo servicio para que no pueda acceder a los distintos servicios del sistema
 
 **Criterios de aceptación**
+
 - CA 1: Alta de Api Key
- - Cuando un administrador bloquee un servicio.
- - Entonces se deberá bloquear su API key asociada y tal servicio no podrá comunicarse con sus pares.
+  - Cuando un administrador bloquee un servicio.
+  - Entonces se deberá bloquear su API key asociada y tal servicio no podrá comunicarse con sus pares.
 
 <!-- Metricas -->
+
 ___
 
 #### Métricas de usuario
@@ -1199,6 +1256,7 @@ ___
 - CA 5: Métricas de usuarios bloqueados
 - CA 6: Métricas de recupero de contraseña  
 
+
 ___
 #### Métricas de contenidos
 
@@ -1211,6 +1269,7 @@ ___
 - CA 3: Métricas de contenidos por suscripciones
 - CA 4: Métricas de contenidos por usuario
 
+
 ___
 
 #### Métricas de transacciones
@@ -1221,6 +1280,7 @@ ___
 **Criterios de aceptación**
 - CA 1: Metricas de pagos
 - CA 2: Metricas de cobros
+
 
 ___
 
@@ -1249,6 +1309,7 @@ _Las tecnologías a utilizar son detalladas en la sección [tecnologías](#tecno
 ### Smart contract
 La gestión de pagos de las transacciones se realizará utilizando un smart contract, el cual será provisto por la cátedra
 
+
 ___
 
 ### Tecnologias
@@ -1260,6 +1321,7 @@ Stack de tecnologías recomendadas para el desarrollo de los distintos component
 Para el desarrollo de la App se podrá optar por:
 - Desarrollar sobre [Android](https://developer.android.com/) nativo utilizando [Kotlin](https://kotlinlang.org/) como lenguaje de programación.
 - Desarrollar sobre [React Native](https://reactnative.dev/) utilizando [JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript) como lenguaje de programación.
+
 
 ___
 
@@ -1284,20 +1346,24 @@ Se recomiendan como base de datos alguna de las siguientes
 - [MongoDB](https://www.mongodb.com/es)
 
 Esta elección será responsabilidad del grupo y la misma deberá estar consensuada junto al ayudante. Además quedará justificada en la documentación técnica que formará parte del TP.
+
 ___
 
 #### Backoffice web
 Para el desarrollo del backoffice web se utilizará React como biblioteca.
+
 
 ___
 
 #### Contenido multimedia
 Para el uso de contenido multimedia se recomienda utilizar el servicio provisto por firebase [Storage](https://firebase.google.com/docs/storage?hl=es)
 
+
 ___
 
 #### Chat
 Para el uso del chat en tiempo real se recomienda utilizar el servicio provisto por firebase [Real time database](https://firebase.google.com/docs/database?hl=es)
+
 
 ___
 
@@ -1309,6 +1375,7 @@ Para el uso de notificaciones push se recomienda utilizar el servicio provisto p
 
 ##### Mensajeria whatsapp
 Para el uso de mensajería con whatsapp se recomienda utilizar el servicio provisto por [Twilio](https://www.twilio.com/quest/github-education)
+
 
 ___
 
@@ -1380,6 +1447,7 @@ Finalmente, el despliegue al servidor de _PAAS_ elegido deberá ser automático.
 Los servicios, se deberán disponibilizar en la nube utilizando una plataforma como servicio (_[PAAS](https://en.wikipedia.org/wiki/Platform_as_a_service)_).
 
 Se recomienda usar [Heroku](https://www.heroku.com/) ya que cuenta con todos los requerimientos tecnológicos pedidos anteriormente.
+
 
 ___
 
