@@ -524,12 +524,12 @@ ___
 
 **Descripción**
 
-- Como listener quiero por recibir recomendaciones de canciones basadas en mis intereses y disponibles según mi ubicación geográfica.
+- Como listener quiero poder recibir recomendaciones de canciones basadas en mis intereses y disponibles según mi ubicación geográfica.
 
 **Criterios de aceptación**
 - CA 1: Recomendación por zona geográfica
   - Se requiere brindar un servicio en el que dado una serie de reglas definidas por los administradores, deberán definir si las canciones que se encuentren en dicha región están disponibles o no
-- CA 1: Recomendación por intereses
+- CA 2: Recomendación por intereses
   - Se requiere recibir recomendaciones de canciones según mis intereses definidos al momento de registrarse y la interacción con la plataforma
 
 <!-- Listener -->
@@ -672,6 +672,7 @@ ___
     - Titulo: Titulo principal del canción
     - Descripción: Descripción del canción
     - Autor/Autores: Personas que hayan trabajado en la creación de esta canción.
+    - Archivo: Archivo en formato digital que será utilizado luego para escuchar dicha canción.
 
   - Entonces este canción podrá ser asociada a un album. 
 - CA 2: Creación fallida
