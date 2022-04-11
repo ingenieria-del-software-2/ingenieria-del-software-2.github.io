@@ -100,6 +100,7 @@ Historias de usuario relacionadas:
 Como listener quiero poder realizar búsquedas de canciones o álbumes con distintos filtros para visualizar los que me interesen
 
 Historias de usuario relacionadas:
+ - [Home](#home)
  - [Búsquedas por género](#búsqueda-de-canción-o-álbum-por-género)
  - [Búsquedas por suscripción](#búsqueda-de-canción-o-álbum-por-suscripción)
  - [Búsquedas por artista](#búsqueda-de-canción-o-álbum-por-artista)
@@ -466,6 +467,22 @@ ___
   - Entonces estos se visualizarán datos públicos del usuario
 
 <!-- Búsquedas -->  
+___
+
+
+#### Home
+
+**Descripción**
+
+- Como listener quiero poder realizar ingresar a la una pantalla principal que me provea acceso a distintos contenidos de utilidad
+
+**Criterios de aceptación**
+- CA 1: Home 
+  - Cuando se accede la pantalla principal de la aplicacion
+  - Entonces se deberán retornar las canciones, playlists y álbumes que sean de relevancia.
+- CA 2: Error al cargar
+  - Cuando se accede la pantalla principal de la aplicacion y ocurre un error
+  - Entonces se deberá notificar al usuario que ha sucedido un error
 
 ___
 
