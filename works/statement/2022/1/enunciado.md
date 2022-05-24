@@ -154,8 +154,8 @@ Como listener quiero poder usar playlists para agrupar canciones que me gusten.
 Como listener quiero poder enviar mensajes 
  
 Historias de usuario relacionadas:
- - [Comentar una canción](#comentar-una-canción)
- - [Remover comentarios de una canción](#remover-comentarios-de-una-canción)
+ - [Comentar un album](#comentar-un-album)
+ - [Remover comentarios de un album](#remover-comentarios-de-un-album)
  - [Mensajes privados](#mensajes-privados)
  
  <!-- Calificaciones -->
@@ -272,7 +272,7 @@ _En el resto de los CA se utilizará la nomenclatura Usuario como un usuario reg
   - Cuando el registro del usuario es correcto.
   - Entonces el sistema deberá solicitarle al usuario una ubicación predeterminada
 - CA 3: Obtención de perfil (Para listeners)
-  - Cuando el registro del usuario es correcto.
+  - Cuando el registro del usuario es correcto.materia
   - Entonces el sistema deberá solicitarle al usuario cuales son sus intereses musicales. 
 - CA 4: Falta uno o más campos obligatorios
   - Cuando el registro del usuario es incorrecto debido a un ingreso erróneo o faltante de campos. 
