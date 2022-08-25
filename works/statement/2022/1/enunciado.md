@@ -203,6 +203,8 @@ Como administrador del sistema quiero poder gestionar los usuarios que están re
 Historias de usuario relacionadas:
  - [Listar usuarios del sistema](#listar-usuarios-del-sistema)
  - [Visualizar perfil de usuario](#visualizar-perfil-de-usuario)
+ - [Visualizar métricas de usuario](#visualizar-métricas-de-usuario) 
+ <!-- La anterior se refiere a viajes cancelados/viajes realizados/calificaciones/etc -->
  - [Bloquear usuario](#bloquear-usuario)
  - [Listar transacciones](#listar-transacciones)
  - [Carga de saldo](#carga-de-saldo)
