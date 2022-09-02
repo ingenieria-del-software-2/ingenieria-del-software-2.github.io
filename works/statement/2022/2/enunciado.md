@@ -126,7 +126,6 @@ Historias de usuario relacionadas:
 Como pasajero quiero poder realizar el pago una vez finalizado el viaje. Como chofer quiero poder recibir el pago de los servicios prestados
 
 Historias de usuario relacionadas:
- - [Creación de wallet](#creación-de-wallet)
  - [Carga de fondos](#carga-de-fondos)
  - [Ejecución de pago](#ejecución-de-pago)
  - [Retiro de fondos](#retiro-de-fondos)
@@ -159,7 +158,7 @@ Historias de usuario relacionadas:
 Como usuario quiero recibir notificaciones ante eventos importantes
 
 Historias de usuario relacionadas:
- - [Notificación por recibo de pago](#notifiación-por-recibo-de-pago)
+ - [Notificación por recibo de pago](#notificación-por-recibo-de-pago)
  - [Notificación por chofer encontrado](#notificación-por-chofer-encontrado)
  - [Notificación por mensaje recibido](#notificación-por-mensaje-recibido)
  - [Notificación por posible viaje](#notificación-por-posible-viaje)
@@ -231,12 +230,12 @@ _En el resto de los CA se utilizará la nomenclatura Usuario como un usuario reg
 - CA 1: Registro exitoso
   - Cuando el registro del usuario es correcto.
   - Entonces el sistema creará un nuevo usuario con su perfil y billetera correspondiente. Luego permitirá el ingreso al sistema.
-- CA 2: Obtención de ubicación (Para listeners)
+- CA 2: Obtención de ubicación 
   - Cuando el registro del usuario es correcto.
   - Entonces el sistema deberá solicitarle al usuario una ubicación predeterminada
-- CA 3: Obtención de perfil (Para listeners)
+- CA 3: Obtención de perfil (Para choferes)
   - Cuando el registro del usuario es correcto.
-  - Entonces el sistema deberá solicitarle al usuario cuales son sus intereses musicales. 
+  - Entonces el sistema deberá solicitarle al usuario datos sobre su persona y el vehículo que utilizara. 
 - CA 4: Falta uno o más campos obligatorios
   - Cuando el registro del usuario es incorrecto debido a un ingreso erróneo o faltante de campos. 
   - Entonces el sistema indicará los campos faltantes y/o erróneos y no permitirá el ingreso al sistema.
@@ -396,7 +395,6 @@ ___
   - Cuando se modifican los datos de la cuenta del Usuario de manera exitosa
   - Entonces estos nuevos datos serán los que se utilicen como datos de perfil de usuario
   - En caso contrario se deberá mostrar un mensaje de error acorde al usuario.
-
 
 ___
 
@@ -575,17 +573,84 @@ ___
 ___
 
 
- - [Guía de viaje](#guía-de-viaje)
- - [Aviso de fin](#aviso-de-fin)
- - [Denuncia de chofer](#denuncia-de-chofer)
- - [Cancelación de viaje](#cancelación-de-viaje)
+#### Guía de viaje
 
+**Descripción**
+
+- TODO
+
+**Criterios de aceptación**
+
+- CA 1: TODO
 ___
 
- - [Creación de wallet](#creacion-de-wallet)
- - [Carga de fondos](#carga-de-fondos)
- - [Ejecución de pago](#ejecucion-de-pago)
+#### Aviso de fin
 
+**Descripción**
+
+- Como chofer quiero poder indicar que el viaje a finalizado
+
+**Criterios de aceptación**
+
+- CA 1: Finalización de viaje exitosa
+  - Cuando se el vehículo se encuentra en la dirección de destino
+  - Entonces el chofer podrá indicar que el viaje a finalizado y se realizará el cobro al pasajero.
+
+- CA 2: Finalización de viaje fallida
+  - Cuando se el vehículo aún no se encuentra en la dirección de destino
+  - Entonces el chofer no podrá indicar que el viaje a finalizado.
+___
+
+#### Denuncia de chofer
+
+**Descripción**
+
+- Como pasajero quiero poder denunciar a un chofer durante un viaje si su conducta me parece incorrecta
+
+**Criterios de aceptación**
+
+- CA 1: Mensaje directo
+  - Cuando se realiza un mensaje directo
+  - Entonces solo los involucrados podrán leer el mismo y se deberá mantener una conversación en tiempo real por mensajes
+___
+
+#### Cancelación de viaje
+
+**Descripción**
+
+- TODO
+
+**Criterios de aceptación**
+
+- CA 1: TODO
+  - 
+___
+
+
+#### Carga de fondos
+
+**Descripción**
+
+- Como pasajero quiero poder ingresar fondos en mi wallet para así poder utilizarlos en mis futuros viajes.
+
+**Criterios de aceptación**
+
+- CA 1: Carga exitosa
+  - Cuando se realiza una carga de fondos de manera exitosa
+  - Entonces se verá reflejado en la wallet del usuario el nuevo monto correspondiente.
+___
+
+#### Ejecución de pago
+
+**Descripción**
+
+- Como pasajero quiero realizar el pago correspondiente del viaje recientemente finalizado
+
+**Criterios de aceptación**
+
+- CA 1: Ejecución de pago exitosa
+  - Cuando se un viaje finaliza de manera exitosa
+  - Entonces se le descontará el monto correspondiente a la billetera del pasajero y luego se hará un deposito a la cuenta del chofer. **Se debe tener en cuenta que a este deposito se le descontará la comisión de la plataforma.**
 ___
 
 #### Retiro de fondos
@@ -593,6 +658,7 @@ ___
 **Descripción**
 
 - Como chofer quiero extraer los fondos que fueron recolectados de los pagos de viajes realizados.
+
 **Criterios de aceptación**
 
 - CA 1: Retiro de fondos exitoso
@@ -610,6 +676,7 @@ ___
 **Descripción**
 
 - Como usuario del sistema quiero que el sistema acepte una stablecoin como método de intercambio de valor para no preocuparme por la volatilidad del ETH
+
 **Criterios de aceptación**
 
 - CA 1: Retiro de fondos
@@ -626,8 +693,27 @@ ___
 
 ___
 
- - [Suscripción a servicio vip como pasajero](#suscripción-a-servicio-vip-como-pasajero)
- - [Suscripción a servicio vip como chofer](#suscripción-a-servicio-vip-como-chofer)
+ #### Suscripción a servicio vip como pasajero
+
+**Descripción**
+- Como pasajero quiero poder suscribirme a un servicio VIP para poder tener mejor confort en mis viajes.
+
+**Criterios de aceptación**
+- CA 1: Suscripción exitosa
+  - Cuando un pasajero se inscribe de manera exitosa al servicio VIP
+  - Entonces la plataforma le realizará el cobro correspondiente a este servicio y a partir de ese momento el pasajero puede solicitar viajes en modalidad VIP.
+
+___
+ 
+  #### Suscripción a servicio vip como chofer
+
+**Descripción**
+- Como chofer quiero poder suscribirme a un servicio VIP para poder brindar mis servicios en este tipo de viajes.
+
+**Criterios de aceptación**
+- CA 1: Suscripción exitosa
+  - Cuando un chofer se inscribe de manera exitosa al servicio VIP
+  - Entonces la plataforma le realizará el cobro correspondiente por brindar este servicio y a partir de ese momento el chofer puede realizar viajes en modalidad VIP.
 ___
 
 
@@ -949,13 +1035,13 @@ La plataforma constará de los siguientes componentes:
 ### Aplicación mobile
 
 Una aplicación mobile, el cual será utilizado por los usuarios.
-_Las tecnologías a utilizar son detalladas en la sección [tecnologías](#tecnologias)_
+_Las tecnologías a utilizar son detalladas en la sección [tecnologías](#tecnologías)_
 
 ### Backoffice web
 
 Un backoffice web, el cual será utilizado por los administradores. 
 
-_Las tecnologías a utilizar son detalladas en la sección [tecnologías](#tecnologias)_
+_Las tecnologías a utilizar son detalladas en la sección [tecnologías](#tecnologías)_
 
 ### Servicios backend
 
