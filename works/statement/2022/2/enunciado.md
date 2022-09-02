@@ -44,7 +44,7 @@
 ## Descripción
 
 Una importante empresa ha decidido encargarnos el desarrollo de una plataforma digital llamada FI-Uber para el transporte de personas.
-El espíritu de esta plataforma es poder conectar personas que necesitan un servicio de transporte (en adelante llamados viajeros) con proveedores(en adelante llamados choferes) de ese servicio en tiempo real.
+El espíritu de esta plataforma es poder conectar personas que necesitan un servicio de transporte (en adelante llamados pasajeros) con proveedores(en adelante llamados choferes) de ese servicio en tiempo real.
 
 La plataforma de conectar a las personas, procesar los pagos y proveer cierta seguridad en el servicio.
 
@@ -71,7 +71,7 @@ _En caso de que se observe alguna definición ambigua o la falta de la misma, es
 <!-- Registro y login -->
 
 #### Usuarios
-Como viajero/chofer quiero poder registrarme y tener una cuenta para poder acceder a los servicios de la plataforma.
+Como pasajero/chofer quiero poder registrarme y tener una cuenta para poder acceder a los servicios de la plataforma.
 
 Historias de usuario relacionadas:
  - [Registro](#registro-de-usuarios)
@@ -87,7 +87,7 @@ Historias de usuario relacionadas:
 
 #### Perfil
 
-Como viajero/chofer quiero poder editar mi perfil y acceder tanto a mi perfil como al perfil de mi chofer asignado(de manera acotada).
+Como pasajero/chofer quiero poder editar mi perfil y acceder tanto a mi perfil como al perfil de mi chofer asignado(de manera acotada).
 
 Historias de usuario relacionadas:
  - [Edición de perfil](#edición-de-perfil)
@@ -98,60 +98,63 @@ Historias de usuario relacionadas:
 
 #### Inicio viaje
 
-Como viajero/chofer quiero poder iniciar un viaje
+Como pasajero/chofer quiero poder iniciar un viaje
 
 Historias de usuario relacionadas:
  - [Home](#home)
  - [Búsqueda de destino por dirección](#búsqueda-de-destino-por-dirección)
  - [Búsquedas de destino por nombre](#búsqueda-de-destino-por-nombre)
- - [Precio estimado](#precio-estimado)
+ - [Cotización del viaje](#cotización-del-viaje)
  - [Confirmación de viaje](#confirmación-de-viaje)
  - [Aceptar/rechazar un viaje](#aceptar-rechazar-un-viaje)
  - [Inicio del viaje](#inicio-del-viaje)
  - [Pantalla de espera](#pantalla-de-espera)
- - [Mensajeria instantanea](#mensajeria-instantanea)
+ - [Mensajería instantánea](#mensajeria-instantanea)
  
 <!-- Artista -->
 
-#### Duracion de viaje
+#### Viaje en curso
 
 Como usuario quiero tener una experiencia amena, segura y guiada durante el viaje
 
 Historias de usuario relacionadas:
- - [Guia de viaje](#guia-de-viaje)
+ - [Guía de viaje](#guia-de-viaje)
  - [Aviso de fin](#aviso-de-fin)
- - [Baneo de chofer](#baneo-de-chofer)
+ - [Denuncia de chofer](#denuncia-de-chofer)
  - [Cancelación de viaje](#cancelación-de-viaje)
  - [Modificación de reglas de cotización](#modificación-de-reglas-de-cotización)
 
 #### Pago de viaje y wallets
 
-Como viajero quiero poder realizar el pago una vez finalizado el viaje
+Como pasajero quiero poder realizar el pago una vez finalizado el viaje
 Como chofer quiero poder recibir el pago de los servicios prestados
 
 Historias de usuario relacionadas:
- - [Creacion de wallet](#creacion-de-wallet)
+ - [Creación de wallet](#creacion-de-wallet)
  - [Carga de fondos](#carga-de-fondos)
- - [Ejecucion de pago](#ejecucion-de-pago)
+ - [Ejecución de pago](#ejecucion-de-pago)
  - [Retiro de fondos](#retiro-de-fondos)
  - [Utilización de stablecoin](#utilización-de-stablecoin)
  
 
 #### Servicio VIP
 
-Como viajero/chofer quiero tener un servicio VIP disponibilizado en la app para poder viajar mejor/cobrar mas por mis viajes
+Como pasajero/chofer quiero tener un servicio VIP disponibilizado en la app para poder viajar mejor/cobrar mas por mis viajes
+
+Historias de usuario relacionadas:
+ - [Calificación cuantitativa de un pasajero  ](#calificación-cuantitativa-de-una-album)
 
  <!-- Calificaciones -->
 
 
 #### Calificaciones
 
-Como viajero/chofer quiero poder calificar a los choferes/viajeros
+Como pasajero/chofer quiero poder calificar a los choferes/pasajeros
 
 Historias de usuario relacionadas:
- - [Calificación cuantitativa de un viajer](#calificación-cuantitativa-de-una-album)
+ - [Calificación cuantitativa de un pasajero  ](#calificación-cuantitativa-de-una-album)
  - [Calificación cualitativa de un chofer](#calificación-cualitativa-de-una-album)
- - [Calificación por categorias de un chofer](#calificación-por-categorias)
+ - [Calificación por categorías de un chofer](#calificación-por-categorias)
 <!-- Cobros y pagos -->
 
 #### Notificaciones
@@ -205,8 +208,7 @@ Historias de usuario relacionadas:
 - [Métricas de transacciones](#métricas-de-transacciones)
 
 
-
-
+___
 
 ### Historias de Usuario
 
@@ -220,9 +222,9 @@ ___
 
 - Como usuario no registrado quiero registrarme en la plataforma para acceder a las funcionalidades del sistema. El usuario podrá utilizar los distintos perfiles en la cuenta, donde ambos perfiles no son excluyentes: 
 
-- Listener: Es el usuario que consume el contenido por medio de la aplicación y accede a las distintas funcionalidades generales de la misma. Ademas es quien realiza el pago por una suscripción
+- Pasajero: Es el usuario que solicita el viaje por medio de la aplicación y accede a las distintas funcionalidades generales de la misma. Ademas es quien realiza el pago por el viaje realizado
 
-- Artista: Es el usuario que genera contenido en la plataforma. Una característica fundamental que lo distingue, es que puede recibir pagos de sus seguidores 
+- Chofer: Es el usuario que acepta y realiza los viajes . También es quien cobra por estos viajes realizados.
 
 _En el resto de los CA se utilizará la nomenclatura Usuario como un usuario registrado_
 
@@ -349,6 +351,7 @@ ___
 **Descripción**
 
 - Como administrador quiero poder dar de alta a otros administradores en la plataforma para acceder a las funcionalidades del sistema.
+
 **Criterios de aceptación**
 
 - CA 1: Registro exitoso
@@ -427,8 +430,158 @@ ___
   - Cuando se visualice el perfil de un usuario que no es propietario de la cuenta
   - Entonces estos se visualizarán datos públicos del usuario
 
+<!-- Búsquedas -->  
+
+
+
+ - [Mensajería instantánea](#mensajeria-instantanea)
+ 
+___
+
+
+#### Home
+
+**Descripción**
+
+- Como usuario quiero poder realizar ingresar a la una pantalla principal que me provea acceso a distintos contenidos de utilidad
+
+**Criterios de aceptación**
+
+- CA 1: Home 
+  - Cuando se accede la pantalla principal de la aplicación
+  - Entonces se deberá retornar información de relevancia a mi actividad reciente
+- CA 2: Error al cargar
+  - Cuando se accede la pantalla principal de la aplicación y ocurre un error
+  - Entonces se deberá notificar al usuario que ha sucedido un error
 
 ___
+
+
+#### Búsqueda de destino por dirección  
+
+**Descripción**
+
+- Como pasajero quiero poder realizar búsquedas de destinos utilizando la dirección del mismo y así poder iniciar el proceso de viaje
+
+**Criterios de aceptación**
+
+- CA 1: Búsqueda con resultados
+  - Cuando se realiza una búsqueda de un destino con una dirección válida
+  - Entonces se deberá retornar el resultado adecuado.
+- CA 2: Búsqueda sin resultados
+  - Cuando se realiza una búsqueda utilizando una dirección que no que cumpla tal condición
+  - Entonces se deberá notificar al usuario que no existen resultados para su búsqueda.
+
+___
+
+#### Búsqueda de destino por nombre  
+
+**Descripción**
+
+- Como pasajero quiero poder realizar búsquedas de destinos utilizando un nombre previamente agendado y así poder iniciar el proceso de viaje
+
+**Criterios de aceptación**
+- CA 1: Búsqueda con resultados
+  - Cuando se realiza una búsqueda de un destino con un nombre agendado
+  - Entonces se deberá retornar el resultado adecuado.
+- CA 2: Búsqueda sin resultados
+  - Cuando se realiza una búsqueda utilizando un nombre que no  que cumpla tal condición
+  - Entonces se deberá notificar al usuario que no existen resultados para su búsqueda.
+
+___
+
+#### Cotización del viaje
+
+**Descripción**
+
+- Como pasajero quiero poder saber previamente cual es el precio estimado del viaje a realizar, sabiendo el destino seleccionado y la modalidad de viaje. 
+
+**Criterios de aceptación**
+- CA 1: Cotización de un viaje 
+  - Cuando se dispone de un destino seleccionado y un modo de viaje 
+  - Entonces se deberá retornar el precio correspondiente a este viaje, utilizando el servicio de cotización de viajes.
+
+___
+
+#### Confirmación de viaje
+
+**Descripción**
+
+- Como pasajero quiero poder confirmar la realización del viaje
+
+**Criterios de aceptación**
+- CA 1: Confirmación del viaje 
+  - Cuando se realiza la confirmación del viaje
+  - Entonces se deberá iniciar la solicitud de búsqueda de chofer para iniciar el viaje correspondiente
+
+- CA 2: Rechazo del viaje 
+  - Cuando se realiza el rechazo del viaje
+  - Entonces se deberá informar que el usuario rechazo el viaje y se cancelará todo el proceso.
+
+___
+
+#### Aceptar/rechazar un viaje
+
+**Descripción**
+
+- Como chofer quiero poder aceptar o rechazar la realización de un viaje  
+
+**Criterios de aceptación**
+- CA 1: Aceptación de un viaje 
+  - Cuando el chofer es informado sobre las condiciones de un viaje (monto a cobrar, destino, tiempo estimado) y se realiza la aceptación del mismo
+  - Entonces se deberá iniciar el proceso de viaje en curso, en donde se le notificará al pasajero que el chofer esta en camino y se visualizara la pantalla de espera.
+
+- CA 2: Rechazo del viaje 
+  - Cuando se realiza el rechazo de un  viaje
+  - Entonces se deberá informar que el usuario rechazo el viaje y se cancelará todo el proceso.
+
+___
+
+#### Inicio del viaje
+
+**Descripción**
+
+- Como usuario quiero iniciar un viaje tanto sea en condición de pasajero como de chofer
+
+**Criterios de aceptación**
+
+- CA 1: Chofer en destino
+  - Cuando el chofer es se encuentre en la ubicación de origen del pasajero
+  - Entonces se le informará que el chofer ya se encuentra esperando y se habilitará el inicio del viaje
+
+- CA 2: Viaje iniciado
+  - Cuando se inicie el viaje
+  - Entonces se deberá informarle al usuario el tiempo transcurrido ademas de mostrar la ubicación en tiempo real del auto y el recorrido a realizar
+
+___
+
+#### Pantalla de espera
+
+**Descripción**
+
+- Como usuario quiero estar informado del estado del viaje la espera del chofer previo al inicio del viaje
+
+**Criterios de aceptación**
+
+- CA 1: Chofer en destino
+  - Cuando el chofer es se encuentre en viaje a la dirección de origen del pasajero
+  - Entonces se le informará al usuario el recorrido en tiempo real del chofer
+
+___
+
+#### Pantalla de espera
+
+**Descripción**
+
+- Como pasajero/chofer quiero poder enviar mensajes privados a otro chofer/pasajero de la plataforma durante un viaje iniciado
+
+**Criterios de aceptación**
+
+- CA 1: Mensaje directo
+  - Cuando se realiza un mensaje directo
+  - Entonces solo los involucrados podrán leer el mismo y se deberá mantener una conversación en tiempo real por mensajes
+___
+
 
 #### Métricas de transacciones
 
