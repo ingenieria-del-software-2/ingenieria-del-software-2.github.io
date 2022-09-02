@@ -625,7 +625,7 @@ ___
 
 - CA 1: Cancelacíon chofer/pasajero viaje no iniciado
   - Cuando el viaje no ha iniciado y es cancelado por el chofer/pasajero
-  - Entonces se notificará se notificará al pasajero/chofer que el mismo fue cancelado
+  - Entonces se notificará al pasajero/chofer que el mismo fue cancelado
   - Y se cobrará el valor del viaje a favor del pasajero/chofer.
 
 - CA 2: Cancelacíon pasajero viaje iniciado
