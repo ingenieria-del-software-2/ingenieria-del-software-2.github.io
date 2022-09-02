@@ -38,7 +38,7 @@
 5. [Instancias de entrega](#instancias-de-entrega)
 6. [Historias requeridas y optativas](#historias-requeridas-y-optativas)
     1. [Requeridas](#requeridas)
-    2. [Optatitvas](#optativas)
+    2. [Optativas](#optativas)
 7. [Material de referencia](#material-de-referencia)
 
 ## Descripción
@@ -94,9 +94,9 @@ Historias de usuario relacionadas:
  - [Visualización de perfil propio](#visualización-de-perfil-propio)
  - [Visualización de perfil de otros usuarios](#visualización-de-perfil-de-otros-usuarios)
 
-<!-- Búsquedas -->
+<!-- Inicio de viaje -->
 
-#### Inicio viaje
+#### Inicio de viaje
 
 Como pasajero/chofer quiero poder iniciar un viaje
 
@@ -109,25 +109,23 @@ Historias de usuario relacionadas:
  - [Aceptar/rechazar un viaje](#aceptar-rechazar-un-viaje)
  - [Inicio del viaje](#inicio-del-viaje)
  - [Pantalla de espera](#pantalla-de-espera)
- - [Mensajería instantánea](#mensajeria-instantanea)
+ - [Mensajería instantánea](#mensajería-instantánea)
  
-<!-- Artista -->
+<!-- viaje en curso -->
 
 #### Viaje en curso
 
 Como usuario quiero tener una experiencia amena, segura y guiada durante el viaje
 
 Historias de usuario relacionadas:
- - [Guía de viaje](#guia-de-viaje)
+ - [Guía de viaje](#guía-de-viaje)
  - [Aviso de fin](#aviso-de-fin)
  - [Denuncia de chofer](#denuncia-de-chofer)
  - [Cancelación de viaje](#cancelación-de-viaje)
- - [Modificación de reglas de cotización](#modificación-de-reglas-de-cotización)
 
 #### Pago de viaje y wallets
 
-Como pasajero quiero poder realizar el pago una vez finalizado el viaje
-Como chofer quiero poder recibir el pago de los servicios prestados
+Como pasajero quiero poder realizar el pago una vez finalizado el viaje. Como chofer quiero poder recibir el pago de los servicios prestados
 
 Historias de usuario relacionadas:
  - [Creación de wallet](#creacion-de-wallet)
@@ -142,7 +140,8 @@ Historias de usuario relacionadas:
 Como pasajero/chofer quiero tener un servicio VIP disponibilizado en la app para poder viajar mejor/cobrar mas por mis viajes
 
 Historias de usuario relacionadas:
- - [Calificación cuantitativa de un pasajero  ](#calificación-cuantitativa-de-una-album)
+ - [Suscripción a servicio vip como pasajero](#suscripción-a-servicio-vip-como-pasajero)
+ - [Suscripción a servicio vip como chofer](#suscripción-a-servicio-vip-como-chofer)
 
  <!-- Calificaciones -->
 
@@ -154,8 +153,7 @@ Como pasajero/chofer quiero poder calificar a los choferes/pasajeros
 Historias de usuario relacionadas:
  - [Calificación cuantitativa de un pasajero  ](#calificación-cuantitativa-de-una-album)
  - [Calificación cualitativa de un chofer](#calificación-cualitativa-de-una-album)
- - [Calificación por categorías de un chofer](#calificación-por-categorias)
-<!-- Cobros y pagos -->
+
 
 #### Notificaciones
 
@@ -191,6 +189,7 @@ Historias de usuario relacionadas:
 Como administrador del sistema quiero poder gestionar los servicios que se encuentran en el mismo para administrar su uso
 
 Historias de usuario relacionadas:
+ - [Modificación de reglas de cotización](#modificación-de-reglas-de-cotización)
  - [Listado de servicios](#listado-de-servicios)
  - [Visualización de servicio](#visualización-de-servicio)
  - [Alta de servicio](#alta-de-servicio)
@@ -430,12 +429,6 @@ ___
   - Cuando se visualice el perfil de un usuario que no es propietario de la cuenta
   - Entonces estos se visualizarán datos públicos del usuario
 
-<!-- Búsquedas -->  
-
-
-
- - [Mensajería instantánea](#mensajeria-instantanea)
- 
 ___
 
 
@@ -569,7 +562,7 @@ ___
 
 ___
 
-#### Pantalla de espera
+#### Mensajería instantánea
 
 **Descripción**
 
@@ -582,6 +575,278 @@ ___
   - Entonces solo los involucrados podrán leer el mismo y se deberá mantener una conversación en tiempo real por mensajes
 ___
 
+
+ - [Guía de viaje](#guía-de-viaje)
+ - [Aviso de fin](#aviso-de-fin)
+ - [Denuncia de chofer](#denuncia-de-chofer)
+ - [Cancelación de viaje](#cancelación-de-viaje)
+
+___
+
+ - [Creación de wallet](#creacion-de-wallet)
+ - [Carga de fondos](#carga-de-fondos)
+ - [Ejecución de pago](#ejecucion-de-pago)
+ - [Retiro de fondos](#retiro-de-fondos)
+ - [Utilización de stablecoin](#utilización-de-stablecoin)
+ 
+
+___
+ - [Calificación cuantitativa de un pasajero](#calificación-cuantitativa-de-una-album)
+ - [Calificación cualitativa de un chofer](#calificación-cualitativa-de-una-album)
+
+
+___
+
+#### Notificación por recibo de pago
+
+**Descripción**
+- Como chofer quiero poder recibir una notificación en caso de recibir un nuevo pago
+
+**Criterios de aceptación**
+- CA 1: Pantalla de notificaciones
+  - Cuando un chofer recibe un nuevo pago
+  - Entonces deberá poder visualizar una notificación en la aplicación para acceder a la información del mismo. 
+- CA 2: Notificación push.
+  - Cuando un chofer recibe un nuevo pago 
+  - Entonces deberá recibir notificación push en la aplicación para acceder a la información del mismo.
+___
+
+
+#### Notificación por chofer asignado
+
+**Descripción**
+- Como pasajero quiero poder recibir una notificación en caso de que mi viaje ya posea un chofer asignado
+
+**Criterios de aceptación**
+- CA 1: Pantalla de notificaciones
+  - Cuando un pasajero tiene un viaje iniciado y este ya posee un chofer asignado
+  - Entonces deberá poder visualizar una notificación en la aplicación para acceder a la información del mismo. 
+- CA 2: Notificación push.
+  - Cuando un pasajero tiene un viaje iniciado y este ya posee un chofer asignado
+  - Entonces deberá recibir notificación push en la aplicación para acceder a la información del mismo.
+___
+
+ #### Notificación por mensaje recibido
+
+**Descripción**
+- Como usuario quiero poder recibir una notificación en caso de recibir un nuevo mensaje
+
+**Criterios de aceptación**
+- CA 1: Pantalla de notificaciones
+  - Cuando un usuario recibe un mensaje por una consulta pública o privada.
+  - Entonces deberá poder visualizar una notificación en la aplicación para acceder a dicho mensaje 
+- CA 2: Notificación push.
+  - Cuando un usuario recibe un mensaje por una consulta pública o privada.
+  - Entonces deberá recibir notificación push en la aplicación para acceder a dicho mensaje
+
+
+___
+
+
+#### Notificación por posible viaje
+
+**Descripción**
+- Como chofer quiero poder recibir una notificación en caso de recibir una nueva propuesta de viaje
+
+**Criterios de aceptación**
+- CA 1: Pantalla de notificaciones
+  - Cuando un chofer recibe una nueva propuesta de viaje
+  - Entonces deberá poder visualizar una notificación en la aplicación para acceder a la información del mismo. 
+- CA 2: Notificación push.
+  - Cuando un chofer recibe una nueva propuesta de viaje 
+  - Entonces deberá recibir notificación push en la aplicación para acceder a la información del mismo.
+___
+
+#### Listar usuarios del sistema
+
+**Descripción**
+- Como administrador del sistema quiero poder listar todos los usuario del sistema para gestionar su uso
+
+**Criterios de aceptación**
+- CA 1: Listado de usuarios del sistema
+  - Cuando un administrador del sistema ingrese a la sección de usuarios
+  - Entonces se listaran todos los usuarios del sistema.
+
+___
+
+#### Visualizar perfil de usuario
+
+**Descripción**
+- Como administrador del sistema quiero poder visualizar el perfil de un  usuario del sistema para verificar sus datos
+
+**Criterios de aceptación**
+- CA 1: Listado de usuarios del sistema
+  - Cuando un administrador del sistema ingrese a la sección de usuarios
+  - Entonces se listaran todos los usuarios del sistema.
+___
+ <!-- La anterior se refiere a viajes cancelados/viajes realizados/calificaciones/etc especificas del usuario -->
+
+#### Visualizar métricas de usuario
+
+**Descripción**
+- Como administrador del sistema quiero poder visualizar el perfil de un  usuario del sistema para verificar sus datos
+
+**Criterios de aceptación**
+- CA 1: Listado de usuarios del sistema
+  - Cuando un administrador del sistema ingrese a la sección de usuarios
+  - Entonces se listaran todos los usuarios del sistema.
+
+
+
+___
+
+#### Bloquear usuario
+
+**Descripción**
+- Como administrador del sistema quiero poder bloquear y desbloquear un  usuario del sistema para controlar su ingreso a la plataforma
+
+**Criterios de aceptación**
+- CA 1: Bloqueo exitoso
+  - Cuando un administrador bloquea a un usuario.
+  - Entonces se deberá visualizar que el usuario esta bloqueado y el usuario no deberá poder acceder a la plataforma
+ - CA 2: Desbloqueo exitoso
+    - Cuando un administrador desbloquea a un usuario.
+    - Entonces se deberá visualizar que el usuario no esta bloqueado y el usuario deberá poder acceder a la plataforma
+
+
+___
+
+#### Listar transacciones
+
+**Descripción**
+
+- Como administrador del sistema quiero poder listar todas las transacciones de inscripciones y sus pagos, como también los cobros, para poder controlar su uso de la plataforma
+
+**Criterios de aceptación**
+- CA 1: Listado de transacciones
+  - Cuando un administrador solicita visualizar el listado de transacciones en la plataforma
+  - Entonces se deberán listar todas las transacciones existentes en el sistema
+- CA 2: Listado de transacciones existentes utilizando filtros
+  - Cuando un administrador solicita visualizar el listado de transacciones en la plataforma y aplica un filtrado 
+  - Entonces se deberán listar todas las transacciones existentes en el sistema que cumplan con dichos filtros
+
+___
+
+#### Carga de saldo
+
+**Descripción**
+
+- Como administrador del sistema quiero poder cargar saldo en la billetera de un cliente para poder realizar campañas de beneficios o solucionar inconvenientes
+
+**Criterios de aceptación**
+- CA 1: Asignación de saldo exitosa
+  - Cuando un administrador realiza una asignación de saldo en la billetera de un cliente
+  - Entonces se deberá descontar este monto de la billetera asociada a la plataforma y se deberá adicionar tal monto en la billetera del cliente
+
+___
+
+ #### Modificación de reglas de cotización
+
+**Descripción**
+- Como administrador del sistema quiero poder tener flexibilidad a la hora de establecer los precios . Para esto se exige que el cálculo del precio sea realizado utilizando un sistema de reglas.
+
+El servidor deberá permitir la modificación y guardado de las mismas manteniendo un registro de cambios. Además, deberá permitir al usuario hacer pruebas con las reglas escritas previo a quedar efectivas en la cotización de los viajes.
+
+**Criterios de aceptación**
+- CA 1: Reglas a establecer
+  - Las reglas deben permitir el cálculo del precio del viaje utilizando, entre otras cosas, la siguientes variables:
+
+  * Características del conductor (viajes en el día, viajes en el mes, antigüedad)
+  * Características del pasajero (viajes en el día, viajes en el mes, antigüedad, saldo)
+  * Método de pago
+  * Características del viaje (duración, distancia, posición geográfica, fecha y hora)
+  * Cantidad de viajes que se realizaron en la última ventana temporal (Hora, 30 mins, 10 mins)
+  * Día y horario de la realización del viaje
+  * Tiempo de espera del pasajero para:
+    * Que un conductor le confirme el viaje
+    * Que el conductor llegue a buscarlo
+
+___
+
+#### Listado de servicios
+
+**Descripción**
+- Como administrador del sistema quiero poder listar todos los servicios que se encuentren dentro del sistema para controlar su uso
+
+**Criterios de aceptación**
+- CA 1: Listado de servicios
+  - Cuando un administrador solicita visualizar el listado de servicios en la plataforma
+  - Entonces se deberán listar todos los servicios existentes en el sistema
+- CA 2: Listado de servicios existentes utilizando filtros
+  - Cuando un administrador solicita visualizar el listado de servicios en la plataforma y aplica un filtrado 
+  - Entonces se deberán listar todos los servicios existentes en el sistema que cumplan con dichos filtros
+
+
+___
+
+#### Visualización de servicio
+
+**Descripción**
+- Como administrador del sistema quiero visualizar la información de un servicio que se encuentre en el sistema para verificar que sea válida
+
+**Criterios de aceptación**
+- CA 1: Visualización de información de un servicio
+  - Cuando un administrador ingresa a visualizar la información de un servicio
+  - Entonces podrá encontrar datos como:
+    - Estado del servicio.
+    - Fecha de creación.
+    - Descripción.
+    - Otros.
+
+___
+
+#### Alta de servicio
+
+**Descripción**
+- Dado que existen requisitos de seguridad que solicitan tener un mecanismo para verificar la autenticidad de los servicios internos de la plataforma. Como administrador del sistema quiero poder dar de alta un nuevo servicio para que pueda acceder a los distintos servicios del sistema
+
+**Criterios de aceptación**
+- CA 1: Alta de Api Key
+  - Cuando un administrador da de alta un nuevo servicio.
+  - Entonces se genera un API key que deberá ser utilizada de manera interna en la plataforma para que un servicio pueda comunicarse con sus pares
+
+___
+
+#### Bloqueo de servidor
+
+**Descripción**
+- Como administrador del sistema quiero poder bloquear un nuevo servicio para que no pueda acceder a los distintos servicios del sistema
+
+**Criterios de aceptación**
+
+- CA 1: Alta de Api Key
+  - Cuando un administrador bloquee un servicio.
+  - Entonces se deberá bloquear su API key asociada y tal servicio no podrá comunicarse con sus pares.
+
+___
+
+#### Métricas de usuario
+
+**Descripción**
+- Como administrador del sistema quiero poder visualizar las métricas de usuarios para medir el uso de la plataforma y sus servicios
+
+**Criterios de aceptación**
+- CA 1: Métricas de nuevos usuarios utilizando mail y contraseña
+- CA 2: Métricas de nuevos usuarios utilizando identidad federada
+- CA 3: Métricas de login de usuarios utilizando mail y contraseña
+- CA 4: Métricas de login de usuarios utilizando identidad federada
+- CA 5: Métricas de usuarios bloqueados
+- CA 6: Métricas de recupero de contraseña  
+
+
+___
+
+#### Métricas de viajes
+
+**Descripción**
+- Como administrador del sistema quiero poder visualizar las métricas de viajes para medir el uso de la plataforma y sus servicios
+
+**Criterios de aceptación**
+- CA 1: Métricas de nuevos viajes
+- CA 2: Métricas de duración de viajes
+- CA 3: Métricas de tipos de viaje 
+
+___
 
 #### Métricas de transacciones
 
@@ -685,7 +950,8 @@ ___
 Para el uso de notificaciones push se recomienda utilizar el servicio provisto por firebase [Cloud Messaging](https://firebase.google.com/docs/cloud-messaging?hl=es)
 
 
-##### Mensajeria whatsapp
+##### Mensajería whatsapp
+
 Para el uso de mensajería con whatsapp se recomienda utilizar el servicio provisto por [Twilio](https://www.twilio.com/quest/github-education)
 
 
@@ -784,8 +1050,8 @@ Se deberá entregar la siguiente documentación:
    - Definición de arquitectura
    - Especificación de API REST: [OpenAPI](https://github.com/OAI/OpenAPI-Specification)
 
-- Guia de usuario de la aplicación disponible en [Github Pages](https://pages.github.com/)
-- Guia de usuario del backoffice disponible en [Github Pages](https://pages.github.com/)
+- Guía de usuario de la aplicación disponible en [Github Pages](https://pages.github.com/)
+- Guía de usuario del backoffice disponible en [Github Pages](https://pages.github.com/)
 - Bitácora de proyecto
 - [Análisis postmortem](https://en.wikipedia.org/wiki/Postmortem_documentation)
 
