@@ -1,6 +1,6 @@
 # FI-UBER
 
-![Logo](logo.png)
+
 
 ## Indice
 
@@ -1240,7 +1240,7 @@ _Se espera que dicha documentación se elabore de manera incremental y que cada 
 
 | Instancia   |      Fecha      |  Alcance |
 |----------|:-------------:|------:|
-| Checkpoint 1 |  A definir | A definir |
-| Checkpoint 2 |  A definir | A definir |
-| Checkpoint 3 |  A definir | A definir |
-| Entrega Final |  A definir | A definir |
+| Checkpoint 1 |  15/9 | A definir |
+| Checkpoint 2 |  13/10 | A definir |
+| Checkpoint 3 |  17/11 | A definir |
+| Entrega Final |  7/12 | A definir |
