@@ -7,19 +7,18 @@
 1. [Descripción](#descripción)
 2. [Condiciones de aprobación](#condiciones-de-aprobación)
 3. [Requisitos](#requisitos)
-    1. [Épicas](#epicas)
+    1. [Épicas](#épicas)
        1. [Usuarios](#usuarios)
        2. [Perfil](#perfil)
-       3. [Inicio de viaje](#inicio-de-vieja)
+       3. [Inicio de viaje](#inicio-de-viaje)
        4. [Viaje en curso](#viaje-en-curso)
        5. [Pago de viaje y wallets](#pago-de-viaje-y-wallets)
        6. [Servicio VIP](#servicio-vip)
        7. [Calificaciones](#calificaciones)
        8. [Notificaciones](#notificaciones)
        9. [Administración de usuarios](#administración-de-usuarios)
-       10. [Administración de contenidos](#administración-de-contenidos)
-       11. [Administración de servicios](#administración-de-servicios)
-       12. [Métricas](#métricas)
+       10. [Administración de servicios](#administración-de-servicios)
+       11. [Métricas](#métricas)
     2. [Historias de Usuario](#historias-de-usuario)
 4. [Requisitos No Funcionales](#requisitos-no-funcionales)
     1. [Componentes](#componentes)
@@ -101,7 +100,7 @@ Como pasajero/chofer quiero poder iniciar un viaje
 Historias de usuario relacionadas:
  - [Home](#home)
  - [Búsqueda de destino por dirección](#búsqueda-de-destino-por-dirección)
- - [Búsquedas de destino por nombre](#búsqueda-de-destino-por-nombre)
+ - [Búsqueda de destino por nombre](#búsqueda-de-destino-por-nombre)
  - [Cotización del viaje](#cotización-del-viaje)
  - [Confirmación de viaje](#confirmación-de-viaje)
  - [Aceptar/rechazar un viaje](#aceptar-rechazar-un-viaje)
@@ -148,10 +147,10 @@ Historias de usuario relacionadas:
 Como pasajero/chofer quiero poder calificar a los choferes/pasajeros
 
 Historias de usuario relacionadas:
- - [Calificación cuantitativa de un chofer  ](#calificación-cuantitativa-de-un-chofer)
  - [Calificación cualitativa de un chofer](#calificación-cualitativa-de-un-chofer)
  - [Calificación cuantitativa de un chofer  ](#calificación-cuantitativa-de-un-chofer)
- - [Calificación cualitativa de un chofer](#calificación-cualitativa-de-un-chofer)
+ - [Calificación cuantitativa de un pasajero  ](#calificación-cuantitativa-de-un-pasajero)
+ - [Calificación cualitativa de un pasajero ](#calificación-cualitativa-de-un-pasajero)
 
 #### Notificaciones
 
@@ -159,7 +158,7 @@ Como usuario quiero recibir notificaciones ante eventos importantes
 
 Historias de usuario relacionadas:
  - [Notificación por recibo de pago](#notificación-por-recibo-de-pago)
- - [Notificación por chofer encontrado](#notificación-por-chofer-encontrado)
+ - [Notificación por chofer asignado](#notificación-por-chofer-asignado)
  - [Notificación por mensaje recibido](#notificación-por-mensaje-recibido)
  - [Notificación por posible viaje](#notificación-por-posible-viaje)
 
@@ -191,7 +190,7 @@ Historias de usuario relacionadas:
  - [Listado de servicios](#listado-de-servicios)
  - [Visualización de servicio](#visualización-de-servicio)
  - [Alta de servicio](#alta-de-servicio)
- - [Bloqueo de servicio](#bloquear-de-servicio)
+ - [Bloqueo de servicio](#bloqueo-de-servicio)
 
 <!-- Métricas TODO -->
 
@@ -447,7 +446,7 @@ ___
 ___
 
 
-#### Búsqueda de destino por dirección  
+#### Búsqueda de destino por dirección
 
 **Descripción**
 
@@ -464,7 +463,7 @@ ___
 
 ___
 
-#### Búsqueda de destino por nombre  
+#### Búsqueda de destino por nombre
 
 **Descripción**
 
@@ -510,7 +509,7 @@ ___
 
 ___
 
-#### Aceptar/rechazar un viaje
+#### Aceptar rechazar un viaje
 
 **Descripción**
 
@@ -693,7 +692,7 @@ ___
 
 ___
 
- #### Suscripción a servicio vip como pasajero
+#### Suscripción a servicio vip como pasajero
 
 **Descripción**
 - Como pasajero quiero poder suscribirme a un servicio VIP para poder tener mejor confort en mis viajes.
@@ -705,7 +704,7 @@ ___
 
 ___
  
-  #### Suscripción a servicio vip como chofer
+#### Suscripción a servicio vip como chofer
 
 **Descripción**
 - Como chofer quiero poder suscribirme a un servicio VIP para poder brindar mis servicios en este tipo de viajes.
@@ -796,7 +795,7 @@ ___
   - Entonces deberá recibir notificación push en la aplicación para acceder a la información del mismo.
 ___
 
- #### Notificación por mensaje recibido
+#### Notificación por mensaje recibido
 
 **Descripción**
 - Como usuario quiero poder recibir una notificación en caso de recibir un nuevo mensaje
@@ -906,7 +905,7 @@ ___
 
 ___
 
- #### Modificación de reglas de cotización
+#### Modificación de reglas de cotización
 
 **Descripción**
 - Como administrador del sistema quiero poder tener flexibilidad a la hora de establecer los precios . Para esto se exige que el cálculo del precio sea realizado utilizando un sistema de reglas.
@@ -986,7 +985,7 @@ ___
 
 ___
 
-#### Métricas de usuario
+#### Métricas de usuarios
 
 **Descripción**
 - Como administrador del sistema quiero poder visualizar las métricas de usuarios para medir el uso de la plataforma y sus servicios
@@ -1046,7 +1045,7 @@ _Las tecnologías a utilizar son detalladas en la sección [tecnologías](#tecno
 ### Servicios backend
 
 Distintos servicios de backend para brindar soporte a la plataforma. Como enfoque se recomienda orientar estos servicios hacia una arquitectura de [microservices](https://martinfowler.com/articles/microservices.html). Dicha arquitectura propuesta deberá ser convalidada junto al ayudante. 
-_Las tecnologías a utilizar son detalladas en la sección [tecnologías](#tecnologias)_
+_Las tecnologías a utilizar son detalladas en la sección [tecnologías](#tecnologías)_
 
 ### Smart contract
 La gestión de pagos de las transacciones se realizará utilizando un smart contract, el cual será provisto por la cátedra
