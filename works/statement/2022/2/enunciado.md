@@ -207,9 +207,227 @@ Historias de usuario relacionadas:
 
 
 
---------------
 
-TODO resto de historias de usuario
+### Historias de Usuario
+
+<!-- Registro y login -->
+
+___
+
+#### Registro de usuarios
+
+**Descripción**
+
+- Como usuario no registrado quiero registrarme en la plataforma para acceder a las funcionalidades del sistema. El usuario podrá utilizar los distintos perfiles en la cuenta, donde ambos perfiles no son excluyentes: 
+
+- Listener: Es el usuario que consume el contenido por medio de la aplicación y accede a las distintas funcionalidades generales de la misma. Ademas es quien realiza el pago por una suscripción
+
+- Artista: Es el usuario que genera contenido en la plataforma. Una característica fundamental que lo distingue, es que puede recibir pagos de sus seguidores 
+
+_En el resto de los CA se utilizará la nomenclatura Usuario como un usuario registrado_
+
+**Criterios de aceptación**
+
+- CA 1: Registro exitoso
+  - Cuando el registro del usuario es correcto.
+  - Entonces el sistema creará un nuevo usuario con su perfil y billetera correspondiente. Luego permitirá el ingreso al sistema.
+- CA 2: Obtención de ubicación (Para listeners)
+  - Cuando el registro del usuario es correcto.
+  - Entonces el sistema deberá solicitarle al usuario una ubicación predeterminada
+- CA 3: Obtención de perfil (Para listeners)
+  - Cuando el registro del usuario es correcto.
+  - Entonces el sistema deberá solicitarle al usuario cuales son sus intereses musicales. 
+- CA 4: Falta uno o más campos obligatorios
+  - Cuando el registro del usuario es incorrecto debido a un ingreso erróneo o faltante de campos. 
+  - Entonces el sistema indicará los campos faltantes y/o erróneos y no permitirá el ingreso al sistema.
+- CA 5: Registro fallido
+  - Cuando el registro del usuario falla debido a un error del servicio.
+  - Entonces el sistema indicará un mensaje de error acorde al usuario.
+
+#### Notificación de PIN en proceso de registro
+
+**Descripción**
+- Como usuario quiero poder recibir una notificación a mi whatsapp con un código de seguridad, para confirmar mi registración
+
+**Criterios de aceptación**
+- CA 1: Notificación whatsapp:
+  - Cuando un usuario se registra de manera exitosa en la plataforma
+  - Entonces deberá  recibir un mensaje de whatsapp con un PIN generado por la plataforma, para confirmar la registración 
+
+
+___
+
+#### Login de usuarios con usuario y contraseña
+
+**Descripción**
+
+- Como Usuario quiero ingresar a mi cuenta en la plataforma utilizando usuario y contraseña para acceder a las funcionalidades del sistema
+
+**Criterios de aceptación**
+
+- CA 1: Login exitoso con correo electrónico y contraseña
+  - Cuando el login del usuario utilizando correo electrónico y contraseña es correcto
+  - Entonces el sistema permitirá el ingreso al sistema
+  - En caso contrario se deberá mostrar un mensaje de error acorde al usuario.
+- CA 2: Login fallido
+  - Cuando el login del usuario falla debido a un error del servicio.
+  - Entonces el sistema indicará un mensaje de error acorde al usuario.
+- CA 3: Sesión expirada
+  - Cuando la sesión del usuario excede el tiempo de expiración
+  - Entonces el sistema solicitará al usuario nuevamente el login
+- CA 4: Usuario bloqueado
+  - Cuando la cuenta del usuario se encuentra bloqueada por los administradores
+  - Entonces el sistema no le permitirá loguearse al usuario
+
+___
+
+#### Login de usuarios con proveedores de identidad federada
+
+**Descripción**
+
+- Como Usuario quiero ingresar con mi cuenta en la plataforma con proveedores de identidad federada para acceder a las funcionalidades del sistema
+
+**Criterios de aceptación**
+
+- CA 1: Login exitoso con proveedores de identidad federada
+  - Cuando el login del usuario utilizando proveedores de identidad federada es correcto
+  - Entonces el sistema permitirá el ingreso al sistema
+  - En caso contrario se deberá mostrar un mensaje de error acorde al usuario.
+- CA 2: Login fallido
+  - Cuando el login del usuario falla debido a un error del servicio.
+  - Entonces el sistema indicará un mensaje de error acorde al usuario.
+- CA 3: Sesión expirada
+  - Cuando la sesión del usuario excede el tiempo de expiración
+  - Entonces el sistema solicitará al usuario nuevamente el login
+- CA 4: Usuario bloqueado
+  - Cuando la cuenta del usuario se encuentra bloqueada por los administradores
+  - Entonces el sistema no le permitirá loguearse al usuario
+
+___
+
+#### Login con datos biométricos
+
+**Descripción**
+
+- Como Usuario quiero ingresar con mi cuenta en la plataforma utilizando mis datos biométricos
+
+**Criterios de aceptación**
+
+- CA 1: Login exitoso con datos biométricos
+  - Cuando el login del usuario utilizando datos biométricos, tales como identificación por rostro o huella dactilar, es correcto
+  - Entonces el sistema permitirá el ingreso al sistema
+  - En caso contrario se deberá mostrar un mensaje de error acorde al usuario.
+- CA 2: Login fallido
+  - Cuando el login del usuario falla debido a un error del servicio.
+  - Entonces el sistema indicará un mensaje de error acorde al usuario.
+- CA 3: Sesión expirada
+  - Cuando la sesión del usuario excede el tiempo de expiración
+  - Entonces el sistema solicitará al usuario nuevamente el login
+- CA 4: Usuario bloqueado
+  - Cuando la cuenta del usuario se encuentra bloqueada por los administradores
+  - Entonces el sistema no le permitirá loguearse al usuario
+
+
+___
+
+#### Recupero de contraseña
+
+**Descripción**
+
+- Como Usuario quiero poder recuperar mi contraseña en caso de que no la recuerde
+
+**Criterios de aceptación**
+- CA 1: Recupero de contraseña exitoso
+  - Cuando se realice un recupero de contraseña
+  - Entonces se deberá enviar un email con un link de recupero de contraseña, el cual tiene solo un uso y un tiempo de expiración
+
+
+___
+
+#### Registro de administradores
+
+**Descripción**
+
+- Como administrador quiero poder dar de alta a otros administradores en la plataforma para acceder a las funcionalidades del sistema.
+**Criterios de aceptación**
+
+- CA 1: Registro exitoso
+  - Cuando el registro del administrador es correcto.
+  - Entonces el sistema registrará un nuevo administrador con sus respectivas credenciales y permitirá el ingreso al sistema.
+- CA 2: Falta uno o más campos obligatorios
+  - Cuando el registro del administrador es incorrecto debido a un ingreso erróneo o faltante de campos. 
+  - Entonces el sistema indicará los campos faltantes y/o erróneos y no permitirá el ingreso al sistema
+- CA 3: Registro fallido
+  - Cuando el registro del administrador falla debido a un error del servicio.
+  - Entonces el sistema indicará un mensaje de error acorde al usuario.
+
+
+___
+
+#### Login de administradores
+
+**Descripción**
+
+- Como Administrador quiero ingresar con mi cuenta en la plataforma para acceder a las funcionalidades del sistema
+
+**Criterios de aceptación**
+
+
+- CA 1: Login exitoso 
+  - Cuando el login del administrador utilizando sus credenciales es correcto
+  - Entonces el sistema permitirá el ingreso al sistema
+  - En caso contrario se deberá mostrar un mensaje de error acorde al usuario.
+- CA 2: Login fallido
+  - Cuando el login del usuario falla debido a un error del servicio.
+  - Entonces el sistema indicará un mensaje de error acorde al usuario.
+
+<!-- Perfil -->
+
+#### Edición de perfil
+
+**Descripción**
+
+- Como Usuario quiero poder editar los datos de mi perfil de usuario para mantener actualizada mi información personal.
+
+**Criterios de aceptación**
+
+- CA 1: Edición de datos de perfil exitosa
+  - Cuando se modifican los datos de la cuenta del Usuario de manera exitosa
+  - Entonces estos nuevos datos serán los que se utilicen como datos de perfil de usuario
+  - En caso contrario se deberá mostrar un mensaje de error acorde al usuario.
+
+
+___
+
+#### Visualización de perfil propio
+
+**Descripción**
+
+- Como Usuario quiero poder visualizar los datos de mi perfil de usuario para revisar mi información
+
+**Criterios de aceptación**
+
+- CA 1: Visualización de perfil propio
+  - Cuando se visualice el perfil del usuario propietario de la cuenta.
+  - Entonces estos se visualizarán datos públicos y privados del usuario.
+  - En caso contrario se deberá mostrar un mensaje de error acorde al usuario.
+
+
+___
+
+#### Visualización de perfil de otros usuarios
+
+**Descripción**
+
+- Como Usuario quiero poder visualizar los datos de los otros usuarios para conocer su información de contacto
+
+**Criterios de aceptación**
+
+- CA 1: Visualización de perfil de otros usuarios
+  - Cuando se visualice el perfil de un usuario que no es propietario de la cuenta
+  - Entonces estos se visualizarán datos públicos del usuario
+
+
 ___
 
 #### Métricas de transacciones
