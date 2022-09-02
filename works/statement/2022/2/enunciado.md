@@ -973,14 +973,14 @@ ___
 
 ___
 
-#### Bloqueo de servidor
+#### Bloqueo de servicio
 
 **Descripción**
 - Como administrador del sistema quiero poder bloquear un nuevo servicio para que no pueda acceder a los distintos servicios del sistema
 
 **Criterios de aceptación**
 
-- CA 1: Alta de Api Key
+- CA 1: Bloqueo de Api Key
   - Cuando un administrador bloquee un servicio.
   - Entonces se deberá bloquear su API key asociada y tal servicio no podrá comunicarse con sus pares.
 
