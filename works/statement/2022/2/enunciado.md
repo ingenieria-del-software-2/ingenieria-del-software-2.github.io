@@ -10,22 +10,20 @@
     1. [Épicas](#epicas)
        1. [Usuarios](#usuarios)
        2. [Perfil](#perfil)
-       3. [Búsquedas](#búsquedas)
-       4. [Listener](#listener)
-       5. [Artista](#artista)
-       6. [Playlist](#playlist)
-       7. [Mensajes](#mensajes)
-       8. [Calificaciones](#calificaciones)
-       9. [Cobros y pagos](#cobros-y-pagos)
-       10. [Notificaciones](#Notificaciones)
-       11. [Administración de usuarios](#administración-de-usuarios)
-       12. [Administración de contenidos](#administración-de-contenidos)
-       13. [Administración de servicios](#administración-de-servicios)
-       14. [Métricas](#métricas)
+       3. [Inicio de viaje](#inicio-de-vieja)
+       4. [Viaje en curso](#viaje-en-curso)
+       5. [Pago de viaje y wallets](#pago-de-viaje-y-wallets)
+       6. [Servicio VIP](#servicio-vip)
+       7. [Calificaciones](#calificaciones)
+       8. [Notificaciones](#notificaciones)
+       9. [Administración de usuarios](#administración-de-usuarios)
+       10. [Administración de contenidos](#administración-de-contenidos)
+       11. [Administración de servicios](#administración-de-servicios)
+       12. [Métricas](#métricas)
     2. [Historias de Usuario](#historias-de-usuario)
 4. [Requisitos No Funcionales](#requisitos-no-funcionales)
     1. [Componentes](#componentes)
-    2. [Tecnologias](#tecnologias)
+    2. [Tecnologías](#tecnologías)
     3. [Log](#log)
     4. [Monitoreo](#monitoreo)
     5. [Empaquetamiento](#empaquetamiento)
@@ -128,9 +126,9 @@ Historias de usuario relacionadas:
 Como pasajero quiero poder realizar el pago una vez finalizado el viaje. Como chofer quiero poder recibir el pago de los servicios prestados
 
 Historias de usuario relacionadas:
- - [Creación de wallet](#creacion-de-wallet)
+ - [Creación de wallet](#creación-de-wallet)
  - [Carga de fondos](#carga-de-fondos)
- - [Ejecución de pago](#ejecucion-de-pago)
+ - [Ejecución de pago](#ejecución-de-pago)
  - [Retiro de fondos](#retiro-de-fondos)
  - [Utilización de stablecoin](#utilización-de-stablecoin)
  
@@ -151,9 +149,10 @@ Historias de usuario relacionadas:
 Como pasajero/chofer quiero poder calificar a los choferes/pasajeros
 
 Historias de usuario relacionadas:
- - [Calificación cuantitativa de un pasajero  ](#calificación-cuantitativa-de-una-album)
- - [Calificación cualitativa de un chofer](#calificación-cualitativa-de-una-album)
-
+ - [Calificación cuantitativa de un chofer  ](#calificación-cuantitativa-de-un-chofer)
+ - [Calificación cualitativa de un chofer](#calificación-cualitativa-de-un-chofer)
+ - [Calificación cuantitativa de un chofer  ](#calificación-cuantitativa-de-un-chofer)
+ - [Calificación cualitativa de un chofer](#calificación-cualitativa-de-un-chofer)
 
 #### Notificaciones
 
@@ -586,14 +585,99 @@ ___
  - [Creación de wallet](#creacion-de-wallet)
  - [Carga de fondos](#carga-de-fondos)
  - [Ejecución de pago](#ejecucion-de-pago)
- - [Retiro de fondos](#retiro-de-fondos)
- - [Utilización de stablecoin](#utilización-de-stablecoin)
- 
 
 ___
- - [Calificación cuantitativa de un pasajero](#calificación-cuantitativa-de-una-album)
- - [Calificación cualitativa de un chofer](#calificación-cualitativa-de-una-album)
 
+#### Retiro de fondos
+
+**Descripción**
+
+- Como chofer quiero extraer los fondos que fueron recolectados de los pagos de viajes realizados.
+**Criterios de aceptación**
+
+- CA 1: Retiro de fondos exitoso
+  - Cuando un chofer solicita un retiro de fondos y se cumplen las regla de negocio pautadas.
+  - Entonces se podrá realizar el retiro de fondos a la wallet indicada por el chofer.
+
+- CA 2: Retiro de fondos fallido
+  - Cuando un chofer solicita un retiro de fondos y aún no se cumplen las regla de negocio pautadas.
+  - Entonces NO se podrá realizar el retiro de fondos
+
+___
+
+#### Utilización de stablecoin
+
+**Descripción**
+
+- Como usuario del sistema quiero que el sistema acepte una stablecoin como método de intercambio de valor para no preocuparme por la volatilidad del ETH
+**Criterios de aceptación**
+
+- CA 1: Retiro de fondos
+  - Cuando un artista solicita un retiro de fondos de su cuenta y se cumplen las regla de negocio pautadas.
+  - Entonces el pago se ejecuta a traves de una stablecoin
+
+- CA 2: Pago de suscripción
+  - Cuando un listener paga una suscripción
+  - Entonces el pago se ejecuta a traves de una stablecoin
+
+- CA 1: Carga de saldo
+  - Cuando un administrador envía saldo a una usuario a traves del sistema
+  - Entonces el pago se ejecuta a traves de una stablecoin
+
+___
+
+ - [Suscripción a servicio vip como pasajero](#suscripción-a-servicio-vip-como-pasajero)
+ - [Suscripción a servicio vip como chofer](#suscripción-a-servicio-vip-como-chofer)
+___
+
+
+#### Calificación cuantitativa de un chofer
+
+**Descripción**
+- Como pasajero quiero poder realizar una calificación cuantitativa de un chofer para así poder brindar mi opinión de este.
+
+**Criterios de aceptación**
+- CA 1: Calificación de chofer
+  - Cuando un pasajero realiza una calificación cuantitativa de un chofer. Por ejemplo, utilizando una escala del 1 al 5
+  - Entonces esta calificación afectará la calificación del chofer 
+
+___
+
+#### Calificación cualitativa de un chofer
+
+**Descripción**
+- Como pasajero quiero poder realizar una opinion mas detallada del chofer para así poder brindar mi opinión de este.
+
+**Criterios de aceptación**
+
+- CA 1: Calificación
+  - Cuando un pasajero realiza una calificación utilizando comentarios para un chofer.
+  - Entonces esta calificación luego podrá ser visualizada por otros usuarios.
+
+___
+
+
+#### Calificación cuantitativa de un pasajero
+
+**Descripción**
+- Como chofer quiero poder realizar una calificación cuantitativa de un pasajero para así poder brindar mi opinión de este.
+
+**Criterios de aceptación**
+- CA 1: Calificación de pasajero
+  - Cuando un pasajero realiza una calificación cuantitativa de un pasajero. Por ejemplo, utilizando una escala del 1 al 5
+  - Entonces esta calificación afectará la calificación del pasajero 
+___
+
+#### Calificación cualitativa de un pasajero
+
+**Descripción**
+- Como chofer quiero poder realizar una opinion mas detallada del pasajero para así poder brindar mi opinión de este.
+
+**Criterios de aceptación**
+
+- CA 1: Calificación
+  - Cuando un pasajero realiza una calificación utilizando comentarios para un chofer.
+  - Entonces esta calificación luego podrá ser visualizada por otros usuarios.
 
 ___
 
@@ -639,7 +723,6 @@ ___
   - Cuando un usuario recibe un mensaje por una consulta pública o privada.
   - Entonces deberá recibir notificación push en la aplicación para acceder a dicho mensaje
 
-
 ___
 
 
@@ -679,19 +762,16 @@ ___
   - Cuando un administrador del sistema ingrese a la sección de usuarios
   - Entonces se listaran todos los usuarios del sistema.
 ___
- <!-- La anterior se refiere a viajes cancelados/viajes realizados/calificaciones/etc especificas del usuario -->
 
 #### Visualizar métricas de usuario
 
 **Descripción**
-- Como administrador del sistema quiero poder visualizar el perfil de un  usuario del sistema para verificar sus datos
+- Como administrador del sistema quiero poder visualizar métricas de un usuario del sistema para verificar su comportamiento
 
 **Criterios de aceptación**
-- CA 1: Listado de usuarios del sistema
-  - Cuando un administrador del sistema ingrese a la sección de usuarios
-  - Entonces se listaran todos los usuarios del sistema.
-
-
+- CA 1: Panel de métricas de un usuario
+  - Cuando un administrador del sistema ingrese a la sección de métricas de un usuario
+  - Entonces se visualizarán todos las métricas relevantes de un usuario del sistema. Por ejemplo, viajes realizados, viajes cancelados, calificaciones realizadas, etc.
 
 ___
 
