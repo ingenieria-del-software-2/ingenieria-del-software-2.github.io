@@ -203,11 +203,21 @@ Como administrador del sistema quiero poder gestionar los usuarios que están re
 Historias de usuario relacionadas:
  - [Listar usuarios del sistema](#listar-usuarios-del-sistema)
  - [Visualizar perfil de usuario](#visualizar-perfil-de-usuario)
- - [Visualizar métricas de usuario](#visualizar-métricas-de-usuario) 
- <!-- La anterior se refiere a viajes cancelados/viajes realizados/calificaciones/etc especificas del usuario -->
  - [Bloquear usuario](#bloquear-usuario)
  - [Listar transacciones](#listar-transacciones)
  - [Carga de saldo](#carga-de-saldo)
+
+<!-- Administración de contenido TODO -->
+
+#### Administración de contenido
+
+Como administrador del sistema quiero poder gestionar el contenido que se encuentran en el mismo para administrar su uso
+
+Historias de usuario relacionadas:
+ - [Listado de contenido](#listado-de-contenido)
+ - [Visualización de contenido](#visualización-de-contenido)
+ - [Bloqueo de contenido](#bloquear-contenido)
+
 
 <!-- Administración de servicios TODO -->
 
@@ -245,12 +255,11 @@ ___
 
 **Descripción**
 
-- Como usuario no registrado quiero registrarme en la plataforma para acceder a las funcionalidades del sistema. Los usuarios podran ser de dos tipos:
+- Como usuario no registrado quiero registrarme en la plataforma para acceder a las funcionalidades del sistema. El usuario podrá utilizar los distintos perfiles en la cuenta, donde ambos perfiles no son excluyentes: 
 
+- Listener: Es el usuario que consume el contenido por medio de la aplicación y accede a las distintas funcionalidades generales de la misma. Ademas es quien realiza el pago por una suscripción
 
-- Viajero: Carga saldo en la plataforma para poder usar el servicio de viaje
-
-- Chofer: Genera ingresos con la plataforma y provee el servicio de viaje
+- Artista: Es el usuario que genera contenido en la plataforma. Una característica fundamental que lo distingue, es que puede recibir pagos de sus seguidores 
 
 _En el resto de los CA se utilizará la nomenclatura Usuario como un usuario registrado_
 
@@ -259,12 +268,12 @@ _En el resto de los CA se utilizará la nomenclatura Usuario como un usuario reg
 - CA 1: Registro exitoso
   - Cuando el registro del usuario es correcto.
   - Entonces el sistema creará un nuevo usuario con su perfil y billetera correspondiente. Luego permitirá el ingreso al sistema.
-- CA 2: Obtención de ubicación (Para viajer)
+- CA 2: Obtención de ubicación (Para listeners)
   - Cuando el registro del usuario es correcto.
-  - Entonces el sistema deberá solicitarle/obtener del proveedor de identidad al usuario datos basicos sobre su persona
-- CA 3: Obtención de perfil (Para chofer)
-  - Cuando el registro del usuario es correcto.
-  - Entonces el sistema deberá solicitarle al usuario datos sobre su persona y el vehiculo que utilizara. 
+  - Entonces el sistema deberá solicitarle al usuario una ubicación predeterminada
+- CA 3: Obtención de perfil (Para listeners)
+  - Cuando el registro del usuario es correcto.materia
+  - Entonces el sistema deberá solicitarle al usuario cuales son sus intereses musicales. 
 - CA 4: Falta uno o más campos obligatorios
   - Cuando el registro del usuario es incorrecto debido a un ingreso erróneo o faltante de campos. 
   - Entonces el sistema indicará los campos faltantes y/o erróneos y no permitirá el ingreso al sistema.
