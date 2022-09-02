@@ -576,11 +576,13 @@ ___
 
 **Descripción**
 
-- TODO
+- Como pasajero/chofer quiero poder visualizar el recorrido a realizar y conocer la posición actual.
 
 **Criterios de aceptación**
 
-- CA 1: TODO
+- CA 1: Ubicación actual
+  - Cuando el viaje se ha iniciado y el vehículo se ha movido
+  - Entonces se actualiza la posición actual del vehículo con respecto al recorrido.
 ___
 
 #### Aviso de fin
@@ -617,12 +619,24 @@ ___
 
 **Descripción**
 
-- TODO
+- Como pasajero/chofer quiero poder cancelar un viaje.
 
 **Criterios de aceptación**
 
-- CA 1: TODO
-  - 
+- CA 1: Cancelacíon chofer/pasajero viaje no iniciado
+  - Cuando el viaje no ha iniciado y es cancelado por el chofer/pasajero
+  - Entonces se notificará se notificará al pasajero/chofer que el mismo fue cancelado
+  - Y se cobrará el valor del viaje a favor del pasajero/chofer.
+
+- CA 2: Cancelacíon pasajero viaje iniciado
+  - Cuando el viaje a iniciado y el pasajero decide cancelar el viaje
+  - Entonces se cobrará al pasajero el valor del viaje hasta la ubicación actual al momento de
+    cancelar aplicando las reglas de cotización correspondientes.
+
+- CA 3: Cancelacíon chofer viaje iniciado
+  - Cuando el viaje a iniciado y el chofer decide cancelar el viaje
+  - Entonces se reembolsará al pasajero el valor total viaje.
+
 ___
 
 
