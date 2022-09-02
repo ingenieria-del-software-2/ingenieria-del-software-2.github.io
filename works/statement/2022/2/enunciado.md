@@ -1,31 +1,28 @@
-# Spotifiuby
+# FI-UBER
 
-![Logo](logo.png)
+
 
 ## Indice
 
 1. [Descripción](#descripción)
 2. [Condiciones de aprobación](#condiciones-de-aprobación)
 3. [Requisitos](#requisitos)
-    1. [Épicas](#epicas)
+    1. [Épicas](#épicas)
        1. [Usuarios](#usuarios)
        2. [Perfil](#perfil)
-       3. [Búsquedas](#búsquedas)
-       4. [Listener](#listener)
-       5. [Artista](#artista)
-       6. [Playlist](#playlist)
-       7. [Mensajes](#mensajes)
-       8. [Calificaciones](#calificaciones)
-       9. [Cobros y pagos](#cobros-y-pagos)
-       10. [Notificaciones](#Notificaciones)
-       11. [Administración de usuarios](#administración-de-usuarios)
-       12. [Administración de contenidos](#administración-de-contenidos)
-       13. [Administración de servicios](#administración-de-servicios)
-       14. [Métricas](#métricas)
+       3. [Inicio de viaje](#inicio-de-viaje)
+       4. [Viaje en curso](#viaje-en-curso)
+       5. [Pago de viaje y wallets](#pago-de-viaje-y-wallets)
+       6. [Servicio VIP](#servicio-vip)
+       7. [Calificaciones](#calificaciones)
+       8. [Notificaciones](#notificaciones)
+       9. [Administración de usuarios](#administración-de-usuarios)
+       10. [Administración de servicios](#administración-de-servicios)
+       11. [Métricas](#métricas)
     2. [Historias de Usuario](#historias-de-usuario)
 4. [Requisitos No Funcionales](#requisitos-no-funcionales)
     1. [Componentes](#componentes)
-    2. [Tecnologias](#tecnologias)
+    2. [Tecnologías](#tecnologías)
     3. [Log](#log)
     4. [Monitoreo](#monitoreo)
     5. [Empaquetamiento](#empaquetamiento)
@@ -38,15 +35,15 @@
 5. [Instancias de entrega](#instancias-de-entrega)
 6. [Historias requeridas y optativas](#historias-requeridas-y-optativas)
     1. [Requeridas](#requeridas)
-    2. [Optatitvas](#optativas)
+    2. [Optativas](#optativas)
 7. [Material de referencia](#material-de-referencia)
 
 ## Descripción
 
-Una importante empresa ha decidido encargarnos el desarrollo de una plataforma digital llamada Spotifiuby dedicada la difusión de música online.
-El espíritu de esta plataforma es poder brindar una conexión entre los usuarios y los artistas de sus canciones favoritas.
+Una importante empresa ha decidido encargarnos el desarrollo de una plataforma digital llamada FI-Uber para el transporte de personas.
+El espíritu de esta plataforma es poder conectar personas que necesitan un servicio de transporte (en adelante llamados pasajeros) con proveedores(en adelante llamados choferes) de ese servicio en tiempo real.
 
-Para esto existen distintos tipos de suscripciones, tanto gratuitas como pagas. Donde al contar con una suscripción premium se podrá acceder a contenido exclusivo.
+La plataforma de conectar a las personas, procesar los pagos y proveer cierta seguridad en el servicio.
 
 
 ## Condiciones de aprobación
@@ -57,7 +54,7 @@ Esta cantidad de puntos asociados está compuesto por los puntos provenientes de
 
 Por ejemplo:
 - Se requieren 100 puntos provenientes de historias de usuario para aprobar el trabajo.
-- Existen 70 puntos que provienen de historias de usuario obligatorias. Entonces todo grupo deberá cumplir con estas historias.
+- Existen 70 puntos que provienen de historias de usuario obligatorias. Todo grupo deberá cumplir con estas historias.
 - Los 30 puntos restantes deberán provenir de historias optativas donde el grupo decidirá cuales implementar para llegar a tal numero.
 
 ## Requisitos
@@ -71,7 +68,7 @@ _En caso de que se observe alguna definición ambigua o la falta de la misma, es
 <!-- Registro y login -->
 
 #### Usuarios
-Como usuario quiero poder registrarme y tener una cuenta para poder acceder a los servicios de la plataforma.
+Como pasajero/chofer quiero poder registrarme y tener una cuenta para poder acceder a los servicios de la plataforma.
 
 Historias de usuario relacionadas:
  - [Registro](#registro-de-usuarios)
@@ -87,112 +84,84 @@ Historias de usuario relacionadas:
 
 #### Perfil
 
-Como usuario quiero poder editar mi perfil y acceder tanto a mi perfil como al de otros usuarios para conocer y que me conozcan otros usuarios.
+Como pasajero/chofer quiero poder editar mi perfil y acceder tanto a mi perfil como al perfil de mi chofer asignado(de manera acotada).
 
 Historias de usuario relacionadas:
  - [Edición de perfil](#edición-de-perfil)
  - [Visualización de perfil propio](#visualización-de-perfil-propio)
  - [Visualización de perfil de otros usuarios](#visualización-de-perfil-de-otros-usuarios)
 
-<!-- Búsquedas -->
+<!-- Inicio de viaje -->
 
-#### Búsquedas
-Como listener quiero poder realizar búsquedas de canciones o álbumes con distintos filtros para visualizar los que me interesen
+#### Inicio de viaje
+
+Como pasajero/chofer quiero poder iniciar un viaje
 
 Historias de usuario relacionadas:
  - [Home](#home)
- - [Búsquedas por género](#búsqueda-de-canción-o-álbum-por-género)
- - [Búsquedas por suscripción](#búsqueda-de-canción-o-álbum-por-suscripción)
- - [Búsquedas por artista](#búsqueda-de-canción-o-álbum-por-artista)
- - [Recomendación de canciones](#recomendación-de-canciones)
+ - [Búsqueda de destino por dirección](#búsqueda-de-destino-por-dirección)
+ - [Búsqueda de destino por nombre](#búsqueda-de-destino-por-nombre)
+ - [Cotización del viaje](#cotización-del-viaje)
+ - [Confirmación de viaje](#confirmación-de-viaje)
+ - [Aceptar/rechazar un viaje](#aceptar-rechazar-un-viaje)
+ - [Inicio del viaje](#inicio-del-viaje)
+ - [Pantalla de espera](#pantalla-de-espera)
+ - [Mensajería instantánea](#mensajería-instantánea)
  
-<!-- listener-->
+<!-- viaje en curso -->
 
-#### Listener
+#### Viaje en curso
 
-Como listener quiero poder adherirme a distintas suscripciones y que eso impacte en el contenido que tengo disponible, y que mis preferencias se tomen en cuenta en la plataforma.
+Como usuario quiero tener una experiencia amena, segura y guiada durante el viaje
 
 Historias de usuario relacionadas:
- - [Inscripción a suscripción](#inscripción-a-suscripción)
- - [Modificación de suscripción](#modificación-de-suscripción)
- - [Reproducir contenido](#reproducir-contenido)
- - [Seguir artista](#seguir-artista)
- - [Contenidos favoritos](#contenidos-favoritos)
+ - [Guía de viaje](#guía-de-viaje)
+ - [Aviso de fin](#aviso-de-fin)
+ - [Denuncia de chofer](#denuncia-de-chofer)
+ - [Cancelación de viaje](#cancelación-de-viaje)
 
-<!-- Artista -->
+#### Pago de viaje y wallets
 
-#### Artista
-
-Como artista quiero poder subir nuevas canciones y álbumes para que se puedan escuchar dentro de la plataforma
+Como pasajero quiero poder realizar el pago una vez finalizado el viaje. Como chofer quiero poder recibir el pago de los servicios prestados
 
 Historias de usuario relacionadas:
- - [Creación de canción](#creación-de-canción)
- - [Creación de album](#creación-de-album)
- - [Edición de album](#edición-de-album)
- - [Listado de álbumes](#listado-de-álbumes)
- - [Transmisión en directo](#transmisión-en-directo)
- - [Métricas del artista](#métricas-del-artista)
- - [Certificado de artista reconocido](#certificado-de-artista-reconocido)
-
-
- <!-- Playlist -->
-
-#### Playlist
-
-Como listener quiero poder usar playlists para agrupar canciones que me gusten.
-
- - [Crear playlist](#crear-playlist)
- - [Editar playlist](#editar-playlist)
- - [Playlist colaborativa](#playlist-colaborativa)
- - [Compartir playlist](#compartir-playlist)
-
-
-<!-- Mensajes TODO-->
-
-#### Mensajes
-
-Como listener quiero poder enviar mensajes 
+ - [Carga de fondos](#carga-de-fondos)
+ - [Ejecución de pago](#ejecución-de-pago)
+ - [Retiro de fondos](#retiro-de-fondos)
+ - [Utilización de stablecoin](#utilización-de-stablecoin)
  
+
+#### Servicio VIP
+
+Como pasajero/chofer quiero tener un servicio VIP disponibilizado en la app para poder viajar mejor/cobrar mas por mis viajes
+
 Historias de usuario relacionadas:
- - [Comentar un album](#comentar-un-album)
- - [Remover comentarios de un album](#remover-comentarios-de-un-album)
- - [Mensajes privados](#mensajes-privados)
- 
+ - [Suscripción a servicio vip como pasajero](#suscripción-a-servicio-vip-como-pasajero)
+ - [Suscripción a servicio vip como chofer](#suscripción-a-servicio-vip-como-chofer)
+
  <!-- Calificaciones -->
 
 
 #### Calificaciones
 
-Como listener quiero poder calificar los albumes que existen en la plataforma.
+Como pasajero/chofer quiero poder calificar a los choferes/pasajeros
 
 Historias de usuario relacionadas:
- - [Calificación cuantitativa de un album](#calificación-cuantitativa-de-una-album)
- - [Calificación cualitativa de un album](#calificación-cualitativa-de-una-album)
-
-<!-- Cobros y pagos -->
-
-#### Cobros y pagos
-
-Como usuario quiero poder tener una billetera virtual en la plataforma para poder hacer pagos, retirar y depositar.
-
-Historias de usuario relacionadas:
- - [Pagos de suscripción](#pago-de-suscripción)
- - [Aporte para artista](#aporte-para-artista)
- - [Retiro de fondos](#retiro-de-fondos)
- - [Utilización de stablecoin](#utilización-de-stablecoin)
- 
-<!-- Notificaciones TODO-->
+ - [Calificación cualitativa de un chofer](#calificación-cualitativa-de-un-chofer)
+ - [Calificación cuantitativa de un chofer  ](#calificación-cuantitativa-de-un-chofer)
+ - [Calificación cuantitativa de un pasajero  ](#calificación-cuantitativa-de-un-pasajero)
+ - [Calificación cualitativa de un pasajero ](#calificación-cualitativa-de-un-pasajero)
 
 #### Notificaciones
 
-Como usuario quiero recibir notificaciones al dispositivo que utilizo para informarme sobre actividades en la plataforma
+Como usuario quiero recibir notificaciones ante eventos importantes
 
 Historias de usuario relacionadas:
- - [Notificación por nuevo mensaje](#notificación-por-nuevo-mensaje)
- - [Notificación por nueva canción de artista](#notificación-por-nueva-canción-de-artista)
- - [Notificación por transmisión en directo](#notificación-por-transmisión-en-directo)
- - [Notificación por hito de seguidores](#notificación-por-hito-de-seguidores)
- 
+ - [Notificación por recibo de pago](#notificación-por-recibo-de-pago)
+ - [Notificación por chofer asignado](#notificación-por-chofer-asignado)
+ - [Notificación por mensaje recibido](#notificación-por-mensaje-recibido)
+ - [Notificación por posible viaje](#notificación-por-posible-viaje)
+
 
 <!-- Administración de usuarios TODO -->
 
@@ -203,20 +172,11 @@ Como administrador del sistema quiero poder gestionar los usuarios que están re
 Historias de usuario relacionadas:
  - [Listar usuarios del sistema](#listar-usuarios-del-sistema)
  - [Visualizar perfil de usuario](#visualizar-perfil-de-usuario)
+ - [Visualizar métricas de usuario](#visualizar-métricas-de-usuario) 
+ <!-- La anterior se refiere a viajes cancelados/viajes realizados/calificaciones/etc especificas del usuario -->
  - [Bloquear usuario](#bloquear-usuario)
  - [Listar transacciones](#listar-transacciones)
  - [Carga de saldo](#carga-de-saldo)
-
-<!-- Administración de contenido TODO -->
-
-#### Administración de contenido
-
-Como administrador del sistema quiero poder gestionar el contenido que se encuentran en el mismo para administrar su uso
-
-Historias de usuario relacionadas:
- - [Listado de contenido](#listado-de-contenido)
- - [Visualización de contenido](#visualización-de-contenido)
- - [Bloqueo de contenido](#bloquear-contenido)
 
 
 <!-- Administración de servicios TODO -->
@@ -226,10 +186,11 @@ Historias de usuario relacionadas:
 Como administrador del sistema quiero poder gestionar los servicios que se encuentran en el mismo para administrar su uso
 
 Historias de usuario relacionadas:
+ - [Modificación de reglas de cotización](#modificación-de-reglas-de-cotización)
  - [Listado de servicios](#listado-de-servicios)
  - [Visualización de servicio](#visualización-de-servicio)
  - [Alta de servicio](#alta-de-servicio)
- - [Bloqueo de servicio](#bloquear-de-servicio)
+ - [Bloqueo de servicio](#bloqueo-de-servicio)
 
 <!-- Métricas TODO -->
 
@@ -239,7 +200,7 @@ Como administrador del sistema quiero poder visualizar métricas e información 
 
 Historias de usuario relacionadas:
 - [Métricas de usuarios](#métricas-de-usuarios)
-- [Métricas de contenido](#métricas-de-contenido)
+- [Métricas de viajes](#métricas-de-viajes)
 - [Métricas de transacciones](#métricas-de-transacciones)
 
 
@@ -257,9 +218,9 @@ ___
 
 - Como usuario no registrado quiero registrarme en la plataforma para acceder a las funcionalidades del sistema. El usuario podrá utilizar los distintos perfiles en la cuenta, donde ambos perfiles no son excluyentes: 
 
-- Listener: Es el usuario que consume el contenido por medio de la aplicación y accede a las distintas funcionalidades generales de la misma. Ademas es quien realiza el pago por una suscripción
+- Pasajero: Es el usuario que solicita el viaje por medio de la aplicación y accede a las distintas funcionalidades generales de la misma. Ademas es quien realiza el pago por el viaje realizado
 
-- Artista: Es el usuario que genera contenido en la plataforma. Una característica fundamental que lo distingue, es que puede recibir pagos de sus seguidores 
+- Chofer: Es el usuario que acepta y realiza los viajes . También es quien cobra por estos viajes realizados.
 
 _En el resto de los CA se utilizará la nomenclatura Usuario como un usuario registrado_
 
@@ -268,12 +229,12 @@ _En el resto de los CA se utilizará la nomenclatura Usuario como un usuario reg
 - CA 1: Registro exitoso
   - Cuando el registro del usuario es correcto.
   - Entonces el sistema creará un nuevo usuario con su perfil y billetera correspondiente. Luego permitirá el ingreso al sistema.
-- CA 2: Obtención de ubicación (Para listeners)
+- CA 2: Obtención de ubicación 
   - Cuando el registro del usuario es correcto.
   - Entonces el sistema deberá solicitarle al usuario una ubicación predeterminada
-- CA 3: Obtención de perfil (Para listeners)
-  - Cuando el registro del usuario es correcto.materia
-  - Entonces el sistema deberá solicitarle al usuario cuales son sus intereses musicales. 
+- CA 3: Obtención de perfil (Para choferes)
+  - Cuando el registro del usuario es correcto.
+  - Entonces el sistema deberá solicitarle al usuario datos sobre su persona y el vehículo que utilizara. 
 - CA 4: Falta uno o más campos obligatorios
   - Cuando el registro del usuario es incorrecto debido a un ingreso erróneo o faltante de campos. 
   - Entonces el sistema indicará los campos faltantes y/o erróneos y no permitirá el ingreso al sistema.
@@ -386,6 +347,7 @@ ___
 **Descripción**
 
 - Como administrador quiero poder dar de alta a otros administradores en la plataforma para acceder a las funcionalidades del sistema.
+
 **Criterios de aceptación**
 
 - CA 1: Registro exitoso
@@ -420,8 +382,6 @@ ___
 
 <!-- Perfil -->
 
-___
-
 #### Edición de perfil
 
 **Descripción**
@@ -434,7 +394,6 @@ ___
   - Cuando se modifican los datos de la cuenta del Usuario de manera exitosa
   - Entonces estos nuevos datos serán los que se utilicen como datos de perfil de usuario
   - En caso contrario se deberá mostrar un mensaje de error acorde al usuario.
-
 
 ___
 
@@ -466,7 +425,6 @@ ___
   - Cuando se visualice el perfil de un usuario que no es propietario de la cuenta
   - Entonces estos se visualizarán datos públicos del usuario
 
-<!-- Búsquedas -->  
 ___
 
 
@@ -474,516 +432,255 @@ ___
 
 **Descripción**
 
-- Como listener quiero poder realizar ingresar a la una pantalla principal que me provea acceso a distintos contenidos de utilidad
+- Como usuario quiero poder realizar ingresar a la una pantalla principal que me provea acceso a distintos contenidos de utilidad
 
 **Criterios de aceptación**
+
 - CA 1: Home 
-  - Cuando se accede la pantalla principal de la aplicacion
-  - Entonces se deberán retornar las canciones, playlists y álbumes que sean de relevancia.
+  - Cuando se accede la pantalla principal de la aplicación
+  - Entonces se deberá retornar información de relevancia a mi actividad reciente
 - CA 2: Error al cargar
-  - Cuando se accede la pantalla principal de la aplicacion y ocurre un error
+  - Cuando se accede la pantalla principal de la aplicación y ocurre un error
   - Entonces se deberá notificar al usuario que ha sucedido un error
 
 ___
 
 
-#### Búsqueda de canción o álbum por género
+#### Búsqueda de destino por dirección
 
 **Descripción**
 
-- Como listener quiero poder realizar búsquedas de canciones o álbumes por su género para visualizar su información y así poder reproducirlas
+- Como pasajero quiero poder realizar búsquedas de destinos utilizando la dirección del mismo y así poder iniciar el proceso de viaje
 
 **Criterios de aceptación**
-- CA 1: Filtrado por género
-  - Cuando se realiza una búsqueda utilizando un filtrado por género
-  - Entonces se deberán retornar las canciones y álbumes que cumplan dichos filtros.
+
+- CA 1: Búsqueda con resultados
+  - Cuando se realiza una búsqueda de un destino con una dirección válida
+  - Entonces se deberá retornar el resultado adecuado.
 - CA 2: Búsqueda sin resultados
-  - Cuando se realiza una búsqueda utilizando un filtrado y no existe contenido que cumpla tal condición
+  - Cuando se realiza una búsqueda utilizando una dirección que no que cumpla tal condición
   - Entonces se deberá notificar al usuario que no existen resultados para su búsqueda.
 
 ___
 
-#### Búsqueda de canción o álbum por suscripción
+#### Búsqueda de destino por nombre
 
 **Descripción**
 
-- Como listener quiero poder realizar búsquedas de canciones o álbumes por tipo de suscripción para visualizar su información y así poder reproducirlas
-
-
-**Criterios de aceptación**
-- CA 1: Filtrado por  suscripción
-  - Cuando se realiza una búsqueda utilizando como filtro el tipo de suscripción de una canción o álbum 
-  - Entonces se deberán retornar las canciones y álbumes que se encuentren en dicha suscripción.
-- CA 2: Búsqueda sin resultados
-  - Cuando se realiza una búsqueda utilizando un filtrado y no existe contenido que cumplan tal condición
-  - Entonces se deberá notificar al usuario que no existen resultados para su búsqueda.
-
-
-___
-
-#### Búsqueda de canción o álbum por artista
-
-**Descripción**
-
-- Como listener quiero poder realizar búsquedas de canciones o álbumes por artista para visualizar su información y así poder reproducirlas
+- Como pasajero quiero poder realizar búsquedas de destinos utilizando un nombre previamente agendado y así poder iniciar el proceso de viaje
 
 **Criterios de aceptación**
-- CA 1: Filtrado por artista
-  - Cuando se realiza una búsqueda utilizando como filtro el artista de una canción o álbum 
-  - Entonces se deberán retornar las canciones y álbumes que pertenezcan a tal artista.
+- CA 1: Búsqueda con resultados
+  - Cuando se realiza una búsqueda de un destino con un nombre agendado
+  - Entonces se deberá retornar el resultado adecuado.
 - CA 2: Búsqueda sin resultados
-  - Cuando se realiza una búsqueda utilizando un filtrado y no existe contenido que cumplan tal condición
+  - Cuando se realiza una búsqueda utilizando un nombre que no  que cumpla tal condición
   - Entonces se deberá notificar al usuario que no existen resultados para su búsqueda.
 
 ___
 
-#### Recomendación de canciones
+#### Cotización del viaje
 
 **Descripción**
 
-- Como listener quiero poder recibir recomendaciones de canciones basadas en mis intereses y disponibles según mi ubicación geográfica.
+- Como pasajero quiero poder saber previamente cual es el precio estimado del viaje a realizar, sabiendo el destino seleccionado y la modalidad de viaje. 
 
 **Criterios de aceptación**
-- CA 1: Recomendación por zona geográfica
-  - Se requiere brindar un servicio en el que dado una serie de reglas definidas por los administradores, deberán definir si las canciones que se encuentren en dicha región están disponibles o no
-- CA 2: Recomendación por intereses
-  - Se requiere recibir recomendaciones de canciones según mis intereses definidos al momento de registrarse y la interacción con la plataforma
-
-<!-- Listener -->
-
+- CA 1: Cotización de un viaje 
+  - Cuando se dispone de un destino seleccionado y un modo de viaje 
+  - Entonces se deberá retornar el precio correspondiente a este viaje, utilizando el servicio de cotización de viajes.
 
 ___
 
-#### Inscripción a suscripción
+#### Confirmación de viaje
 
 **Descripción**
 
-- Como listener quiero poder seleccionar un tipo de suscripción para así poder acceder a contenido exclusivo.
+- Como pasajero quiero poder confirmar la realización del viaje
 
 **Criterios de aceptación**
+- CA 1: Confirmación del viaje 
+  - Cuando se realiza la confirmación del viaje
+  - Entonces se deberá iniciar la solicitud de búsqueda de chofer para iniciar el viaje correspondiente
 
-- CA 1: Solicitud de inscripción
-  - Cuando se solicita una inscribirse a un tipo de suscripción
-  - Entonces se deberá indicar al usuario cuales son las condiciones de esta suscripción.
-  - En caso de que no desee ninguna suscripción se le asignara una por defecto
-
-- CA 2: Inscripción exitosa
-  - Cuando se aceptan las condiciones para la inscripción a la suscripción. 
-  - Entonces se deberá ejecutar el flujo correspondiente para establecer dicha suscripción.
-  - Dicho flujo deberá contemplar el pago automático por única vez, al momento de realizar esta suscripción.
-
-- CA 3: Inscripción fallida
-- Cuando se rechacen las condiciones para la inscripción a la suscripción o el sistema rechaza su inscripción. 
-- Entonces no se deberá el flujo de alta de suscripción
-
+- CA 2: Rechazo del viaje 
+  - Cuando se realiza el rechazo del viaje
+  - Entonces se deberá informar que el usuario rechazo el viaje y se cancelará todo el proceso.
 
 ___
 
-#### Modificación de suscripción
+#### Aceptar rechazar un viaje
 
 **Descripción**
 
-- Como usuario quiero poder modificar el tipo de suscripción en el momento que yo desee
+- Como chofer quiero poder aceptar o rechazar la realización de un viaje  
 
 **Criterios de aceptación**
+- CA 1: Aceptación de un viaje 
+  - Cuando el chofer es informado sobre las condiciones de un viaje (monto a cobrar, destino, tiempo estimado) y se realiza la aceptación del mismo
+  - Entonces se deberá iniciar el proceso de viaje en curso, en donde se le notificará al pasajero que el chofer esta en camino y se visualizara la pantalla de espera.
 
-- CA 1: Solicitud de modificación
-  - Cuando se solicita una Modificación a una suscripción
-  - Entonces se deberá indicar al usuario cuales son las condiciones de esta modificación.
-
-- CA 2: Modificación exitosa
-  - Cuando se aceptan las condiciones para la modificación a la suscripción. 
-  - Entonces se deberá ejecutar el flujo correspondiente para establecer dicha modificación.
-
-- CA 3: Modificación fallida
-- Cuando se rechacen las condiciones para la modificación de la suscripción o el sistema rechaza esta. 
-- Entonces no se deberá el flujo de modificación de suscripción
-
+- CA 2: Rechazo del viaje 
+  - Cuando se realiza el rechazo de un  viaje
+  - Entonces se deberá informar que el usuario rechazo el viaje y se cancelará todo el proceso.
 
 ___
 
-
-#### Reproducir contenido
+#### Inicio del viaje
 
 **Descripción**
 
-- Como listener quiero poder reproducir mis canciones, álbumes y playlist en mi celular.
+- Como usuario quiero iniciar un viaje tanto sea en condición de pasajero como de chofer
 
 **Criterios de aceptación**
 
-- CA 1: Reproducción de canción
-  - Cuando se encuentra en la pantalla de reproducción de canción
-  - Entonces se deberá acceder a las funciones de reproducción básicas (Ex:Play, pause, stop, next, back, volumen +/-) para poder interactuar con dicha canción. Ademas se deberá visualizar información relacionada, tal como nombre, duración, autor, album, etc.
+- CA 1: Chofer en destino
+  - Cuando el chofer es se encuentre en la ubicación de origen del pasajero
+  - Entonces se le informará que el chofer ya se encuentra esperando y se habilitará el inicio del viaje
 
-
-- CA 2: Reproducción de album
-  - Cuando se encuentra en la pantalla de reproducción de un album
-  - Entonces se deberá acceder a las funciones de reproducción básicas (Ex:Play, pause, stop, next, back, volumen +/-) para poder interactuar con las canciones del mismo. Ademas se deberá visualizar información relacionada, tal como nombre, duración, autor, canciones, etc.
-
-- CA 3: Reproducción de playlist
-  - Cuando se encuentra en la pantalla de reproducción de un album
-  - Entonces se deberá acceder a las funciones de reproducción básicas (Ex:Play, pause, stop, next, back, volumen +/-) para poder interactuar con las canciones del mismo. Ademas se deberá visualizar información relacionada, tal como nombre, duración, autor, canciones, etc.
+- CA 2: Viaje iniciado
+  - Cuando se inicie el viaje
+  - Entonces se deberá informarle al usuario el tiempo transcurrido ademas de mostrar la ubicación en tiempo real del auto y el recorrido a realizar
 
 ___
 
-#### Seguir artista
+#### Pantalla de espera
 
 **Descripción**
 
-- Como listener quiero poder seguir a mis artistas preferidos
+- Como usuario quiero estar informado del estado del viaje la espera del chofer previo al inicio del viaje
 
 **Criterios de aceptación**
 
-- CA 1: Comenzar a seguir un artista
-  - Cuando realiza click sobre el botón 'Seguir'
-  - Entonces se deberá agregar al artista al listado de artistas seguidos
-
-
-- CA 2: Dejar de seguir un artista
-  - Cuando realiza click sobre el botón 'Dejar de Seguir'
-  - Entonces se deberá quitar al artista al listado de artistas seguidos
-
-- CA 3: Listado de artistas seguidos
-  - Cuando se ingrese a la pantalla de artistas seguidos
-  - Entonces se deberá listar el total de los artistas que el usuario sigue.
+- CA 1: Chofer en destino
+  - Cuando el chofer es se encuentre en viaje a la dirección de origen del pasajero
+  - Entonces se le informará al usuario el recorrido en tiempo real del chofer
 
 ___
 
-
-#### Contenidos favoritos
+#### Mensajería instantánea
 
 **Descripción**
 
-- Como listener quiero poder guardar mis contenidos preferidos para acceder de una manera mas simple a estos
-
-**Criterios de aceptación**
-
-- CA 1: Agregar contenido a favoritos
-  - Cuando realiza click sobre el botón 'Favoritos' en una canción, album o playlist.
-  - Entonces se deberá agregar dicho contenido al listado de contenidos favoritos
-
-
-- CA 2: Quitar contenido de favoritos
-  - Cuando realiza click sobre el botón 'Quitar de Favoritos' en una canción, album o playlist.
-  - Entonces se deberá quitar dicho contenido al listado de contenidos favoritos
-
-
-- CA 3: Listado de contenidos favoritos
-  - Cuando se ingrese a la pantalla de contenidos favoritos
-  - Entonces se deberá listar el total de los contenidos favoritos del usuario.
-
-
-<!-- Artista -->
-
-___
-
-#### Creación de canción
-
-**Descripción**
-- Como artista quiero poder crear una canción para luego asociarla a un album
-
-**Criterios de aceptación**
-- CA 1: Creación exitosa
-  - Cuando un artista realice una nueva canción. Se solicitarán datos como:
-  
-    - Titulo: Titulo principal del canción
-    - Descripción: Descripción del canción
-    - Autor/Autores: Personas que hayan trabajado en la creación de esta canción.
-    - Archivo: Archivo en formato digital que será utilizado luego para escuchar dicha canción.
-
-  - Entonces este canción podrá ser asociada a un album. 
-- CA 2: Creación fallida
-  - Cuando un artista realice una canción con información faltante y/o erronea.
-  - Entonces el sistema deberá informarle que no es una operación permitida.
-
-
-___
-
-#### Creación de album
-
-**Descripción**
-- Como artista quiero poder crear un album para que los listeners puedan escucharlo y poder obtener o no ganancias por esto.
-
-**Criterios de aceptación**
-- CA 1: Creación exitosa
-  - Cuando un artista realice un nuevo album. Se solicitarán datos como:
-  
-    - Titulo: Titulo principal del album
-    - Descripción: Descripción del album
-    - Genero de album: Se deberá elegir un tipo de genero dentro de los permitidos por la plataforma 
-    - Fotos y/o videos: Material multimedia que acompañe como portada
-    - Suscripción: Tipo de suscripción asociada
-    - Canciones: Canciones asociadas al album
-    - Otros .
-
-  - Entonces este album podrá ser visualizado y realizado por los listeners. 
-- CA 2: Creación fallida
-  - Cuando un artista realice un nuevo album con información faltante y/o errónea.
-  - Entonces el sistema deberá informarle que no es una operación permitida.
-
-
-___
-
-#### Edición de album
-
-**Descripción**
-- Como artista quiero poder modificar un album para actualizar su contenido
-
-**Criterios de aceptación**
-- CA 1: Edición de datos exitosa
-  - Cuando un artista realice la edición de datos editables (Imágenes, título, descripción, etc)
-  - Entonces al confirmar los nuevos cambios, estos se verán reflejados en el album.
-- CA 2: Edición de datos fallida
-  - Cuando un artista realice la edición de datos con datos erróneos y/o inválidos.
-  - Entonces el sistema deberá informarle que no es una operación permitida.
-
-
-___
-
-#### Listado de álbumes
-
-**Descripción**
-- Como artista quiero poder listar mis álbumes realizados para administrarlos
-
-**Criterios de aceptación**
-- CA 1: Usuario con álbumes
-  - Cuando un artista ingrese a "Mis álbumes"
-  - Entonces podrá visualizar todos sus álbumes creados
-- CA 2: Usuario sin álbumes
-  - Cuando un artista ingrese a "Mis álbumes"
-  - Entonces tendrá una pantalla vacía
-
-
-
-___
-
-
-#### Transmisión en directo
-
-**Descripción**
-- Como artista quiero poder realizar transmisiones en directo para que mis oyentes puedan acceder a este contenido inédito en vivo.
-
-**Criterios de aceptación**
-
-- CA 1: Realización de transmisión en directo
-  - Cuando un artista comience una transmisión en directo.
-  - Entonces todo usuario que este habilitado a acceder a dicho contenido, podrá realizarlo en tal momento.
-
-- CA 2: Guardado de transmisión en directo
-  - Cuando un artista indique se una transmisión en directo puede ser guardada.
-  - Entonces al finalizar, dicha transmisión deberá ser guardada en el dispositivo desde donde se realizó. 
-
-
-___
-
-
-#### Métricas de artista
-
-**Descripción**
-- Como artista quiero poder visualizar las métricas de un album para revisar su evolución.
-
-**Criterios de aceptación**
-- CA 1: Visualización de métricas album
-  - Cuando un artista ingrese a las métricas de un album.
-  - Entonces podrá visualizar información asociada al album como:
-    - Cantidad de reproducciones.
-    - Canción mas escuchada.
-    - Cantidad de favoritos.
-    - Etc.
-
-___
-
-
-#### Certificado de artista reconocido
-
-**Descripción**
-- Como artista quiero poder obtener un reconocimiento que indique que soy un artista reconocido por dicha plataforma, para poder avalar mi identidad en la misma.
-
-**Criterios de aceptación**
-
-- CA 1: Solicitud de artista reconocido
-  - Cuando un artista solicite a la plataforma ser reconocido como artista .
-  - Entonces deberá enviar un video que avale su identidad a los administradores de la misma.
-
-- CA 2: Aprobación como artista reconocido
-  - Cuando un artista obtenga el reconocimiento de su identidad por parte de los administradores de la plataforma.
-  - Entonces podrá indicar en su perfil que es un artista reconocido.
-
-___
-
-<!-- Playlist -->
-
-#### Crear playlist
-
-**Descripción**
-- Como usuario quiero poder crear una playlist para luego poder escucharla o compartirla con otros usuarios
-
-**Criterios de aceptación**
-- CA 1: Creación exitosa
-  - Cuando un usuario realice una nueva playlist. Se solicitarán datos como:
-  
-    - Titulo: Titulo principal del playlist
-    - Descripción: Descripción del playlist
-    - Canciones: Canciones que estén contenidas en la playlist.
-    - Colaborativa: Posibilidad de que la playlist sea modificada por otros usuarios
-
-  - Entonces este canción podrá ser asociada a un album. 
-- CA 2: Creación fallida
-  - Cuando un usuario realice una playlist con información faltante y/o erronea.
-  - Entonces el sistema deberá informarle que no es una operación permitida
-
-___
-
-#### Edición de playlist
-
-**Descripción**
-- Como usuario quiero poder modificar una playlist para actualizar su contenido
-
-**Criterios de aceptación**
-- CA 1: Edición de datos exitosa
-  - Cuando un usuario realice la modificación de datos editables (título, descripción, etc)
-  - Entonces al confirmar los nuevos cambios, estos se verán reflejados en la playlist.
-- CA 2: Edición de datos fallida
-  - Cuando un usuario realice la modificación de datos con datos erróneos y/o inválidos.
-  - Entonces el sistema deberá informarle que no es una operación permitida.
-
-
-___
-
-#### Playlist colaborativa
-
-**Descripción**
-- Como usuario quiero poder colaborar en una playlist para agregar nuevas canciones
-
-**Criterios de aceptación**
-- CA 1: Colaboración con nuevas canciones
-  - Cuando un usuario agregue una nueva canción a una playlist
-  - Entonces al confirmar los nuevos cambios, estos se verán reflejados en la playlist.
-
-
-___
-
-#### Compartir playlist
-
-**Descripción**
-- Como usuario quiero poder compartir una playlist para que otros puedan escucharla o colaborar con esta
-
-**Criterios de aceptación**
-- CA 1: Playlist compartida con éxito.
-  - Cuando un usuario realice comparta una playlist que se encuentra disponible
-  - Entonces otro usuario podrá reproducir o colaborar con la misma
-
-<!-- Comments-->
-
-
-
-___
-
-#### Comentar un album
-
-- Como listener quiero poder realizar comentarios en un album para demostrar públicamente lo que pienso del mismo
-
-**Criterios de aceptación**
-
-
-- CA 1: Comentario aceptado
-  - Cuando se realiza un comentario público en un album 
-  - Entonces todo aquel que entre a la sección de comentarios de un album podrán visualizarlo. 
-
-
-
-___
-
-#### Remover comentarios de un album
-
-- Como artista quiero poder remover comentarios en un album
-
-**Criterios de aceptación**
-
-
-- CA 1: Comentario removidos
-  - Cuando se selecciona remover comentarios público en un album 
-  - Entonces dicho comentario ya no será visualizado en la sección correspondiente
-
-
-___
-
-#### Mensajes privados
-- Como usuario quiero poder enviar mensajes privados a otro usuario de la plataforma
+- Como pasajero/chofer quiero poder enviar mensajes privados a otro chofer/pasajero de la plataforma durante un viaje iniciado
 
 **Criterios de aceptación**
 
 - CA 1: Mensaje directo
   - Cuando se realiza un mensaje directo
   - Entonces solo los involucrados podrán leer el mismo y se deberá mantener una conversación en tiempo real por mensajes
-
-
-<!-- Calificaciones-->
-
-
 ___
 
-#### Calificación cuantitativa de un album
 
-**Descripción**
-- Como listener quiero poder realizar una calificación cuantitativa de un album para así poder brindar mi opinión de este.
-
-**Criterios de aceptación**
-- CA 1: Calificación de album
-  - Cuando un listener realiza una calificación cuantitativa de un album. Por ejemplo, utilizando una escala del 1 al 5
-  - Entonces esta calificación afectará la calificación del album 
-
-___
-
-#### Calificación cualitativa de un album
-
-**Descripción**
-- Como listener quiero poder realizar una opinion mas detallada del album para así poder brindar mi opinión de este.
-
-**Criterios de aceptación**
-
-- CA 1: Calificación
-  - Cuando un listener realiza una calificación utilizando comentarios para un album.
-  - Entonces esta calificación luego podrá ser visualizada por otros usuarios.
-
- <!-- Cobros y pagos -->
-
-
-___
-
-#### Pago de suscripción
+#### Guía de viaje
 
 **Descripción**
 
-- Como listener quiero poder pagar la inscripción en alguna de las suscripciones disponibles para poder así acceder a los contenidos que esta habilite.
+- Como pasajero/chofer quiero poder visualizar el recorrido a realizar y conocer la posición actual.
 
 **Criterios de aceptación**
 
-- CA 1: Pago exitoso
-  - Cuando un pago se realiza de manera exitosa.
-  - Entonces se ejecutará el flujo correspondiente a un pago por una suscripción en el SC y deberá verse reflejado tanto en la wallet del usuario que paga como el que recibe
-- CA 2: Pago con error
-  - Cuando un pago NO se realiza de manera exitosa.
-  - Entonces NO se ejecutará el flujo correspondiente a un pago por una suscripción en el SC y deberá notificarse dicho error.
+- CA 1: Ubicación actual
+  - Cuando el viaje se ha iniciado y el vehículo se ha movido
+  - Entonces se actualiza la posición actual del vehículo con respecto al recorrido.
+___
+
+#### Aviso de fin
+
+**Descripción**
+
+- Como chofer quiero poder indicar que el viaje a finalizado
+
+**Criterios de aceptación**
+
+- CA 1: Finalización de viaje exitosa
+  - Cuando se el vehículo se encuentra en la dirección de destino
+  - Entonces el chofer podrá indicar que el viaje a finalizado y se realizará el cobro al pasajero.
+
+- CA 2: Finalización de viaje fallida
+  - Cuando se el vehículo aún no se encuentra en la dirección de destino
+  - Entonces el chofer no podrá indicar que el viaje a finalizado.
+___
+
+#### Denuncia de chofer
+
+**Descripción**
+
+- Como pasajero quiero poder denunciar a un chofer durante un viaje si su conducta me parece incorrecta
+
+**Criterios de aceptación**
+
+- CA 1: Mensaje directo
+  - Cuando se realiza un mensaje directo
+  - Entonces solo los involucrados podrán leer el mismo y se deberá mantener una conversación en tiempo real por mensajes
+___
+
+#### Cancelación de viaje
+
+**Descripción**
+
+- Como pasajero/chofer quiero poder cancelar un viaje.
+
+**Criterios de aceptación**
+
+- CA 1: Cancelacíon chofer/pasajero viaje no iniciado
+  - Cuando el viaje no ha iniciado y es cancelado por el chofer/pasajero
+  - Entonces se notificará al pasajero/chofer que el mismo fue cancelado
+  - Y se cobrará el valor del viaje a favor del pasajero/chofer.
+
+- CA 2: Cancelacíon pasajero viaje iniciado
+  - Cuando el viaje a iniciado y el pasajero decide cancelar el viaje
+  - Entonces se cobrará al pasajero el valor del viaje hasta la ubicación actual al momento de
+    cancelar aplicando las reglas de cotización correspondientes.
+
+- CA 3: Cancelacíon chofer viaje iniciado
+  - Cuando el viaje a iniciado y el chofer decide cancelar el viaje
+  - Entonces se reembolsará al pasajero el valor total viaje.
+
+___
 
 
+#### Carga de fondos
+
+**Descripción**
+
+- Como pasajero quiero poder ingresar fondos en mi wallet para así poder utilizarlos en mis futuros viajes.
+
+**Criterios de aceptación**
+
+- CA 1: Carga exitosa
+  - Cuando se realiza una carga de fondos de manera exitosa
+  - Entonces se verá reflejado en la wallet del usuario el nuevo monto correspondiente.
+___
+
+#### Ejecución de pago
+
+**Descripción**
+
+- Como pasajero quiero realizar el pago correspondiente del viaje recientemente finalizado
+
+**Criterios de aceptación**
+
+- CA 1: Ejecución de pago exitosa
+  - Cuando se un viaje finaliza de manera exitosa
+  - Entonces se le descontará el monto correspondiente a la billetera del pasajero y luego se hará un deposito a la cuenta del chofer. **Se debe tener en cuenta que a este deposito se le descontará la comisión de la plataforma.**
 ___
 
 #### Retiro de fondos
 
 **Descripción**
 
-- Como artista quiero extraer los fondos que fueron recolectados de las reproduccipnes y los aportes de los listeners.
+- Como chofer quiero extraer los fondos que fueron recolectados de los pagos de viajes realizados.
+
 **Criterios de aceptación**
 
 - CA 1: Retiro de fondos exitoso
-  - Cuando un artista solicita un retiro de fondos y se cumplen las regla de negocio pautadas.
-  - Entonces se podrá realizar el retiro de fondos a la wallet indicada por el artista.
+  - Cuando un chofer solicita un retiro de fondos y se cumplen las regla de negocio pautadas.
+  - Entonces se podrá realizar el retiro de fondos a la wallet indicada por el chofer.
 
 - CA 2: Retiro de fondos fallido
-  - Cuando un artista solicita un retiro de fondos del contenido y aún no se cumplen las regla de negocio pautadas.
+  - Cuando un chofer solicita un retiro de fondos y aún no se cumplen las regla de negocio pautadas.
   - Entonces NO se podrá realizar el retiro de fondos
-
 
 ___
 
@@ -992,6 +689,7 @@ ___
 **Descripción**
 
 - Como usuario del sistema quiero que el sistema acepte una stablecoin como método de intercambio de valor para no preocuparme por la volatilidad del ETH
+
 **Criterios de aceptación**
 
 - CA 1: Retiro de fondos
@@ -1003,16 +701,115 @@ ___
   - Entonces el pago se ejecuta a traves de una stablecoin
 
 - CA 1: Carga de saldo
-  - Cuando un administrador enviá saldo a una usuario a traves del sistema
+  - Cuando un administrador envía saldo a una usuario a traves del sistema
   - Entonces el pago se ejecuta a traves de una stablecoin
-
-
-
- <!-- Notificaciones -->
 
 ___
 
-#### Notificación por nuevo mensaje
+#### Suscripción a servicio vip como pasajero
+
+**Descripción**
+- Como pasajero quiero poder suscribirme a un servicio VIP para poder tener mejor confort en mis viajes.
+
+**Criterios de aceptación**
+- CA 1: Suscripción exitosa
+  - Cuando un pasajero se inscribe de manera exitosa al servicio VIP
+  - Entonces la plataforma le realizará el cobro correspondiente a este servicio y a partir de ese momento el pasajero puede solicitar viajes en modalidad VIP.
+
+___
+ 
+#### Suscripción a servicio vip como chofer
+
+**Descripción**
+- Como chofer quiero poder suscribirme a un servicio VIP para poder brindar mis servicios en este tipo de viajes.
+
+**Criterios de aceptación**
+- CA 1: Suscripción exitosa
+  - Cuando un chofer se inscribe de manera exitosa al servicio VIP
+  - Entonces la plataforma le realizará el cobro correspondiente por brindar este servicio y a partir de ese momento el chofer puede realizar viajes en modalidad VIP.
+___
+
+
+#### Calificación cuantitativa de un chofer
+
+**Descripción**
+- Como pasajero quiero poder realizar una calificación cuantitativa de un chofer para así poder brindar mi opinión de este.
+
+**Criterios de aceptación**
+- CA 1: Calificación de chofer
+  - Cuando un pasajero realiza una calificación cuantitativa de un chofer. Por ejemplo, utilizando una escala del 1 al 5
+  - Entonces esta calificación afectará la calificación del chofer 
+
+___
+
+#### Calificación cualitativa de un chofer
+
+**Descripción**
+- Como pasajero quiero poder realizar una opinion mas detallada del chofer para así poder brindar mi opinión de este.
+
+**Criterios de aceptación**
+
+- CA 1: Calificación
+  - Cuando un pasajero realiza una calificación utilizando comentarios para un chofer.
+  - Entonces esta calificación luego podrá ser visualizada por otros usuarios.
+
+___
+
+
+#### Calificación cuantitativa de un pasajero
+
+**Descripción**
+- Como chofer quiero poder realizar una calificación cuantitativa de un pasajero para así poder brindar mi opinión de este.
+
+**Criterios de aceptación**
+- CA 1: Calificación de pasajero
+  - Cuando un pasajero realiza una calificación cuantitativa de un pasajero. Por ejemplo, utilizando una escala del 1 al 5
+  - Entonces esta calificación afectará la calificación del pasajero 
+___
+
+#### Calificación cualitativa de un pasajero
+
+**Descripción**
+- Como chofer quiero poder realizar una opinion mas detallada del pasajero para así poder brindar mi opinión de este.
+
+**Criterios de aceptación**
+
+- CA 1: Calificación
+  - Cuando un pasajero realiza una calificación utilizando comentarios para un chofer.
+  - Entonces esta calificación luego podrá ser visualizada por otros usuarios.
+
+___
+
+#### Notificación por recibo de pago
+
+**Descripción**
+- Como chofer quiero poder recibir una notificación en caso de recibir un nuevo pago
+
+**Criterios de aceptación**
+- CA 1: Pantalla de notificaciones
+  - Cuando un chofer recibe un nuevo pago
+  - Entonces deberá poder visualizar una notificación en la aplicación para acceder a la información del mismo. 
+- CA 2: Notificación push.
+  - Cuando un chofer recibe un nuevo pago 
+  - Entonces deberá recibir notificación push en la aplicación para acceder a la información del mismo.
+___
+
+
+#### Notificación por chofer asignado
+
+**Descripción**
+- Como pasajero quiero poder recibir una notificación en caso de que mi viaje ya posea un chofer asignado
+
+**Criterios de aceptación**
+- CA 1: Pantalla de notificaciones
+  - Cuando un pasajero tiene un viaje iniciado y este ya posee un chofer asignado
+  - Entonces deberá poder visualizar una notificación en la aplicación para acceder a la información del mismo. 
+- CA 2: Notificación push.
+  - Cuando un pasajero tiene un viaje iniciado y este ya posee un chofer asignado
+  - Entonces deberá recibir notificación push en la aplicación para acceder a la información del mismo.
+___
+
+#### Notificación por mensaje recibido
 
 **Descripción**
 - Como usuario quiero poder recibir una notificación en caso de recibir un nuevo mensaje
@@ -1028,58 +825,18 @@ ___
 ___
 
 
-#### Notificación por nueva canción de artista
+#### Notificación por posible viaje
 
 **Descripción**
-- Como listener quiero poder recibir una notificación en caso de existir novedades exclusivas de mis artistas favoritos
+- Como chofer quiero poder recibir una notificación en caso de recibir una nueva propuesta de viaje
 
 **Criterios de aceptación**
 - CA 1: Pantalla de notificaciones
-  - Cuando un listener esta suscripto en una categoría exclusiva 
-  - Entonces deberá poder visualizar una notificación en la aplicación para acceder a dicho mensaje 
+  - Cuando un chofer recibe una nueva propuesta de viaje
+  - Entonces deberá poder visualizar una notificación en la aplicación para acceder a la información del mismo. 
 - CA 2: Notificación push.
-  - Cuando un usuario tiene un contenido asociado y este tiene un cambio en su estado. y tenga habilitado el envió de notificaciones
-  - Entonces deberá recibir notificación push en la aplicación para acceder a dicho mensaje
-
-
-
-___
-
-#### Notificación por transmisión en directo
-
-**Descripción**
-- Como usuario quiero poder recibir una notificación en caso existir una transmisión en directo
-
-**Criterios de aceptación**
-- CA 1: Pantalla de notificaciones
-  - Cuando un artista realiza una transmisión en directo.
-  - Entonces todo listener que cumpla con las condiciones de negocio deberá poder visualizar una notificación en la aplicación para acceder a dicho mensaje 
-- CA 2: Notificación push.
-  - Cuando un artista realiza una transmisión en directo.
-  - Entonces todo listener que cumpla con las condiciones de negocio deberá recibir notificación push en la aplicación para acceder a dicho mensaje
-
-
-___
-
-#### Notificación por hito de seguidores
-
-**Descripción**
-
-- Como artista quiero poder recibir una notificación en caso que nuevos usuarios empiecen a seguir mi perfil
-
-
-**Criterios de aceptación**
-- CA 1: Pantalla de notificaciones
-  - Cuando un artista logra nuevos seguidores.
-  - Entonces deberá poder visualizar una notificación en la aplicación para acceder a dicho mensaje 
-- CA 2: Notificación push.
-  - Cuando un artista logra nuevos seguidores.
-  - Entonces deberá recibir notificación push en la aplicación para acceder a dicho mensaje
-
-
-<!-- Administración de usuarios -->
-
-
+  - Cuando un chofer recibe una nueva propuesta de viaje 
+  - Entonces deberá recibir notificación push en la aplicación para acceder a la información del mismo.
 ___
 
 #### Listar usuarios del sistema
@@ -1092,7 +849,6 @@ ___
   - Cuando un administrador del sistema ingrese a la sección de usuarios
   - Entonces se listaran todos los usuarios del sistema.
 
-
 ___
 
 #### Visualizar perfil de usuario
@@ -1104,7 +860,17 @@ ___
 - CA 1: Listado de usuarios del sistema
   - Cuando un administrador del sistema ingrese a la sección de usuarios
   - Entonces se listaran todos los usuarios del sistema.
+___
 
+#### Visualizar métricas de usuario
+
+**Descripción**
+- Como administrador del sistema quiero poder visualizar métricas de un usuario del sistema para verificar su comportamiento
+
+**Criterios de aceptación**
+- CA 1: Panel de métricas de un usuario
+  - Cuando un administrador del sistema ingrese a la sección de métricas de un usuario
+  - Entonces se visualizarán todos las métricas relevantes de un usuario del sistema. Por ejemplo, viajes realizados, viajes cancelados, calificaciones realizadas, etc.
 
 ___
 
@@ -1122,53 +888,7 @@ ___
     - Entonces se deberá visualizar que el usuario no esta bloqueado y el usuario deberá poder acceder a la plataforma
 
 
-<!-- Administración de contenidos -->
-
 ___
-
-#### Listado de contenidos
-
-**Descripción**
-- Como administrador del sistema quiero poder listar todas los contenidos que se encuentren en el sistema para acceder a ellos 
-
-**Criterios de aceptación**
-- CA 1: Listado con contenidos existentes
-  - Cuando un administrador solicita visualizar el listado de contenidos en la plataforma
-  - Entonces se deberán listar todos los contenidos existentes en el sistema
-- CA 2: Listado con contenidos existentes utilizando filtros
-  - Cuando un administrador solicita visualizar el listado de contenidos en la plataforma y aplica un filtrado 
-  - Entonces se deberán listar todos los contenidos existentes en el sistema que cumplan con dichos filtros
-
-
-___
-#### Visualización de contenidos
-
-**Descripción**
-- Como administrador del sistema quiero poder visualizar un contenido para verificar su contenido. 
-
-**Criterios de aceptación**
-- CA 1: Visualización de contenido 
-  - Cuando un administrador visualiza el un contenido existente en la plataforma
-  - Entonces se deberá poder visualizar todos sus datos asociados
-
-___
-#### Bloqueo de contenido
-
-**Descripción**
-- Como administrador del sistema quiero poder bloquear un contenido que se encuentren en el sistema para que no puedan acceder al mismo
-
-**Criterios de aceptación**
-- CA 1: Bloqueo exitoso 
-  - Cuando un administrador realiza el bloqueo de un contenido existente en la plataforma
-  - Entonces se deberá visualizar que el contenido está bloqueado y los usuarios no deberán poder acceder a él en la aplicación
-- CA 2: Desbloqueo exitoso 
-  - Cuando un administrador realiza el desbloqueo de un contenido existente en la plataforma
-  - Entonces se deberá visualizar que el contenido no esta bloqueado y los usuarios deberán poder acceder a el en la aplicación
- 
- 
-<!-- Administración de transacciones -->
- 
- ___
 
 #### Listar transacciones
 
@@ -1184,7 +904,6 @@ ___
   - Cuando un administrador solicita visualizar el listado de transacciones en la plataforma y aplica un filtrado 
   - Entonces se deberán listar todas las transacciones existentes en el sistema que cumplan con dichos filtros
 
-
 ___
 
 #### Carga de saldo
@@ -1198,7 +917,28 @@ ___
   - Cuando un administrador realiza una asignación de saldo en la billetera de un cliente
   - Entonces se deberá descontar este monto de la billetera asociada a la plataforma y se deberá adicionar tal monto en la billetera del cliente
 
-<!-- Administración de servicios -->
+___
+
+#### Modificación de reglas de cotización
+
+**Descripción**
+- Como administrador del sistema quiero poder tener flexibilidad a la hora de establecer los precios . Para esto se exige que el cálculo del precio sea realizado utilizando un sistema de reglas.
+
+El servidor deberá permitir la modificación y guardado de las mismas manteniendo un registro de cambios. Además, deberá permitir al usuario hacer pruebas con las reglas escritas previo a quedar efectivas en la cotización de los viajes.
+
+**Criterios de aceptación**
+- CA 1: Reglas a establecer
+  - Las reglas deben permitir el cálculo del precio del viaje utilizando, entre otras cosas, la siguientes variables:
+
+  * Características del conductor (viajes en el día, viajes en el mes, antigüedad)
+  * Características del pasajero (viajes en el día, viajes en el mes, antigüedad, saldo)
+  * Método de pago
+  * Características del viaje (duración, distancia, posición geográfica, fecha y hora)
+  * Cantidad de viajes que se realizaron en la última ventana temporal (Hora, 30 mins, 10 mins)
+  * Día y horario de la realización del viaje
+  * Tiempo de espera del pasajero para:
+    * Que un conductor le confirme el viaje
+    * Que el conductor llegue a buscarlo
 
 ___
 
@@ -1246,22 +986,20 @@ ___
 
 ___
 
-#### Bloqueo de servidor
+#### Bloqueo de servicio
 
 **Descripción**
 - Como administrador del sistema quiero poder bloquear un nuevo servicio para que no pueda acceder a los distintos servicios del sistema
 
 **Criterios de aceptación**
 
-- CA 1: Alta de Api Key
+- CA 1: Bloqueo de Api Key
   - Cuando un administrador bloquee un servicio.
   - Entonces se deberá bloquear su API key asociada y tal servicio no podrá comunicarse con sus pares.
 
-<!-- Métricas -->
-
 ___
 
-#### Métricas de usuario
+#### Métricas de usuarios
 
 **Descripción**
 - Como administrador del sistema quiero poder visualizar las métricas de usuarios para medir el uso de la plataforma y sus servicios
@@ -1276,17 +1014,16 @@ ___
 
 
 ___
-#### Métricas de contenidos
+
+#### Métricas de viajes
 
 **Descripción**
-- Como administrador del sistema quiero poder visualizar las métricas de contenidos para medir el uso de la plataforma y sus servicios
+- Como administrador del sistema quiero poder visualizar las métricas de viajes para medir el uso de la plataforma y sus servicios
 
 **Criterios de aceptación**
-- CA 1: Métricas de nuevos contenidos
-- CA 2: Métricas de contenidos por genero
-- CA 3: Métricas de contenidos por suscripciones
-- CA 4: Métricas de contenidos por usuario
-
+- CA 1: Métricas de nuevos viajes
+- CA 2: Métricas de duración de viajes
+- CA 3: Métricas de tipos de viaje 
 
 ___
 
@@ -1311,18 +1048,18 @@ La plataforma constará de los siguientes componentes:
 ### Aplicación mobile
 
 Una aplicación mobile, el cual será utilizado por los usuarios.
-_Las tecnologías a utilizar son detalladas en la sección [tecnologías](#tecnologias)_
+_Las tecnologías a utilizar son detalladas en la sección [tecnologías](#tecnologías)_
 
 ### Backoffice web
 
 Un backoffice web, el cual será utilizado por los administradores. 
 
-_Las tecnologías a utilizar son detalladas en la sección [tecnologías](#tecnologias)_
+_Las tecnologías a utilizar son detalladas en la sección [tecnologías](#tecnologías)_
 
 ### Servicios backend
 
 Distintos servicios de backend para brindar soporte a la plataforma. Como enfoque se recomienda orientar estos servicios hacia una arquitectura de [microservices](https://martinfowler.com/articles/microservices.html). Dicha arquitectura propuesta deberá ser convalidada junto al ayudante. 
-_Las tecnologías a utilizar son detalladas en la sección [tecnologías](#tecnologias)_
+_Las tecnologías a utilizar son detalladas en la sección [tecnologías](#tecnologías)_
 
 ### Smart contract
 La gestión de pagos de las transacciones se realizará utilizando un smart contract, el cual será provisto por la cátedra
@@ -1392,7 +1129,8 @@ ___
 Para el uso de notificaciones push se recomienda utilizar el servicio provisto por firebase [Cloud Messaging](https://firebase.google.com/docs/cloud-messaging?hl=es)
 
 
-##### Mensajeria whatsapp
+##### Mensajería whatsapp
+
 Para el uso de mensajería con whatsapp se recomienda utilizar el servicio provisto por [Twilio](https://www.twilio.com/quest/github-education)
 
 
@@ -1491,8 +1229,8 @@ Se deberá entregar la siguiente documentación:
    - Definición de arquitectura
    - Especificación de API REST: [OpenAPI](https://github.com/OAI/OpenAPI-Specification)
 
-- Guia de usuario de la aplicación disponible en [Github Pages](https://pages.github.com/)
-- Guia de usuario del backoffice disponible en [Github Pages](https://pages.github.com/)
+- Guía de usuario de la aplicación disponible en [Github Pages](https://pages.github.com/)
+- Guía de usuario del backoffice disponible en [Github Pages](https://pages.github.com/)
 - Bitácora de proyecto
 - [Análisis postmortem](https://en.wikipedia.org/wiki/Postmortem_documentation)
 
@@ -1502,7 +1240,7 @@ _Se espera que dicha documentación se elabore de manera incremental y que cada 
 
 | Instancia   |      Fecha      |  Alcance |
 |----------|:-------------:|------:|
-| Checkpoint 1 |  28/4 | A definir |
-| Checkpoint 2 |  26/5 | A definir |
-| Checkpoint 3 |  16/6 | A definir |
-| Entrega Final |  7/7 | A definir |
+| Checkpoint 1 |  15/9 | A definir |
+| Checkpoint 2 |  13/10 | A definir |
+| Checkpoint 3 |  17/11 | A definir |
+| Entrega Final |  7/12 | A definir |
