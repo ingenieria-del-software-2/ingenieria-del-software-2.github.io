@@ -569,8 +569,8 @@ ___
 - CA 1: Mensaje directo
   - Cuando se realiza un mensaje directo
   - Entonces solo los involucrados podrán leer el mismo y se deberá mantener una conversación en tiempo real por mensajes
-___
 
+___
 
 #### Guía de viaje
 
@@ -583,6 +583,7 @@ ___
 - CA 1: Ubicación actual
   - Cuando el viaje se ha iniciado y el vehículo se ha movido
   - Entonces se actualiza la posición actual del vehículo con respecto al recorrido.
+
 ___
 
 #### Aviso de fin
@@ -600,6 +601,7 @@ ___
 - CA 2: Finalización de viaje fallida
   - Cuando se el vehículo aún no se encuentra en la dirección de destino
   - Entonces el chofer no podrá indicar que el viaje a finalizado.
+
 ___
 
 #### Denuncia de chofer
@@ -613,6 +615,7 @@ ___
 - CA 1: Mensaje directo
   - Cuando se realiza un mensaje directo
   - Entonces solo los involucrados podrán leer el mismo y se deberá mantener una conversación en tiempo real por mensajes
+
 ___
 
 #### Cancelación de viaje
@@ -623,17 +626,17 @@ ___
 
 **Criterios de aceptación**
 
-- CA 1: Cancelacíon chofer/pasajero viaje no iniciado
+- CA 1: Cancelación chofer/pasajero viaje no iniciado
   - Cuando el viaje no ha iniciado y es cancelado por el chofer/pasajero
   - Entonces se notificará al pasajero/chofer que el mismo fue cancelado
   - Y se cobrará el valor del viaje a favor del pasajero/chofer.
 
-- CA 2: Cancelacíon pasajero viaje iniciado
+- CA 2: Cancelación pasajero viaje iniciado
   - Cuando el viaje a iniciado y el pasajero decide cancelar el viaje
   - Entonces se cobrará al pasajero el valor del viaje hasta la ubicación actual al momento de
     cancelar aplicando las reglas de cotización correspondientes.
 
-- CA 3: Cancelacíon chofer viaje iniciado
+- CA 3: Cancelación chofer viaje iniciado
   - Cuando el viaje a iniciado y el chofer decide cancelar el viaje
   - Entonces se reembolsará al pasajero el valor total viaje.
 
@@ -651,6 +654,7 @@ ___
 - CA 1: Carga exitosa
   - Cuando se realiza una carga de fondos de manera exitosa
   - Entonces se verá reflejado en la wallet del usuario el nuevo monto correspondiente.
+
 ___
 
 #### Ejecución de pago
@@ -664,6 +668,7 @@ ___
 - CA 1: Ejecución de pago exitosa
   - Cuando se un viaje finaliza de manera exitosa
   - Entonces se le descontará el monto correspondiente a la billetera del pasajero y luego se hará un deposito a la cuenta del chofer. **Se debe tener en cuenta que a este deposito se le descontará la comisión de la plataforma.**
+
 ___
 
 #### Retiro de fondos
@@ -727,6 +732,7 @@ ___
 - CA 1: Suscripción exitosa
   - Cuando un chofer se inscribe de manera exitosa al servicio VIP
   - Entonces la plataforma le realizará el cobro correspondiente por brindar este servicio y a partir de ese momento el chofer puede realizar viajes en modalidad VIP.
+
 ___
 
 
@@ -765,6 +771,7 @@ ___
 - CA 1: Calificación de pasajero
   - Cuando un pasajero realiza una calificación cuantitativa de un pasajero. Por ejemplo, utilizando una escala del 1 al 5
   - Entonces esta calificación afectará la calificación del pasajero 
+
 ___
 
 #### Calificación cualitativa de un pasajero
@@ -792,6 +799,7 @@ ___
 - CA 2: Notificación push.
   - Cuando un chofer recibe un nuevo pago 
   - Entonces deberá recibir notificación push en la aplicación para acceder a la información del mismo.
+
 ___
 
 
@@ -860,6 +868,7 @@ ___
 - CA 1: Listado de usuarios del sistema
   - Cuando un administrador del sistema ingrese a la sección de usuarios
   - Entonces se listaran todos los usuarios del sistema.
+
 ___
 
 #### Visualizar métricas de usuario
