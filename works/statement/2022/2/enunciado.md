@@ -815,6 +815,7 @@ ___
 - CA 2: Notificación push.
   - Cuando un pasajero tiene un viaje iniciado y este ya posee un chofer asignado
   - Entonces deberá recibir notificación push en la aplicación para acceder a la información del mismo.
+
 ___
 
 #### Notificación por mensaje recibido
@@ -845,6 +846,7 @@ ___
 - CA 2: Notificación push.
   - Cuando un chofer recibe una nueva propuesta de viaje 
   - Entonces deberá recibir notificación push en la aplicación para acceder a la información del mismo.
+
 ___
 
 #### Listar usuarios del sistema
