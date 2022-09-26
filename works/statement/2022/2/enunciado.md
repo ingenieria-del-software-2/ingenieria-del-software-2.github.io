@@ -612,9 +612,9 @@ ___
 
 **Criterios de aceptación**
 
-- CA 1: Mensaje directo
-  - Cuando se realiza un mensaje directo
-  - Entonces solo los involucrados podrán leer el mismo y se deberá mantener una conversación en tiempo real por mensajes
+- CA 1: Denuncia de chofer exitosa
+  - Cuando un pasajero realiza una denuncia hacia un chofer
+  - Entonces se enviará dicha denuncia para que los administradores apliquen las políticas correspondientes
 
 ___
 
@@ -698,14 +698,14 @@ ___
 **Criterios de aceptación**
 
 - CA 1: Retiro de fondos
-  - Cuando un artista solicita un retiro de fondos de su cuenta y se cumplen las regla de negocio pautadas.
+  - Cuando un chofer solicita un retiro de fondos de su cuenta y se cumplen las regla de negocio pautadas.
   - Entonces el pago se ejecuta a traves de una stablecoin
 
-- CA 2: Pago de suscripción
-  - Cuando un listener paga una suscripción
+- CA 2: Carga de saldo  (pasajero)
+  - Cuando un pasajero carga su saldo
   - Entonces el pago se ejecuta a traves de una stablecoin
 
-- CA 1: Carga de saldo
+- CA 1: Carga de saldo (administrador)
   - Cuando un administrador envía saldo a una usuario a traves del sistema
   - Entonces el pago se ejecuta a traves de una stablecoin
 
@@ -869,7 +869,7 @@ ___
 **Criterios de aceptación**
 - CA 1: Listado de usuarios del sistema
   - Cuando un administrador del sistema ingrese a la sección de usuarios
-  - Entonces se listaran todos los usuarios del sistema.
+  - Entonces se la informacion de perfil del usuario.
 
 ___
 
