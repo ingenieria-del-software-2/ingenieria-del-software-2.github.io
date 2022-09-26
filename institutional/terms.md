@@ -11,13 +11,14 @@ Link de inscripci&oacute;n: [`https://forms.gle/Mp4gPGLRBZGjU63c6`](https://form
 
 * Ing. Christián Calónico
 * Agustín Rojas
-* Maximiliano Suppes
 * Gonzalo Petraglia
-* Santiago Gandolfo
 * Matias Fonseca
 * Nicolas Fernandes Theillet
 * Paulo Cuneo
 * Lucas Lavandeira
+* Daniel Bizari
+* Pablo Berrotarán
+* Ignacio Carol Lugones
 
 ### Correlativas
 
