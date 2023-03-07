@@ -16,10 +16,10 @@ team:
       mail: gonzalpetraglia@gmail.com
       github: gonzalpetraglia
 
-    - name: Santiago Gandolfo
-      pic: /img/professors/gandolfo.jpeg
-      mail: santiago.v.gandolfo@gmail.com
-      github: santigandolfo
+    - name: Ignacio Carol Lugones
+      pic: /img/professors/nacho.jpeg
+      mail: icarol@fi.uba.ar 
+      github: IgnacioCarol
 
     - name: Matias Fonseca
       pic: /img/professors/fonseca.jpeg
@@ -51,5 +51,9 @@ team:
       mail: dbizari@fi.uba.ar
       github: dbizari
 
+    - name: Pablo Berrotarán
+      pic: /img/professors/pablo.jpeg
+      mail: pberrotaran@fi.uba.ar
+      github: PBrrtrn
     
     
