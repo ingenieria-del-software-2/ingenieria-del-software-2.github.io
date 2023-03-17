@@ -291,6 +291,7 @@ ___
 - CA 4: Usuario bloqueado
   - Cuando la cuenta del usuario se encuentra bloqueada por los administradores
   - Entonces el sistema no le permitirá loguearse al usuario
+
 ___
 
 #### Login de usuarios con proveedores de identidad federada
@@ -314,6 +315,7 @@ ___
 - CA 4: Usuario bloqueado
   - Cuando la cuenta del usuario se encuentra bloqueada por los administradores
   - Entonces el sistema no le permitirá loguearse al usuario
+
 ___
 
 #### Login con datos biométricos
@@ -452,6 +454,7 @@ ___
 - CA 2: Búsqueda sin resultados
   - Cuando se realiza una búsqueda utilizando un filtrado y no existe contenido que cumpla tal condición
   - Entonces se deberá notificar al usuario que no existen resultados para su búsqueda.
+
 ___
 
 #### Búsqueda por dificultad
@@ -484,6 +487,7 @@ ___
 - CA 2: Búsqueda sin resultados
   - Cuando se realiza una búsqueda utilizando un filtrado y no existe contenido que cumplan tal condición
   - Entonces se deberá notificar al usuario que no existen resultados para su búsqueda.
+
 ___
 
 #### Recomendación de entrenamientos
@@ -722,6 +726,7 @@ ___
     - Cantidad 
     - Cantidad de favoritos.
     - Etc.
+
 ___
 
 
@@ -767,6 +772,7 @@ ___
 - CA 1: Calificación de plan de entrenamiento
   - Cuando un atleta realiza una calificación cuantitativa de un plan de entrenamiento. Por ejemplo, utilizando una escala del 1 al 5
   - Entonces esta calificación afectará la calificación del plan de entrenamiento 
+
 ___
 
 #### Calificación cualitativa de un plan de entrenamiento
@@ -837,6 +843,7 @@ ___
 
 
  <!-- Notificaciones -->
+
 ___
 
 #### Notificación por nuevo mensaje
@@ -973,6 +980,7 @@ ___
 - CA 1: Visualización de plan de entrenamiento 
  - Cuando un administrador visualiza el plan de entrenamiento existente en la plataforma
  - Entonces se deberá poder visualizar todos sus datos asociados
+
 ___
 
 #### Bloqueo de plan de entrenamiento
@@ -1008,27 +1016,11 @@ ___
 - CA 2: Solicitud de entrenador reconocido denegada
  - Cuando un administrador deniega una solicitud de entrenador reconocido
  - Entonces dicha solicitud deberá cambiar su estado acorde a esta aprobación
-___
-
-#### Bloqueo de plan de entrenamiento
-
-**Descripción**
-- Como administrador del sistema quiero poder bloquear un plan de entrenamiento que se encuentren en el sistema para que no puedan acceder al mismo
-
-**Criterios de aceptación**
-- CA 1: Bloqueo exitoso 
- - Cuando un administrador realiza el bloqueo de un plan de entrenamiento existente en la plataforma
- - Entonces se deberá visualizar que el plan de entrenamiento está bloqueado y los usuarios no deberán poder acceder a él en la aplicación
-- CA 2: Desbloqueo exitoso 
- - Cuando un administrador realiza el desbloqueo de un plan de entrenamiento existente en la plataforma
- - Entonces se deberá visualizar que el plan de entrenamiento no esta bloqueado y los usuarios deberán poder acceder a el en la aplicación
- 
-
-
 
 
 <!-- Administración de transacciones -->
- ___
+
+___
 
 #### Listar transacciones
 
@@ -1088,7 +1080,8 @@ ___
    - Fecha de creación.
    - Descripción.
    - Otros.
-___
+
+___ 
 
 #### Alta de servicio
 
@@ -1099,7 +1092,9 @@ ___
 - CA 1: Alta de Api Key
  - Cuando un administrador da de alta un nuevo servicio.
  - Entonces se genera un API key que deberá ser utilizada de manera interna en la plataforma para que un servicio pueda comunicarse con sus pares
+
 ___
+
 
 #### Bloqueo de servidor
 
@@ -1112,7 +1107,9 @@ ___
  - Entonces se deberá bloquear su API key asociada y tal servicio no podrá comunicarse con sus pares.
 
 <!-- Metricas -->
+
 ___
+
 
 #### Métricas de usuario
 
@@ -1129,6 +1126,7 @@ ___
 - CA 7: Métricas de usuarios por zona geográfica
 
 ___
+
 #### Métricas de entrenamientos
 
 **Descripción**
@@ -1220,6 +1218,7 @@ Se recomiendan como base de datos alguna de las siguientes
 - [MongoDB](https://www.mongodb.com/es)
 
 Esta elección será responsabilidad del grupo y la misma deberá estar consensuada junto al ayudante. Además quedará justificada en la documentación técnica que formará parte del TP.
+
 ___
 
 #### Backoffice web
@@ -1227,6 +1226,7 @@ Para el desarrollo del backoffice web se podrán utilizar las siguientes herrami
   - [React](https://reactjs.org/)
   - [Vue.js](https://vuejs.org/)
   - [Next.js](https://nextjs.org/)
+
 ___
 
 #### Contenido multimedia
@@ -1405,8 +1405,8 @@ _Se espera que dicha documentación se elabore de manera incremental y que cada 
 ## Material de referencia
   
 - Conectividad con google fit
-  - https://developers.google.com/fit/  
-  - https://docs.expo.dev/versions/latest/sdk/pedometer/
-  - https://developers.google.com/fit/android/record 
+  - [https://developers.google.com/fit/](https://developers.google.com/fit/)  
+  - [https://docs.expo.dev/versions/latest/sdk/pedometer/](https://docs.expo.dev/versions/latest/sdk/pedometer/)
+  - [https://developers.google.com/fit/android/record](https://developers.google.com/fit/android/record) 
 - Calculo de calorias utilizadas
-   -  https://www.healthline.com/health/what-are-mets#:~:text=The%20formula%20to%20use%20is,200%20%3D%2010.2%20calories%20per%20minute.
+   -  [https://www.healthline.com/health/what-are-mets#:~:text=The%20formula%20to%20use%20is,200%20%3D%2010.2%20calories%20per%20minute.](https://www.healthline.com/health/what-are-mets#:~:text=The%20formula%20to%20use%20is,200%20%3D%2010.2%20calories%20per%20minute.)
