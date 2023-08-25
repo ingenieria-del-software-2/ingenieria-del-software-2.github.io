@@ -1,6 +1,6 @@
 ---
 layout: post
-title: SnapMsh
+title: SnapMsg
 subtitle: Enunciado del 2 Cuatrimestre 2023
 bigimg: /img/path.jpg
 tags: [trabajos-practicos, 2023-2C]
