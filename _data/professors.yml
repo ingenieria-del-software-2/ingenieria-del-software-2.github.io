@@ -10,11 +10,7 @@ team:
       pic: /img/professors/rojas.jpeg
       mail: arojas@fi.uba.ar
       github: agrojas
-    
-    - name: Gonzalo Petraglia
-      pic: /img/professors/petraglia.jpg
-      mail: gonzalpetraglia@gmail.com
-      github: gonzalpetraglia
+
 
     - name: Ignacio Carol Lugones
       pic: /img/professors/nacho.jpeg
