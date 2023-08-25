@@ -282,6 +282,7 @@ ___
 - CA 4: Usuario bloqueado
   - Cuando la cuenta del usuario se encuentra bloqueada por los administradores
   - Entonces el sistema no le permitirá loguearse al usuario
+
 ___
 
 #### Login de usuarios con proveedores de identidad federada
@@ -305,6 +306,7 @@ ___
 - CA 4: Usuario bloqueado
   - Cuando la cuenta del usuario se encuentra bloqueada por los administradores
   - Entonces el sistema no le permitirá loguearse al usuario
+
 ___
 
 #### Login con datos biométricos
@@ -488,6 +490,7 @@ ___
 - CA 2: Búsqueda sin resultados
   - Cuando se realiza una búsqueda utilizando un nombre y no existe contenido que cumpla tal condición
   - Entonces se deberá notificar al usuario que no existen resultados para su búsqueda.
+
 ___
 
 #### Búsqueda por hashtags
@@ -520,13 +523,14 @@ ___
 - CA 2: Búsqueda sin resultados
   - Cuando se realiza una búsqueda utilizando un nombre y no existe contenido que cumpla tal condición
   - Entonces se deberá notificar al usuario que no existen resultados para su búsqueda.
+  
 ___
 
 #### Trending Topics
 
 **Descripción**
 
-- Como usuario quiero por acceder a los trending topics, para asi acceder a los temas de conversacion mas relevantes en el momento
+- Como usuario quiero por acceder a los trending topics, para asi acceder a los temas de conversación mas relevantes en el momento
 
 **Criterios de aceptación**
 
@@ -592,6 +596,7 @@ ___
   - Cuando estoy viendo el feed,
   - Entonces el feed debe actualizarse automáticamente y en tiempo real, sin necesidad de recargar la página.
   - Si un usuario que sigo realiza una nueva publicación mientras estoy viendo el feed, la nueva publicación debe aparecer instantáneamente sin interrupciones ni retrasos.
+
 ___
 
 #### Publicación de SnapMsg
@@ -954,6 +959,7 @@ ___
     - Cuando una transmisión en directo recibe múltiples calificaciones,
     - Entonces quiero que las calificaciones cuantitativas afecten de alguna manera a la visibilidad o la reputación de la transmisión.
     - El sistema podría utilizar las calificaciones para destacar las transmisiones mejor calificadas o mostrarlas en una sección especial.
+
 ___
 
 #### Calificación cualitativa de un directo
@@ -1076,6 +1082,7 @@ ___
 - CA 6: Privacidad de las notificaciones
     - Cuando una transmisión en directo (Directo) esté a punto de comenzar,
     - Entonces solo los usuarios que son seguidores del iniciador del Directo deberán recibir notificaciones sobre el comienzo del mismo
+
 ___
 
 
@@ -1167,6 +1174,7 @@ ___
 - CA 1: Visualización de SnapMsgs
  - Cuando un administrador visualiza el SnapMsg existente en la plataforma
  - Entonces se deberá poder visualizar todos sus datos asociados
+
 ___
 
 #### Bloqueo de SnapMsg
@@ -1216,6 +1224,7 @@ ___
    - Fecha de creación.
    - Descripción.
    - Otros.
+
 ___
 
 #### Alta de servicio
@@ -1227,6 +1236,7 @@ ___
 - CA 1: Alta de Api Key
  - Cuando un administrador da de alta un nuevo servicio.
  - Entonces se genera un API key que deberá ser utilizada de manera interna en la plataforma para que un servicio pueda comunicarse con sus pares
+
 ___
 
 #### Bloqueo de servidor
@@ -1366,6 +1376,7 @@ Se recomiendan como base de datos alguna de las siguientes
 - [MongoDB](https://www.mongodb.com/es)
 
 Esta elección será responsabilidad del grupo y la misma deberá estar consensuada junto al ayudante. Además quedará justificada en la documentación técnica que formará parte del TP.
+
 ___
 
 #### Backoffice web
@@ -1373,6 +1384,7 @@ Para el desarrollo del backoffice web se podrán utilizar las siguientes herrami
   - [React](https://reactjs.org/)
   - [Vue.js](https://vuejs.org/)
   - [Next.js](https://nextjs.org/)
+
 ___
 
 #### Contenido multimedia
