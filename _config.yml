@@ -28,10 +28,8 @@ navbar-links:
     - Programa: "institutional/program"
     - Reglamento: "institutional/terms"
   Calendario:
-    - Clases-2-2021: "lessons/calendars/2021-2C" 
-    - Clases-1-2022: "lessons/calendars/2022-1C" 
-    - Clases-2-2022: "lessons/calendars/2022-2C" 
     - Clases-1-2023: "lessons/calendars/2023-1C" 
+    - Clases-2-2023: "lessons/calendars/2023-2C" 
   Clases:
     - Clases-2020: "lessons/lessons-2020"
     - Clases-2021: "lessons/lessons-2021"
