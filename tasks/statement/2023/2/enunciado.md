@@ -801,34 +801,24 @@ ___
 #### Mención
 
 **Descripción**
-- Como usuario de SnapMsg, quiero tener la capacidad de compartir SnapMsgs interesantes de otros usuarios en mi propio feed, de manera similar a un "retweet" en otras plataformas, para promover la interacción y facilitar la difusión de contenido relevante.
+- Como usuario de SnapMsg, quiero tener la capacidad de compartir mencionar en los SnapMsgs a otros usuarios para que les avise cuando los mismos fueron etiquetados en estos.
 
 **Criterios de aceptación**
 
-- CA 1: SnapShare (Retweet)
-    - Cuando veo un SnapMsg de otro usuario que deseo compartir con mis seguidores,
-    - Entonces debo tener la opción de realizar un SnapShare, es decir, retwittear el SnapMsg en mi propio feed.
-    - El sistema debe proporcionar una función clara y accesible para realizar el SnapShare del SnapMsg.
+- CA 1: Mención
+    - Cuando escribo un SnapMsg y quiero mencionar a uno de mis seguidores.
+    - Entonces quiero poder escribir @ y su usuario para que sea mencionado.
+    - El sistema debe proporcionar una UI clara para facilitarme la escritura del usuario deseado.
 
-- CA 2: Confirmación de SnapShare
-    - Cuando realizo un SnapShare de un SnapMsg,
-    - Entonces quiero recibir una confirmación visual de que la acción se ha realizado con éxito.
-    - El sistema debe proporcionar una notificación o mensaje que indique que el SnapMsg ha sido compartido exitosamente en mi feed.
+- CA 2: Notificacion de mención
+    - Cuando menciono a un usuario en un SnapMsg,
+    - Entonces quiero que el usuario mencionado se entere con una notificacion.
+    - El sistema debe proporcionar una notificación o mensaje que indique que al usuario mencionado que fue etiquetado y poder llevarlo a verlo.
 
-- CA 3: SnapShare en mi Propio Feed
-    - Cuando realizo un SnapShare de un SnapMsg,
-    - Entonces el SnapMsg compartido debe aparecer en mi propio feed, junto con mi nombre de usuario y avatar, para que mis seguidores puedan verlo.
-    - La publicación del SnapShare debe mostrar claramente que es un SnapShare y debe incluir el nombre de usuario del autor original del SnapMsg.
-
-- CA 4: Historial de SnapShares
-    - Cuando realizo SnapShares de diferentes SnapMsgs,
-    - Entonces quiero tener la capacidad de ver un historial o registro de las comparticiones que he realizado en mi perfil.
-    - El sistema debe mostrar una lista de los SnapMsgs compartidos y los usuarios de origen, con fechas y detalles de cada SnapShare.
-
-- CA 5: Privacidad en los SnapShares
-    - Cuando realizo un SnapShare de un SnapMsg,
-    - Entonces el sistema debe garantizar que la privacidad y la configuración de compartición del SnapMsg original sean respetadas.
-    - Los SnapMsgs solo deben ser visibles en mi feed para mis seguidores y no deben ser accesibles por otros usuarios que no forman parte de mi lista de seguidores.
+- CA 3: Privacidad en las menciones.
+    - Cuando soy mencionado en un SnapMsg,
+    - Entonces el sistema debe garantizar que se me notifique solo si sigo al usuario que me menciono.
+    - Los SnapMsgs solo deben ser visibles en mi feed para mis seguidores si yo decido SnapSharear el mismo, y si el SnapMsg es publico en el feed del usuario que lo creo.
 
 ___
 
