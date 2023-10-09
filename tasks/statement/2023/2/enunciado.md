@@ -112,8 +112,8 @@ Permite a los usuarios publicar SnapMsg, que son mensajes cortos. Los usuarios p
 Historias de usuario relacionadas:
  - [Feed](#feed)
  - [Publicación de SnapMsg](#publicación-de-snapmsg)
- - [Estadísticas de SnapMsg](#estadisticas-de-snapmsg)
- - [Estadísticas de cuenta](#estadisticas-de-cuenta)
+ - [Estadísticas de SnapMsg](#estadísticas-de-snapmsg)
+ - [Estadísticas de cuenta](#estadísticas-de-cuenta)
  - [Compartir SnapMsg](#compartir-SnapMsg)
 
 <!-- Interacciones -->
@@ -625,7 +625,31 @@ ___
 
 ___
 
-#### Estadisticas de Snapmsg
+#### Estadísticas de cuenta
+
+**Descripción**
+
+- Como usuario de SnapMsg, quiero poder acceder a estadísticas sobre el rendimiento y la interacción de mi cuenta.
+
+**Criterios de aceptación**
+
+
+- CA 1: Seguimiento de Interacción de Seguidores
+  - Cuando visualizo las estadísticas de mi cuenta,
+  - Entonces debo tener acceso a información sobre la actividad de mis seguidores relacionada con mis publicaciones.
+  - El panel debe mostrar estadisticas relacionadas a como es el estado de mi cuenta con respecto a la cantidad de seguidores (Numero actual de seguidores, tendencia, etc)
+  - Se debera poder realizar un filtrado por un período determinado
+  
+
+- CA 2: Actualización en Tiempo Real 
+  - Cuando estoy viendo las estadísticas,
+  - Entonces el panel de estadísticas debe actualizarse automáticamente y en tiempo real, sin necesidad de recargar la página, para reflejar cualquier interacción reciente de mi cuenta
+  - Esto me permitirá ver los cambios en tiempo real.
+
+
+___
+
+#### Estadísticas de Snapmsg
 
 **Descripción**
 
@@ -647,16 +671,6 @@ ___
   - Cuando accedo a la lista de mis publicaciones,
   - Entonces debo poder ver estadísticas específicas para cada SnapMsg individual.
   - Las estadísticas deben incluir el número de me gusta recibidos, la cantidad de comentarios y la cantidad de veces que el SnapMsg ha sido compartido.
-
-- CA 4: Seguimiento de Interacción de Seguidores
-  - Cuando visualizo las estadísticas de mis SnapMsg,
-  - Entonces debo tener acceso a información sobre la actividad de mis seguidores relacionada con mis publicaciones.
-  - El panel debe mostrar una lista de los usuarios que han dado me gusta o han comentado en mis SnapMsg, así como los usuarios que han compartido mis publicaciones con otros.
-
-- CA 5: Actualización en Tiempo Real (Opcional)
-  - Cuando estoy viendo las estadísticas,
-  - Entonces el panel de estadísticas debe actualizarse automáticamente y en tiempo real, sin necesidad de recargar la página, para reflejar cualquier interacción reciente con mis SnapMsg.
-  - Esto me permitirá ver los cambios en tiempo real a medida que mis seguidores interactúan con mi contenido.
 
 ___
 
