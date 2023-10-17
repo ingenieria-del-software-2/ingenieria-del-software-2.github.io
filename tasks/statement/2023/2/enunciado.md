@@ -609,7 +609,7 @@ ___
 
 - CA 1: Creación de Publicación
   - El sistema debe permitir a los usuarios autenticados crear y publicar mensajes cortos (SnapMsg) en su propio feed.
-  - Al crear una nueva publicación de SnapMsg, el usuario debe poder ingresar texto con una longitud máxima definida y opcionalmente agregar etiquetas o categorías relevantes.
+  - Al crear una nueva publicación de SnapMsg, el usuario debe poder ingresar texto con una longitud máxima definida.
   
 - CA 2: Validación de Contenido
   - Antes de realizar la publicación, el sistema debe validar que el contenido del mensaje cumpla con los requisitos establecidos, como límite de caracteres y otras restricciones.
