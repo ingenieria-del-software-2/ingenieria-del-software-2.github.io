@@ -1049,7 +1049,7 @@ ___
   - Cuando recibo una notificación sobre un SnapMsg relacionado con un tema de tendencia,
   - Entonces deberá poder visualizar una notificación en la aplicación para acceder a dicho contenido 
 
-- CA 6: Notificación Whatsapp de SnapMsg Trending
+- CA 6: Notificación Whatsapp de SnapMsg Trending (Optativa)
     - Cuando un SnapMsg relacionado con un tema de tendencia es publicado,
     - Entonces el usuario deberá recibir una notificación a su Whatsapp para informarle sobre la publicación del SnapMsg trending.
 
