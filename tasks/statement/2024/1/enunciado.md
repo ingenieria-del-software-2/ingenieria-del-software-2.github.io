@@ -1,6 +1,6 @@
 # Match!
 
-![Logo](logo.webp)
+![Logo](logo.png)
 
 ## Indice
 
