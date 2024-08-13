@@ -28,7 +28,7 @@
 
     resources:
       - title: Repositorio del Workshop
-        link: https://github.com/taller-de-programacion-2/react-example
+        link: https://github.com/ingenieria-del-software-2/react-example
 
   - title: React Native
     years: ["2020"]
@@ -79,9 +79,9 @@
       link: 19XPK_awi_VXSLgEBq-GZnGx0VgCe-ViM
     resources:
      - title: Repositorio BDD
-       link: https://github.com/taller-de-programacion-2/Cucumber
+       link: https://github.com/ingenieria-del-software-2/Cucumber
      - title: Repositorio 12 factors
-       link: https://github.com/taller-de-programacion-2/rest-python-flask
+       link: https://github.com/ingenieria-del-software-2/rest-python-flask
   
   - title: Rest
     years: ["2021"]
@@ -163,7 +163,7 @@
     - title: Diapositivas
       link: https://docs.google.com/presentation/d/1eYAZZ4PnnSif9aORVXe1Vbo5B27Y-eyKdbx6wpol8rQ/edit?usp=sharing
     - title: Link al repo del workshop
-      link: https://github.com/taller-de-programacion-2/docker-workshop-1
+      link: https://github.com/ingenieria-del-software-2/docker-workshop-1
     - title: Documentacion oficial docker
       link: https://docs.docker.com/
 
@@ -219,5 +219,5 @@
     - title: Diapositivas
       link: https://docs.google.com/presentation/d/1sNrEX-bIOWcbZ97ICjSor27er2jMpJdqVvQ_JgzsF3w/edit?usp=sharing
     - title: Link al repo del workshop
-      link: https://github.com/taller-de-programacion-2/oauth2-example
+      link: https://github.com/ingenieria-del-software-2/oauth2-example
 

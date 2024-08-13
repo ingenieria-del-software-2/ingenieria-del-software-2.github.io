@@ -1,6 +1,6 @@
-# Página web de Taller de Programación 2
+# Página web de Ingenieria del Software 2
 
-Esta es la página web de la materia Taller de Programación 2 de la Facultad de Ingenieria de la Universidad de Buenos Aires.
+Esta es la página web de la materia Ingenieria del Software 2 de la Facultad de Ingenieria de la Universidad de Buenos Aires.
 
 # How to add:
 
@@ -8,7 +8,7 @@ All pages should be Jekyll Friendly. First review [Add Content](#add-content)
 
 ## New Post
 
-Add new file inside [posts](https://github.com/taller-de-programacion-2/taller-de-programacion-2.github.io/tree/master/_posts) with the next filename format
+Add new file inside [posts](https://github.com/ingenieria-del-software-2/ingenieria-del-software-2.github.io/tree/master/_posts) with the next filename format
 
 ```
 YYYY-MM-DD-TITLE.md
@@ -33,7 +33,7 @@ lorem ipsum
 
 ## New Lesson
 
-Add new section inside [lessons.yml](https://github.com/taller-de-programacion-2/taller-de-programacion-2.github.io/blob/master/_data/lessons.yml) with the next format:
+Add new section inside [lessons.yml](https://github.com/ingenieria-del-software-2/ingenieria-del-software-2.github.io/blob/master/_data/lessons.yml) with the next format:
 
 
 
@@ -70,11 +70,11 @@ Copy _1hD2a203hhVRJl0kS1_LsvBdms5dYxU2Y_
 ## New NavBar Section
 
 
-Add new section inside *navbar-links* [config.yml](https://github.com/taller-de-programacion-2/taller-de-programacion-2.github.io/blob/master/_config.yml) 
+Add new section inside *navbar-links* [config.yml](https://github.com/ingenieria-del-software-2/ingenieria-del-software-2.github.io/blob/master/_config.yml) 
 
 ## New resource
 
-Add new section inside [resources.yml](https://github.com/taller-de-programacion-2/taller-de-programacion-2.github.io/blob/master/_data/resources.yml) with the next format:
+Add new section inside [resources.yml](https://github.com/ingenieria-del-software-2/ingenieria-del-software-2.github.io/blob/master/_data/resources.yml) with the next format:
 
 ```
 - title: TITLE
@@ -90,7 +90,7 @@ Add new section inside [resources.yml](https://github.com/taller-de-programacion
 
 ## New Professor
 
-Add new section inside [professors.yml](https://github.com/taller-de-programacion-2/taller-de-programacion-2.github.io/blob/master/_data/professors.yml) with the next format:
+Add new section inside [professors.yml](https://github.com/ingenieria-del-software-2/ingenieria-del-software-2.github.io/blob/master/_data/professors.yml) with the next format:
 
 ```
 - name: FIRST NAME LAST NAME 
