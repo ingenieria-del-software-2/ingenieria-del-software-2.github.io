@@ -20,6 +20,17 @@ El repositorio debe incluir un archivo `README.md` (en español) con:
 
 Fecha máxima de entrega: 02/09/2024
 
+
+
+#### Formulario de entrega 
+
+Se deberá completar el siguiente formulario con Padrón, Nombre, Apellido y Link al repositorio con la solución
+
+[Formulario](https://forms.gle/tG2HtDSyfrtrRigt9)
+
+Luego de haber completado este formulario, les solicitaremos que agreguen al usuario del corrector asignado.
+
+
 ### Criterios de Evaluación
 
 | Criterio                  | Descripción                                                                         |
