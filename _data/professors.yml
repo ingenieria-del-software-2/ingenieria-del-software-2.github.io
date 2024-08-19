@@ -1,9 +1,4 @@
 team:
-
-    - name: Christian Calónico 
-      pic: /img/professors/calonico.jpeg
-      mail: calonico@gmail.com
-      github: calonico
     
     
     - name: Agustín Rojas
@@ -42,17 +37,17 @@ team:
       mail: recheconea@fi.uba.ar
       github: recheconea  
 
-    - name: Daniel Bizari
-      pic: /img/professors/dani.jpeg
-      mail: dbizari@fi.uba.ar
-      github: dbizari
+    - name: Matías 	Rotondo 
+      pic: /img/professors/rotondo.jpeg
+      mail: mrotondo@fi.uba.ar
+      github: MatiasRotondo
 
-    - name: Pablo Berrotarán
-      pic: /img/professors/pablo.jpeg
-      mail: pberrotaran@fi.uba.ar
-      github: PBrrtrn
-      
-    - name: Cristian Queirolo
-      pic: /img/professors/cristian.jpeg
-      mail: cqueirolo@fi.uba.ar
-      github: cqueirolo
+    - name: Dante	Reinaudo
+      pic: /img/professors/dante.jpeg
+      mail: dreinaudo@fi.uba.ar
+      github: DanteReinaudo
+
+    - name: Luis Eduardo Cusihuaman
+      pic: /img/professors/edu.jpeg
+      mail: lcusihuaman@fi.uba.ar
+      github: LuisCusihuaman

@@ -5,20 +5,20 @@ subtitle: Información sobre la materia
 ---
 ### Inscripci&oacute;n
 
-Link de inscripci&oacute;n: [`https://forms.gle/Mp4gPGLRBZGjU63c6`](https://forms.gle/Mp4gPGLRBZGjU63c6)
+Link de inscripci&oacute;n: [`https://forms.gle/f1C5CtT1vyqZfog76`](https://forms.gle/f1C5CtT1vyqZfog76)
 
 ### Docentes
 
-* Ing. Christián Calónico
 * Agustín Rojas
-* Gonzalo Petraglia
+* Rodrigo Echecone
+* Dante Reinaudo
 * Matias Fonseca
+* Matias Rotondo
 * Nicolas Fernandes Theillet
 * Paulo Cuneo
 * Lucas Lavandeira
-* Daniel Bizari
-* Pablo Berrotarán
 * Ignacio Carol Lugones
+* Luis Eduardo	Cusihuaman
 
 ### Correlativas
 
@@ -54,15 +54,10 @@ La materia contar&aacute; con las siguientes instancias de evaluaci&oacute;n, qu
   
   📅 **Entrega final**: _A definir_
 
-* **Exposici&oacute;n del Trabajo Pr&aacute;ctico**: instancia de evaluaci&oacute;n oral; si bien se trata de una exposici&oacute;n grupal, donde el objetivo es que los alumnos practiquen y mejoren sus habilidades de oratoria, se considerar&aacute; el esfuerzo y dedicaci&oacute;n de cada alumno en forma personal.
-
-  📅 **Exposici&oacute;n**: _A definir_ _(primeras dos semanas de coloquio del per&iacute;odo)_
-  
-* **Ex&aacute;men final**: con la aprobaci&oacute;n del trabajo pr&aacute;ctico, el parcial y la exposici&oacute;n, los alumnos quedar&aacute;n eximidos del final de la materia _(la materia ser&iaacute;a promocionable)_.
 
 ### Contenido te&oacute;rico
 
-Se dictar&aacute;n siete clases te&oacute;ricas, los d&iacute;as jueves de 17hs a 19hs:
+Se dictar&aacute;n siete clases te&oacute;ricas, los d&iacute;as lunes y jueves de 19 a 22hs:
 
 * Introducción a la materia
 * Introducción al desarrollo de servicios web
@@ -72,7 +67,7 @@ Se dictar&aacute;n siete clases te&oacute;ricas, los d&iacute;as jueves de 17hs 
 * Introducción a programación web
 * Introducción a protocolos de autenticación y autorización
 * Introducción a contenedores
-* Soft skills
+
 
 Asimismo, los alumnos recibir&aacute;n material de lectura obligatoria que, junto con el restante contenido te&oacute;rico y pr&aacute;ctico, ser&aacute;n evaluados en las instancias correspondientes.
 
@@ -80,7 +75,7 @@ Durante todo el cuatrimestre, los docentes estar&aacute;n a disposici&oacute;n p
 
 ### Trabajo Pr&aacute;ctico
 
-* El trabajo pr&aacute;ctico ser&aacute; desarrollado en equipos de cuatro personas, con un docente asignado.
+* El trabajo pr&aacute;ctico ser&aacute; desarrollado en equipos de cuatro o cinco personas, con un docente asignado.
 * Si bien el trabajo pr&aacute;ctico ser&aacute; explicado en profundidad en las primeras clases, es posible que se aclaren y/o tomen decisiones en cualquier otro momento del cuatrimestre.
 * Si bien el enunciado intenta definir claramente los requerimientos, es com&uacute;n que siempre queden puntos no especificados. Si bien siempre se podr&iacute;a conversar con el docente asignado, se espera que los alumnos utilicen sentido com&uacute;n y/o tomen decisiones desde la perspectiva del producto (sin cambiar el esp&iacute;ritu acad&iacute;mico del trabajo pr&aacute;ctico).
 * Es de esperar que los integrantes del equipo se distribuyan las tareas. Sin embargo, existen consideraciones importantes a tener en cuenta:
@@ -101,8 +96,8 @@ Durante todo el cuatrimestre, los docentes estar&aacute;n a disposici&oacute;n p
 
 Independientemente de la forma de comunicaci&oacute;n que se establezca entre los equipos y el docente asignado, la c&aacute;tedra cuenta con los siguientes elementos:
 
-* **Sitio web**: [`https://taller-de-programacion-2.github.io`](https://taller-de-programacion-2.github.io)
-* **Slack**: [`https://7552-tallerii.slack.com/`](https://7552-tallerii.slack.com/)
+* **Sitio web**: [`https://ingenieria-del-software-2.github.io`](https://ingenieria-del-software-2.github.io)
+* **Slack**: [`https://join.slack.com/t/ta049-ingsoftii/shared_invite/zt-2owpvl6tc-P1NHgQKAbci049EohALmTg /`](https://join.slack.com/t/ta049-ingsoftii/shared_invite/zt-2owpvl6tc-P1NHgQKAbci049EohALmTg /)
 
 Si bien se intenta informar por todos los medios posibles, lo comunicado verbalmente en clase no puede ignorarse.
 

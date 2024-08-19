@@ -28,13 +28,14 @@ navbar-links:
     - Programa: "institutional/program"
     - Reglamento: "institutional/terms"
   Calendario:
-    - Clases-1-2023: "lessons/calendars/2023-1C" 
-    - Clases-2-2023: "lessons/calendars/2023-2C" 
+    - Clases-2-2024: "lessons/calendars/2024-2C" 
+    
   Clases:
     - Clases-2020: "lessons/lessons-2020"
     - Clases-2021: "lessons/lessons-2021"
   Trabajo Práctico:
-    - Enunciado: "assignments/statement/2024/1/enunciado"
+    - Individual: "assignments/statement/2024/2/individual"
+    - Enunciado: "assignments/statement/2024/2/enunciado"
     - Histórico: "assignments/historical"
     - Recomendaciones: "assignments/recommendations"
   Encuestas:
