@@ -11,11 +11,18 @@ Las clases de Ingenieria del Software II [TA049] y Memo II [9521] van a comenzar
 Ya habilitamos el formulario de inscripción a la materia para que puedan ir registrándose. También les dejo el link al canal de Slack del curso para tener la posibilidad de comenzar la cursada en forma virtual.
 Si conocen a alguien que la cursa, por favor avisen. Gracias!
 
+
 Link formulario
+
+
 [https://forms.gle/Q1F9JamGhRaLpBYa9](https://forms.gle/Q1F9JamGhRaLpBYa9)
+
 
 Link slack
 
+
 [https://join.slack.com/t/ta049-ingsoftii/shared_invite/zt-2owpvl6tc-P1NHgQKAbci049EohALmTg](https://join.slack.com/t/ta049-ingsoftii/shared_invite/zt-2owpvl6tc-P1NHgQKAbci049EohALmTg)
+
+
 Muchas gracias,
 Saludos
