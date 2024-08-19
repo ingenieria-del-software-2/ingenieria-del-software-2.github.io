@@ -1,4 +1,4 @@
-# SnapMsg
+# TwitSnap
 
 ![Logo](logo.png)
 
@@ -11,7 +11,7 @@
        1. [Usuarios](#usuarios)
        2. [Perfil](#perfil)
        3. [Explorar y descubrir contenido](#explorar-y-descubrir-contenido)
-       4. [SnapMsg](#snapmsg)
+       4. [TwitSnap](#snapmsg)
        5. [Interacciones](#interacciones)
        6. [Mensajes](#mensajes)
        7. [Calificaciones](#calificaciones)
@@ -41,7 +41,7 @@
 
 ## Descripción
 
-Hemos sido encargados por una empresa destacada para desarrollar una aplicación similar a Twitter llamada **SnapMsg**. Esta plataforma digital permitirá a los usuarios compartir ideas, noticias y pensamientos en mensajes cortos, establecer conexiones con otros usuarios y seguir su progreso a lo largo del tiempo. El objetivo principal de SnapMsg es brindar una comunidad interactiva en la cual los usuarios puedan conectarse entre sí, compartir contenido relevante y lograr sus objetivos individuales en un entorno social enriquecedor.
+Hemos sido encargados por una empresa destacada para desarrollar una aplicación similar a Twitter llamada **TwitSnap**. Esta plataforma digital permitirá a los usuarios compartir ideas, noticias y pensamientos en mensajes cortos, establecer conexiones con otros usuarios y seguir su progreso a lo largo del tiempo. El objetivo principal de TwitSnap es brindar una comunidad interactiva en la cual los usuarios puedan conectarse entre sí, compartir contenido relevante y lograr sus objetivos individuales en un entorno social enriquecedor.
 
 
 ## Condiciones de aprobación
@@ -102,25 +102,25 @@ Historias de usuario relacionadas:
  - [Trending Topics](#trendig-topics)
  - [Recomendación de cuentas](#recomendación-de-cuentas)
  
-<!-- SnapMsg -->
+<!-- TwitSnap -->
 
-#### SnapMsg
+#### TwitSnap
 
-Permite a los usuarios publicar SnapMsg, que son mensajes cortos. Los usuarios pueden compartir pensamientos, ideas, enlaces, imágenes, vídeos, etc. Tambien tienen la posibilidad de visualizar las metricas de dichos mensajes
+Permite a los usuarios publicar TwitSnap, que son mensajes cortos. Los usuarios pueden compartir pensamientos, ideas, enlaces, imágenes, vídeos, etc. Tambien tienen la posibilidad de visualizar las metricas de dichos mensajes
 
 
 Historias de usuario relacionadas:
  - [Feed](#feed)
- - [Publicación de SnapMsg](#publicación-de-snapmsg)
- - [Estadísticas de SnapMsg](#estadísticas-de-snapmsg)
+ - [Publicación de TwitSnap](#publicación-de-snapmsg)
+ - [Estadísticas de TwitSnap](#estadísticas-de-snapmsg)
  - [Estadísticas de cuenta](#estadísticas-de-cuenta)
- - [Compartir SnapMsg](#compartir-SnapMsg)
+ - [Compartir TwitSnap](#compartir-TwitSnap)
 
 <!-- Interacciones -->
 
 #### Interacciones
 
-Permite a los usuarios interactuar con los tweets de otras personas mediante acciones como "Me gusta" o "snapshare". También pueden responder a los SnapMsg y mencionar a otros usuarios usando el símbolo "@" seguido del nombre de usuario.
+Permite a los usuarios interactuar con los tweets de otras personas mediante acciones como "Me gusta" o "snapshare". También pueden responder a los TwitSnap y mencionar a otros usuarios usando el símbolo "@" seguido del nombre de usuario.
 
 Historias de usuario relacionadas:
 
@@ -128,7 +128,7 @@ Historias de usuario relacionadas:
  - [Likes](#likes)
  - [SnapShare](#snapshare)
  - [Mención](#mencion)
- - [SnapMsg favoritos](#tweets-favoritos)
+ - [TwitSnap favoritos](#tweets-favoritos)
  - [Directos](#directos)
 
 <!-- Mensajes -->
@@ -160,7 +160,7 @@ Como usuario quiero recibir notificaciones al dispositivo que utilizo para infor
 
 Historias de usuario relacionadas:
  - [Notificación por nuevo mensaje](#notificación-por-nuevo-mensaje)
- - [Notificación por trending SnapMsg](#notificación-por-trending-snapmsg)
+ - [Notificación por trending TwitSnap](#notificación-por-trending-snapmsg)
  - [Notificación por transmisión en directo](#notificación-por-transmisión-en-directo)
  - [Notificación por hito de seguidores](#notificación-por-hito-de-seguidores)
  
@@ -184,9 +184,9 @@ Historias de usuario relacionadas:
 Como administrador del sistema quiero poder gestionar el contenido que se encuentran en el mismo para administrar su uso
 
 Historias de usuario relacionadas:
- - [Listado de SnapMsgs](#listado-de-snapmsgs)
- - [Visualización de SnapMsg](#visualización-de-snapmsg)
- - [Bloqueo de SnapMsg](#bloquear-snapmsg)
+ - [Listado de TwitSnaps](#listado-de-snapmsgs)
+ - [Visualización de TwitSnap](#visualización-de-snapmsg)
+ - [Bloqueo de TwitSnap](#bloquear-snapmsg)
 
 
 
@@ -437,7 +437,7 @@ ___
 #### Certificado de perfil reconocido
 
 **Descripción**
-- Como usuario de SnapMsg, quiero tener la posibilidad de obtener un certificado de perfil reconocido que autentique mi identidad y valide mi presencia en la plataforma, con el fin de establecer mi credibilidad y autenticidad ante otros usuarios.
+- Como usuario de TwitSnap, quiero tener la posibilidad de obtener un certificado de perfil reconocido que autentique mi identidad y valide mi presencia en la plataforma, con el fin de establecer mi credibilidad y autenticidad ante otros usuarios.
 
 **Criterios de aceptación**
 
@@ -503,7 +503,7 @@ ___
 **Criterios de aceptación**
 - CA 1: Búsqueda por hashtag
   - Cuando se realiza una búsqueda utilizando un hashtag
-  - Entonces se deberán retornar los SnapMsg que cumplan de manera total con la búsqueda ingresada.
+  - Entonces se deberán retornar los TwitSnap que cumplan de manera total con la búsqueda ingresada.
 - CA 2: Búsqueda sin resultados
   - Cuando se realiza una búsqueda utilizando un filtrado y no existe contenido que cumplan tal condición
   - Entonces se deberá notificar al usuario que no existen resultados para su búsqueda.
@@ -514,12 +514,12 @@ ___
 
 **Descripción**
 
-- Como usuario quiero poder realizar búsquedas utilizando texto libre para así poder encontrar los SnapMsg que contengan dicha informacion.
+- Como usuario quiero poder realizar búsquedas utilizando texto libre para así poder encontrar los TwitSnap que contengan dicha informacion.
 
 **Criterios de aceptación**
 - CA 1: Búsqueda de texto  
   - Cuando se realiza una búsqueda utilizando texto libre
-  - Entonces se deberán retornar los SnapMsg que cumplan de manera parcial o total con la búsqueda ingresada.
+  - Entonces se deberán retornar los TwitSnap que cumplan de manera parcial o total con la búsqueda ingresada.
 - CA 2: Búsqueda sin resultados
   - Cuando se realiza una búsqueda utilizando un nombre y no existe contenido que cumpla tal condición
   - Entonces se deberá notificar al usuario que no existen resultados para su búsqueda.
@@ -570,7 +570,7 @@ ___
 
 
 
-<!-- SnapMsg -->
+<!-- TwitSnap -->
 
 ___
 
@@ -578,18 +578,18 @@ ___
 
 **Descripción**
 
-- Como usuario quiero tener un feed donde pueda ver los SnapMsg (mensajes cortos) de las personas a las que sigo, para mantenerme actualizado con las últimas publicaciones y contenidos relevantes.
+- Como usuario quiero tener un feed donde pueda ver los TwitSnap (mensajes cortos) de las personas a las que sigo, para mantenerme actualizado con las últimas publicaciones y contenidos relevantes.
 
 **Criterios de aceptación**
 
 - CA 1: Visualización del Feed:
-  - Cuando inicio sesión en mi cuenta de SnapMsg,
+  - Cuando inicio sesión en mi cuenta de TwitSnap,
   - Entonces se debe mostrar un feed en la página principal.
   - El feed debe presentar las publicaciones más recientes, en orden cronológico inverso, mostrando primero las publicaciones más recientes en la parte superior.
 
 - CA 2: Contenido Relevante:
   - Cuando veo el feed,
-  - Entonces debe mostrarse exclusivamente los SnapMsg de los usuarios a los que sigo.
+  - Entonces debe mostrarse exclusivamente los TwitSnap de los usuarios a los que sigo.
   - También se deberá mostrar contenido de importancia para mi cuenta, incluso si proviene de usuarios que no sigo. En el caso de ser contenido de un usuario 
 
 - CA 3: Actualización en Tiempo Real (Opcional):
@@ -599,17 +599,17 @@ ___
 
 ___
 
-#### Publicación de SnapMsg
+#### Publicación de TwitSnap
 
 **Descripción**
 
-- Como usuario de SnapMsg, quiero poder crear y publicar mensajes cortos (SnapMsg) en mi feed, para compartir contenido relevante y mantenerme conectado con mis seguidores.
+- Como usuario de TwitSnap, quiero poder crear y publicar mensajes cortos (TwitSnap) en mi feed, para compartir contenido relevante y mantenerme conectado con mis seguidores.
 
 **Criterios de aceptación**
 
 - CA 1: Creación de Publicación
-  - El sistema debe permitir a los usuarios autenticados crear y publicar mensajes cortos (SnapMsg) en su propio feed.
-  - Al crear una nueva publicación de SnapMsg, el usuario debe poder ingresar texto con una longitud máxima definida.
+  - El sistema debe permitir a los usuarios autenticados crear y publicar mensajes cortos (TwitSnap) en su propio feed.
+  - Al crear una nueva publicación de TwitSnap, el usuario debe poder ingresar texto con una longitud máxima definida.
   
 - CA 2: Validación de Contenido
   - Antes de realizar la publicación, el sistema debe validar que el contenido del mensaje cumpla con los requisitos establecidos, como límite de caracteres y otras restricciones.
@@ -629,7 +629,7 @@ ___
 
 **Descripción**
 
-- Como usuario de SnapMsg, quiero poder acceder a estadísticas sobre el rendimiento y la interacción de mi cuenta.
+- Como usuario de TwitSnap, quiero poder acceder a estadísticas sobre el rendimiento y la interacción de mi cuenta.
 
 **Criterios de aceptación**
 
@@ -653,55 +653,55 @@ ___
 
 **Descripción**
 
-- Como usuario de SnapMsg, quiero poder acceder a estadísticas sobre el rendimiento y la interacción con mis publicaciones (SnapMsg), para obtener información relevante sobre la recepción de mi contenido y la actividad de mis seguidores.
+- Como usuario de TwitSnap, quiero poder acceder a estadísticas sobre el rendimiento y la interacción con mis publicaciones (TwitSnap), para obtener información relevante sobre la recepción de mi contenido y la actividad de mis seguidores.
 
 **Criterios de aceptación**
 
 - CA 1: Visualización de Estadísticas
-  - Cuando accedo a mi cuenta de SnapMsg,
+  - Cuando accedo a mi cuenta de TwitSnap,
   - Entonces debo tener acceso a un panel de estadísticas que muestre métricas relacionadas con mis publicaciones.
-  - El panel debe presentar información sobre la cantidad total de SnapMsg publicados, el número de me gusta recibidos, la cantidad de comentarios realizados por otros usuarios y el número de veces que mis SnapMsg han sido compartidos.
+  - El panel debe presentar información sobre la cantidad total de TwitSnap publicados, el número de me gusta recibidos, la cantidad de comentarios realizados por otros usuarios y el número de veces que mis TwitSnap han sido compartidos.
 
 - CA 2: Filtro de Estadísticas por Fecha
   - Cuando utilizo el panel de estadísticas,
-  - Entonces debo tener la opción de filtrar las métricas por fecha para analizar el rendimiento de mis SnapMsg en un período específico.
+  - Entonces debo tener la opción de filtrar las métricas por fecha para analizar el rendimiento de mis TwitSnap en un período específico.
   - Los filtros de fecha deben permitir seleccionar un rango de tiempo personalizado o intervalos predefinidos, como "últimos 7 días", "último mes" o "último año".
 
 - CA 3: Visualización de Estadísticas por Publicación
   - Cuando accedo a la lista de mis publicaciones,
-  - Entonces debo poder ver estadísticas específicas para cada SnapMsg individual.
-  - Las estadísticas deben incluir el número de me gusta recibidos, la cantidad de comentarios y la cantidad de veces que el SnapMsg ha sido compartido.
+  - Entonces debo poder ver estadísticas específicas para cada TwitSnap individual.
+  - Las estadísticas deben incluir el número de me gusta recibidos, la cantidad de comentarios y la cantidad de veces que el TwitSnap ha sido compartido.
 
 ___
 
 
-#### Compartir SnapMsg
+#### Compartir TwitSnap
 
 **Descripción**
 
-- Como usuario de SnapMsg, quiero tener la posibilidad de compartir SnapMsgs interesantes y relevantes en otras redes sociales, como Facebook, WhatsApp, Twitter, etc., para fomentar la difusión de contenido y promover la interacción en la plataforma y más allá de ella.
+- Como usuario de TwitSnap, quiero tener la posibilidad de compartir TwitSnaps interesantes y relevantes en otras redes sociales, como Facebook, WhatsApp, Twitter, etc., para fomentar la difusión de contenido y promover la interacción en la plataforma y más allá de ella.
 
 **Criterios de aceptación**
 
 - CA 1: Compartir en Redes Sociales
-    - Cuando veo un SnapMsg que deseo compartir,
+    - Cuando veo un TwitSnap que deseo compartir,
     - Entonces debo tener la opción de compartirlo en otras redes sociales.
     - El sistema debe proporcionar una función clara y accesible para compartir, con un menú o botones que muestren las opciones de compartir en distintas plataformas.
 
 - CA 2: Opciones de Compartir
-    - Cuando selecciono la opción de compartir un SnapMsg,
+    - Cuando selecciono la opción de compartir un TwitSnap,
     - Entonces debo poder elegir entre diversas redes sociales y aplicaciones de mensajería para compartirlo.
     - Las opciones de compartir deben incluir, al menos, las redes sociales más populares y aplicaciones de mensajería como Facebook, WhatsApp, Twitter, Instagram, etc.
 
 - CA 3: Personalización de Mensaje (Opcional)
-    - Cuando comparto un SnapMsg en otras redes sociales,
-    - Entonces debo tener la opción de personalizar el mensaje que acompaña al SnapMsg compartido.
+    - Cuando comparto un TwitSnap en otras redes sociales,
+    - Entonces debo tener la opción de personalizar el mensaje que acompaña al TwitSnap compartido.
     - Esto me permitirá agregar un comentario, mención o cualquier texto relevante que desee incluir al compartir el contenido en diferentes plataformas.
 
 - CA 4: Confirmación de Compartición
-    - Cuando comparto un SnapMsg en una red social,
+    - Cuando comparto un TwitSnap en una red social,
     - Entonces quiero recibir una confirmación visual de que la acción de compartir se ha realizado con éxito.
-    - El sistema debe proporcionar una notificación o mensaje que indique que el SnapMsg ha sido compartido exitosamente en la red social seleccionada.
+    - El sistema debe proporcionar una notificación o mensaje que indique que el TwitSnap ha sido compartido exitosamente en la red social seleccionada.
 
 
 
@@ -714,11 +714,11 @@ ___
 #### Seguir usuario
 
 **Descripción**
-- Como usuario de SnapMsg, quiero tener la capacidad de seguir a otros usuarios de la plataforma, para mantenerme actualizado con sus publicaciones y descubrir contenido relevante.
+- Como usuario de TwitSnap, quiero tener la capacidad de seguir a otros usuarios de la plataforma, para mantenerme actualizado con sus publicaciones y descubrir contenido relevante.
 
 **Criterios de aceptación**
 - CA 1: Seguir Usuarios
-    - Cuando estoy en el perfil de otro usuario de SnapMsg,
+    - Cuando estoy en el perfil de otro usuario de TwitSnap,
     - Entonces debo tener la opción de seguirlo para recibir sus publicaciones en mi feed.
     - El sistema debe proporcionar un botón o enlace claramente visible que permita seguir al usuario en cuestión.
 
@@ -747,33 +747,33 @@ ___
 #### Likes
 
 **Descripción**
-- Como usuario de SnapMsg, quiero poder dar "me gusta" (likes) a los SnapMsgs que encuentro interesantes o con los que estoy de acuerdo, para mostrar mi aprecio por el contenido y fomentar la interacción en la plataforma.
+- Como usuario de TwitSnap, quiero poder dar "me gusta" (likes) a los TwitSnaps que encuentro interesantes o con los que estoy de acuerdo, para mostrar mi aprecio por el contenido y fomentar la interacción en la plataforma.
 
 **Criterios de aceptación**
 - CA 1: Dar "Me Gusta" (Likes)
-    - Cuando veo un SnapMsg en el feed o en el perfil de otro usuario,
-    - Entonces debo tener la opción de darle "me gusta" al SnapMsg para expresar mi aprobación o interés por el contenido.
-    - El sistema debe proporcionar un botón o icono claramente visible que permita dar "me gusta" al SnapMsg.
+    - Cuando veo un TwitSnap en el feed o en el perfil de otro usuario,
+    - Entonces debo tener la opción de darle "me gusta" al TwitSnap para expresar mi aprobación o interés por el contenido.
+    - El sistema debe proporcionar un botón o icono claramente visible que permita dar "me gusta" al TwitSnap.
 
 - CA 2: Confirmación de "Me Gusta"
-    - Cuando doy "me gusta" a un SnapMsg,
+    - Cuando doy "me gusta" a un TwitSnap,
     - Entonces quiero recibir una confirmación visual de que la acción se ha realizado con éxito.
-    - El sistema debe proporcionar una notificación o mensaje que indique que el SnapMsg ha recibido mi "me gusta" de manera exitosa.
+    - El sistema debe proporcionar una notificación o mensaje que indique que el TwitSnap ha recibido mi "me gusta" de manera exitosa.
 
 - CA 3: Cancelar "Me Gusta" (Unlike)
-    - Cuando ya he dado "me gusta" a un SnapMsg y cambio de opinión,
+    - Cuando ya he dado "me gusta" a un TwitSnap y cambio de opinión,
     - Entonces debo tener la opción de cancelar mi "me gusta" en cualquier momento.
-    - El sistema debe proporcionar una manera sencilla y directa de quitar el "me gusta" de un SnapMsg que previamente había dado "me gusta".
+    - El sistema debe proporcionar una manera sencilla y directa de quitar el "me gusta" de un TwitSnap que previamente había dado "me gusta".
 
 - CA 4: Contador de "Me Gusta"
-    - Cuando veo un SnapMsg,
-    - Entonces quiero poder ver la cantidad total de "me gusta" que ha recibido el SnapMsg.
-    - El sistema debe mostrar un contador numérico que indique cuántos usuarios han dado "me gusta" al SnapMsg.
+    - Cuando veo un TwitSnap,
+    - Entonces quiero poder ver la cantidad total de "me gusta" que ha recibido el TwitSnap.
+    - El sistema debe mostrar un contador numérico que indique cuántos usuarios han dado "me gusta" al TwitSnap.
 
 - CA 5: Privacidad de los "Me Gusta"
-    - Cuando doy "me gusta" a un SnapMsg o recibo "me gusta" en mis SnapMsgs,
+    - Cuando doy "me gusta" a un TwitSnap o recibo "me gusta" en mis TwitSnaps,
     - Entonces el sistema debe garantizar que la privacidad y la configuración de interacciones sean respetadas.
-    - Los usuarios solo deben poder ver la cantidad total de "me gusta" en un SnapMsg solo si se siguen mutuamente o si el perfil es publico.
+    - Los usuarios solo deben poder ver la cantidad total de "me gusta" en un TwitSnap solo si se siguen mutuamente o si el perfil es publico.
 
 
 ___
@@ -781,93 +781,93 @@ ___
 #### SnapShare
 
 **Descripción**
-- Como usuario de SnapMsg, quiero tener la capacidad de compartir SnapMsgs interesantes de otros usuarios en mi propio feed, de manera similar a un "retweet" en otras plataformas, para promover la interacción y facilitar la difusión de contenido relevante.
+- Como usuario de TwitSnap, quiero tener la capacidad de compartir TwitSnaps interesantes de otros usuarios en mi propio feed, de manera similar a un "retweet" en otras plataformas, para promover la interacción y facilitar la difusión de contenido relevante.
 
 **Criterios de aceptación**
 
 - CA 1: SnapShare (Retweet)
-    - Cuando veo un SnapMsg de otro usuario que deseo compartir con mis seguidores,
-    - Entonces debo tener la opción de realizar un SnapShare, es decir, retwittear el SnapMsg en mi propio feed.
-    - El sistema debe proporcionar una función clara y accesible para realizar el SnapShare del SnapMsg.
+    - Cuando veo un TwitSnap de otro usuario que deseo compartir con mis seguidores,
+    - Entonces debo tener la opción de realizar un SnapShare, es decir, retwittear el TwitSnap en mi propio feed.
+    - El sistema debe proporcionar una función clara y accesible para realizar el SnapShare del TwitSnap.
 
 - CA 2: Confirmación de SnapShare
-    - Cuando realizo un SnapShare de un SnapMsg,
+    - Cuando realizo un SnapShare de un TwitSnap,
     - Entonces quiero recibir una confirmación visual de que la acción se ha realizado con éxito.
-    - El sistema debe proporcionar una notificación o mensaje que indique que el SnapMsg ha sido compartido exitosamente en mi feed.
+    - El sistema debe proporcionar una notificación o mensaje que indique que el TwitSnap ha sido compartido exitosamente en mi feed.
 
 - CA 3: SnapShare en mi Propio Feed
-    - Cuando realizo un SnapShare de un SnapMsg,
-    - Entonces el SnapMsg compartido debe aparecer en mi propio feed, junto con mi nombre de usuario y avatar, para que mis seguidores puedan verlo.
-    - La publicación del SnapShare debe mostrar claramente que es un SnapShare y debe incluir el nombre de usuario del autor original del SnapMsg.
+    - Cuando realizo un SnapShare de un TwitSnap,
+    - Entonces el TwitSnap compartido debe aparecer en mi propio feed, junto con mi nombre de usuario y avatar, para que mis seguidores puedan verlo.
+    - La publicación del SnapShare debe mostrar claramente que es un SnapShare y debe incluir el nombre de usuario del autor original del TwitSnap.
 
 - CA 4: Historial de SnapShares
-    - Cuando realizo SnapShares de diferentes SnapMsgs,
+    - Cuando realizo SnapShares de diferentes TwitSnaps,
     - Entonces quiero tener la capacidad de ver un historial o registro de las comparticiones que he realizado en mi perfil.
-    - El sistema debe mostrar una lista de los SnapMsgs compartidos y los usuarios de origen, con fechas y detalles de cada SnapShare.
+    - El sistema debe mostrar una lista de los TwitSnaps compartidos y los usuarios de origen, con fechas y detalles de cada SnapShare.
 
 - CA 5: Privacidad en los SnapShares
-    - Cuando realizo un SnapShare de un SnapMsg,
-    - Entonces el sistema debe garantizar que la privacidad y la configuración de compartición del SnapMsg original sean respetadas.
-    - Los SnapMsgs solo deben ser visibles en mi feed para mis seguidores y no deben ser accesibles por otros usuarios que no forman parte de mi lista de seguidores.
+    - Cuando realizo un SnapShare de un TwitSnap,
+    - Entonces el sistema debe garantizar que la privacidad y la configuración de compartición del TwitSnap original sean respetadas.
+    - Los TwitSnaps solo deben ser visibles en mi feed para mis seguidores y no deben ser accesibles por otros usuarios que no forman parte de mi lista de seguidores.
 
 ___
 
 #### Mención
 
 **Descripción**
-- Como usuario de SnapMsg, quiero tener la capacidad de compartir mencionar en los SnapMsgs a otros usuarios para que les avise cuando los mismos fueron etiquetados en estos.
+- Como usuario de TwitSnap, quiero tener la capacidad de compartir mencionar en los TwitSnaps a otros usuarios para que les avise cuando los mismos fueron etiquetados en estos.
 
 **Criterios de aceptación**
 
 - CA 1: Mención
-    - Cuando escribo un SnapMsg y quiero mencionar a uno de mis seguidores.
+    - Cuando escribo un TwitSnap y quiero mencionar a uno de mis seguidores.
     - Entonces quiero poder escribir @ y su usuario para que sea mencionado.
     - El sistema debe proporcionar una UI clara para facilitarme la escritura del usuario deseado.
 
 - CA 2: Notificacion de mención
-    - Cuando menciono a un usuario en un SnapMsg,
+    - Cuando menciono a un usuario en un TwitSnap,
     - Entonces quiero que el usuario mencionado se entere con una notificacion.
     - El sistema debe proporcionar una notificación o mensaje que indique que al usuario mencionado que fue etiquetado y poder llevarlo a verlo.
 
 - CA 3: Privacidad en las menciones.
-    - Cuando soy mencionado en un SnapMsg,
+    - Cuando soy mencionado en un TwitSnap,
     - Entonces el sistema debe garantizar que se me notifique solo si sigo al usuario que me menciono.
-    - Los SnapMsgs solo deben ser visibles en mi feed para mis seguidores si yo decido SnapSharear el mismo, y si el SnapMsg es publico en el feed del usuario que lo creo.
+    - Los TwitSnaps solo deben ser visibles en mi feed para mis seguidores si yo decido SnapSharear el mismo, y si el TwitSnap es publico en el feed del usuario que lo creo.
 
 ___
 
-#### SnapMsg favoritos
+#### TwitSnap favoritos
 
 **Descripción**
 
-- Como usuario de SnapMsg, quiero tener la capacidad de marcar SnapMsgs como favoritos para poder acceder rápidamente a ellos y guardar contenido relevante que deseo revisar nuevamente en el futuro.
+- Como usuario de TwitSnap, quiero tener la capacidad de marcar TwitSnaps como favoritos para poder acceder rápidamente a ellos y guardar contenido relevante que deseo revisar nuevamente en el futuro.
 
 **Criterios de aceptación**
 
-- CA 1: Marcar SnapMsg como Favorito
-    - Cuando veo un SnapMsg que deseo guardar como favorito,
+- CA 1: Marcar TwitSnap como Favorito
+    - Cuando veo un TwitSnap que deseo guardar como favorito,
     - Entonces debo tener la opción de marcarlo como favorito para guardar el contenido.
-    - El sistema debe proporcionar un botón o icono claramente visible que permita marcar el SnapMsg como favorito.
+    - El sistema debe proporcionar un botón o icono claramente visible que permita marcar el TwitSnap como favorito.
 
 - CA 2: Confirmación de Favorito
-    - Cuando marco un SnapMsg como favorito,
+    - Cuando marco un TwitSnap como favorito,
     - Entonces quiero recibir una confirmación visual de que la acción se ha realizado con éxito.
-    - El sistema debe proporcionar una notificación o mensaje que indique que el SnapMsg ha sido marcado como favorito.
+    - El sistema debe proporcionar una notificación o mensaje que indique que el TwitSnap ha sido marcado como favorito.
 
-- CA 3: Acceso a SnapMsgs Favoritos
-    - Cuando deseo acceder a mis SnapMsgs favoritos,
-    - Entonces debo tener la capacidad de ver una lista de los SnapMsgs que he marcado como favoritos.
-    - El sistema debe proporcionar una sección o una página donde se muestren todos los SnapMsgs favoritos del usuario.
+- CA 3: Acceso a TwitSnaps Favoritos
+    - Cuando deseo acceder a mis TwitSnaps favoritos,
+    - Entonces debo tener la capacidad de ver una lista de los TwitSnaps que he marcado como favoritos.
+    - El sistema debe proporcionar una sección o una página donde se muestren todos los TwitSnaps favoritos del usuario.
 
 - CA 4: Gestión de Favoritos
-    - Cuando veo mis SnapMsgs favoritos,
-    - Entonces debo tener la opción de eliminar SnapMsgs de la lista de favoritos si ya no deseo mantenerlos como favoritos.
-    - El sistema debe proporcionar una manera sencilla y directa de quitar el estado de favorito de un SnapMsg.
+    - Cuando veo mis TwitSnaps favoritos,
+    - Entonces debo tener la opción de eliminar TwitSnaps de la lista de favoritos si ya no deseo mantenerlos como favoritos.
+    - El sistema debe proporcionar una manera sencilla y directa de quitar el estado de favorito de un TwitSnap.
 
 - CA 5: Visualización de Favoritos de Otros Usuarios (Opcional)
     - Cuando veo el perfil de otro usuario,
-    - Entonces quiero tener la opción de ver los SnapMsgs que ha marcado como favoritos.
-    - El sistema debe mostrar una lista de los SnapMsgs favoritos del usuario si este ha configurado su perfil para que esta información sea visible públicamente.
+    - Entonces quiero tener la opción de ver los TwitSnaps que ha marcado como favoritos.
+    - El sistema debe mostrar una lista de los TwitSnaps favoritos del usuario si este ha configurado su perfil para que esta información sea visible públicamente.
 
 ___
 
@@ -875,7 +875,7 @@ ___
 #### Directo
 
 **Descripción**
-- Como usuario de SnapMsg, quiero tener la capacidad de realizar transmisiones en directo (Directos) para compartir momentos en tiempo real con mis seguidores y fomentar la interacción en la plataforma.
+- Como usuario de TwitSnap, quiero tener la capacidad de realizar transmisiones en directo (Directos) para compartir momentos en tiempo real con mis seguidores y fomentar la interacción en la plataforma.
 
 **Criterios de aceptación**
 
@@ -935,7 +935,7 @@ ___
 #### Calificación cuantitativa de un directo
 
 **Descripción**
-- Como usuario de SnapMsg, quiero tener la posibilidad de calificar cuantitativamente las transmisiones en directo (Directos) que veo, para expresar mi opinión sobre la calidad y el contenido de la transmisión.
+- Como usuario de TwitSnap, quiero tener la posibilidad de calificar cuantitativamente las transmisiones en directo (Directos) que veo, para expresar mi opinión sobre la calidad y el contenido de la transmisión.
 
 **Criterios de aceptación**
 
@@ -969,7 +969,7 @@ ___
 #### Calificación cualitativa de un directo
 
 **Descripción**
-- Como usuario de SnapMsg, quiero tener la capacidad de dejar comentarios detallados en las transmisiones en directo (Directos) que veo, para expresar mis pensamientos, preguntas y opiniones sobre el contenido y la experiencia de la transmisión.
+- Como usuario de TwitSnap, quiero tener la capacidad de dejar comentarios detallados en las transmisiones en directo (Directos) que veo, para expresar mis pensamientos, preguntas y opiniones sobre el contenido y la experiencia de la transmisión.
 
 
 **Criterios de aceptación**
@@ -1022,36 +1022,36 @@ ___
 ___
 
 
-#### Notificación por trending SnapMsg
+#### Notificación por trending TwitSnap
 
 **Descripción**
-- Como usuario, quiero recibir notificaciones cuando un SnapMsg relacionado con un tema de tendencia (trending) sea publicado para poder mantenerme informado sobre los temas populares en la plataforma.
+- Como usuario, quiero recibir notificaciones cuando un TwitSnap relacionado con un tema de tendencia (trending) sea publicado para poder mantenerme informado sobre los temas populares en la plataforma.
 
 **Criterios de aceptación**
 
-- CA 1: Notificación de SnapMsg Trending
-    - Cuando un SnapMsg relacionado con un tema de tendencia es publicado en la plataforma,
-    - Entonces el sistema deberá enviar una notificación al usuario para informarle sobre la publicación del SnapMsg.
+- CA 1: Notificación de TwitSnap Trending
+    - Cuando un TwitSnap relacionado con un tema de tendencia es publicado en la plataforma,
+    - Entonces el sistema deberá enviar una notificación al usuario para informarle sobre la publicación del TwitSnap.
 
 - CA 2: Acceso a la Publicación Trending
-    - Cuando recibo una notificación sobre un SnapMsg relacionado con un tema de tendencia,
-    - Entonces debo poder acceder directamente a la publicación del SnapMsg desde la notificación.
+    - Cuando recibo una notificación sobre un TwitSnap relacionado con un tema de tendencia,
+    - Entonces debo poder acceder directamente a la publicación del TwitSnap desde la notificación.
 
 - CA 3: Notificación Visual en la Aplicación
-    - Cuando un SnapMsg relacionado con un tema de tendencia es publicado,
-    - Entonces el usuario deberá poder ver una notificación visual en la aplicación que indique la existencia de un SnapMsg trending.
+    - Cuando un TwitSnap relacionado con un tema de tendencia es publicado,
+    - Entonces el usuario deberá poder ver una notificación visual en la aplicación que indique la existencia de un TwitSnap trending.
 
-- CA 4: Notificación Push de SnapMsg Trending
-    - Cuando un SnapMsg relacionado con un tema de tendencia es publicado,
-    - Entonces el usuario deberá recibir una notificación push en la aplicación para informarle sobre la publicación del SnapMsg trending.
+- CA 4: Notificación Push de TwitSnap Trending
+    - Cuando un TwitSnap relacionado con un tema de tendencia es publicado,
+    - Entonces el usuario deberá recibir una notificación push en la aplicación para informarle sobre la publicación del TwitSnap trending.
 
 - CA 5: Pantalla de notificaciones
-  - Cuando recibo una notificación sobre un SnapMsg relacionado con un tema de tendencia,
+  - Cuando recibo una notificación sobre un TwitSnap relacionado con un tema de tendencia,
   - Entonces deberá poder visualizar una notificación en la aplicación para acceder a dicho contenido 
 
-- CA 6: Notificación Whatsapp de SnapMsg Trending (Optativa)
-    - Cuando un SnapMsg relacionado con un tema de tendencia es publicado,
-    - Entonces el usuario deberá recibir una notificación a su Whatsapp para informarle sobre la publicación del SnapMsg trending.
+- CA 6: Notificación Whatsapp de TwitSnap Trending (Optativa)
+    - Cuando un TwitSnap relacionado con un tema de tendencia es publicado,
+    - Entonces el usuario deberá recibir una notificación a su Whatsapp para informarle sobre la publicación del TwitSnap trending.
 
 ___
 
@@ -1154,45 +1154,45 @@ ___
 
 ___
 
-#### Listado de SnapMsgs
+#### Listado de TwitSnaps
 
 **Descripción**
-- Como administrador del sistema quiero poder listar todos losSnapMsgs que se encuentren en el sistema para acceder a ellos 
+- Como administrador del sistema quiero poder listar todos losTwitSnaps que se encuentren en el sistema para acceder a ellos 
 
 **Criterios de aceptación**
-- CA 1: Listado con SnapMsgs existentes
- - Cuando un administrador solicita visualizar el listado de SnapMsgs en la plataforma
- - Entonces se deberán listar todos los SnapMsgs existentes en el sistema
-- CA 2: Listado con SnapMsgs existentes utilizando filtros
- - Cuando un administrador solicita visualizar el listado de SnapMsgs en la plataforma y aplica un filtrado 
- - Entonces se deberán listar todos los SnapMsgs existentes en el sistema que cumplan con dichos filtros
+- CA 1: Listado con TwitSnaps existentes
+ - Cuando un administrador solicita visualizar el listado de TwitSnaps en la plataforma
+ - Entonces se deberán listar todos los TwitSnaps existentes en el sistema
+- CA 2: Listado con TwitSnaps existentes utilizando filtros
+ - Cuando un administrador solicita visualizar el listado de TwitSnaps en la plataforma y aplica un filtrado 
+ - Entonces se deberán listar todos los TwitSnaps existentes en el sistema que cumplan con dichos filtros
 
 ___
 
-#### Visualización de SnapMsg
+#### Visualización de TwitSnap
 
 **Descripción**
-- Como administrador del sistema quiero poder visualizar un SnapMsg para verificar su contenido. 
+- Como administrador del sistema quiero poder visualizar un TwitSnap para verificar su contenido. 
 
 **Criterios de aceptación**
-- CA 1: Visualización de SnapMsgs
- - Cuando un administrador visualiza el SnapMsg existente en la plataforma
+- CA 1: Visualización de TwitSnaps
+ - Cuando un administrador visualiza el TwitSnap existente en la plataforma
  - Entonces se deberá poder visualizar todos sus datos asociados
 
 ___
 
-#### Bloqueo de SnapMsg
+#### Bloqueo de TwitSnap
 
 **Descripción**
-- Como administrador del sistema quiero poder bloquear un SnapMsgs que se encuentren en el sistema para que no puedan acceder al mismo
+- Como administrador del sistema quiero poder bloquear un TwitSnaps que se encuentren en el sistema para que no puedan acceder al mismo
 
 **Criterios de aceptación**
 - CA 1: Bloqueo exitoso 
- - Cuando un administrador realiza el bloqueo de un SnapMsgs existente en la plataforma
- - Entonces se deberá visualizar que el SnapMsgs está bloqueado y los usuarios no deberán poder acceder a él en la aplicación
+ - Cuando un administrador realiza el bloqueo de un TwitSnaps existente en la plataforma
+ - Entonces se deberá visualizar que el TwitSnaps está bloqueado y los usuarios no deberán poder acceder a él en la aplicación
 - CA 2: Desbloqueo exitoso 
- - Cuando un administrador realiza el desbloqueo de un SnapMsgs existente en la plataforma
- - Entonces se deberá visualizar que el SnapMsgs no esta bloqueado y los usuarios deberán poder acceder a el en la aplicación
+ - Cuando un administrador realiza el desbloqueo de un TwitSnaps existente en la plataforma
+ - Entonces se deberá visualizar que el TwitSnaps no esta bloqueado y los usuarios deberán poder acceder a el en la aplicación
  
  
 
@@ -1299,17 +1299,17 @@ ___
 
 **Criterios de aceptación**
 
-- CA 1: Métricas de Nuevos SnapMsgs
-  - Cuando un usuario publica un nuevo SnapMsg en la plataforma,
-  - Entonces se deben registrar y almacenar las métricas relacionadas con la creación de SnapMsgs, incluyendo el número total de nuevos SnapMsgs publicados, la frecuencia de publicación y las tendencias de uso a lo largo del tiempo.
+- CA 1: Métricas de Nuevos TwitSnaps
+  - Cuando un usuario publica un nuevo TwitSnap en la plataforma,
+  - Entonces se deben registrar y almacenar las métricas relacionadas con la creación de TwitSnaps, incluyendo el número total de nuevos TwitSnaps publicados, la frecuencia de publicación y las tendencias de uso a lo largo del tiempo.
 
 - CA 2: Métricas de Nuevas Transmisiones en Directo
   - Cuando un usuario inicia una nueva transmisión en directo (Directo) en la plataforma,
   - Entonces se deben registrar y almacenar las métricas asociadas al inicio de transmisiones en directo, incluyendo el número total de nuevas transmisiones iniciadas, la duración promedio de las transmisiones y la participación de la audiencia durante las mismas.
 
 - CA 3: Métricas de Hashtags
-  - Cuando los usuarios utilizan hashtags en sus SnapMsgs y comentarios,
-  - Entonces se deben registrar y almacenar las métricas relacionadas con el uso de hashtags, incluyendo la popularidad de hashtags específicos, la frecuencia de uso de hashtags en diferentes SnapMsgs y la tendencia de los hashtags a lo largo del tiempo.
+  - Cuando los usuarios utilizan hashtags en sus TwitSnaps y comentarios,
+  - Entonces se deben registrar y almacenar las métricas relacionadas con el uso de hashtags, incluyendo la popularidad de hashtags específicos, la frecuencia de uso de hashtags en diferentes TwitSnaps y la tendencia de los hashtags a lo largo del tiempo.
 
 
 
