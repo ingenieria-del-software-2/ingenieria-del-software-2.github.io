@@ -1,6 +1,6 @@
 ---
 layout: post
-title: SnapMsg
+title: Match!
 subtitle: Enunciado del 1 Cuatrimestre 2024
 bigimg: /img/path.jpg
 tags: [trabajos-practicos, 2024-1C]
