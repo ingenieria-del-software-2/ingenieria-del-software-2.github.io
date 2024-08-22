@@ -73,7 +73,7 @@ Esperamos ver los resultados. ¡Buena suerte!
 ### Requisitos
 
 1. **Especificaciones del Servicio Backend**:
-    - El servicio debe ser una API RESTful y devolver datos en formato JSON.
+    - El servicio debe ser una API REST-like y devolver datos en formato JSON.
     - Asegúrate de probar cada endpoint con al menos una prueba E2E (End to End) o de integración, de manera que las pruebas sean claras y descriptivas en su propósito.
 
 2. **Endpoints a Implementar**:
