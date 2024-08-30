@@ -8,6 +8,11 @@ subtitle: Métodos de comunicación
 ## Slack 
  
  - [https://ta049-ingsoftii.slack.com/](https://ta049-ingsoftii.slack.com/)
+
+
+ ## Github
+
+ - [https://github.com/ingenieria-del-software-2](https://github.com/ingenieria-del-software-2)
  
 ## Canal de youtube
  
