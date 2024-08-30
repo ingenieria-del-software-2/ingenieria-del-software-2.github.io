@@ -10,7 +10,7 @@ subtitle: Métodos de comunicación
  - [https://ta049-ingsoftii.slack.com/](https://ta049-ingsoftii.slack.com/)
 
 
- ## Github
+## Github
 
  - [https://github.com/ingenieria-del-software-2](https://github.com/ingenieria-del-software-2)
  
