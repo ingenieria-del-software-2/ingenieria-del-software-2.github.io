@@ -1523,9 +1523,4 @@ _Se espera que dicha documentación se elabore de manera incremental y que cada 
 ## Historias obligatorias y optativas
 
 
-
-### Obligatorias
-
-
-
-### Optativas
+Las historias obligatorias y optativas se encuentran definidas [Link](https://docs.google.com/spreadsheets/d/1n3YIkGDnt6OusNWV4upDqPIftCYSgN4EELduBqiS8dw/edit?usp=sharing)
