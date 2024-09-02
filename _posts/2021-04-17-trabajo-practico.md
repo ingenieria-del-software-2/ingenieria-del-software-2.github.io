@@ -7,4 +7,4 @@ tags: [trabajos-practicos, 2021-1C]
 ---
 Ya se encuentra disponible el enunciado del trabajo práctico
 
-[Enunciado](https://taller-de-programacion-2.github.io/works/statement/2021/1/tp/enunciado/)
+[Enunciado](https://ingenieria-del-software-2.github.io/works/statement/2021/1/tp/enunciado/)

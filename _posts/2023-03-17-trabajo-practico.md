@@ -7,4 +7,4 @@ tags: [trabajos-practicos, 2023-1C]
 ---
 Ya se encuentra disponible el enunciado del trabajo práctico
 
-[Enunciado](https://taller-de-programacion-2.github.io/tasks/statement/2023/1/enunciado/)
+[Enunciado](https://ingenieria-del-software-2.github.io/tasks/statement/2023/1/enunciado/)
