@@ -1127,9 +1127,9 @@ ___
 - Como administrador del sistema quiero poder visualizar el perfil de un  usuario del sistema para verificar sus datos
 
 **Criterios de aceptación**
-- CA 1: Listado de usuarios del sistema
-  - Cuando un administrador del sistema ingrese a la sección de usuarios
-  - Entonces se listaran todos los usuarios del sistema.
+- CA 1: Visualizar perfil de usuario 
+  - Cuando un administrador del sistema ingrese al perfil de un usuario
+  - Entonces se listaran todos datos asociados a ese perfil de usuario, de caracter útil para el administrador.
 
 ___
 
