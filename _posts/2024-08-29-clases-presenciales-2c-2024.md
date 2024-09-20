@@ -13,7 +13,7 @@ Les pasamos el listado de fechas donde vamos a trabajar de manera presencial en 
 
 | #  | Fecha  | Clase  |
 |:--:|:------:|:------|
-| 1  | 17/10   | Parcial |
+| 1  | 14/10   | Parcial |
 | 2  | 24/10   | Clase especial |
 | 3  | 11/11   | Clase especial |
 | 4  | 25/11   | Primer recuperatorio |
