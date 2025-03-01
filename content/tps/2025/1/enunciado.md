@@ -187,7 +187,12 @@ ___
   - Cuando el usuario inicia sesión mediante un proveedor federado,  
   - Entonces el sistema extraerá y sincronizará la información básica del perfil (nombre, correo electrónico, foto de perfil) para crear o actualizar la cuenta en la plataforma, permitiendo que el usuario modifique estos datos posteriormente si lo desea.
 
-- CA 4: Seguridad en el manejo de tokens  
+- CA 4: Mantener la unicidad del sistema de usuarios
+    - Cuando un usuario registrado previamente con correo y contraseña se logea,
+    - Entonces el sistema le preguntar sí quiere combinar la información y le pediria dichas credenciales
+    - Entonces el usuario podrá logearse de ambas formas.
+
+- CA 5: Seguridad en el manejo de tokens  
   - Cuando el sistema recibe un token de identidad federada,  
   - Entonces dicho token será validado mediante el proveedor correspondiente y almacenado de forma segura para garantizar la integridad y confidencialidad de la sesión del usuario.
 
@@ -227,6 +232,9 @@ ___
   - Cuando se realice un recupero de contraseña
   - Entonces se deberá enviar un email con un link de recupero de contraseña, el cual tiene solo un uso y un tiempo de expiración
 
+- CA 2: Fallo en recuperar
+    - Cuando se expiré el tiempo de recuperación
+    - Entonces el sistema no podrá realizar la recuperación y el usuario deberá iniciar nuevamente el proceso.
 ___
 
 #### Registro de administradores
@@ -737,6 +745,13 @@ ___
   - Cuando el alumno selecciona una tarea o examen del listado,  
   - Entonces el sistema mostrará la información completa de la actividad, incluyendo instrucciones, recursos adjuntos y la opción para iniciar o revisar la actividad.
 
+- **CA 5: Visualización de tiempo de examenes activos**
+    - Cuando un alumno participa en un examen en línea con tiempo limitado,
+    - Entonces el sistema debe mostrar claramente un contador regresivo visible que indique el tiempo restante para completar la prueba.
+
+- **CA 6: Descarga de tareas y examenes**
+    - Cuando el alumno o docente necesita obtener tareas y exámenes para trabajar sin conexión o conservarlos,
+    - Entonces el sistema debe permitir la descarga de estos materiales en formatos comunes (PDF, DOC) preservando su estructura y contenido original.
 ___
 
 
@@ -1289,9 +1304,9 @@ Se deberá entregar la siguiente documentación:
 
 - Servicios Backend:
   - Documentación técnica: 
-   - Instalación y configuración
-   - Definición de arquitectura
-   - Especificación de API REST: [OpenAPI](https://github.com/OAI/OpenAPI-Specification)
+    - Instalación y configuración
+    - Definición de arquitectura
+    - Especificación de API REST: [OpenAPI](https://github.com/OAI/OpenAPI-Specification)
 
 - Guia de usuario de la aplicación disponible en [Github Pages](https://pages.github.com/)
 - Guia de usuario del backoffice disponible en [Github Pages](https://pages.github.com/)
