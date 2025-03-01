@@ -13,11 +13,12 @@ subtitle: "Grupal"
 3. [Requisitos](#requisitos)
    1. [Épicas](#Épicas)
       1. [Usuarios](#usuarios)
-      2. [Gestión de Clases](#gestión-de-clases)
-      3. [Asignaciones y Evaluaciones](#asignaciones-y-evaluaciones)
-      4. [Comunicación y Notificaciones](#comunicación-y-notificaciones)
-      5. [Métricas y Análisis](#métricas-y-análisis)
-      6. [Administración de la Plataforma](#administración-de-la-plataforma)
+      2. [Gestión de perfiles](#gestión-de-perfiles)
+      3. [Gestión de Clases](#gestión-de-clases)
+      4. [Asignaciones y Evaluaciones](#asignaciones-y-evaluaciones)
+      5. [Comunicación y Notificaciones](#comunicación-y-notificaciones)
+      6. [Métricas y Análisis](#métricas-y-análisis)
+      7. [Administración de la Plataforma](#administración-de-la-plataforma)
    2. [Historias de Usuario](#historias-de-usuario)
 4. [Requisitos No Funcionales](#requisitos-no-funcionales)
     1. [Componentes](#componentes)
@@ -46,6 +47,10 @@ EduSnap es una plataforma de gestión educativa diseñada para facilitar la ense
 El trabajo se aprobará al cumplir con una cantidad mínima de puntos obtenidos a partir de las historias de usuario implementadas. Habrá historias obligatorias y opcionales, permitiendo a los equipos elegir cómo completar los puntos necesarios.
 
 ## Requisitos
+
+A continuación se describirán una serie de Épicas e Historias de usuario indicando la funcionalidad a cumplir por la plataforma. 
+
+_En caso de que se observe alguna definición ambigua o la falta de la misma, esta debe ser aclarada y definida por el grupo junto a su corrector_ 
 
 ### Épicas
 
