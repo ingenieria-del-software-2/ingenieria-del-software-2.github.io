@@ -1,21 +1,4 @@
 sections:
-  - id: introduccion
-    title: Introducción a la materia
-    emoji: 📘
-    description: Introducción general a la materia, objetivos, modalidad de cursada y herramientas que utilizaremos durante el cuatrimestre.
-    topics:
-      - objetivo
-      - calendario
-      - modalidad
-      - tecnologías
-      - tps
-    videos:
-      - url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-    resources:
-      - title: "Plan de Estudios"
-        url: "#"
-        type: "document"
-
   - id: backend
     title: Desarrollo Backend
     emoji: ⚙️
