@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Equipo - Ingeniería del Software 2</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script>
@@ -17,66 +21,88 @@
         }
     </script>
 </head>
-<body>
-    <!-- Hero Section -->
-    <div class="relative mb">
-        {{ partial "sidebar.html" (dict "context" . "disableSidebar" true) }}
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-            <div class="text-center space-y-8">
-                <div>
-                    <div class="inline-flex w-16 h-16 rounded-full bg-accent-500/10 dark:bg-accent-900/20 p-1 ring-1 ring-accent-500/30 dark:ring-accent-700/30">
-                        <img src="/images/logo.png" alt="Logo" class="w-full h-full object-cover rounded-full dark:invert">
-                    </div>
-                </div>
-                <h1 class="text-4xl font-bold text-gray-900 dark:text-white/90 tracking-tight">Equipo Docente</h1>
-            </div>
-        </div>
+<body class="bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 min-h-screen">
+    <!-- Background Decorator -->
+    <div class="fixed inset-0 z-0 pointer-events-none opacity-40 dark:opacity-20 overflow-hidden">
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-400/30 rounded-full blur-3xl mix-blend-multiply filter"></div>
+        <div class="absolute top-0 right-1/4 w-96 h-96 bg-purple-400/30 rounded-full blur-3xl mix-blend-multiply filter animation-delay-2000"></div>
+        <div class="absolute -bottom-8 left-1/3 w-96 h-96 bg-pink-400/30 rounded-full blur-3xl mix-blend-multiply filter animation-delay-4000"></div>
     </div>
 
-    <!-- Team Grid -->
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
-    <div id="team-grid" data-team-grid
-        class="flex flex-wrap justify-center gap-4
-            before:content-[''] before:basis-60 before:h-0 before:shrink-0
-            after:content-['']  after:basis-60  after:h-0  after:shrink-0">
-        {{ range .Site.Data.team.team }}
-        <div class="basis-60 shrink-0">
-            <div class="group relative aspect-square w-full bg-gray-50 dark:bg-gray-900 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-            <img src="{{ .pic }}" alt="{{ .name }}" class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105">
-            <div class="absolute inset-0 bg-gradient-to-t from-gray-900/40 via-gray-900/20 to-transparent group-hover:from-gray-950/80 group-hover:via-gray-950/60 group-hover:to-gray-950/30 flex flex-col justify-end p-5 transition-colors">
-                <div class="flex justify-center space-x-3 mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <a href="mailto:{{ .mail }}" class="text-white/80 hover:text-white">
-                    <div class="w-12 h-12 rounded-full bg-white/5 backdrop-blur-sm flex items-center justify-center hover:bg-white/10">
-                    <i class="fas fa-envelope text-xl"></i>
+    <div class="relative z-10">
+        {{ partial "sidebar.html" (dict "context" . "disableSidebar" true) }}
+        
+        <!-- Hero Section -->
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-8 text-center">
+            <h1 class="inline-flex items-center justify-center p-2 mb-4 rounded-full bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm shadow-sm ring-1 ring-gray-900/5 dark:ring-white/10">
+                <img src="/images/logo.png" alt="Logo" class="w-8 h-8 rounded-full mr-3 dark:invert">
+                <span class="text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-100 pr-4">
+                    Equipo Docente
+                </span>
+            </h1>
+            <p class="text-base text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                Conocé a los profesores y ayudantes que hacen posible la materia.
+            </p>
+        </div>
+
+        <!-- Team Grid -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-32">
+            <div id="team-grid" data-team-grid class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                {{ range .Site.Data.team.team }}
+                <div class="group relative">
+                    <div class="aspect-square w-full overflow-hidden rounded-3xl bg-gray-200 dark:bg-gray-900 relative shadow-md transition-all duration-300 group-hover:shadow-2xl group-hover:shadow-blue-900/10 dark:group-hover:shadow-blue-900/20">
+                        <img src="{{ .pic }}" alt="{{ .name }}" 
+                             class="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-110">
+                        
+                        <!-- Overlay -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-950/90 via-gray-950/40 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-300"></div>
+                        
+                        <!-- Content -->
+                        <div class="absolute inset-0 p-6 flex flex-col justify-end transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h3 class="text-lg font-medium text-gray-100 mb-1 group-hover:mb-3 transition-all">{{ .name }}</h3>
+                            
+                            <!-- Social Links -->
+                            <div class="flex items-center space-x-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 transform translate-y-4 group-hover:translate-y-0">
+                                {{ if .mail }}
+                                <a href="mailto:{{ .mail }}" class="text-white hover:text-blue-400 transition-colors bg-white/10 hover:bg-white/20 w-10 h-10 flex items-center justify-center rounded-full backdrop-blur-sm">
+                                    <i class="fas fa-envelope text-lg"></i>
+                                </a>
+                                {{ end }}
+                                {{ if .github }}
+                                <a href="https://github.com/{{ .github }}" target="_blank" class="text-white hover:text-purple-400 transition-colors bg-white/10 hover:bg-white/20 w-10 h-10 flex items-center justify-center rounded-full backdrop-blur-sm">
+                                    <i class="fab fa-github text-lg"></i>
+                                </a>
+                                {{ end }}
+                            </div>
+                        </div>
                     </div>
-                </a>
-                <a href="https://github.com/{{ .github }}" target="_blank" class="text-white/80 hover:text-white">
-                    <div class="w-12 h-12 rounded-full bg-white/5 backdrop-blur-sm flex items-center justify-center hover:bg-white/10">
-                    <i class="fab fa-github text-xl"></i>
-                    </div>
-                </a>
                 </div>
-                <h3 class="text-white font-medium text-m text-center leading-tight">{{ .name }}</h3>
-            </div>
+                {{ end }}
             </div>
         </div>
-        {{ end }}
-    </div>
     </div>
 </body>
 <script>
 addEventListener('DOMContentLoaded', () => {
   const grid = document.querySelector('[data-team-grid]');
-  const [first, ...rest] = [...grid.children];
-
-  const shuffled = rest
-    .map(el => ({ k: crypto.getRandomValues(new Uint32Array(1))[0], el }))
-    .sort((a, b) => a.k - b.k)
-    .map(x => x.el);
-
-  const frag = document.createDocumentFragment();
-  shuffled.forEach(el => frag.appendChild(el));
-  grid.appendChild(frag);
+  if (!grid) return;
+  
+  const items = Array.from(grid.children);
+  
+  if (items.length > 1) {
+      // Keep first item, shuffle rest
+      const first = items[0];
+      const rest = items.slice(1);
+      
+      const shuffled = rest
+        .map(el => ({ k: Math.random(), el }))
+        .sort((a, b) => a.k - b.k)
+        .map(x => x.el);
+        
+      grid.innerHTML = '';
+      grid.appendChild(first);
+      shuffled.forEach(el => grid.appendChild(el));
+  }
 });
 </script>
 </html>

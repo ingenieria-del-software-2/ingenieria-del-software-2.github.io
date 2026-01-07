@@ -1,18 +1,51 @@
 sections:
-  - title: Introducción a la materia
-    emoji: 📘
-    subtitle:
+  - id: backend
+    title: Desarrollo Backend
+    emoji: ⚙️
+    description: Diseño e implementación de APIs REST, buenas prácticas y testing del lado del servidor.
     topics:
-      - objetivo
-      - calendario
-      - modalidad
-      - tecnologías
-      - tps
-    links: []
+      - rest history
+      - rest vs rest-like
+      - api design
+      - e2e testing
+      - integration testing
+    videos:
+      - url: "https://www.youtube.com/watch?v=NBfaMV99iak"
+      - url: "https://www.youtube.com/watch?v=ahXyvBG0764"
+      - url: "https://www.youtube.com/watch?v=mdIaWXSsCPA"
+    resources:
+      - title: "HTTP Protocol"
+        url: "https://code.tutsplus.com/tutorials/http-the-protocol-every-web-developer-must-know-part-1--net-31177"
+        type: "link"
+      - title: "WSGI (Python)"
+        url: "http://www.python.org.ar/wiki/WSGI"
+        type: "link"
+      - title: "GraphQL Explained"
+        url: "https://blog.apollographql.com/graphql-explained-5844742f195e"
+        type: "link"
+      - title: "What is a RESTful API?"
+        url: "https://www.youtube.com/watch?v=6sUbt-Qp6Pg"
+        type: "link"
+      - title: "How a RESTful API Represents Resources"
+        url: "https://www.oreilly.com/content/how-a-restful-api-represents-resources"
+        type: "link"
+      - title: "How to Design a RESTful API Architecture"
+        url: "https://www.oreilly.com/content/how-to-design-a-restful-api-architecture-from-a-human-language-spec/"
+        type: "link"
+      - title: "REST Good Practices for API Design"
+        url: "https://medium.com/hashmapinc/rest-good-practices-for-api-design-881439796dc9"
+        type: "link"
+      - title: "Richardson Maturity Model"
+        url: "https://martinfowler.com/articles/richardsonMaturityModel.html"
+        type: "link"
+      - title: "Richardson Maturity Model para simples mortales"
+        url: "https://medium.com/@freddyerf/richardson-maturity-model-para-simples-mortales-bb23ca4a34e5"
+        type: "link"
 
-  - title: Arquitectura de Software
+  - id: arquitectura
+    title: Arquitectura de Software
     emoji: 🏛️
-    subtitle:
+    description: Conceptos fundamentales de arquitectura de software, patrones de diseño y toma de decisiones arquitectónicas.
     topics:
       - monolithic vs microservices
       - solution design
@@ -26,84 +59,38 @@ sections:
       - integration of components
       - quality attributes
       - testability
-    links:
-      - https://dzone.com/articles/layered-architecture-is-good
-      - https://alistair.cockburn.us/hexagonal-architecture/
-      - https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
-      - https://adr.github.io/
-      - https://c4model.com/
-      - https://martinfowler.com/articles/microservices.html
-      - https://netflixtechblog.com/ready-for-changes-with-hexagonal-architecture-b315ec967749?gi=ab1b36806793
+    videos:
+      - url: "https://www.youtube.com/watch?v=barJEzvJP1I"
+      - url: "https://www.youtube.com/watch?v=2epGB2R4Z3A"
+      - url: "https://www.youtube.com/watch?v=PUZzj8_KmPQ"
+      - url: "https://www.youtube.com/watch?v=HS88fDWu0no"
+    resources:
+      - title: "Layered Architecture is Good"
+        url: "https://dzone.com/articles/layered-architecture-is-good"
+        type: "link"
+      - title: "Hexagonal Architecture"
+        url: "https://alistair.cockburn.us/hexagonal-architecture/"
+        type: "link"
+      - title: "The Clean Architecture"
+        url: "https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html"
+        type: "link"
+      - title: "C4 Model"
+        url: "https://c4model.com/"
+        type: "link"
+      - title: "Architecture Decision Records"
+        url: "https://adr.github.io/"
+        type: "link"
+      - title: "Microservices"
+        url: "https://martinfowler.com/articles/microservices.html"
+        type: "link"
+      - title: "Ready for changes with Hexagonal Architecture"
+        url: "https://netflixtechblog.com/ready-for-changes-with-hexagonal-architecture-b315ec967749?gi=ab1b36806793"
+        type: "link"
 
-  - title: Desarrollo Backend
-    emoji: ⚙️
-    subtitle:
-    topics:
-      - rest history
-      - rest vs rest-like
-      - api design
-      - e2e testing
-      - integration testing
-    links:
-      - https://code.tutsplus.com/tutorials/http-the-protocol-every-web-developer-must-know-part-1--net-31177
-      - http://www.python.org.ar/wiki/WSGI
-      - https://blog.apollographql.com/graphql-explained-5844742f195e
-      - https://www.youtube.com/watch?v=6sUbt-Qp6Pg
-      - https://www.oreilly.com/content/how-a-restful-api-represents-resources
-      - https://www.oreilly.com/content/how-to-design-a-restful-api-architecture-from-a-human-language-spec/
-      - https://medium.com/hashmapinc/rest-good-practices-for-api-design-881439796dc9
-      - https://martinfowler.com/articles/richardsonMaturityModel.html
-      - https://medium.com/@freddyerf/richardson-maturity-model-para-simples-mortales-bb23ca4a34e5
-
-  - title: Contenedores
-    emoji: 📦
-    subtitle:
-    topics:
-      - container architecture
-      - image layers
-      - dockerfile
-      - docker compose
-      - docker networking
-      - container registries
-      - iterative build
-    links:
-      - https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
-      - https://docs.docker.com/engine/install/
-      - https://docs.docker.com/get-started/overview/
-      - http://youtube.com/watch?v=eGz9DS-aIJSLpG_spOBMeY
-      - https://labs.play-with-docker.com/
-
-  - title: Desarrollo Frontend
-    emoji: 💻
-    subtitle:
-    topics:
-      - html css js
-      - react
-      - hooks
-      - state management
-      - rendering strategies
-      - styling components
-    links:
-      - https://blog.sessionstack.com/how-does-javascript-actually-work-part-1-b0bacc073cf
-      - https://scotch.io/tutorials/javascript-transpilers-what-they-are-why-we-need-them
-      - https://webpack.js.org/configuration/
-      - https://reactjs.org/docs/introducing-jsx.html
-
-  - title: Desarrollo Móvil
-    emoji: 📱
-    subtitle:
-    topics:
-      - react native
-      - expo
-      - cross platform development
-      - native modules
-      - performance optimization
-    links:
-      - https://reactnative.dev/
-
-  - title: DevOps
+  - id: devops
+    title: DevOps
     emoji: 🚀
-    subtitle:
+    description: Cultura DevOps, integración continua, despliegue continuo, infraestructura como código y contenedores.
     topics:
       - devops movement
       - version control
@@ -114,16 +101,100 @@ sections:
       - infrastructure as code
       - deployment strategies
       - software release
-    links:
-      - https://aws.amazon.com/devops/
-      - https://cloud.google.com/devops
-      - https://martinfowler.com/articles/continuousIntegration.html
-      - https://12factor.net/
-      - https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/
+      - container architecture
+      - image layers
+      - dockerfile
+      - docker compose
+      - docker networking
+      - container registries
+      - iterative build
+    videos:
+      - url: "https://www.youtube.com/watch?v=ZHYBfDZgOOU"
+      - url: "https://www.youtube.com/watch?v=QUjMeu9C-9o"
+      - url: "https://www.youtube.com/watch?v=Og3jFsy0JXk"
+      - url: "https://www.youtube.com/watch?v=yNStEV0oGEc"
+    resources:
+      - title: "What is DevOps (AWS)"
+        url: "https://aws.amazon.com/devops/"
+        type: "link"
+      - title: "What is DevOps (Google Cloud)"
+        url: "https://cloud.google.com/devops"
+        type: "link"
+      - title: "Continuous Integration"
+        url: "https://martinfowler.com/articles/continuousIntegration.html"
+        type: "link"
+      - title: "The Twelve-Factor App"
+        url: "https://12factor.net/"
+        type: "link"
+      - title: "What is Kubernetes?"
+        url: "https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/"
+        type: "link"
+      - title: "Dockerfile Best Practices"
+        url: "https://docs.docker.com/develop/develop-images/dockerfile_best-practices/"
+        type: "link"
+      - title: "Docker Install"
+        url: "https://docs.docker.com/engine/install/"
+        type: "link"
+      - title: "Docker Overview"
+        url: "https://docs.docker.com/get-started/overview/"
+        type: "link"
+      - title: "Docker Tutorial"
+        url: "http://youtube.com/watch?v=eGz9DS-aIJSLpG_spOBMeY"
+        type: "link"
+      - title: "Play with Docker"
+        url: "https://labs.play-with-docker.com/"
+        type: "link"
 
-  - title: Project Management
+  - id: frontend
+    title: Desarrollo Frontend
+    emoji: 💻
+    description: Desarrollo de interfaces de usuario modernas utilizando React y gestión de estado.
+    topics:
+      - html css js
+      - react
+      - hooks
+      - state management
+      - rendering strategies
+    videos:
+      - url: "https://www.youtube.com/watch?v=hcfE6Ahek8Q"
+      - url: "https://www.youtube.com/watch?v=NNfKKTl4T00"
+      - url: "https://www.youtube.com/watch?v=WxgglOYinKY"
+    resources:
+      - title: "How Does JavaScript Actually Work?"
+        url: "https://blog.sessionstack.com/how-does-javascript-actually-work-part-1-b0bacc073cf"
+        type: "link"
+      - title: "JS Transpilers"
+        url: "https://scotch.io/tutorials/javascript-transpilers-what-they-are-why-we-need-them"
+        type: "link"
+      - title: "Webpack Configuration"
+        url: "https://webpack.js.org/configuration/"
+        type: "link"
+      - title: "React Docs"
+        url: "https://reactjs.org/docs/introducing-jsx.html"
+        type: "link"
+
+  - id: mobile
+    title: Desarrollo Móvil
+    emoji: 📱
+    description: Creación de aplicaciones móviles nativas y multiplataforma con React Native.
+    topics:
+      - react native
+      - expo
+      - cross platform development
+      - performance optimization
+    videos:
+      - url: "https://www.youtube.com/watch?v=u1KzVFTs7jk"
+      - url: "https://www.youtube.com/watch?v=KucweZ5mFEk"
+      - url: "https://www.youtube.com/watch?v=VprAaCsfHNc"
+    resources:
+      - title: "React Native"
+        url: "https://reactnative.dev/"
+        type: "link"
+
+  - id: pm
+    title: Project Management
     emoji: 📊
-    subtitle:
+    description: Metodologías ágiles, gestión de equipos y planificación de proyectos de software.
     topics:
       - planning and backlog
       - project execution
@@ -149,13 +220,28 @@ sections:
       - slicing strategies
       - pair programming
       - mob programming
-    links:
-      - https://martinfowler.com/articles/on-pair-programming.html
-      - https://medium.com/comparethemarket/i-did-mob-programming-every-day-for-5-months-heres-what-i-learnt-b586fb8b67c
+    videos:
+      - url: "https://youtu.be/SkF76pVlj7k?si=Bf8TVHrZJ9yqofTK"
+      - url: "https://www.youtube.com/watch?v=unKvgx0S36I"
+      - url: "https://www.youtube.com/watch?v=2Z4nCvbCGRE"
+      - url: "https://www.youtube.com/watch?v=4KvjjFlhH0w"
+      - url: "https://www.youtube.com/watch?v=DTTom666oqE"
+      - url: "https://www.youtube.com/watch?v=VKadcLB5uyA"
+      - url: "https://www.youtube.com/watch?v=uNIJZTGkY8c"
+      - url: "https://www.youtube.com/watch?v=lo-NXlMeROo"
+      - url: "https://www.youtube.com/watch?v=Hef1f_6keuE"
+    resources:
+      - title: "Pair Programming"
+        url: "https://martinfowler.com/articles/on-pair-programming.html"
+        type: "link"
+      - title: "I did Mob Programming every day for 5 Months"
+        url: "https://medium.com/comparethemarket/i-did-mob-programming-every-day-for-5-months-heres-what-i-learnt-b586fb8b67c"
+        type: "link"
 
-  - title: Operaciones
+  - id: operaciones
+    title: Operaciones
     emoji: 🔧
-    subtitle:
+    description: Gestión de operaciones, monitoreo, confiabilidad del sitio y manejo de incidentes en producción.
     topics:
       - production release
       - monitoring
@@ -163,13 +249,20 @@ sections:
       - alerting
       - incidents
       - on-call management
-    links:
-      - https://sre.google/
-      - https://aws.amazon.com/architecture/well-architected/
+    videos:
+      - url: "https://www.youtube.com/watch?v=7VRKk8D51NY"
+    resources:
+      - title: "Site Reliability Engineering (Google)"
+        url: "https://sre.google/"
+        type: "link"
+      - title: "AWS Well-Architected"
+        url: "https://aws.amazon.com/architecture/well-architected/"
+        type: "link"
 
-  - title: Cloud Computing
+  - id: cloud
+    title: Cloud Computing
     emoji: ☁️
-    subtitle:
+    description: Servicios en la nube, AWS, modelos de servicio y arquitectura cloud.
     topics:
       - cloud service models
       - public vs private
@@ -182,13 +275,22 @@ sections:
       - ecs basics
       - rds basics
       - infrastructure as code
-    links:
-      - https://aws.amazon.com/es/what-is-cloud-computing/
-      - https://cloud.google.com/learn/what-is-cloud-computing
+    videos:
+      - url: "https://www.youtube.com/watch?v=yIvTx0qUSZI"
+      - url: "https://www.youtube.com/watch?v=-e87PNDFvWw"
+      - url: "https://www.youtube.com/watch?v=oG-XV8qmEwc"
+    resources:
+      - title: "What is Cloud Computing"
+        url: "https://aws.amazon.com/es/what-is-cloud-computing/"
+        type: "link"
+      - title: "What is Cloud Computing (Google Cloud)"
+        url: "https://cloud.google.com/learn/what-is-cloud-computing"
+        type: "link"
 
-  - title: Calidad de Software
+  - id: calidad
+    title: Calidad de Software
     emoji: 🧪
-    subtitle:
+    description: Estrategias de testing, TDD, BDD y aseguramiento de la calidad en el ciclo de vida.
     topics:
       - internal and external quality
       - software attributes
@@ -198,28 +300,45 @@ sections:
       - continuous deployment
       - test driven development (tdd)
       - behavior driven development (bdd)
-    links:
-      - https://medium.com/caffeine-and-testing/async-testing-with-mocha-with-callbacks-and-promises-5d0002661b3f
-      - https://www.martinfowler.com/ieeeSoftware/failFast.pdf
-      - https://medium.freecodecamp.org/why-end-to-end-testing-is-important-for-your-team-cb7eb0ec1504
-      - https://www.agilealliance.org/glossary/bdd/
-      - https://www.agilealliance.org/glossary/tdd/
+    videos:
+      - url: "https://www.youtube.com/watch?v=qlIzwoD4lrc"
+      - url: "https://www.youtube.com/watch?v=GCyYP467EyU"
+    resources:
+      - title: "Async Testing with Mocha"
+        url: "https://medium.com/caffeine-and-testing/async-testing-with-mocha-with-callbacks-and-promises-5d0002661b3f"
+        type: "link"
+      - title: "Fail Fast"
+        url: "https://www.martinfowler.com/ieeeSoftware/failFast.pdf"
+        type: "document"
+      - title: "Why End-to-End Testing is Important"
+        url: "https://medium.freecodecamp.org/why-end-to-end-testing-is-important-for-your-team-cb7eb0ec1504"
+        type: "link"
+      - title: "BDD (Agile Alliance)"
+        url: "https://www.agilealliance.org/glossary/bdd/"
+        type: "link"
+      - title: "TDD (Agile Alliance)"
+        url: "https://www.agilealliance.org/glossary/tdd/"
+        type: "link"
 
-  - title: Bases de Datos
+  - id: databases
+    title: Bases de Datos
     emoji: 🗄️
-    subtitle:
+    description: Bases de datos relacionales y NoSQL, modelado de datos y persistencia.
     topics:
       - relational databases
       - non relational databases
       - postgresql
       - mongodb
-    links:
-      - https://www.postgresql.org/docs/
-      - https://www.mongodb.com/docs/manual/
+    videos: []
+    resources:
+      - title: "PostgreSQL Docs"
+        url: "https://www.postgresql.org/docs/"
+        type: "link"
 
-  - title: UX Design
+  - id: ux
+    title: UX Design
     emoji: 🎨
-    subtitle:
+    description: Diseño centrado en el usuario, usabilidad y prototipado.
     topics:
       - kano model
       - usability
@@ -227,26 +346,57 @@ sections:
       - data driven products
       - user centered design
       - material design
-    links:
-      - https://uxdesign.cc/choosing-the-right-features-with-kano-model-cc0274b6a83
-      - https://medium.com/vivareal-ux-chapter/why-ux-designers-should-care-more-about-a-b-testing-7ef88eaee3e9
-      - https://uxdesign.cc/build-a-great-product-roadmap-with-the-kano-model-5feb605c3878
-      - https://www.youtube.com/c/MaterialDesign
+    videos: []
+    resources:
+      - title: "Choosing the Right Features with Kano Model"
+        url: "https://uxdesign.cc/choosing-the-right-features-with-kano-model-cc0274b6a83"
+        type: "link"
+      - title: "Why UX Designers Should Care More About A/B Testing"
+        url: "https://medium.com/vivareal-ux-chapter/why-ux-designers-should-care-more-about-a-b-testing-7ef88eaee3e9"
+        type: "link"
+      - title: "Build a Great Product Roadmap with the Kano Model"
+        url: "https://uxdesign.cc/build-a-great-product-roadmap-with-the-kano-model-5feb605c3878"
+        type: "link"
+      - title: "Material Design"
+        url: "https://www.youtube.com/c/MaterialDesign"
+        type: "link"
 
-  - title: Especiales
-    emoji: 🎓
-    subtitle:
+  - id: especiales
+    title: Temas Especiales
+    emoji: ⭐
+    description: Temas avanzados y especializados en tecnologías emergentes y seguridad.
     topics:
       - blockchain
-      - AI
-      - observability
-      - OAuth
-    links:
-      - https://www.youtube.com/watch?v=bBC-nXj3Ng4&ab_channel=3Blue1Brown 
-      - https://www.preethikasireddy.com/post/how-does-ethereum-work-anyway
-      - https://www.youtube.com/watch?v=t18YB3xDfXI&ab_channel=OktaDev      # oauth
-      - https://www.returngis.net/2019/04/oauth-2-0-openid-connect-y-json-web-tokens-jwt-que-es-que/
-      - https://dzone.com/articles/stateless-authentication-with-json-web-tokens
-      - https://www.jbspeakr.cc/purpose-jwt-stateless-authentication/
-      - https://www.okta.com/identity-101/what-is-role-based-access-control-rbac/
-      - https://developers.google.com/identity/protocols/oauth2/openid-connect
+      - oauth
+      - jwt
+      - openid connect
+      - rbac
+    videos:
+      - url: "https://www.youtube.com/watch?v=nrwExiIq18U"
+      - url: "https://www.youtube.com/watch?v=j0uwoyELVsM"
+      - url: "https://www.youtube.com/watch?v=MbTMfk9qBXg"
+    resources:
+      - title: "But How Does Bitcoin Actually Work?"
+        url: "https://www.youtube.com/watch?v=bBC-nXj3Ng4&ab_channel=3Blue1Brown"
+        type: "link"
+      - title: "How Does Ethereum Work Anyway?"
+        url: "https://www.preethikasireddy.com/post/how-does-ethereum-work-anyway"
+        type: "link"
+      - title: "What is OAuth?"
+        url: "https://www.youtube.com/watch?v=t18YB3xDfXI&ab_channel=OktaDev"
+        type: "link"
+      - title: "OAuth 2.0, OpenID Connect y JSON Web Tokens"
+        url: "https://www.returngis.net/2019/04/oauth-2-0-openid-connect-y-json-web-tokens-jwt-que-es-que/"
+        type: "link"
+      - title: "Stateless Authentication with JSON Web Tokens"
+        url: "https://dzone.com/articles/stateless-authentication-with-json-web-tokens"
+        type: "link"
+      - title: "Purpose of JWT in Stateless Authentication"
+        url: "https://www.jbspeakr.cc/purpose-jwt-stateless-authentication/"
+        type: "link"
+      - title: "What is Role Based Access Control (RBAC)?"
+        url: "https://www.okta.com/identity-101/what-is-role-based-access-control-rbac/"
+        type: "link"
+      - title: "OpenID Connect"
+        url: "https://developers.google.com/identity/protocols/oauth2/openid-connect"
+        type: "link"

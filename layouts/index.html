@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ .Site.Title }}</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -73,8 +77,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 relative z-10">
             <div class="text-center">
                 <div class="mb-8 flex justify-center">
-                    <div class="inline-flex w-20 h-20 rounded-full bg-accent-500/10 dark:bg-accent-900/20 p-1 ring-1 ring-accent-500/30 dark:ring-accent-700/30">
-                        <img src="/images/logo.png" alt="Logo" class="w-full h-full object-cover rounded-full dark:invert">
+                    <div class="inline-flex items-center justify-center p-3 rounded-full bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm shadow-sm ring-1 ring-gray-900/5 dark:ring-white/10">
+                        <img src="/images/logo.png" alt="Logo" class="w-20 h-20 object-cover rounded-full dark:invert">
                     </div>
                 </div>
                 
@@ -88,7 +92,7 @@
                 
                 <div class="flex flex-col sm:flex-row justify-center gap-4">
                     <a href="https://forms.gle/61mLGJ1pq8twvZWK8"
-                       class="group inline-flex items-center justify-center bg-gray-950 hover:bg-accent-600 text-white px-8 py-3 rounded-full text-base font-medium transition-colors dark:bg-accent-600 dark:hover:bg-accent-700 ring-2 ring-accent-100 dark:ring-accent-800/50">
+                       class="group inline-flex items-center justify-center bg-gray-950 hover:bg-accent-600 text-white px-8 py-3 rounded-full text-base font-medium transition-colors duration-300 dark:bg-accent-600 dark:hover:bg-accent-700 ring-2 ring-accent-100 dark:ring-accent-800/50">
                         <span class="mx-auto">Inscribirse</span>
                         <svg class="h-5 w-0 ml-0 group-hover:w-5 group-hover:ml-2 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
@@ -96,7 +100,7 @@
                     </a>
                     
                     <a href="/material"
-                       class="group inline-flex items-center justify-center bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border-2 border-gray-200 dark:border-gray-700 px-8 py-3 rounded-full text-base font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors ring-1 ring-gray-200 dark:ring-gray-700/50">
+                       class="group inline-flex items-center justify-center bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border-2 border-gray-200 dark:border-gray-700 px-8 py-3 rounded-full text-base font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-300 ring-1 ring-gray-200 dark:ring-gray-700/50">
                         <span class="mx-auto">Ver programa</span>
                         <svg class="h-5 w-0 ml-0 group-hover:w-5 group-hover:ml-2 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -128,9 +132,9 @@
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Card 1: Gestión -->
-                <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl border border-gray-200 dark:border-gray-800 hover:-translate-y-1 transition-transform duration-300">
-                    <div class="inline-flex items-center justify-center w-12 h-12 bg-accent-100 dark:bg-accent-900/50 rounded-lg mb-6">
-                        <svg class="w-7 h-7 text-accent-600 dark:text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div class="group bg-white dark:bg-gray-800 p-8 rounded-2xl border border-gray-200 dark:border-gray-800 hover:border-accent-400/50 dark:hover:border-accent-600/50 transition-colors duration-300">
+                    <div class="inline-flex items-center justify-center w-12 h-12 bg-accent-100 dark:bg-accent-900/50 rounded-lg mb-6 transition-transform duration-300 group-hover:scale-110 group-hover:bg-accent-200 dark:group-hover:bg-accent-800/80">
+                        <svg class="w-7 h-7 text-accent-600 dark:text-accent-400 transition-transform duration-300 group-hover:rotate-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
                         </svg>
                     </div>
@@ -141,9 +145,9 @@
                 </div>
                 
                 <!-- Card 2: DevOps -->
-                <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl border border-gray-200 dark:border-gray-800 hover:-translate-y-1 transition-transform duration-300">
-                    <div class="inline-flex items-center justify-center w-12 h-12 bg-accent-100 dark:bg-accent-900/50 rounded-lg mb-6">
-                        <svg class="w-7 h-7 text-accent-600 dark:text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div class="group bg-white dark:bg-gray-800 p-8 rounded-2xl border border-gray-200 dark:border-gray-800 hover:border-accent-400/50 dark:hover:border-accent-600/50 transition-colors duration-300">
+                    <div class="inline-flex items-center justify-center w-12 h-12 bg-accent-100 dark:bg-accent-900/50 rounded-lg mb-6 transition-transform duration-300 group-hover:scale-110 group-hover:bg-accent-200 dark:group-hover:bg-accent-800/80">
+                        <svg class="w-7 h-7 text-accent-600 dark:text-accent-400 transition-transform duration-300 group-hover:rotate-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
                         </svg>
                     </div>
@@ -154,9 +158,9 @@
                 </div>
                 
                 <!-- Card 3: Arquitectura -->
-                <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl border border-gray-200 dark:border-gray-800 hover:-translate-y-1 transition-transform duration-300">
-                    <div class="inline-flex items-center justify-center w-12 h-12 bg-accent-100 dark:bg-accent-900/50 rounded-lg mb-6">
-                        <svg class="w-7 h-7 text-accent-600 dark:text-accent-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div class="group bg-white dark:bg-gray-800 p-8 rounded-2xl border border-gray-200 dark:border-gray-800 hover:border-accent-400/50 dark:hover:border-accent-600/50 transition-colors duration-300">
+                    <div class="inline-flex items-center justify-center w-12 h-12 bg-accent-100 dark:bg-accent-900/50 rounded-lg mb-6 transition-transform duration-300 group-hover:scale-110 group-hover:bg-accent-200 dark:group-hover:bg-accent-800/80">
+                        <svg class="w-7 h-7 text-accent-600 dark:text-accent-400 transition-transform duration-300 group-hover:rotate-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
                         </svg>
                     </div>
@@ -183,7 +187,7 @@
         
         <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {{ range first 3 .Site.RegularPages }}
-            <article class="mx-2 group relative rounded-xl border-2 border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 overflow-hidden transition-colors duration-200">
+            <article class="mx-2 group relative rounded-xl border-2 border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 overflow-hidden transition-all duration-300 hover:border-accent-400/50 dark:hover:border-accent-600/50">
                 <div class="p-6 h-full flex flex-col">
                     <div class="flex items-center gap-2 mb-3">
                         <span class="inline-flex items-center rounded-full bg-accent-100 dark:bg-accent-900/50 px-2.5 py-1 text-xs font-medium text-accent-700 dark:text-accent-300">
@@ -192,7 +196,7 @@
                         <span class="text-xs text-gray-500 dark:text-gray-400">{{ .Date.Format "2 de January, 2006" }}</span>
                     </div>
                     
-                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-accent-500 dark:group-hover:text-accent-400 transition-colors mb-2">
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors mb-2">
                         <a href="{{ .RelPermalink }}" class="after:absolute after:inset-0">{{ .Title }}</a>
                     </h3>
                     
@@ -202,7 +206,7 @@
                     
                     <div class="mt-auto pt-2">
                         <div class="flex justify-end">
-                            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 group-hover:bg-accent-100 dark:group-hover:bg-accent-900/50 group-hover:text-accent-500 dark:group-hover:text-accent-400 transition-colors">
+                            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 group-hover:bg-accent-500 group-hover:text-white dark:group-hover:bg-accent-500 dark:group-hover:text-white transition-all duration-300 group-hover:scale-110">
                                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                                 </svg>
@@ -227,4 +231,5 @@
 
 </body>
 </html>
+
 {{ end }}
