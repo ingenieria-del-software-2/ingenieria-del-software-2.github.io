@@ -14,3 +14,6 @@ _site
 .DS_Store
 Thumbs.db
 ehthumbs.db
+
+node_modules/
+hugo_stats.json

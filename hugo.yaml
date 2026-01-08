@@ -6,6 +6,13 @@ module:
   imports:
     - path: github.com/imfing/hextra
 
+  mounts:
+  - source: assets
+    target: assets
+  - disableWatch: true
+    source: hugo_stats.json
+    target: assets/notwatching/hugo_stats.json
+
 markup:
   # Allow raw HTML
   goldmark:
@@ -15,6 +22,15 @@ markup:
   # Enable hextra's syntax highlighting
   highlight:
     noClasses: false
+
+build:
+  buildStats:
+    enable: true
+  cachebusters:
+  - source: 'assets/notwatching/hugo_stats\.json'
+    target: css
+  - source: '(postcss|tailwind)\.config\.js'
+    target: css
 
 menu:
   main:
