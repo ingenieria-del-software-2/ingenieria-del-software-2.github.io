@@ -33,47 +33,56 @@
         {{ partial "sidebar.html" (dict "context" . "disableSidebar" true) }}
         
         <!-- Hero Section -->
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-8 text-center">
-            <h1 class="inline-flex items-center justify-center p-2 mb-4 rounded-full bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm shadow-sm ring-1 ring-gray-900/5 dark:ring-white/10">
-                <img src="/images/logo.png" alt="Logo" class="w-8 h-8 rounded-full mr-3 dark:invert">
-                <span class="text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-100 pr-4">
-                    Equipo Docente
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 md:pt-4 pb-4 md:pb-2">
+            <div class="text-center md:text-left mb-6 md:mb-8 flex flex-row items-center justify-center md:justify-start gap-2 md:gap-3">
+                <h1 class="inline-flex items-center justify-center p-2 md:p-1.5 rounded-full bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm shadow-sm ring-1 ring-gray-900/5 dark:ring-white/10">
+                    <img src="/images/logo.png" alt="Logo" class="w-8 h-8 md:w-6 md:h-6 rounded-full mr-3 md:mr-2 dark:invert">
+                    <span class="text-xl md:text-lg font-semibold text-gray-800 dark:text-gray-100 pr-4 md:pr-3">
+                        Equipo Docente
+                    </span>
+                </h1>
+                <span class="hidden md:inline text-lg text-gray-600 dark:text-gray-300 align-middle">
+                    Conocé a los profesores y ayudantes que hacen posible la materia.
                 </span>
-            </h1>
-            <p class="text-base text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            </div>
+            <p class="text-lg text-gray-600 dark:text-gray-300 md:hidden text-center mt-2 mb-4">
                 Conocé a los profesores y ayudantes que hacen posible la materia.
             </p>
         </div>
 
         <!-- Team Grid -->
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-32">
-            <div id="team-grid" data-team-grid class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        <div class="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 pb-32">
+            <div id="team-grid" data-team-grid class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8 gap-4 lg:gap-6">
                 {{ range .Site.Data.team.team }}
                 <div class="group relative">
-                    <div class="aspect-square w-full overflow-hidden rounded-3xl bg-gray-200 dark:bg-gray-900 relative shadow-md transition-all duration-300 group-hover:shadow-2xl group-hover:shadow-blue-900/10 dark:group-hover:shadow-blue-900/20">
+                    <div class="aspect-square w-full overflow-hidden rounded-2xl lg:rounded-3xl bg-gray-200 dark:bg-gray-900 relative shadow-md transition-all duration-300 group-hover:shadow-xl group-hover:shadow-blue-900/10 dark:group-hover:shadow-blue-900/20">
+                        
                         <img src="{{ .pic }}" alt="{{ .name }}" 
-                             class="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-110">
+                             class="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105">
                         
-                        <!-- Overlay -->
-                        <div class="absolute inset-0 bg-gradient-to-t from-gray-950/90 via-gray-950/40 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-300"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-gray-950/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
                         
-                        <!-- Content -->
-                        <div class="absolute inset-0 p-6 flex flex-col justify-end transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                            <h3 class="text-lg font-medium text-gray-100 mb-1 group-hover:mb-3 transition-all">{{ .name }}</h3>
+                        <div class="absolute inset-0 p-3 lg:p-6 flex flex-col justify-end">
                             
-                            <!-- Social Links -->
-                            <div class="flex items-center space-x-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 transform translate-y-4 group-hover:translate-y-0">
-                                {{ if .mail }}
-                                <a href="mailto:{{ .mail }}" class="text-white hover:text-blue-400 transition-colors bg-white/10 hover:bg-white/20 w-10 h-10 flex items-center justify-center rounded-full backdrop-blur-sm">
-                                    <i class="fas fa-envelope text-lg"></i>
-                                </a>
-                                {{ end }}
-                                {{ if .github }}
-                                <a href="https://github.com/{{ .github }}" target="_blank" class="text-white hover:text-purple-400 transition-colors bg-white/10 hover:bg-white/20 w-10 h-10 flex items-center justify-center rounded-full backdrop-blur-sm">
-                                    <i class="fab fa-github text-lg"></i>
-                                </a>
-                                {{ end }}
+                            <h3 class="text-sm lg:text-lg font-medium text-gray-100 mb-1 line-clamp-2">{{ .name }}</h3>
+                            
+                            <div class="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-out">
+                                <div class="overflow-hidden">
+                                    <div class="flex items-center space-x-2 lg:space-x-3 pt-2 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-75">
+                                        {{ if .mail }}
+                                        <a href="mailto:{{ .mail }}" class="text-white hover:text-blue-400 transition-colors bg-white/10 hover:bg-white/20 w-8 h-8 lg:w-10 lg:h-10 flex items-center justify-center rounded-full backdrop-blur-sm">
+                                            <i class="fas fa-envelope text-sm lg:text-lg"></i>
+                                        </a>
+                                        {{ end }}
+                                        {{ if .github }}
+                                        <a href="https://github.com/{{ .github }}" target="_blank" class="text-white hover:text-purple-400 transition-colors bg-white/10 hover:bg-white/20 w-8 h-8 lg:w-10 lg:h-10 flex items-center justify-center rounded-full backdrop-blur-sm">
+                                            <i class="fab fa-github text-sm lg:text-lg"></i>
+                                        </a>
+                                        {{ end }}
+                                    </div>
+                                </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
