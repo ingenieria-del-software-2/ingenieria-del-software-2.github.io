@@ -7,7 +7,7 @@
                 <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-md text-xs font-medium">{{ . }}</span>
             {{ end }}
             {{ if gt (len .topics) 4 }}
-                <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 rounded-md text-xs font-medium">+{{ sub (len .topics) 4 }}</span>
+                <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-300 rounded-md text-xs font-medium">+{{ sub (len .topics) 4 }}</span>
             {{ end }}
         </div>
 
@@ -17,7 +17,7 @@
             {{ end }}
             
             {{ if gt (len .topics) 4 }}
-                <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 rounded-md text-xs font-medium cursor-help hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">+{{ sub (len .topics) 4 }}</span>
+                <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-300 rounded-md text-xs font-medium cursor-help hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">+{{ sub (len .topics) 4 }}</span>
                 
                 {{/* Tooltip flotante horizontal (solo desktop) */}}
                 <div class="absolute left-0 top-full mt-2 hidden group-hover/topics:block z-50 max-w-xl">
@@ -41,7 +41,7 @@
 
     {{ if .videos }}
     <div class="mb-6">
-        <h3 class="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3 flex items-center gap-2">
+        <h3 class="text-xs font-bold text-gray-500 dark:text-gray-300 uppercase tracking-wider mb-3 flex items-center gap-2">
             <i data-lucide="play-circle" class="w-3.5 h-3.5"></i> Videos del Curso
         </h3>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -57,7 +57,7 @@
                     
                     <div class="p-3">
                         <h4 class="video-title font-semibold text-gray-900 dark:text-white mb-1 line-clamp-2 text-sm hidden" data-videoid="{{ $vidId }}"></h4>
-                        {{ with .description }}<p class="text-xs text-gray-600 dark:text-gray-400 line-clamp-2">{{ . }}</p>{{ end }}
+                        {{ with .description }}<p class="text-xs text-gray-600 dark:text-gray-300 line-clamp-2">{{ . }}</p>{{ end }}
                     </div>
                 </div>
             {{ end }}
@@ -67,7 +67,7 @@
 
     {{ if .resources }}
     <div>
-        <h3 class="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3 flex items-center gap-2">
+        <h3 class="text-xs font-bold text-gray-500 dark:text-gray-300 uppercase tracking-wider mb-3 flex items-center gap-2">
             <i data-lucide="external-link" class="w-3.5 h-3.5"></i> Recursos Adicionales
         </h3>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5">
@@ -78,7 +78,7 @@
                 </div>
                 <div class="flex-1 min-w-0">
                     <h4 class="text-sm font-medium text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 truncate">{{ .title }}</h4>
-                    <p class="text-xs text-gray-600 dark:text-gray-400 truncate">Ver recurso</p>
+                    <p class="text-xs text-gray-600 dark:text-gray-300 truncate">Ver recurso</p>
                 </div>
             </a>
             {{ end }}
@@ -252,7 +252,7 @@
                     </svg>
                 </a>
              </div>
-             <p class="text-lg text-gray-600 dark:text-gray-400 md:hidden text-center mt-2">
+             <p class="text-lg text-gray-600 dark:text-gray-300 md:hidden text-center mt-2">
                  Recursos organizados por temas.
              </p>
         </div>
@@ -270,7 +270,7 @@
                                 onclick="switchDesktopSection('{{ $section.id }}')">
                                 <span class="text-lg flex-shrink-0">{{ $section.emoji }}</span>
                                 <span class="font-medium text-sm truncate">{{ $section.title }}</span>
-                                <span class="text-xs text-gray-400 ml-auto flex-shrink-0">{{ len $section.videos }}</span>
+                                <span class="text-xs text-gray-400 dark:text-gray-500 ml-auto flex-shrink-0">{{ len $section.videos }}</span>
                             </button>
                             {{ end }}
                         </nav>
@@ -287,7 +287,7 @@
                                 <div class="flex-shrink-0 text-3xl">{{ .emoji }}</div>
                                 <div class="flex-1 min-w-0">
                                     <h2 class="text-lg font-bold mb-0.5 text-gray-900 dark:text-white">{{ .title }}</h2>
-                                    <div class="flex items-center gap-3 text-xs text-gray-600 dark:text-gray-400">
+                                    <div class="flex items-center gap-3 text-xs text-gray-600 dark:text-gray-300">
                                         <span class="flex items-center gap-1">
                                             <i data-lucide="play-circle" class="w-3.5 h-3.5"></i>
                                             {{ len .videos }} videos
