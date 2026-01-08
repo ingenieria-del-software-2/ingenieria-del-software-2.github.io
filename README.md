@@ -10,9 +10,11 @@ A GitHub Actions workflow is provided in [`.github/workflows/pages.yaml`](./.git
 
 For details, see [Publishing with a custom GitHub Actions workflow](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow).
 
+## Prerequisites
 
+[Hugo](https://gohugo.io/getting-started/installing/), [Go](https://golang.org/doc/install) and [Git](https://git-scm.com)
 
-Pre-requisites: [Hugo](https://gohugo.io/getting-started/installing/), [Go](https://golang.org/doc/install) and [Git](https://git-scm.com)
+For building the site (production), [Node.js](https://nodejs.org/) and npm are also required to process TailwindCSS.
 
 ```shell
 # Clone the repo
@@ -34,4 +36,12 @@ hugo mod tidy
 ```
 
 See [Update modules](https://gohugo.io/hugo-modules/use-modules/#update-modules) for more details.
+
+## Site Management
+
+Each semester, the following updates should be made:
+
+- **Enable registration link**: In `hugo.yaml`, change `params.inscripcion.enabled` to `true` and add the Google Form link in `params.inscripcion.url`.
+- **Update material**: Add new classes to their respective categories in `data/material.yaml`, including videos, resources, and topics.
+- **Update teaching team**: Add or modify professors in `data/team.yaml` with name, photo, email, and GitHub.
 
