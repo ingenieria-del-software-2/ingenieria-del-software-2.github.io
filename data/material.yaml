@@ -34,6 +34,9 @@ sections:
       - title: "The Practical Test Pyramid"
         url: "https://martinfowler.com/articles/practical-test-pyramid.html"
         type: "link"
+      - title: "REST Workshop (Repo)"
+        url: "https://github.com/ingenieria-del-software-2/rest-workshop-go"
+        type: "link"
 
   - id: arquitectura
     title: Arquitectura de Software
@@ -116,9 +119,6 @@ sections:
       - title: "The Twelve-Factor App"
         url: "https://12factor.net/"
         type: "link"
-      - title: "What is Kubernetes?"
-        url: "https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/"
-        type: "link"
       - title: "Dockerfile Best Practices"
         url: "https://docs.docker.com/develop/develop-images/dockerfile_best-practices/"
         type: "link"
@@ -127,9 +127,6 @@ sections:
         type: "link"
       - title: "Docker Overview"
         url: "https://docs.docker.com/get-started/overview/"
-        type: "link"
-      - title: "Docker Tutorial"
-        url: "http://youtube.com/watch?v=eGz9DS-aIJSLpG_spOBMeY"
         type: "link"
       - title: "Play with Docker"
         url: "https://labs.play-with-docker.com/"
@@ -150,17 +147,20 @@ sections:
       - url: "https://www.youtube.com/watch?v=NNfKKTl4T00"
       - url: "https://www.youtube.com/watch?v=WxgglOYinKY"
     resources:
-      - title: "How Does JavaScript Actually Work?"
-        url: "https://blog.sessionstack.com/how-does-javascript-actually-work-part-1-b0bacc073cf"
+      - title: "How JavaScript Works Behind the Scenes"
+        url: "https://www.deepintodev.com/blog/how-javascript-works-behind-the-scenes/"
         type: "link"
-      - title: "JS Transpilers"
-        url: "https://scotch.io/tutorials/javascript-transpilers-what-they-are-why-we-need-them"
+      - title: "React Quick Start"
+        url: "https://react.dev/learn"
         type: "link"
-      - title: "Webpack Configuration"
-        url: "https://webpack.js.org/configuration/"
+      - title: "React App from Scratch (Vite)"
+        url: "https://react.dev/learn/build-a-react-app-from-scratch#vite"
         type: "link"
-      - title: "React Docs"
-        url: "https://reactjs.org/docs/introducing-jsx.html"
+      - title: "Next.js Foundations course"
+        url: "https://nextjs.org/learn/dashboard-app"
+        type: "link"
+      - title: "Next.js Installation"
+        url: "https://nextjs.org/docs/app/getting-started/installation#create-with-the-cli"
         type: "link"
 
   - id: mobile
@@ -179,6 +179,55 @@ sections:
     resources:
       - title: "React Native"
         url: "https://reactnative.dev/"
+        type: "link"
+      - title: "React Native Expo (Repo)"
+        url: "https://github.com/ingenieria-del-software-2/rn-expo"
+        type: "link"
+
+  - id: cloud
+    title: Cloud Computing
+    emoji: ☁️
+    description: Servicios en la nube, AWS, modelos de servicio y arquitectura cloud.
+    topics:
+      - cloud service models
+      - public vs private
+      - az vs regions
+      - vpc basics
+      - ec2 basics
+      - aws accounts
+      - iam basics
+      - s3 basics
+      - ecs basics
+      - rds basics
+      - infrastructure as code
+    videos:
+      - url: "https://www.youtube.com/watch?v=yIvTx0qUSZI"
+      - url: "https://www.youtube.com/watch?v=-e87PNDFvWw"
+      - url: "https://www.youtube.com/watch?v=oG-XV8qmEwc"
+      - url: "https://drive.google.com/file/d/1vps1XS2ReZ0CXFjKIOoqhzMM8YfiU1gh/view"
+        title: "Crea y configura tu primera cuenta de AWS"
+        type: "drive"
+      - url: "https://drive.google.com/file/d/145UHzRo0DJabGZFRC_3eVcHvPkhxy1V3/view"
+        title: "Cloud Computing IAC CICD - Demo Asincrona"
+        type: "drive"
+    resources:
+      - title: "Cloud Computing Demo (Repo)"
+        url: "https://github.com/ingenieria-del-software-2/cloudcomputing-demo"
+        type: "link"
+      - title: "Cloud Comparación (Guía Catedra)"
+        url: "https://ingenieria-del-software-2.github.io/blog/2025-09-11-cloud-computing/"
+        type: "link"
+      - title: "What is Cloud Computing"
+        url: "https://aws.amazon.com/es/what-is-cloud-computing/"
+        type: "link"
+      - title: "What is Cloud Computing (Google Cloud)"
+        url: "https://cloud.google.com/learn/what-is-cloud-computing"
+        type: "link"
+      - title: "Install Terraform"
+        url: "https://developer.hashicorp.com/terraform/install"
+        type: "link"
+      - title: "Install AWS CLI"
+        url: "https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html"
         type: "link"
 
   - id: pm
@@ -228,55 +277,6 @@ sections:
         url: "https://medium.com/comparethemarket/i-did-mob-programming-every-day-for-5-months-heres-what-i-learnt-b586fb8b67c"
         type: "link"
 
-  - id: operaciones
-    title: Operaciones
-    emoji: 🔧
-    description: Gestión de operaciones, monitoreo, confiabilidad del sitio y manejo de incidentes en producción.
-    topics:
-      - production release
-      - monitoring
-      - site reliability engineering
-      - alerting
-      - incidents
-      - on-call management
-    videos:
-      - url: "https://www.youtube.com/watch?v=7VRKk8D51NY"
-    resources:
-      - title: "Site Reliability Engineering (Google)"
-        url: "https://sre.google/"
-        type: "link"
-      - title: "AWS Well-Architected"
-        url: "https://aws.amazon.com/architecture/well-architected/"
-        type: "link"
-
-  - id: cloud
-    title: Cloud Computing
-    emoji: ☁️
-    description: Servicios en la nube, AWS, modelos de servicio y arquitectura cloud.
-    topics:
-      - cloud service models
-      - public vs private
-      - az vs regions
-      - vpc basics
-      - ec2 basics
-      - aws accounts
-      - iam basics
-      - s3 basics
-      - ecs basics
-      - rds basics
-      - infrastructure as code
-    videos:
-      - url: "https://www.youtube.com/watch?v=yIvTx0qUSZI"
-      - url: "https://www.youtube.com/watch?v=-e87PNDFvWw"
-      - url: "https://www.youtube.com/watch?v=oG-XV8qmEwc"
-    resources:
-      - title: "What is Cloud Computing"
-        url: "https://aws.amazon.com/es/what-is-cloud-computing/"
-        type: "link"
-      - title: "What is Cloud Computing (Google Cloud)"
-        url: "https://cloud.google.com/learn/what-is-cloud-computing"
-        type: "link"
-
   - id: calidad
     title: Calidad de Software
     emoji: 🧪
@@ -308,6 +308,27 @@ sections:
         type: "link"
       - title: "TDD (Agile Alliance)"
         url: "https://www.agilealliance.org/glossary/tdd/"
+        type: "link"
+
+  - id: operaciones
+    title: Operaciones
+    emoji: 🔧
+    description: Gestión de operaciones, monitoreo, confiabilidad del sitio y manejo de incidentes en producción.
+    topics:
+      - production release
+      - monitoring
+      - site reliability engineering
+      - alerting
+      - incidents
+      - on-call management
+    videos:
+      - url: "https://www.youtube.com/watch?v=7VRKk8D51NY"
+    resources:
+      - title: "Site Reliability Engineering (Google)"
+        url: "https://sre.google/"
+        type: "link"
+      - title: "AWS Well-Architected"
+        url: "https://aws.amazon.com/architecture/well-architected/"
         type: "link"
 
   - id: databases
