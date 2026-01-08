@@ -144,24 +144,24 @@
     <div class="relative z-10">
         {{ partial "sidebar.html" (dict "context" . "disableSidebar" true) }}
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 lg:pt-4 pb-4 lg:pb-2">
-             <div class="text-center lg:text-left mb-4 lg:mb-2">
-                <h1 class="inline-flex items-center justify-center p-2 lg:p-1.5 mb-2 lg:mb-0 rounded-full bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm shadow-sm ring-1 ring-gray-900/5 dark:ring-white/10">
-                    <img src="/images/logo.png" alt="Logo" class="w-8 h-8 lg:w-6 lg:h-6 rounded-full mr-3 lg:mr-2 dark:invert">
-                    <span class="text-xl lg:text-lg font-semibold text-gray-800 dark:text-gray-100 pr-4 lg:pr-3">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 md:pt-4 pb-4 md:pb-2">
+             <div class="text-center md:text-left mb-4 md:mb-2">
+                <h1 class="inline-flex items-center justify-center p-2 md:p-1.5 mb-2 md:mb-0 rounded-full bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm shadow-sm ring-1 ring-gray-900/5 dark:ring-white/10">
+                    <img src="/images/logo.png" alt="Logo" class="w-8 h-8 md:w-6 md:h-6 rounded-full mr-3 md:mr-2 dark:invert">
+                    <span class="text-xl md:text-lg font-semibold text-gray-800 dark:text-gray-100 pr-4 md:pr-3">
                         Material de Referencia
                     </span>
                 </h1>
-                <p class="text-lg text-gray-600 dark:text-gray-400 lg:hidden">
+                <p class="text-lg text-gray-600 dark:text-gray-400 md:hidden">
                     Videos tutoriales, guías y recursos organizados por temas para facilitar tu aprendizaje.
                 </p>
              </div>
         </div>
 
         <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-32">
-            <div class="flex flex-col lg:flex-row gap-6">
+            <div class="flex flex-col md:flex-row gap-6">
                 <!-- Desktop Sidebar Navigation -->
-                <aside class="hidden lg:block lg:w-72 flex-shrink-0">
+                <aside class="hidden md:block md:w-72 flex-shrink-0">
                     <div class="sticky top-4 max-h-[calc(100vh-2rem)] overflow-hidden flex flex-col">
                         <nav id="sections-nav" class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm p-3 space-y-0.5 overflow-y-auto flex-1 scrollbar-thin">
                             <!-- Navigation items injected by JS -->
@@ -172,12 +172,12 @@
                 <!-- Main Content Area -->
                 <div class="flex-1 min-w-0">
                     <!-- Mobile accordion view -->
-                    <div id="sections-mobile" class="lg:hidden space-y-3">
+                    <div id="sections-mobile" class="md:hidden space-y-3">
                         <!-- Mobile accordion content injected by JS -->
                     </div>
 
                     <!-- Desktop content view -->
-                    <div id="sections-desktop" class="hidden lg:block">
+                    <div id="sections-desktop" class="hidden md:block">
                         <!-- Desktop section content injected by JS -->
                     </div>
                 </div>
@@ -200,9 +200,14 @@
         // --- DATA ---
         const courseSections = JSON.parse('{{ .Site.Data.material.sections | jsonify | safeJS }}');
 
+        // --- VIEWPORT DETECTION ---
+        const desktopQuery = window.matchMedia('(min-width: 768px)');
+        let isDesktop = desktopQuery.matches;
+        let currentView = null; // 'mobile' | 'desktop'
+        const loadedAccordions = new Set(); // Track which accordions have been rendered
+
         // --- HELPER FUNCTIONS ---
         
-        // Extract YouTube ID
         function getYouTubeId(url) {
             const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
             const match = url.match(regExp);
@@ -211,7 +216,7 @@
 
         // --- RENDER FUNCTIONS ---
 
-        function renderVideoCard(video, index) {
+        function renderVideoCard(video) {
             const videoId = getYouTubeId(video.url);
             if (!videoId) return '';
 
@@ -246,20 +251,62 @@
             `;
         }
 
-        function renderSections() {
+        function renderSectionContent(section, isMobile = false) {
+            return `
+                ${section.topics?.length > 0 ? `
+                    <div class="flex flex-wrap gap-1.5 ${isMobile ? 'mb-5 pt-1 border-t border-gray-100 dark:border-gray-700/50' : 'mb-4'}">
+                        ${isMobile ? '<div class="w-full pt-3"></div>' : ''}
+                        ${section.topics.slice(0, 4).map(topic => `
+                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700/50 text-gray-600 dark:text-gray-400 rounded-md text-xs font-medium">${topic}</span>
+                        `).join('')}
+                        ${section.topics.length > 4 ? `<span class="px-2 py-1 bg-gray-100 dark:bg-gray-700/50 text-gray-500 dark:text-gray-500 rounded-md text-xs font-medium">+${section.topics.length - 4}</span>` : ''}
+                    </div>
+                ` : ''}
+                ${section.description ? `<p class="text-sm text-gray-700 dark:text-gray-300 ${isMobile ? 'mb-5' : 'mb-4'}">${section.description}</p>` : ''}
+                ${section.videos.length > 0 ? `
+                    <div class="${section.resources.length > 0 ? (isMobile ? 'mb-6' : 'mb-4') : ''}">
+                        <h3 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3 flex items-center gap-2">
+                            <i data-lucide="play-circle" class="w-3.5 h-3.5"></i> Videos del Curso
+                        </h3>
+                        <div class="grid grid-cols-1 ${isMobile ? 'gap-4' : 'md:grid-cols-2 lg:grid-cols-3 gap-3'}">
+                            ${section.videos.map(video => renderVideoCard(video)).join('')}
+                        </div>
+                    </div>
+                ` : ''}
+                ${section.resources.length > 0 ? `
+                    <div>
+                        <h3 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3 flex items-center gap-2">
+                            <i data-lucide="external-link" class="w-3.5 h-3.5"></i> Recursos Adicionales
+                        </h3>
+                        <div class="flex flex-col ${isMobile ? 'gap-2.5' : 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5'}">
+                            ${section.resources.map(resource => renderResourceLink(resource)).join('')}
+                        </div>
+                    </div>
+                ` : ''}
+            `;
+        }
+
+        // --- MOBILE VIEW ---
+        function renderMobileView() {
+            if (currentView === 'mobile') return;
+            currentView = 'mobile';
+            
             const mobileContainer = document.getElementById('sections-mobile');
             const desktopContainer = document.getElementById('sections-desktop');
             const navContainer = document.getElementById('sections-nav');
             
-            let mobileHtml = '';
-            let navHtml = '';
+            // Clear desktop
+            desktopContainer.innerHTML = '';
+            navContainer.innerHTML = '';
+            loadedAccordions.clear();
             
-            courseSections.forEach((section, index) => {
-                // Mobile accordion view
+            // Render only accordion headers (lazy load content on expand)
+            let mobileHtml = '';
+            courseSections.forEach(section => {
                 mobileHtml += `
                     <div class="rounded-xl overflow-hidden transition-all duration-300">
-                        <div role="button" tabindex="0" class="accordion-header w-full px-4 py-4 flex items-center gap-3 bg-white dark:bg-gray-800/50 backdrop-blur-sm hover:bg-gray-50 dark:hover:bg-gray-800/70 transition-colors text-left focus:outline-none cursor-pointer select-none" data-target="content-${section.id}">
-                            <div class="flex-shrink-0 text-3xl transition-all duration-300">${section.emoji}</div>
+                        <div role="button" tabindex="0" class="accordion-header w-full px-4 py-4 flex items-center gap-3 bg-white dark:bg-gray-800/50 backdrop-blur-sm hover:bg-gray-50 dark:hover:bg-gray-800/70 transition-colors text-left focus:outline-none cursor-pointer select-none" data-section-id="${section.id}" data-target="content-${section.id}">
+                            <div class="flex-shrink-0 text-3xl">${section.emoji}</div>
                             <div class="flex-1 min-w-0">
                                 <h2 class="text-lg font-bold mb-0.5 text-gray-900 dark:text-white">${section.title}</h2>
                                 <div class="flex items-center gap-3 text-xs text-gray-600 dark:text-gray-400">
@@ -269,16 +316,50 @@
                             </div>
                             <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-gray-400 transition-transform duration-300 flex-shrink-0"></i>
                         </div>
-
                         <div id="content-${section.id}" class="accordion-content bg-white dark:bg-gray-800/50 backdrop-blur-sm">
-                            <div class="accordion-inner px-4 pb-4">
-                                ${renderSectionContent(section)}
+                            <div class="accordion-inner px-4 pb-5">
+                                <!-- Content loaded on demand -->
                             </div>
                         </div>
                     </div>
                 `;
+            });
+            
+            mobileContainer.innerHTML = mobileHtml;
+            lucide.createIcons();
+        }
 
-                // Desktop navigation
+        // Lazy load accordion content
+        function loadAccordionContent(sectionId) {
+            if (loadedAccordions.has(sectionId)) return;
+            
+            const section = courseSections.find(s => s.id === sectionId);
+            if (!section) return;
+            
+            const contentEl = document.querySelector(`#content-${sectionId} .accordion-inner`);
+            if (!contentEl) return;
+            
+            contentEl.innerHTML = renderSectionContent(section, true);
+            loadedAccordions.add(sectionId);
+            lucide.createIcons();
+            setTimeout(() => fetchVideoTitles(), 50);
+        }
+
+        // --- DESKTOP VIEW ---
+        function renderDesktopView() {
+            if (currentView === 'desktop') return;
+            currentView = 'desktop';
+            
+            const mobileContainer = document.getElementById('sections-mobile');
+            const navContainer = document.getElementById('sections-nav');
+            
+            // Clear mobile
+            mobileContainer.innerHTML = '';
+            loadedAccordions.clear();
+            
+            // Render navigation
+            let navHtml = '';
+            courseSections.forEach((section, index) => {
                 navHtml += `
                     <button 
                         class="nav-item w-full text-left px-3 py-2 rounded-lg transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-700/50 ${index === 0 ? 'active bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300' : 'text-gray-700 dark:text-gray-300'}"
@@ -292,44 +373,13 @@
                     </button>
                 `;
             });
-
-            mobileContainer.innerHTML = mobileHtml;
+            
             navContainer.innerHTML = navHtml;
-
-            // Show first section by default in desktop
+            
+            // Render first section
             if (courseSections.length > 0) {
                 renderDesktopSection(courseSections[0]);
-                // Fetch titles after initial render
-                setTimeout(() => fetchVideoTitles(), 100);
             }
-        }
-
-        function renderSectionContent(section) {
-            return `
-                ${section.description ? `<p class="text-sm text-gray-700 dark:text-gray-300 mb-4">${section.description}</p>` : ''}
-
-                ${section.videos.length > 0 ? `
-                    <div class="mb-4">
-                        <h3 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3 flex items-center gap-2">
-                            <i data-lucide="play-circle" class="w-3.5 h-3.5"></i> Videos del Curso
-                        </h3>
-                        <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-3">
-                            ${section.videos.map((video, idx) => renderVideoCard(video, idx)).join('')}
-                        </div>
-                    </div>
-                ` : ''}
-
-                ${section.resources.length > 0 ? `
-                    <div>
-                        <h3 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3 flex items-center gap-2">
-                            <i data-lucide="external-link" class="w-3.5 h-3.5"></i> Recursos Adicionales
-                        </h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2.5">
-                            ${section.resources.map(resource => renderResourceLink(resource)).join('')}
-                        </div>
-                    </div>
-                ` : ''}
-            `;
         }
 
         function renderDesktopSection(section) {
@@ -345,22 +395,18 @@
                                     <span class="flex items-center gap-1"><i data-lucide="play-circle" class="w-3.5 h-3.5"></i> ${section.videos.length} videos</span>
                                     <span class="flex items-center gap-1"><i data-lucide="file-text" class="w-3.5 h-3.5"></i> ${section.resources.length} recursos</span>
                                 </div>
-                                ${section.topics && section.topics.length > 0 ? `
+                                ${section.topics?.length > 0 ? `
                                     <div class="topics-container group/topics relative mt-1.5">
                                         <div class="flex flex-wrap gap-1">
                                             ${section.topics.slice(0, 5).map(topic => `
                                                 <span class="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-700/50 text-gray-600 dark:text-gray-400 rounded text-xs">${topic}</span>
                                             `).join('')}
-                                            ${section.topics.length > 5 ? `
-                                                <span class="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-700/50 text-gray-500 dark:text-gray-500 rounded text-xs cursor-help">+${section.topics.length - 5}</span>
-                                            ` : ''}
+                                            ${section.topics.length > 5 ? `<span class="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-700/50 text-gray-500 rounded text-xs cursor-help">+${section.topics.length - 5}</span>` : ''}
                                         </div>
                                         ${section.topics.length > 5 ? `
                                             <div class="absolute left-0 top-full mt-1 hidden group-hover/topics:block z-10 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-2 shadow-lg max-w-md">
                                                 <div class="flex flex-wrap gap-1.5">
-                                                    ${section.topics.map(topic => `
-                                                        <span class="px-2 py-0.5 bg-gray-100 dark:bg-gray-700/50 text-gray-600 dark:text-gray-400 rounded text-xs">${topic}</span>
-                                                    `).join('')}
+                                                    ${section.topics.map(topic => `<span class="px-2 py-0.5 bg-gray-100 dark:bg-gray-700/50 text-gray-600 dark:text-gray-400 rounded text-xs">${topic}</span>`).join('')}
                                                 </div>
                                             </div>
                                         ` : ''}
@@ -375,10 +421,7 @@
                 </div>
             `;
             
-            // Re-run Lucide to render icons
             lucide.createIcons();
-            
-            // Fetch video titles for this section
             setTimeout(() => fetchVideoTitles(), 50);
         }
 
@@ -386,7 +429,6 @@
             const section = courseSections.find(s => s.id === sectionId);
             if (!section) return;
 
-            // Update navigation active state
             document.querySelectorAll('.nav-item').forEach(item => {
                 item.classList.remove('active', 'bg-blue-50', 'dark:bg-blue-900/20', 'text-blue-700', 'dark:text-blue-300');
                 item.classList.add('text-gray-700', 'dark:text-gray-300');
@@ -398,12 +440,21 @@
                 activeItem.classList.remove('text-gray-700', 'dark:text-gray-300');
             }
 
-            // Render section content
             renderDesktopSection(section);
-            
-            // Fetch titles for newly rendered section
-            setTimeout(() => fetchVideoTitles(), 50);
         };
+
+        // --- VIEW SWITCHER ---
+        function renderCurrentView() {
+            isDesktop = desktopQuery.matches;
+            if (isDesktop) {
+                renderDesktopView();
+            } else {
+                renderMobileView();
+            }
+        }
+
+        // Listen for viewport changes
+        desktopQuery.addEventListener('change', renderCurrentView);
 
         // --- INTERACTIVITY ---
 
@@ -440,20 +491,10 @@
         }
 
         closeModalBtn.addEventListener('click', closeVideo);
-        
-        // Close on background click
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) closeVideo();
-        });
+        modal.addEventListener('click', (e) => { if (e.target === modal) closeVideo(); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeVideo(); });
 
-        // Close on Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-                closeVideo();
-            }
-        });
-
-        // Fetch video titles using noembed (CORS-friendly proxy)
+        // --- VIDEO TITLES ---
         async function fetchVideoTitles() {
             const CACHE_KEY = 'yt_titles_cache_v2';
             const getCached = () => {
@@ -493,47 +534,43 @@
 
         // --- INITIALIZATION ---
         document.addEventListener('DOMContentLoaded', () => {
-            renderSections();
-            
-            // Re-run Lucide to render icons in new HTML
+            renderCurrentView();
             lucide.createIcons();
-            
-            // Fetch video titles using oEmbed with cache
-            fetchVideoTitles();
 
-            // Accordion Logic (Event Delegation) - Only for mobile
+            // Accordion (mobile) - lazy load content on expand
             const mobileContainer = document.getElementById('sections-mobile');
             
             function toggleAccordion(header) {
+                const sectionId = header.getAttribute('data-section-id');
                 const targetId = header.getAttribute('data-target');
                 const content = document.getElementById(targetId);
                 const icon = header.querySelector('.accordion-icon');
                 
                 if (content.classList.contains('open')) {
                     content.classList.remove('open');
-                    if(icon) icon.classList.remove('rotate-180');
+                    if (icon) icon.classList.remove('rotate-180');
                 } else {
+                    // Lazy load content on first open
+                    loadAccordionContent(sectionId);
                     content.classList.add('open');
-                    if(icon) icon.classList.add('rotate-180');
+                    if (icon) icon.classList.add('rotate-180');
                 }
             }
 
             mobileContainer.addEventListener('click', (e) => {
                 const header = e.target.closest('.accordion-header');
-                if (header) {
+                if (header) toggleAccordion(header);
+            });
+
+            mobileContainer.addEventListener('keydown', (e) => {
+                const header = e.target.closest('.accordion-header');
+                if (header && (e.key === 'Enter' || e.key === ' ')) {
+                    e.preventDefault();
                     toggleAccordion(header);
                 }
             });
 
-            mobileContainer.addEventListener('keydown', (e) => {
-                 const header = e.target.closest('.accordion-header');
-                 if (header && (e.key === 'Enter' || e.key === ' ')) {
-                     e.preventDefault();
-                     toggleAccordion(header);
-                 }
-            });
-
-            // Intercept video card clicks to open modal
+            // Video card click handler
             document.addEventListener('click', (e) => {
                 const videoCard = e.target.closest('.video-card');
                 if (videoCard) {
@@ -541,7 +578,12 @@
                     e.stopPropagation();
                     const videoId = videoCard.getAttribute('data-videoid');
                     if (videoId) {
-                        openVideo(videoId);
+                        // On mobile, open YouTube directly; on desktop, use modal
+                        if (!isDesktop) {
+                            window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank');
+                        } else {
+                            openVideo(videoId);
+                        }
                     }
                 }
             }, true);
