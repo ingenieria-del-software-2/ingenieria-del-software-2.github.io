@@ -46,7 +46,7 @@
     {{ if .videos }}
     <div class="mb-6">
         <h3 class="text-xs font-bold text-gray-500 dark:text-gray-300 uppercase tracking-wider mb-3 flex items-center gap-2">
-            <i data-lucide="play-circle" class="w-3.5 h-3.5"></i> Videos del Curso
+            <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="10,8 16,12 10,16 10,8"></polygon></svg> Videos del Curso
         </h3>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
             {{ range .videos }}
@@ -92,13 +92,13 @@
     {{ if .resources }}
     <div>
         <h3 class="text-xs font-bold text-gray-500 dark:text-gray-300 uppercase tracking-wider mb-3 flex items-center gap-2">
-            <i data-lucide="external-link" class="w-3.5 h-3.5"></i> Recursos Adicionales
+            <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg> Recursos Adicionales
         </h3>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5">
             {{ range .resources }}
             <a href="{{ .url }}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 p-2.5 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800 hover:border-purple-400 dark:hover:border-purple-500 hover:bg-purple-50 dark:hover:bg-purple-900/30 transition-all duration-200 group">
                 <div class="flex-shrink-0 w-8 h-8 bg-white dark:bg-gray-800 rounded-md flex items-center justify-center border border-gray-200 dark:border-gray-700 group-hover:border-purple-400 dark:group-hover:border-purple-500 transition-colors">
-                    <i data-lucide="{{ if eq .type "document" }}file-text{{ else }}link{{ end }}" class="w-4 h-4 text-gray-600 dark:text-gray-400 group-hover:text-purple-600 dark:group-hover:text-purple-400"></i>
+                    {{ if eq .type "document" }}<svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14,2 14,8 20,8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><line x1="10" y1="9" x2="8" y2="9"></line></svg>{{ else }}<svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>{{ end }}
                 </div>
                 <div class="flex-1 min-w-0">
                     <h4 class="text-sm font-medium text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 truncate">{{ .title }}</h4>
@@ -124,7 +124,6 @@
     <link rel="manifest" href="/site.webmanifest">
     
     {{ partial "css.html" . }}
-    <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.5.0/lite-youtube.min.css">
     <script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.5.0/lite-youtube.min.js"></script>
@@ -133,24 +132,6 @@
 
     <style>
         /* Acordeón Animado */
-        .accordion-content {
-            transition: grid-template-rows 0.3s ease-out;
-            display: grid;
-            grid-template-rows: 0fr;
-        }
-        .accordion-content.open {
-            grid-template-rows: 1fr;
-        }
-        .accordion-inner { 
-            overflow: hidden; 
-            opacity: 0;
-            transform: translateY(-0.5rem);
-            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-        }
-        .accordion-content.open .accordion-inner {
-            opacity: 1;
-            transform: translateY(0);
-        }
         
         .animated-grid {
             animation: scroll-background 60s linear infinite;
@@ -163,6 +144,19 @@
         
         @media (prefers-reduced-motion: reduce) {
             .animated-grid { animation: none !important; }
+        }
+        
+        details .chevron {
+            transition: transform 0.3s ease;
+        }
+        details[open] .chevron {
+            transform: rotate(180deg);
+        }
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+        details summary::marker {
+            display: none;
         }
         
         /* Custom scrollbar for sidebar */
@@ -259,33 +253,28 @@
                     
                     <div class="md:hidden space-y-3">
                         {{ range .Site.Data.material.sections }}
-                        <div class="rounded-xl overflow-hidden bg-white dark:bg-gray-900/80 backdrop-blur-sm border border-gray-200 dark:border-gray-800">
-                            <button class="accordion-header w-full px-4 py-4 flex items-center gap-3 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors text-left focus:outline-none select-none"
-                                onclick="toggleAccordion(this)">
+                        <details class="rounded-xl overflow-hidden bg-white dark:bg-gray-900/80 backdrop-blur-sm border border-gray-200 dark:border-gray-800">
+                            <summary class="w-full px-4 py-4 flex items-center gap-3 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors text-left focus:outline-none select-none cursor-pointer list-none">
                                 <div class="flex-shrink-0 text-3xl">{{ .emoji }}</div>
                                 <div class="flex-1 min-w-0">
                                     <h2 class="text-lg font-bold mb-0.5 text-gray-900 dark:text-white">{{ .title }}</h2>
                                     <div class="flex items-center gap-3 text-xs text-gray-600 dark:text-gray-300">
                                         <span class="flex items-center gap-1">
-                                            <i data-lucide="play-circle" class="w-3.5 h-3.5"></i>
-                                            {{ len .videos }} videos
+                                            <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="10,8 16,12 10,16 10,8"></polygon></svg> {{ len .videos }} videos
                                         </span>
                                         <span class="flex items-center gap-1">
-                                            <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
-                                            {{ len .resources }} recursos
+                                            <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14,2 14,8 20,8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><line x1="10" y1="9" x2="8" y2="9"></line></svg> {{ len .resources }} recursos
                                         </span>
                                     </div>
                                 </div>
-                                <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-gray-400 transition-transform duration-300 flex-shrink-0"></i>
-                            </button>
-                            <div class="accordion-content">
-                                <div class="accordion-inner px-4 pb-5 border-t border-gray-100 dark:border-gray-700/50">
-                                    <div class="pt-4">
-                                        {{ template "section-content" . }}
-                                    </div>
+                                <svg class="chevron w-5 h-5 text-gray-400 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"></polyline></svg>
+                            </summary>
+                            <div class="px-4 pb-5 border-t border-gray-100 dark:border-gray-700/50">
+                                <div class="pt-4">
+                                    {{ template "section-content" . }}
                                 </div>
                             </div>
-                        </div>
+                        </details>
                         {{ end }}
                     </div>
 
@@ -315,7 +304,7 @@
     <div id="video-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm opacity-0 transition-opacity duration-300" onclick="closeVideo()">
         <div class="relative w-full max-w-5xl transform scale-95 transition-transform duration-300" id="video-modal-content" onclick="event.stopPropagation()">
             <button class="absolute -top-12 right-0 p-2 text-white hover:text-gray-300 focus:outline-none" onclick="closeVideo()">
-                <i data-lucide="x" class="w-8 h-8"></i>
+                <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </button>
             <div class="relative aspect-video bg-black rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/10">
                 <iframe id="youtube-iframe" class="w-full h-full" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -342,21 +331,6 @@
             if(activeBtn) {
                 activeBtn.classList.add('active', 'bg-blue-50', 'dark:bg-blue-900/30', 'text-blue-700', 'dark:text-blue-400');
                 activeBtn.classList.remove('text-gray-700', 'dark:text-gray-300');
-            }
-        }
-
-        // Acordeón Móvil
-        function toggleAccordion(btn) {
-            const content = btn.nextElementSibling;
-            const icon = btn.querySelector('.accordion-icon');
-            const isOpen = content.classList.contains('open');
-            
-            if (isOpen) {
-                content.classList.remove('open');
-                if(icon) icon.classList.remove('rotate-180');
-            } else {
-                content.classList.add('open');
-                if(icon) icon.classList.add('rotate-180');
             }
         }
 
@@ -430,10 +404,6 @@
             if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeVideo(); 
         });
 
-        // --- INIT ---
-        document.addEventListener('DOMContentLoaded', () => {
-            if(window.lucide) lucide.createIcons();
-        });
 
     </script>
 </body>
