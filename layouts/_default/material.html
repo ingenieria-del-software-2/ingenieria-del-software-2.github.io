@@ -60,14 +60,22 @@
                     {{/* Regex para extraer ID de Youtube */}}
                     {{ $vidId := replaceRE `^.*(youtu\.be/|v/|u/\w/|embed/|watch\?v=|&v=)([^#&?]{11}).*$` `$2` .url }}
                     
+                    {{/* Fetch title at build time */}}
+                    {{ $embedUrl := printf "https://noembed.com/embed?url=https://www.youtube.com/watch?v=%s" $vidId }}
+                    {{ $response := resources.GetRemote $embedUrl }}
+                    {{ $title := "" }}
+                    {{ if $response }}
+                        {{ $data := $response.Content | transform.Unmarshal }}
+                        {{ $title = $data.title }}
+                    {{ end }}
+                    
                     <div class="video-card group relative bg-gray-50 dark:bg-gray-900 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 hover:border-blue-400 dark:hover:border-blue-500 transition-all duration-300 hover:shadow-lg dark:hover:shadow-blue-900/20 cursor-pointer" 
-                         data-videoid="{{ $vidId }}"
                          onclick="handleVideoClick('{{ $vidId }}')">
                         
                         <lite-youtube videoid="{{ $vidId }}" playlabel="Reproducir video" style="background-image: url('https://i.ytimg.com/vi/{{ $vidId }}/hqdefault.jpg');"></lite-youtube>
                         
                         <div class="p-3">
-                            <h4 class="video-title font-semibold text-gray-900 dark:text-white mb-1 line-clamp-2 text-sm hidden" data-videoid="{{ $vidId }}"></h4>
+                            <h4 class="font-semibold text-gray-900 dark:text-white mb-1 line-clamp-2 text-sm">{{ $title }}</h4>
                             {{ with .description }}<p class="text-xs text-gray-600 dark:text-gray-300 line-clamp-2">{{ . }}</p>{{ end }}
                         </div>
                     </div>
@@ -417,60 +425,9 @@
             if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeVideo(); 
         });
 
-        // --- OBTENCIÓN DE TÍTULOS (Client-Side) ---
-        async function fetchVideoTitles() {
-            const CACHE_KEY = 'yt_titles_cache_v2';
-            let cache = {};
-            
-            try {
-                const data = JSON.parse(localStorage.getItem(CACHE_KEY) || '{}');
-                // Validez del caché: 7 días
-                if (Date.now() - data.timestamp < 7 * 24 * 60 * 60 * 1000) {
-                    cache = data.titles || {};
-                }
-            } catch (e) { console.warn('LocalStorage error', e); }
-            
-            const promises = [];
-            const elements = document.querySelectorAll('.video-title[data-videoid]');
-            
-            elements.forEach(el => {
-                const videoId = el.dataset.videoid;
-                // Si está en caché, usarlo inmediatamente
-                if (cache[videoId]) {
-                    el.textContent = cache[videoId];
-                    el.classList.remove('hidden');
-                    return;
-                }
-                
-                // Si no, añadir a la cola de fetch
-                const p = fetch(`https://noembed.com/embed?url=https://www.youtube.com/watch?v=${videoId}`)
-                    .then(r => r.json())
-                    .then(d => {
-                        if (d.title) {
-                            cache[videoId] = d.title;
-                            el.textContent = d.title;
-                            el.classList.remove('hidden');
-                        }
-                    })
-                    .catch(err => {/* Silent fail */});
-                promises.push(p);
-            });
-            
-            if (promises.length > 0) {
-                await Promise.allSettled(promises);
-                try { 
-                    localStorage.setItem(CACHE_KEY, JSON.stringify({ 
-                        timestamp: Date.now(), 
-                        titles: cache 
-                    })); 
-                } catch (e) {}
-            }
-        }
-
         // --- INIT ---
         document.addEventListener('DOMContentLoaded', () => {
             if(window.lucide) lucide.createIcons();
-            fetchVideoTitles();
         });
 
     </script>
