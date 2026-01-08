@@ -1,3 +1,89 @@
+{{ define "section-content" }}
+    {{ if .topics }}
+    <div class="mb-4">
+        
+        <div class="flex md:hidden flex-wrap gap-1.5">
+            {{ range .topics }}
+                <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700/50 text-gray-600 dark:text-gray-400 rounded-md text-xs font-medium">{{ . }}</span>
+            {{ end }}
+        </div>
+
+        <div class="hidden md:flex group/topics relative flex-wrap gap-1.5">
+            {{ range first 4 .topics }}
+                <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700/50 text-gray-600 dark:text-gray-400 rounded-md text-xs font-medium">{{ . }}</span>
+            {{ end }}
+            
+            {{ if gt (len .topics) 4 }}
+                <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700/50 text-gray-500 rounded-md text-xs font-medium cursor-help hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">+{{ sub (len .topics) 4 }}</span>
+                
+                {{/* Tooltip flotante (solo desktop) */}}
+                <div class="absolute left-0 top-full mt-2 hidden group-hover/topics:block z-50 w-64">
+                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-3 shadow-xl relative">
+                        <div class="absolute -top-1.5 left-3 w-3 h-3 bg-white dark:bg-gray-800 border-t border-l border-gray-200 dark:border-gray-700 transform rotate-45"></div>
+                        <div class="flex flex-wrap gap-1.5 relative z-10">
+                            {{ range .topics }}
+                                <span class="px-2 py-0.5 bg-gray-100 dark:bg-gray-700/50 text-gray-600 dark:text-gray-400 rounded text-xs">{{ . }}</span>
+                            {{ end }}
+                        </div>
+                    </div>
+                </div>
+            {{ end }}
+        </div>
+    </div>
+    {{ end }}
+
+    {{ with .description }}
+        <p class="text-sm text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">{{ . }}</p>
+    {{ end }}
+
+    {{ if .videos }}
+    <div class="mb-6">
+        <h3 class="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3 flex items-center gap-2">
+            <i data-lucide="play-circle" class="w-3.5 h-3.5"></i> Videos del Curso
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+            {{ range .videos }}
+                {{/* Regex para extraer ID de Youtube */}}
+                {{ $vidId := replaceRE `^.*(youtu\.be/|v/|u/\w/|embed/|watch\?v=|&v=)([^#&?]{11}).*$` `$2` .url }}
+                
+                <div class="video-card group relative bg-gray-50 dark:bg-gray-900/50 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 hover:border-blue-400 dark:hover:border-blue-600 transition-all duration-300 hover:shadow-lg cursor-pointer" 
+                     data-videoid="{{ $vidId }}"
+                     onclick="handleVideoClick('{{ $vidId }}')">
+                    
+                    <lite-youtube videoid="{{ $vidId }}" playlabel="Reproducir video" style="background-image: url('https://i.ytimg.com/vi/{{ $vidId }}/hqdefault.jpg');"></lite-youtube>
+                    
+                    <div class="p-3">
+                        <h4 class="video-title font-semibold text-gray-900 dark:text-white mb-1 line-clamp-2 text-sm hidden" data-videoid="{{ $vidId }}"></h4>
+                        {{ with .description }}<p class="text-xs text-gray-600 dark:text-gray-400 line-clamp-2">{{ . }}</p>{{ end }}
+                    </div>
+                </div>
+            {{ end }}
+        </div>
+    </div>
+    {{ end }}
+
+    {{ if .resources }}
+    <div>
+        <h3 class="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3 flex items-center gap-2">
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i> Recursos Adicionales
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5">
+            {{ range .resources }}
+            <a href="{{ .url }}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 p-2.5 bg-gray-50 dark:bg-gray-900/50 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-purple-400 dark:hover:border-purple-600 hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-all duration-200 group">
+                <div class="flex-shrink-0 w-8 h-8 bg-white dark:bg-gray-800 rounded-md flex items-center justify-center border border-gray-200 dark:border-gray-700 group-hover:border-purple-400 transition-colors">
+                    <i data-lucide="{{ if eq .type "document" }}file-text{{ else }}link{{ end }}" class="w-4 h-4 text-gray-600 dark:text-gray-400 group-hover:text-purple-600"></i>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <h4 class="text-sm font-medium text-gray-900 dark:text-white group-hover:text-purple-600 truncate">{{ .title }}</h4>
+                    <p class="text-xs text-gray-600 dark:text-gray-400 truncate">Ver recurso</p>
+                </div>
+            </a>
+            {{ end }}
+        </div>
+    </div>
+    {{ end }}
+{{ end }}
+
 {{ define "main" }}
 <!DOCTYPE html>
 <html lang="es">
@@ -9,10 +95,10 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- lite-youtube-embed -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.5.0/lite-youtube.min.css">
     <script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.5.0/lite-youtube.min.js"></script>
 
@@ -69,6 +155,7 @@
     </script>
 
     <style>
+        /* Acordeón Animado */
         .accordion-content {
             transition: grid-template-rows 0.3s ease-out;
             display: grid;
@@ -77,8 +164,8 @@
         .accordion-content.open {
             grid-template-rows: 1fr;
         }
-        .accordion-inner {
-            overflow: hidden;
+        .accordion-inner { 
+            overflow: hidden; 
             opacity: 0;
             transform: translateY(-0.5rem);
             transition: opacity 0.3s ease-out, transform 0.3s ease-out;
@@ -92,11 +179,11 @@
             animation: scroll-background 60s linear infinite;
         }
 
-        @keyframes scroll-background {
-            0% { background-position: 0 0; }
-            100% { background-position: -384px -256px; }
+        @keyframes scroll-background { 
+            0% { background-position: 0 0; } 
+            100% { background-position: -384px -256px; } 
         }
-
+        
         /* Custom scrollbar for sidebar */
         .scrollbar-thin::-webkit-scrollbar {
             width: 4px;
@@ -127,6 +214,9 @@
             display: none; /* Hide the gradient overlay */
         }
         .video-card lite-youtube {
+            pointer-events: none; /* Disable lite-youtube's own click handler */
+        }
+        .video-card {
             cursor: pointer;
         }
     </style>
@@ -138,7 +228,6 @@
             <div class="absolute inset-0 bg-[radial-gradient(circle_500px_at_20%_200px,#e0f7ff,transparent)] dark:bg-[radial-gradient(circle_800px_at_50%_200px,#0c4a6e,transparent)]"></div>
         </div>
         <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-400/20 dark:bg-blue-900/10 rounded-full blur-3xl mix-blend-multiply dark:mix-blend-lighten filter"></div>
-        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-400/20 dark:bg-purple-900/10 rounded-full blur-3xl mix-blend-multiply dark:mix-blend-lighten filter"></div>
     </div>
 
     <div class="relative z-10">
@@ -152,42 +241,92 @@
                         Material de Referencia
                     </span>
                 </h1>
-                <p class="text-lg text-gray-600 dark:text-gray-400 md:hidden">
-                    Videos tutoriales, guías y recursos organizados por temas para facilitar tu aprendizaje.
+                <p class="text-lg text-gray-600 dark:text-gray-400 md:hidden mt-2">
+                    Recursos organizados por temas.
                 </p>
              </div>
         </div>
 
         <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-32">
             <div class="flex flex-col md:flex-row gap-6">
-                <!-- Desktop Sidebar Navigation -->
+                
                 <aside class="hidden md:block md:w-72 flex-shrink-0">
                     <div class="sticky top-4 max-h-[calc(100vh-2rem)] overflow-hidden flex flex-col">
-                        <nav id="sections-nav" class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm p-3 space-y-0.5 overflow-y-auto flex-1 scrollbar-thin">
-                            <!-- Navigation items injected by JS -->
+                        <nav class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm p-3 space-y-0.5 overflow-y-auto flex-1 scrollbar-thin">
+                            {{ range $index, $section := .Site.Data.material.sections }}
+                            <button 
+                                class="nav-item w-full text-left px-3 py-2 rounded-lg transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-700/50 flex items-center gap-2 {{ if eq $index 0 }}active bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300{{ else }}text-gray-700 dark:text-gray-300{{ end }}"
+                                data-target="desktop-section-{{ $section.id }}"
+                                onclick="switchDesktopSection('{{ $section.id }}')">
+                                <span class="text-lg flex-shrink-0">{{ $section.emoji }}</span>
+                                <span class="font-medium text-sm truncate">{{ $section.title }}</span>
+                                <span class="text-xs text-gray-400 ml-auto flex-shrink-0">{{ len $section.videos }}</span>
+                            </button>
+                            {{ end }}
                         </nav>
                     </div>
                 </aside>
 
-                <!-- Main Content Area -->
                 <div class="flex-1 min-w-0">
-                    <!-- Mobile accordion view -->
-                    <div id="sections-mobile" class="md:hidden space-y-3">
-                        <!-- Mobile accordion content injected by JS -->
+                    
+                    <div class="md:hidden space-y-3">
+                        {{ range .Site.Data.material.sections }}
+                        <div class="rounded-xl overflow-hidden bg-white dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200 dark:border-gray-700">
+                            <button class="accordion-header w-full px-4 py-4 flex items-center gap-3 hover:bg-gray-50 dark:hover:bg-gray-800/70 transition-colors text-left focus:outline-none select-none"
+                                onclick="toggleAccordion(this)">
+                                <div class="flex-shrink-0 text-3xl">{{ .emoji }}</div>
+                                <div class="flex-1 min-w-0">
+                                    <h2 class="text-lg font-bold mb-0.5 text-gray-900 dark:text-white">{{ .title }}</h2>
+                                    <div class="flex items-center gap-3 text-xs text-gray-600 dark:text-gray-400">
+                                        <span class="flex items-center gap-1">
+                                            <i data-lucide="play-circle" class="w-3.5 h-3.5"></i>
+                                            {{ len .videos }} videos
+                                        </span>
+                                        <span class="flex items-center gap-1">
+                                            <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
+                                            {{ len .resources }} recursos
+                                        </span>
+                                    </div>
+                                </div>
+                                <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-gray-400 transition-transform duration-300 flex-shrink-0"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="accordion-inner px-4 pb-5 border-t border-gray-100 dark:border-gray-700/50">
+                                    <div class="pt-4">
+                                        {{ template "section-content" . }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{ end }}
                     </div>
 
-                    <!-- Desktop content view -->
-                    <div id="sections-desktop" class="hidden md:block">
-                        <!-- Desktop section content injected by JS -->
+                    <div class="hidden md:block">
+                        {{ range $index, $section := .Site.Data.material.sections }}
+                        <div id="desktop-section-{{ $section.id }}" class="section-panel bg-white dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm {{ if ne $index 0 }}hidden{{ end }}">
+                            <div class="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-3xl">{{ $section.emoji }}</span>
+                                    <div>
+                                        <h2 class="text-xl font-bold text-gray-900 dark:text-white">{{ $section.title }}</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="px-6 py-4">
+                                {{ template "section-content" $section }}
+                            </div>
+                        </div>
+                        {{ end }}
                     </div>
+
                 </div>
             </div>
         </main>
     </div>
 
-    <div id="video-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm opacity-0 transition-opacity duration-300">
-        <div class="relative w-full max-w-5xl transform scale-95 transition-transform duration-300" id="video-modal-content">
-            <button id="close-modal" class="absolute -top-12 right-0 p-2 text-white hover:text-gray-300 transition-colors focus:outline-none">
+    <div id="video-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm opacity-0 transition-opacity duration-300" onclick="closeVideo()">
+        <div class="relative w-full max-w-5xl transform scale-95 transition-transform duration-300" id="video-modal-content" onclick="event.stopPropagation()">
+            <button class="absolute -top-12 right-0 p-2 text-white hover:text-gray-300 focus:outline-none" onclick="closeVideo()">
                 <i data-lucide="x" class="w-8 h-8"></i>
             </button>
             <div class="relative aspect-video bg-black rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/10">
@@ -197,275 +336,63 @@
     </div>
 
     <script>
-        // --- DATA ---
-        const courseSections = JSON.parse('{{ .Site.Data.material.sections | jsonify | safeJS }}');
+        // --- LOGICA DE INTERFAZ ---
 
-        // --- VIEWPORT DETECTION ---
-        const desktopQuery = window.matchMedia('(min-width: 768px)');
-        let isDesktop = desktopQuery.matches;
-        let currentView = null; // 'mobile' | 'desktop'
-        const loadedAccordions = new Set(); // Track which accordions have been rendered
-
-        // --- HELPER FUNCTIONS ---
-        
-        function getYouTubeId(url) {
-            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
-            const match = url.match(regExp);
-            return match && match[2].length === 11 ? match[2] : null;
-        }
-
-        // --- RENDER FUNCTIONS ---
-
-        function renderVideoCard(video) {
-            const videoId = getYouTubeId(video.url);
-            if (!videoId) return '';
-
-            return `
-                <div class="video-card group relative bg-gray-50 dark:bg-gray-900/50 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 hover:border-blue-400 dark:hover:border-blue-600 transition-all duration-300 hover:shadow-lg cursor-pointer" data-videoid="${videoId}">
-                    <lite-youtube 
-                        videoid="${videoId}" 
-                        playlabel="Reproducir video"
-                        style="background-image: url('https://i.ytimg.com/vi/${videoId}/hqdefault.jpg');">
-                    </lite-youtube>
-                    <div class="p-3">
-                        <h4 class="video-title font-semibold text-gray-900 dark:text-white mb-1 line-clamp-2 hidden" data-videoid="${videoId}"></h4>
-                        ${video.description ? `<p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">${video.description}</p>` : ''}
-                    </div>
-                </div>
-            `;
-        }
-
-        function renderResourceLink(resource) {
-            const icon = resource.type === 'document' ? 'file-text' : 'link';
-            return `
-                <a href="${resource.url}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 p-2.5 bg-gray-50 dark:bg-gray-900/50 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-purple-400 dark:hover:border-purple-600 hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-all duration-200 group">
-                    <div class="flex-shrink-0 w-8 h-8 bg-white dark:bg-gray-800 rounded-md flex items-center justify-center border border-gray-200 dark:border-gray-700 group-hover:border-purple-400 dark:group-hover:border-purple-600 transition-colors">
-                        <i data-lucide="${icon}" class="w-4 h-4 text-gray-600 dark:text-gray-400 group-hover:text-purple-600 dark:group-hover:text-purple-400"></i>
-                    </div>
-                    <div class="flex-1 min-w-0">
-                        <h4 class="text-sm font-medium text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors truncate">${resource.title}</h4>
-                        <p class="text-xs text-gray-600 dark:text-gray-400 truncate">${resource.url}</p>
-                    </div>
-                    <i data-lucide="external-link" class="w-3.5 h-3.5 text-gray-400 group-hover:text-purple-600 dark:group-hover:text-purple-400 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-all"></i>
-                </a>
-            `;
-        }
-
-        function renderSectionContent(section, isMobile = false) {
-            return `
-                ${section.topics?.length > 0 ? `
-                    <div class="flex flex-wrap gap-1.5 ${isMobile ? 'mb-5 pt-1 border-t border-gray-100 dark:border-gray-700/50' : 'mb-4'}">
-                        ${isMobile ? '<div class="w-full pt-3"></div>' : ''}
-                        ${section.topics.slice(0, 4).map(topic => `
-                            <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700/50 text-gray-600 dark:text-gray-400 rounded-md text-xs font-medium">${topic}</span>
-                        `).join('')}
-                        ${section.topics.length > 4 ? `<span class="px-2 py-1 bg-gray-100 dark:bg-gray-700/50 text-gray-500 dark:text-gray-500 rounded-md text-xs font-medium">+${section.topics.length - 4}</span>` : ''}
-                    </div>
-                ` : ''}
-                ${section.description ? `<p class="text-sm text-gray-700 dark:text-gray-300 ${isMobile ? 'mb-5' : 'mb-4'}">${section.description}</p>` : ''}
-                ${section.videos.length > 0 ? `
-                    <div class="${section.resources.length > 0 ? (isMobile ? 'mb-6' : 'mb-4') : ''}">
-                        <h3 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3 flex items-center gap-2">
-                            <i data-lucide="play-circle" class="w-3.5 h-3.5"></i> Videos del Curso
-                        </h3>
-                        <div class="grid grid-cols-1 ${isMobile ? 'gap-4' : 'md:grid-cols-2 lg:grid-cols-3 gap-3'}">
-                            ${section.videos.map(video => renderVideoCard(video)).join('')}
-                        </div>
-                    </div>
-                ` : ''}
-                ${section.resources.length > 0 ? `
-                    <div>
-                        <h3 class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3 flex items-center gap-2">
-                            <i data-lucide="external-link" class="w-3.5 h-3.5"></i> Recursos Adicionales
-                        </h3>
-                        <div class="flex flex-col ${isMobile ? 'gap-2.5' : 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5'}">
-                            ${section.resources.map(resource => renderResourceLink(resource)).join('')}
-                        </div>
-                    </div>
-                ` : ''}
-            `;
-        }
-
-        // --- MOBILE VIEW ---
-        function renderMobileView() {
-            if (currentView === 'mobile') return;
-            currentView = 'mobile';
+        // Cambiar sección en Escritorio
+        function switchDesktopSection(sectionId) {
+            document.querySelectorAll('.section-panel').forEach(el => el.classList.add('hidden'));
+            const target = document.getElementById('desktop-section-' + sectionId);
+            if(target) target.classList.remove('hidden');
             
-            const mobileContainer = document.getElementById('sections-mobile');
-            const desktopContainer = document.getElementById('sections-desktop');
-            const navContainer = document.getElementById('sections-nav');
-            
-            // Clear desktop
-            desktopContainer.innerHTML = '';
-            navContainer.innerHTML = '';
-            loadedAccordions.clear();
-            
-            // Render only accordion headers (lazy load content on expand)
-            let mobileHtml = '';
-            courseSections.forEach(section => {
-                mobileHtml += `
-                    <div class="rounded-xl overflow-hidden transition-all duration-300">
-                        <div role="button" tabindex="0" class="accordion-header w-full px-4 py-4 flex items-center gap-3 bg-white dark:bg-gray-800/50 backdrop-blur-sm hover:bg-gray-50 dark:hover:bg-gray-800/70 transition-colors text-left focus:outline-none cursor-pointer select-none" data-section-id="${section.id}" data-target="content-${section.id}">
-                            <div class="flex-shrink-0 text-3xl">${section.emoji}</div>
-                            <div class="flex-1 min-w-0">
-                                <h2 class="text-lg font-bold mb-0.5 text-gray-900 dark:text-white">${section.title}</h2>
-                                <div class="flex items-center gap-3 text-xs text-gray-600 dark:text-gray-400">
-                                    <span class="flex items-center gap-1"><i data-lucide="play-circle" class="w-3.5 h-3.5"></i> ${section.videos.length} videos</span>
-                                    <span class="flex items-center gap-1"><i data-lucide="file-text" class="w-3.5 h-3.5"></i> ${section.resources.length} recursos</span>
-                                </div>
-                            </div>
-                            <i data-lucide="chevron-down" class="accordion-icon w-5 h-5 text-gray-400 transition-transform duration-300 flex-shrink-0"></i>
-                        </div>
-                        <div id="content-${section.id}" class="accordion-content bg-white dark:bg-gray-800/50 backdrop-blur-sm">
-                            <div class="accordion-inner px-4 pb-5">
-                                <!-- Content loaded on demand -->
-                            </div>
-                        </div>
-                    </div>
-                `;
+            // Actualizar estilo de botones
+            document.querySelectorAll('.nav-item').forEach(el => {
+                el.classList.remove('active', 'bg-blue-50', 'dark:bg-blue-900/20', 'text-blue-700', 'dark:text-blue-300');
+                el.classList.add('text-gray-700', 'dark:text-gray-300');
             });
             
-            mobileContainer.innerHTML = mobileHtml;
-            lucide.createIcons();
-        }
-
-        // Lazy load accordion content
-        function loadAccordionContent(sectionId) {
-            if (loadedAccordions.has(sectionId)) return;
-            
-            const section = courseSections.find(s => s.id === sectionId);
-            if (!section) return;
-            
-            const contentEl = document.querySelector(`#content-${sectionId} .accordion-inner`);
-            if (!contentEl) return;
-            
-            contentEl.innerHTML = renderSectionContent(section, true);
-            loadedAccordions.add(sectionId);
-            lucide.createIcons();
-            setTimeout(() => fetchVideoTitles(), 50);
-        }
-
-        // --- DESKTOP VIEW ---
-        function renderDesktopView() {
-            if (currentView === 'desktop') return;
-            currentView = 'desktop';
-            
-            const mobileContainer = document.getElementById('sections-mobile');
-            const navContainer = document.getElementById('sections-nav');
-            
-            // Clear mobile
-            mobileContainer.innerHTML = '';
-            loadedAccordions.clear();
-            
-            // Render navigation
-            let navHtml = '';
-            courseSections.forEach((section, index) => {
-                navHtml += `
-                    <button 
-                        class="nav-item w-full text-left px-3 py-2 rounded-lg transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-700/50 ${index === 0 ? 'active bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300' : 'text-gray-700 dark:text-gray-300'}"
-                        data-section="${section.id}"
-                        onclick="showSection('${section.id}')">
-                        <div class="flex items-center gap-2">
-                            <span class="text-lg flex-shrink-0">${section.emoji}</span>
-                            <span class="font-medium text-sm truncate">${section.title}</span>
-                            <span class="text-xs text-gray-400 dark:text-gray-500 ml-auto flex-shrink-0">${section.videos.length}</span>
-                        </div>
-                    </button>
-                `;
-            });
-            
-            navContainer.innerHTML = navHtml;
-            
-            // Render first section
-            if (courseSections.length > 0) {
-                renderDesktopSection(courseSections[0]);
+            const activeBtn = document.querySelector(`button[data-target="desktop-section-${sectionId}"]`);
+            if(activeBtn) {
+                activeBtn.classList.add('active', 'bg-blue-50', 'dark:bg-blue-900/20', 'text-blue-700', 'dark:text-blue-300');
+                activeBtn.classList.remove('text-gray-700', 'dark:text-gray-300');
             }
+            
+            // Asegurar que los iconos se rendericen si había contenido oculto
+            if(window.lucide) lucide.createIcons();
         }
 
-        function renderDesktopSection(section) {
-            const desktopContainer = document.getElementById('sections-desktop');
-            desktopContainer.innerHTML = `
-                <div class="bg-white dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm">
-                    <div class="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-                        <div class="flex items-center gap-3">
-                            <span class="text-3xl">${section.emoji}</span>
-                            <div class="flex-1">
-                                <h2 class="text-xl font-bold text-gray-900 dark:text-white">${section.title}</h2>
-                                <div class="flex items-center gap-3 text-xs text-gray-600 dark:text-gray-400 mt-1">
-                                    <span class="flex items-center gap-1"><i data-lucide="play-circle" class="w-3.5 h-3.5"></i> ${section.videos.length} videos</span>
-                                    <span class="flex items-center gap-1"><i data-lucide="file-text" class="w-3.5 h-3.5"></i> ${section.resources.length} recursos</span>
-                                </div>
-                                ${section.topics?.length > 0 ? `
-                                    <div class="topics-container group/topics relative mt-1.5">
-                                        <div class="flex flex-wrap gap-1">
-                                            ${section.topics.slice(0, 5).map(topic => `
-                                                <span class="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-700/50 text-gray-600 dark:text-gray-400 rounded text-xs">${topic}</span>
-                                            `).join('')}
-                                            ${section.topics.length > 5 ? `<span class="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-700/50 text-gray-500 rounded text-xs cursor-help">+${section.topics.length - 5}</span>` : ''}
-                                        </div>
-                                        ${section.topics.length > 5 ? `
-                                            <div class="absolute left-0 top-full mt-1 hidden group-hover/topics:block z-10 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-2 shadow-lg max-w-md">
-                                                <div class="flex flex-wrap gap-1.5">
-                                                    ${section.topics.map(topic => `<span class="px-2 py-0.5 bg-gray-100 dark:bg-gray-700/50 text-gray-600 dark:text-gray-400 rounded text-xs">${topic}</span>`).join('')}
-                                                </div>
-                                            </div>
-                                        ` : ''}
-                                    </div>
-                                ` : ''}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="px-6 py-4">
-                        ${renderSectionContent(section)}
-                    </div>
-                </div>
-            `;
+        // Acordeón Móvil
+        function toggleAccordion(btn) {
+            const content = btn.nextElementSibling;
+            const icon = btn.querySelector('.accordion-icon');
+            const isOpen = content.classList.contains('open');
             
-            lucide.createIcons();
-            setTimeout(() => fetchVideoTitles(), 50);
-        }
-
-        window.showSection = function(sectionId) {
-            const section = courseSections.find(s => s.id === sectionId);
-            if (!section) return;
-
-            document.querySelectorAll('.nav-item').forEach(item => {
-                item.classList.remove('active', 'bg-blue-50', 'dark:bg-blue-900/20', 'text-blue-700', 'dark:text-blue-300');
-                item.classList.add('text-gray-700', 'dark:text-gray-300');
-            });
-            
-            const activeItem = document.querySelector(`[data-section="${sectionId}"]`);
-            if (activeItem) {
-                activeItem.classList.add('active', 'bg-blue-50', 'dark:bg-blue-900/20', 'text-blue-700', 'dark:text-blue-300');
-                activeItem.classList.remove('text-gray-700', 'dark:text-gray-300');
-            }
-
-            renderDesktopSection(section);
-        };
-
-        // --- VIEW SWITCHER ---
-        function renderCurrentView() {
-            isDesktop = desktopQuery.matches;
-            if (isDesktop) {
-                renderDesktopView();
+            if (isOpen) {
+                content.classList.remove('open');
+                if(icon) icon.classList.remove('rotate-180');
             } else {
-                renderMobileView();
+                content.classList.add('open');
+                if(icon) icon.classList.add('rotate-180');
             }
         }
 
-        // Listen for viewport changes
-        desktopQuery.addEventListener('change', renderCurrentView);
-
-        // --- INTERACTIVITY ---
-
-
-        // Video Modal Logic
+        // --- LÓGICA DE VIDEO ---
         const modal = document.getElementById('video-modal');
         const modalContent = document.getElementById('video-modal-content');
         const iframe = document.getElementById('youtube-iframe');
-        const closeModalBtn = document.getElementById('close-modal');
+        const isDesktop = () => window.matchMedia('(min-width: 768px)').matches;
 
-        window.openVideo = function(videoId) {
+        // Función global invocada por el HTML onclick
+        window.handleVideoClick = function(videoId) {
+            if (!isDesktop()) {
+                // En móvil: abrir app de YouTube o nueva pestaña
+                window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank');
+            } else {
+                // En escritorio: abrir modal
+                openVideo(videoId);
+            }
+        }
+
+        function openVideo(videoId) {
             if (!videoId) return;
             iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
             modal.classList.remove('hidden');
@@ -478,115 +405,75 @@
             document.body.style.overflow = 'hidden'; // Prevent scrolling
         };
 
-        function closeVideo() {
+        window.closeVideo = function() {
             modal.classList.add('opacity-0');
             modalContent.classList.remove('scale-100');
             modalContent.classList.add('scale-95');
-            
             setTimeout(() => {
                 modal.classList.add('hidden');
-                iframe.src = ''; // Stop video
+                iframe.src = '';
                 document.body.style.overflow = 'auto';
             }, 300);
-        }
+        };
 
-        closeModalBtn.addEventListener('click', closeVideo);
-        modal.addEventListener('click', (e) => { if (e.target === modal) closeVideo(); });
-        document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeVideo(); });
+        document.addEventListener('keydown', (e) => { 
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeVideo(); 
+        });
 
-        // --- VIDEO TITLES ---
+        // --- OBTENCIÓN DE TÍTULOS (Client-Side) ---
         async function fetchVideoTitles() {
             const CACHE_KEY = 'yt_titles_cache_v2';
-            const getCached = () => {
-                try {
-                    const data = JSON.parse(localStorage.getItem(CACHE_KEY) || '{}');
-                    return Date.now() - data.timestamp < 7 * 24 * 60 * 60 * 1000 ? data.titles || {} : {};
-                } catch { return {}; }
-            };
+            let cache = {};
             
-            const cache = getCached();
+            try {
+                const data = JSON.parse(localStorage.getItem(CACHE_KEY) || '{}');
+                // Validez del caché: 7 días
+                if (Date.now() - data.timestamp < 7 * 24 * 60 * 60 * 1000) {
+                    cache = data.titles || {};
+                }
+            } catch (e) { console.warn('LocalStorage error', e); }
+            
             const promises = [];
+            const elements = document.querySelectorAll('.video-title[data-videoid]');
             
-            document.querySelectorAll('.video-title[data-videoid]').forEach(el => {
+            elements.forEach(el => {
                 const videoId = el.dataset.videoid;
+                // Si está en caché, usarlo inmediatamente
                 if (cache[videoId]) {
                     el.textContent = cache[videoId];
                     el.classList.remove('hidden');
                     return;
                 }
                 
-                promises.push(
-                    fetch(`https://noembed.com/embed?url=https://www.youtube.com/watch?v=${videoId}`)
-                        .then(r => r.json())
-                        .then(d => {
-                            if (d.title) {
-                                cache[videoId] = el.textContent = d.title;
-                                el.classList.remove('hidden');
-                            }
-                        })
-                        .catch(() => {})
-                );
+                // Si no, añadir a la cola de fetch
+                const p = fetch(`https://noembed.com/embed?url=https://www.youtube.com/watch?v=${videoId}`)
+                    .then(r => r.json())
+                    .then(d => {
+                        if (d.title) {
+                            cache[videoId] = d.title;
+                            el.textContent = d.title;
+                            el.classList.remove('hidden');
+                        }
+                    })
+                    .catch(err => {/* Silent fail */});
+                promises.push(p);
             });
             
-            await Promise.allSettled(promises);
-            try { localStorage.setItem(CACHE_KEY, JSON.stringify({ timestamp: Date.now(), titles: cache })); } catch {}
+            if (promises.length > 0) {
+                await Promise.allSettled(promises);
+                try { 
+                    localStorage.setItem(CACHE_KEY, JSON.stringify({ 
+                        timestamp: Date.now(), 
+                        titles: cache 
+                    })); 
+                } catch (e) {}
+            }
         }
 
-        // --- INITIALIZATION ---
+        // --- INIT ---
         document.addEventListener('DOMContentLoaded', () => {
-            renderCurrentView();
-            lucide.createIcons();
-
-            // Accordion (mobile) - lazy load content on expand
-            const mobileContainer = document.getElementById('sections-mobile');
-            
-            function toggleAccordion(header) {
-                const sectionId = header.getAttribute('data-section-id');
-                const targetId = header.getAttribute('data-target');
-                const content = document.getElementById(targetId);
-                const icon = header.querySelector('.accordion-icon');
-                
-                if (content.classList.contains('open')) {
-                    content.classList.remove('open');
-                    if (icon) icon.classList.remove('rotate-180');
-                } else {
-                    // Lazy load content on first open
-                    loadAccordionContent(sectionId);
-                    content.classList.add('open');
-                    if (icon) icon.classList.add('rotate-180');
-                }
-            }
-
-            mobileContainer.addEventListener('click', (e) => {
-                const header = e.target.closest('.accordion-header');
-                if (header) toggleAccordion(header);
-            });
-
-            mobileContainer.addEventListener('keydown', (e) => {
-                const header = e.target.closest('.accordion-header');
-                if (header && (e.key === 'Enter' || e.key === ' ')) {
-                    e.preventDefault();
-                    toggleAccordion(header);
-                }
-            });
-
-            // Video card click handler
-            document.addEventListener('click', (e) => {
-                const videoCard = e.target.closest('.video-card');
-                if (videoCard) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    const videoId = videoCard.getAttribute('data-videoid');
-                    if (videoId) {
-                        // On mobile, open YouTube directly; on desktop, use modal
-                        if (!isDesktop) {
-                            window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank');
-                        } else {
-                            openVideo(videoId);
-                        }
-                    }
-                }
-            }, true);
+            if(window.lucide) lucide.createIcons();
+            fetchVideoTitles();
         });
 
     </script>
