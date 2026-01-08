@@ -1,5 +1,8 @@
 {{ if hugo.IsDevelopment }}
 <script src="https://cdn.tailwindcss.com/3.4.4"></script>
+<script>
+  tailwind.config = { darkMode: "class" };
+</script>
 {{ else }} {{ with resources.Get "css/tailwind.css" }} {{ $opts := dict "minify"
 true }} {{ with . | css.TailwindCSS $opts }} {{ with . | fingerprint }}
 <link
