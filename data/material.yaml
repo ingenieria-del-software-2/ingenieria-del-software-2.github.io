@@ -1,3 +1,5 @@
+youtube_channel: "https://www.youtube.com/@IngSoft2/videos"
+
 sections:
   - id: backend
     title: Desarrollo Backend

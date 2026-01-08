@@ -4,20 +4,20 @@
         
         <div class="flex md:hidden flex-wrap gap-1.5">
             {{ range first 4 .topics }}
-                <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700/50 text-gray-600 dark:text-gray-400 rounded-md text-xs font-medium">{{ . }}</span>
+                <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-md text-xs font-medium">{{ . }}</span>
             {{ end }}
             {{ if gt (len .topics) 4 }}
-                <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700/50 text-gray-500 rounded-md text-xs font-medium">+{{ sub (len .topics) 4 }}</span>
+                <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 rounded-md text-xs font-medium">+{{ sub (len .topics) 4 }}</span>
             {{ end }}
         </div>
 
         <div class="hidden md:flex group/topics relative flex-wrap gap-1.5">
             {{ range first 4 .topics }}
-                <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700/50 text-gray-600 dark:text-gray-400 rounded-md text-xs font-medium">{{ . }}</span>
+                <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-md text-xs font-medium">{{ . }}</span>
             {{ end }}
             
             {{ if gt (len .topics) 4 }}
-                <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700/50 text-gray-500 rounded-md text-xs font-medium cursor-help hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">+{{ sub (len .topics) 4 }}</span>
+                <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 rounded-md text-xs font-medium cursor-help hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">+{{ sub (len .topics) 4 }}</span>
                 
                 {{/* Tooltip flotante horizontal (solo desktop) */}}
                 <div class="absolute left-0 top-full mt-2 hidden group-hover/topics:block z-50 max-w-xl">
@@ -25,7 +25,7 @@
                         <div class="absolute -top-1.5 left-3 w-3 h-3 bg-white dark:bg-gray-800 border-t border-l border-gray-200 dark:border-gray-700 transform rotate-45"></div>
                         <div class="flex flex-wrap gap-1 relative z-10">
                             {{ range .topics }}
-                                <span class="px-2 py-0.5 bg-gray-100 dark:bg-gray-700/50 text-gray-600 dark:text-gray-400 rounded text-xs whitespace-nowrap">{{ . }}</span>
+                                <span class="px-2 py-0.5 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded text-xs whitespace-nowrap">{{ . }}</span>
                             {{ end }}
                         </div>
                     </div>
@@ -49,7 +49,7 @@
                 {{/* Regex para extraer ID de Youtube */}}
                 {{ $vidId := replaceRE `^.*(youtu\.be/|v/|u/\w/|embed/|watch\?v=|&v=)([^#&?]{11}).*$` `$2` .url }}
                 
-                <div class="video-card group relative bg-gray-50 dark:bg-gray-900/50 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 hover:border-blue-400 dark:hover:border-blue-600 transition-all duration-300 hover:shadow-lg cursor-pointer" 
+                <div class="video-card group relative bg-gray-50 dark:bg-gray-900 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 hover:border-blue-400 dark:hover:border-blue-500 transition-all duration-300 hover:shadow-lg dark:hover:shadow-blue-900/20 cursor-pointer" 
                      data-videoid="{{ $vidId }}"
                      onclick="handleVideoClick('{{ $vidId }}')">
                     
@@ -72,12 +72,12 @@
         </h3>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5">
             {{ range .resources }}
-            <a href="{{ .url }}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 p-2.5 bg-gray-50 dark:bg-gray-900/50 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-purple-400 dark:hover:border-purple-600 hover:bg-purple-50 dark:hover:bg-purple-900/20 transition-all duration-200 group">
-                <div class="flex-shrink-0 w-8 h-8 bg-white dark:bg-gray-800 rounded-md flex items-center justify-center border border-gray-200 dark:border-gray-700 group-hover:border-purple-400 transition-colors">
-                    <i data-lucide="{{ if eq .type "document" }}file-text{{ else }}link{{ end }}" class="w-4 h-4 text-gray-600 dark:text-gray-400 group-hover:text-purple-600"></i>
+            <a href="{{ .url }}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 p-2.5 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800 hover:border-purple-400 dark:hover:border-purple-500 hover:bg-purple-50 dark:hover:bg-purple-900/30 transition-all duration-200 group">
+                <div class="flex-shrink-0 w-8 h-8 bg-white dark:bg-gray-800 rounded-md flex items-center justify-center border border-gray-200 dark:border-gray-700 group-hover:border-purple-400 dark:group-hover:border-purple-500 transition-colors">
+                    <i data-lucide="{{ if eq .type "document" }}file-text{{ else }}link{{ end }}" class="w-4 h-4 text-gray-600 dark:text-gray-400 group-hover:text-purple-600 dark:group-hover:text-purple-400"></i>
                 </div>
                 <div class="flex-1 min-w-0">
-                    <h4 class="text-sm font-medium text-gray-900 dark:text-white group-hover:text-purple-600 truncate">{{ .title }}</h4>
+                    <h4 class="text-sm font-medium text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 truncate">{{ .title }}</h4>
                     <p class="text-xs text-gray-600 dark:text-gray-400 truncate">Ver recurso</p>
                 </div>
             </a>
@@ -244,7 +244,7 @@
                         Material de Referencia
                     </span>
                 </h1>
-                <a href="https://www.youtube.com/@IngSoft2/videos" target="_blank" rel="noopener noreferrer" 
+                <a href="{{ .Site.Data.material.youtube_channel }}" target="_blank" rel="noopener noreferrer" 
                    class="inline-flex items-center justify-center w-9 h-9 md:w-8 md:h-8 rounded-full bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm shadow-sm ring-1 ring-gray-900/5 dark:ring-white/10 hover:bg-red-50 dark:hover:bg-red-900/30 hover:ring-red-300 dark:hover:ring-red-700 transition-all duration-300 group"
                    title="Ver canal de YouTube">
                     <svg class="w-4 h-4 text-red-600 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="currentColor">
@@ -262,10 +262,10 @@
                 
                 <aside class="hidden md:block md:w-72 flex-shrink-0">
                     <div class="sticky top-4 max-h-[calc(100vh-2rem)] overflow-hidden flex flex-col">
-                        <nav class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm p-3 space-y-0.5 overflow-y-auto flex-1 scrollbar-thin">
+                        <nav class="bg-white/80 dark:bg-gray-900/90 backdrop-blur-md rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm p-3 space-y-0.5 overflow-y-auto flex-1 scrollbar-thin">
                             {{ range $index, $section := .Site.Data.material.sections }}
                             <button 
-                                class="nav-item w-full text-left px-3 py-2 rounded-lg transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-700/50 flex items-center gap-2 {{ if eq $index 0 }}active bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300{{ else }}text-gray-700 dark:text-gray-300{{ end }}"
+                                class="nav-item w-full text-left px-3 py-2 rounded-lg transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800 flex items-center gap-2 {{ if eq $index 0 }}active bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400{{ else }}text-gray-700 dark:text-gray-300{{ end }}"
                                 data-target="desktop-section-{{ $section.id }}"
                                 onclick="switchDesktopSection('{{ $section.id }}')">
                                 <span class="text-lg flex-shrink-0">{{ $section.emoji }}</span>
@@ -281,8 +281,8 @@
                     
                     <div class="md:hidden space-y-3">
                         {{ range .Site.Data.material.sections }}
-                        <div class="rounded-xl overflow-hidden bg-white dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200 dark:border-gray-700">
-                            <button class="accordion-header w-full px-4 py-4 flex items-center gap-3 hover:bg-gray-50 dark:hover:bg-gray-800/70 transition-colors text-left focus:outline-none select-none"
+                        <div class="rounded-xl overflow-hidden bg-white dark:bg-gray-900/80 backdrop-blur-sm border border-gray-200 dark:border-gray-800">
+                            <button class="accordion-header w-full px-4 py-4 flex items-center gap-3 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors text-left focus:outline-none select-none"
                                 onclick="toggleAccordion(this)">
                                 <div class="flex-shrink-0 text-3xl">{{ .emoji }}</div>
                                 <div class="flex-1 min-w-0">
@@ -313,7 +313,7 @@
 
                     <div class="hidden md:block">
                         {{ range $index, $section := .Site.Data.material.sections }}
-                        <div id="desktop-section-{{ $section.id }}" class="section-panel bg-white dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm {{ if ne $index 0 }}hidden{{ end }}">
+                        <div id="desktop-section-{{ $section.id }}" class="section-panel bg-white dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm {{ if ne $index 0 }}hidden{{ end }}">
                             <div class="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
                                 <div class="flex items-center gap-3">
                                     <span class="text-3xl">{{ $section.emoji }}</span>
@@ -356,13 +356,13 @@
             
             // Actualizar estilo de botones
             document.querySelectorAll('.nav-item').forEach(el => {
-                el.classList.remove('active', 'bg-blue-50', 'dark:bg-blue-900/20', 'text-blue-700', 'dark:text-blue-300');
+                el.classList.remove('active', 'bg-blue-50', 'dark:bg-blue-900/30', 'text-blue-700', 'dark:text-blue-400');
                 el.classList.add('text-gray-700', 'dark:text-gray-300');
             });
             
             const activeBtn = document.querySelector(`button[data-target="desktop-section-${sectionId}"]`);
             if(activeBtn) {
-                activeBtn.classList.add('active', 'bg-blue-50', 'dark:bg-blue-900/20', 'text-blue-700', 'dark:text-blue-300');
+                activeBtn.classList.add('active', 'bg-blue-50', 'dark:bg-blue-900/30', 'text-blue-700', 'dark:text-blue-400');
                 activeBtn.classList.remove('text-gray-700', 'dark:text-gray-300');
             }
             
