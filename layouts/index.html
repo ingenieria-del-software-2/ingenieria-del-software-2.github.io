@@ -91,13 +91,32 @@
                 </p>
                 
                 <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <a href="https://forms.gle/61mLGJ1pq8twvZWK8"
+                    {{ if .Site.Params.inscripcion.enabled }}
+                    <a href="{{ .Site.Params.inscripcion.url }}"
                        class="group inline-flex items-center justify-center bg-gray-950 hover:bg-accent-600 text-white px-8 py-3 rounded-full text-base font-medium transition-colors duration-300 dark:bg-accent-600 dark:hover:bg-accent-700 ring-2 ring-accent-100 dark:ring-accent-800/50">
                         <span class="mx-auto">Inscribirse</span>
                         <svg class="h-5 w-0 ml-0 group-hover:w-5 group-hover:ml-2 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                         </svg>
                     </a>
+                    {{ else }}
+                    <button id="btn-inscripcion"
+                       class="group inline-flex items-center justify-center bg-gray-950 hover:bg-accent-600 text-white px-8 py-3 rounded-full text-base font-medium transition-colors duration-300 dark:bg-accent-600 dark:hover:bg-accent-700 ring-2 ring-accent-100 dark:ring-accent-800/50">
+                        <span id="btn-inscripcion-text" class="mx-auto transition-opacity duration-300">Inscribirse</span>
+                        <svg class="h-5 w-0 ml-0 group-hover:w-5 group-hover:ml-2 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                        </svg>
+                    </button>
+                    <script>
+                        (function() {
+                            const msgs = {{ .Site.Params.inscripcion.mensajes_espera | jsonify | safeJS }};
+                            const el = document.getElementById('btn-inscripcion-text');
+                            let i = 0;
+                            const show = () => { el.style.opacity = 0; setTimeout(() => { el.textContent = msgs[i]; el.style.opacity = 1; i = (i + 1) % msgs.length; }, 300); };
+                            document.getElementById('btn-inscripcion').onclick = show;
+                        })();
+                    </script>
+                    {{ end }}
                     
                     <a href="/material"
                        class="group inline-flex items-center justify-center bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border-2 border-gray-200 dark:border-gray-700 px-8 py-3 rounded-full text-base font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-300 ring-1 ring-gray-200 dark:ring-gray-700/50">

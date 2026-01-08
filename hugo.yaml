@@ -55,6 +55,17 @@ menu:
     #     icon: academic-cap
 
 params:
+  inscripcion:
+    enabled: false
+    url: ""
+    mensajes_espera:
+      - "Ya casi… 👀"
+      - "Ahora sí, falta poquito… 🤏"
+      - "Nada eh, cada vez menos… ⏳"
+      - "Estamos cerca ... 🏁"
+      - "Listo. Bueno no, pero casi casi casi. 📚😅"
+      - "Mira el programa mientras tanto. 👉"
+
   navbar:
     displayTitle: true
     displayLogo: false
