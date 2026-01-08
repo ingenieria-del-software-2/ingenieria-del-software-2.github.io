@@ -1,23 +1,27 @@
 {{ define "section-content" }}
     {{ if .topics }}
+        {{ $topics := .topics }}
+        {{ $top := first 4 $topics }}
+        {{ $extra := 0 }}
+        {{ if gt (len $topics) 4 }}{{ $extra = sub (len $topics) 4 }}{{ end }}
     <div class="mb-4">
         
         <div class="flex md:hidden flex-wrap gap-1.5">
-            {{ range first 4 .topics }}
+            {{ range $top }}
                 <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-md text-xs font-medium">{{ . }}</span>
             {{ end }}
-            {{ if gt (len .topics) 4 }}
-                <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-300 rounded-md text-xs font-medium">+{{ sub (len .topics) 4 }}</span>
+            {{ if $extra }}
+                <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-300 rounded-md text-xs font-medium">+{{ $extra }}</span>
             {{ end }}
         </div>
 
         <div class="hidden md:flex group/topics relative flex-wrap gap-1.5">
-            {{ range first 4 .topics }}
+            {{ range $top }}
                 <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-md text-xs font-medium">{{ . }}</span>
             {{ end }}
             
-            {{ if gt (len .topics) 4 }}
-                <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-300 rounded-md text-xs font-medium cursor-help hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">+{{ sub (len .topics) 4 }}</span>
+            {{ if $extra }}
+                <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-300 rounded-md text-xs font-medium cursor-help hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">+{{ $extra }}</span>
                 
                 {{/* Tooltip flotante horizontal (solo desktop) */}}
                 <div class="absolute left-0 top-full mt-2 hidden group-hover/topics:block z-50 max-w-xl">
@@ -155,6 +159,10 @@
         @keyframes scroll-background { 
             0% { background-position: 0 0; } 
             100% { background-position: -384px -256px; } 
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            .animated-grid { animation: none !important; }
         }
         
         /* Custom scrollbar for sidebar */
@@ -335,9 +343,6 @@
                 activeBtn.classList.add('active', 'bg-blue-50', 'dark:bg-blue-900/30', 'text-blue-700', 'dark:text-blue-400');
                 activeBtn.classList.remove('text-gray-700', 'dark:text-gray-300');
             }
-            
-            // Asegurar que los iconos se rendericen si había contenido oculto
-            if(window.lucide) lucide.createIcons();
         }
 
         // Acordeón Móvil
