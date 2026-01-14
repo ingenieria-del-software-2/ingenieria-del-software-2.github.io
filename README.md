@@ -6,42 +6,50 @@ Esta es la página web de la materia Ingenieria del Software 2 de la Facultad de
 
 ### GitHub Pages
 
-A GitHub Actions workflow is provided in [`.github/workflows/pages.yaml`](./.github/workflows/pages.yaml) to [publish to GitHub Pages](https://github.blog/changelog/2022-07-27-github-pages-custom-github-actions-workflows-beta/) for free.
+El repo incluye un workflow de **GitHub Actions** en [`.github/workflows/pages.yaml`](./.github/workflows/pages.yaml) para publicar el sitio en **GitHub Pages** (gratis).
 
-For details, see [Publishing with a custom GitHub Actions workflow](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow).
+Si querés más detalle, mirá:
 
-## Prerequisites
+- [Publishing with a custom GitHub Actions workflow](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow)
+- [GitHub Pages: Custom GitHub Actions workflows (beta)](https://github.blog/changelog/2022-07-27-github-pages-custom-github-actions-workflows-beta/)
 
-[Hugo](https://gohugo.io/getting-started/installing/), [Go](https://golang.org/doc/install) and [Git](https://git-scm.com)
+## Requisitos
 
-For building the site (production), [Node.js](https://nodejs.org/) and npm are also required to process TailwindCSS.
+Para laburar local:
+
+- [Hugo](https://gohugo.io/getting-started/installing/)
+- [Go](https://golang.org/doc/install)
+- [Git](https://git-scm.com)
+
+Para buildear en modo producción, además necesitás:
+
+- [Node.js](https://nodejs.org/) y **npm** (se usan para procesar **TailwindCSS**)
 
 ```shell
-# Clone the repo
+# Clonar el repo
 git clone https://github.com/ingenieria-del-software-2/ingenieria-del-software-2.github.io
 
-# Change directory
+# Entrar al directorio
 cd ingenieria-del-software-2.github.io
 
-# Start the server
+# Levantar el server local
 hugo mod tidy
 hugo server --logLevel debug --disableFastRender -p 1313
 ```
 
-### Update theme
+### Actualizar el theme
 
 ```shell
 hugo mod get -u
 hugo mod tidy
 ```
 
-See [Update modules](https://gohugo.io/hugo-modules/use-modules/#update-modules) for more details.
+Más info en la doc oficial: [Update modules](https://gohugo.io/hugo-modules/use-modules/#update-modules)
 
-## Site Management
+## Mantenimiento del sitio
 
-Each semester, the following updates should be made:
+En cada cuatrimestre, normalmente hay que tocar estas cosas:
 
-- **Enable registration link**: In `hugo.yaml`, change `params.inscripcion.enabled` to `true` and add the Google Form link in `params.inscripcion.url`.
-- **Update material**: Add new classes to their respective categories in `data/material.yaml`, including videos, resources, and topics.
-- **Update teaching team**: Add or modify professors in `data/team.yaml` with name, photo, email, and GitHub.
-
+- **Habilitar el link de inscripción**: en `hugo.yaml`, setear `params.inscripcion.enabled` en `true` y cargar el link del Google Form en `params.inscripcion.url`.
+- **Actualizar material**: agregar las clases nuevas en su categoría correspondiente en `data/material.yaml` (videos, recursos, temas, etc.).
+- **Actualizar el equipo docente**: agregar/modificar docentes en `data/team.yaml` (nombre, foto, mail y GitHub).
