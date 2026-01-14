@@ -125,8 +125,7 @@
     
     {{ partial "css.html" . }}
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.5.0/lite-youtube.min.css">
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.5.0/lite-youtube.min.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.5.0/lite-youtube.js"></script>
 
 
 
@@ -182,11 +181,13 @@
 
         /* lite-youtube customization */
         lite-youtube {
+            display: block;
+            width: 100%;
+            aspect-ratio: 16/9;
             border-radius: 0.75rem 0.75rem 0 0;
-            max-width: 100%;
-        }
-        lite-youtube::before {
-            display: none; /* Hide the gradient overlay */
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
         }
         .video-card lite-youtube {
             pointer-events: none; /* Disable lite-youtube's own click handler */
