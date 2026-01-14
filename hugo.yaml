@@ -7,11 +7,11 @@ module:
     - path: github.com/imfing/hextra
 
   mounts:
-  - source: assets
-    target: assets
-  - disableWatch: true
-    source: hugo_stats.json
-    target: assets/notwatching/hugo_stats.json
+    - source: assets
+      target: assets
+    - disableWatch: true
+      source: hugo_stats.json
+      target: assets/notwatching/hugo_stats.json
 
 markup:
   # Allow raw HTML
@@ -27,10 +27,10 @@ build:
   buildStats:
     enable: true
   cachebusters:
-  - source: 'assets/notwatching/hugo_stats\.json'
-    target: css
-  - source: '(postcss|tailwind)\.config\.js'
-    target: css
+    - source: 'assets/notwatching/hugo_stats\.json'
+      target: css
+    - source: '(postcss|tailwind)\.config\.js'
+      target: css
 
 menu:
   main:
@@ -58,7 +58,6 @@ menu:
       pageRef: "/contact"
       weight: 8
 
-
     # - name: "Buscar"
     #   weight: 9
     #   params:
@@ -66,11 +65,26 @@ menu:
 
     # - name: Slack
     #   weight: 10
-    #   url: https://join.slack.com/t/ta049-ingsoftii/shared_invite/zt-2owpvl6tc-P1NHgQKAbci049EohALmTg 
+    #   url: https://join.slack.com/t/ta049-ingsoftii/shared_invite/zt-2owpvl6tc-P1NHgQKAbci049EohALmTg
     #   params:
     #     icon: academic-cap
 
 params:
+  navbar:
+    displayTitle: true
+    displayLogo: false
+
+  search:
+    enable: false
+    type: flexsearch
+
+  footer:
+    displayCopyright: false
+    displayPoweredBy: false
+
+  editURL:
+    enable: false
+
   inscripcion:
     enabled: false
     url: ""
@@ -78,17 +92,4 @@ params:
       - "Aún no empezamos… ⏳"
       - "Falta poquito… 🤏"
       - "Nada eh, cada vez menos… ⏳"
-      - "Estamos cerca ... 🏁"
       - "Mira el programa mientras tanto. 📹"
-
-  navbar:
-    displayTitle: true
-    displayLogo: false
-
-  footer:
-    # Example settings; adjust as desired
-    displayCopyright: false
-    displayPoweredBy: false
-
-  editURL:
-    enable: false
