@@ -1,0 +1,204 @@
+{{ define "main" }}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Site.Title }}</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    {{ partial "css.html" . }}
+
+    <style>
+        .animated-grid {
+            animation: scroll-background 60s linear infinite;
+        }
+
+        @keyframes scroll-background {
+            0% { background-position: 0 0; }
+            100% { background-position: -384px -256px; } /* 6rem * 4, 4rem * 4 */
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-950 transition-colors duration-300">
+    <!-- Hero Section -->
+    <div class="relative overflow-hidden">
+        {{ partial "sidebar.html" (dict "context" . "disableSidebar" true) }}
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 relative z-10">
+            <div class="text-center">
+                <div class="mb-8 flex justify-center">
+                    <div class="inline-flex items-center justify-center p-3 rounded-full bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm shadow-sm ring-1 ring-gray-900/5 dark:ring-white/10">
+                        <img src="/images/logo.svg" alt="Logo" class="w-20 h-20 object-cover rounded-full dark:invert">
+                    </div>
+                </div>
+                
+                <h1 class="text-3xl sm:text-4xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight whitespace-nowrap">
+                    {{ .Site.Title }}
+                </h1>
+                
+                <p class="text-xl text-gray-600 dark:text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+                    Esta es la página web de la materia de la Facultad de Ingeniería de la Universidad de Buenos Aires.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    {{ if .Site.Params.inscripcion.enabled }}
+                    <a href="{{ .Site.Params.inscripcion.url }}"
+                       class="group inline-flex items-center justify-center bg-gray-950 hover:bg-sky-600 text-white px-8 py-3 rounded-full text-base font-medium transition-colors duration-300 dark:bg-sky-600 dark:hover:bg-sky-700 ring-2 ring-sky-100 dark:ring-sky-800/50">
+                        <span class="mx-auto">Inscribirse</span>
+                        <svg class="h-5 w-0 ml-0 group-hover:w-5 group-hover:ml-2 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                        </svg>
+                    </a>
+                    {{ else }}
+                    <button id="btn-inscripcion"
+                       class="group inline-flex items-center justify-center bg-gray-400 hover:bg-slate-500 text-white px-8 py-3 rounded-full text-base font-medium transition-colors duration-300 dark:bg-gray-700 dark:hover:bg-slate-600 ring-2 ring-sky-100 dark:ring-sky-800/50">
+                        <span id="btn-inscripcion-text" class="mx-auto transition-opacity duration-300">Inscribirse</span>
+                    </button>
+                    <script>
+                        (function() {
+                            const msgs = {{ .Site.Params.inscripcion.mensajes_espera | jsonify | safeJS }};
+                            const el = document.getElementById('btn-inscripcion-text');
+                            let i = 0;
+                            const show = () => { el.style.opacity = 0; setTimeout(() => { el.textContent = msgs[i]; el.style.opacity = 1; i = (i + 1) % msgs.length; }, 300); };
+                            document.getElementById('btn-inscripcion').onclick = show;
+                        })();
+                    </script>
+                    {{ end }}
+                    
+                    <a href="/material"
+                       class="group inline-flex items-center justify-center bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border-2 border-gray-200 dark:border-gray-700 px-8 py-3 rounded-full text-base font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-300 ring-1 ring-gray-200 dark:ring-gray-700/50">
+                        <span class="mx-auto">Ver programa</span>
+                        <svg class="h-5 w-0 ml-0 group-hover:w-5 group-hover:ml-2 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Background -->
+        <div class="animated-grid absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#f0f9ff_1px,transparent_1px),linear-gradient(to_bottom,#f0f9ff_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1f2937_1px,transparent_1px),linear-gradient(to_bottom,#1f2937_1px,transparent_1px)] bg-[size:6rem_4rem]">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_500px_at_20%_200px,#e0f7ff,transparent)] dark:bg-[radial-gradient(circle_800px_at_50%_200px,#0c4a6e,transparent)]"></div>
+        </div>
+        
+        <!-- Floating shapes -->
+        <div class="absolute top-1/4 left-10 w-24 h-24 bg-sky-100/70 dark:bg-sky-900/20 rounded-full mix-blend-multiply dark:mix-blend-lighten blur-xl opacity-70"></div>
+        <div class="absolute bottom-1/4 right-10 w-36 h-36 bg-sky-200/50 dark:bg-sky-800/20 rounded-full mix-blend-multiply dark:mix-blend-lighten blur-xl opacity-70"></div>
+    </div>
+
+    <!-- Areas de Estudio Section -->
+    <div class="bg-white dark:bg-gray-950 py-20 sm:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white tracking-tight">Áreas de Estudio</h2>
+                <p class="mt-4 text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                    Explora los pilares fundamentales que cubrimos en la materia para formar profesionales de software de alto nivel.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1: Gestión -->
+                <div class="group bg-white dark:bg-gray-800 p-8 rounded-2xl border border-gray-200 dark:border-gray-800 hover:border-sky-400/50 dark:hover:border-sky-600/50 transition-colors duration-300">
+                    <div class="inline-flex items-center justify-center w-12 h-12 bg-sky-100 dark:bg-sky-900/50 rounded-lg mb-6 transition-transform duration-300 group-hover:scale-110 group-hover:bg-sky-200 dark:group-hover:bg-sky-800/80">
+                        <svg class="w-7 h-7 text-sky-600 dark:text-sky-400 transition-transform duration-300 group-hover:rotate-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">Gestión</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Procesos de desarrollo de sistemas software de gran escala y métodos ágiles como Scrum, Kanban y XP.
+                    </p>
+                </div>
+                
+                <!-- Card 2: DevOps -->
+                <div class="group bg-white dark:bg-gray-800 p-8 rounded-2xl border border-gray-200 dark:border-gray-800 hover:border-sky-400/50 dark:hover:border-sky-600/50 transition-colors duration-300">
+                    <div class="inline-flex items-center justify-center w-12 h-12 bg-sky-100 dark:bg-sky-900/50 rounded-lg mb-6 transition-transform duration-300 group-hover:scale-110 group-hover:bg-sky-200 dark:group-hover:bg-sky-800/80">
+                        <svg class="w-7 h-7 text-sky-600 dark:text-sky-400 transition-transform duration-300 group-hover:rotate-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">DevOps</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Gestión de configuración, CICD, Cloud, Site Reliability Engineering, Observabilidad e Infraestructura como Código.
+                    </p>
+                </div>
+                
+                <!-- Card 3: Arquitectura -->
+                <div class="group bg-white dark:bg-gray-800 p-8 rounded-2xl border border-gray-200 dark:border-gray-800 hover:border-sky-400/50 dark:hover:border-sky-600/50 transition-colors duration-300">
+                    <div class="inline-flex items-center justify-center w-12 h-12 bg-sky-100 dark:bg-sky-900/50 rounded-lg mb-6 transition-transform duration-300 group-hover:scale-110 group-hover:bg-sky-200 dark:group-hover:bg-sky-800/80">
+                        <svg class="w-7 h-7 text-sky-600 dark:text-sky-400 transition-transform duration-300 group-hover:rotate-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">Arquitectura</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Calidad interna y externa, atributos de calidad, Domain Driven Design y arquitecturas para software a gran escala.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Posts -->
+    <div class="bg-gray-50 dark:bg-gray-950 mx-auto px-4 sm:px-6 lg:px-12 py-16">
+        <div class="flex items-center justify-between mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Anuncios Recientes</h2>
+            <a href="/blog" class="text-sky-500 dark:text-sky-400 hover:underline text-sm font-medium flex items-center">
+                Ver todos
+                <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </a>
+        </div>
+        
+        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {{ range first 3 .Site.RegularPages }}
+            <article class="mx-2 group relative rounded-xl border-2 border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 overflow-hidden transition-all duration-300 hover:border-sky-400/50 dark:hover:border-sky-600/50">
+                <div class="p-6 h-full flex flex-col">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="inline-flex items-center rounded-full bg-sky-100 dark:bg-sky-900/50 px-2.5 py-1 text-xs font-medium text-sky-700 dark:text-sky-300">
+                            {{ with .Params.tags }}{{ index . 0 }}{{ end }}
+                        </span>
+                        <span class="text-xs text-gray-500 dark:text-gray-400">{{ .Date.Format "2 de January, 2006" }}</span>
+                    </div>
+                    
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors mb-2">
+                        <a href="{{ .RelPermalink }}" class="after:absolute after:inset-0">{{ .Title }}</a>
+                    </h3>
+                    
+                    <p class="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
+                        {{ .Summary | truncate 100 "..." }}
+                    </p>
+                    
+                    <div class="mt-auto pt-2">
+                        <div class="flex justify-end">
+                            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 group-hover:bg-sky-500 group-hover:text-white dark:group-hover:bg-sky-500 dark:group-hover:text-white transition-all duration-300 group-hover:scale-110">
+                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            {{ end }}
+        </div>
+
+        <div class="mt-16 text-center">
+            <a href="/blog"
+               class="inline-flex items-center justify-center rounded-full border-2 border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 px-8 py-3 text-base font-medium text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors ring-1 ring-gray-200 dark:ring-gray-700/50">
+                Ver más anuncios
+                <svg class="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
+
+{{ end }}
