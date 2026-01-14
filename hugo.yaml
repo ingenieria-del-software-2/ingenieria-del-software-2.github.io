@@ -89,7 +89,7 @@ params:
     enabled: false
     url: ""
     mensajes_espera:
-      - "Aún no empezamos… ⏳"
+      - "Aún no empezamos… ✋"
       - "Falta poquito… 🤏"
       - "Nada eh, cada vez menos… ⏳"
       - "Mira el programa mientras tanto. 📹"
