@@ -333,6 +333,9 @@
                 activeBtn.classList.add('active', 'bg-blue-50', 'dark:bg-blue-900/30', 'text-blue-700', 'dark:text-blue-400');
                 activeBtn.classList.remove('text-gray-700', 'dark:text-gray-300');
             }
+
+            // Actualizar URL hash
+            window.location.hash = '#' + sectionId;
         }
 
         // --- LÓGICA DE VIDEO ---
@@ -403,6 +406,14 @@
 
         document.addEventListener('keydown', (e) => { 
             if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeVideo(); 
+        });
+
+        // Verificar hash en la URL al cargar la página
+        window.addEventListener('load', function() {
+            const hash = window.location.hash.substring(1);
+            if (hash) {
+                switchDesktopSection(hash);
+            }
         });
 
 
