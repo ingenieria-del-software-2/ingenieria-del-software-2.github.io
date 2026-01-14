@@ -1,2 +1,5 @@
 @import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
 @source "hugo_stats.json";

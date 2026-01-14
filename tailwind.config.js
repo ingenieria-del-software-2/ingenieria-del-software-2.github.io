@@ -4,5 +4,4 @@ module.exports = {
         './content/**/*.{html,md}',
         './assets/**/*.{js,ts}',
     ],
-    darkMode: 'class',
 }
