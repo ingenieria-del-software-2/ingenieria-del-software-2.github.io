@@ -4,10 +4,6 @@ description: "Información sobre cómo aprobar la materia, TPs, parciales y fina
 subtitle: "Información sobre la materia"
 ---
 
-<!-- ## Docentes
-
-{{< team >}} -->
-
 ## Correlativas
 
 | Código | Materia                                            | Correlativas                                                      |
