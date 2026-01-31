@@ -238,7 +238,7 @@
                         <nav class="bg-white/80 dark:bg-gray-900/90 backdrop-blur-md rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm p-3 space-y-0.5 overflow-y-auto flex-1 scrollbar-thin">
                             {{ range $index, $section := .Site.Data.material.sections }}
                             <button 
-                                class="nav-item w-full text-left px-3 py-2 rounded-lg transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800 flex items-center gap-2 {{ if eq $index 0 }}active bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400{{ else }}text-gray-700 dark:text-gray-300{{ end }}"
+                                class="nav-item w-full text-left px-3 py-2 rounded-lg transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer flex items-center gap-2 {{ if eq $index 0 }}active bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400{{ else }}text-gray-700 dark:text-gray-300{{ end }}"
                                 data-target="desktop-section-{{ $section.id }}"
                                 onclick="switchDesktopSection('{{ $section.id }}')">
                                 <span class="text-lg flex-shrink-0">{{ $section.emoji }}</span>
