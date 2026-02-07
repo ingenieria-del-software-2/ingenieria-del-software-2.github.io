@@ -1,10 +1,10 @@
 {{ define "section-content" }}
     <div class="mb-6 md:mb-8 border-b border-gray-100 pb-4 md:pb-6 animate-fade-up relative z-20">
         <!-- Grid Layout for strict alignment -->
-        <div class="flex flex-col md:grid md:grid-cols-12 md:gap-6 gap-4 items-start">
+        <div class="flex min-w-0 flex-col gap-4 items-start md:grid md:grid-cols-12 md:gap-6">
             
             <!-- Title Column: Always takes 5/12 of the width on desktop -->
-            <div class="md:col-span-5 w-full flex flex-col gap-3">
+            <div class="md:col-span-5 w-full min-w-0 flex flex-col gap-3">
                 <h1 class="text-2xl md:text-2xl lg:text-3xl xl:text-4xl font-sans font-black text-primary tracking-tighter leading-none uppercase whitespace-normal break-words">
                     {{ .title }}
                 </h1>
@@ -47,7 +47,7 @@
             </div>
 
             <!-- Content Column: Description -->
-            <div class="md:col-span-7 w-full">
+            <div class="md:col-span-7 w-full min-w-0">
                 {{ with .description }}
                 <div class="hidden md:block border-l border-gray-100 pl-6 h-full">
                     <p class="text-sm text-text-muted font-sans font-light leading-snug">
@@ -59,16 +59,16 @@
         </div>
     </div>
 
-    <section class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12">
+    <section class="grid min-w-0 grid-cols-1 gap-8 md:grid-cols-12 lg:gap-12">
         <!-- Main Content: Videos (Col span 8) -->
-        <div class="md:col-span-7 lg:col-span-8">
+        <div class="md:col-span-7 lg:col-span-8 min-w-0">
             <div class="flex items-center justify-between mb-6 border-b border-gray-100 pb-3">
                 <h2 class="text-[10px] md:text-[11px] font-sans font-bold uppercase tracking-widest text-primary flex items-center gap-2">
                     <span class="w-1.5 h-1.5 bg-accent inline-block"></span> Clases Grabadas
                 </h2>
             </div>
 
-            <div class="grid grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10">
+            <div class="grid min-w-0 grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-3">
                 {{ range .videos }}
                     {{ if eq .type "drive" }}
                         <a href="#" class="video-card group cursor-pointer animate-fade-up block" 
@@ -91,22 +91,55 @@
                         </a>
                     {{ else }}
                         {{ $vidId := replaceRE `^.*(youtu\.be/|v/|u/\w/|embed/|watch\?v=|&v=)([^#&?]{11}).*$` `$2` .url }}
-                        {{ $embedUrl := printf "https://noembed.com/embed?url=https://www.youtube.com/watch?v=%s" $vidId }}
-                        {{ $response := resources.GetRemote $embedUrl }}
                         {{ $title := .title }}
-                        {{ if and (not $title) $response }}
+                        {{ $duration := "" }}
+
+                        {{ $body := dict "context" (dict "client" (dict "hl" "es" "gl" "AR" "clientName" "WEB" "clientVersion" "2.20220916.00.00" "clientScreen" "WATCH")) "videoId" $vidId | jsonify }}
+                        {{ $opts := dict 
+                            "method" "POST"
+                            "headers" (dict 
+                                "Content-Type" "application/json"
+                                "User-Agent" "Mozilla/5.0"
+                                "Origin" "https://www.youtube.com"
+                                "Referer" "https://www.youtube.com/"
+                            )
+                            "body" $body
+                        }}
+                        {{ $response := resources.GetRemote "https://www.youtube.com/youtubei/v1/player?key=AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8&prettyPrint=false" $opts }}
+
+                        {{ if $response }}
                             {{ $data := $response.Content | transform.Unmarshal }}
-                            {{ $title = $data.title }}
+                            {{ if and (not $title) $data.videoDetails }}
+                                {{ $title = $data.videoDetails.title }}
+                            {{ end }}
+                            {{ if $data.videoDetails }}
+                                {{ $sec := $data.videoDetails.lengthSeconds | int }}
+                                {{ $hour := div $sec 3600 }}
+                                {{ $remSecAfterHour := mod $sec 3600 }}
+                                {{ $min := div $remSecAfterHour 60 }}
+                                {{ $remSec := mod $remSecAfterHour 60 }}
+                                
+                                {{ if gt $hour 0 }}
+                                    {{ $duration = printf "%d:%02d:%02d" $hour $min $remSec }}
+                                {{ else }}
+                                    {{ $duration = printf "%d:%02d" $min $remSec }}
+                                {{ end }}
+                            {{ end }}
                         {{ end }}
 
                         <a href="#" class="video-card group cursor-pointer animate-fade-up block" 
                            onclick="handleVideoClick('{{ $vidId }}'); return false;">
                             <div class="relative aspect-video bg-gray-50 overflow-hidden mb-3 border border-gray-100">
-                                <img alt="{{ $title }}" class="w-full h-full object-cover video-thumbnail grayscale" 
+                                <img alt="{{ $title }}" class="w-full h-full object-cover video-thumbnail" 
                                      src="https://i.ytimg.com/vi/{{ $vidId }}/hqdefault.jpg" />
                                 <div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
                                     <span class="material-symbols-outlined text-white text-3xl transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">play_arrow</span>
                                 </div>
+                                {{ if $duration }}
+                                <div class="absolute bottom-1 right-1 bg-black/80 text-white text-[10px] font-sans font-medium px-1.5 py-0.5 pointer-events-none z-10">
+                                    {{ $duration }}
+                                </div>
+                                {{ end }}
                             </div>
                             <div class="flex flex-col gap-1.5">
                                 <h3 class="font-sans font-semibold text-sm text-text-main leading-tight group-hover:text-slate-900 transition-colors line-clamp-2 min-h-[2.5rem]">
@@ -123,20 +156,20 @@
         </div>
 
         <!-- Sidebar Content: Readings (Col span 4) -->
-        <div class="md:col-span-5 lg:col-span-4 md:border-l md:border-gray-100 md:pl-8 lg:pl-10">
+        <div class="md:col-span-5 lg:col-span-4 min-w-0 md:border-l md:border-gray-100 md:pl-8 lg:pl-10">
             <div class="flex items-center justify-between mb-6 border-b border-gray-100 pb-3">
                 <h2 class="text-[10px] md:text-[11px] font-sans font-bold uppercase tracking-widest text-primary flex items-center gap-2">
                     <span class="w-1.5 h-1.5 bg-accent/30 inline-block"></span> Recursos Adicionales
                 </h2>
             </div>
 
-            <div class="flex flex-col gap-1">
+            <div class="flex min-w-0 flex-col gap-1">
                 {{ range .resources }}
-                <a class="group flex items-center gap-3 py-3 border-b border-gray-50 hover:bg-gray-50 transition-all px-3 -mx-3" href="{{ .url }}" target="_blank">
+                <a class="group flex w-full min-w-0 items-center gap-3 border-b border-gray-50 px-3 py-3 transition-all hover:bg-gray-50" href="{{ .url }}" target="_blank">
                     <span class="material-symbols-outlined text-slate-300 text-sm group-hover:text-accent transition-colors">
                         {{ if eq .type "document" }}description{{ else }}link{{ end }}
                     </span>
-                    <div class="flex flex-col overflow-hidden">
+                    <div class="flex min-w-0 flex-col overflow-hidden">
                         <h4 class="font-sans text-[12px] font-medium text-text-main truncate">
                             {{ .title }}
                         </h4>
@@ -167,11 +200,7 @@
       rel="stylesheet"
     />
     {{ partial "css.html" . }}
-    <style>
-      body {
-        min-height: max(884px, 100dvh);
-      }
-    </style>
+
   </head>
 {{ partial "sidebar.html" (dict "context" . "disableSidebar" true) }}
   <body
