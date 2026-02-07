@@ -23,6 +23,9 @@
   --color-arquitectura-subtle: #fff7ed;
   --color-arquitectura-border: #fed7aa;
 
+  --color-text-main: #0f172a;
+  --color-text-muted: #64748b;
+
   --font-display: "Playfair Display", serif;
   --font-sans: "Inter", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
@@ -31,11 +34,17 @@
   --shadow-elevation: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
 
   --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-fade-up: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 
   --background-image-grid-pattern: radial-gradient(#cbd5e1 1px, transparent 1px);
   --background-image-striped-gray: repeating-linear-gradient(45deg, transparent, transparent 10px, #f1f5f9 10px, #f1f5f9 20px);
 
   --background-size-grid-pattern: 40px 40px;
+
+  @keyframes fadeUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
 }
 
 /* Custom Styles from home.html */
@@ -240,4 +249,35 @@ html {
         rgba(14, 165, 233, 0.2) 0%,
         rgba(14, 165, 233, 0.05) 100%
     );
+}
+
+/* Custom Styles from material-new.html */
+h1,
+h2,
+h3,
+h4 {
+    letter-spacing: -0.02em;
+}
+.video-thumbnail {
+    transition:
+        transform 0.7s cubic-bezier(0.19, 1, 0.22, 1),
+        filter 0.5s ease;
+}
+.video-card:hover .video-thumbnail {
+    transform: scale(1.01);
+    filter: grayscale(0%);
+}
+::-webkit-scrollbar {
+    width: 8px;
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: #e5e5e5;
+    border-radius: 4px;
+}
+.sidebar-link {
+    @apply flex items-center justify-between px-4 py-3 text-sm font-sans text-text-muted hover:text-primary hover:bg-gray-50/50 transition-colors border-l-2 border-transparent;
+}
+.sidebar-link.active {
+    @apply text-primary bg-gray-50/80 border-slate-300 font-semibold;
 }

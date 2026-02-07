@@ -1,423 +1,354 @@
 {{ define "section-content" }}
-    {{ if .topics }}
-        {{ $topics := .topics }}
-        {{ $top := first 4 $topics }}
-        {{ $extra := 0 }}
-        {{ if gt (len $topics) 4 }}{{ $extra = sub (len $topics) 4 }}{{ end }}
-    <div class="mb-4">
-        
-        <div class="flex md:hidden flex-wrap gap-1.5">
-            {{ range $top }}
-                <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-md text-xs font-medium">{{ . }}</span>
-            {{ end }}
-            {{ if $extra }}
-                <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-300 rounded-md text-xs font-medium">+{{ $extra }}</span>
+    <div class="mb-6 md:mb-8 flex flex-col md:flex-row md:flex-wrap md:items-center justify-between gap-4 border-b border-gray-100 pb-4 md:pb-6 animate-fade-up">
+        <div class="flex items-center gap-4 md:gap-6 flex-1 min-w-0">
+            <div class="flex flex-col flex-shrink-0">
+                <h1 class="text-2xl md:text-2xl lg:text-3xl xl:text-4xl font-sans font-black text-primary tracking-tighter leading-none uppercase whitespace-normal">
+                    {{ .title }}
+                </h1>
+            </div>
+            {{ with .description }}
+            <p class="hidden md:block text-sm text-text-muted max-w-lg font-sans font-light leading-snug border-l border-gray-100 pl-6">
+                {{ . }}
+            </p>
             {{ end }}
         </div>
-
-        <div class="hidden md:flex group/topics relative flex-wrap gap-1.5">
-            {{ range $top }}
-                <span class="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-md text-xs font-medium">{{ . }}</span>
-            {{ end }}
+        
+        {{ if .topics }}
+        <div class="flex flex-wrap gap-3 mt-1 md:mt-0 font-sans text-[10px] font-medium text-text-muted items-center flex-shrink-0">
+            {{ $limit := 2 }}
+            {{ $visibleTopics := first $limit .topics }}
+            {{ $remainingCount := sub (len .topics) $limit }}
             
-            {{ if $extra }}
-                <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-300 rounded-md text-xs font-medium cursor-help hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">+{{ $extra }}</span>
+            {{ range $visibleTopics }}
+            <span class="flex items-center gap-1.5"><span class="w-1 h-1 rounded-full bg-devops"></span>#{{ . | urlize }}</span>
+            {{ end }}
+
+            {{ if gt $remainingCount 0 }}
+            <div class="relative group/tooltip">
+                <span class="flex items-center gap-1.5 cursor-help hover:text-primary transition-colors">
+                    <span class="w-1 h-1 rounded-full bg-gray-300"></span>+{{ $remainingCount }}
+                </span>
                 
-                {{/* Tooltip flotante horizontal (solo desktop) */}}
-                <div class="absolute left-0 top-full mt-2 hidden group-hover/topics:block z-50 max-w-xl">
-                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-2 shadow-xl relative">
-                        <div class="absolute -top-1.5 left-3 w-3 h-3 bg-white dark:bg-gray-800 border-t border-l border-gray-200 dark:border-gray-700 transform rotate-45"></div>
-                        <div class="flex flex-wrap gap-1 relative z-10">
-                            {{ range .topics }}
-                                <span class="px-2 py-0.5 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded text-xs whitespace-nowrap">{{ . }}</span>
+                <!-- Tooltip: Dark style matching home.html -->
+                <div class="absolute right-0 top-full mt-2 hidden group-hover/tooltip:block z-50 min-w-[140px]">
+                    <div class="bg-slate-900 text-white rounded-sm p-3 relative shadow-sm">
+                        <!-- Arrow -->
+                        <div class="absolute -top-1 right-2 w-2 h-2 bg-slate-900 transform rotate-45"></div>
+                        
+                        <div class="flex flex-col gap-2 relative z-10">
+                            {{ range after $limit .topics }}
+                            <span class="flex items-center gap-1.5 text-[10px] text-slate-200">
+                                <span class="w-1 h-1 rounded-full bg-slate-400"></span>#{{ . | urlize }}
+                            </span>
                             {{ end }}
                         </div>
                     </div>
                 </div>
+            </div>
             {{ end }}
         </div>
+        {{ end }}
     </div>
-    {{ end }}
 
-    {{ with .description }}
-        <p class="text-sm text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">{{ . }}</p>
-    {{ end }}
+    <section class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12">
+        <!-- Main Content: Videos (Col span 8) -->
+        <div class="md:col-span-7 lg:col-span-8">
+            <div class="flex items-center justify-between mb-6 border-b border-gray-100 pb-3">
+                <h2 class="text-[10px] md:text-[11px] font-sans font-bold uppercase tracking-widest text-primary flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 bg-accent inline-block"></span> Clases Grabadas
+                </h2>
+            </div>
 
-    {{ if .videos }}
-    <div class="mb-6">
-        <h3 class="text-xs font-bold text-gray-500 dark:text-gray-300 uppercase tracking-wider mb-3 flex items-center gap-2">
-            <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="10,8 16,12 10,16 10,8"></polygon></svg> Videos del Curso
-        </h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-            {{ range .videos }}
-                {{ if eq .type "drive" }}
-                    <div class="video-card group relative bg-gray-50 dark:bg-gray-900 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 hover:border-blue-400 dark:hover:border-blue-500 transition-all duration-300 hover:shadow-lg dark:hover:shadow-blue-900/20 cursor-pointer"
-                         data-url="{{ .url | replaceRE `/view$` `/preview` }}"
-                         onclick="handleDriveClick(this)">
-                        <iframe src="{{ .url | replaceRE `/view$` `/preview` }}" width="100%" height="200" frameborder="0" allowfullscreen loading="lazy" style="pointer-events: none;"></iframe>
-                        <div class="p-3">
-                            <h4 class="font-semibold text-gray-900 dark:text-white mb-1 line-clamp-2 text-sm">{{ .title }}</h4>
-                            {{ with .description }}<p class="text-xs text-gray-600 dark:text-gray-300 line-clamp-2">{{ . }}</p>{{ end }}
-                        </div>
-                    </div>
-                {{ else }}
-                    {{/* Regex para extraer ID de Youtube */}}
-                    {{ $vidId := replaceRE `^.*(youtu\.be/|v/|u/\w/|embed/|watch\?v=|&v=)([^#&?]{11}).*$` `$2` .url }}
-                    
-                    {{/* Fetch title at build time */}}
-                    {{ $embedUrl := printf "https://noembed.com/embed?url=https://www.youtube.com/watch?v=%s" $vidId }}
-                    {{ $response := resources.GetRemote $embedUrl }}
-                    {{ $title := "" }}
-                    {{ if $response }}
-                        {{ $data := $response.Content | transform.Unmarshal }}
-                        {{ $title = $data.title }}
+            <div class="grid grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10">
+                {{ range .videos }}
+                    {{ if eq .type "drive" }}
+                        <a href="#" class="video-card group cursor-pointer animate-fade-up block" 
+                           data-url="{{ .url | replaceRE `/view$` `/preview` }}"
+                           onclick="handleDriveClick(this); return false;">
+                            <div class="relative aspect-video bg-gray-50 overflow-hidden mb-3 border border-gray-100">
+                                <iframe src="{{ .url | replaceRE `/view$` `/preview` }}" class="w-full h-full" frameborder="0" allowfullscreen loading="lazy" style="pointer-events: none;"></iframe>
+                                <div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-white text-3xl transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">play_arrow</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-1.5">
+                                <h3 class="font-sans font-semibold text-sm text-text-main leading-tight group-hover:text-slate-900 transition-colors line-clamp-2">
+                                    {{ .title }}
+                                </h3>
+                                {{ with .description }}
+                                <p class="text-[10px] text-text-muted line-clamp-2">{{ . }}</p>
+                                {{ end }}
+                            </div>
+                        </a>
+                    {{ else }}
+                        {{ $vidId := replaceRE `^.*(youtu\.be/|v/|u/\w/|embed/|watch\?v=|&v=)([^#&?]{11}).*$` `$2` .url }}
+                        {{ $embedUrl := printf "https://noembed.com/embed?url=https://www.youtube.com/watch?v=%s" $vidId }}
+                        {{ $response := resources.GetRemote $embedUrl }}
+                        {{ $title := .title }}
+                        {{ if and (not $title) $response }}
+                            {{ $data := $response.Content | transform.Unmarshal }}
+                            {{ $title = $data.title }}
+                        {{ end }}
+
+                        <a href="#" class="video-card group cursor-pointer animate-fade-up block" 
+                           onclick="handleVideoClick('{{ $vidId }}'); return false;">
+                            <div class="relative aspect-video bg-gray-50 overflow-hidden mb-3 border border-gray-100">
+                                <img alt="{{ $title }}" class="w-full h-full object-cover video-thumbnail grayscale" 
+                                     src="https://i.ytimg.com/vi/{{ $vidId }}/hqdefault.jpg" />
+                                <div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-white text-3xl transform translate-y-2 group-hover:translate-y-0 transition-all duration-500">play_arrow</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-1.5">
+                                <h3 class="font-sans font-semibold text-sm text-text-main leading-tight group-hover:text-slate-900 transition-colors line-clamp-2">
+                                    {{ $title }}
+                                </h3>
+                                {{ with .description }}
+                                <p class="text-[10px] text-text-muted line-clamp-2">{{ . }}</p>
+                                {{ end }}
+                            </div>
+                        </a>
                     {{ end }}
-                    
-                    <div class="video-card group relative bg-gray-50 dark:bg-gray-900 rounded-xl overflow-hidden border border-gray-200 dark:border-gray-800 hover:border-blue-400 dark:hover:border-blue-500 transition-all duration-300 hover:shadow-lg dark:hover:shadow-blue-900/20 cursor-pointer" 
-                         onclick="handleVideoClick('{{ $vidId }}')">
-                        
-                        <lite-youtube videoid="{{ $vidId }}" playlabel="Reproducir video" style="background-image: url('https://i.ytimg.com/vi/{{ $vidId }}/hqdefault.jpg');"></lite-youtube>
-                        
-                        <div class="p-3">
-                            <h4 class="font-semibold text-gray-900 dark:text-white mb-1 line-clamp-2 text-sm">{{ $title }}</h4>
-                            {{ with .description }}<p class="text-xs text-gray-600 dark:text-gray-300 line-clamp-2">{{ . }}</p>{{ end }}
-                        </div>
-                    </div>
                 {{ end }}
-            {{ end }}
+            </div>
         </div>
-    </div>
-    {{ end }}
 
-    {{ if .resources }}
-    <div>
-        <h3 class="text-xs font-bold text-gray-500 dark:text-gray-300 uppercase tracking-wider mb-3 flex items-center gap-2">
-            <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15,3 21,3 21,9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg> Recursos Adicionales
-        </h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5">
-            {{ range .resources }}
-            <a href="{{ .url }}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 p-2.5 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800 hover:border-purple-400 dark:hover:border-purple-500 hover:bg-purple-50 dark:hover:bg-purple-900/30 transition-all duration-200 group">
-                <div class="flex-shrink-0 w-8 h-8 bg-white dark:bg-gray-800 rounded-md flex items-center justify-center border border-gray-200 dark:border-gray-700 group-hover:border-purple-400 dark:group-hover:border-purple-500 transition-colors">
-                    {{ if eq .type "document" }}<svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14,2 14,8 20,8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><line x1="10" y1="9" x2="8" y2="9"></line></svg>{{ else }}<svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>{{ end }}
-                </div>
-                <div class="flex-1 min-w-0">
-                    <h4 class="text-sm font-medium text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 truncate">{{ .title }}</h4>
-                    <p class="text-xs text-gray-600 dark:text-gray-300 truncate">Ver recurso</p>
-                </div>
-            </a>
-            {{ end }}
+        <!-- Sidebar Content: Readings (Col span 4) -->
+        <div class="md:col-span-5 lg:col-span-4 md:border-l md:border-gray-100 md:pl-8 lg:pl-10">
+            <div class="flex items-center justify-between mb-6 border-b border-gray-100 pb-3">
+                <h2 class="text-[10px] md:text-[11px] font-sans font-bold uppercase tracking-widest text-primary flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 bg-accent/30 inline-block"></span> Recursos Adicionales
+                </h2>
+            </div>
+
+            <div class="flex flex-col gap-1">
+                {{ range .resources }}
+                <a class="group flex items-center gap-3 py-3 border-b border-gray-50 hover:bg-gray-50 transition-all px-3 -mx-3" href="{{ .url }}" target="_blank">
+                    <span class="material-symbols-outlined text-slate-300 text-sm group-hover:text-accent transition-colors">
+                        {{ if eq .type "document" }}description{{ else }}link{{ end }}
+                    </span>
+                    <div class="flex flex-col overflow-hidden">
+                        <h4 class="font-sans text-[12px] font-medium text-text-main truncate">
+                            {{ .title }}
+                        </h4>
+                        <span class="text-[9px] text-text-muted font-sans uppercase tracking-tight">Ver recurso</span>
+                    </div>
+                </a>
+                {{ end }}
+            </div>
         </div>
-    </div>
-    {{ end }}
+    </section>
 {{ end }}
 
 {{ define "main" }}
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Material de Referencia</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Material de Referencia - Ingeniería del Software 2</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;family=Playfair+Display:ital,wght@0,400;0,600;1,400&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
     {{ partial "css.html" . }}
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@justinribeiro/lite-youtube@1.5.0/lite-youtube.js"></script>
-
-
-
     <style>
-        /* Acordeón Animado */
-        
-        .animated-grid {
-            animation: scroll-background 60s linear infinite;
-        }
-
-        @keyframes scroll-background { 
-            0% { background-position: 0 0; } 
-            100% { background-position: -384px -256px; } 
-        }
-        
-        @media (prefers-reduced-motion: reduce) {
-            .animated-grid { animation: none !important; }
-        }
-        
-        details .chevron {
-            transition: transform 0.3s ease;
-        }
-        details[open] .chevron {
-            transform: rotate(180deg);
-        }
-        details summary::-webkit-details-marker {
-            display: none;
-        }
-        details summary::marker {
-            display: none;
-        }
-        
-        /* Custom scrollbar for sidebar */
-        .scrollbar-thin::-webkit-scrollbar {
-            width: 4px;
-        }
-        .scrollbar-thin::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        .scrollbar-thin::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 4px;
-        }
-        .scrollbar-thin::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
-        .dark .scrollbar-thin::-webkit-scrollbar-thumb {
-            background: #374151;
-        }
-        .dark .scrollbar-thin::-webkit-scrollbar-thumb:hover {
-            background: #4b5563;
-        }
-
-        /* lite-youtube customization */
-        lite-youtube {
-            display: block;
-            width: 100%;
-            aspect-ratio: 16/9;
-            border-radius: 0.75rem 0.75rem 0 0;
-            overflow: hidden;
-            background-size: cover;
-            background-position: center;
-        }
-        .video-card lite-youtube {
-            pointer-events: none; /* Disable lite-youtube's own click handler */
-        }
-        .video-card {
-            cursor: pointer;
-        }
+      body {
+        min-height: max(884px, 100dvh);
+      }
     </style>
-</head>
-<body class="bg-white dark:bg-gray-950 text-gray-900 dark:text-white transition-colors duration-300 min-h-screen relative">
+  </head>
+{{ partial "sidebar.html" (dict "context" . "disableSidebar" true) }}
+  <body
+    class="bg-engineering text-text-main font-sans antialiased min-h-screen flex flex-col selection:bg-black selection:text-white"
+  >
 
-    <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-         <div class="animated-grid absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#f0f9ff_1px,transparent_1px),linear-gradient(to_bottom,#f0f9ff_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1f2937_1px,transparent_1px),linear-gradient(to_bottom,#1f2937_1px,transparent_1px)] bg-[size:6rem_4rem] opacity-60">
-            <div class="absolute inset-0 bg-[radial-gradient(circle_500px_at_20%_200px,#e0f7ff,transparent)] dark:bg-[radial-gradient(circle_800px_at_50%_200px,#0c4a6e,transparent)]"></div>
+    <div
+      class="flex-grow pt-16 max-w-[1600px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 min-h-screen"
+    >
+      <aside
+        class="hidden lg:block lg:col-span-3 xl:col-span-2 border-r border-gray-100 h-[calc(100vh-64px)] sticky top-16 overflow-y-auto py-8 pr-6 scrollbar-thin"
+      >
+        <div class="mb-8 pl-4">
+          <h3
+            class="font-sans text-xs uppercase tracking-widest text-text-muted mb-4"
+          >
+            Temario
+          </h3>
+          <div class="space-y-1">
+            {{ range $index, $section := .Site.Data.material.sections }}
+            <button 
+                class="w-full sidebar-link nav-item {{ if eq $index 0 }}active{{ end }}" 
+                data-target="desktop-section-{{ $section.id }}"
+                onclick="switchDesktopSection('{{ $section.id }}')">
+              <span>{{ $section.title }}</span>
+              <span class="text-[10px] opacity-50">{{ len $section.videos }}</span>
+            </button>
+            {{ end }}
+          </div>
         </div>
-        <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-400/20 dark:bg-blue-900/10 rounded-full blur-3xl mix-blend-multiply dark:mix-blend-lighten filter"></div>
-    </div>
-
-    <div class="relative z-10">
-        {{ partial "sidebar.html" (dict "context" . "disableSidebar" true) }}
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 md:pt-4 pb-4 md:pb-2">
-             <div class="text-center md:text-left mb-4 md:mb-2 flex flex-row items-center justify-center md:justify-start gap-2 md:gap-3">
-                <h1 class="inline-flex items-center justify-center p-2 md:p-1.5 rounded-full bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm shadow-sm ring-1 ring-gray-900/5 dark:ring-white/10">
-                    <img src="/images/logo.svg" alt="Logo" class="w-8 h-8 md:w-6 md:h-6 rounded-full mr-3 md:mr-2 dark:invert">
-                    <span class="text-xl md:text-lg font-semibold text-gray-800 dark:text-gray-100 pr-4 md:pr-3">
-                        Material de Referencia
-                    </span>
-                </h1>
-                <a href="{{ .Site.Data.material.youtube_channel }}" target="_blank" rel="noopener noreferrer" 
-                   class="inline-flex items-center justify-center w-9 h-9 md:w-8 md:h-8 rounded-full bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm shadow-sm ring-1 ring-gray-900/5 dark:ring-white/10 hover:bg-red-50 dark:hover:bg-red-900/30 hover:ring-red-300 dark:hover:ring-red-700 transition-all duration-300 group"
-                   title="Ver canal de YouTube">
-                    <svg class="w-4 h-4 text-red-600 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                    </svg>
-                </a>
-             </div>
-             <p class="text-lg text-gray-600 dark:text-gray-300 md:hidden text-center mt-2">
-                 Recursos organizados por temas.
-             </p>
+      </aside>
+      <main
+        class="col-span-1 lg:col-span-9 xl:col-span-10 px-4 md:px-6 lg:px-10 py-6 md:py-8"
+      >
+        <!-- Mobile Quick Unit Selector -->
+        <div class="lg:hidden mb-8">
+          <div class="flex flex-wrap gap-2 pb-2">
+            {{ range $index, $section := .Site.Data.material.sections }}
+            <a
+              href="#desktop-section-{{ .id }}"
+              data-target="desktop-section-{{ .id }}"
+              onclick="switchDesktopSection('{{ .id }}'); return false;"
+              class="mobile-nav-item px-3 py-1.5 border text-[10px] font-sans font-medium uppercase tracking-widest rounded-full transition-colors {{ if eq $index 0 }}bg-black text-white border-black{{ else }}bg-white text-text-muted border-gray-100 hover:bg-gray-50{{ end }}"
+              >{{ .id }}</a
+            >
+            {{ end }}
+          </div>
         </div>
 
-        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-32">
-            <div class="flex flex-col md:flex-row gap-6">
-                
-                <aside class="hidden md:block md:w-72 flex-shrink-0">
-                    <div class="sticky top-4 max-h-[calc(100vh-2rem)] overflow-hidden flex flex-col">
-                        <nav class="bg-white/80 dark:bg-gray-900/90 backdrop-blur-md rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm p-3 space-y-0.5 overflow-y-auto flex-1 scrollbar-thin">
-                            {{ range $index, $section := .Site.Data.material.sections }}
-                            <button 
-                                class="nav-item w-full text-left px-3 py-2 rounded-lg transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer flex items-center gap-2 {{ if eq $index 0 }}active bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400{{ else }}text-gray-700 dark:text-gray-300{{ end }}"
-                                data-target="desktop-section-{{ $section.id }}"
-                                onclick="switchDesktopSection('{{ $section.id }}')">
-                                <span class="text-lg flex-shrink-0">{{ $section.emoji }}</span>
-                                <span class="font-medium text-sm truncate">{{ $section.title }}</span>
-                                <span class="text-xs text-gray-400 dark:text-gray-500 ml-auto flex-shrink-0">{{ len $section.videos }}</span>
-                            </button>
-                            {{ end }}
-                        </nav>
-                    </div>
-                </aside>
-
-                <div class="flex-1 min-w-0">
-                    
-                    <div class="md:hidden space-y-3">
-                        {{ range .Site.Data.material.sections }}
-                        <details class="rounded-xl overflow-hidden bg-white dark:bg-gray-900/80 backdrop-blur-sm border border-gray-200 dark:border-gray-800">
-                            <summary class="w-full px-4 py-4 flex items-center gap-3 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors text-left focus:outline-none select-none cursor-pointer list-none">
-                                <div class="flex-shrink-0 text-3xl">{{ .emoji }}</div>
-                                <div class="flex-1 min-w-0">
-                                    <h2 class="text-lg font-bold mb-0.5 text-gray-900 dark:text-white">{{ .title }}</h2>
-                                    <div class="flex items-center gap-3 text-xs text-gray-600 dark:text-gray-300">
-                                        <span class="flex items-center gap-1">
-                                            <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="10,8 16,12 10,16 10,8"></polygon></svg> {{ len .videos }} videos
-                                        </span>
-                                        <span class="flex items-center gap-1">
-                                            <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14,2 14,8 20,8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><line x1="10" y1="9" x2="8" y2="9"></line></svg> {{ len .resources }} recursos
-                                        </span>
-                                    </div>
-                                </div>
-                                <svg class="chevron w-5 h-5 text-gray-400 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"></polyline></svg>
-                            </summary>
-                            <div class="px-4 pb-5 border-t border-gray-100 dark:border-gray-700/50">
-                                <div class="pt-4">
-                                    {{ template "section-content" . }}
-                                </div>
-                            </div>
-                        </details>
-                        {{ end }}
-                    </div>
-
-                    <div class="hidden md:block">
-                        {{ range $index, $section := .Site.Data.material.sections }}
-                        <div id="desktop-section-{{ $section.id }}" class="section-panel bg-white dark:bg-gray-900/80 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-gray-800 shadow-sm {{ if ne $index 0 }}hidden{{ end }}">
-                            <div class="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-                                <div class="flex items-center gap-3">
-                                    <span class="text-3xl">{{ $section.emoji }}</span>
-                                    <div>
-                                        <h2 class="text-xl font-bold text-gray-900 dark:text-white">{{ $section.title }}</h2>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="px-6 py-4">
-                                {{ template "section-content" $section }}
-                            </div>
-                        </div>
-                        {{ end }}
-                    </div>
-
-                </div>
+        <div>
+            {{ range $index, $section := .Site.Data.material.sections }}
+            <div id="desktop-section-{{ $section.id }}" class="section-panel {{ if ne $index 0 }}hidden{{ end }}">
+                {{ template "section-content" $section }}
             </div>
-        </main>
+            {{ end }}
+        </div>
+
+      </main>
     </div>
 
+    <!-- Video Modal -->
     <div id="video-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm opacity-0 transition-opacity duration-300" onclick="closeVideo()">
         <div class="relative w-full max-w-5xl transform scale-95 transition-transform duration-300" id="video-modal-content" onclick="event.stopPropagation()">
             <button class="absolute -top-12 right-0 p-2 text-white hover:text-gray-300 focus:outline-none" onclick="closeVideo()">
-                <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                <span class="material-symbols-outlined text-3xl">close</span>
             </button>
             <div class="relative aspect-video bg-black rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/10">
-                <iframe id="youtube-iframe" class="w-full h-full" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe id="youtube-iframe" class="w-full h-full" src="" title="Video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
     </div>
 
     <script>
-        // --- LOGICA DE INTERFAZ ---
+      // Seguimiento del mouse para el efecto de los puntos del fondo
+      document.addEventListener("mousemove", (e) => {
+        document.body.style.setProperty("--mouse-x", e.clientX + "px");
+        document.body.style.setProperty("--mouse-y", e.clientY + "px");
+      });
 
-        // Cambiar sección en Escritorio
-        function switchDesktopSection(sectionId) {
-            document.querySelectorAll('.section-panel').forEach(el => el.classList.add('hidden'));
-            const target = document.getElementById('desktop-section-' + sectionId);
-            if(target) target.classList.remove('hidden');
-            
-            // Actualizar estilo de botones
-            document.querySelectorAll('.nav-item').forEach(el => {
-                el.classList.remove('active', 'bg-blue-50', 'dark:bg-blue-900/30', 'text-blue-700', 'dark:text-blue-400');
-                el.classList.add('text-gray-700', 'dark:text-gray-300');
-            });
-            
-            const activeBtn = document.querySelector(`button[data-target="desktop-section-${sectionId}"]`);
-            if(activeBtn) {
-                activeBtn.classList.add('active', 'bg-blue-50', 'dark:bg-blue-900/30', 'text-blue-700', 'dark:text-blue-400');
-                activeBtn.classList.remove('text-gray-700', 'dark:text-gray-300');
-            }
-
-            // Actualizar URL hash
-            window.location.hash = '#' + sectionId;
+      // Valores constantes para el efecto de brillo
+      document.addEventListener("DOMContentLoaded", () => {
+        document.body.style.setProperty("--glow-opacity", "0.6");
+        document.body.style.setProperty("--glow-radius", "180px");
+        
+        // Check hash on load
+        const hash = window.location.hash.substring(1);
+        if (hash) {
+            switchDesktopSection(hash);
         }
+      });
 
-        // --- LÓGICA DE VIDEO ---
-        const modal = document.getElementById('video-modal');
-        const modalContent = document.getElementById('video-modal-content');
-        const iframe = document.getElementById('youtube-iframe');
-        const isDesktop = () => window.matchMedia('(min-width: 768px)').matches;
+      // Section Switching Logic
+      function switchDesktopSection(sectionId) {
+          // Hide all sections
+          document.querySelectorAll('.section-panel').forEach(el => el.classList.add('hidden'));
+          
+          // Show target section
+          const target = document.getElementById('desktop-section-' + sectionId);
+          if(target) target.classList.remove('hidden');
+          
+          // Update sidebar active state (Desktop)
+          document.querySelectorAll('.nav-item').forEach(el => {
+              el.classList.remove('active');
+          });
+          const activeBtn = document.querySelector(`button[data-target="desktop-section-${sectionId}"]`);
+          if(activeBtn) {
+              activeBtn.classList.add('active');
+          }
 
-        // Función global invocada por el HTML onclick
-        window.handleVideoClick = function(videoId) {
-            if (!isDesktop()) {
-                // En móvil: abrir app de YouTube o nueva pestaña
-                window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank');
-            } else {
-                // En escritorio: abrir modal
-                openVideo(videoId);
-            }
-        }
+          // Update mobile nav active state
+          document.querySelectorAll('.mobile-nav-item').forEach(el => {
+             el.classList.remove('bg-black', 'text-white', 'border-black');
+             el.classList.add('bg-white', 'text-text-muted', 'border-gray-100', 'hover:bg-gray-50');
+          });
+          
+          const activeMobileBtn = document.querySelector(`a[data-target="desktop-section-${sectionId}"]`);
+          if(activeMobileBtn) {
+             activeMobileBtn.classList.remove('bg-white', 'text-text-muted', 'border-gray-100', 'hover:bg-gray-50');
+             activeMobileBtn.classList.add('bg-black', 'text-white', 'border-black');
+          }
 
-        window.handleDriveClick = function(el) {
-            const previewUrl = el.dataset.url;
-            const viewUrl = previewUrl.replace('/preview', '/view');
-            if (!isDesktop()) {
-                // En móvil: abrir en nueva pestaña
-                window.open(viewUrl, '_blank');
-            } else {
-                // En escritorio: abrir modal
-                openDriveVideo(previewUrl);
-            }
-        }
+          // Update URL hash without scrolling
+          history.replaceState(null, null, '#' + sectionId);
+      }
 
-        function openVideo(videoId) {
-            if (!videoId) return;
-            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-            modal.classList.remove('hidden');
-            // Small delay to allow display:block to apply before opacity transition
-            setTimeout(() => {
-                modal.classList.remove('opacity-0');
-                modalContent.classList.remove('scale-95');
-                modalContent.classList.add('scale-100');
-            }, 10);
-            document.body.style.overflow = 'hidden'; // Prevent scrolling
-        };
+      // Video Modal Logic
+      const modal = document.getElementById('video-modal');
+      const modalContent = document.getElementById('video-modal-content');
+      const iframe = document.getElementById('youtube-iframe');
+      const isDesktop = () => window.matchMedia('(min-width: 768px)').matches;
 
-        function openDriveVideo(url) {
-            if (!url) return;
-            iframe.src = url;
-            modal.classList.remove('hidden');
-            // Small delay to allow display:block to apply before opacity transition
-            setTimeout(() => {
-                modal.classList.remove('opacity-0');
-                modalContent.classList.remove('scale-95');
-                modalContent.classList.add('scale-100');
-            }, 10);
-            document.body.style.overflow = 'hidden'; // Prevent scrolling
-        };
+      window.handleVideoClick = function(videoId) {
+          if (!isDesktop()) {
+              window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank');
+          } else {
+              openVideo(videoId);
+          }
+      }
 
-        window.closeVideo = function() {
-            modal.classList.add('opacity-0');
-            modalContent.classList.remove('scale-100');
-            modalContent.classList.add('scale-95');
-            setTimeout(() => {
-                modal.classList.add('hidden');
-                iframe.src = '';
-                document.body.style.overflow = 'auto';
-            }, 300);
-        };
+      window.handleDriveClick = function(el) {
+          const previewUrl = el.dataset.url;
+          const viewUrl = previewUrl.replace('/preview', '/view');
+          if (!isDesktop()) {
+              window.open(viewUrl, '_blank');
+          } else {
+              openDriveVideo(previewUrl);
+          }
+      }
 
-        document.addEventListener('keydown', (e) => { 
-            if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeVideo(); 
-        });
+      function openVideo(videoId) {
+          if (!videoId) return;
+          iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+          showModal();
+      };
 
-        // Verificar hash en la URL al cargar la página
-        window.addEventListener('load', function() {
-            const hash = window.location.hash.substring(1);
-            if (hash) {
-                switchDesktopSection(hash);
-            }
-        });
+      function openDriveVideo(url) {
+          if (!url) return;
+          iframe.src = url;
+          showModal();
+      };
 
+      function showModal() {
+          modal.classList.remove('hidden');
+          setTimeout(() => {
+              modal.classList.remove('opacity-0');
+              modalContent.classList.remove('scale-95');
+              modalContent.classList.add('scale-100');
+          }, 10);
+          document.body.style.overflow = 'hidden';
+      }
 
+      window.closeVideo = function() {
+          modal.classList.add('opacity-0');
+          modalContent.classList.remove('scale-100');
+          modalContent.classList.add('scale-95');
+          setTimeout(() => {
+              modal.classList.add('hidden');
+              iframe.src = '';
+              document.body.style.overflow = 'auto';
+          }, 300);
+      };
+
+      document.addEventListener('keydown', (e) => { 
+          if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeVideo(); 
+      });
     </script>
-</body>
+  </body>
 </html>
 {{ end }}
