@@ -36,12 +36,14 @@ jobs:
           OWNER="${{ github.repository_owner }}"
           REPO="${{ github.event.repository.name }}"
           if [[ "${REPO}" == "${OWNER}.github.io" ]]; then
-            SITE_ROOT="https://${OWNER}.github.io/"
+            PAGES_BASE_URL="${OWNER}.github.io"
           else
-            SITE_ROOT="https://${OWNER}.github.io/${REPO}/"
+            PAGES_BASE_URL="${OWNER}.github.io/${REPO}"
           fi
+          SITE_ROOT="https://${PAGES_BASE_URL}/"
           PREVIEW_URL="${SITE_ROOT}pr-preview/pr-${{ github.event.pull_request.number }}/"
           echo "site_root=${SITE_ROOT}" >> "$GITHUB_OUTPUT"
+          echo "pages_base_url=${PAGES_BASE_URL}" >> "$GITHUB_OUTPUT"
           echo "preview_url=${PREVIEW_URL}" >> "$GITHUB_OUTPUT"
 
       - name: Setup Go
@@ -79,7 +81,7 @@ jobs:
           source-dir: ./public
           preview-branch: gh-pages
           umbrella-dir: pr-preview
-          pages-base-url: ${{ steps.preview_urls.outputs.site_root }}
+          pages-base-url: ${{ steps.preview_urls.outputs.pages_base_url }}
           wait-for-pages-deployment: true
 
       - name: Remove preview on PR close
@@ -89,4 +91,4 @@ jobs:
           action: remove
           preview-branch: gh-pages
           umbrella-dir: pr-preview
-          pages-base-url: ${{ steps.preview_urls.outputs.site_root }}
+          pages-base-url: ${{ steps.preview_urls.outputs.pages_base_url }}
