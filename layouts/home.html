@@ -1,6 +1,6 @@
 {{ define "main" }}
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="motion-safe:scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,11 +31,6 @@
         will-change: transform, translate;
       }
 
-      @media (prefers-reduced-motion: no-preference) {
-        html {
-          scroll-behavior: smooth;
-        }
-      }
     </style>
 
 </head>
@@ -85,20 +80,20 @@
                         </div>
 
                         <!-- Milestones -->
-                        <div data-date="{{ .individual }}" class="timeline-point absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-slate-300 rounded-full cursor-pointer hover:bg-slate-900 transition-colors z-10 border border-white" style="left: 0%">
-                             <time datetime="{{ .individual }}" class="timeline-tooltip">{{ substr .individual 5 5 }} - TP INDIV.</time>
+                        <div data-date="{{ .individual }}" class="timeline-point group absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-slate-300 rounded-full cursor-pointer hover:bg-slate-900 transition-colors z-10 border border-white" style="left: 0%">
+                             <time datetime="{{ .individual }}" class="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 translate-y-1 opacity-0 transition-all duration-200 ease-out bg-slate-900/95 text-white text-[11px] font-sans font-medium px-3 py-1.5 shadow-xl z-50 whitespace-nowrap tracking-[0.1em] group-hover:opacity-100 group-hover:translate-y-0 max-sm:left-0 max-sm:translate-x-0 max-sm:-ml-1">{{ substr .individual 5 5 }} - TP INDIV.</time>
                         </div>
-                        <div data-date="{{ .checkpoint1 }}" class="timeline-point absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-slate-300 rounded-full cursor-pointer hover:bg-gestion transition-colors z-10 border border-white" style="left: 0%">
-                            <time datetime="{{ .checkpoint1 }}" class="timeline-tooltip bg-gestion! text-white!">{{ substr .checkpoint1 5 5 }} - CHECKPOINT 1</time>
+                        <div data-date="{{ .checkpoint1 }}" class="timeline-point group absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-slate-300 rounded-full cursor-pointer hover:bg-gestion transition-colors z-10 border border-white" style="left: 0%">
+                            <time datetime="{{ .checkpoint1 }}" class="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 translate-y-1 opacity-0 transition-all duration-200 ease-out bg-gestion text-white text-[11px] font-sans font-medium px-3 py-1.5 shadow-xl z-50 whitespace-nowrap tracking-[0.1em] group-hover:opacity-100 group-hover:translate-y-0">{{ substr .checkpoint1 5 5 }} - CHECKPOINT 1</time>
                         </div>
-                        <div data-date="{{ .checkpoint2 }}" class="timeline-point absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-slate-300 rounded-full cursor-pointer hover:bg-devops transition-colors z-10 border border-white" style="left: 0%">
-                             <time datetime="{{ .checkpoint2 }}" class="timeline-tooltip bg-devops! text-white!">{{ substr .checkpoint2 5 5 }} - CHECKPOINT 2</time>
+                        <div data-date="{{ .checkpoint2 }}" class="timeline-point group absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-slate-300 rounded-full cursor-pointer hover:bg-devops transition-colors z-10 border border-white" style="left: 0%">
+                             <time datetime="{{ .checkpoint2 }}" class="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 translate-y-1 opacity-0 transition-all duration-200 ease-out bg-devops text-white text-[11px] font-sans font-medium px-3 py-1.5 shadow-xl z-50 whitespace-nowrap tracking-[0.1em] group-hover:opacity-100 group-hover:translate-y-0">{{ substr .checkpoint2 5 5 }} - CHECKPOINT 2</time>
                         </div>
-                        <div data-date="{{ .checkpoint3 }}" class="timeline-point absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-slate-300 rounded-full cursor-pointer hover:bg-arquitectura transition-colors z-10 border border-white" style="left: 0%">
-                             <time datetime="{{ .checkpoint3 }}" class="timeline-tooltip bg-arquitectura! text-white!">{{ substr .checkpoint3 5 5 }} - CHECKPOINT 3</time>
+                        <div data-date="{{ .checkpoint3 }}" class="timeline-point group absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-slate-300 rounded-full cursor-pointer hover:bg-arquitectura transition-colors z-10 border border-white" style="left: 0%">
+                             <time datetime="{{ .checkpoint3 }}" class="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 translate-y-1 opacity-0 transition-all duration-200 ease-out bg-arquitectura text-white text-[11px] font-sans font-medium px-3 py-1.5 shadow-xl z-50 whitespace-nowrap tracking-[0.1em] group-hover:opacity-100 group-hover:translate-y-0">{{ substr .checkpoint3 5 5 }} - CHECKPOINT 3</time>
                         </div>
-                        <div data-date="{{ .final }}" data-role="end" class="timeline-point absolute top-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-slate-900 rounded-full cursor-pointer hover:scale-125 transition-transform z-10 border-2 border-white shadow-sm" style="left: 100%">
-                             <time datetime="{{ .final }}" class="timeline-tooltip">{{ substr .final 5 5 }} - FINAL</time>
+                        <div data-date="{{ .final }}" data-role="end" class="timeline-point group absolute top-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-slate-900 rounded-full cursor-pointer hover:scale-125 transition-transform z-10 border-2 border-white shadow-sm" style="left: 100%">
+                             <time datetime="{{ .final }}" class="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 translate-y-1 opacity-0 transition-all duration-200 ease-out bg-slate-900/95 text-white text-[11px] font-sans font-medium px-3 py-1.5 shadow-xl z-50 whitespace-nowrap tracking-[0.1em] group-hover:opacity-100 group-hover:translate-y-0 max-sm:left-full max-sm:-translate-x-full max-sm:ml-1">{{ substr .final 5 5 }} - FINAL</time>
                         </div>
                         {{ end }}
                     </div>
@@ -177,7 +172,7 @@
                                 <span class="font-sans font-medium text-[11px] tracking-[0.2em] whitespace-nowrap">INSCRIPCIÓN</span>
                             </a>
                             {{ else }}
-                            <button class="group relative px-8 py-3.5 bg-white btn-striped border border-slate-200 text-slate-400 cursor-not-allowed flex items-center justify-center gap-3 w-full sm:w-auto transition-colors min-w-[180px] opacity-70" disabled>
+                            <button class="group relative px-8 py-3.5 bg-[repeating-linear-gradient(45deg,rgba(255,255,255,0.6),rgba(255,255,255,0.6)_10px,rgba(241,245,249,0.8)_10px,rgba(241,245,249,0.8)_20px)] border border-slate-200 text-slate-400 cursor-not-allowed flex items-center justify-center gap-3 w-full sm:w-auto transition-colors min-w-[180px] opacity-70" disabled>
                                 <span class="material-symbols-outlined text-slate-400 text-[16px]">lock</span>
                                 <span class="font-sans font-medium text-[11px] tracking-[0.2em] whitespace-nowrap">INSCRIPCIÓN</span>
                             </button>
@@ -197,7 +192,7 @@
     <main id="home-modules" class="relative max-w-lg md:max-w-4xl lg:max-w-6xl mx-auto w-full px-6 md:px-12 mt-6 md:mt-10 mb-24 md:mb-36">
         
         <!-- Section Header (Optional/Implicit) -->
-        <div id="home-modules-title" style="scroll-margin-top: 5rem;" class="mb-8 md:mb-12 flex items-center justify-between">
+        <div id="home-modules-title" class="scroll-mt-20 mb-8 md:mb-12 flex items-center justify-between">
             <h2 class="text-[11px] font-mono font-bold text-slate-400 uppercase tracking-[0.3em]">Módulos del Curso</h2>
             <div class="h-px flex-grow ml-8 bg-slate-100"></div>
         </div>
@@ -222,7 +217,7 @@
                 </div>
 
                 <div class="md:hidden relative z-10 pl-8">
-                    <div class="tech-frame w-full mb-4 transform transition-transform duration-500 group-hover:-translate-y-1">
+                    <div class="relative w-full mb-4 transform transition-transform duration-500 group-hover:-translate-y-1 before:content-[''] before:absolute before:top-[6px] before:left-[6px] before:right-[-6px] before:bottom-[-6px] before:border before:border-slate-200 before:z-0 before:pointer-events-none before:transition-all before:duration-400 before:ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:before:translate-x-[3px] group-hover:before:translate-y-[3px] group-hover:before:border-slate-500">
                         <div class="aspect-video overflow-hidden bg-white border border-slate-100 shadow-sm relative z-10">
                             <img loading="lazy" alt="Gestión Ágil y metodologías iterativas en Ingeniería de Software" class="w-full h-full object-cover transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkN3RVZsT1aYFS58_7ce_1Mh5PtCoWy9YMLlsWtw9ntoMWzHULgFKPkUb7hENBoasyLGZirunenCjkNBKllg0RY9KfDQjThjWUzAhmpxjWWU7LB9pO0Wlsz3TUaBRbVDXaoTQM78DLRqFmJ2TaHuTBB28PGaDdcnqJR3ZAcvJZebqIejQrcP5WHUo2snPGrDN3oO_dBJBqvoCvMHbFQ12_wohrvm36JpJ3XZReDn1_zgG0wHaCn70QG-KBBcuJIn3lkyOspSKWnpc"/>
                         </div>
@@ -245,9 +240,9 @@
                 <!-- MOBILE VIEW END -->
 
                 <!-- DESKTOP/TABLET VIEW (Existing) -->
-                <figure class="hidden md:block tech-frame w-full transition-transform duration-700 hover:-translate-y-1 group/img mb-6">
+                <figure class="hidden md:block relative w-full transition-transform duration-700 hover:-translate-y-1 group/img mb-6 before:content-[''] before:absolute before:top-[6px] before:left-[6px] before:right-[-6px] before:bottom-[-6px] before:border before:border-slate-200 before:z-0 before:pointer-events-none before:transition-all before:duration-400 before:ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:before:translate-x-[3px] group-hover:before:translate-y-[3px] group-hover:before:border-slate-500">
                     <div class="aspect-video md:aspect-[4/3] overflow-hidden relative z-10 bg-white border border-slate-100 shadow-sm">
-                        <img loading="lazy" alt="Gestión Ágil y metodologías iterativas en Ingeniería de Software" class="reveal-img w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkN3RVZsT1aYFS58_7ce_1Mh5PtCoWy9YMLlsWtw9ntoMWzHULgFKPkUb7hENBoasyLGZirunenCjkNBKllg0RY9KfDQjThjWUzAhmpxjWWU7LB9pO0Wlsz3TUaBRbVDXaoTQM78DLRqFmJ2TaHuTBB28PGaDdcnqJR3ZAcvJZebqIejQrcP5WHUo2snPGrDN3oO_dBJBqvoCvMHbFQ12_wohrvm36JpJ3XZReDn1_zgG0wHaCn70QG-KBBcuJIn3lkyOspSKWnpc"/>
+                        <img alt="Gestión Ágil y metodologías iterativas en Ingeniería de Software" class="reveal-img w-full h-full object-cover grayscale opacity-0 translate-y-5 scale-[0.98] transition-all duration-[1200ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkN3RVZsT1aYFS58_7ce_1Mh5PtCoWy9YMLlsWtw9ntoMWzHULgFKPkUb7hENBoasyLGZirunenCjkNBKllg0RY9KfDQjThjWUzAhmpxjWWU7LB9pO0Wlsz3TUaBRbVDXaoTQM78DLRqFmJ2TaHuTBB28PGaDdcnqJR3ZAcvJZebqIejQrcP5WHUo2snPGrDN3oO_dBJBqvoCvMHbFQ12_wohrvm36JpJ3XZReDn1_zgG0wHaCn70QG-KBBcuJIn3lkyOspSKWnpc"/>
                     </div>
                     <div class="absolute -bottom-6 left-0 text-[11px] font-mono font-bold text-slate-400 tracking-widest z-10 hidden md:block">
                         01
@@ -264,7 +259,7 @@
                     </p>
                     <dl class="mt-auto pt-3 border-t border-slate-100">
                         <dt class="text-[11px] text-slate-500 font-mono uppercase block mb-1">Tools</dt>
-                        <dd class="inline-block text-[11px] font-bold text-gestion bg-gestion-subtle border border-gestion-border px-2 py-0.5">GH Projects / JIRA</dd>
+                        <dd class="inline-block text-[11px] font-bold text-gestion bg-rose-50 border border-rose-200 px-2 py-0.5">GH Projects / JIRA</dd>
                     </dl>
                 </div>
             </article>
@@ -286,7 +281,7 @@
                 </div>
 
                 <div class="md:hidden relative z-10 pr-8 text-right">
-                    <div class="tech-frame w-full mb-4 transform transition-transform duration-500 group-hover:-translate-y-1">
+                    <div class="relative w-full mb-4 transform transition-transform duration-500 group-hover:-translate-y-1 before:content-[''] before:absolute before:top-[6px] before:left-[6px] before:right-[-6px] before:bottom-[-6px] before:border before:border-slate-200 before:z-0 before:pointer-events-none before:transition-all before:duration-400 before:ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:before:translate-x-[3px] group-hover:before:translate-y-[3px] group-hover:before:border-slate-500">
                         <div class="aspect-video overflow-hidden bg-white border border-slate-100 shadow-sm relative z-10">
                             <img loading="lazy" alt="Ciclo de vida DevOps, integración y entrega continua (CI/CD)" class="w-full h-full object-cover transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdt-r-KTbze69A_m7HB71Nl8kIbkO6D6fUqpGpMAFS56XMbeKH_Jzv1aoEd7LcjWKJQ5Wy0yeK5ItB8jpLOdJ_MLog9srj3okGOhXonNtzeic2uZ3LQdRvlp4cwoZttbC8LO2uewbzhIsbBJ0b1SU37993IjmNzQFqhcE8kKIddTDq93Jq941pYnAypq_Ar8UjAlDioOLKX2p1y7GEuBhAANxtv6BrUzDztpx1kpfjFmcyKqPhzA0rKfQ9Ai5VecgYbO7fiWIm6w8"/>
                         </div>
@@ -309,9 +304,9 @@
                 <!-- MOBILE VIEW END -->
 
                 <!-- DESKTOP/TABLET VIEW (Existing) -->
-                <figure class="hidden md:block tech-frame w-full transition-transform duration-700 hover:-translate-y-1 group/img mb-6">
+                <figure class="hidden md:block relative w-full transition-transform duration-700 hover:-translate-y-1 group/img mb-6 before:content-[''] before:absolute before:top-[6px] before:left-[6px] before:right-[-6px] before:bottom-[-6px] before:border before:border-slate-200 before:z-0 before:pointer-events-none before:transition-all before:duration-400 before:ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:before:translate-x-[3px] group-hover:before:translate-y-[3px] group-hover:before:border-slate-500">
                     <div class="aspect-video md:aspect-[4/3] overflow-hidden relative z-10 bg-white border border-slate-100 shadow-sm">
-                        <img loading="lazy" alt="Ciclo de vida DevOps, integración y entrega continua (CI/CD)" class="reveal-img w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdt-r-KTbze69A_m7HB71Nl8kIbkO6D6fUqpGpMAFS56XMbeKH_Jzv1aoEd7LcjWKJQ5Wy0yeK5ItB8jpLOdJ_MLog9srj3okGOhXonNtzeic2uZ3LQdRvlp4cwoZttbC8LO2uewbzhIsbBJ0b1SU37993IjmNzQFqhcE8kKIddTDq93Jq941pYnAypq_Ar8UjAlDioOLKX2p1y7GEuBhAANxtv6BrUzDztpx1kpfjFmcyKqPhzA0rKfQ9Ai5VecgYbO7fiWIm6w8"/>
+                        <img alt="Ciclo de vida DevOps, integración y entrega continua (CI/CD)" class="reveal-img w-full h-full object-cover grayscale opacity-0 translate-y-5 scale-[0.98] transition-all duration-[1200ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdt-r-KTbze69A_m7HB71Nl8kIbkO6D6fUqpGpMAFS56XMbeKH_Jzv1aoEd7LcjWKJQ5Wy0yeK5ItB8jpLOdJ_MLog9srj3okGOhXonNtzeic2uZ3LQdRvlp4cwoZttbC8LO2uewbzhIsbBJ0b1SU37993IjmNzQFqhcE8kKIddTDq93Jq941pYnAypq_Ar8UjAlDioOLKX2p1y7GEuBhAANxtv6BrUzDztpx1kpfjFmcyKqPhzA0rKfQ9Ai5VecgYbO7fiWIm6w8"/>
                     </div>
                     <div class="absolute -bottom-6 left-0 text-[11px] font-mono font-bold text-slate-400 tracking-widest z-10 hidden md:block">
                         02
@@ -328,7 +323,7 @@
                     </p>
                     <dl class="mt-auto pt-3 border-t border-slate-100">
                         <dt class="text-[11px] text-slate-500 font-mono uppercase block mb-1">Stack</dt>
-                        <dd class="inline-block text-[11px] font-bold text-devops bg-devops-subtle border border-devops-border px-2 py-0.5">Docker / AWS</dd>
+                        <dd class="inline-block text-[11px] font-bold text-devops bg-sky-50 border border-sky-200 px-2 py-0.5">Docker / AWS</dd>
                     </dl>
                 </div>
             </article>
@@ -350,7 +345,7 @@
                 </div>
 
                 <div class="md:hidden relative z-10 pl-8">
-                    <div class="tech-frame w-full mb-4 transform transition-transform duration-500 group-hover:-translate-y-1">
+                    <div class="relative w-full mb-4 transform transition-transform duration-500 group-hover:-translate-y-1 before:content-[''] before:absolute before:top-[6px] before:left-[6px] before:right-[-6px] before:bottom-[-6px] before:border before:border-slate-200 before:z-0 before:pointer-events-none before:transition-all before:duration-400 before:ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:before:translate-x-[3px] group-hover:before:translate-y-[3px] group-hover:before:border-slate-500">
                         <div class="aspect-video overflow-hidden bg-white border border-slate-100 shadow-sm relative z-10">
                             <img loading="lazy" alt="Arquitectura de software, microservicios y sistemas distribuidos" class="w-full h-full object-cover transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRU1ku9viZVOPTIscT8OQBIBJiT_iiRhL8JYrhpgm5LyxQbHjflCmAySJpfw3X9KvsUGgHyNWvXiYEz-xm7Lr1vim7jLDK14y2uMqhEw_Qa-H6HHY_9hQpcuuw45p6CoZdyV1lfZuv8QJpFuO7f41jNLvaNFWOJeBH_9UBYdac5TgW_m-Ri0q0XD85hSrKE4QnoLjZ0SPP7eYGplJpxVqNo2CaU1KijZqZE9KqOUbAMda392DaJFjY5-iruyu1-QdRb00z5hITuXc"/>
                         </div>
@@ -373,9 +368,9 @@
                 <!-- MOBILE VIEW END -->
 
                 <!-- DESKTOP/TABLET VIEW (Existing) -->
-                <figure class="hidden md:block tech-frame w-full md:w-1/2 lg:w-full transition-transform duration-700 hover:-translate-y-1 group/img mb-6 md:mb-0 lg:mb-5">
+                <figure class="hidden md:block relative w-full md:w-1/2 lg:w-full transition-transform duration-700 hover:-translate-y-1 group/img mb-6 md:mb-0 lg:mb-5 before:content-[''] before:absolute before:top-[6px] before:left-[6px] before:right-[-6px] before:bottom-[-6px] before:border before:border-slate-200 before:z-0 before:pointer-events-none before:transition-all before:duration-400 before:ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:before:translate-x-[3px] group-hover:before:translate-y-[3px] group-hover:before:border-slate-500">
                     <div class="aspect-video md:aspect-[4/3] overflow-hidden relative z-10 bg-white border border-slate-100 shadow-sm">
-                        <img loading="lazy" alt="Arquitectura de software, microservicios y sistemas distribuidos" class="reveal-img w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRU1ku9viZVOPTIscT8OQBIBJiT_iiRhL8JYrhpgm5LyxQbHjflCmAySJpfw3X9KvsUGgHyNWvXiYEz-xm7Lr1vim7jLDK14y2uMqhEw_Qa-H6HHY_9hQpcuuw45p6CoZdyV1lfZuv8QJpFuO7f41jNLvaNFWOJeBH_9UBYdac5TgW_m-Ri0q0XD85hSrKE4QnoLjZ0SPP7eYGplJpxVqNo2CaU1KijZqZE9KqOUbAMda392DaJFjY5-iruyu1-QdRb00z5hITuXc"/>
+                        <img alt="Arquitectura de software, microservicios y sistemas distribuidos" class="reveal-img w-full h-full object-cover grayscale opacity-0 translate-y-5 scale-[0.98] transition-all duration-[1200ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRU1ku9viZVOPTIscT8OQBIBJiT_iiRhL8JYrhpgm5LyxQbHjflCmAySJpfw3X9KvsUGgHyNWvXiYEz-xm7Lr1vim7jLDK14y2uMqhEw_Qa-H6HHY_9hQpcuuw45p6CoZdyV1lfZuv8QJpFuO7f41jNLvaNFWOJeBH_9UBYdac5TgW_m-Ri0q0XD85hSrKE4QnoLjZ0SPP7eYGplJpxVqNo2CaU1KijZqZE9KqOUbAMda392DaJFjY5-iruyu1-QdRb00z5hITuXc"/>
                     </div>
                     <div class="absolute -bottom-6 left-0 text-[11px] font-mono font-bold text-slate-400 tracking-widest z-10 hidden md:block">
                         03
@@ -392,7 +387,7 @@
                     </p>
                     <dl class="mt-auto pt-3 border-t border-slate-100 w-full">
                         <dt class="text-[11px] text-slate-500 font-mono uppercase block mb-1">Pattern</dt>
-                        <dd class="inline-block text-[11px] font-bold text-arquitectura bg-arquitectura-subtle border border-arquitectura-border px-2 py-0.5">Microservices</dd>
+                        <dd class="inline-block text-[11px] font-bold text-arquitectura bg-orange-50 border border-orange-200 px-2 py-0.5">Microservices</dd>
                     </dl>
                 </div>
             </article>
@@ -438,7 +433,8 @@
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
+                        entry.target.classList.remove('opacity-0', 'translate-y-5', 'scale-[0.98]', 'grayscale');
+                        entry.target.classList.add('opacity-100', 'translate-y-0', 'scale-100', 'grayscale-0');
                         observer.unobserve(entry.target);
                     }
                 });
