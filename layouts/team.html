@@ -1,111 +1,134 @@
 {{ define "main" }}
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Equipo - Ingeniería del Software 2</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    {{ partial "css.html" . }}
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Equipo Docente - Ingeniería del Software 2</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&amp;family=Playfair+Display:ital,wght@0,400;0,500;1,400&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    {{ partial "css.html" . }}
+    <style>
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+  </head>
+{{ partial "sidebar.html" (dict "context" . "disableSidebar" true) }}
+  <body
+    class="bg-engineering text-gray-800 font-sans antialiased selection:bg-sky-400 selection:text-white transition-colors duration-300"
+  >
 
-</head>
-<body class="bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 min-h-screen">
-    <!-- Background Decorator -->
-    <div class="fixed inset-0 z-0 pointer-events-none opacity-40 dark:opacity-20 overflow-hidden">
-        <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-400/30 rounded-full blur-3xl mix-blend-multiply filter"></div>
-        <div class="absolute top-0 right-1/4 w-96 h-96 bg-purple-400/30 rounded-full blur-3xl mix-blend-multiply filter animation-delay-2000"></div>
-        <div class="absolute -bottom-8 left-1/3 w-96 h-96 bg-pink-400/30 rounded-full blur-3xl mix-blend-multiply filter animation-delay-4000"></div>
-    </div>
-
-    <div class="relative z-10">
-        {{ partial "sidebar.html" (dict "context" . "disableSidebar" true) }}
-        
-        <!-- Hero Section -->
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 md:pt-4 pb-4 md:pb-2">
-            <div class="text-center md:text-left mb-6 md:mb-8 flex flex-row items-center justify-center md:justify-start gap-2 md:gap-3">
-                <h1 class="inline-flex items-center justify-center p-2 md:p-1.5 rounded-full bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm shadow-sm ring-1 ring-gray-900/5 dark:ring-white/10">
-                    <img src="/images/logo.svg" alt="Logo" class="w-8 h-8 md:w-6 md:h-6 rounded-full mr-3 md:mr-2 dark:invert">
-                    <span class="text-xl md:text-lg font-semibold text-gray-800 dark:text-gray-100 pr-4 md:pr-3">
-                        Equipo Docente
-                    </span>
-                </h1>
-                <span class="hidden md:inline text-lg text-gray-600 dark:text-gray-300 align-middle">
-                    Conocé a los profesores y ayudantes que hacen posible la materia.
-                </span>
+    <main class="max-w-[1600px] mx-auto px-6 lg:px-12 pt-12 pb-12">
+      <section class="mb-16 animate-fade-in text-center lg:text-left">
+        <h1
+          class="font-sans text-5xl md:text-6xl lg:text-7xl tracking-tighter leading-[0.85] uppercase text-slate-900"
+        >
+          <span class="font-black">EQUIPO</span>
+          <span class="font-light text-slate-300">DOCENTE</span>
+        </h1>
+        <p
+          class="text-base lg:text-lg text-gray-500 font-light max-w-2xl font-sans lg:ml-1 leading-relaxed mt-6"
+        >
+          Conocé a los profesores y ayudantes que hacen posible la materia.
+        </p>
+      </section>
+      <section class="animate-fade-in" style="animation-delay: 0.2s">
+        <div
+          id="team-grid" data-team-grid
+          class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-x-6 gap-y-12"
+        >
+          {{ range .Site.Data.team.team }}
+          <div class="group relative cursor-pointer">
+            <div
+              class="relative aspect-[4/5] rounded-2xl overflow-hidden mb-4 bg-slate-50 border border-slate-100 transition-all duration-500 group-hover:border-sky-200 group-hover:shadow-2xl group-hover:shadow-sky-500/10"
+            >
+              <img
+                src="{{ .pic }}"
+                alt="{{ .name }}"
+                class="w-full h-full object-cover grayscale brightness-105 group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700 ease-out"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+              ></div>
+              
+              <div class="absolute bottom-4 left-4 flex space-x-2 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">
+                  {{ if .mail }}
+                  <a href="mailto:{{ .mail }}" class="text-white hover:text-sky-400 transition-colors bg-white/20 hover:bg-white/30 w-8 h-8 flex items-center justify-center rounded-full backdrop-blur-sm border border-white/30">
+                      <i class="fas fa-envelope text-sm"></i>
+                  </a>
+                  {{ end }}
+                  {{ if .github }}
+                  <a href="https://github.com/{{ .github }}" target="_blank" class="text-white hover:text-sky-400 transition-colors bg-white/20 hover:bg-white/30 w-8 h-8 flex items-center justify-center rounded-full backdrop-blur-sm border border-white/30">
+                      <i class="fab fa-github text-sm"></i>
+                  </a>
+                  {{ end }}
+              </div>
             </div>
-            <p class="text-lg text-gray-600 dark:text-gray-300 md:hidden text-center mt-2 mb-4">
-                Conocé a los profesores y ayudantes que hacen posible la materia.
-            </p>
+            <h3
+              class="text-[13px] font-bold text-slate-800 tracking-tight leading-tight group-hover:text-sky-600 transition-colors"
+            >
+              {{ .name }}
+            </h3>
+          </div>
+          {{ end }}
         </div>
+      </section>
+    </main>
 
-        <!-- Team Grid -->
-        <div class="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 pb-32">
-            <div id="team-grid" data-team-grid class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8 gap-4 lg:gap-6">
-                {{ range .Site.Data.team.team }}
-                <div class="group relative">
-                    <div class="aspect-square w-full overflow-hidden rounded-2xl lg:rounded-3xl bg-gray-200 dark:bg-gray-900 relative shadow-md transition-all duration-300 group-hover:shadow-xl group-hover:shadow-blue-900/10 dark:group-hover:shadow-blue-900/20">
-                        
-                        <img src="{{ .pic }}" alt="{{ .name }}" 
-                             class="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105">
-                        
-                        <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-gray-950/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
-                        
-                        <div class="absolute inset-0 p-3 lg:p-6 flex flex-col justify-end">
-                            
-                            <h3 class="text-sm lg:text-lg font-medium text-gray-100 mb-1 line-clamp-2">{{ .name }}</h3>
-                            
-                            <div class="grid grid-rows-[1fr] sm:grid-rows-[0fr] sm:group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-out">
-                                <div class="overflow-hidden">
-                                    <div class="flex items-center space-x-2 lg:space-x-3 pt-2 opacity-100 translate-y-0 sm:opacity-0 sm:translate-y-4 sm:group-hover:opacity-100 sm:group-hover:translate-y-0 transition-all duration-500 delay-75">
-                                        {{ if .mail }}
-                                        <a href="mailto:{{ .mail }}" class="text-white hover:text-blue-400 transition-colors bg-white/10 hover:bg-white/20 w-8 h-8 lg:w-10 lg:h-10 flex items-center justify-center rounded-full backdrop-blur-sm">
-                                            <i class="fas fa-envelope text-sm lg:text-lg"></i>
-                                        </a>
-                                        {{ end }}
-                                        {{ if .github }}
-                                        <a href="https://github.com/{{ .github }}" target="_blank" class="text-white hover:text-purple-400 transition-colors bg-white/10 hover:bg-white/20 w-8 h-8 lg:w-10 lg:h-10 flex items-center justify-center rounded-full backdrop-blur-sm">
-                                            <i class="fab fa-github text-sm lg:text-lg"></i>
-                                        </a>
-                                        {{ end }}
-                                    </div>
-                                </div>
-                            </div>
+    <script>
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.remove("dark");
+      } else {
+        document.documentElement.classList.remove("dark"); // Force light mode for this specific redesign request
+      }
 
-                        </div>
-                    </div>
-                </div>
-                {{ end }}
-            </div>
-        </div>
-    </div>
-</body>
-<script>
-addEventListener('DOMContentLoaded', () => {
-  const grid = document.querySelector('[data-team-grid]');
-  if (!grid) return;
-  
-  const items = Array.from(grid.children);
-  
-  if (items.length > 1) {
-      // Keep first item, shuffle rest
-      const first = items[0];
-      const rest = items.slice(1);
-      
-      const shuffled = rest
-        .map(el => ({ k: Math.random(), el }))
-        .sort((a, b) => a.k - b.k)
-        .map(x => x.el);
+      // Seguimiento del mouse para el efecto de los puntos del fondo
+      document.addEventListener("mousemove", (e) => {
+        document.body.style.setProperty("--mouse-x", e.clientX + "px");
+        document.body.style.setProperty("--mouse-y", e.clientY + "px");
+      });
+
+      // Valores constantes para el efecto de brillo (sin división por scroll)
+      document.addEventListener("DOMContentLoaded", () => {
+        document.body.style.setProperty("--glow-opacity", "1");
+        document.body.style.setProperty("--glow-radius", "220px");
         
-      grid.innerHTML = '';
-      grid.appendChild(first);
-      shuffled.forEach(el => grid.appendChild(el));
-  }
-
-});
-</script>
+        // Team Grid Shuffling from team.html
+        const grid = document.querySelector('[data-team-grid]');
+        if (!grid) return;
+        
+        const items = Array.from(grid.children);
+        
+        if (items.length > 1) {
+            // Keep first item (usually the main professor), shuffle rest
+            const first = items[0];
+            const rest = items.slice(1);
+            
+            const shuffled = rest
+              .map(el => ({ k: Math.random(), el }))
+              .sort((a, b) => a.k - b.k)
+              .map(x => x.el);
+              
+            grid.innerHTML = '';
+            grid.appendChild(first);
+            shuffled.forEach(el => grid.appendChild(el));
+        }
+      });
+    </script>
+  </body>
 </html>
 {{ end }}

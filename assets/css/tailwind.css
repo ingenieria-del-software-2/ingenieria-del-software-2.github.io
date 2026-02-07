@@ -197,3 +197,47 @@ body {
         rgba(241,245,249,0.8) 20px
     );
 }
+
+/* Custom Styles from team-new.html */
+html {
+    scroll-behavior: smooth;
+}
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.font-thin-custom {
+    font-weight: 200;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.card-overlay {
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.8) 0%,
+        rgba(0, 0, 0, 0.1) 50%,
+        rgba(0, 0, 0, 0) 100%
+    );
+}
+.card-hover-overlay {
+    background: linear-gradient(
+        to top,
+        rgba(14, 165, 233, 0.2) 0%,
+        rgba(14, 165, 233, 0.05) 100%
+    );
+}
