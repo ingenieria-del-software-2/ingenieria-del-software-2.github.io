@@ -14,6 +14,23 @@
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;family=JetBrains+Mono:wght@300;400;500;700&amp;family=Playfair+Display:ital,wght@0,400;0,500;1,400&amp;display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <style>
+      /* Timeline runtime positioning. */
+      #main-timeline [data-date],
+      #hoy-marker {
+        left: var(--x, 0%) !important;
+        translate: 0 -50% !important;
+        will-change: left, translate;
+      }
+
+      #preclass-line {
+        width: 100%;
+        transform-origin: left center;
+        translate: 0 -50% !important;
+        transform: scaleX(var(--w, 0));
+        will-change: transform, translate;
+      }
+    </style>
 
 </head>
 {{ partial "sidebar.html" (dict "context" . "disableSidebar" true) }}
@@ -44,13 +61,13 @@
             <div class="flex flex-col md:grid md:grid-cols-12 gap-x-10 lg:gap-x-16 pt-0 md:pt-8">
                 
                 <!-- 1. Timeline: Desktop (Border Below, Order 1) | Mobile (No Borders, Order 2) -->
-                <figure id="main-timeline" class="order-2 md:order-1 md:col-span-12 w-full select-none relative mb-12 md:mb-16 md:pb-16 md:border-b md:border-slate-100/80" aria-label="Línea de tiempo del curso">
+                <figure id="main-timeline" class="order-2 md:order-1 md:col-span-12 w-full select-none relative mb-12 md:mb-16 md:pb-16 md:border-b md:border-slate-100/80 invisible" aria-label="Línea de tiempo del curso">
                     <div class="w-full relative h-10 flex items-center">
                         <div class="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-px bg-slate-200"></div>
                         <div id="preclass-line" class="absolute left-0 top-1/2 -translate-y-1/2 h-px border-t border-dotted border-slate-300 pointer-events-none"></div>
 
                         <!-- Hoy Indicator -->
-                        <div id="hoy-marker" class="absolute top-1/2 -translate-y-1/2 z-30 flex flex-col items-center transition-all duration-1000 ease-out" style="left: 0%">
+                        <div id="hoy-marker" class="absolute top-1/2 -translate-y-1/2 z-0 flex flex-col items-center" style="left: 0%">
                              <div class="w-1.5 h-1.5 bg-accent rounded-full animate-pulse-slow shadow-[0_0_0_2px_rgba(56,189,248,0.15)]"></div>
                              <div class="absolute -top-6 text-[9px] font-sans font-medium text-accent tracking-[0.2em] bg-white px-1">HOY</div>
                         </div>
@@ -61,19 +78,19 @@
                         </div>
 
                         <!-- Milestones -->
-                        <div data-date="2026-03-19" class="timeline-point absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-slate-300 rounded-full cursor-pointer hover:bg-slate-900 transition-all z-10 border border-white" style="left: 0%">
+                        <div data-date="2026-03-19" class="timeline-point absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-slate-300 rounded-full cursor-pointer hover:bg-slate-900 transition-colors z-10 border border-white" style="left: 0%">
                              <time datetime="2026-03-19" class="timeline-tooltip">19 MAR - TP INDIV.</time>
                         </div>
-                        <div data-date="2026-04-13" class="timeline-point absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-slate-300 rounded-full cursor-pointer hover:bg-gestion transition-all z-10" style="left: 0%">
+                        <div data-date="2026-04-13" class="timeline-point absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-slate-300 rounded-full cursor-pointer hover:bg-gestion transition-colors z-10 border border-white" style="left: 0%">
                             <time datetime="2026-04-13" class="timeline-tooltip bg-gestion! text-white!">13 ABR - CP1</time>
                         </div>
-                        <div data-date="2026-05-11" class="timeline-point absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-slate-300 rounded-full cursor-pointer hover:bg-devops transition-all z-10" style="left: 0%">
+                        <div data-date="2026-05-11" class="timeline-point absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-slate-300 rounded-full cursor-pointer hover:bg-devops transition-colors z-10 border border-white" style="left: 0%">
                              <time datetime="2026-05-11" class="timeline-tooltip bg-devops! text-white!">11 MAY - CP2</time>
                         </div>
-                        <div data-date="2026-06-04" class="timeline-point absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-slate-300 rounded-full cursor-pointer hover:bg-arquitectura transition-all z-10" style="left: 0%">
+                        <div data-date="2026-06-04" class="timeline-point absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-slate-300 rounded-full cursor-pointer hover:bg-arquitectura transition-colors z-10 border border-white" style="left: 0%">
                              <time datetime="2026-06-04" class="timeline-tooltip bg-arquitectura! text-white!">04 JUN - CP3</time>
                         </div>
-                        <div data-date="2026-06-25" data-role="end" class="timeline-point absolute top-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-slate-900 rounded-full cursor-pointer hover:scale-125 transition-all z-10 border-2 border-white shadow-sm" style="left: 100%">
+                        <div data-date="2026-06-25" data-role="end" class="timeline-point absolute top-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-slate-900 rounded-full cursor-pointer hover:scale-125 transition-transform z-10 border-2 border-white shadow-sm" style="left: 100%">
                              <time datetime="2026-06-25" class="timeline-tooltip">25 JUN - FINAL</time>
                         </div>
                     </div>
@@ -416,44 +433,43 @@
     </script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const startDate = new Date('2026-03-09');
-            const endDate = new Date('2026-06-25');
-            const points = Array.from(document.querySelectorAll('[data-date]'));
-            const preclassLine = document.getElementById('preclass-line');
+            const timeline = document.getElementById('main-timeline');
+            if (!timeline) return;
+
+            const startTs = Date.parse('2026-03-09T00:00:00');
+            const endTs = Date.parse('2026-06-25T00:00:00');
+            const nowTs = Date.now();
+
+            const displayStartTs = nowTs < startTs ? nowTs : startTs;
+            const duration = endTs - displayStartTs;
+            if (duration <= 0) return;
+
+            const clamp01 = (value) => Math.min(1, Math.max(0, value));
+            const toPct = (ts) => `${(clamp01((ts - displayStartTs) / duration) * 100).toFixed(4)}%`;
+
+            timeline.querySelectorAll('[data-date]').forEach((point) => {
+                const ts = Date.parse(`${point.dataset.date}T00:00:00`);
+                point.style.setProperty('--x', toPct(ts));
+            });
+
             const hoyMarker = document.getElementById('hoy-marker');
+            if (hoyMarker) {
+                hoyMarker.style.setProperty('--x', toPct(nowTs));
+            }
 
-            const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
-
-            const updateTimeline = () => {
-                const now = new Date();
-                const displayStart = now < startDate ? now : startDate;
-                const displayDuration = endDate - displayStart;
-                if (displayDuration <= 0) return;
-
-                points.forEach(point => {
-                    const date = new Date(point.dataset.date);
-                    const progress = ((date - displayStart) / displayDuration) * 100;
-                    point.style.left = `${clamp(progress, 0, 100)}%`;
-                });
-
-                const hoyProgress = ((now - displayStart) / displayDuration) * 100;
-                hoyMarker.style.left = `${clamp(hoyProgress, 0, 100)}%`;
-
-                if (preclassLine) {
-                    if (now < startDate) {
-                        const startProgress = ((startDate - displayStart) / displayDuration) * 100;
-                        preclassLine.style.width = `${clamp(startProgress, 0, 100)}%`;
-                        preclassLine.style.display = 'block';
-                    } else {
-                        preclassLine.style.width = '0%';
-                        preclassLine.style.display = 'none';
-                    }
+            const preclassLine = document.getElementById('preclass-line');
+            if (preclassLine) {
+                if (nowTs < startTs) {
+                    preclassLine.style.display = 'block';
+                    preclassLine.style.setProperty('--w', clamp01((startTs - displayStartTs) / duration).toFixed(6));
+                } else {
+                    preclassLine.style.display = 'none';
+                    preclassLine.style.setProperty('--w', '0');
                 }
-            };
+            }
 
-            updateTimeline();
-            setInterval(updateTimeline, 3600000); // Actualiza cada hora
-        });
+            timeline.classList.remove('invisible');
+        }, { once: true });
     </script>
 
 </body>
