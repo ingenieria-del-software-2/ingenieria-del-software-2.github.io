@@ -1,33 +1,24 @@
-# Sample workflow for building and deploying a Hugo site to GitHub Pages
 name: Deploy Hugo site to Pages
 
 on:
-  # Runs on pushes targeting the default branch
   push:
     branches: ["main", "master"]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
-  group: "pages"
+  group: "pages-production-${{ github.ref }}"
   cancel-in-progress: false
 
-# Default to bash
 defaults:
   run:
     shell: bash
 
 jobs:
-  # Build job
   build:
     runs-on: ubuntu-latest
     env:
@@ -36,7 +27,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # fetch all history for .GitInfo and .Lastmod
+          fetch-depth: 0
           submodules: recursive
       - name: Setup Go
         uses: actions/setup-go@v5
@@ -57,26 +48,56 @@ jobs:
         run: npm ci
       - name: Build with Hugo
         env:
-          # For maximum backward compatibility with Hugo modules
           HUGO_ENVIRONMENT: production
           HUGO_ENV: production
         run: |
           hugo \
             --gc --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
-      - name: Upload artifact
+      - name: Upload generic artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-public
+          path: ./public
+          if-no-files-found: error
+      - name: Upload pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./public
 
-  # Deployment job
-  deploy:
+  deploy-github-pages-action:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
+    permissions:
+      pages: write
+      id-token: write
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  # Needed for PR preview links under /pr-preview/pr-<number>/.
+  # If you want those links publicly accessible, set Pages source to branch gh-pages.
+  deploy-gh-pages-branch:
+    runs-on: ubuntu-latest
+    needs: build
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Download site artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: site-public
+          path: ./public
+      - name: Deploy to gh-pages branch
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: public
+          clean-exclude: pr-preview
+          force: false
