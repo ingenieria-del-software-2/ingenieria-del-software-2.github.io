@@ -3,3 +3,197 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @source "hugo_stats.json";
+
+@theme {
+  --color-primary: #0f172a;
+  --color-secondary: #64748b;
+  --color-accent: #38bdf8;
+  --color-dark-brand: #0B1121;
+  --color-slate-light: #94a3b8;
+
+  --color-gestion: #9f1239;
+  --color-gestion-subtle: #fff1f2;
+  --color-gestion-border: #fecdd3;
+
+  --color-devops: #0369a1;
+  --color-devops-subtle: #f0f9ff;
+  --color-devops-border: #bae6fd;
+
+  --color-arquitectura: #c2410c;
+  --color-arquitectura-subtle: #fff7ed;
+  --color-arquitectura-border: #fed7aa;
+
+  --font-display: "Playfair Display", serif;
+  --font-sans: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --shadow-kinetic: 12px 12px 0px -2px rgba(15, 23, 42, 0.05), 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+  --shadow-elevation: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+  --background-image-grid-pattern: radial-gradient(#cbd5e1 1px, transparent 1px);
+  --background-image-striped-gray: repeating-linear-gradient(45deg, transparent, transparent 10px, #f1f5f9 10px, #f1f5f9 20px);
+
+  --background-size-grid-pattern: 40px 40px;
+}
+
+/* Custom Styles from home.html */
+body {
+    @apply bg-white text-slate-900 antialiased overflow-x-hidden;
+}
+
+.bg-engineering {
+    background-color: #ffffff;
+    background-image: radial-gradient(#e2e8f0 0.8px, transparent 0.8px);
+    background-size: 40px 40px;
+    position: relative;
+}
+
+/* Capa de puntos "encendidos" que sigue al mouse */
+.bg-engineering::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(#94a3b8 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    mask-image: radial-gradient(circle var(--glow-radius, 120px) at var(--mouse-x, -100%) var(--mouse-y, -100%), black, transparent);
+    -webkit-mask-image: radial-gradient(circle var(--glow-radius, 120px) at var(--mouse-x, -100%) var(--mouse-y, -100%), black, transparent);
+}
+
+.bg-engineering:hover::after {
+    opacity: var(--glow-opacity, 0.3);
+}
+
+/* MÁSCARA UNIFICADA - MEJORADA PARA LEGIBILIDAD */
+.mask-unified {
+    color: #0f172a;
+    background-image:
+        linear-gradient(to bottom,
+            rgba(15, 23, 42, 0.97) 0%,
+            rgba(15, 23, 42, 0.89) 48%,
+            rgba(30, 41, 59, 0.8) 52%,
+            rgba(30, 41, 59, 0.9) 100%
+        ),
+        url('https://upload.wikimedia.org/wikipedia/commons/c/c3/Logo-fiuba_big.png'),
+        linear-gradient(to bottom, #ffffff, #ffffff);
+
+    background-size:
+        100% 100%,
+        120% auto,
+        100% 100%;
+
+    background-position:
+        center center,
+        center 40%,
+        center center;
+
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-stroke: 0.2px rgba(15, 23, 42, 0.05);
+    width: fit-content;
+    display: block;
+}
+
+@supports (-webkit-background-clip: text) or (background-clip: text) {
+    .mask-unified {
+        color: transparent;
+    }
+}
+
+@media (min-width: 1024px) {
+    .mask-unified {
+        background-size: 100% 100%, 75% auto, 100% 100%;
+    }
+}
+
+.timeline-label {
+    @apply absolute -bottom-8 text-[9px] font-sans font-medium text-slate-500 uppercase tracking-widest whitespace-nowrap opacity-0 transition-opacity duration-500;
+}
+.timeline-point.active-label .timeline-label {
+    @apply opacity-100;
+}
+
+.nav-link {
+    @apply flex items-center h-12 md:h-16 px-2 text-[10px] md:text-[11px] font-sans font-medium tracking-[0.2em] text-slate-700 uppercase hover:text-accent transition-colors;
+}
+
+.timeline-tooltip {
+    opacity: 0;
+    transform: translate(-50%, 4px);
+    transition: all 0.2s ease-out;
+    @apply pointer-events-none absolute -top-9 left-1/2 bg-slate-900/95 text-white text-[11px] font-sans font-medium px-3 py-1.5 rounded-none shadow-xl z-50;
+    white-space: nowrap;
+    letter-spacing: 0.1em;
+}
+
+/* Ajuste para mobile: Evitar que los tooltips se corten en los bordes */
+@media (max-width: 640px) {
+    .timeline-point[style*="left: 0%"] .timeline-tooltip {
+        transform: translate(0, 4px);
+        left: -4px;
+    }
+    .timeline-point[style*="left: 100%"] .timeline-tooltip {
+        transform: translate(-100%, 4px);
+        left: 4px;
+    }
+}
+
+.timeline-point:hover .timeline-tooltip {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+/* Re-ajuste de hover para mobile en los extremos */
+@media (max-width: 640px) {
+    .timeline-point[style*="left: 0%"]:hover .timeline-tooltip {
+        transform: translate(0, 0);
+    }
+    .timeline-point[style*="left: 100%"]:hover .timeline-tooltip {
+        transform: translate(-100%, 0);
+    }
+}
+
+.hide-scroll::-webkit-scrollbar { display: none; }
+.hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+
+.reveal-img {
+    filter: grayscale(100%);
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+    transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.reveal-img.active {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.tech-frame { position: relative; }
+.tech-frame::before {
+    content: '';
+    position: absolute;
+    top: 6px; left: 6px; right: -6px; bottom: -6px;
+    border: 1px solid #e2e8f0;
+    z-index: 0;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.group:hover .tech-frame::before {
+    transform: translate(3px, 3px);
+    border-color: #64748b;
+}
+
+.btn-striped {
+    background-image: repeating-linear-gradient(
+        45deg,
+        rgba(255,255,255,0.6),
+        rgba(255,255,255,0.6) 10px,
+        rgba(241,245,249,0.8) 10px,
+        rgba(241,245,249,0.8) 20px
+    );
+}
