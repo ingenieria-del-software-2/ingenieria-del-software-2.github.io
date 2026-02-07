@@ -28,11 +28,6 @@
   }
 }
 
-/* Custom Styles from home.html */
-body {
-    @apply bg-white text-slate-900 antialiased overflow-x-hidden;
-}
-
 .bg-engineering {
     background-color: #ffffff;
     background-image: radial-gradient(#e2e8f0 0.8px, transparent 0.8px);
