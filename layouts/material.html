@@ -222,11 +222,11 @@
           <div class="space-y-1">
             {{ range $index, $section := .Site.Data.material.sections }}
             <button 
-                class="w-full sidebar-link nav-item text-[13px] px-3 {{ if eq $index 0 }}active{{ end }}" 
+                class="w-full min-w-0 sidebar-link nav-item text-[12px] px-3 {{ if eq $index 0 }}active{{ end }}" 
                 data-target="desktop-section-{{ $section.id }}"
                 onclick="switchDesktopSection('{{ $section.id }}')">
-              <span>{{ $section.title }}</span>
-              <span class="text-[10px] opacity-50">{{ len $section.videos }}</span>
+              <span class="block min-w-0 flex-1 text-left leading-tight whitespace-normal">{{ $section.title }}</span>
+              <span class="text-[10px] opacity-50 shrink-0 pl-2">{{ len $section.videos }}</span>
             </button>
             {{ end }}
           </div>
