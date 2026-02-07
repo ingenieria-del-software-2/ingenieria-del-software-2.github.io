@@ -53,3 +53,14 @@ En cada cuatrimestre, normalmente hay que tocar estas cosas:
 - **Habilitar el link de inscripción**: en `hugo.yaml`, cargar el link del Google Form en `params.inscripcion.url`. Si queda vacío (`""`), el botón se muestra bloqueado.
 - **Actualizar material**: agregar las clases nuevas en su categoría correspondiente en `data/material.yaml` (videos, recursos, temas, etc.).
 - **Actualizar el equipo docente**: agregar/modificar docentes en `data/team.yaml` (nombre, foto, mail y GitHub).
+- **Actualizar fechas de la línea de tiempo (home)**: al inicio de cada cuatrimestre, cargar el nuevo calendario en `data/fechas.yaml` con formato `YYYY-MM-DD`.
+  - La home (`layouts/home.html`) consume estas claves para ubicar los hitos en la timeline y el mrcador `HOY`.
+
+```yaml
+inicio: "2026-03-09"
+individual: "2026-03-19"
+checkpoint1: "2026-04-13"
+checkpoint2: "2026-05-11"
+checkpoint3: "2026-06-04"
+final: "2026-06-25"
+```

@@ -72,27 +72,29 @@
                              <div class="absolute -top-6 text-[9px] font-sans font-medium text-accent tracking-[0.2em] bg-white px-1">HOY</div>
                         </div>
 
+                        {{ with .Site.Data.fechas }}
                         <!-- Inicio de clases -->
-                        <div data-date="2026-03-09" data-role="start" class="timeline-point absolute top-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-slate-900 rounded-full z-10 border-2 border-white shadow-sm" style="left: 0%">
+                        <div data-date="{{ .inicio }}" data-role="start" class="timeline-point absolute top-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-slate-900 rounded-full z-10 border-2 border-white shadow-sm" style="left: 0%">
                              <div class="absolute -top-7 text-[10px] font-sans font-bold text-slate-500 tracking-wider bg-white px-1">INICIO</div>
                         </div>
 
                         <!-- Milestones -->
-                        <div data-date="2026-03-19" class="timeline-point absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-slate-300 rounded-full cursor-pointer hover:bg-slate-900 transition-colors z-10 border border-white" style="left: 0%">
-                             <time datetime="2026-03-19" class="timeline-tooltip">19 MAR - TP INDIV.</time>
+                        <div data-date="{{ .individual }}" class="timeline-point absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-slate-300 rounded-full cursor-pointer hover:bg-slate-900 transition-colors z-10 border border-white" style="left: 0%">
+                             <time datetime="{{ .individual }}" class="timeline-tooltip">{{ substr .individual 5 5 }} - TP INDIV.</time>
                         </div>
-                        <div data-date="2026-04-13" class="timeline-point absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-slate-300 rounded-full cursor-pointer hover:bg-gestion transition-colors z-10 border border-white" style="left: 0%">
-                            <time datetime="2026-04-13" class="timeline-tooltip bg-gestion! text-white!">13 ABR - CP1</time>
+                        <div data-date="{{ .checkpoint1 }}" class="timeline-point absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-slate-300 rounded-full cursor-pointer hover:bg-gestion transition-colors z-10 border border-white" style="left: 0%">
+                            <time datetime="{{ .checkpoint1 }}" class="timeline-tooltip bg-gestion! text-white!">{{ substr .checkpoint1 5 5 }} - CHECKPOINT 1</time>
                         </div>
-                        <div data-date="2026-05-11" class="timeline-point absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-slate-300 rounded-full cursor-pointer hover:bg-devops transition-colors z-10 border border-white" style="left: 0%">
-                             <time datetime="2026-05-11" class="timeline-tooltip bg-devops! text-white!">11 MAY - CP2</time>
+                        <div data-date="{{ .checkpoint2 }}" class="timeline-point absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-slate-300 rounded-full cursor-pointer hover:bg-devops transition-colors z-10 border border-white" style="left: 0%">
+                             <time datetime="{{ .checkpoint2 }}" class="timeline-tooltip bg-devops! text-white!">{{ substr .checkpoint2 5 5 }} - CHECKPOINT 2</time>
                         </div>
-                        <div data-date="2026-06-04" class="timeline-point absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-slate-300 rounded-full cursor-pointer hover:bg-arquitectura transition-colors z-10 border border-white" style="left: 0%">
-                             <time datetime="2026-06-04" class="timeline-tooltip bg-arquitectura! text-white!">04 JUN - CP3</time>
+                        <div data-date="{{ .checkpoint3 }}" class="timeline-point absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-slate-300 rounded-full cursor-pointer hover:bg-arquitectura transition-colors z-10 border border-white" style="left: 0%">
+                             <time datetime="{{ .checkpoint3 }}" class="timeline-tooltip bg-arquitectura! text-white!">{{ substr .checkpoint3 5 5 }} - CHECKPOINT 3</time>
                         </div>
-                        <div data-date="2026-06-25" data-role="end" class="timeline-point absolute top-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-slate-900 rounded-full cursor-pointer hover:scale-125 transition-transform z-10 border-2 border-white shadow-sm" style="left: 100%">
-                             <time datetime="2026-06-25" class="timeline-tooltip">25 JUN - FINAL</time>
+                        <div data-date="{{ .final }}" data-role="end" class="timeline-point absolute top-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-slate-900 rounded-full cursor-pointer hover:scale-125 transition-transform z-10 border-2 border-white shadow-sm" style="left: 100%">
+                             <time datetime="{{ .final }}" class="timeline-tooltip">{{ substr .final 5 5 }} - FINAL</time>
                         </div>
+                        {{ end }}
                     </div>
                     <figcaption class="flex justify-between mt-4 text-[10px] font-sans text-slate-400 font-light uppercase tracking-[0.25em]">
                         <span>Marzo</span>
@@ -436,8 +438,10 @@
             const timeline = document.getElementById('main-timeline');
             if (!timeline) return;
 
-            const startTs = Date.parse('2026-03-09T00:00:00');
-            const endTs = Date.parse('2026-06-25T00:00:00');
+            const startTs = Date.parse('{{ .Site.Data.fechas.inicio }}T00:00:00');
+            const endPoint = timeline.querySelector('[data-role="end"]');
+            if (!endPoint?.dataset.date) return;
+            const endTs = Date.parse(`${endPoint.dataset.date}T00:00:00`);
             const nowTs = Date.now();
 
             const displayStartTs = nowTs < startTs ? nowTs : startTs;
