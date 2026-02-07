@@ -88,7 +88,7 @@ body {
             rgba(30, 41, 59, 0.8) 52%,
             rgba(30, 41, 59, 0.9) 100%
         ),
-        url('https://upload.wikimedia.org/wikipedia/commons/c/c3/Logo-fiuba_big.png'),
+        url('/images/fiuba.svg'),
         linear-gradient(to bottom, #ffffff, #ffffff);
 
     background-size:
