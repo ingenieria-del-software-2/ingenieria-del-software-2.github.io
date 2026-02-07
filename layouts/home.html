@@ -97,10 +97,20 @@
                         {{ end }}
                     </div>
                     <figcaption class="flex justify-between mt-4 text-[10px] font-sans text-slate-400 font-light uppercase tracking-[0.25em]">
-                        <span>Marzo</span>
-                        <span class="hidden md:inline">Abril</span>
-                        <span class="hidden md:inline">Mayo</span>
-                        <span>Junio</span>
+                        {{ with site.Data.fechas }}
+                        {{ $ini := time .inicio }}
+                        {{ $fin := time .final }}
+                        {{ $m0 := add (mul (int ($ini.Format "2006")) 12) (int ($ini.Format "1")) }}
+                        {{ $m1 := add (mul (int ($fin.Format "2006")) 12) (int ($fin.Format "1")) }}
+                        {{ $n := add (sub $m1 $m0) 1 }}
+
+                        {{ range seq 0 (sub $n 1) }}
+                        {{ $t := $ini.AddDate 0 . 0 }}
+                        <span class="{{ if and (gt . 0) (lt . (sub $n 1)) }}hidden md:inline{{ end }}">
+                            {{ $t | time.Format "January" }}
+                        </span>
+                        {{ end }}
+                        {{ end }}
                     </figcaption>
                 </figure>
 
