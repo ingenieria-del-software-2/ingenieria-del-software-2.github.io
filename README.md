@@ -50,6 +50,6 @@ Más info en la doc oficial: [Update modules](https://gohugo.io/hugo-modules/use
 
 En cada cuatrimestre, normalmente hay que tocar estas cosas:
 
-- **Habilitar el link de inscripción**: en `hugo.yaml`, setear `params.inscripcion.enabled` en `true` y cargar el link del Google Form en `params.inscripcion.url`.
+- **Habilitar el link de inscripción**: en `hugo.yaml`, cargar el link del Google Form en `params.inscripcion.url`. Si queda vacío (`""`), el botón se muestra bloqueado.
 - **Actualizar material**: agregar las clases nuevas en su categoría correspondiente en `data/material.yaml` (videos, recursos, temas, etc.).
 - **Actualizar el equipo docente**: agregar/modificar docentes en `data/team.yaml` (nombre, foto, mail y GitHub).

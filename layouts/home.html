@@ -125,17 +125,28 @@
                         Esta es la página web de la materia de la Facultad de Ingeniería de la Universidad de Buenos Aires.
                     </p>
                     
+                    {{ $inscripcionURL := .Site.Params.inscripcion.url | default "" }}
+                    {{ if and $inscripcionURL (not (hasPrefix $inscripcionURL "http")) }}
+                        {{ $inscripcionURL = printf "https://%s" $inscripcionURL }}
+                    {{ end }}
                     <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-                        <a href="#" class="group flex items-center justify-center gap-3 px-8 py-3.5 border border-slate-900 text-slate-900 hover:bg-slate-900 hover:text-white transition-all w-full sm:w-auto active:translate-y-0.5 min-w-[180px]">
+                        <a href="{{ "/material" | relURL }}" class="group flex items-center justify-center gap-3 px-8 py-3.5 border border-slate-900 text-slate-900 hover:bg-slate-900 hover:text-white transition-all w-full sm:w-auto active:translate-y-0.5 min-w-[180px]">
                             <span class="material-symbols-outlined text-[18px]">description</span>
                             <span class="font-sans font-medium text-[11px] tracking-[0.2em] whitespace-nowrap">PROGRAMA</span>
                         </a>
                         
                         <div class="flex flex-col gap-2 w-full sm:w-auto">
+                            {{ if $inscripcionURL }}
+                            <a href="{{ $inscripcionURL | safeURL }}" target="_blank" rel="noopener noreferrer" class="group relative px-8 py-3.5 bg-slate-900 border border-slate-900 text-white hover:bg-slate-800 hover:border-slate-800 flex items-center justify-center gap-3 w-full sm:w-auto transition-all active:translate-y-0.5 min-w-[180px] shadow-sm">
+                                <span class="material-symbols-outlined text-slate-100 group-hover:text-white text-[16px]">edit_note</span>
+                                <span class="font-sans font-medium text-[11px] tracking-[0.2em] whitespace-nowrap">INSCRIPCIÓN</span>
+                            </a>
+                            {{ else }}
                             <button class="group relative px-8 py-3.5 bg-white btn-striped border border-slate-200 text-slate-400 cursor-not-allowed flex items-center justify-center gap-3 w-full sm:w-auto transition-colors min-w-[180px] opacity-70" disabled>
                                 <span class="material-symbols-outlined text-slate-400 text-[16px]">lock</span>
                                 <span class="font-sans font-medium text-[11px] tracking-[0.2em] whitespace-nowrap">INSCRIPCIÓN</span>
                             </button>
+                            {{ end }}
                         </div>
                     </div>
                 </section>

@@ -86,10 +86,4 @@ params:
     enable: false
 
   inscripcion:
-    enabled: false
-    url: ""
-    mensajes_espera:
-      - "Aún no empezamos… ✋"
-      - "Falta poquito… 🤏"
-      - "Nada eh, cada vez menos… ⏳"
-      - "Mira el programa mientras tanto. 📹"
+    url: ''
