@@ -267,6 +267,42 @@ h4 {
     transform: scale(1.01);
     filter: grayscale(0%);
 }
+.video-title {
+    line-height: 1.25rem;
+    overflow: hidden;
+    overflow-wrap: anywhere;
+    max-height: 3.75rem;
+}
+.video-description {
+    line-height: 1rem;
+    overflow: hidden;
+    overflow-wrap: anywhere;
+    max-height: 2rem;
+}
+@media (min-width: 1280px) {
+    .video-title {
+        max-height: 2.5rem;
+    }
+}
+@supports (-webkit-line-clamp: 2) {
+    .video-title {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        max-height: none;
+    }
+    .video-description {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        max-height: none;
+    }
+    @media (min-width: 1280px) {
+        .video-title {
+            -webkit-line-clamp: 2;
+        }
+    }
+}
 ::-webkit-scrollbar {
     width: 8px;
     background: transparent;
