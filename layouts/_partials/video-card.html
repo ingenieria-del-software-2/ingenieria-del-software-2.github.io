@@ -12,10 +12,11 @@
 {{- else -}}
   {{- $vidId = replaceRE `^.*(youtu\.be/|v/|u/\w/|embed/|watch\?v=|&v=)([^#&?]{11}).*$` `$2` $v.url -}}
   {{- $cacheKey := cond (ne $vidId "") $vidId $v.url -}}
-  {{- $meta := partialCached "ytmeta.html"
+  {{- $metaRaw := partialCached "ytmeta.html"
     (dict "vidId" $vidId "title" $title "thumb" $thumb "duration" $duration)
     $cacheKey
   -}}
+  {{- $meta := $metaRaw | transform.Unmarshal -}}
   {{- $title = $meta.title -}}
   {{- $thumb = $meta.thumb -}}
   {{- $duration = $meta.duration -}}

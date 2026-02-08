@@ -1,52 +1,24 @@
 {{- $id := .vidId -}}
 {{- $m := dict "title" .title "thumb" .thumb "duration" .duration -}}
+{{- $fallback := printf "https://i.ytimg.com/vi/%s/hqdefault.jpg" $id -}}
 
-{{- if not $m.duration -}}
-  {{- $proxy := "https://corsproxy.io/?url=" -}}
-  {{- $targetUrl := "https://www.youtube.com/youtubei/v1/player?key=AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8" -}}
-  {{- $finalUrl := printf "%s%s" $proxy (urlquery $targetUrl) -}}
+{{- if not hugo.IsDevelopment -}}
+  {{- if not (index site.Data "ytmeta" "generated") -}}
+    {{- errorf "FATAL: data/ytmeta/generated.json missing. Run 'npm run update:yt'." -}}
+  {{- end -}}
+  {{- jsonify (merge $m (default dict (index site.Data.ytmeta.generated $id))) -}}
+{{- else -}}
+  {{- $api := "https://www.youtube.com/youtubei/v1/player?key=AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8" -}}
+  {{- $body := dict "context" (dict "client" (dict "clientName" "WEB" "clientVersion" "2.20250201.00.00")) "videoId" $id -}}
+  {{- $opt := dict "method" "POST" "headers" (dict "Content-Type" "application/json") "body" (jsonify $body) -}}
 
-  {{- $body := dict "context" (dict "client" (dict "clientName" "WEB" "clientVersion" "2.20240313.05.00" "hl" "es-419" "gl" "AR")) "videoId" $id -}}
-
-  {{- $opts := dict 
-      "method" "POST" 
-      "headers" (dict 
-          "Content-Type" "application/json"
-          "User-Agent" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
-          "Origin" "https://www.youtube.com"
-      ) 
-      "body" (jsonify $body) 
-  -}}
-
-  {{- $res := try (resources.GetRemote $finalUrl $opts) -}}
-  
-  {{- with $res.Err -}}
-    {{- warnf "YT [%s]: Error de Red/Proxy -> %v" $id . -}}
-  {{- else with $res.Value -}}
-    {{- $raw := .Content -}}
-    {{- $trimmed := trim $raw " \n\r\t" -}}
-
-    {{- if and $raw (hasPrefix $trimmed "{") -}}
-      {{- $d := transform.Unmarshal $raw -}}
-      
-      {{- if (and $d.videoDetails $d.videoDetails.lengthSeconds) -}}
-        {{- $m = merge $m (dict "duration" (int $d.videoDetails.lengthSeconds)) -}}
-        {{- if not $m.title -}}{{- $m = merge $m (dict "title" $d.videoDetails.title) -}}{{- end -}}
-      {{- else -}}
-        {{- $s := $d.playabilityStatus -}}
-        {{- warnf "YT [%s]: YouTube rechazó -> Status: %v | Reason: %v" $id (default "UNK" $s.status) (default "N/A" $s.reason) -}}
-      {{- end -}}
-    {{- else -}}
-      {{/* Si llegamos acá, el proxy devolvió algo que no es JSON (probablemente HTML de error) */}}
-      {{- warnf "YT [%s]: Respuesta no válida (CORS/Proxy error). Payload: %.20s..." $id $raw -}}
+  {{- with resources.GetRemote $api $opt -}}
+    {{- $d := transform.Unmarshal .Content -}}
+    {{- with $d.videoDetails -}}
+      {{- $best := index (last 1 .thumbnail.thumbnails) 0 -}}
+      {{- $m = merge $m (dict "title" .title "duration" (int .lengthSeconds) "thumb" $best.url) -}}
     {{- end -}}
   {{- end -}}
 
-  {{/* Log final si después de todo la duración sigue vacía */}}
-  {{- if not $m.duration -}}
-    {{- warnf "YT [%s]: No se pudo obtener la duración final." $id -}}
-  {{- end -}}
+  {{- jsonify (merge $m (dict "thumb" (default $fallback $m.thumb))) -}}
 {{- end -}}
-
-{{- $m = merge $m (dict "thumb" (default (printf "https://i.ytimg.com/vi/%s/hqdefault.jpg" $id) $m.thumb)) -}}
-{{- return $m -}}

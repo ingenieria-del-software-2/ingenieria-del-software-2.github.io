@@ -2,6 +2,44 @@
 
 Esta es la página web de la materia Ingenieria del Software 2 de la Facultad de Ingenieria de la Universidad de Buenos Aires.
 
+## Desarrollo local
+
+### Requisitos
+
+- [Hugo](https://gohugo.io/getting-started/installing/)
+- [Node.js](https://nodejs.org/) y **npm**
+
+### Levantar entorno de desarrollo
+
+```shell
+# Clonar el repo
+git clone https://github.com/ingenieria-del-software-2/ingenieria-del-software-2.github.io
+
+# Entrar al directorio
+cd ingenieria-del-software-2.github.io
+
+# Levantar entorno local (Hugo en :1313)
+npm run dev
+```
+
+## Build de producción
+
+```shell
+
+# Instalar dependencias node
+npm ci
+
+# Build de producción local (equivalente al workflow principal)
+npm run build
+
+# Build de preview para PR/MR (equivalente a pages-preview.yaml)
+PREVIEW_URL="https://<owner>.github.io/<repo>/pr-preview/pr-<numero>/" npm run build:prod:mr-preview
+```
+
+En el workflow [`.github/workflows/pages-preview.yaml`](./.github/workflows/pages-preview.yaml), `PREVIEW_URL` sigue el patrón:
+
+`https://<owner>.github.io/<repo>/pr-preview/pr-<numero>/`
+
 ## Deployment
 
 ### GitHub Pages
@@ -12,30 +50,6 @@ Si querés más detalle, mirá:
 
 - [Publishing with a custom GitHub Actions workflow](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow)
 - [GitHub Pages: Custom GitHub Actions workflows (beta)](https://github.blog/changelog/2022-07-27-github-pages-custom-github-actions-workflows-beta/)
-
-## Requisitos
-
-Para laburar local:
-
-- [Hugo](https://gohugo.io/getting-started/installing/)
-- [Go](https://golang.org/doc/install)
-- [Git](https://git-scm.com)
-
-Para buildear en modo producción, además necesitás:
-
-- [Node.js](https://nodejs.org/) y **npm** (se usan para procesar **TailwindCSS**)
-
-```shell
-# Clonar el repo
-git clone https://github.com/ingenieria-del-software-2/ingenieria-del-software-2.github.io
-
-# Entrar al directorio
-cd ingenieria-del-software-2.github.io
-
-# Levantar el server local
-hugo mod tidy
-hugo server --logLevel debug --disableFastRender -p 1313
-```
 
 ### Actualizar el theme
 

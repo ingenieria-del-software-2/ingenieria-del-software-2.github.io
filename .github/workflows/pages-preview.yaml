@@ -18,36 +18,6 @@ defaults:
     shell: bash
 
 jobs:
-  youtubei-js-diagnostic:
-    if: github.event.action != 'closed' && !github.event.pull_request.head.repo.fork
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "18"
-
-      - name: Install youtubei.js
-        run: npm install --no-save youtubei.js
-
-      - name: Probe YouTube with youtubei.js
-        run: |
-          node scripts/ci/youtubei-probe.mjs 2> yt_probe.lib.err || true
-          for f in yt_probe.json yt_probe.err yt_probe.lib.err; do
-            [ -s "$f" ] && { cat "$f"; break; }
-          done
-          exit 0
-
-      - name: Upload
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: youtubei-js-probe-${{ github.event.pull_request.number }}
-          path: yt_probe.*
-
   deploy-pr-preview:
     if: github.event.pull_request.head.repo.fork == false
     runs-on: ubuntu-latest
@@ -94,15 +64,11 @@ jobs:
       - name: Install dependencies
         if: github.event.action != 'closed'
         run: npm ci
-      - name: Build preview with Hugo
+      - name: Build preview 
         if: github.event.action != 'closed'
         env:
-          HUGO_ENVIRONMENT: production
-          HUGO_ENV: production
-        run: |
-          hugo \
-            --gc --minify \
-            --baseURL "${{ steps.preview_urls.outputs.preview_url }}"
+          PREVIEW_URL: ${{ steps.preview_urls.outputs.preview_url }}
+        run: npm run build:prod:mr-preview
 
       - name: Deploy preview and comment PR
         if: github.event.action != 'closed'
