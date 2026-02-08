@@ -11,12 +11,21 @@ Esta es la página web de la materia Ingenieria del Software 2 de la Facultad de
 
 ### Levantar entorno de desarrollo
 
+> [!WARNING]
+> Ejecutá `git config core.hooksPath .githooks` una unica vez por clon del repo.
+> Esto habilita `./.githooks/pre-commit`, que actualiza `data/ytmeta.json` a partir de `data/material.yaml`.
+> Por limitaciones de red/entorno de los runners de GitHub Actions, esta generación no es confiable en CI (ni con proxies ni cambiando runtime/librería: Go, Node o Python), así que se hace localmente.
+> El hook sólo corre cuando cambia `data/material.yaml`, y la metadata generada es la que se usa en producción.
+
 ```shell
 # Clonar el repo
 git clone https://github.com/ingenieria-del-software-2/ingenieria-del-software-2.github.io
 
 # Entrar al directorio
 cd ingenieria-del-software-2.github.io
+
+# Configurar hooks versionados del repo
+git config core.hooksPath .githooks
 
 # Levantar entorno local (Hugo en :1313)
 npm run dev

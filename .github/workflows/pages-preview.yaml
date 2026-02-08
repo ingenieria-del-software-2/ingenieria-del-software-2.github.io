@@ -18,35 +18,8 @@ defaults:
     shell: bash
 
 jobs:
-  probe-youtube-metadata:
-    if: github.event.pull_request.head.repo.fork == false && github.event.action != 'closed'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          submodules: recursive
-      - name: Download yt-dlp
-        run: |
-          curl -L --fail --retry 3 -o yt-dlp https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp
-          chmod +x yt-dlp
-          ./yt-dlp --version
-          jq --version
-      - name: Run yt-dlp probe and shape output
-        run: |
-          URL="https://www.youtube.com/watch?v=yIvTx0qUSZI"
-          ./yt-dlp -vJ "$URL" > yt-dlp.json
-          jq '{id, title, channel: (.channel // .uploader // null), duration}' yt-dlp.json | tee probe.json
-      - name: Cat probe output
-        run: |
-          echo "::group::probe.json"
-          cat probe.json
-          echo "::endgroup::"
-
   deploy-pr-preview:
     if: github.event.pull_request.head.repo.fork == false && github.event.action != 'closed'
-    needs: probe-youtube-metadata
     runs-on: ubuntu-latest
     env:
       HUGO_VERSION: 0.146.0
@@ -91,11 +64,6 @@ jobs:
         env:
           PREVIEW_URL: ${{ steps.preview_urls.outputs.preview_url }}
         run: npm run build:prod:mr-preview
-      - name: Cat generated YouTube metadata
-        run: |
-          echo "::group::data/ytmeta/generated.json"
-          cat data/ytmeta/generated.json
-          echo "::endgroup::"
 
       - name: Deploy preview and comment PR
         uses: rossjrw/pr-preview-action@v1
