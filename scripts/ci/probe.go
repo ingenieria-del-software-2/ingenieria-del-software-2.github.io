@@ -16,7 +16,7 @@ type Out struct {
 }
 
 func main() {
-	v, err := (&youtube.Client{}).GetVideo("jNQXAC9IVRw")
+	v, err := (&youtube.Client{}).GetVideo("2Z4nCvbCGRE")
 	if err != nil {
 		panic(err)
 	}
