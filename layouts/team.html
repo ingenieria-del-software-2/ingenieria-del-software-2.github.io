@@ -48,27 +48,27 @@
           {{ range .Site.Data.team.team }}
           <div class="group relative">
             <div
-              class="relative aspect-[4/5] rounded-2xl overflow-hidden mb-4 bg-slate-50 border border-slate-100 transition-all duration-500 group-hover:border-accent/45 group-hover:shadow-xl group-hover:shadow-accent/10"
+              class="relative aspect-[4/5] rounded-2xl overflow-hidden mb-4 bg-slate-50 border border-slate-100 transition-[transform,box-shadow,border-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-0.5 group-hover:border-accent/45 group-hover:shadow-xl group-hover:shadow-accent/10"
             >
               <img
                 src="{{ .pic }}"
                 alt="{{ .name }}"
-                class="w-full h-full object-cover md:saturate-[.85] md:group-hover:saturate-100 md:group-hover:scale-105 transition-all duration-400 ease-out"
+                class="w-full h-full object-cover md:saturate-[.85] md:group-hover:saturate-100 md:group-hover:scale-[1.01] transition-[transform,filter] duration-700 ease-[cubic-bezier(0.19,1,0.22,1)]"
               />
               <div
-                class="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-slate-900/15 to-transparent opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500"
+                class="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-slate-900/15 to-transparent opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"
               ></div>
               
-              <div class="absolute bottom-4 left-4 flex space-x-2 opacity-100 translate-y-0 md:opacity-0 md:translate-y-4 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-500 delay-100">
+              <div class="absolute bottom-4 left-4 flex space-x-2 opacity-100 translate-y-0 scale-100 md:opacity-0 md:translate-y-1.5 md:scale-95 md:group-hover:opacity-100 md:group-hover:translate-y-0 md:group-hover:scale-100 transition-all duration-300">
                   {{ if .mail }}
-                  <a href="mailto:{{ .mail }}" aria-label="Enviar email a {{ .name }}" class="cursor-pointer text-accent/90 hover:text-accent transition-colors bg-slate-900/45 hover:bg-slate-900/60 w-8 h-8 flex items-center justify-center rounded-full backdrop-blur-sm border border-accent/40">
+                  <a href="mailto:{{ .mail }}" aria-label="Enviar email a {{ .name }}" class="cursor-pointer text-slate-100 hover:text-white transition-colors bg-slate-900/35 hover:bg-slate-900/55 w-8 h-8 flex items-center justify-center rounded-full backdrop-blur-sm border border-white/35">
                       <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
                         <path d="M2.25 6.75A2.25 2.25 0 0 1 4.5 4.5h15a2.25 2.25 0 0 1 2.25 2.25v10.5A2.25 2.25 0 0 1 19.5 19.5h-15a2.25 2.25 0 0 1-2.25-2.25V6.75Zm1.653-.75 8.097 6.154L20.097 6H3.903Zm16.347 1.884-7.341 5.58a1.5 1.5 0 0 1-1.818 0L3.75 7.884V17.25c0 .414.336.75.75.75h15a.75.75 0 0 0 .75-.75V7.884Z" />
                       </svg>
                   </a>
                   {{ end }}
                   {{ if .github }}
-                  <a href="https://github.com/{{ .github }}" target="_blank" rel="noopener noreferrer" aria-label="GitHub de {{ .name }}" class="cursor-pointer text-accent/90 hover:text-accent transition-colors bg-slate-900/45 hover:bg-slate-900/60 w-8 h-8 flex items-center justify-center rounded-full backdrop-blur-sm border border-accent/40">
+                  <a href="https://github.com/{{ .github }}" target="_blank" rel="noopener noreferrer" aria-label="GitHub de {{ .name }}" class="cursor-pointer text-slate-100 hover:text-white transition-colors bg-slate-900/35 hover:bg-slate-900/55 w-8 h-8 flex items-center justify-center rounded-full backdrop-blur-sm border border-white/35">
                       <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
                         <path d="M12 .5C5.65.5.5 5.77.5 12.27c0 5.2 3.3 9.61 7.88 11.17.58.11.79-.26.79-.57v-2.02c-3.2.71-3.88-1.58-3.88-1.58-.52-1.37-1.28-1.73-1.28-1.73-1.04-.73.08-.72.08-.72 1.16.08 1.77 1.23 1.77 1.23 1.02 1.81 2.68 1.29 3.33.99.1-.76.4-1.29.72-1.59-2.55-.3-5.24-1.31-5.24-5.85 0-1.29.45-2.35 1.2-3.18-.12-.3-.52-1.52.11-3.17 0 0 .98-.32 3.2 1.21a10.8 10.8 0 0 1 5.83 0c2.22-1.53 3.2-1.21 3.2-1.21.63 1.65.23 2.87.11 3.17.75.83 1.2 1.89 1.2 3.18 0 4.55-2.69 5.54-5.26 5.84.41.37.77 1.1.77 2.23v3.31c0 .31.21.69.8.57A11.77 11.77 0 0 0 23.5 12.27C23.5 5.77 18.35.5 12 .5Z" />
                       </svg>
@@ -77,7 +77,7 @@
               </div>
             </div>
             <h3
-              class="text-[13px] font-bold text-slate-800 tracking-tight leading-tight group-hover:text-title-accent transition-colors"
+              class="text-[13px] font-bold text-slate-800 tracking-tight leading-tight group-hover:text-title-accent transition-colors duration-300"
             >
               {{ .name }}
             </h3>
