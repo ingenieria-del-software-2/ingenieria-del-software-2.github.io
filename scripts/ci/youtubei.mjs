@@ -9,7 +9,7 @@ const ids = [...new Set([...text.matchAll(/(?:v=|shorts\/|embed\/|youtu\.be\/)([
 
 const data = await Promise.all(ids.map(async (id) => {
   const { basic_info: i = {} } = await yt.getBasicInfo(id).catch(err => {
-    console.error(id, err?.message);
+    console.error(id, err);
     return {};
   });
 
