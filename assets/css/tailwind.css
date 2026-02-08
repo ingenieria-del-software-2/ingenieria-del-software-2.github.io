@@ -64,7 +64,7 @@
             rgba(30, 41, 59, 0.8) 52%,
             rgba(30, 41, 59, 0.9) 100%
         ),
-        url('/images/fiuba.svg'),
+        url('../images/fiuba.svg'),
         linear-gradient(to bottom, #ffffff, #ffffff);
 
     background-size:
