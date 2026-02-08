@@ -1,10 +1,8 @@
 {{ with resources.Get "css/fonts.css" }}
 {{ if hugo.IsDevelopment }}
-<style>
-  {{ .Content | safeCSS }}
-</style>
+<link rel="stylesheet" href="{{ .RelPermalink }}" />
 {{ else }}
-{{ with . | minify | fingerprint }}
+{{ with . | fingerprint }}
 <link
   rel="stylesheet"
   href="{{ .RelPermalink }}"

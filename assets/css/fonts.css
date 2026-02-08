@@ -3,7 +3,7 @@
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url("/fonts/inter-latin-variable.woff2") format("woff2");
+  src: url("../fonts/inter-latin-variable.woff2") format("woff2");
 }
 
 @font-face {
@@ -11,7 +11,7 @@
   font-style: normal;
   font-weight: 300 700;
   font-display: swap;
-  src: url("/fonts/jetbrains-mono-latin-variable.woff2") format("woff2");
+  src: url("../fonts/jetbrains-mono-latin-variable.woff2") format("woff2");
 }
 
 @font-face {
@@ -19,7 +19,7 @@
   font-style: normal;
   font-weight: 100 700;
   font-display: block;
-  src: url("/fonts/material-symbols-outlined.woff2") format("woff2");
+  src: url("../fonts/material-symbols-outlined.woff2") format("woff2");
 }
 
 .material-symbols-outlined {
