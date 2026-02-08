@@ -31,75 +31,42 @@ Maintenance notes:
   oEmbed + duration reliably in one shot.
 
 ------------------------------------------------------------------------------*/}}
-
-
 {{- $vidId := .vidId -}}
-{{- $title := .title -}}
-{{- $thumb := .thumb -}}
-{{- $duration := .duration -}}
+{{- $m := dict "title" .title "thumb" .thumb "duration" .duration -}}
 
-{{- $watch := printf "https://www.youtube.com/watch?v=%s" $vidId -}}
-
-{{- $o := try (resources.GetRemote (printf "https://www.youtube.com/oembed?url=%s&format=json" ($watch | urlquery))) -}}
-{{- with $o.Value -}}
-  {{- $j := .Content | transform.Unmarshal -}}
-  {{- $title = default $j.title $title -}}
-  {{- $thumb = default $j.thumbnail_url $thumb -}}
-{{- else -}}
-  {{- with $o.Err -}}
-    {{- warnf "No se pudo obtener oEmbed de YouTube para %q: %s" $vidId . -}}
+{{- $oembedUrl := printf "https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=%s&format=json" $vidId -}}
+{{- with try (resources.GetRemote $oembedUrl) -}}
+  {{- with .Err -}}
+    {{- warnf "OEmbed failed for %s: %s" $vidId . -}}
+  {{- else with .Value -}}
+    {{- $d := .Content | transform.Unmarshal -}}
+    {{- $m = merge $m (dict "title" (default $d.title $m.title) "thumb" (default $d.thumbnail_url $m.thumb)) -}}
   {{- end -}}
 {{- end -}}
 
-{{- $thumb = default (printf "https://i.ytimg.com/vi/%s/hqdefault.jpg" $vidId) $thumb -}}
-
-{{- if not $duration -}}
-  {{- $body := jsonify (dict
-    "context" (dict "client" (dict "hl" "es" "gl" "AR" "clientName" "WEB" "clientVersion" "2.20220916.00.00" "clientScreen" "WATCH"))
-    "videoId" $vidId
-  ) -}}
-
-  {{- $headers := dict
-    "Content-Type" "application/json"
-    "User-Agent" "Mozilla/5.0"
-    "Origin" "https://www.youtube.com"
-    "Referer" "https://www.youtube.com/"
-  -}}
-
-  {{- $resp := try (resources.GetRemote
-    "https://www.youtube.com/youtubei/v1/player?key=AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8&prettyPrint=false"
-    (dict "method" "POST" "headers" $headers "body" $body)
-  ) -}}
-
-  {{- with $resp.Value -}}
-    {{- $data := .Content | transform.Unmarshal -}}
-    {{- $playabilityStatus := "" -}}
-    {{- $playabilityReason := "" -}}
-    {{- with $data.playabilityStatus.status -}}
-      {{- $playabilityStatus = . -}}
-    {{- end -}}
-    {{- with $data.playabilityStatus.reason -}}
-      {{- $playabilityReason = . -}}
-    {{- end -}}
-
-    {{- with $data.videoDetails.lengthSeconds -}}
-      {{- $sec := int . -}}
-      {{- if gt $sec 0 -}}
-        {{- $h := div $sec 3600 -}}
-        {{- $m := div (mod $sec 3600) 60 -}}
-        {{- $s := mod $sec 60 -}}
-        {{- $duration = cond (gt $h 0) (printf "%d:%02d:%02d" $h $m $s) (printf "%d:%02d" $m $s) -}}
-      {{- else -}}
-        {{- warnf "No se pudo derivar duration de YouTube para %q: lengthSeconds=%v status=%q reason=%q" $vidId . $playabilityStatus $playabilityReason -}}
+{{- if not $m.duration -}}
+  {{- $body := dict "context" (dict "client" (dict "hl" "en" "clientName" "WEB" "clientVersion" "2.20210622.10.00")) "videoId" $vidId -}}
+  {{- $opt := dict "method" "POST" "body" (jsonify $body) -}}
+  {{- $api := "https://www.youtube.com/youtubei/v1/player?key=AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8" -}}
+  
+  {{- with try (resources.GetRemote $api $opt) -}}
+    {{- with .Err -}}
+      {{- warnf "YouTubei failed for %s: %s" $vidId . -}}
+    {{- else with .Value -}}
+      {{- $data := .Content | transform.Unmarshal -}}
+      {{- with (index $data "videoDetails" "lengthSeconds") -}}
+        {{- $seconds := . | int -}}
+        {{- $t := $seconds | time.AsTime -}}
+        {{- $dur := $t.Format "4:05" -}}
+        {{- if ge $seconds 3600 -}}
+          {{- $dur = $t.Format "15:04:05" | replaceRE "^0" "" -}}
+        {{- end -}}
+        {{- $m = merge $m (dict "duration" $dur) -}}
       {{- end -}}
-    {{- else -}}
-      {{- warnf "No se pudo obtener lengthSeconds de YouTube para %q: status=%q reason=%q" $vidId $playabilityStatus $playabilityReason -}}
-    {{- end -}}
-  {{- else -}}
-    {{- with $resp.Err -}}
-      {{- warnf "No se pudo obtener metadata de YouTube para %q: %s" $vidId . -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}
 
-{{- return (dict "title" $title "thumb" $thumb "duration" $duration) -}}
+{{- $m = merge $m (dict "thumb" (default (printf "https://i.ytimg.com/vi/%s/hqdefault.jpg" $vidId) $m.thumb)) -}}
+
+{{- return $m -}}
