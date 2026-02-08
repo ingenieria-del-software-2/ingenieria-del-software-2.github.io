@@ -27,6 +27,25 @@
         will-change: transform, translate;
       }
 
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(1rem);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      .hero-animate {
+        opacity: 0;
+        animation: fadeInUp 0.7s ease-out forwards;
+      }
+      
+      .hero-animate-delay-1 { animation-delay: 0.1s; }
+      .hero-animate-delay-2 { animation-delay: 0.2s; }
+
     </style>
 
 </head>
@@ -41,12 +60,12 @@
             
             <!-- Header (Always first) -->
             <header class="flex flex-col items-start mb-10 md:mb-6 lg:mb-8">
-                <div class="mb-4 md:mb-6 flex items-center gap-4 self-start">
+                <div class="mb-4 md:mb-6 flex items-center gap-4 self-start hero-animate hero-animate-delay-1">
                     <span class="px-2 py-0.5 border border-slate-400 text-[10px] md:text-[11px] font-sans text-slate-700 uppercase tracking-widest bg-white font-medium">FIUBA</span>
                     <span class="h-px w-10 bg-slate-300"></span>
                 </div>
 
-                <div class="flex flex-col w-full items-start">
+                <div class="flex flex-col w-full items-start hero-animate hero-animate-delay-2">
                     <h1 class="mask-unified font-sans text-5xl md:text-7xl lg:text-8xl tracking-tighter leading-[0.85] uppercase">
                         <span class="block font-black">INGENIERÍA DEL</span>
                         <span class="block font-medium">SOFTWARE 2</span>
