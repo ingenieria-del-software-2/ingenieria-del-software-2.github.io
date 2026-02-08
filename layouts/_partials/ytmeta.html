@@ -49,52 +49,42 @@ Maintenance notes:
   {{- $durationReason := "" -}}
   {{- $durationDetail := "" -}}
   {{- $api := "https://www.youtube.com/youtubei/v1/player?key=AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8" -}}
-  {{- $clients := slice
-    (dict "name" "ANDROID_TESTSUITE" "version" "1.9.31" "hl" "en" "gl" "US")
-    (dict "name" "WEB" "version" "2.20210622.10.00" "hl" "en" "gl" "US")
+  {{- $body := dict
+    "context" (dict
+      "client" (dict
+        "clientName" "ANDROID_TESTSUITE"
+        "clientVersion" "1.9.31"
+        "hl" "en"
+        "gl" "US"
+      )
+    )
+    "videoId" $vidId
   -}}
+  {{- $opt := dict "method" "POST" "body" (jsonify $body) -}}
 
-  {{- range $clients -}}
-    {{- if not $m.duration -}}
-      {{- $clientName := .name -}}
-      {{- $body := dict
-        "context" (dict
-          "client" (dict
-            "clientName" .name
-            "clientVersion" .version
-            "hl" .hl
-            "gl" .gl
-          )
-        )
-        "videoId" $vidId
-      -}}
-      {{- $opt := dict "method" "POST" "body" (jsonify $body) -}}
-
-      {{- with try (resources.GetRemote $api $opt) -}}
-        {{- with .Err -}}
-          {{- $durationDetail = printf "[%s] error en youtubei/player: %s" $clientName . -}}
-        {{- else with .Value -}}
-          {{- $data := .Content | transform.Unmarshal -}}
-          {{- with $data.playabilityStatus.status -}}
-            {{- $durationStatus = . -}}
-          {{- end -}}
-          {{- with $data.playabilityStatus.reason -}}
-            {{- $durationReason = . -}}
-          {{- end -}}
-          {{- with (index $data "videoDetails" "lengthSeconds") -}}
-            {{- $seconds := . | int -}}
-            {{- if gt $seconds 0 -}}
-              {{- $m = merge $m (dict "duration" $seconds) -}}
-            {{- else -}}
-              {{- $durationDetail = printf "[%s] lengthSeconds inválido (%v)" $clientName . -}}
-            {{- end -}}
-          {{- else -}}
-            {{- $durationDetail = printf "[%s] lengthSeconds ausente en videoDetails" $clientName -}}
-          {{- end -}}
-        {{- else -}}
-          {{- $durationDetail = printf "[%s] youtubei/player sin respuesta y sin error explícito" $clientName -}}
-        {{- end -}}
+  {{- with try (resources.GetRemote $api $opt) -}}
+    {{- with .Err -}}
+      {{- $durationDetail = printf "error en youtubei/player: %s" . -}}
+    {{- else with .Value -}}
+      {{- $data := .Content | transform.Unmarshal -}}
+      {{- with $data.playabilityStatus.status -}}
+        {{- $durationStatus = . -}}
       {{- end -}}
+      {{- with $data.playabilityStatus.reason -}}
+        {{- $durationReason = . -}}
+      {{- end -}}
+      {{- with (index $data "videoDetails" "lengthSeconds") -}}
+        {{- $seconds := . | int -}}
+        {{- if gt $seconds 0 -}}
+          {{- $m = merge $m (dict "duration" $seconds) -}}
+        {{- else -}}
+          {{- $durationDetail = printf "lengthSeconds inválido (%v)" . -}}
+        {{- end -}}
+      {{- else -}}
+        {{- $durationDetail = "lengthSeconds ausente en videoDetails" -}}
+      {{- end -}}
+    {{- else -}}
+      {{- $durationDetail = "youtubei/player sin respuesta y sin error explícito" -}}
     {{- end -}}
   {{- end -}}
 
