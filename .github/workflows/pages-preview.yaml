@@ -18,24 +18,31 @@ defaults:
     shell: bash
 
 jobs:
-  youtube-dlp-diagnostic:
+  youtubei-js-diagnostic:
     if: github.event.action != 'closed' && !github.event.pull_request.head.repo.fork
     runs-on: ubuntu-latest
     steps:
-      - name: Probe YouTube
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
+      - name: Install youtubei.js
+        run: npm install --no-save youtubei.js
+
+      - name: Probe YouTube with youtubei.js
         run: |
-          curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o yt-dlp
-          chmod +x yt-dlp
-
-          ./yt-dlp -J --no-playlist "https://www.youtube.com/watch?v=dQw4w9WgXcQ" > yt_probe.json 2> yt_probe.err || true
-
-          [ -s yt_probe.json ] && jq '{id, title, duration, channel}' yt_probe.json || cat yt_probe.err
+          node scripts/ci/youtubei-probe.js || true
+          [ -s yt_probe.json ] && cat yt_probe.json || cat yt_probe.err
 
       - name: Upload
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: yt-dlp-probe-${{ github.event.pull_request.number }}
+          name: youtubei-js-probe-${{ github.event.pull_request.number }}
           path: yt_probe.*
 
   deploy-pr-preview:
