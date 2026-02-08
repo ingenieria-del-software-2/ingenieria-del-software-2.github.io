@@ -2,65 +2,23 @@
 
 {{- $isDrive := eq $v.type "drive" -}}
 {{- $vidId := "" -}}
-{{- $thumb := $v.thumb -}}
 {{- $title := $v.title -}}
+{{- $thumb := $v.thumb -}}
 {{- $duration := $v.duration -}}
+{{- $driveURL := "" -}}
 
-{{- if not $isDrive -}}
-  {{- $vidId = (replaceRE `^.*(youtu\.be/|v/|u/\w/|embed/|watch\?v=|&v=)([^#&?]{11}).*$` `$2` $v.url) -}}
-  {{- if not $thumb -}}
-    {{- $thumb = printf "https://i.ytimg.com/vi/%s/hqdefault.jpg" $vidId -}}
-  {{- end -}}
-
-  {{- $entryTitle := $title -}}
-  {{- $watchURL := printf "https://www.youtube.com/watch?v=%s" $vidId -}}
-  {{- $oembedURL := printf "https://www.youtube.com/oembed?url=%s&format=json" ($watchURL | urlquery) -}}
-  {{- $oembed := try (resources.GetRemote $oembedURL) -}}
-
-  {{- with $oembed.Err -}}
-    {{- warnf "No se pudo obtener oEmbed de YouTube para %q: %s" $vidId . -}}
-  {{- else with $oembed.Value -}}
-    {{- $oembedData := .Content | transform.Unmarshal -}}
-    {{- if and (not $entryTitle) $oembedData.title -}}
-      {{- $title = $oembedData.title -}}
-    {{- end -}}
-    {{- if $oembedData.thumbnail_url -}}
-      {{- $thumb = $oembedData.thumbnail_url -}}
-    {{- end -}}
-  {{- end -}}
-
-  {{- if not $duration -}}
-    {{- $body := dict "context" (dict "client" (dict "hl" "es" "gl" "AR" "clientName" "WEB" "clientVersion" "2.20220916.00.00" "clientScreen" "WATCH")) "videoId" $vidId | jsonify -}}
-    {{- $opts := dict
-      "method" "POST"
-      "headers" (dict
-        "Content-Type" "application/json"
-        "User-Agent" "Mozilla/5.0"
-        "Origin" "https://www.youtube.com"
-        "Referer" "https://www.youtube.com/"
-      )
-      "body" $body
-    -}}
-    {{- $response := try (resources.GetRemote "https://www.youtube.com/youtubei/v1/player?key=AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8&prettyPrint=false" $opts) -}}
-
-    {{- with $response.Err -}}
-      {{- warnf "No se pudo obtener metadata de YouTube para %q: %s" $vidId . -}}
-    {{- else with $response.Value -}}
-      {{- $data := .Content | transform.Unmarshal -}}
-      {{- if $data.videoDetails -}}
-        {{- $sec := $data.videoDetails.lengthSeconds | int -}}
-        {{- $hour := div $sec 3600 -}}
-        {{- $remSecAfterHour := mod $sec 3600 -}}
-        {{- $min := div $remSecAfterHour 60 -}}
-        {{- $remSec := mod $remSecAfterHour 60 -}}
-        {{- if gt $hour 0 -}}
-          {{- $duration = printf "%d:%02d:%02d" $hour $min $remSec -}}
-        {{- else -}}
-          {{- $duration = printf "%d:%02d" $min $remSec -}}
-        {{- end -}}
-      {{- end -}}
-    {{- end -}}
-  {{- end -}}
+{{- if $isDrive -}}
+  {{- $driveURL = $v.url | replaceRE `/view$` `/preview` -}}
+{{- else -}}
+  {{- $vidId = replaceRE `^.*(youtu\.be/|v/|u/\w/|embed/|watch\?v=|&v=)([^#&?]{11}).*$` `$2` $v.url -}}
+  {{- $cacheKey := cond (ne $vidId "") $vidId $v.url -}}
+  {{- $meta := partialCached "ytmeta.html"
+    (dict "vidId" $vidId "title" $title "thumb" $thumb "duration" $duration)
+    $cacheKey
+  -}}
+  {{- $title = $meta.title -}}
+  {{- $thumb = $meta.thumb -}}
+  {{- $duration = $meta.duration -}}
 {{- end -}}
 
 <a
@@ -68,13 +26,13 @@
   class="group cursor-pointer animate-fade-up block"
   data-provider="{{ if $isDrive }}drive{{ else }}youtube{{ end }}"
   data-id="{{ $vidId }}"
-  data-url="{{ if $isDrive }}{{ $v.url | replaceRE `/view$` `/preview` }}{{ end }}"
+  data-url="{{ if $isDrive }}{{ $driveURL }}{{ end }}"
   onclick="openMedia(this); return false;"
 >
   <div class="relative aspect-video bg-gray-50 overflow-hidden rounded-lg mb-3 border border-gray-100 transition-[transform,box-shadow,border-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-0.5 group-hover:border-slate-300 group-hover:shadow-[0_10px_20px_-16px_rgba(15,23,42,0.28)]">
     {{ if $isDrive }}
       <iframe
-        src="{{ $v.url | replaceRE `/view$` `/preview` }}"
+        src="{{ $driveURL }}"
         class="w-full h-full transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-[1.01]"
         frameborder="0"
         allowfullscreen
