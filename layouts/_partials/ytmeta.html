@@ -73,12 +73,27 @@ Maintenance notes:
 
   {{- with $resp.Value -}}
     {{- $data := .Content | transform.Unmarshal -}}
-    {{- with $data.videoDetails -}}
-      {{- $sec := int .lengthSeconds -}}
-      {{- $h := div $sec 3600 -}}
-      {{- $m := div (mod $sec 3600) 60 -}}
-      {{- $s := mod $sec 60 -}}
-      {{- $duration = cond (gt $h 0) (printf "%d:%02d:%02d" $h $m $s) (printf "%d:%02d" $m $s) -}}
+    {{- $playabilityStatus := "" -}}
+    {{- $playabilityReason := "" -}}
+    {{- with $data.playabilityStatus.status -}}
+      {{- $playabilityStatus = . -}}
+    {{- end -}}
+    {{- with $data.playabilityStatus.reason -}}
+      {{- $playabilityReason = . -}}
+    {{- end -}}
+
+    {{- with $data.videoDetails.lengthSeconds -}}
+      {{- $sec := int . -}}
+      {{- if gt $sec 0 -}}
+        {{- $h := div $sec 3600 -}}
+        {{- $m := div (mod $sec 3600) 60 -}}
+        {{- $s := mod $sec 60 -}}
+        {{- $duration = cond (gt $h 0) (printf "%d:%02d:%02d" $h $m $s) (printf "%d:%02d" $m $s) -}}
+      {{- else -}}
+        {{- warnf "No se pudo derivar duration de YouTube para %q: lengthSeconds=%v status=%q reason=%q" $vidId . $playabilityStatus $playabilityReason -}}
+      {{- end -}}
+    {{- else -}}
+      {{- warnf "No se pudo obtener lengthSeconds de YouTube para %q: status=%q reason=%q" $vidId $playabilityStatus $playabilityReason -}}
     {{- end -}}
   {{- else -}}
     {{- with $resp.Err -}}
