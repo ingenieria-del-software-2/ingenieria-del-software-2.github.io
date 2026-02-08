@@ -1,63 +1,52 @@
-{{/*------------------------------------------------------------------------------
-ytmeta.html — Hugo partial (intended to be used with partialCached)
-
-What it does:
-- Given a YouTube videoId, it resolves the metadata needed to render a media card:
-  - title
-  - thumb (thumbnail URL)
-  - duration (raw value; usually seconds from YouTube)
-
-Why it looks weird:
-- Hugo can’t get duration from oEmbed.
-- YouTube oEmbed does NOT include duration (only title/thumbnail/etc).
-- So we intentionally do TWO requests:
-  1) oEmbed: https://www.youtube.com/oembed?...        → title + thumbnail_url
-  2) youtubei/player: https://www.youtube.com/youtubei/v1/player?... → lengthSeconds
-
-How to use (IMPORTANT):
-- Call this partial with partialCached to avoid doing 2 HTTP requests per render:
-    {{ $meta := partialCached "ytmeta.html" (dict "vidId" $vidId "title" $title "thumb" $thumb "duration" $duration) $vidId }}
-  Cache key: $vidId (if you need to vary by locale/region, use a composite key).
-
-Fallback behavior:
-- If oEmbed fails, we keep any title/thumb coming from frontmatter.
-- If thumb is still empty, we fall back to i.ytimg.com/vi/<id>/hqdefault.jpg
-- If youtubei/player fails, duration stays empty (caller can hide the badge).
-
-Maintenance notes:
-- youtubei/player uses YouTube’s public “WEB” key/endpoint behavior and may break if YouTube changes it.
-- Headers (Origin/Referer/User-Agent) are set so YouTube responds like it would to a browser.
-- Don’t “optimize” this into one call: there’s no simple unauthenticated endpoint that returns
-  oEmbed + duration reliably in one shot.
-
-------------------------------------------------------------------------------*/}}
 {{- $id := .vidId -}}
 {{- $m := dict "title" .title "thumb" .thumb "duration" .duration -}}
 
-{{- $oembed := try (resources.GetRemote (printf "https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=%s&format=json" $id)) -}}
-{{- with $oembed.Err -}}
-  {{- warnf "YT oEmbed error [%s]: %v" $id . -}}
-{{- else with $oembed.Value -}}
-  {{- $d := .Content | transform.Unmarshal -}}
-  {{- $m = merge $m (dict "title" (default $d.title $m.title) "thumb" (default $d.thumbnail_url $m.thumb)) -}}
-{{- end -}}
-
 {{- if not $m.duration -}}
-  {{- $body := dict "context" (dict "client" (dict "clientName" "WEB" "clientVersion" "2.20250201.00.00")) "videoId" $id -}}
-  {{- $opts := dict "method" "POST" "headers" (dict "Content-Type" "application/json") "body" (jsonify $body) -}}
+  {{- $proxy := "https://corsproxy.io/?" -}}
+  {{- $targetUrl := "https://www.youtube.com/youtubei/v1/player" -}}
+  {{- $finalUrl := printf "%s%s" $proxy (urlquery $targetUrl) -}}
+
+  {{- $body := dict "context" (dict "client" (dict "clientName" "WEB" "clientVersion" "2.20240313.05.00" "hl" "es-419" "gl" "AR")) "videoId" $id -}}
+
+  {{- $opts := dict 
+      "method" "POST" 
+      "headers" (dict 
+          "Content-Type" "application/json"
+          "User-Agent" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
+          "Origin" "https://www.youtube.com"
+      ) 
+      "body" (jsonify $body) 
+  -}}
+
+  {{- $res := try (resources.GetRemote $finalUrl $opts) -}}
   
-  {{- $yt := try (resources.GetRemote "https://www.youtube.com/youtubei/v1/player?key=AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8" $opts) -}}
-  {{- with $yt.Err -}}
-    {{- warnf "YT PlayerAPI error [%s]: %v" $id . -}}
-  {{- else with $yt.Value -}}
-    {{- $d := .Content | transform.Unmarshal -}}
-    {{- if $d.videoDetails.lengthSeconds -}}
-      {{- $m = merge $m (dict "duration" (int $d.videoDetails.lengthSeconds)) -}}
+  {{- with $res.Err -}}
+    {{- warnf "YT [%s]: Error de Red/Proxy -> %v" $id . -}}
+  {{- else with $res.Value -}}
+    {{- $raw := .Content -}}
+    {{- $trimmed := trim $raw " \n\r\t" -}}
+
+    {{- if and $raw (hasPrefix $trimmed "{") -}}
+      {{- $d := transform.Unmarshal $raw -}}
+      
+      {{- if (and $d.videoDetails $d.videoDetails.lengthSeconds) -}}
+        {{- $m = merge $m (dict "duration" (int $d.videoDetails.lengthSeconds)) -}}
+        {{- if not $m.title -}}{{- $m = merge $m (dict "title" $d.videoDetails.title) -}}{{- end -}}
+      {{- else -}}
+        {{- $s := $d.playabilityStatus -}}
+        {{- warnf "YT [%s]: YouTube rechazó -> Status: %v | Reason: %v" $id (default "UNK" $s.status) (default "N/A" $s.reason) -}}
+      {{- end -}}
     {{- else -}}
-      {{- $s := $d.playabilityStatus -}}
-      {{- warnf "YT Duration missing [%s]: status=%q reason=%q" $id (default "UNKNOWN" $s.status) (default "No reason" $s.reason) -}}
+      {{/* Si llegamos acá, el proxy devolvió algo que no es JSON (probablemente HTML de error) */}}
+      {{- warnf "YT [%s]: Respuesta no válida (CORS/Proxy error). Payload: %.20s..." $id $raw -}}
     {{- end -}}
+  {{- end -}}
+
+  {{/* Log final si después de todo la duración sigue vacía */}}
+  {{- if not $m.duration -}}
+    {{- warnf "YT [%s]: No se pudo obtener la duración final." $id -}}
   {{- end -}}
 {{- end -}}
 
-{{- return merge $m (dict "thumb" (default (printf "https://i.ytimg.com/vi/%s/hqdefault.jpg" $id) $m.thumb)) -}}
+{{- $m = merge $m (dict "thumb" (default (printf "https://i.ytimg.com/vi/%s/hqdefault.jpg" $id) $m.thumb)) -}}
+{{- return $m -}}
