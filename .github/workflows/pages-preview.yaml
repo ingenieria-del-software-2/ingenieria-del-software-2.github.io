@@ -36,7 +36,10 @@ jobs:
       - name: Probe YouTube with youtubei.js
         run: |
           node scripts/ci/youtubei-probe.js 2> yt_probe.lib.err || true
-          [ -s yt_probe.json ] && cat yt_probe.json || cat yt_probe.err
+          for f in yt_probe.json yt_probe.err yt_probe.lib.err; do
+            [ -s "$f" ] && { cat "$f"; break; }
+          done
+          exit 0
 
       - name: Upload
         if: always()
