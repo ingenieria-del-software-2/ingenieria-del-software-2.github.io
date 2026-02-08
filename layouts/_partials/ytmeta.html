@@ -31,78 +31,33 @@ Maintenance notes:
   oEmbed + duration reliably in one shot.
 
 ------------------------------------------------------------------------------*/}}
-{{- $vidId := .vidId -}}
+{{- $id := .vidId -}}
 {{- $m := dict "title" .title "thumb" .thumb "duration" .duration -}}
 
-{{- $oembedUrl := printf "https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=%s&format=json" $vidId -}}
-{{- with try (resources.GetRemote $oembedUrl) -}}
-  {{- with .Err -}}
-    {{- warnf "OEmbed failed for %s: %s" $vidId . -}}
-  {{- else with .Value -}}
-    {{- $d := .Content | transform.Unmarshal -}}
-    {{- $m = merge $m (dict "title" (default $d.title $m.title) "thumb" (default $d.thumbnail_url $m.thumb)) -}}
-  {{- end -}}
+{{- $oembed := try (resources.GetRemote (printf "https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=%s&format=json" $id)) -}}
+{{- with $oembed.Err -}}
+  {{- warnf "YT oEmbed error [%s]: %v" $id . -}}
+{{- else with $oembed.Value -}}
+  {{- $d := .Content | transform.Unmarshal -}}
+  {{- $m = merge $m (dict "title" (default $d.title $m.title) "thumb" (default $d.thumbnail_url $m.thumb)) -}}
 {{- end -}}
 
 {{- if not $m.duration -}}
-  {{- $durationStatus := "" -}}
-  {{- $durationReason := "" -}}
-  {{- $durationDetail := "" -}}
-  {{- $api := "https://www.youtube.com/youtubei/v1/player?key=AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8" -}}
-  {{- $headers := dict
-    "Content-Type" (slice "application/json")
-    "Origin" (slice "https://www.youtube.com")
-    "Referer" (slice "https://www.youtube.com/")
-    "Accept-Language" (slice "en-US,en;q=0.9")
-    "User-Agent" (slice "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36")
-    "X-Youtube-Client-Name" (slice "1")
-    "X-Youtube-Client-Version" (slice "2.20250201.00.00")
-  -}}
-  {{- $body := dict
-    "context" (dict
-      "client" (dict
-        "clientName" "WEB"
-        "clientVersion" "2.20250201.00.00"
-        "hl" "en"
-        "gl" "US"
-      )
-    )
-    "videoId" $vidId
-  -}}
-  {{- $opt := dict "method" "POST" "headers" $headers "body" (jsonify $body) -}}
-
-  {{- with try (resources.GetRemote $api $opt) -}}
-    {{- with .Err -}}
-      {{- $durationDetail = printf "error en youtubei/player: %s" . -}}
-    {{- else with .Value -}}
-      {{- $data := .Content | transform.Unmarshal -}}
-      {{- with $data.playabilityStatus.status -}}
-        {{- $durationStatus = . -}}
-      {{- end -}}
-      {{- with $data.playabilityStatus.reason -}}
-        {{- $durationReason = . -}}
-      {{- end -}}
-      {{- with (index $data "videoDetails" "lengthSeconds") -}}
-        {{- $seconds := . | int -}}
-        {{- if gt $seconds 0 -}}
-          {{- $m = merge $m (dict "duration" $seconds) -}}
-        {{- else -}}
-          {{- $durationDetail = printf "lengthSeconds inválido (%v)" . -}}
-        {{- end -}}
-      {{- else -}}
-        {{- $durationDetail = "lengthSeconds ausente en videoDetails" -}}
-      {{- end -}}
+  {{- $body := dict "context" (dict "client" (dict "clientName" "WEB" "clientVersion" "2.20250201.00.00")) "videoId" $id -}}
+  {{- $opts := dict "method" "POST" "headers" (dict "Content-Type" "application/json") "body" (jsonify $body) -}}
+  
+  {{- $yt := try (resources.GetRemote "https://www.youtube.com/youtubei/v1/player?key=AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8" $opts) -}}
+  {{- with $yt.Err -}}
+    {{- warnf "YT PlayerAPI error [%s]: %v" $id . -}}
+  {{- else with $yt.Value -}}
+    {{- $d := .Content | transform.Unmarshal -}}
+    {{- if $d.videoDetails.lengthSeconds -}}
+      {{- $m = merge $m (dict "duration" (int $d.videoDetails.lengthSeconds)) -}}
     {{- else -}}
-      {{- $durationDetail = "youtubei/player sin respuesta y sin error explícito" -}}
+      {{- $s := $d.playabilityStatus -}}
+      {{- warnf "YT Duration missing [%s]: status=%q reason=%q" $id (default "UNKNOWN" $s.status) (default "No reason" $s.reason) -}}
     {{- end -}}
-  {{- end -}}
-
-  {{- if not $m.duration -}}
-    {{- $durationDetail = default "sin detalle adicional" $durationDetail -}}
-    {{- warnf "No se pudo obtener duration de YouTube para %q: status=%q reason=%q detail=%q" $vidId $durationStatus $durationReason $durationDetail -}}
   {{- end -}}
 {{- end -}}
 
-{{- $m = merge $m (dict "thumb" (default (printf "https://i.ytimg.com/vi/%s/hqdefault.jpg" $vidId) $m.thumb)) -}}
-
-{{- return $m -}}
+{{- return merge $m (dict "thumb" (default (printf "https://i.ytimg.com/vi/%s/hqdefault.jpg" $id) $m.thumb)) -}}
