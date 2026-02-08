@@ -18,7 +18,7 @@ async function probe() {
     }
 
     const youtube = await Innertube.create();
-    const video = await youtube.getInfo('dQw4w9WgXcQ');
+    const video = await youtube.getBasicInfo('dQw4w9WgXcQ');
 
     const data = {
       id: video?.basic_info?.id ?? null,
