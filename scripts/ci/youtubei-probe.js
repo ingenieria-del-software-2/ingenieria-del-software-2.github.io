@@ -1,40 +1,17 @@
 const fs = require('fs');
+const { Innertube } = require('youtubei.js');
 
-async function resolveInnertube() {
+(async () => {
   try {
-    return require('youtubei.js').Innertube;
-  } catch (_err) {
-    const mod = await import('youtubei.js');
-    return mod.Innertube || (mod.default && mod.default.Innertube);
-  }
-}
+    const yt = await Innertube.create();
+    const info = await yt.getBasicInfo('dQw4w9WgXcQ');
 
-async function probe() {
-  try {
-    const Innertube = await resolveInnertube();
+    const data = JSON.stringify(info.basic_info, ['id', 'title', 'duration', 'author'], 2);
 
-    if (!Innertube || typeof Innertube.create !== 'function') {
-      throw new Error('No se pudo resolver Innertube desde youtubei.js');
-    }
-
-    const youtube = await Innertube.create();
-    const video = await youtube.getBasicInfo('dQw4w9WgXcQ');
-
-    const data = {
-      id: video?.basic_info?.id ?? null,
-      title: video?.basic_info?.title ?? null,
-      duration: video?.basic_info?.duration ?? null,
-      channel: video?.basic_info?.author ?? null
-    };
-
-    console.log(JSON.stringify(data, null, 2));
-    fs.writeFileSync('yt_probe.json', JSON.stringify(data, null, 2));
+    console.log(data);
+    fs.writeFileSync('yt_probe.json', data);
   } catch (err) {
-    const msg = err?.stack || err?.message || String(err);
-    console.error('Error:', msg);
-    fs.writeFileSync('yt_probe.err', `${msg}\n`);
+    fs.writeFileSync('yt_probe.err', err.stack || String(err));
     process.exit(1);
   }
-}
-
-probe();
+})();
