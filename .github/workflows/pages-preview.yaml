@@ -27,14 +27,12 @@ jobs:
         with:
           fetch-depth: 0
           submodules: recursive
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Setup Go
+        uses: actions/setup-go@v5
         with:
-          node-version: "18"
-      - name: Install dependencies
-        run: npm ci
+          go-version: "1.23"
       - name: Run small YouTube probe
-        run: npm run probe:yt | tee probe.json
+        run: go run ./scripts/ci/probe.go | tee probe.json
       - name: Cat probe output
         run: |
           echo "::group::probe.json"
