@@ -153,14 +153,14 @@
         class="col-span-1 lg:col-span-9 xl:col-span-10 px-4 md:px-6 lg:px-10 py-6 md:py-8"
       >
         <!-- Mobile Quick Unit Selector -->
-        <div class="lg:hidden mb-8">
-          <div class="flex flex-wrap gap-2 pb-2">
+        <div class="lg:hidden mb-6">
+          <div class="flex flex-wrap gap-1.5">
             {{ range $index, $section := .Site.Data.material.sections }}
             <a
               href="#desktop-section-{{ .id }}"
               data-target="desktop-section-{{ .id }}"
               onclick="switchDesktopSection('{{ .id }}'); return false;"
-              class="mobile-nav-item px-2.5 py-1.5 border text-[10px] font-sans font-medium uppercase tracking-widest rounded-full whitespace-nowrap transition-colors {{ if eq $index 0 }}bg-black text-white border-black{{ else }}bg-white text-text-muted border-gray-100 hover:bg-gray-50{{ end }}"
+              class="mobile-nav-item px-2.5 py-1 border text-[10px] font-sans font-medium uppercase tracking-widest rounded-full whitespace-nowrap transition-colors {{ if eq $index 0 }}bg-black text-white border-black{{ else }}bg-white text-text-muted border-gray-100 hover:bg-gray-50{{ end }}"
               >{{ .id }}</a
             >
             {{ end }}
