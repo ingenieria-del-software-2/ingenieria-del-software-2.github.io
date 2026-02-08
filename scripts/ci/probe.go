@@ -16,7 +16,21 @@ type Out struct {
 }
 
 func main() {
-	v, err := (&youtube.Client{}).GetVideo("2Z4nCvbCGRE")
+	client := &youtube.Client{}
+	ids := []string{
+		"dQw4w9WgXcQ",
+		"jNQXAC9IVRw",
+		"VKadcLB5uyA",
+	}
+
+	var v *youtube.Video
+	var err error
+	for _, id := range ids {
+		v, err = client.GetVideo(id)
+		if err == nil {
+			break
+		}
+	}
 	if err != nil {
 		panic(err)
 	}
