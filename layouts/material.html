@@ -96,7 +96,8 @@
                         </a>
                     {{ else }}
                         {{ $vidId := replaceRE `^.*(youtu\.be/|v/|u/\w/|embed/|watch\?v=|&v=)([^#&?]{11}).*$` `$2` .url }}
-                        {{ $title := .title }}
+                        {{ $entryTitle := .title }}
+                        {{ $title := $entryTitle }}
                         {{ $duration := "" }}
 
                         {{ $body := dict "context" (dict "client" (dict "hl" "es" "gl" "AR" "clientName" "WEB" "clientVersion" "2.20220916.00.00" "clientScreen" "WATCH")) "videoId" $vidId | jsonify }}
@@ -110,11 +111,13 @@
                             )
                             "body" $body
                         }}
-                        {{ $response := resources.GetRemote "https://www.youtube.com/youtubei/v1/player?key=AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8&prettyPrint=false" $opts }}
+                        {{ $response := try (resources.GetRemote "https://www.youtube.com/youtubei/v1/player?key=AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8&prettyPrint=false" $opts) }}
 
-                        {{ if $response }}
-                            {{ $data := $response.Content | transform.Unmarshal }}
-                            {{ if and (not $title) $data.videoDetails }}
+                        {{ with $response.Err }}
+                            {{ warnf "No se pudo obtener metadata de YouTube para %q: %s" $vidId . }}
+                        {{ else with $response.Value }}
+                            {{ $data := .Content | transform.Unmarshal }}
+                            {{ if and (not $entryTitle) $data.videoDetails }}
                                 {{ $title = $data.videoDetails.title }}
                             {{ end }}
                             {{ if $data.videoDetails }}
