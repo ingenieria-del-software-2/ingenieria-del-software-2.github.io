@@ -84,7 +84,6 @@ params:
 
   search:
     enable: false
-    type: flexsearch
 
   footer:
     displayCopyright: false
