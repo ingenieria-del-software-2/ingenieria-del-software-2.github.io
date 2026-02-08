@@ -142,24 +142,17 @@
                         </header>
                         
                         <ul class="space-y-6">
-                            <li class="group cursor-pointer">
-                                <time datetime="2026-03-25" class="text-[10px] font-sans text-slate-500 font-medium block mb-1 group-hover:text-slate-800 transition-colors">25 MAR</time>
+                            {{ range first 2 (where .Site.RegularPages "Section" "blog") }}
+                            <li class="group cursor-pointer relative">
+                                <time datetime="{{ .Date.Format "2006-01-02" }}" class="text-[10px] font-sans text-slate-500 font-medium block mb-1 group-hover:text-slate-800 transition-colors">{{ .Date.Format "02 Jan" | upper }}</time>
                                 <div class="flex items-start justify-between gap-4">
-                                    <p class="text-sm font-semibold text-slate-700 group-hover:text-slate-900 transition-colors leading-tight">
-                                        Formación de Grupos Obligatoria
-                                    </p>
+                                    <a href="{{ .RelPermalink }}" class="text-sm font-semibold text-slate-700 group-hover:text-slate-900 transition-colors leading-tight before:absolute before:inset-0">
+                                        {{ .Title }}
+                                    </a>
                                     <span class="material-symbols-outlined text-[16px] text-slate-400 group-hover:text-slate-600 group-hover:translate-x-0.5 transition-all">arrow_forward</span>
                                 </div>
                             </li>
-                            <li class="group cursor-pointer">
-                                <time datetime="2026-03-20" class="text-[10px] font-sans text-slate-500 font-medium block mb-1 group-hover:text-slate-800 transition-colors">20 MAR</time>
-                                <div class="flex items-start justify-between gap-4">
-                                    <p class="text-sm font-semibold text-slate-700 group-hover:text-slate-900 transition-colors leading-tight">
-                                        Clase Inaugural: Arquitectura
-                                    </p>
-                                    <span class="material-symbols-outlined text-[16px] text-slate-400 group-hover:text-slate-600 group-hover:translate-x-0.5 transition-all">arrow_forward</span>
-                                </div>
-                            </li>
+                            {{ end }}
                         </ul>
                     </div>
                 </section>
