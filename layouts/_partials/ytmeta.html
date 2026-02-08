@@ -45,25 +45,47 @@ Maintenance notes:
 {{- end -}}
 
 {{- if not $m.duration -}}
+  {{- $durationStatus := "" -}}
+  {{- $durationReason := "" -}}
+  {{- $durationDetail := "" -}}
   {{- $body := dict "context" (dict "client" (dict "hl" "en" "clientName" "WEB" "clientVersion" "2.20210622.10.00")) "videoId" $vidId -}}
   {{- $opt := dict "method" "POST" "body" (jsonify $body) -}}
   {{- $api := "https://www.youtube.com/youtubei/v1/player?key=AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8" -}}
   
   {{- with try (resources.GetRemote $api $opt) -}}
     {{- with .Err -}}
-      {{- warnf "YouTubei failed for %s: %s" $vidId . -}}
+      {{- $durationDetail = printf "error en youtubei/player: %s" . -}}
     {{- else with .Value -}}
       {{- $data := .Content | transform.Unmarshal -}}
+      {{- with $data.playabilityStatus.status -}}
+        {{- $durationStatus = . -}}
+      {{- end -}}
+      {{- with $data.playabilityStatus.reason -}}
+        {{- $durationReason = . -}}
+      {{- end -}}
       {{- with (index $data "videoDetails" "lengthSeconds") -}}
         {{- $seconds := . | int -}}
-        {{- $t := $seconds | time.AsTime -}}
-        {{- $dur := $t.Format "4:05" -}}
-        {{- if ge $seconds 3600 -}}
-          {{- $dur = $t.Format "15:04:05" | replaceRE "^0" "" -}}
+        {{- if gt $seconds 0 -}}
+          {{- $t := $seconds | time.AsTime -}}
+          {{- $dur := $t.Format "4:05" -}}
+          {{- if ge $seconds 3600 -}}
+            {{- $dur = $t.Format "15:04:05" | replaceRE "^0" "" -}}
+          {{- end -}}
+          {{- $m = merge $m (dict "duration" $dur) -}}
+        {{- else -}}
+          {{- $durationDetail = printf "lengthSeconds inválido (%v)" . -}}
         {{- end -}}
-        {{- $m = merge $m (dict "duration" $dur) -}}
+      {{- else -}}
+        {{- $durationDetail = "lengthSeconds ausente en videoDetails" -}}
       {{- end -}}
+    {{- else -}}
+      {{- $durationDetail = "youtubei/player sin respuesta y sin error explícito" -}}
     {{- end -}}
+  {{- end -}}
+
+  {{- if not $m.duration -}}
+    {{- $durationDetail = default "sin detalle adicional" $durationDetail -}}
+    {{- warnf "No se pudo obtener duration de YouTube para %q: status=%q reason=%q detail=%q" $vidId $durationStatus $durationReason $durationDetail -}}
   {{- end -}}
 {{- end -}}
 
