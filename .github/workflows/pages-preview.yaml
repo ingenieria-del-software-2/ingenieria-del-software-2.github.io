@@ -33,20 +33,32 @@ jobs:
           node-version: "18"
       - name: Install dependencies
         run: npm ci
-      - name: Generate YouTube metadata
-        run: npm run update:yt
-      - name: Show generated metadata (probe)
+      - name: Run small YouTube probe
+        run: npm run probe:yt | tee probe.json
+      - name: Upload probe output
+        uses: actions/upload-artifact@v4
+        with:
+          name: youtube-probe
+          path: probe.json
+
+  cat-youtube-probe:
+    if: github.event.pull_request.head.repo.fork == false && github.event.action != 'closed'
+    needs: probe-youtube-metadata
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download probe output
+        uses: actions/download-artifact@v4
+        with:
+          name: youtube-probe
+      - name: Cat probe output
         run: |
-          echo "::group::data/ytmeta/generated.json"
-          cat data/ytmeta/generated.json
+          echo "::group::probe.json"
+          cat probe.json
           echo "::endgroup::"
-      - name: Validate metadata richness
-        run: |
-          node -e 'const fs=require("node:fs"); const path="data/ytmeta/generated.json"; const raw=fs.readFileSync(path,"utf8"); const data=JSON.parse(raw); const values=Object.values(data); const total=values.length; const enriched=values.filter(v=>v && (v.title!==null || v.duration!==null)).length; const fallbackOnly=total-enriched; console.log(`ytmeta entries=${total}, enriched=${enriched}, fallback_only=${fallbackOnly}`); if(total===0){console.error("No YouTube IDs were parsed into generated metadata."); process.exit(1);} if(enriched===0){console.error("All entries are fallback-only (title and duration are null)."); process.exit(1);}'
 
   deploy-pr-preview:
     if: github.event.pull_request.head.repo.fork == false && github.event.action != 'closed'
-    needs: probe-youtube-metadata
+    needs: cat-youtube-probe
     runs-on: ubuntu-latest
     env:
       HUGO_VERSION: 0.146.0

@@ -1,6 +1,7 @@
 {
   "scripts": {
     "dev": "hugo mod tidy && hugo server --logLevel debug --disableFastRender -p 1313",
+    "probe:yt": "node scripts/ci/probe.mjs",
     "update:yt": "node scripts/ci/youtubei.mjs",
     "build": "npm run build:prod",
     "build:prod": "hugo mod tidy && npm run update:yt && HUGO_ENVIRONMENT=production HUGO_ENV=production sh -c 'hugo --gc --minify ${BASE_URL:+--baseURL \"$BASE_URL\"}'",
