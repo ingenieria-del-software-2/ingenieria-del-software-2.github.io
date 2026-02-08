@@ -17,6 +17,8 @@
       }
       .reveal-item {
         opacity: 0;
+      }
+      .reveal-item.shuffled-reveal {
         animation: fadeIn 0.5s ease-out forwards;
       }
     </style>
@@ -57,7 +59,7 @@
           {{ range .Site.Data.team.team }}
           <div class="group relative reveal-item">
             <div
-              class="relative aspect-[4/5] rounded-2xl overflow-hidden mb-4 bg-slate-50 border border-slate-100 transition-[transform,box-shadow,border-color] duration-300 group-hover:-translate-y-0.5 group-hover:border-accent/45 group-hover:shadow-xl group-hover:shadow-accent/10"
+              class="relative aspect-[4/5] rounded-2xl overflow-hidden mb-4 bg-slate-50 border border-slate-100 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:border-accent/45 group-hover:shadow-xl group-hover:shadow-accent/10"
             >
               <img
                 src="{{ .pic }}"
@@ -142,6 +144,7 @@
           // Asignar delays dinámicamente para el efecto cascada
           Array.from(grid.children).forEach((el, i) => {
             el.style.animationDelay = `${i * 30}ms`;
+            el.classList.add('shuffled-reveal');
           });
 
       });
