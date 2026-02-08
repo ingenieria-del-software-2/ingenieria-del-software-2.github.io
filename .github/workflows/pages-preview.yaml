@@ -103,6 +103,11 @@ jobs:
         env:
           PREVIEW_URL: ${{ steps.preview_urls.outputs.preview_url }}
         run: npm run build:prod:mr-preview
+      - name: Cat generated YouTube metadata
+        run: |
+          echo "::group::data/ytmeta/generated.json"
+          cat data/ytmeta/generated.json
+          echo "::endgroup::"
 
       - name: Deploy preview and comment PR
         uses: rossjrw/pr-preview-action@v1

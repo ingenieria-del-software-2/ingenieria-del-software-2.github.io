@@ -1,7 +1,7 @@
 import { Innertube } from 'youtubei.js';
 
 const yt = await Innertube.create();
-const { basic_info } = await yt.getBasicInfo('dQw4w9WgXcQ');
+const { basic_info } = await yt.getBasicInfo('VKadcLB5uyA');
 
 console.log(JSON.stringify({
   id: basic_info.id ?? 'VKadcLB5uyA',
