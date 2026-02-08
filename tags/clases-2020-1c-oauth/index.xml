@@ -1,0 +1,10 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ingeniería del Software 2 – Clases 2020-1C Oauth</title><link>https://ingenieria-del-software-2.github.io/tags/clases-2020-1c-oauth/</link><description>Recent content in Clases 2020-1C Oauth on Ingeniería del Software 2</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 18 Jun 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://ingenieria-del-software-2.github.io/tags/clases-2020-1c-oauth/index.xml" rel="self" type="application/rss+xml"/><item><title>Diapositivas de clase de OAuth</title><link>https://ingenieria-del-software-2.github.io/blog/2020-06-18-clase-8/</link><pubDate>Thu, 18 Jun 2020 00:00:00 +0000</pubDate><guid>https://ingenieria-del-software-2.github.io/blog/2020-06-18-clase-8/</guid><description>
+&lt;p>Buenas,les comparto las diapositivas de la clase introductoria a OAuth&lt;/p>
+&lt;style>
+.responsive-wrap iframe{ max-width: 100%;}
+&lt;/style>
+&lt;div class="responsive-wrap">
+&lt;!-- this is the embed code provided by Google -->
+&lt;iframe src="https://docs.google.com/presentation/d/1oY3a5hPx_MdCDFl3kS0BUWKQQ7AVcqzdim41wH3_G_0/embed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">&lt;/iframe>
+&lt;!-- Google embed ends -->
+&lt;/div></description></item></channel></rss>
