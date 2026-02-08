@@ -73,94 +73,7 @@
 
             <div class="grid min-w-0 grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-3">
                 {{ range .videos }}
-                    {{ if eq .type "drive" }}
-                        <a href="#" class="group cursor-pointer animate-fade-up block" 
-                           data-url="{{ .url | replaceRE `/view$` `/preview` }}"
-                           onclick="handleDriveClick(this); return false;">
-                            <div class="relative aspect-video bg-gray-50 overflow-hidden rounded-lg mb-3 border border-gray-100 transition-[transform,box-shadow,border-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-0.5 group-hover:border-slate-300 group-hover:shadow-[0_10px_20px_-16px_rgba(15,23,42,0.28)]">
-                                <iframe src="{{ .url | replaceRE `/view$` `/preview` }}" class="w-full h-full transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-[1.01]" frameborder="0" allowfullscreen loading="lazy" style="pointer-events: none;"></iframe>
-                                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/35 via-slate-900/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                    <span class="w-11 h-11 rounded-full bg-slate-900/60 ring-1 ring-white/60 shadow-md flex items-center justify-center transform translate-y-1.5 scale-95 group-hover:translate-y-0 group-hover:scale-100 transition-all duration-300" aria-hidden="true">
-                                        <span class="block h-0 w-0 border-y-[6px] border-y-transparent border-l-[10px] border-l-white ml-0.5"></span>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="flex flex-col gap-1.5">
-                                <h3 class="font-sans font-semibold text-sm text-text-main group-hover:text-title-accent transition-colors duration-300 leading-5 overflow-hidden [overflow-wrap:anywhere] max-h-[3.75rem] xl:max-h-[2.5rem] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:3] xl:[-webkit-line-clamp:2] min-h-[3.75rem] xl:min-h-[2.5rem]">
-                                    {{ .title }}
-                                </h3>
-                                {{ with .description }}
-                                <p class="text-[10px] text-text-muted group-hover:text-slate-700 transition-colors duration-300 leading-4 overflow-hidden [overflow-wrap:anywhere] max-h-[2rem] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]">{{ . }}</p>
-                                {{ end }}
-                            </div>
-                        </a>
-                    {{ else }}
-                        {{ $vidId := replaceRE `^.*(youtu\.be/|v/|u/\w/|embed/|watch\?v=|&v=)([^#&?]{11}).*$` `$2` .url }}
-                        {{ $entryTitle := .title }}
-                        {{ $title := $entryTitle }}
-                        {{ $duration := "" }}
-
-                        {{ $body := dict "context" (dict "client" (dict "hl" "es" "gl" "AR" "clientName" "WEB" "clientVersion" "2.20220916.00.00" "clientScreen" "WATCH")) "videoId" $vidId | jsonify }}
-                        {{ $opts := dict 
-                            "method" "POST"
-                            "headers" (dict 
-                                "Content-Type" "application/json"
-                                "User-Agent" "Mozilla/5.0"
-                                "Origin" "https://www.youtube.com"
-                                "Referer" "https://www.youtube.com/"
-                            )
-                            "body" $body
-                        }}
-                        {{ $response := try (resources.GetRemote "https://www.youtube.com/youtubei/v1/player?key=AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8&prettyPrint=false" $opts) }}
-
-                        {{ with $response.Err }}
-                            {{ warnf "No se pudo obtener metadata de YouTube para %q: %s" $vidId . }}
-                        {{ else with $response.Value }}
-                            {{ $data := .Content | transform.Unmarshal }}
-                            {{ if and (not $entryTitle) $data.videoDetails }}
-                                {{ $title = $data.videoDetails.title }}
-                            {{ end }}
-                            {{ if $data.videoDetails }}
-                                {{ $sec := $data.videoDetails.lengthSeconds | int }}
-                                {{ $hour := div $sec 3600 }}
-                                {{ $remSecAfterHour := mod $sec 3600 }}
-                                {{ $min := div $remSecAfterHour 60 }}
-                                {{ $remSec := mod $remSecAfterHour 60 }}
-                                
-                                {{ if gt $hour 0 }}
-                                    {{ $duration = printf "%d:%02d:%02d" $hour $min $remSec }}
-                                {{ else }}
-                                    {{ $duration = printf "%d:%02d" $min $remSec }}
-                                {{ end }}
-                            {{ end }}
-                        {{ end }}
-
-                        <a href="#" class="group cursor-pointer animate-fade-up block" 
-                           onclick="handleVideoClick('{{ $vidId }}'); return false;">
-                            <div class="relative aspect-video bg-gray-50 overflow-hidden rounded-lg mb-3 border border-gray-100 transition-[transform,box-shadow,border-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-0.5 group-hover:border-slate-300 group-hover:shadow-[0_10px_20px_-16px_rgba(15,23,42,0.28)]">
-                                <img alt="{{ $title }}" class="w-full h-full object-cover transition-[transform,filter] duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-[1.01] group-hover:grayscale-0" 
-                                     src="https://i.ytimg.com/vi/{{ $vidId }}/hqdefault.jpg" />
-                                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/35 via-slate-900/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                    <span class="w-11 h-11 rounded-full bg-slate-900/60 ring-1 ring-white/60 shadow-md flex items-center justify-center transform translate-y-1.5 scale-95 group-hover:translate-y-0 group-hover:scale-100 transition-all duration-300" aria-hidden="true">
-                                        <span class="block h-0 w-0 border-y-[6px] border-y-transparent border-l-[10px] border-l-white ml-0.5"></span>
-                                    </span>
-                                </div>
-                                {{ if $duration }}
-                                <div class="absolute bottom-1 right-1 bg-black/80 text-white text-[10px] font-sans font-medium px-1.5 py-0.5 pointer-events-none z-10">
-                                    {{ $duration }}
-                                </div>
-                                {{ end }}
-                            </div>
-                            <div class="flex flex-col gap-1.5">
-                                <h3 class="font-sans font-semibold text-sm text-text-main group-hover:text-title-accent transition-colors duration-300 leading-5 overflow-hidden [overflow-wrap:anywhere] max-h-[3.75rem] xl:max-h-[2.5rem] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:3] xl:[-webkit-line-clamp:2] min-h-[3.75rem] xl:min-h-[2.5rem]">
-                                    {{ $title }}
-                                </h3>
-                                {{ with .description }}
-                                <p class="text-[10px] text-text-muted group-hover:text-slate-700 transition-colors duration-300 leading-4 overflow-hidden [overflow-wrap:anywhere] max-h-[2rem] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]">{{ . }}</p>
-                                {{ end }}
-                            </div>
-                        </a>
-                    {{ end }}
+                    {{ partial "video-card.html" . }}
                 {{ end }}
             </div>
         </div>
@@ -337,21 +250,30 @@
       const iframe = document.getElementById('youtube-iframe');
       const isDesktop = () => window.matchMedia('(min-width: 768px)').matches;
 
-      window.handleVideoClick = function(videoId) {
+      window.openMedia = function(el) {
+          if (!el) return;
+
+          const provider = el.dataset.provider;
+          if (provider === 'drive') {
+              const previewUrl = el.dataset.url;
+              if (!previewUrl) return;
+
+              const viewUrl = previewUrl.replace('/preview', '/view');
+              if (!isDesktop()) {
+                  window.open(viewUrl, '_blank');
+              } else {
+                  openDriveVideo(previewUrl);
+              }
+              return;
+          }
+
+          const videoId = el.dataset.id;
+          if (!videoId) return;
+
           if (!isDesktop()) {
               window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank');
           } else {
               openVideo(videoId);
-          }
-      }
-
-      window.handleDriveClick = function(el) {
-          const previewUrl = el.dataset.url;
-          const viewUrl = previewUrl.replace('/preview', '/view');
-          if (!isDesktop()) {
-              window.open(viewUrl, '_blank');
-          } else {
-              openDriveVideo(previewUrl);
           }
       }
 
