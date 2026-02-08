@@ -1,5 +1,5 @@
 {{ define "section-content" }}
-    <div class="mb-6 md:mb-8 border-b border-gray-100 pb-4 md:pb-6">
+    <div class="mb-6 md:mb-8 border-b border-gray-100 dark:border-slate-800 pb-4 md:pb-6">
         <!-- Grid Layout for strict alignment -->
         <div class="flex min-w-0 flex-col gap-4 items-start md:grid md:grid-cols-12 md:gap-6">
             
@@ -8,12 +8,12 @@
                 {{ $titleWords := split .title " " }}
                 {{ $titleFirstWord := index $titleWords 0 }}
                 {{ $titleRestWords := delimit (after 1 $titleWords) " " }}
-                <h1 class="text-2xl md:text-2xl lg:text-3xl xl:text-4xl font-sans tracking-tighter leading-none uppercase whitespace-normal break-words text-slate-900">
-                    <span class="font-black">{{ $titleFirstWord }}</span>{{ if $titleRestWords }} <span class="font-medium text-slate-400">{{ $titleRestWords }}</span>{{ end }}
+                <h1 class="text-2xl md:text-2xl lg:text-3xl xl:text-4xl font-sans tracking-tighter leading-none uppercase whitespace-normal break-words text-slate-900 dark:text-slate-100">
+                    <span class="font-black">{{ $titleFirstWord }}</span>{{ if $titleRestWords }} <span class="font-medium text-slate-400 dark:text-slate-500">{{ $titleRestWords }}</span>{{ end }}
                 </h1>
                 
                 {{ if .topics }}
-                <div class="flex flex-wrap gap-3 font-sans text-[10px] font-medium text-text-muted items-center">
+                <div class="flex flex-wrap gap-3 font-sans text-[10px] font-medium text-text-muted dark:text-slate-400 items-center">
                     {{ $limit := 2 }}
                     {{ $visibleTopics := first $limit .topics }}
                     {{ $remainingCount := sub (len .topics) $limit }}
@@ -25,19 +25,19 @@
                     {{ if gt $remainingCount 0 }}
                     <div class="relative group/tooltip">
                         <span class="flex items-center gap-1.5 cursor-help hover:text-primary transition-colors">
-                            <span class="w-1 h-1 rounded-full bg-gray-300"></span>+{{ $remainingCount }}
+                            <span class="w-1 h-1 rounded-full bg-gray-300 dark:bg-slate-600"></span>+{{ $remainingCount }}
                         </span>
                         
                         <!-- Tooltip -->
                         <div class="absolute left-0 top-full mt-2 hidden group-hover/tooltip:block z-50 min-w-[140px]">
-                            <div class="bg-slate-900 text-white rounded-sm p-3 relative shadow-sm">
+                            <div class="bg-slate-900 dark:bg-slate-800 text-white rounded-sm p-3 relative shadow-sm border dark:border-slate-700">
                                 <!-- Arrow -->
-                                <div class="absolute -top-1 left-2 w-2 h-2 bg-slate-900 transform rotate-45"></div>
+                                <div class="absolute -top-1 left-2 w-2 h-2 bg-slate-900 dark:bg-slate-800 transform rotate-45 border-t border-l dark:border-slate-700 border-transparent"></div>
                                 
                                 <div class="flex flex-col gap-2 relative z-10">
                                     {{ range after $limit .topics }}
-                                    <span class="flex items-center gap-1.5 text-[10px] text-slate-200">
-                                        <span class="w-1 h-1 rounded-full bg-slate-400"></span>#{{ . | urlize }}
+                                    <span class="flex items-center gap-1.5 text-[10px] text-slate-200 dark:text-slate-300">
+                                        <span class="w-1 h-1 rounded-full bg-slate-400 dark:bg-slate-500"></span>#{{ . | urlize }}
                                     </span>
                                     {{ end }}
                                 </div>
@@ -52,8 +52,8 @@
             <!-- Content Column: Description -->
             <div class="md:col-span-7 w-full min-w-0">
                 {{ with .description }}
-                <div class="hidden md:block border-l border-gray-100 pl-6 h-full">
-                    <p class="text-sm text-text-muted font-sans font-light leading-snug">
+                <div class="hidden md:block border-l border-gray-100 dark:border-slate-800 pl-6 h-full">
+                    <p class="text-sm text-text-muted dark:text-slate-400 font-sans font-light leading-snug">
                         {{ . }}
                     </p>
                 </div>
@@ -65,8 +65,8 @@
     <section class="grid min-w-0 grid-cols-1 gap-8 md:grid-cols-12 lg:gap-12">
         <!-- Main Content: Videos (Col span 8) -->
         <div class="md:col-span-7 lg:col-span-8 min-w-0">
-            <div class="flex items-center justify-between mb-6 border-b border-gray-100 pb-3">
-                <h2 class="text-[10px] md:text-[11px] font-sans font-bold uppercase tracking-widest text-primary flex items-center gap-2">
+            <div class="flex items-center justify-between mb-6 border-b border-gray-100 dark:border-slate-800 pb-3">
+                <h2 class="text-[10px] md:text-[11px] font-sans font-bold uppercase tracking-widest text-primary dark:text-slate-200 flex items-center gap-2">
                     <span class="w-1.5 h-1.5 bg-accent inline-block"></span> Clases Grabadas
                 </h2>
             </div>
@@ -79,17 +79,17 @@
         </div>
 
         <!-- Sidebar Content: Readings (Col span 4) -->
-        <div class="md:col-span-5 lg:col-span-4 min-w-0 md:border-l md:border-gray-100 md:pl-8 lg:pl-10">
-            <div class="flex items-center justify-between mb-6 border-b border-gray-100 pb-3">
-                <h2 class="text-[10px] md:text-[11px] font-sans font-bold uppercase tracking-widest text-primary flex items-center gap-2">
+        <div class="md:col-span-5 lg:col-span-4 min-w-0 md:border-l md:border-gray-100 dark:md:border-slate-800 md:pl-8 lg:pl-10">
+            <div class="flex items-center justify-between mb-6 border-b border-gray-100 dark:border-slate-800 pb-3">
+                <h2 class="text-[10px] md:text-[11px] font-sans font-bold uppercase tracking-widest text-primary dark:text-slate-200 flex items-center gap-2">
                     <span class="w-1.5 h-1.5 bg-accent/30 inline-block"></span> Recursos Adicionales
                 </h2>
             </div>
 
             <div class="flex min-w-0 flex-col gap-1">
                 {{ range .resources }}
-                <a class="group flex w-full min-w-0 items-center gap-3 border-b border-gray-50 px-3 py-3 transition-all hover:bg-gray-50" href="{{ .url }}" target="_blank">
-                    <svg class="w-4 h-4 text-slate-300 group-hover:text-accent transition-colors fill-current" viewBox="0 0 24 24">
+                <a class="group flex w-full min-w-0 items-center gap-3 border-b border-gray-50 dark:border-slate-800/50 px-3 py-3 transition-all hover:bg-gray-50 dark:hover:bg-slate-800/50" href="{{ .url }}" target="_blank">
+                    <svg class="w-4 h-4 text-slate-300 dark:text-slate-600 group-hover:text-accent transition-colors fill-current" viewBox="0 0 24 24">
                         {{ if eq .type "document" }}
                         <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
                         {{ else }}
@@ -97,10 +97,10 @@
                         {{ end }}
                     </svg>
                     <div class="flex min-w-0 flex-col overflow-hidden">
-                        <h4 class="font-sans text-[12px] font-medium text-text-main truncate">
+                        <h4 class="font-sans text-[12px] font-medium text-text-main dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white truncate transition-colors">
                             {{ .title }}
                         </h4>
-                        <span class="text-[9px] text-text-muted font-sans uppercase tracking-tight">Ver recurso</span>
+                        <span class="text-[9px] text-text-muted dark:text-slate-500 font-sans uppercase tracking-tight group-hover:text-slate-500 dark:group-hover:text-slate-400 transition-colors">Ver recurso</span>
                     </div>
                 </a>
                 {{ end }}
@@ -117,29 +117,35 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Material de Referencia - Ingeniería del Software 2</title>
     {{ partial "css.html" . }}
-
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
   </head>
 {{ partial "sidebar.html" (dict "context" . "disableSidebar" true) }}
   <body
-    class="bg-engineering text-text-main font-sans antialiased min-h-screen flex flex-col selection:bg-black selection:text-white"
+    class="bg-engineering text-text-main dark:text-slate-200 font-sans antialiased min-h-screen flex flex-col selection:bg-black selection:text-white dark:selection:bg-slate-700"
   >
 
     <div
-      class="flex-grow max-w-[1600px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12 min-h-screen"
+      class="flex-grow max-w-[1600px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12"
     >
       <aside
-        class="hidden lg:block lg:col-span-3 xl:col-span-2 border-r border-gray-100 h-[calc(100vh-64px)] sticky top-16 overflow-y-auto py-8 pr-6 scrollbar-thin"
+        class="hidden lg:block lg:col-span-3 xl:col-span-2 border-r border-gray-100 dark:border-slate-800 sticky top-16 overflow-y-auto py-8 pr-6 scrollbar-thin"
       >
         <div class="mb-8 pl-4">
           <h3
-            class="font-sans text-xs uppercase tracking-widest text-text-muted mb-4"
+            class="font-sans text-xs uppercase tracking-widest text-text-muted dark:text-slate-500 mb-4"
           >
             Temario
           </h3>
           <div class="space-y-1">
             {{ range $index, $section := .Site.Data.material.sections }}
             <button 
-                class="nav-item w-full min-w-0 flex items-center justify-between px-3 py-3 text-[12px] font-sans border-l-2 transition-colors cursor-pointer {{ if eq $index 0 }}text-primary bg-gray-50/80 border-slate-300 font-semibold{{ else }}text-text-muted hover:text-primary hover:bg-gray-50/50 border-transparent{{ end }}" 
+                class="nav-item w-full min-w-0 flex items-center justify-between px-3 py-3 text-[12px] font-sans border-l-2 transition-colors cursor-pointer {{ if eq $index 0 }}text-primary dark:text-white bg-gray-50/80 dark:bg-slate-800 border-slate-300 dark:border-accent font-semibold{{ else }}text-text-muted dark:text-slate-400 hover:text-primary dark:hover:text-slate-200 hover:bg-gray-50/50 dark:hover:bg-slate-800/30 border-transparent{{ end }}" 
                 data-target="desktop-section-{{ $section.id }}"
                 onclick="switchDesktopSection('{{ $section.id }}')">
               <span class="block min-w-0 flex-1 text-left leading-tight whitespace-normal">{{ $section.title }}</span>
@@ -160,7 +166,7 @@
               href="#desktop-section-{{ .id }}"
               data-target="desktop-section-{{ .id }}"
               onclick="switchDesktopSection('{{ .id }}'); return false;"
-              class="mobile-nav-item px-2.5 py-1 border text-[10px] font-sans font-medium uppercase tracking-widest rounded-full whitespace-nowrap transition-colors {{ if eq $index 0 }}bg-black text-white border-black{{ else }}bg-white text-text-muted border-gray-100 hover:bg-gray-50{{ end }}"
+              class="mobile-nav-item px-2.5 py-1 border text-[10px] font-sans font-medium uppercase tracking-widest rounded-full whitespace-nowrap transition-colors {{ if eq $index 0 }}bg-black dark:bg-white text-white dark:text-slate-900 border-black dark:border-white{{ else }}bg-white dark:bg-slate-900 text-text-muted dark:text-slate-400 border-gray-100 dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-800{{ end }}"
               >{{ .id }}</a
             >
             {{ end }}
@@ -219,8 +225,8 @@
           if(target) target.classList.remove('hidden');
           
           // Update sidebar active state (Desktop)
-          const desktopActiveClasses = ['text-primary', 'bg-gray-50/80', 'border-slate-300', 'font-semibold'];
-          const desktopInactiveClasses = ['text-text-muted', 'hover:text-primary', 'hover:bg-gray-50/50', 'border-transparent'];
+          const desktopActiveClasses = ['text-primary', 'dark:text-white', 'bg-gray-50/80', 'dark:bg-slate-800', 'border-slate-300', 'dark:border-accent', 'font-semibold'];
+          const desktopInactiveClasses = ['text-text-muted', 'dark:text-slate-400', 'hover:text-primary', 'dark:hover:text-slate-200', 'hover:bg-gray-50/50', 'dark:hover:bg-slate-800/30', 'border-transparent'];
 
           document.querySelectorAll('.nav-item').forEach(el => {
               el.classList.remove(...desktopActiveClasses);
@@ -234,14 +240,14 @@
 
           // Update mobile nav active state
           document.querySelectorAll('.mobile-nav-item').forEach(el => {
-             el.classList.remove('bg-black', 'text-white', 'border-black');
-             el.classList.add('bg-white', 'text-text-muted', 'border-gray-100', 'hover:bg-gray-50');
+             el.classList.remove('bg-black', 'dark:bg-white', 'text-white', 'dark:text-slate-900', 'border-black', 'dark:border-white');
+             el.classList.add('bg-white', 'dark:bg-slate-900', 'text-text-muted', 'dark:text-slate-400', 'border-gray-100', 'dark:border-slate-700', 'hover:bg-gray-50', 'dark:hover:bg-slate-800');
           });
           
           const activeMobileBtn = document.querySelector(`a[data-target="desktop-section-${sectionId}"]`);
           if(activeMobileBtn) {
-             activeMobileBtn.classList.remove('bg-white', 'text-text-muted', 'border-gray-100', 'hover:bg-gray-50');
-             activeMobileBtn.classList.add('bg-black', 'text-white', 'border-black');
+             activeMobileBtn.classList.remove('bg-white', 'dark:bg-slate-900', 'text-text-muted', 'dark:text-slate-400', 'border-gray-100', 'dark:border-slate-700', 'hover:bg-gray-50', 'dark:hover:bg-slate-800');
+             activeMobileBtn.classList.add('bg-black', 'dark:bg-white', 'text-white', 'dark:text-slate-900', 'border-black', 'dark:border-white');
           }
 
           // Update URL hash without scrolling

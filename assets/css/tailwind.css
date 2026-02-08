@@ -54,6 +54,18 @@
     opacity: var(--glow-opacity, 0.3);
 }
 
+.dark .bg-engineering {
+    background-color: #020617;
+    background-image: radial-gradient(#1e293b 0.8px, transparent 0.8px);
+}
+
+.dark .bg-engineering::after {
+    background-image: radial-gradient(#38bdf8 1px, transparent 1px);
+    mask-image: radial-gradient(circle var(--glow-radius, 120px) at var(--mouse-x, -100%) var(--mouse-y, -100%), black, transparent);
+    -webkit-mask-image: radial-gradient(circle var(--glow-radius, 120px) at var(--mouse-x, -100%) var(--mouse-y, -100%), black, transparent);
+}
+
+
 /* MÁSCARA UNIFICADA */
 .mask-unified {
     color: #0f172a;
@@ -85,6 +97,21 @@
     display: block;
 }
 
+.dark .mask-unified {
+    color: #f1f5f9;
+    background-image:
+        linear-gradient(to bottom,
+            rgba(241, 245, 249, 1) 0%,
+            rgba(241, 245, 249, 0.9) 48%,
+            rgba(203, 213, 225, 0.8) 52%,
+            rgba(203, 213, 225, 0.9) 100%
+        ),
+        url('../images/fiuba.svg'),
+        linear-gradient(to bottom, #020617, #020617);
+    -webkit-text-stroke: 0.2px rgba(255, 255, 255, 0.1);
+}
+
+
 @supports (-webkit-background-clip: text) or (background-clip: text) {
     .mask-unified {
         color: transparent;
@@ -95,4 +122,61 @@
     .mask-unified {
         background-size: 100% 100%, 75% auto, 100% 100%;
     }
+}
+
+/* Hextra Components Overrides */
+
+/* Navbar */
+.hextra-nav-container {
+    border-bottom-width: 1px;
+    border-style: solid;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+}
+
+/* Navbar Dark Mode */
+.hextra-nav-container:is(html[class~="dark"] *) {
+    background-color: transparent !important;
+    backdrop-filter: none;
+    border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.hextra-nav-container-blur:is(html[class~="dark"] *) {
+    background-color: rgba(2, 6, 23, 0.72) !important; /* dark but still translucent */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Navbar Light Mode (Ensure it matches elegant style) */
+.hextra-nav-container:not(:is(html[class~="dark"] *)) {
+    background-color: transparent !important;
+    backdrop-filter: none;
+    border-bottom-color: #f1f5f9 !important; /* slate-100 */
+}
+
+.hextra-nav-container-blur:not(:is(html[class~="dark"] *)) {
+    background-color: rgba(255, 255, 255, 0.72) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom-color: #f1f5f9 !important; /* slate-100 */
+}
+
+/* Footer */
+.hextra-footer {
+    border-top-width: 1px;
+    border-style: solid;
+}
+
+/* Footer Dark Mode */
+.hextra-footer:is(html[class~="dark"] *) {
+    background-color: #020617 !important; /* slate-950 */
+    border-top-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Footer Light Mode */
+.hextra-footer:not(:is(html[class~="dark"] *)) {
+    background-color: #ffffff !important;
+    border-top-color: #f1f5f9 !important; /* slate-100 */
 }

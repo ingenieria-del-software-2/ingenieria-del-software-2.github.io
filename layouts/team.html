@@ -22,29 +22,36 @@
         animation: fadeIn 0.5s ease-out forwards;
       }
     </style>
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
   </head>
 {{ partial "sidebar.html" (dict "context" . "disableSidebar" true) }}
   <body
-    class="bg-engineering text-gray-800 font-sans antialiased selection:bg-accent"
+    class="bg-engineering text-gray-800 dark:text-slate-200 font-sans antialiased selection:bg-accent dark:selection:bg-accent/30 selection:text-white"
   >
 
     <main class="max-w-[1600px] mx-auto px-6 lg:px-12 pt-6 md:pt-8 pb-12">
-      <section class="mb-10 border-b border-gray-100 pt-2 md:pt-3 pb-3 md:pb-4">
+      <section class="mb-10 border-b border-gray-100 dark:border-slate-800 pt-2 md:pt-3 pb-3 md:pb-4">
         <div class="flex min-w-0 flex-col gap-4 items-start md:grid md:grid-cols-12 md:items-center md:gap-6">
           <div class="md:col-span-5 w-full min-w-0">
             <h1
-              class="font-sans text-4xl md:text-5xl lg:text-6xl tracking-tighter leading-[0.85] uppercase text-slate-900"
+              class="font-sans text-4xl md:text-5xl lg:text-6xl tracking-tighter leading-[0.85] uppercase text-slate-900 dark:text-slate-100"
             >
-              <span class="font-black text-slate-900">EQUIPO</span>
-              <span class="font-medium text-slate-400">DOCENTE</span>
+              <span class="font-black text-slate-900 dark:text-white">EQUIPO</span>
+              <span class="font-medium text-slate-400 dark:text-slate-500">DOCENTE</span>
             </h1>
-            <p class="md:hidden mt-3 text-sm text-gray-500 font-light font-sans leading-snug">
+            <p class="md:hidden mt-3 text-sm text-gray-500 dark:text-slate-400 font-light font-sans leading-snug">
               Conocé a los profesores y ayudantes que hacen posible la materia.
             </p>
           </div>
           <div class="md:col-span-7 w-full min-w-0 md:flex md:justify-end">
-            <div class="hidden md:block border-r border-gray-100 pr-6 h-full text-right">
-              <p class="text-sm text-text-muted font-sans font-light leading-snug">
+            <div class="hidden md:block border-r border-gray-100 dark:border-slate-800 pr-6 h-full text-right">
+              <p class="text-sm text-text-muted dark:text-slate-400 font-sans font-light leading-snug">
                 Conocé a los profesores y ayudantes que hacen posible la materia.
               </p>
             </div>
@@ -59,7 +66,7 @@
           {{ range .Site.Data.team.team }}
           <div class="group relative reveal-item">
             <div
-              class="relative aspect-[4/5] rounded-2xl overflow-hidden mb-4 bg-slate-50 border border-slate-100 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:border-accent/45 group-hover:shadow-xl group-hover:shadow-accent/10"
+              class="relative aspect-[4/5] rounded-2xl overflow-hidden mb-4 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:border-accent/45 dark:group-hover:border-accent/60 group-hover:shadow-xl group-hover:shadow-accent/10"
             >
               <img
                 src="{{ .pic }}"
@@ -72,14 +79,14 @@
               
               <div class="absolute bottom-4 left-4 flex space-x-2 opacity-100 scale-100 md:opacity-0 md:scale-90 md:group-hover:opacity-100 md:group-hover:scale-100 transition-all duration-500">
                   {{ if .mail }}
-                  <a href="mailto:{{ .mail }}" aria-label="Enviar email a {{ .name }}" class="cursor-pointer text-slate-100 hover:text-white transition-colors bg-slate-900/35 hover:bg-slate-900/55 w-8 h-8 flex items-center justify-center rounded-full backdrop-blur-sm border border-white/35">
+                  <a href="mailto:{{ .mail }}" aria-label="Enviar email a {{ .name }}" class="cursor-pointer text-slate-100 hover:text-white transition-colors bg-slate-900/35 dark:bg-slate-700/50 hover:bg-slate-900/55 dark:hover:bg-slate-600/70 w-8 h-8 flex items-center justify-center rounded-full backdrop-blur-sm border border-white/35">
                       <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
                         <path d="M2.25 6.75A2.25 2.25 0 0 1 4.5 4.5h15a2.25 2.25 0 0 1 2.25 2.25v10.5A2.25 2.25 0 0 1 19.5 19.5h-15a2.25 2.25 0 0 1-2.25-2.25V6.75Zm1.653-.75 8.097 6.154L20.097 6H3.903Zm16.347 1.884-7.341 5.58a1.5 1.5 0 0 1-1.818 0L3.75 7.884V17.25c0 .414.336.75.75.75h15a.75.75 0 0 0 .75-.75V7.884Z" />
                       </svg>
                   </a>
                   {{ end }}
                   {{ if .github }}
-                  <a href="https://github.com/{{ .github }}" target="_blank" rel="noopener noreferrer" aria-label="GitHub de {{ .name }}" class="cursor-pointer text-slate-100 hover:text-white transition-colors bg-slate-900/35 hover:bg-slate-900/55 w-8 h-8 flex items-center justify-center rounded-full backdrop-blur-sm border border-white/35">
+                  <a href="https://github.com/{{ .github }}" target="_blank" rel="noopener noreferrer" aria-label="GitHub de {{ .name }}" class="cursor-pointer text-slate-100 hover:text-white transition-colors bg-slate-900/35 dark:bg-slate-700/50 hover:bg-slate-900/55 dark:hover:bg-slate-600/70 w-8 h-8 flex items-center justify-center rounded-full backdrop-blur-sm border border-white/35">
                       <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
                         <path d="M12 .5C5.65.5.5 5.77.5 12.27c0 5.2 3.3 9.61 7.88 11.17.58.11.79-.26.79-.57v-2.02c-3.2.71-3.88-1.58-3.88-1.58-.52-1.37-1.28-1.73-1.28-1.73-1.04-.73.08-.72.08-.72 1.16.08 1.77 1.23 1.77 1.23 1.02 1.81 2.68 1.29 3.33.99.1-.76.4-1.29.72-1.59-2.55-.3-5.24-1.31-5.24-5.85 0-1.29.45-2.35 1.2-3.18-.12-.3-.52-1.52.11-3.17 0 0 .98-.32 3.2 1.21a10.8 10.8 0 0 1 5.83 0c2.22-1.53 3.2-1.21 3.2-1.21.63 1.65.23 2.87.11 3.17.75.83 1.2 1.89 1.2 3.18 0 4.55-2.69 5.54-5.26 5.84.41.37.77 1.1.77 2.23v3.31c0 .31.21.69.8.57A11.77 11.77 0 0 0 23.5 12.27C23.5 5.77 18.35.5 12 .5Z" />
                       </svg>
@@ -88,7 +95,7 @@
               </div>
             </div>
             <h3
-              class="text-[13px] font-bold text-slate-800 tracking-tight leading-tight group-hover:text-title-accent transition-colors duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+              class="text-[13px] font-bold text-slate-800 dark:text-slate-200 tracking-tight leading-tight group-hover:text-title-accent transition-colors duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
             >
               {{ .name }}
             </h3>
@@ -99,16 +106,6 @@
     </main>
 
     <script>
-      if (
-        localStorage.theme === "dark" ||
-        (!("theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
-        document.documentElement.classList.remove("dark");
-      } else {
-        document.documentElement.classList.remove("dark"); // Force light mode for this specific redesign request
-      }
-
       // Seguimiento del mouse para el efecto de los puntos del fondo
       document.addEventListener("mousemove", (e) => {
         document.body.style.setProperty("--mouse-x", e.clientX + "px");

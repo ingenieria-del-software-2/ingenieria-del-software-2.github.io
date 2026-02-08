@@ -44,7 +44,7 @@
   data-url="{{ if $isDrive }}{{ $driveURL }}{{ end }}"
   onclick="openMedia(this); return false;"
 >
-  <div class="relative aspect-video bg-gray-50 overflow-hidden rounded-lg mb-3 border border-gray-100 transition-[transform,box-shadow,border-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-0.5 group-hover:border-slate-300 group-hover:shadow-[0_10px_20px_-16px_rgba(15,23,42,0.28)]">
+  <div class="relative aspect-video bg-gray-50 dark:bg-slate-900 overflow-hidden rounded-lg mb-3 border border-gray-100 dark:border-slate-800 transition-[transform,box-shadow,border-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-0.5 group-hover:border-slate-300 dark:group-hover:border-slate-600 group-hover:shadow-[0_10px_20px_-16px_rgba(15,23,42,0.28)] dark:group-hover:shadow-[0_10px_20px_-16px_rgba(0,0,0,0.8)]">
     {{ if $isDrive }}
       <iframe
         src="{{ $driveURL }}"
@@ -76,11 +76,11 @@
   </div>
 
   <div class="flex flex-col gap-1.5">
-    <h3 class="font-sans font-semibold text-sm text-text-main group-hover:text-title-accent transition-colors duration-300 leading-5 overflow-hidden [overflow-wrap:anywhere] max-h-[3.75rem] xl:max-h-[2.5rem] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:3] xl:[-webkit-line-clamp:2] min-h-[3.75rem] xl:min-h-[2.5rem]">
+    <h3 class="font-sans font-semibold text-sm text-text-main dark:text-slate-200 group-hover:text-title-accent transition-colors duration-300 leading-5 overflow-hidden [overflow-wrap:anywhere] max-h-[3.75rem] xl:max-h-[2.5rem] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:3] xl:[-webkit-line-clamp:2] min-h-[3.75rem] xl:min-h-[2.5rem]">
       {{ $title }}
     </h3>
     {{ with $v.description }}
-      <p class="text-[10px] text-text-muted group-hover:text-slate-700 transition-colors duration-300 leading-4 overflow-hidden [overflow-wrap:anywhere] max-h-[2rem] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]">
+      <p class="text-[10px] text-text-muted dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors duration-300 leading-4 overflow-hidden [overflow-wrap:anywhere] max-h-[2rem] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]">
         {{ . }}
       </p>
     {{ end }}
