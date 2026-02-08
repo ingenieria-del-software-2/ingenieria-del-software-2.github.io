@@ -2,8 +2,8 @@
 {{- $m := dict "title" .title "thumb" .thumb "duration" .duration -}}
 
 {{- if not $m.duration -}}
-  {{- $proxy := "https://corsproxy.io/?" -}}
-  {{- $targetUrl := "https://www.youtube.com/youtubei/v1/player" -}}
+  {{- $proxy := "https://corsproxy.io/?url=" -}}
+  {{- $targetUrl := "https://www.youtube.com/youtubei/v1/player?key=AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8" -}}
   {{- $finalUrl := printf "%s%s" $proxy (urlquery $targetUrl) -}}
 
   {{- $body := dict "context" (dict "client" (dict "clientName" "WEB" "clientVersion" "2.20240313.05.00" "hl" "es-419" "gl" "AR")) "videoId" $id -}}
