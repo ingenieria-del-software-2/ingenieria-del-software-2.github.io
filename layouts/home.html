@@ -46,6 +46,17 @@
       .hero-animate-delay-1 { animation-delay: 0.1s; }
       .hero-animate-delay-2 { animation-delay: 0.2s; }
 
+      /* Disable sticky focus tooltips and pointer on desktop */
+      @media (min-width: 768px) {
+        .timeline-point:focus:not(:hover) time {
+          opacity: 0 !important;
+          transform: translateY(1rem) !important;
+        }
+        .timeline-point {
+          cursor: default !important;
+        }
+      }
+
     </style>
 
 </head>
