@@ -139,7 +139,7 @@
           <div class="space-y-1">
             {{ range $index, $section := .Site.Data.material.sections }}
             <button 
-                class="nav-item w-full min-w-0 flex items-center justify-between px-3 py-3 text-[12px] font-sans border-l-2 transition-colors {{ if eq $index 0 }}text-primary bg-gray-50/80 border-slate-300 font-semibold{{ else }}text-text-muted hover:text-primary hover:bg-gray-50/50 border-transparent{{ end }}" 
+                class="nav-item w-full min-w-0 flex items-center justify-between px-3 py-3 text-[12px] font-sans border-l-2 transition-colors cursor-pointer {{ if eq $index 0 }}text-primary bg-gray-50/80 border-slate-300 font-semibold{{ else }}text-text-muted hover:text-primary hover:bg-gray-50/50 border-transparent{{ end }}" 
                 data-target="desktop-section-{{ $section.id }}"
                 onclick="switchDesktopSection('{{ $section.id }}')">
               <span class="block min-w-0 flex-1 text-left leading-tight whitespace-normal">{{ $section.title }}</span>
