@@ -68,7 +68,9 @@ jobs:
         if: github.event.action != 'closed'
         env:
           PREVIEW_URL: ${{ steps.preview_urls.outputs.preview_url }}
-        run: npm run build:prod:mr-preview
+        run: |
+          npm run build:prod:mr-preview
+          cat data/ytmeta/generated.json
 
       - name: Deploy preview and comment PR
         if: github.event.action != 'closed'
