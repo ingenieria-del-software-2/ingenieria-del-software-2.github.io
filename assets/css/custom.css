@@ -63,6 +63,53 @@
     transition-duration: 300ms;
 }
 
+/* Navbar content styling inspired by example.html (without "IS2" badge). */
+.hextra-nav-container .hextra-max-navbar-width {
+    max-width: 1600px;
+    height: 4rem;
+}
+
+.hextra-nav-container .hextra-max-navbar-width > a[href="/"] {
+    display: inline-flex;
+    align-items: center;
+    opacity: 1 !important;
+}
+
+.hextra-nav-container .hextra-max-navbar-width > a[href="/"] > span {
+    margin-right: 0 !important;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #64748b;
+}
+
+.hextra-nav-container .hextra-max-navbar-width > a[href]:not([href="/"]) {
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: #64748b !important;
+    transition: color 0.2s ease;
+}
+
+.hextra-nav-container .hextra-max-navbar-width > a[href]:not([href="/"]):hover {
+    color: #0f172a !important;
+}
+
+.hextra-nav-container .hextra-max-navbar-width > a[href].hx\:font-medium {
+    color: #0f172a !important;
+}
+
+.hextra-hamburger-menu {
+    color: #0f172a;
+    border-radius: 0.25rem;
+}
+
+.hextra-hamburger-menu:hover {
+    background-color: rgba(15, 23, 42, 0.08);
+}
+
 /* Navbar Dark Mode */
 .hextra-nav-container:is(html[class~="dark"] *) {
     background-color: transparent !important;
@@ -75,6 +122,40 @@
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.dark .hextra-nav-container .hextra-max-navbar-width > a[href="/"] > span {
+    color: #cbd5e1;
+}
+
+.dark .hextra-nav-container .hextra-max-navbar-width > a[href]:not([href="/"]) {
+    color: #94a3b8 !important;
+}
+
+.dark .hextra-nav-container .hextra-max-navbar-width > a[href]:not([href="/"]):hover {
+    color: #f1f5f9 !important;
+}
+
+.dark .hextra-nav-container .hextra-max-navbar-width > a[href].hx\:font-medium {
+    color: #f8fafc !important;
+}
+
+.dark .hextra-hamburger-menu {
+    color: #e2e8f0;
+}
+
+.dark .hextra-hamburger-menu:hover {
+    background-color: rgba(148, 163, 184, 0.2);
+}
+
+/* Mark homepage title as active when viewing the landing page. */
+body:has(#home-hero) .hextra-nav-container .hextra-max-navbar-width > a[href="/"] > span {
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.dark body:has(#home-hero) .hextra-nav-container .hextra-max-navbar-width > a[href="/"] > span {
+    color: #f8fafc;
 }
 
 /* Navbar Light Mode (Ensure it matches elegant style) */
