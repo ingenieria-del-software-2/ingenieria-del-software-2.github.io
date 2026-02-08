@@ -49,18 +49,27 @@ Maintenance notes:
   {{- $durationReason := "" -}}
   {{- $durationDetail := "" -}}
   {{- $api := "https://www.youtube.com/youtubei/v1/player?key=AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8" -}}
+  {{- $headers := dict
+    "Content-Type" (slice "application/json")
+    "Origin" (slice "https://www.youtube.com")
+    "Referer" (slice "https://www.youtube.com/")
+    "Accept-Language" (slice "en-US,en;q=0.9")
+    "User-Agent" (slice "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36")
+    "X-Youtube-Client-Name" (slice "1")
+    "X-Youtube-Client-Version" (slice "2.20250201.00.00")
+  -}}
   {{- $body := dict
     "context" (dict
       "client" (dict
-        "clientName" "ANDROID_TESTSUITE"
-        "clientVersion" "1.9.31"
+        "clientName" "WEB"
+        "clientVersion" "2.20250201.00.00"
         "hl" "en"
         "gl" "US"
       )
     )
     "videoId" $vidId
   -}}
-  {{- $opt := dict "method" "POST" "body" (jsonify $body) -}}
+  {{- $opt := dict "method" "POST" "headers" $headers "body" (jsonify $body) -}}
 
   {{- with try (resources.GetRemote $api $opt) -}}
     {{- with .Err -}}
