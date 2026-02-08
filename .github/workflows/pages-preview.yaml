@@ -35,7 +35,7 @@ jobs:
 
       - name: Probe YouTube with youtubei.js
         run: |
-          node scripts/ci/youtubei-probe.js 2> yt_probe.lib.err || true
+          node scripts/ci/youtubei-probe.mjs 2> yt_probe.lib.err || true
           for f in yt_probe.json yt_probe.err yt_probe.lib.err; do
             [ -s "$f" ] && { cat "$f"; break; }
           done
