@@ -18,8 +18,35 @@ defaults:
     shell: bash
 
 jobs:
+  probe-youtube-metadata:
+    if: github.event.pull_request.head.repo.fork == false && github.event.action != 'closed'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: recursive
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+      - name: Install dependencies
+        run: npm ci
+      - name: Generate YouTube metadata
+        run: npm run update:yt
+      - name: Show generated metadata (probe)
+        run: |
+          echo "::group::data/ytmeta/generated.json"
+          cat data/ytmeta/generated.json
+          echo "::endgroup::"
+      - name: Validate metadata richness
+        run: |
+          node -e 'const fs=require("node:fs"); const path="data/ytmeta/generated.json"; const raw=fs.readFileSync(path,"utf8"); const data=JSON.parse(raw); const values=Object.values(data); const total=values.length; const enriched=values.filter(v=>v && (v.title!==null || v.duration!==null)).length; const fallbackOnly=total-enriched; console.log(`ytmeta entries=${total}, enriched=${enriched}, fallback_only=${fallbackOnly}`); if(total===0){console.error("No YouTube IDs were parsed into generated metadata."); process.exit(1);} if(enriched===0){console.error("All entries are fallback-only (title and duration are null)."); process.exit(1);}'
+
   deploy-pr-preview:
-    if: github.event.pull_request.head.repo.fork == false
+    if: github.event.pull_request.head.repo.fork == false && github.event.action != 'closed'
+    needs: probe-youtube-metadata
     runs-on: ubuntu-latest
     env:
       HUGO_VERSION: 0.146.0
@@ -47,33 +74,25 @@ jobs:
           echo "preview_url=${PREVIEW_URL}" >> "$GITHUB_OUTPUT"
 
       - name: Setup Go
-        if: github.event.action != 'closed'
         uses: actions/setup-go@v5
         with:
           go-version: "1.22"
       - name: Setup Hugo
-        if: github.event.action != 'closed'
         run: |
           wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
           && sudo dpkg -i ${{ runner.temp }}/hugo.deb
       - name: Setup Node.js
-        if: github.event.action != 'closed'
         uses: actions/setup-node@v4
         with:
           node-version: "18"
       - name: Install dependencies
-        if: github.event.action != 'closed'
         run: npm ci
       - name: Build preview 
-        if: github.event.action != 'closed'
         env:
           PREVIEW_URL: ${{ steps.preview_urls.outputs.preview_url }}
-        run: |
-          npm run build:prod:mr-preview
-          cat data/ytmeta/generated.json
+        run: npm run build:prod:mr-preview
 
       - name: Deploy preview and comment PR
-        if: github.event.action != 'closed'
         uses: rossjrw/pr-preview-action@v1
         with:
           source-dir: ./public
@@ -82,8 +101,24 @@ jobs:
           pages-base-url: ${{ steps.preview_urls.outputs.pages_base_url }}
           wait-for-pages-deployment: true
 
+  remove-preview:
+    if: github.event.pull_request.head.repo.fork == false && github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Compute preview URLs
+        id: preview_urls
+        run: |
+          OWNER="${{ github.repository_owner }}"
+          REPO="${{ github.event.repository.name }}"
+          if [[ "${REPO}" == "${OWNER}.github.io" ]]; then
+            PAGES_BASE_URL="${OWNER}.github.io"
+          else
+            PAGES_BASE_URL="${OWNER}.github.io/${REPO}"
+          fi
+          echo "pages_base_url=${PAGES_BASE_URL}" >> "$GITHUB_OUTPUT"
       - name: Remove preview on PR close
-        if: github.event.action == 'closed'
         uses: rossjrw/pr-preview-action@v1
         with:
           action: remove
