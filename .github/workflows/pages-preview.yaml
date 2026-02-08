@@ -35,21 +35,6 @@ jobs:
         run: npm ci
       - name: Run small YouTube probe
         run: npm run probe:yt | tee probe.json
-      - name: Upload probe output
-        uses: actions/upload-artifact@v4
-        with:
-          name: youtube-probe
-          path: probe.json
-
-  cat-youtube-probe:
-    if: github.event.pull_request.head.repo.fork == false && github.event.action != 'closed'
-    needs: probe-youtube-metadata
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download probe output
-        uses: actions/download-artifact@v4
-        with:
-          name: youtube-probe
       - name: Cat probe output
         run: |
           echo "::group::probe.json"
@@ -58,7 +43,7 @@ jobs:
 
   deploy-pr-preview:
     if: github.event.pull_request.head.repo.fork == false && github.event.action != 'closed'
-    needs: cat-youtube-probe
+    needs: probe-youtube-metadata
     runs-on: ubuntu-latest
     env:
       HUGO_VERSION: 0.146.0
