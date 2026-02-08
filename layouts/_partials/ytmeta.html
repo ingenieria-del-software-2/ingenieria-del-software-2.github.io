@@ -5,7 +5,7 @@ What it does:
 - Given a YouTube videoId, it resolves the metadata needed to render a media card:
   - title
   - thumb (thumbnail URL)
-  - duration (formatted duration string)
+  - duration (raw value; usually seconds from YouTube)
 
 Why it looks weird:
 - Hugo can’t get duration from oEmbed.
@@ -66,12 +66,7 @@ Maintenance notes:
       {{- with (index $data "videoDetails" "lengthSeconds") -}}
         {{- $seconds := . | int -}}
         {{- if gt $seconds 0 -}}
-          {{- $t := $seconds | time.AsTime -}}
-          {{- $dur := $t.Format "4:05" -}}
-          {{- if ge $seconds 3600 -}}
-            {{- $dur = $t.Format "15:04:05" | replaceRE "^0" "" -}}
-          {{- end -}}
-          {{- $m = merge $m (dict "duration" $dur) -}}
+          {{- $m = merge $m (dict "duration" $seconds) -}}
         {{- else -}}
           {{- $durationDetail = printf "lengthSeconds inválido (%v)" . -}}
         {{- end -}}

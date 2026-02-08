@@ -21,6 +21,20 @@
   {{- $duration = $meta.duration -}}
 {{- end -}}
 
+{{- $durationLabel := "" -}}
+{{- with $duration -}}
+  {{- $rawDuration := printf "%v" . -}}
+  {{- if gt (len (findRE `^\d+$` $rawDuration)) 0 -}}
+    {{- $durationSec := int $rawDuration -}}
+    {{- $durationHours := div $durationSec 3600 -}}
+    {{- $durationMinutes := div (mod $durationSec 3600) 60 -}}
+    {{- $durationSeconds := mod $durationSec 60 -}}
+    {{- $durationLabel = cond (gt $durationHours 0) (printf "%d:%02d:%02d" $durationHours $durationMinutes $durationSeconds) (printf "%d:%02d" $durationMinutes $durationSeconds) -}}
+  {{- else -}}
+    {{- $durationLabel = $rawDuration -}}
+  {{- end -}}
+{{- end -}}
+
 <a
   href="#"
   class="group cursor-pointer animate-fade-up block"
@@ -54,9 +68,9 @@
       </span>
     </div>
 
-    {{ if $duration }}
+    {{ if $durationLabel }}
       <div class="absolute bottom-1 right-1 bg-black/80 text-white text-[10px] font-sans font-medium px-1.5 py-0.5 pointer-events-none z-10">
-        {{ $duration }}
+        {{ $durationLabel }}
       </div>
     {{ end }}
   </div>
