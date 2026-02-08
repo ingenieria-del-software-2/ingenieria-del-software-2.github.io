@@ -1,3 +1,38 @@
+{{/*------------------------------------------------------------------------------
+ytmeta.html — Hugo partial (intended to be used with partialCached)
+
+What it does:
+- Given a YouTube videoId, it resolves the metadata needed to render a media card:
+  - title
+  - thumb (thumbnail URL)
+  - duration (formatted duration string)
+
+Why it looks weird:
+- Hugo can’t get duration from oEmbed.
+- YouTube oEmbed does NOT include duration (only title/thumbnail/etc).
+- So we intentionally do TWO requests:
+  1) oEmbed: https://www.youtube.com/oembed?...        → title + thumbnail_url
+  2) youtubei/player: https://www.youtube.com/youtubei/v1/player?... → lengthSeconds
+
+How to use (IMPORTANT):
+- Call this partial with partialCached to avoid doing 2 HTTP requests per render:
+    {{ $meta := partialCached "ytmeta.html" (dict "vidId" $vidId "title" $title "thumb" $thumb "duration" $duration) $vidId }}
+  Cache key: $vidId (if you need to vary by locale/region, use a composite key).
+
+Fallback behavior:
+- If oEmbed fails, we keep any title/thumb coming from frontmatter.
+- If thumb is still empty, we fall back to i.ytimg.com/vi/<id>/hqdefault.jpg
+- If youtubei/player fails, duration stays empty (caller can hide the badge).
+
+Maintenance notes:
+- youtubei/player uses YouTube’s public “WEB” key/endpoint behavior and may break if YouTube changes it.
+- Headers (Origin/Referer/User-Agent) are set so YouTube responds like it would to a browser.
+- Don’t “optimize” this into one call: there’s no simple unauthenticated endpoint that returns
+  oEmbed + duration reliably in one shot.
+
+------------------------------------------------------------------------------*/}}
+
+
 {{- $vidId := .vidId -}}
 {{- $title := .title -}}
 {{- $thumb := .thumb -}}
