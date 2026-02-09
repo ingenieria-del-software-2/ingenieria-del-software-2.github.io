@@ -6,22 +6,6 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Equipo Docente - Ingeniería del Software 2</title>
     {{ partial "css.html" . }}
-    <style>
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-      .reveal-item {
-        opacity: 0;
-      }
-      .reveal-item.shuffled-reveal {
-        animation: fadeIn 0.5s ease-out forwards;
-      }
-    </style>
     <script>
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark')
@@ -60,11 +44,13 @@
       </section>
       <section>
         <div
-          id="team-grid" data-team-grid
-          class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-x-6 gap-y-12"
+          id="team-grid"
+          class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-x-6 gap-y-12 opacity-0 transition-opacity duration-300"
         >
           {{ range .Site.Data.team.team }}
-          <div class="group relative reveal-item">
+          <div 
+             class="group relative opacity-0 translate-y-2 transition-[opacity,transform] duration-500 ease-out data-[reveal=true]:opacity-100 data-[reveal=true]:translate-y-0 motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0"
+          >
             <div
               class="relative aspect-[4/5] rounded-2xl overflow-hidden mb-4 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:border-accent/45 dark:group-hover:border-accent/60 group-hover:shadow-xl group-hover:shadow-accent/10"
             >
@@ -72,6 +58,8 @@
                 src="{{ .pic }}"
                 alt="{{ .name }}"
                 class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105 md:saturate-[.85] md:group-hover:saturate-100"
+                loading="lazy"
+                decoding="async"
               />
               <div
                 class="absolute inset-0 bg-gradient-to-t from-slate-900/50 via-slate-900/15 to-transparent opacity-50 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"
@@ -106,45 +94,28 @@
     </main>
 
     <script>
-      // Seguimiento del mouse para el efecto de los puntos del fondo
-      document.addEventListener("mousemove", (e) => {
-        document.body.style.setProperty("--mouse-x", e.clientX + "px");
-        document.body.style.setProperty("--mouse-y", e.clientY + "px");
-      });
+    document.addEventListener("mousemove", ({ clientX, clientY }) => {
+      document.body.style.setProperty("--mouse-x", `${clientX}px`);
+      document.body.style.setProperty("--mouse-y", `${clientY}px`);
+    });
 
-      // Valores constantes para el efecto de brillo (sin división por scroll)
-      document.addEventListener("DOMContentLoaded", () => {
-        document.body.style.setProperty("--glow-opacity", "1");
-        document.body.style.setProperty("--glow-radius", "220px");
-        
-        // Team Grid Shuffling from team.html
-        const grid = document.querySelector('[data-team-grid]');
-        if (!grid) return;
-        
-          const items = Array.from(grid.children);
-        
-          if (items.length > 1) {
-            // Keep first item (usually the main professor), shuffle rest
-            const first = items[0];
-            const rest = items.slice(1);
+    (async () => {
+      const grid = document.getElementById("team-grid");
+      if (!grid) return;
 
-            const shuffled = rest
-              .map(el => ({ k: Math.random(), el }))
-              .sort((a, b) => a.k - b.k)
-              .map(x => x.el);
-              
-            grid.innerHTML = '';
-            grid.appendChild(first);
-            shuffled.forEach(el => grid.appendChild(el));
-          }
+      // Shuffle children (except the first) and append to re-order
+      [...grid.children].slice(1).sort(() => Math.random() - 0.5)
+        .forEach(card => grid.appendChild(card));
 
-          // Asignar delays dinámicamente para el efecto cascada
-          Array.from(grid.children).forEach((el, i) => {
-            el.style.animationDelay = `${i * 30}ms`;
-            el.classList.add('shuffled-reveal');
-          });
+      grid.classList.remove("opacity-0");
 
-      });
+      // Staggered reveal with image decoding
+      for (const card of grid.children) {
+        await card.querySelector("img")?.decode().catch(() => {});
+        card.dataset.reveal = "true";
+        await new Promise(r => setTimeout(r, 20));
+      }
+    })();
     </script>
   </body>
 </html>
