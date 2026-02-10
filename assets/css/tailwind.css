@@ -100,27 +100,43 @@
 .dark .mask-unified {
     color: #f1f5f9;
     background-image:
+        url('../images/fiuba.svg'),
         linear-gradient(to bottom,
             rgba(241, 245, 249, 1) 0%,
             rgba(241, 245, 249, 0.9) 48%,
             rgba(203, 213, 225, 0.8) 52%,
             rgba(203, 213, 225, 0.9) 100%
         ),
-        url('../images/fiuba.svg'),
         linear-gradient(to bottom, #020617, #020617);
+    
+    background-size:
+        120% auto,
+        100% 100%,
+        100% 100%;
+
+    background-position:
+        center 40%,
+        center center,
+        center center;
+
     -webkit-text-stroke: 0.2px rgba(255, 255, 255, 0.1);
 }
 
-
 @supports (-webkit-background-clip: text) or (background-clip: text) {
-    .mask-unified {
+    .mask-unified,
+    .dark .mask-unified {
         color: transparent;
+        -webkit-text-fill-color: transparent;
     }
 }
 
 @media (min-width: 1024px) {
     .mask-unified {
         background-size: 100% 100%, 75% auto, 100% 100%;
+    }
+    
+    .dark .mask-unified {
+        background-size: 75% auto, 100% 100%, 100% 100%;
     }
 }
 
