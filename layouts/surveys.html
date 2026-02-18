@@ -24,13 +24,13 @@
         extend: {
           colors: {
             atmos: {
-              black:   "#020617",
-              charcoal:"#111827",
-              surface: "#1f2937",
-              border:  "#374151",
-              text:    "#f9fafb",
-              muted:   "#e5e7eb",
-              accent:  "#f3f4f6",
+              black:   "#050505",
+              charcoal:"#0F1115",
+              surface: "#18181B",
+              border:  "#27272A",
+              text:    "#E4E4E7",
+              muted:   "#A1A1AA",
+              accent:  "#D4D4D8",
               teal:    "#38bdf8",
               rose:    "#FB7185",
               indigo:  "#818CF8",
@@ -45,14 +45,14 @@
   </script>
   <style>
     ::-webkit-scrollbar { width:4px; height:4px; }
-    ::-webkit-scrollbar-track { background:#020617; }
+    ::-webkit-scrollbar-track { background:#050505; }
    ::-webkit-scrollbar-thumb { background:#333; border-radius:2px; }
     .glow-text { text-shadow:0 0 20px rgba(255,255,255,0.1); }
     .editorial-line { height:1px; background:linear-gradient(90deg,transparent,#333,transparent); }
     .section-title { font-family:"Inter",sans-serif; font-weight:600; letter-spacing:-0.02em; }
-    .chip-active { background:#374151; color:#fff; border-color:#4b5563; }
-    .chip-inactive { background:transparent; color:#e5e7eb; border-color:#374151; }
-    .chip-inactive:hover { color:#f9fafb; background:#1f2937; }
+    .chip-active { background:#27272A; color:#fff; border-color:#3f3f46; }
+    .chip-inactive { background:transparent; color:#A1A1AA; border-color:#27272A; }
+    .chip-inactive:hover { color:#E4E4E7; background:#18181B; }
     @keyframes fadeIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:none} }
     .fade-in { animation:fadeIn .3s ease both; }
 
@@ -84,9 +84,9 @@
     /* section anchor offset so sticky toolbar doesn't cover headings */
     section[id] { scroll-margin-top: 110px; }
     /* secondary toolbar nav links */
-    .snav-link { display:flex; align-items:center; gap:4px; padding:4px 10px; border-radius:9999px; font-size:11px; white-space:nowrap; color:#71717a; transition:all .15s; border:1px solid transparent; }
-    .snav-link:hover { color:#f9fafb; background:#1f2937; }
-    .snav-link.active { color:#fff; background:#374151; border-color:#4b5563; }
+    .snav-link { display:flex; align-items:center; gap:4px; padding:4px 10px; border-radius:9999px; font-size:11px; white-space:nowrap; color:#A1A1AA; transition:all .15s; border:1px solid transparent; }
+    .snav-link:hover { color:#E4E4E7; background:#18181B; }
+    .snav-link.active { color:#fff; background:#27272A; border-color:#3f3f46; }
     html:not(.dark) .snav-link { color:#71717a; }
     html:not(.dark) .snav-link:hover { color:#18181b; background:#f4f4f5; }
     html:not(.dark) .snav-link.active { color:#18181b; background:#e4e4e7; border-color:#d4d4d8; }
@@ -113,7 +113,7 @@
 <body class="bg-atmos-black text-atmos-text font-sans antialiased selection:bg-atmos-teal selection:text-black">
 
 <!-- ── Secondary dashboard toolbar (sits below the site navbar) ────────── -->
-<div id="dashToolbar" class="sticky top-[var(--navbar-height,64px)] z-30 border-b border-white/10 bg-[rgba(2,6,23,0.72)] backdrop-blur-[16px]">
+<div id="dashToolbar" class="sticky top-[var(--navbar-height,64px)] z-30 border-b border-white/10 bg-[rgba(5,5,5,0.80)] backdrop-blur-[16px]">
   <div class="max-w-screen-xl mx-auto px-4 flex items-center gap-3 h-11">
     <!-- Section jump links — horizontally scrollable on mobile -->
     <nav class="flex items-center gap-1 overflow-x-auto flex-1 hide-scrollbar" id="sectionNav">
@@ -495,17 +495,17 @@ const PALETTE_LIGHT = ['#ea580c','#0ea5e9','#6366f1','#be123c','#d97706'];
 const palette = () => isDark() ? PALETTE : PALETTE_LIGHT;
 
 function applyChartTheme() {
-  Chart.defaults.color = isDark() ? '#e5e7eb' : '#4b5563';
+  Chart.defaults.color = isDark() ? '#A1A1AA' : '#4b5563';
   Chart.defaults.font.family = 'Inter';
 }
 applyChartTheme();
 
 const mkTooltip = () => isDark()
-  ? { backgroundColor:'#111827', titleColor:'#FFFFFF', titleFont:{family:'Inter',size:12,weight:'600'}, bodyColor:'#e5e7eb', borderColor:'#374151', borderWidth:1, padding:8, displayColors:false }
+  ? { backgroundColor:'#18181B', titleColor:'#FFFFFF', titleFont:{family:'Inter',size:12,weight:'600'}, bodyColor:'#A1A1AA', borderColor:'#27272A', borderWidth:1, padding:8, displayColors:false }
   : { backgroundColor:'#ffffff', titleColor:'#18181b', titleFont:{family:'Inter',size:12,weight:'600'}, bodyColor:'#4b5563', borderColor:'#e4e4e7', borderWidth:1, padding:8, displayColors:false };
 
 const mkGrid = () => isDark() ? 'rgba(39,39,42,0.4)' : 'rgba(212,212,216,0.6)';
-const mkTickColor = () => isDark() ? '#9ca3af' : '#71717a';
+const mkTickColor = () => isDark() ? '#52525B' : '#71717a';
 const mkGrad = (ctx, h, c0, c1) => { const g=ctx.createLinearGradient(0,0,0,h); g.addColorStop(0,c0); g.addColorStop(1,c1); return g; };
 
 // ── Theme toggle ─────────────────────────────────────────────────────────
@@ -702,7 +702,7 @@ function buildSparkline() {
 // Donut palette is intentionally separate from the term palette to avoid confusion
 const mkDonutColors = () => isDark()
   ? ['#7DD3FC','#6EE7B7','#C4B5FD','#FCA5A5','#94A3B8']
-  : ['#0369A1','#047857','#5B21B6','#9F1239','#374151'];
+  : ['#0369A1','#047857','#5B21B6','#9F1239','#3f3f46'];
 
 function buildDoughnut(canvasId, valId, legendId, field, cardId) {
   destroyChart(canvasId);

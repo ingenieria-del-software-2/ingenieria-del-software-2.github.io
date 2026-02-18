@@ -5,7 +5,7 @@
 @source "hugo_stats.json";
 
 @theme {
-  --color-primary: #0f172a;
+  --color-primary: #0ea5e9;
   --color-accent: #38bdf8;
   --color-title-accent: #0ea5e9;
 
@@ -14,7 +14,7 @@
   --color-arquitectura: #c2410c;
 
   --color-text-main: #0f172a;
-  --color-text-muted: #64748b;
+  --color-text-muted: #71717A;
 
   --font-sans: "Inter", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
@@ -55,8 +55,8 @@
 }
 
 .dark .bg-engineering {
-    background-color: #020617;
-    background-image: radial-gradient(#1e293b 0.8px, transparent 0.8px);
+    background-color: #050505;
+    background-image: radial-gradient(#27272A 0.8px, transparent 0.8px);
 }
 
 .dark .bg-engineering::after {
@@ -107,7 +107,7 @@
             rgba(203, 213, 225, 0.8) 52%,
             rgba(203, 213, 225, 0.9) 100%
         ),
-        linear-gradient(to bottom, #020617, #020617);
+        linear-gradient(to bottom, #050505, #050505);
     
     background-size:
         120% auto,
