@@ -59,7 +59,7 @@ menu:
       weight: 6
 
     - name: "Encuestas"
-      pageRef: "/blog/surveys"
+      pageRef: "/surveys"
       weight: 7
 
     - name: "Contacto"
