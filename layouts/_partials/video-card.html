@@ -1,0 +1,88 @@
+{{- $v := . -}}
+
+{{- $isDrive := eq $v.type "drive" -}}
+{{- $vidId := "" -}}
+{{- $title := $v.title -}}
+{{- $thumb := $v.thumb -}}
+{{- $duration := $v.duration -}}
+{{- $driveURL := "" -}}
+
+{{- if $isDrive -}}
+  {{- $driveURL = $v.url | replaceRE `/view$` `/preview` -}}
+{{- else -}}
+  {{- $vidId = replaceRE `^.*(youtu\.be/|v/|u/\w/|embed/|watch\?v=|&v=)([^#&?]{11}).*$` `$2` $v.url -}}
+  {{- $cacheKey := cond (ne $vidId "") $vidId $v.url -}}
+  {{- $metaRaw := partialCached "ytmeta.html"
+    (dict "vidId" $vidId "title" $title "thumb" $thumb "duration" $duration)
+    $cacheKey
+  -}}
+  {{- $meta := $metaRaw | transform.Unmarshal -}}
+  {{- $title = $meta.title -}}
+  {{- $thumb = $meta.thumb -}}
+  {{- $duration = $meta.duration -}}
+{{- end -}}
+
+{{- $durationLabel := "" -}}
+{{- with $duration -}}
+  {{- $rawDuration := printf "%v" . -}}
+  {{- if gt (len (findRE `^\d+$` $rawDuration)) 0 -}}
+    {{- $durationSec := int $rawDuration -}}
+    {{- $durationHours := div $durationSec 3600 -}}
+    {{- $durationMinutes := div (mod $durationSec 3600) 60 -}}
+    {{- $durationSeconds := mod $durationSec 60 -}}
+    {{- $durationLabel = cond (gt $durationHours 0) (printf "%d:%02d:%02d" $durationHours $durationMinutes $durationSeconds) (printf "%d:%02d" $durationMinutes $durationSeconds) -}}
+  {{- else -}}
+    {{- $durationLabel = $rawDuration -}}
+  {{- end -}}
+{{- end -}}
+
+<a
+  href="#"
+  class="group cursor-pointer animate-fade-up block"
+  data-provider="{{ if $isDrive }}drive{{ else }}youtube{{ end }}"
+  data-id="{{ $vidId }}"
+  data-url="{{ if $isDrive }}{{ $driveURL }}{{ end }}"
+  onclick="openMedia(this); return false;"
+>
+  <div class="relative aspect-video bg-gray-50 dark:bg-slate-900 overflow-hidden rounded-lg mb-3 border border-gray-100 dark:border-slate-800 transition-[transform,box-shadow,border-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-0.5 group-hover:border-slate-300 dark:group-hover:border-slate-600 group-hover:shadow-[0_10px_20px_-16px_rgba(15,23,42,0.28)] dark:group-hover:shadow-[0_10px_20px_-16px_rgba(0,0,0,0.8)]">
+    {{ if $isDrive }}
+      <iframe
+        src="{{ $driveURL }}"
+        class="w-full h-full transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-[1.01]"
+        frameborder="0"
+        allowfullscreen
+        loading="lazy"
+        style="pointer-events: none;"
+      ></iframe>
+    {{ else }}
+      <img
+        alt="{{ $title }}"
+        class="w-full h-full object-cover transition-[transform,filter] duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-[1.01]"
+        src="{{ $thumb }}"
+      />
+    {{ end }}
+
+    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/35 via-slate-900/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+      <span class="w-11 h-11 rounded-full bg-slate-900/60 ring-1 ring-white/60 shadow-md flex items-center justify-center transform translate-y-1.5 scale-95 group-hover:translate-y-0 group-hover:scale-100 transition-all duration-300">
+        <span class="block h-0 w-0 border-y-[6px] border-y-transparent border-l-[10px] border-l-white ml-0.5"></span>
+      </span>
+    </div>
+
+    {{ if $durationLabel }}
+      <div class="absolute bottom-1 right-1 bg-black/80 text-white text-[10px] font-sans font-medium px-1.5 py-0.5 pointer-events-none z-10">
+        {{ $durationLabel }}
+      </div>
+    {{ end }}
+  </div>
+
+  <div class="flex flex-col gap-1.5">
+    <h3 class="font-sans font-semibold text-sm text-text-main dark:text-slate-200 group-hover:text-title-accent transition-colors duration-300 leading-5 overflow-hidden [overflow-wrap:anywhere] max-h-[3.75rem] xl:max-h-[2.5rem] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:3] xl:[-webkit-line-clamp:2] min-h-[3.75rem] xl:min-h-[2.5rem]">
+      {{ $title }}
+    </h3>
+    {{ with $v.description }}
+      <p class="text-[10px] text-text-muted dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-colors duration-300 leading-4 overflow-hidden [overflow-wrap:anywhere] max-h-[2rem] [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]">
+        {{ . }}
+      </p>
+    {{ end }}
+  </div>
+</a>

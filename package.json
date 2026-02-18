@@ -1,8 +1,16 @@
 {
-  "devDependencies": {
-    "@tailwindcss/cli": "^4.0.0",
-    "autoprefixer": "^10.4.23",
-    "postcss": "^8.5.6",
-    "tailwindcss": "^4.0.0"
+  "scripts": {
+    "dev": "hugo mod tidy && hugo server --logLevel debug --disableFastRender -p 1313",
+    "update:yt": "bash .githooks/pre-commit",
+    "build": "npm run build:prod",
+    "build:prod": "hugo mod tidy && HUGO_ENVIRONMENT=production HUGO_ENV=production sh -c 'hugo --gc --minify ${BASE_URL:+--baseURL \"$BASE_URL\"}'",
+    "build:prod:mr-preview": "BASE_URL=\"${PREVIEW_URL:?Missing PREVIEW_URL}\" npm run build:prod"
+  },
+  "dependencies": {
+    "tailwindcss": "^4.1.18",
+    "youtubei.js": "^16.0.1",
+    "@tailwindcss/cli": "^4.1.18",
+    "autoprefixer": "^10.4.24",
+    "postcss": "^8.5.6"
   }
 }

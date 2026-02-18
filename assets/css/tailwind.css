@@ -3,3 +3,189 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @source "hugo_stats.json";
+
+@theme {
+  --color-primary: #0f172a;
+  --color-accent: #38bdf8;
+  --color-title-accent: #0ea5e9;
+
+  --color-gestion: #9f1239;
+  --color-devops: #0369a1;
+  --color-arquitectura: #c2410c;
+
+  --color-text-main: #0f172a;
+  --color-text-muted: #64748b;
+
+  --font-sans: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-fade-up: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  @keyframes fadeUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+}
+
+.bg-engineering {
+    background-color: #ffffff;
+    background-image: radial-gradient(#e2e8f0 0.8px, transparent 0.8px);
+    background-size: 40px 40px;
+    position: relative;
+}
+
+/* Capa de puntos "encendidos" que sigue al mouse */
+.bg-engineering::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(#94a3b8 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    mask-image: radial-gradient(circle var(--glow-radius, 120px) at var(--mouse-x, -100%) var(--mouse-y, -100%), black, transparent);
+    -webkit-mask-image: radial-gradient(circle var(--glow-radius, 120px) at var(--mouse-x, -100%) var(--mouse-y, -100%), black, transparent);
+}
+
+.bg-engineering:hover::after {
+    opacity: var(--glow-opacity, 0.3);
+}
+
+.dark .bg-engineering {
+    background-color: #020617;
+    background-image: radial-gradient(#1e293b 0.8px, transparent 0.8px);
+}
+
+.dark .bg-engineering::after {
+    background-image: radial-gradient(#38bdf8 1px, transparent 1px);
+    mask-image: radial-gradient(circle var(--glow-radius, 120px) at var(--mouse-x, -100%) var(--mouse-y, -100%), black, transparent);
+    -webkit-mask-image: radial-gradient(circle var(--glow-radius, 120px) at var(--mouse-x, -100%) var(--mouse-y, -100%), black, transparent);
+}
+
+
+/* MÁSCARA UNIFICADA */
+.mask-unified {
+    color: #0f172a;
+    background-image:
+        linear-gradient(to bottom,
+            rgba(15, 23, 42, 0.97) 0%,
+            rgba(15, 23, 42, 0.89) 48%,
+            rgba(30, 41, 59, 0.8) 52%,
+            rgba(30, 41, 59, 0.9) 100%
+        ),
+        url('../images/fiuba.svg'),
+        linear-gradient(to bottom, #ffffff, #ffffff);
+
+    background-size:
+        100% 100%,
+        120% auto,
+        100% 100%;
+
+    background-position:
+        center center,
+        center 40%,
+        center center;
+
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-stroke: 0.2px rgba(15, 23, 42, 0.05);
+    width: fit-content;
+    display: block;
+}
+
+.dark .mask-unified {
+    color: #f1f5f9;
+    background-image:
+        url('../images/fiuba.svg'),
+        linear-gradient(to bottom,
+            rgba(241, 245, 249, 1) 0%,
+            rgba(241, 245, 249, 0.9) 48%,
+            rgba(203, 213, 225, 0.8) 52%,
+            rgba(203, 213, 225, 0.9) 100%
+        ),
+        linear-gradient(to bottom, #020617, #020617);
+    
+    background-size:
+        120% auto,
+        100% 100%,
+        100% 100%;
+
+    background-position:
+        center 40%,
+        center center,
+        center center;
+
+    -webkit-text-stroke: 0.2px rgba(255, 255, 255, 0.1);
+}
+
+@supports (-webkit-background-clip: text) or (background-clip: text) {
+    .mask-unified,
+    .dark .mask-unified {
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+    }
+}
+
+@media (min-width: 1024px) {
+    .mask-unified {
+        background-size: 100% 100%, 75% auto, 100% 100%;
+    }
+    
+    .dark .mask-unified {
+        background-size: 75% auto, 100% 100%, 100% 100%;
+    }
+}
+
+/* Single scroll container for the content area (videos + resources) */
+.section-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(100, 116, 139, 0.32) transparent;
+}
+
+.section-scroll::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+
+.section-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.section-scroll::-webkit-scrollbar-thumb {
+    background-color: rgba(100, 116, 139, 0.32);
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
+
+.section-scroll:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(71, 85, 105, 0.42);
+}
+
+.dark .section-scroll {
+    scrollbar-color: rgba(148, 163, 184, 0.42) transparent;
+}
+
+.dark .section-scroll::-webkit-scrollbar-thumb {
+    background-color: rgba(148, 163, 184, 0.42);
+}
+
+.dark .section-scroll:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(148, 163, 184, 0.56);
+}
+
+@media (min-width: 768px) {
+    .material-section-panel {
+        height: 100%;
+        min-height: 0;
+    }
+
+    .material-section-panel:not(.hidden) {
+        display: flex;
+        flex-direction: column;
+    }
+}

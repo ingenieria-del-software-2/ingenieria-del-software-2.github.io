@@ -1,6 +1,6 @@
 {{ define "main" }}
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="motion-safe:scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,195 +10,507 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
     {{ partial "css.html" . }}
-
     <style>
-        .animated-grid {
-            animation: scroll-background 60s linear infinite;
-        }
+      /* Timeline runtime positioning. */
+      #main-timeline [data-date],
+      #hoy-marker {
+        left: var(--x, 0%) !important;
+        translate: 0 -50% !important;
+        will-change: left, translate;
+      }
 
-        @keyframes scroll-background {
-            0% { background-position: 0 0; }
-            100% { background-position: -384px -256px; } /* 6rem * 4, 4rem * 4 */
+      #preclass-line {
+        width: 100%;
+        transform-origin: left center;
+        translate: 0 -50% !important;
+        transform: scaleX(var(--w, 0));
+        will-change: transform, translate;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(1rem);
         }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      .hero-animate {
+        opacity: 0;
+        animation: fadeInUp 0.7s ease-out forwards;
+      }
+      
+      .hero-animate-delay-1 { animation-delay: 0.1s; }
+      .hero-animate-delay-2 { animation-delay: 0.2s; }
+
+      /* Disable sticky focus tooltips and pointer on desktop */
+      @media (min-width: 768px) {
+        .timeline-point:focus:not(:hover) time {
+          opacity: 0 !important;
+          transform: translateY(1rem) !important;
+        }
+        .timeline-point {
+          cursor: default !important;
+        }
+      }
+
     </style>
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
 </head>
-<body class="bg-white dark:bg-gray-950 transition-colors duration-300">
+{{ partial "sidebar.html" (dict "context" . "disableSidebar" true) }}
+</html>
+<body class="bg-engineering relative selection:bg-slate-200 selection:text-slate-900 dark:text-slate-200 dark:selection:bg-slate-700 dark:selection:text-white">
+
     <!-- Hero Section -->
-    <div class="relative overflow-hidden">
-        {{ partial "sidebar.html" (dict "context" . "disableSidebar" true) }}
+    <section id="home-hero" class="relative min-h-[80svh] md:min-h-svh px-6 flex flex-col justify-center overflow-hidden pb-12">
         
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 relative z-10">
-            <div class="text-center">
-                <div class="mb-8 flex justify-center">
-                    <div class="inline-flex items-center justify-center p-3 rounded-full bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm shadow-sm ring-1 ring-gray-900/5 dark:ring-white/10">
-                        <img src="/images/logo.svg" alt="Logo" class="w-20 h-20 object-cover rounded-full dark:invert">
-                    </div>
+        <div class="max-w-md md:max-w-4xl lg:max-w-6xl mx-auto w-full relative z-10 flex flex-col justify-center">
+            <!-- Header (Always first) -->
+            <header class="flex flex-col items-start max-sm:pt-8 mb-10 md:mb-6 lg:mb-8">
+                <div class="mb-4 md:mb-6 flex items-center gap-4 self-start hero-animate hero-animate-delay-1">
+                    <span class="px-2 py-0.5 border border-slate-400 dark:border-white text-[10px] md:text-[11px] font-sans text-slate-800 dark:text-slate-950 uppercase tracking-widest bg-white dark:bg-white font-medium transition-colors">FIUBA</span>
+                    <span class="h-px w-10 bg-slate-300 dark:bg-slate-700"></span>
                 </div>
-                
-                <h1 class="text-3xl sm:text-4xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight whitespace-nowrap">
-                    {{ .Site.Title }}
-                </h1>
-                
-                <p class="text-xl text-gray-600 dark:text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
-                    Esta es la página web de la materia de la Facultad de Ingeniería de la Universidad de Buenos Aires.
-                </p>
-                
-                <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    {{ if .Site.Params.inscripcion.enabled }}
-                    <a href="{{ .Site.Params.inscripcion.url }}"
-                       class="group inline-flex items-center justify-center bg-gray-950 hover:bg-sky-600 text-white px-8 py-3 rounded-full text-base font-medium transition-colors duration-300 dark:bg-sky-600 dark:hover:bg-sky-700 ring-2 ring-sky-100 dark:ring-sky-800/50">
-                        <span class="mx-auto">Inscribirse</span>
-                        <svg class="h-5 w-0 ml-0 group-hover:w-5 group-hover:ml-2 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                        </svg>
-                    </a>
-                    {{ else }}
-                    <button id="btn-inscripcion" style="cursor: not-allowed;"
-                       class="group inline-flex items-center justify-center bg-gray-400 hover:bg-slate-500 text-white px-8 py-3 rounded-full text-base font-medium transition-colors duration-300 dark:bg-gray-700 dark:hover:bg-slate-600 ring-2 ring-sky-100 dark:ring-sky-800/50">
-                        <span id="btn-inscripcion-text" class="mx-auto transition-opacity duration-300">Inscribirse</span>
-                    </button>
-                    <script>
-                        (function() {
-                            const msgs = {{ .Site.Params.inscripcion.mensajes_espera | jsonify | safeJS }};
-                            const el = document.getElementById('btn-inscripcion-text');
-                            let i = 0;
-                            const show = () => { el.style.opacity = 0; setTimeout(() => { el.textContent = msgs[i]; el.style.opacity = 1; i = (i + 1) % msgs.length; }, 300); };
-                            document.getElementById('btn-inscripcion').onclick = show;
-                        })();
-                    </script>
-                    {{ end }}
-                    
-                    <a href="/material"
-                       class="group inline-flex items-center justify-center bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border-2 border-gray-200 dark:border-gray-700 px-8 py-3 rounded-full text-base font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-300 ring-1 ring-gray-200 dark:ring-gray-700/50">
-                        <span class="mx-auto">Ver programa</span>
-                        <svg class="h-5 w-0 ml-0 group-hover:w-5 group-hover:ml-2 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Background -->
-        <div class="animated-grid absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#f0f9ff_1px,transparent_1px),linear-gradient(to_bottom,#f0f9ff_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1f2937_1px,transparent_1px),linear-gradient(to_bottom,#1f2937_1px,transparent_1px)] bg-[size:6rem_4rem]">
-            <div class="absolute inset-0 bg-[radial-gradient(circle_500px_at_20%_200px,#e0f7ff,transparent)] dark:bg-[radial-gradient(circle_800px_at_50%_200px,#0c4a6e,transparent)]"></div>
-        </div>
-        
-        <!-- Floating shapes -->
-        <div class="absolute top-1/4 left-10 w-24 h-24 bg-sky-100/70 dark:bg-sky-900/20 rounded-full mix-blend-multiply dark:mix-blend-lighten blur-xl opacity-70"></div>
-        <div class="absolute bottom-1/4 right-10 w-36 h-36 bg-sky-200/50 dark:bg-sky-800/20 rounded-full mix-blend-multiply dark:mix-blend-lighten blur-xl opacity-70"></div>
-    </div>
 
-    <!-- Areas de Estudio Section -->
-    <div class="bg-white dark:bg-gray-950 py-20 sm:py-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white tracking-tight">Áreas de Estudio</h2>
-                <p class="mt-4 text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                    Explora los pilares fundamentales que cubrimos en la materia para formar profesionales de software de alto nivel.
-                </p>
-            </div>
+                <div class="flex flex-col w-full items-start hero-animate hero-animate-delay-2">
+                    <h1 class="mask-unified font-sans text-5xl md:text-7xl lg:text-8xl tracking-tighter leading-[0.85] uppercase">
+                        <span class="block font-black">INGENIERÍA DEL</span>
+                        <span class="block font-medium">SOFTWARE 2</span>
+                    </h1>
+                </div>
+            </header>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Card 1: Gestión -->
-                <div class="group bg-white dark:bg-gray-800 p-8 rounded-2xl border border-gray-200 dark:border-gray-800 hover:border-sky-400/50 dark:hover:border-sky-600/50 transition-colors duration-300">
-                    <div class="inline-flex items-center justify-center w-12 h-12 bg-sky-100 dark:bg-sky-900/50 rounded-lg mb-6 transition-transform duration-300 group-hover:scale-110 group-hover:bg-sky-200 dark:group-hover:bg-sky-800/80">
-                        <svg class="w-7 h-7 text-sky-600 dark:text-sky-400 transition-transform duration-300 group-hover:rotate-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">Gestión</h3>
-                    <p class="text-gray-600 dark:text-gray-300">
-                        Procesos de desarrollo de sistemas software de gran escala y métodos ágiles como Scrum, Kanban y XP.
-                    </p>
-                </div>
+            <!-- Dashboard Grid Layout -->
+            <div class="flex flex-col md:grid md:grid-cols-12 gap-x-10 lg:gap-x-16 pt-0 md:pt-8">
                 
-                <!-- Card 2: DevOps -->
-                <div class="group bg-white dark:bg-gray-800 p-8 rounded-2xl border border-gray-200 dark:border-gray-800 hover:border-sky-400/50 dark:hover:border-sky-600/50 transition-colors duration-300">
-                    <div class="inline-flex items-center justify-center w-12 h-12 bg-sky-100 dark:bg-sky-900/50 rounded-lg mb-6 transition-transform duration-300 group-hover:scale-110 group-hover:bg-sky-200 dark:group-hover:bg-sky-800/80">
-                        <svg class="w-7 h-7 text-sky-600 dark:text-sky-400 transition-transform duration-300 group-hover:rotate-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">DevOps</h3>
-                    <p class="text-gray-600 dark:text-gray-300">
-                        Gestión de configuración, CICD, Cloud, Site Reliability Engineering, Observabilidad e Infraestructura como Código.
-                    </p>
-                </div>
-                
-                <!-- Card 3: Arquitectura -->
-                <div class="group bg-white dark:bg-gray-800 p-8 rounded-2xl border border-gray-200 dark:border-gray-800 hover:border-sky-400/50 dark:hover:border-sky-600/50 transition-colors duration-300">
-                    <div class="inline-flex items-center justify-center w-12 h-12 bg-sky-100 dark:bg-sky-900/50 rounded-lg mb-6 transition-transform duration-300 group-hover:scale-110 group-hover:bg-sky-200 dark:group-hover:bg-sky-800/80">
-                        <svg class="w-7 h-7 text-sky-600 dark:text-sky-400 transition-transform duration-300 group-hover:rotate-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">Arquitectura</h3>
-                    <p class="text-gray-600 dark:text-gray-300">
-                        Calidad interna y externa, atributos de calidad, Domain Driven Design y arquitecturas para software a gran escala.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
+                <!-- 1. Timeline: Desktop (Border Below, Order 1) | Mobile (No Borders, Order 2) -->
+                <figure id="main-timeline" class="order-2 md:order-1 md:col-span-12 w-full select-none relative mb-12 md:mb-16 md:pb-16 md:border-b md:border-slate-100/80 dark:md:border-slate-800 invisible" aria-label="Línea de tiempo del curso">
+                    <div class="w-full relative h-10 flex items-center">
+                        <div class="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-px bg-slate-200 dark:bg-slate-700"></div>
+                        <div id="preclass-line" class="absolute left-0 top-1/2 -translate-y-1/2 h-px border-t border-dotted border-slate-300 dark:border-slate-600 pointer-events-none"></div>
 
-    <!-- Recent Posts -->
-    <div class="bg-gray-50 dark:bg-gray-950 mx-auto px-4 sm:px-6 lg:px-12 py-16">
-        <div class="flex items-center justify-between mb-12">
-            <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Anuncios Recientes</h2>
-            <a href="/blog" class="text-sky-500 dark:text-sky-400 hover:underline text-sm font-medium flex items-center">
-                Ver todos
-                <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                </svg>
-            </a>
-        </div>
-        
-        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {{ range first 3 .Site.RegularPages }}
-            <article class="mx-2 group relative rounded-xl border-2 border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 overflow-hidden transition-all duration-300 hover:border-sky-400/50 dark:hover:border-sky-600/50">
-                <div class="p-6 h-full flex flex-col">
-                    <div class="flex items-center gap-2 mb-3">
-                        <span class="inline-flex items-center rounded-full bg-sky-100 dark:bg-sky-900/50 px-2.5 py-1 text-xs font-medium text-sky-700 dark:text-sky-300">
-                            {{ with .Params.tags }}{{ index . 0 }}{{ end }}
-                        </span>
-                        <span class="text-xs text-gray-500 dark:text-gray-400">{{ .Date.Format "2 de January, 2006" }}</span>
+                        <!-- Hoy Indicator -->
+                        <div id="hoy-marker" class="absolute top-1/2 -translate-y-1/2 z-0 flex flex-col items-center" style="left: 0%">
+                             <div class="w-1.5 h-1.5 bg-accent rounded-full animate-pulse-slow shadow-[0_0_0_2px_rgba(56,189,248,0.15)] dark:shadow-[0_0_10px_rgba(255,255,255,0.6)]"></div>
+                             <div class="absolute -top-6 text-[9px] font-sans font-medium text-accent tracking-[0.2em] bg-white dark:bg-slate-950/80 dark:backdrop-blur-sm px-1 rounded border border-transparent dark:border-white/20">HOY</div>
+                        </div>
+
+                        {{ with .Site.Data.fechas }}
+                        <!-- Inicio de clases -->
+                        <div data-date="{{ .inicio }}" data-role="start" class="timeline-point absolute top-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-slate-900 dark:bg-slate-100 rounded-full z-10 border-2 border-white dark:border-slate-900 shadow-sm" style="left: 0%">
+                             <div class="absolute -top-7 text-[10px] font-sans font-bold text-slate-500 dark:text-slate-400 tracking-wider bg-white dark:bg-slate-900 px-1">INICIO</div>
+                        </div>
+
+                        <!-- Milestones -->
+                        <div data-date="{{ .individual }}" tabindex="0" class="timeline-point group absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-slate-300 dark:bg-slate-600 rounded-full cursor-pointer hover:bg-slate-900 dark:hover:bg-slate-100 focus:outline-none transition-colors z-10 border border-white dark:border-slate-900 after:content-[''] after:absolute after:-inset-4 after:z-20" style="left: 0%">
+                             <time datetime="{{ .individual }}" class="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 translate-y-1 opacity-0 transition-all duration-200 ease-out bg-slate-900/95 dark:bg-slate-100/95 text-white dark:text-slate-900 text-[11px] font-sans font-medium px-3 py-1.5 shadow-xl z-50 whitespace-nowrap tracking-[0.1em] group-hover:opacity-100 group-hover:translate-y-0 group-focus:opacity-100 group-focus:translate-y-0 max-sm:left-0 max-sm:translate-x-0 max-sm:-ml-1">{{ substr .individual 5 5 }} - TP INDIV.</time>
+                        </div>
+                        <div data-date="{{ .checkpoint1 }}" tabindex="0" class="timeline-point group absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-slate-300 dark:bg-slate-600 rounded-full cursor-pointer hover:bg-gestion focus:outline-none transition-colors z-10 border border-white dark:border-slate-900 after:content-[''] after:absolute after:-inset-4 after:z-20" style="left: 0%">
+                            <time datetime="{{ .checkpoint1 }}" class="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 translate-y-1 opacity-0 transition-all duration-200 ease-out bg-gestion text-white text-[11px] font-sans font-medium px-3 py-1.5 shadow-xl z-50 whitespace-nowrap tracking-[0.1em] group-hover:opacity-100 group-hover:translate-y-0 group-focus:opacity-100 group-focus:translate-y-0">{{ substr .checkpoint1 5 5 }} - CHECKPOINT 1</time>
+                        </div>
+                        <div data-date="{{ .checkpoint2 }}" tabindex="0" class="timeline-point group absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-slate-300 dark:bg-slate-600 rounded-full cursor-pointer hover:bg-devops focus:outline-none transition-colors z-10 border border-white dark:border-slate-900 after:content-[''] after:absolute after:-inset-4 after:z-20" style="left: 0%">
+                             <time datetime="{{ .checkpoint2 }}" class="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 translate-y-1 opacity-0 transition-all duration-200 ease-out bg-devops text-white text-[11px] font-sans font-medium px-3 py-1.5 shadow-xl z-50 whitespace-nowrap tracking-[0.1em] group-hover:opacity-100 group-hover:translate-y-0 group-focus:opacity-100 group-focus:translate-y-0">{{ substr .checkpoint2 5 5 }} - CHECKPOINT 2</time>
+                        </div>
+                        <div data-date="{{ .checkpoint3 }}" tabindex="0" class="timeline-point group absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-slate-300 dark:bg-slate-600 rounded-full cursor-pointer hover:bg-arquitectura focus:outline-none transition-colors z-10 border border-white dark:border-slate-900 after:content-[''] after:absolute after:-inset-4 after:z-20" style="left: 0%">
+                             <time datetime="{{ .checkpoint3 }}" class="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 translate-y-1 opacity-0 transition-all duration-200 ease-out bg-arquitectura text-white text-[11px] font-sans font-medium px-3 py-1.5 shadow-xl z-50 whitespace-nowrap tracking-[0.1em] group-hover:opacity-100 group-hover:translate-y-0 group-focus:opacity-100 group-focus:translate-y-0">{{ substr .checkpoint3 5 5 }} - CHECKPOINT 3</time>
+                        </div>
+                        <div data-date="{{ .final }}" data-role="end" tabindex="0" class="timeline-point group absolute top-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-slate-900 dark:bg-slate-100 rounded-full cursor-pointer hover:scale-125 focus:outline-none transition-transform z-10 border-2 border-white dark:border-slate-900 shadow-sm" style="left: 100%">
+                             <time datetime="{{ .final }}" class="pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 translate-y-1 opacity-0 transition-all duration-200 ease-out bg-slate-900/95 dark:bg-slate-100/95 text-white dark:text-slate-900 text-[11px] font-sans font-medium px-3 py-1.5 shadow-xl z-50 whitespace-nowrap tracking-[0.1em] group-hover:opacity-100 group-hover:translate-y-0 group-focus:opacity-100 group-focus:translate-y-0 max-sm:left-full max-sm:-translate-x-full max-sm:ml-1">{{ substr .final 5 5 }} - FINAL</time>
+                        </div>
+                        {{ end }}
                     </div>
-                    
-                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors mb-2">
-                        <a href="{{ .RelPermalink }}" class="after:absolute after:inset-0">{{ .Title }}</a>
-                    </h3>
-                    
-                    <p class="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
-                        {{ .Summary | truncate 100 "..." }}
+                    <figcaption class="flex justify-between mt-4 text-[10px] font-sans text-slate-400 dark:text-slate-500 font-light uppercase tracking-[0.25em]">
+                        {{ with site.Data.fechas }}
+                        {{ $ini := time .inicio }}
+                        {{ $fin := time .final }}
+                        {{ $m0 := add (mul (int ($ini.Format "2006")) 12) (int ($ini.Format "1")) }}
+                        {{ $m1 := add (mul (int ($fin.Format "2006")) 12) (int ($fin.Format "1")) }}
+                        {{ $n := add (sub $m1 $m0) 1 }}
+
+                        {{ range seq 0 (sub $n 1) }}
+                        {{ $t := $ini.AddDate 0 . 0 }}
+                        <span class="{{ if and (gt . 0) (lt . (sub $n 1)) }}hidden md:inline{{ end }}">
+                            {{ $t | time.Format "January" }}
+                        </span>
+                        {{ end }}
+                        {{ end }}
+                    </figcaption>
+                </figure>
+
+                <!-- 2. Novedades: Desktop (Left, Order 2) | Mobile (Bottom, Order 3) -->
+            <section aria-labelledby="novedades-title" class="order-3 md:order-2 md:col-span-4 w-full mt-0 relative md:pr-10 lg:pr-12 md:border-r md:border-slate-100/80 dark:md:border-slate-900">
+                    <div class="relative">
+                        <header class="flex items-center gap-3 mb-8">
+                            <span class="relative flex h-1.5 w-1.5">
+                                <span class="animate-pulse-slow absolute inline-flex h-full w-full rounded-full bg-slate-300 dark:bg-slate-700 opacity-50"></span>
+                                <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-slate-400 dark:bg-slate-500"></span>
+                            </span>
+                            <h3 id="novedades-title" class="text-[11px] font-sans font-medium text-slate-600 dark:text-slate-400 uppercase tracking-[0.2em]">Novedades</h3>
+                        </header>
+                        
+                        <ul class="space-y-4">
+                            {{ range first 2 (where .Site.RegularPages "Section" "blog") }}
+                            <li class="group cursor-pointer relative">
+                                <time datetime="{{ .Date.Format "2006-01-02" }}" class="text-[10px] font-sans text-slate-500 dark:text-slate-500 font-medium block mb-0.5 group-hover:text-slate-800 dark:group-hover:text-slate-200 transition-colors">{{ .Date.Format "02 Jan" | upper }}</time>
+                                <div class="flex items-start justify-between gap-4">
+                                    <a href="{{ .RelPermalink }}" class="text-sm font-semibold text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white transition-colors leading-tight before:absolute before:inset-0">
+                                        {{ .Title }}
+                                    </a>
+                                    <svg class="w-4 h-4 text-slate-400 dark:text-slate-600 group-hover:text-slate-600 dark:group-hover:text-slate-400 group-hover:translate-x-0.5 transition-all fill-current" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>
+                                </div>
+                            </li>
+                            {{ end }}
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- 3. Context & Actions: Desktop (Right, Order 3) | Mobile (Top, Order 1) -->
+                <section class="order-1 md:order-3 md:col-span-8 flex flex-col justify-center items-start mb-12 md:mb-0">
+                    <p class="text-lg md:text-xl text-slate-700 dark:text-slate-300 font-light max-w-2xl leading-relaxed mb-8">
+                        Esta es la página web de la materia de la Facultad de Ingeniería de la Universidad de Buenos Aires.
                     </p>
                     
-                    <div class="mt-auto pt-2">
-                        <div class="flex justify-end">
-                            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 group-hover:bg-sky-500 group-hover:text-white dark:group-hover:bg-sky-500 dark:group-hover:text-white transition-all duration-300 group-hover:scale-110">
-                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                                </svg>
-                            </span>
+                    {{ $inscripcionURL := .Site.Params.inscripcion.url | default "" }}
+                    {{ if and $inscripcionURL (not (hasPrefix $inscripcionURL "http")) }}
+                        {{ $inscripcionURL = printf "https://%s" $inscripcionURL }}
+                    {{ end }}
+                    <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                        <a href="{{ "/material" | relURL }}" class="group flex items-center justify-center gap-3 px-8 py-3.5 border border-slate-900 dark:border-slate-200 text-slate-900 dark:text-slate-200 hover:bg-slate-900 dark:hover:bg-slate-200 hover:text-white dark:hover:text-slate-900 transition-all w-full sm:w-auto active:translate-y-0.5 min-w-[180px]">
+                            <svg class="w-[18px] h-[18px] fill-current" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                            <span class="font-sans font-medium text-[11px] tracking-[0.2em] whitespace-nowrap">PROGRAMA</span>
+                        </a>
+                        
+                        <div class="flex flex-col gap-2 w-full sm:w-auto">
+                            {{ if $inscripcionURL }}
+                            <a href="{{ $inscripcionURL | safeURL }}" target="_blank" rel="noopener noreferrer" class="group relative px-8 py-3.5 bg-slate-900 dark:bg-slate-100 border border-slate-900 dark:border-slate-100 text-white dark:text-slate-950 hover:bg-slate-800 dark:hover:bg-white hover:border-slate-800 dark:hover:border-white flex items-center justify-center gap-3 w-full sm:w-auto transition-all active:translate-y-0.5 min-w-[180px] shadow-sm dark:shadow-[0_8px_24px_-14px_rgba(255,255,255,0.55)]">
+                                <svg class="w-4 h-4 text-slate-100 dark:text-slate-950 group-hover:text-white dark:group-hover:text-slate-950 fill-current" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+                                <span class="font-sans font-medium text-[11px] tracking-[0.2em] whitespace-nowrap">INSCRIPCIÓN</span>
+                            </a>
+                            {{ else }}
+                            <button class="group relative px-8 py-3.5 bg-[repeating-linear-gradient(45deg,rgba(255,255,255,0.6),rgba(255,255,255,0.6)_10px,rgba(241,245,249,0.8)_10px,rgba(241,245,249,0.8)_20px)] dark:bg-[repeating-linear-gradient(45deg,rgba(51,65,85,0.92),rgba(51,65,85,0.92)_10px,rgba(71,85,105,0.92)_10px,rgba(71,85,105,0.92)_20px)] border border-slate-200 dark:border-slate-500 text-slate-400 dark:text-slate-200 cursor-not-allowed flex items-center justify-center gap-3 w-full sm:w-auto transition-colors min-w-[180px] opacity-70 dark:opacity-95 dark:shadow-[inset_0_0_0_1px_rgba(255,255,255,0.06)]" disabled>
+                                <svg class="w-4 h-4 text-slate-400 dark:text-slate-200 fill-current" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+                                <span class="font-sans font-medium text-[11px] tracking-[0.2em] whitespace-nowrap">INSCRIPCIÓN</span>
+                            </button>
+                            {{ end }}
                         </div>
                     </div>
+                </section>
+            </div>
+        </div>
+        </div>
+
+        </div>
+
+    </section>
+
+    <!-- Main Content (Cards) -->
+    <main id="home-modules" class="relative max-w-lg md:max-w-4xl lg:max-w-6xl mx-auto w-full px-6 md:px-12 mt-6 md:mt-10 mb-24 md:mb-36">
+        
+        <!-- Section Header (Optional/Implicit) -->
+        <div id="home-modules-title" class="scroll-mt-20 mb-8 md:mb-12 flex items-center justify-between">
+            <h2 class="text-[11px] font-mono font-bold text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em]">Áreas de Estudio</h2>
+            <div class="h-px flex-grow ml-8 bg-slate-100 dark:bg-slate-800"></div>
+        </div>
+
+        <!-- Grid Layout -->
+        <div class="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 md:gap-x-12 md:gap-y-24 lg:gap-16 items-start">
+
+            <!-- Article 01 - GESTIÓN (REDISEÑO MÓVIL EXACTO) -->
+            <article class="relative group flex flex-col h-full">
+                
+                <!-- MOBILE VIEW START -->
+                <div class="md:hidden h-24 relative w-full mb-4">
+                    <!-- Mobile Background Number -->
+                    <div class="absolute -left-4 top-1/2 -translate-y-1/2 text-[7rem] font-bold text-slate-200 dark:text-slate-800/50 opacity-90 select-none z-0 leading-none font-sans tracking-tighter">
+                        01
+                    </div>
+                    <!-- Mobile Header -->
+                    <header class="absolute left-2 top-1/2 -translate-y-1/2 z-10 text-left">
+                        <span class="font-mono text-gestion text-[10px] font-bold tracking-[0.2em] uppercase block mb-1">Backlog &amp; Sprint</span>
+                        <h2 class="text-3xl font-bold text-slate-900 dark:text-slate-100 tracking-tight leading-none">Gestión</h2>
+                    </header>
+                </div>
+
+                <div class="md:hidden relative z-10 pl-8">
+                    <div class="relative w-full mb-4 transform transition-transform duration-500 group-hover:-translate-y-1 before:content-[''] before:absolute before:top-[6px] before:left-[6px] before:right-[-6px] before:bottom-[-6px] before:border before:border-slate-200 dark:before:border-white/10 before:z-0 before:pointer-events-none before:transition-all before:duration-400 before:ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:before:translate-x-[3px] group-hover:before:translate-y-[3px] group-hover:before:border-slate-500 dark:group-hover:before:border-white/50 dark:group-hover:before:shadow-[0_0_15px_rgba(255,255,255,0.15)]">
+                        <div class="aspect-video overflow-hidden bg-white dark:bg-slate-900/40 dark:backdrop-blur-md border border-slate-100 dark:border-white/10 shadow-sm relative z-10 transition-colors duration-300 group-hover:border-slate-200 dark:group-hover:border-white/30">
+                            <img loading="lazy" alt="Gestión Ágil y metodologías iterativas en Ingeniería de Software" class="w-full h-full object-cover transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkN3RVZsT1aYFS58_7ce_1Mh5PtCoWy9YMLlsWtw9ntoMWzHULgFKPkUb7hENBoasyLGZirunenCjkNBKllg0RY9KfDQjThjWUzAhmpxjWWU7LB9pO0Wlsz3TUaBRbVDXaoTQM78DLRqFmJ2TaHuTBB28PGaDdcnqJR3ZAcvJZebqIejQrcP5WHUo2snPGrDN3oO_dBJBqvoCvMHbFQ12_wohrvm36JpJ3XZReDn1_zgG0wHaCn70QG-KBBcuJIn3lkyOspSKWnpc"/>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-[1.5fr_1px_1fr] gap-4 items-start">
+                        <p class="text-sm font-medium text-slate-500 dark:text-slate-400 leading-relaxed text-left">
+                            Procesos de desarrollo de sistemas software de gran escala y métodos ágiles como Scrum, Kanban y XP.
+                        </p>
+                        <!-- Divisor Vertical -->
+                        <div class="w-full h-full bg-slate-100 dark:bg-slate-800"></div>
+                        
+                        <!-- Tools Section -->
+                        <dl class="flex flex-col justify-start pl-2 text-left">
+                            <dt class="text-[10px] text-slate-500 dark:text-slate-500 font-mono uppercase tracking-wider block mb-1">Tools</dt>
+                            <dd class="text-xs font-bold text-slate-900 dark:text-slate-200">JIRA / ClickUp</dd>
+                        </dl>
+                    </div>
+                </div>
+                <!-- MOBILE VIEW END -->
+
+                <!-- DESKTOP/TABLET VIEW (Existing) -->
+                <figure class="hidden md:block relative w-full transition-transform duration-700 hover:-translate-y-1 group/img mb-6 before:content-[''] before:absolute before:top-[6px] before:left-[6px] before:right-[-6px] before:bottom-[-6px] before:border before:border-slate-200 dark:before:border-white/10 before:z-0 before:pointer-events-none before:transition-all before:duration-400 before:ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:before:translate-x-[3px] group-hover:before:translate-y-[3px] group-hover:before:border-slate-500 dark:group-hover:before:border-white/50 dark:group-hover:before:shadow-[0_0_15px_rgba(255,255,255,0.15)]">
+                    <div class="aspect-video md:aspect-[4/3] overflow-hidden relative z-10 bg-white dark:bg-slate-900/40 dark:backdrop-blur-md border border-slate-100 dark:border-white/10 shadow-sm transition-colors duration-300 group-hover:border-slate-200 dark:group-hover:border-white/30">
+                        <img loading="lazy" alt="Gestión Ágil y metodologías iterativas en Ingeniería de Software" class="reveal-img w-full h-full object-cover grayscale opacity-0 translate-y-5 scale-[0.98] transition-all duration-[1200ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkN3RVZsT1aYFS58_7ce_1Mh5PtCoWy9YMLlsWtw9ntoMWzHULgFKPkUb7hENBoasyLGZirunenCjkNBKllg0RY9KfDQjThjWUzAhmpxjWWU7LB9pO0Wlsz3TUaBRbVDXaoTQM78DLRqFmJ2TaHuTBB28PGaDdcnqJR3ZAcvJZebqIejQrcP5WHUo2snPGrDN3oO_dBJBqvoCvMHbFQ12_wohrvm36JpJ3XZReDn1_zgG0wHaCn70QG-KBBcuJIn3lkyOspSKWnpc"/>
+                    </div>
+                    <div class="absolute -bottom-6 left-0 text-[11px] font-mono font-bold text-slate-400 dark:text-slate-600 tracking-widest z-10 hidden md:block">
+                        01
+                    </div>
+                </figure>
+
+                <div class="hidden md:flex flex-col flex-grow pl-1">
+                    <header class="mb-3">
+                        <span class="font-mono text-gestion text-[11px] font-bold tracking-[0.2em] uppercase block mb-1">Sprint 0</span>
+                        <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100 tracking-tight group-hover:text-gestion transition-colors">Gestión</h2>
+                    </header>
+                    <p class="text-xs font-medium text-slate-500 dark:text-slate-400 leading-relaxed mb-4">
+                        Procesos de desarrollo de sistemas software de gran escala y métodos ágiles como Scrum, Kanban y XP.
+                    </p>
+                    <dl class="mt-auto pt-3 border-t border-slate-100 dark:border-slate-800">
+                        <dt class="text-[11px] text-slate-500 dark:text-slate-500 font-mono uppercase block mb-1">Tools</dt>
+                        <dd class="inline-block text-[11px] font-bold text-gestion bg-rose-50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-900 px-2 py-0.5">GH Projects / JIRA</dd>
+                    </dl>
                 </div>
             </article>
-            {{ end }}
-        </div>
 
-        <div class="mt-16 text-center">
-            <a href="/blog"
-               class="inline-flex items-center justify-center rounded-full border-2 border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 px-8 py-3 text-base font-medium text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors ring-1 ring-gray-200 dark:ring-gray-700/50">
-                Ver más anuncios
-                <svg class="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                </svg>
-            </a>
-        </div>
-    </div>
+            <!-- Article 02 - DEVOPS -->
+            <article class="relative group flex flex-col h-full md:mt-0 lg:mt-10">
+                
+                <!-- MOBILE VIEW START -->
+                <div class="md:hidden h-24 relative w-full mb-4">
+                    <!-- Mobile Background Number -->
+                    <div class="absolute -right-4 top-1/2 -translate-y-1/2 text-[7rem] font-bold text-slate-200 dark:text-slate-800/50 opacity-90 select-none z-0 leading-none font-sans tracking-tighter">
+                        02
+                    </div>
+                    <!-- Mobile Header -->
+                    <header class="absolute right-2 top-1/2 -translate-y-1/2 z-10 text-right">
+                        <span class="font-mono text-devops text-[10px] font-bold tracking-[0.2em] uppercase block mb-1">Infra</span>
+                        <h2 class="text-3xl font-bold text-slate-900 dark:text-slate-100 tracking-tight leading-none">DevOps</h2>
+                    </header>
+                </div>
 
+                <div class="md:hidden relative z-10 pr-8 text-right">
+                    <div class="relative w-full mb-4 transform transition-transform duration-500 group-hover:-translate-y-1 before:content-[''] before:absolute before:top-[6px] before:left-[6px] before:right-[-6px] before:bottom-[-6px] before:border before:border-slate-200 dark:before:border-white/10 before:z-0 before:pointer-events-none before:transition-all before:duration-400 before:ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:before:translate-x-[3px] group-hover:before:translate-y-[3px] group-hover:before:border-slate-500 dark:group-hover:before:border-white/50 dark:group-hover:before:shadow-[0_0_15px_rgba(255,255,255,0.15)]">
+                        <div class="aspect-video overflow-hidden bg-white dark:bg-slate-900/40 dark:backdrop-blur-md border border-slate-100 dark:border-white/10 shadow-sm relative z-10 transition-colors duration-300 group-hover:border-slate-200 dark:group-hover:border-white/30">
+                            <img loading="lazy" alt="Ciclo de vida DevOps, integración y entrega continua (CI/CD)" class="w-full h-full object-cover transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdt-r-KTbze69A_m7HB71Nl8kIbkO6D6fUqpGpMAFS56XMbeKH_Jzv1aoEd7LcjWKJQ5Wy0yeK5ItB8jpLOdJ_MLog9srj3okGOhXonNtzeic2uZ3LQdRvlp4cwoZttbC8LO2uewbzhIsbBJ0b1SU37993IjmNzQFqhcE8kKIddTDq93Jq941pYnAypq_Ar8UjAlDioOLKX2p1y7GEuBhAANxtv6BrUzDztpx1kpfjFmcyKqPhzA0rKfQ9Ai5VecgYbO7fiWIm6w8"/>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-[1.5fr_1px_1fr] gap-4 items-start">
+                        <p class="text-sm font-medium text-slate-500 dark:text-slate-400 leading-relaxed text-right">
+                            Gestión de configuración, CICD, Cloud, Site Reliability Engineering, Observabilidad e Infraestructura como Código.
+                        </p>
+                        <!-- Divisor Vertical -->
+                        <div class="w-full h-full bg-slate-100 dark:bg-slate-800"></div>
+                        
+                        <!-- Tools Section -->
+                        <dl class="flex flex-col items-end pl-2 text-right">
+                            <dt class="text-[10px] text-slate-500 dark:text-slate-500 font-mono uppercase tracking-wider block mb-1">Stack</dt>
+                            <dd class="text-xs font-bold text-slate-900 dark:text-slate-200">Docker / AWS</dd>
+                        </dl>
+                    </div>
+                </div>
+                <!-- MOBILE VIEW END -->
+
+                <!-- DESKTOP/TABLET VIEW (Existing) -->
+                <figure class="hidden md:block relative w-full transition-transform duration-700 hover:-translate-y-1 group/img mb-6 before:content-[''] before:absolute before:top-[6px] before:left-[6px] before:right-[-6px] before:bottom-[-6px] before:border before:border-slate-200 dark:before:border-white/10 before:z-0 before:pointer-events-none before:transition-all before:duration-400 before:ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:before:translate-x-[3px] group-hover:before:translate-y-[3px] group-hover:before:border-slate-500 dark:group-hover:before:border-white/50 dark:group-hover:before:shadow-[0_0_15px_rgba(255,255,255,0.15)]">
+                    <div class="aspect-video md:aspect-[4/3] overflow-hidden relative z-10 bg-white dark:bg-slate-900/40 dark:backdrop-blur-md border border-slate-100 dark:border-white/10 shadow-sm transition-colors duration-300 group-hover:border-slate-200 dark:group-hover:border-white/30">
+                        <img loading="lazy" alt="Ciclo de vida DevOps, integración y entrega continua (CI/CD)" class="reveal-img w-full h-full object-cover grayscale opacity-0 translate-y-5 scale-[0.98] transition-all duration-[1200ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdt-r-KTbze69A_m7HB71Nl8kIbkO6D6fUqpGpMAFS56XMbeKH_Jzv1aoEd7LcjWKJQ5Wy0yeK5ItB8jpLOdJ_MLog9srj3okGOhXonNtzeic2uZ3LQdRvlp4cwoZttbC8LO2uewbzhIsbBJ0b1SU37993IjmNzQFqhcE8kKIddTDq93Jq941pYnAypq_Ar8UjAlDioOLKX2p1y7GEuBhAANxtv6BrUzDztpx1kpfjFmcyKqPhzA0rKfQ9Ai5VecgYbO7fiWIm6w8"/>
+                    </div>
+                    <div class="absolute -bottom-6 left-0 text-[11px] font-mono font-bold text-slate-400 dark:text-slate-600 tracking-widest z-10 hidden md:block">
+                        02
+                    </div>
+                </figure>
+
+                <div class="hidden md:flex flex-col flex-grow pl-1">
+                    <header class="mb-3">
+                        <span class="font-mono text-devops text-[11px] font-bold tracking-[0.2em] uppercase block mb-1">Infra</span>
+                        <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100 tracking-tight group-hover:text-devops transition-colors">DevOps</h2>
+                    </header>
+                    <p class="text-xs font-medium text-slate-500 dark:text-slate-400 leading-relaxed mb-4">
+                        Gestión de configuración, CICD, Cloud, Site Reliability Engineering, Observabilidad e Infraestructura como Código.
+                    </p>
+                    <dl class="mt-auto pt-3 border-t border-slate-100 dark:border-slate-800">
+                        <dt class="text-[11px] text-slate-500 dark:text-slate-500 font-mono uppercase block mb-1">Stack</dt>
+                        <dd class="inline-block text-[11px] font-bold text-devops bg-sky-50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-900 px-2 py-0.5">Docker / AWS</dd>
+                    </dl>
+                </div>
+            </article>
+
+            <!-- Article 03 - ARQUITECTURA -->
+            <article class="relative group flex flex-col md:mt-0 md:flex-row md:items-center lg:flex-col lg:items-start md:gap-8 lg:gap-0 h-full md:col-span-2 lg:col-span-1">
+                
+                <!-- MOBILE VIEW START -->
+                <div class="md:hidden h-24 relative w-full mb-4">
+                    <!-- Mobile Background Number -->
+                    <div class="absolute -left-4 top-1/2 -translate-y-1/2 text-[7rem] font-bold text-slate-200 dark:text-slate-800/50 opacity-90 select-none z-0 leading-none font-sans tracking-tighter">
+                        03
+                    </div>
+                    <!-- Mobile Header -->
+                    <header class="absolute left-2 top-1/2 -translate-y-1/2 z-10 text-left">
+                        <span class="font-mono text-arquitectura text-[10px] font-bold tracking-[0.2em] uppercase block mb-1">Design</span>
+                        <h2 class="text-3xl font-bold text-slate-900 dark:text-slate-100 tracking-tight leading-none">Arquitectura</h2>
+                    </header>
+                </div>
+
+                <div class="md:hidden relative z-10 pl-8">
+                    <div class="relative w-full mb-4 transform transition-transform duration-500 group-hover:-translate-y-1 before:content-[''] before:absolute before:top-[6px] before:left-[6px] before:right-[-6px] before:bottom-[-6px] before:border before:border-slate-200 dark:before:border-white/10 before:z-0 before:pointer-events-none before:transition-all before:duration-400 before:ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:before:translate-x-[3px] group-hover:before:translate-y-[3px] group-hover:before:border-slate-500 dark:group-hover:before:border-white/50 dark:group-hover:before:shadow-[0_0_15px_rgba(255,255,255,0.15)]">
+                        <div class="aspect-video overflow-hidden bg-white dark:bg-slate-900/40 dark:backdrop-blur-md border border-slate-100 dark:border-white/10 shadow-sm relative z-10 transition-colors duration-300 group-hover:border-slate-200 dark:group-hover:border-white/30">
+                            <img loading="lazy" alt="Arquitectura de software, microservicios y sistemas distribuidos" class="w-full h-full object-cover transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRU1ku9viZVOPTIscT8OQBIBJiT_iiRhL8JYrhpgm5LyxQbHjflCmAySJpfw3X9KvsUGgHyNWvXiYEz-xm7Lr1vim7jLDK14y2uMqhEw_Qa-H6HHY_9hQpcuuw45p6CoZdyV1lfZuv8QJpFuO7f41jNLvaNFWOJeBH_9UBYdac5TgW_m-Ri0q0XD85hSrKE4QnoLjZ0SPP7eYGplJpxVqNo2CaU1KijZqZE9KqOUbAMda392DaJFjY5-iruyu1-QdRb00z5hITuXc"/>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-[1.5fr_1px_1fr] gap-4 items-start">
+                        <p class="text-sm font-medium text-slate-500 dark:text-slate-400 leading-relaxed text-left">
+                            Calidad interna y externa, atributos de calidad, Domain Driven Design y arquitecturas para software a gran escala.
+                        </p>
+                        <!-- Divisor Vertical -->
+                        <div class="w-full h-full bg-slate-100 dark:bg-slate-800"></div>
+                        
+                        <!-- Tools Section -->
+                        <dl class="flex flex-col justify-start pl-2 text-left">
+                            <dt class="text-[10px] text-slate-500 dark:text-slate-500 font-mono uppercase tracking-wider block mb-1">Pattern</dt>
+                            <dd class="text-xs font-bold text-slate-900 dark:text-slate-200">Microservices</dd>
+                        </dl>
+                    </div>
+                </div>
+                <!-- MOBILE VIEW END -->
+
+                <!-- DESKTOP/TABLET VIEW (Existing) -->
+                <figure class="hidden md:block relative w-full md:w-1/2 lg:w-full transition-transform duration-700 hover:-translate-y-1 group/img mb-6 md:mb-0 lg:mb-5 before:content-[''] before:absolute before:top-[6px] before:left-[6px] before:right-[-6px] before:bottom-[-6px] before:border before:border-slate-200 dark:before:border-white/10 before:z-0 before:pointer-events-none before:transition-all before:duration-400 before:ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:before:translate-x-[3px] group-hover:before:translate-y-[3px] group-hover:before:border-slate-500 dark:group-hover:before:border-white/50 dark:group-hover:before:shadow-[0_0_15px_rgba(255,255,255,0.15)]">
+                    <div class="aspect-video md:aspect-[4/3] overflow-hidden relative z-10 bg-white dark:bg-slate-900/40 dark:backdrop-blur-md border border-slate-100 dark:border-white/10 shadow-sm transition-colors duration-300 group-hover:border-slate-200 dark:group-hover:border-white/30">
+                        <img loading="lazy" alt="Arquitectura de software, microservicios y sistemas distribuidos" class="reveal-img w-full h-full object-cover grayscale opacity-0 translate-y-5 scale-[0.98] transition-all duration-[1200ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRU1ku9viZVOPTIscT8OQBIBJiT_iiRhL8JYrhpgm5LyxQbHjflCmAySJpfw3X9KvsUGgHyNWvXiYEz-xm7Lr1vim7jLDK14y2uMqhEw_Qa-H6HHY_9hQpcuuw45p6CoZdyV1lfZuv8QJpFuO7f41jNLvaNFWOJeBH_9UBYdac5TgW_m-Ri0q0XD85hSrKE4QnoLjZ0SPP7eYGplJpxVqNo2CaU1KijZqZE9KqOUbAMda392DaJFjY5-iruyu1-QdRb00z5hITuXc"/>
+                    </div>
+                    <div class="absolute -bottom-6 left-0 text-[11px] font-mono font-bold text-slate-400 dark:text-slate-600 tracking-widest z-10 hidden md:block">
+                        03
+                    </div>
+                </figure>
+
+                <div class="hidden md:flex flex-col flex-grow md:w-1/2 lg:w-full pl-1 md:pl-0 lg:pl-1">
+                    <header class="mb-3">
+                        <span class="font-mono text-arquitectura text-[11px] font-bold tracking-[0.2em] uppercase block mb-1">Design</span>
+                        <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-100 tracking-tight group-hover:text-arquitectura transition-colors">Arquitectura</h2>
+                    </header>
+                    <p class="text-xs font-medium text-slate-500 dark:text-slate-400 leading-relaxed mb-4">
+                        Calidad interna y externa, atributos de calidad, Domain Driven Design y arquitecturas para software a gran escala.
+                    </p>
+                    <dl class="mt-auto pt-3 border-t border-slate-100 dark:border-slate-800 w-full">
+                        <dt class="text-[11px] text-slate-500 dark:text-slate-500 font-mono uppercase block mb-1">Pattern</dt>
+                        <dd class="inline-block text-[11px] font-bold text-arquitectura bg-orange-50 dark:bg-orange-950/30 border border-orange-200 dark:border-orange-900 px-2 py-0.5">Microservices</dd>
+                    </dl>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- Script for Reveal on Scroll -->
+    <script>
+        // Seguimiento del mouse para el efecto de los puntos del fondo
+        document.addEventListener('mousemove', (e) => {
+            document.body.style.setProperty('--mouse-x', e.clientX + 'px');
+            document.body.style.setProperty('--mouse-y', e.clientY + 'px');
+        });
+
+        // Ajuste dinámico de intensidad del brillo según el scroll
+        const updateGlowParams = () => {
+            const scrollY = window.scrollY;
+            const threshold = window.innerHeight * 0.6;
+            
+            // En la primera pantalla (Hero): opacidad baja (0.25), radio pequeño (120px)
+            // Al bajar: opacidad completa (1.0), radio más amplio (220px)
+            const progress = Math.min(scrollY / threshold, 1);
+            
+            const opacity = 0.25 + (progress * 0.75);
+            const radius = 120 + (progress * 100);
+            
+            document.body.style.setProperty('--glow-opacity', opacity);
+            document.body.style.setProperty('--glow-radius', radius + 'px');
+        };
+
+        window.addEventListener('scroll', updateGlowParams);
+        window.addEventListener('resize', updateGlowParams);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateGlowParams();
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.2
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove('opacity-0', 'translate-y-5', 'scale-[0.98]', 'grayscale');
+                        entry.target.classList.add('opacity-100', 'translate-y-0', 'scale-100', 'grayscale-0');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal-img').forEach(img => {
+                observer.observe(img);
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const timeline = document.getElementById('main-timeline');
+            if (!timeline) return;
+
+            const startTs = Date.parse('{{ .Site.Data.fechas.inicio }}T00:00:00');
+            const endPoint = timeline.querySelector('[data-role="end"]');
+            if (!endPoint?.dataset.date) return;
+            const endTs = Date.parse(`${endPoint.dataset.date}T00:00:00`);
+            const nowTs = Date.now();
+
+            const displayStartTs = nowTs < startTs ? nowTs : startTs;
+            const duration = endTs - displayStartTs;
+            if (duration <= 0) return;
+
+            const clamp01 = (value) => Math.min(1, Math.max(0, value));
+            const toPct = (ts) => `${(clamp01((ts - displayStartTs) / duration) * 100).toFixed(4)}%`;
+
+            timeline.querySelectorAll('[data-date]').forEach((point) => {
+                const ts = Date.parse(`${point.dataset.date}T00:00:00`);
+                point.style.setProperty('--x', toPct(ts));
+            });
+
+            const hoyMarker = document.getElementById('hoy-marker');
+            if (hoyMarker) {
+                hoyMarker.style.setProperty('--x', toPct(nowTs));
+            }
+
+            const preclassLine = document.getElementById('preclass-line');
+            if (preclassLine) {
+                if (nowTs < startTs) {
+                    preclassLine.style.display = 'block';
+                    preclassLine.style.setProperty('--w', clamp01((startTs - displayStartTs) / duration).toFixed(6));
+                } else {
+                    preclassLine.style.display = 'none';
+                    preclassLine.style.setProperty('--w', '0');
+                }
+            }
+
+            timeline.classList.remove('invisible');
+
+        }, { once: true });
+    </script>
 </body>
-</html>
-
 {{ end }}
