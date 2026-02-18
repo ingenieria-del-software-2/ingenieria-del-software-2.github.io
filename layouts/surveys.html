@@ -24,14 +24,14 @@
         extend: {
           colors: {
             atmos: {
-              black:   "#050505",
-              charcoal:"#0F1115",
-              surface: "#18181B",
-              border:  "#27272A",
-              text:    "#E4E4E7",
-              muted:   "#71717A",
-              accent:  "#D4D4D8",
-              teal:    "#2DD4BF",
+              black:   "#020617",
+              charcoal:"#111827",
+              surface: "#1f2937",
+              border:  "#374151",
+              text:    "#f9fafb",
+              muted:   "#e5e7eb",
+              accent:  "#f3f4f6",
+              teal:    "#38bdf8",
               rose:    "#FB7185",
               indigo:  "#818CF8",
             },
@@ -45,14 +45,14 @@
   </script>
   <style>
     ::-webkit-scrollbar { width:4px; height:4px; }
-    ::-webkit-scrollbar-track { background:#050505; }
-    ::-webkit-scrollbar-thumb { background:#333; border-radius:2px; }
+    ::-webkit-scrollbar-track { background:#020617; }
+   ::-webkit-scrollbar-thumb { background:#333; border-radius:2px; }
     .glow-text { text-shadow:0 0 20px rgba(255,255,255,0.1); }
     .editorial-line { height:1px; background:linear-gradient(90deg,transparent,#333,transparent); }
     .section-title { font-family:"Inter",sans-serif; font-weight:600; letter-spacing:-0.02em; }
-    .chip-active { background:#27272A; color:#fff; border-color:#3f3f46; }
-    .chip-inactive { background:transparent; color:#71717A; border-color:#27272A; }
-    .chip-inactive:hover { color:#E4E4E7; background:#18181B; }
+    .chip-active { background:#374151; color:#fff; border-color:#4b5563; }
+    .chip-inactive { background:transparent; color:#e5e7eb; border-color:#374151; }
+    .chip-inactive:hover { color:#f9fafb; background:#1f2937; }
     @keyframes fadeIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:none} }
     .fade-in { animation:fadeIn .3s ease both; }
 
@@ -66,9 +66,9 @@
     html:not(.dark) .border-atmos-border { border-color:#e4e4e7 !important; }
     html:not(.dark) .text-atmos-text   { color:#18181b !important; }
     html:not(.dark) .text-atmos-muted  { color:#71717a !important; }
-    html:not(.dark) .text-atmos-accent { color:#3f3f46 !important; }
+    html:not(.dark) .text-atmos-accent { color:#4b5563 !important; }
     html:not(.dark) .text-white        { color:#18181b !important; }
-    html:not(.dark) .text-atmos-teal   { color:#0d9488 !important; }
+    html:not(.dark) .text-atmos-teal   { color:#0ea5e9 !important; }
     html:not(.dark) .text-atmos-rose   { color:#be123c !important; }
     html:not(.dark) .editorial-line    { background:linear-gradient(90deg,transparent,#d4d4d8,transparent); }
     html:not(.dark) .glow-text         { text-shadow:none; }
@@ -78,15 +78,15 @@
     /* sticky header backdrop in light */
     html:not(.dark) header.sticky { background-color:rgba(248,248,248,0.88) !important; border-color:#e4e4e7 !important; }
     /* ambient glows — subtle in light */
-    html:not(.dark) .bg-indigo-900\/8, html:not(.dark) .bg-teal-900\/8 { opacity:0.3; }
+    html:not(.dark) .bg-indigo-900\/8, html:not(.dark) .bg-sky-900\/8 { opacity:0.3; }
     /* scatter bar fill — white is invisible on light surface */
     html:not(.dark) #scatterBarX { background-color:#18181b !important; }
     /* section anchor offset so sticky toolbar doesn't cover headings */
     section[id] { scroll-margin-top: 110px; }
     /* secondary toolbar nav links */
     .snav-link { display:flex; align-items:center; gap:4px; padding:4px 10px; border-radius:9999px; font-size:11px; white-space:nowrap; color:#71717a; transition:all .15s; border:1px solid transparent; }
-    .snav-link:hover { color:#E4E4E7; background:#18181B; }
-    .snav-link.active { color:#fff; background:#27272A; border-color:#3f3f46; }
+    .snav-link:hover { color:#f9fafb; background:#1f2937; }
+    .snav-link.active { color:#fff; background:#374151; border-color:#4b5563; }
     html:not(.dark) .snav-link { color:#71717a; }
     html:not(.dark) .snav-link:hover { color:#18181b; background:#f4f4f5; }
     html:not(.dark) .snav-link.active { color:#18181b; background:#e4e4e7; border-color:#d4d4d8; }
@@ -94,17 +94,17 @@
     .hide-scrollbar { scrollbar-width:none; }
     .hide-scrollbar::-webkit-scrollbar { display:none; }
     /* toolbar in light mode */
-    html:not(.dark) #dashToolbar { background-color:rgba(248,248,248,0.92) !important; border-color:#e4e4e7 !important; }
+    html:not(.dark) #dashToolbar { background-color:rgba(255,255,255,0.72) !important; border-color:#f1f5f9 !important; backdrop-filter:blur(12px); }
     /* focus rings for keyboard accessibility */
     .snav-link:focus-visible, button:focus-visible, [role="button"]:focus-visible {
-      outline: 2px solid #2DD4BF;
+      outline: 2px solid #38bdf8;
       outline-offset: 2px;
     }
     html:not(.dark) .snav-link:focus-visible, html:not(.dark) button:focus-visible {
-      outline-color: #0d9488;
+      outline-color: #0ea5e9;
     }
     input:focus-visible {
-      outline: 2px solid #2DD4BF;
+      outline: 2px solid #38bdf8;
       outline-offset: 2px;
       border-radius: 2px;
     }
@@ -113,7 +113,7 @@
 <body class="bg-atmos-black text-atmos-text font-sans antialiased selection:bg-atmos-teal selection:text-black">
 
 <!-- ── Secondary dashboard toolbar (sits below the site navbar) ────────── -->
-<div id="dashToolbar" class="sticky top-[var(--navbar-height,64px)] z-30 border-b border-atmos-border/60 bg-atmos-black/90 backdrop-blur-md">
+<div id="dashToolbar" class="sticky top-[var(--navbar-height,64px)] z-30 border-b border-white/10 bg-[rgba(2,6,23,0.72)] backdrop-blur-[16px]">
   <div class="max-w-screen-xl mx-auto px-4 flex items-center gap-3 h-11">
     <!-- Section jump links — horizontally scrollable on mobile -->
     <nav class="flex items-center gap-1 overflow-x-auto flex-1 hide-scrollbar" id="sectionNav">
@@ -150,7 +150,7 @@
 <div class="relative">
   <!-- Ambient glows -->
   <div class="fixed top-0 right-0 w-[600px] h-[600px] bg-indigo-900/5 rounded-full blur-[150px] pointer-events-none -z-10"></div>
-  <div class="fixed bottom-0 left-0 w-[500px] h-[500px] bg-teal-900/5 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+  <div class="fixed bottom-0 left-0 w-[500px] h-[500px] bg-sky-900/5 rounded-full blur-[120px] pointer-events-none -z-10"></div>
 
   <div class="max-w-screen-xl mx-auto px-4 py-8 space-y-12">
 
@@ -378,12 +378,12 @@
       <section id="correlacion">
         <div class="editorial-line w-full mb-5"></div>
         <div class="bg-atmos-charcoal border border-atmos-border rounded-xl p-6 relative overflow-hidden">
-          <div class="absolute top-0 right-0 w-64 h-64 bg-teal-900/10 rounded-full blur-3xl pointer-events-none"></div>
+          <div class="absolute top-0 right-0 w-64 h-64 bg-sky-900/10 rounded-full blur-3xl pointer-events-none"></div>
           <div class="flex flex-col lg:flex-row gap-10">
             <div class="lg:w-1/3 flex flex-col justify-center">
               <p class="text-[9px] uppercase tracking-[0.2em] text-atmos-muted mb-1">Análisis Comparativo</p>
               <h3 class="section-title text-2xl text-white mb-3 leading-tight">Dedicación:<br/>Personal vs. Equipo</h3>
-              <p class="text-xs text-atmos-muted font-light leading-relaxed mb-5">Relación entre percepciones de dedicación individual y del equipo. <strong class="text-atmos-accent font-medium">No implica causalidad</strong> — ayuda a ver dispersión y alineamiento entre autopercepción y percepción del grupo.</p>
+              <p class="text-xs text-atmos-muted font-light leading-relaxed mb-5">Compara la percepción de dedicación personal con la del equipo. <strong class="text-atmos-accent font-medium">No implica causalidad</strong> — muestra la dispersión y alineamiento entre ambas.</p>
               <div class="space-y-3">
                 <div>
                   <div class="flex justify-between text-xs mb-1"><span class="text-white">Media Personal</span><span id="scatterAvgX" class="text-white font-mono">—</span></div>
@@ -490,22 +490,22 @@ function hasFieldData(field) {
 
 // ── Theme helpers ────────────────────────────────────────────────────────
 const isDark = () => document.documentElement.classList.contains('dark');
-const PALETTE = ['#F97316','#2DD4BF','#818CF8','#FB7185','#F59E0B'];
-const PALETTE_LIGHT = ['#ea580c','#0d9488','#6366f1','#be123c','#d97706'];
+const PALETTE = ['#F97316','#38bdf8','#818CF8','#FB7185','#F59E0B'];
+const PALETTE_LIGHT = ['#ea580c','#0ea5e9','#6366f1','#be123c','#d97706'];
 const palette = () => isDark() ? PALETTE : PALETTE_LIGHT;
 
 function applyChartTheme() {
-  Chart.defaults.color = isDark() ? '#71717A' : '#52525b';
+  Chart.defaults.color = isDark() ? '#e5e7eb' : '#4b5563';
   Chart.defaults.font.family = 'Inter';
 }
 applyChartTheme();
 
 const mkTooltip = () => isDark()
-  ? { backgroundColor:'#0F1115', titleColor:'#FFFFFF', titleFont:{family:'Inter',size:12,weight:'600'}, bodyColor:'#A1A1AA', borderColor:'#27272A', borderWidth:1, padding:8, displayColors:false }
-  : { backgroundColor:'#ffffff', titleColor:'#18181b', titleFont:{family:'Inter',size:12,weight:'600'}, bodyColor:'#52525b', borderColor:'#e4e4e7', borderWidth:1, padding:8, displayColors:false };
+  ? { backgroundColor:'#111827', titleColor:'#FFFFFF', titleFont:{family:'Inter',size:12,weight:'600'}, bodyColor:'#e5e7eb', borderColor:'#374151', borderWidth:1, padding:8, displayColors:false }
+  : { backgroundColor:'#ffffff', titleColor:'#18181b', titleFont:{family:'Inter',size:12,weight:'600'}, bodyColor:'#4b5563', borderColor:'#e4e4e7', borderWidth:1, padding:8, displayColors:false };
 
 const mkGrid = () => isDark() ? 'rgba(39,39,42,0.4)' : 'rgba(212,212,216,0.6)';
-const mkTickColor = () => isDark() ? '#52525B' : '#71717a';
+const mkTickColor = () => isDark() ? '#9ca3af' : '#71717a';
 const mkGrad = (ctx, h, c0, c1) => { const g=ctx.createLinearGradient(0,0,0,h); g.addColorStop(0,c0); g.addColorStop(1,c1); return g; };
 
 // ── Theme toggle ─────────────────────────────────────────────────────────
@@ -592,7 +592,7 @@ function buildActivity() {
       labels:st,
       datasets:[
         {label:'Total',data:total,borderColor:lineColor,backgroundColor:grad,tension:0.4,borderWidth:1.5,pointRadius:4,pointHoverRadius:6,fill:true},
-        {label:'Satisfactorias (≥7)',data:sat7,borderColor:isDark()?'#2DD4BF':'#0d9488',borderDash:[4,4],backgroundColor:'transparent',tension:0.4,borderWidth:1,pointRadius:3}
+        {label:'Satisfactorias (≥7)',data:sat7,borderColor:isDark()?'#38bdf8':'#0ea5e9',borderDash:[4,4],backgroundColor:'transparent',tension:0.4,borderWidth:1,pointRadius:3}
       ]
     },
     options:{
@@ -664,7 +664,7 @@ function buildGrowth() {
   const st   = shownTerms();
   const data = st.map(t=>{const v=(RAW_DATA[t]||[]).map(r=>_pn(r['¿Nivel de satisfacción general con la materia?'])).filter(v=>v!==null);return v.length?+_avg(v).toFixed(2):null;});
   const grad = mkGrad(ctx.getContext('2d'),140,'rgba(45,212,191,0.25)','rgba(45,212,191,0)');
-  const tealColor = isDark() ? '#2DD4BF' : '#0d9488';
+  const tealColor = isDark() ? '#38bdf8' : '#0ea5e9';
   chartInstances.growthChart = new Chart(ctx,{
     type:'line',data:{labels:st,datasets:[{label:'Satisfacción',data,borderColor:tealColor,backgroundColor:grad,tension:0.4,borderWidth:2,pointRadius:4,fill:true}]},
     options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:mkTooltip()},
@@ -702,7 +702,7 @@ function buildSparkline() {
 // Donut palette is intentionally separate from the term palette to avoid confusion
 const mkDonutColors = () => isDark()
   ? ['#7DD3FC','#6EE7B7','#C4B5FD','#FCA5A5','#94A3B8']
-  : ['#0369A1','#047857','#5B21B6','#9F1239','#334155'];
+  : ['#0369A1','#047857','#5B21B6','#9F1239','#374151'];
 
 function buildDoughnut(canvasId, valId, legendId, field, cardId) {
   destroyChart(canvasId);
