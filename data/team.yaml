@@ -78,3 +78,8 @@ team:
     pic: "/images/professors/niko.jpg"
     mail: "nrsanchez@fi.uba.ar"
     github: "nikorsanchez"
+
+  - name: Daniela Ailin Vela
+    pic: "/images/professors/daniela.jpeg"
+    mail: "davela@fi.uba.ar"
+    github: "noxethiems"
