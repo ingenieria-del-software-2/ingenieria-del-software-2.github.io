@@ -39,12 +39,12 @@
 <a
   href="#"
   class="group cursor-pointer animate-fade-up block"
+  data-open-media="true"
   data-provider="{{ if $isDrive }}drive{{ else }}youtube{{ end }}"
   data-id="{{ $vidId }}"
   data-url="{{ if $isDrive }}{{ $driveURL }}{{ end }}"
-  onclick="openMedia(this); return false;"
 >
-  <div class="relative aspect-video bg-gray-50 dark:bg-slate-900 overflow-hidden rounded-lg mb-3 border border-gray-100 dark:border-slate-800 transition-[transform,box-shadow,border-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-0.5 group-hover:border-slate-300 dark:group-hover:border-slate-600 group-hover:shadow-[0_10px_20px_-16px_rgba(15,23,42,0.28)] dark:group-hover:shadow-[0_10px_20px_-16px_rgba(0,0,0,0.8)]">
+  <div class="relative aspect-video bg-gray-50 dark:bg-slate-900 overflow-hidden rounded-lg mb-3 border border-gray-100 dark:border-slate-800 transition-[transform,border-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-0.5 group-hover:border-slate-300 dark:group-hover:border-slate-600">
     {{ if $isDrive }}
       <iframe
         src="{{ $driveURL }}"

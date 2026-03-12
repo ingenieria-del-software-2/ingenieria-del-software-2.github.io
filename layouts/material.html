@@ -30,7 +30,7 @@
                         
                         <!-- Tooltip -->
                         <div class="absolute left-0 top-full mt-2 hidden group-hover/tooltip:block z-50 min-w-[140px]">
-                            <div class="bg-slate-900 dark:bg-slate-800 text-white rounded-sm p-3 relative shadow-sm border dark:border-slate-700">
+                            <div class="bg-slate-900 dark:bg-slate-800 text-white rounded-sm p-3 relative border dark:border-slate-700">
                                 <!-- Arrow -->
                                 <div class="absolute -top-1 left-2 w-2 h-2 bg-slate-900 dark:bg-slate-800 transform rotate-45 border-t border-l dark:border-slate-700 border-transparent"></div>
                                 
@@ -126,6 +126,10 @@
     <title>Material de Referencia - Ingeniería del Software 2</title>
     {{ partial "css.html" . }}
     <style>
+        :root {
+            --glow-opacity: 0.6;
+            --glow-radius: 180px;
+        }
         #mobile-nav-wrapper.is-hidden {
             transform: translateY(-120%);
             opacity: 0;
@@ -171,9 +175,9 @@
           <div class="space-y-1">
             {{ range $index, $section := .Site.Data.material.sections }}
             <button 
-                class="nav-item w-full min-w-0 flex items-center justify-between px-3 py-3 text-[12px] font-sans border-l-2 transition-colors cursor-pointer {{ if eq $index 0 }}text-primary dark:text-white bg-gray-50/80 dark:bg-slate-800 border-slate-300 dark:border-accent font-semibold{{ else }}text-text-muted dark:text-slate-300 hover:text-primary dark:hover:text-slate-200 hover:bg-gray-50/50 dark:hover:bg-slate-800/30 border-transparent{{ end }}" 
-                data-target="desktop-section-{{ $section.id }}"
-                onclick="switchDesktopSection('{{ $section.id }}')">
+                class="nav-item w-full min-w-0 flex items-center justify-between px-3 py-3 text-[12px] font-sans border-l-2 transition-colors cursor-pointer text-text-muted dark:text-slate-300 hover:text-primary dark:hover:text-slate-200 hover:bg-gray-50/50 dark:hover:bg-slate-800/30 border-transparent data-[active=true]:text-primary data-[active=true]:dark:text-white data-[active=true]:bg-gray-50/80 data-[active=true]:dark:bg-slate-800 data-[active=true]:border-slate-300 data-[active=true]:dark:border-accent data-[active=true]:font-semibold" 
+                data-section="{{ $section.id }}"
+                data-active="{{ if eq $index 0 }}true{{ else }}false{{ end }}">
               <span class="block min-w-0 flex-1 text-left leading-tight whitespace-normal">{{ $section.title }}</span>
               <span class="text-[10px] opacity-50 shrink-0 pl-2">{{ len $section.videos }}</span>
             </button>
@@ -185,23 +189,24 @@
         class="col-span-1 lg:col-span-9 xl:col-span-10 px-4 md:px-6 lg:px-10 md:pt-4 lg:pt-8 md:h-[calc(100dvh-7rem)] md:min-h-0 md:flex md:flex-col"
       >
         <!-- Mobile Navigation (Compact Pill-style Toolbar) -->
-        <div id="mobile-nav-wrapper" class="lg:hidden sticky top-(--navbar-height,64px) z-30 bg-white/90 dark:bg-slate-950/90 backdrop-blur-md border-b border-gray-100 dark:border-slate-800 -mx-4 px-4 md:-mx-6 md:px-6 mb-6 transition-all duration-100 ease-out transform translate-y-0">
+        <div id="mobile-nav-wrapper" class="lg:hidden sticky top-[var(--navbar-height,64px)] z-30 bg-white/90 dark:bg-slate-950/90 backdrop-blur-md border-b border-gray-100 dark:border-slate-800 -mx-4 px-4 md:-mx-6 md:px-6 mb-6 transition-all duration-100 ease-out transform translate-y-0">
             <div id="mobile-nav-container" class="flex flex-wrap items-center gap-2 py-3 scrollbar-none [scrollbar-width:none]">
                 {{ with .Site.Data.material.youtube_channel }}
-                <a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="shrink-0 flex items-center justify-center w-7 h-7 rounded-full bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400 mr-1 hover:scale-105 transition-transform" title="Canal de YouTube">
-                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M21.582 6.186a2.6 2.6 0 0 0-1.838-1.839C18.125 3.9 12 3.9 12 3.9s-6.125 0-7.744.447A2.6 2.6 0 0 0 2.418 6.186C2 7.805 2 12 2 12s0 4.195.418 5.814a2.6 2.6 0 0 0 1.838 1.839C5.875 20.1 12 20.1 12 20.1s6.125 0 7.744-.447a2.6 2.6 0 0 0 1.838-1.839C22 16.195 22 12 22 12s0-4.195-.418-5.814zM10 15.464V8.536L16 12l-6 3.464z"/></svg>
+                <a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="shrink-0 flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-transparent text-slate-500 dark:text-slate-400 border border-gray-200 dark:border-slate-800 hover:bg-gray-50 dark:hover:bg-slate-800/50 transition-colors" title="Canal de YouTube">
+                    <svg class="w-3.5 h-3.5 text-red-600 dark:text-red-500" viewBox="0 0 24 24" fill="currentColor"><path d="M21.582 6.186a2.6 2.6 0 0 0-1.838-1.839C18.125 3.9 12 3.9 12 3.9s-6.125 0-7.744.447A2.6 2.6 0 0 0 2.418 6.186C2 7.805 2 12 2 12s0 4.195.418 5.814a2.6 2.6 0 0 0 1.838 1.839C5.875 20.1 12 20.1 12 20.1s6.125 0 7.744-.447a2.6 2.6 0 0 0 1.838-1.839C22 16.195 22 12 22 12s0-4.195-.418-5.814zM10 15.464V8.536L16 12l-6 3.464z"/></svg>
+                    <span class="text-[10px] font-sans font-bold uppercase tracking-tight">YouTube</span>
                 </a>
-                <div class="w-px h-4 bg-gray-200 dark:bg-slate-700 shrink-0 mr-1"></div>
+                <div class="w-px h-4 bg-gray-200 dark:bg-slate-700 shrink-0 mx-1"></div>
                 {{ end }}
                 
                 {{ range $index, $section := .Site.Data.material.sections }}
                 <a
-                  href="#desktop-section-{{ .id }}"
-                  data-target="desktop-section-{{ .id }}"
-                  onclick="switchDesktopSection('{{ .id }}'); return false;"
-                  class="mobile-nav-item shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-sans font-medium whitespace-nowrap transition-all border {{ if eq $index 0 }}bg-gray-100 dark:bg-slate-800 text-slate-900 dark:text-white border-gray-200 dark:border-slate-700{{ else }}border-gray-100/50 dark:border-slate-800/50 text-text-muted dark:text-slate-400 hover:bg-gray-50 dark:hover:bg-slate-800/50 hover:border-gray-200 dark:hover:border-slate-700 hover:text-slate-900 dark:hover:text-slate-200{{ end }}"
+                  href="#{{ .id }}"
+                  data-section="{{ .id }}"
+                  data-active="{{ if eq $index 0 }}true{{ else }}false{{ end }}"
+                  class="mobile-nav-item shrink-0 flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[10px] font-sans font-bold uppercase tracking-widest transition-all border border-gray-100 dark:border-slate-800/50 text-slate-500 dark:text-slate-400 hover:bg-gray-50 dark:hover:bg-slate-800/50 data-[active=true]:bg-slate-100 data-[active=true]:text-slate-900 data-[active=true]:dark:bg-slate-800 data-[active=true]:dark:text-white data-[active=true]:border-slate-200 data-[active=true]:dark:border-slate-700"
                 >
-                    <span class="uppercase tracking-widest">{{ .id }}</span>
+                    <span>{{ .id }}</span>
                 </a>
                 {{ end }}
             </div>
@@ -209,7 +214,7 @@
 
         <div class="md:flex-1 md:min-h-0">
             {{ range $index, $section := .Site.Data.material.sections }}
-            <div id="desktop-section-{{ $section.id }}" class="section-panel material-section-panel {{ if ne $index 0 }}hidden{{ end }}">
+            <div id="desktop-section-{{ $section.id }}" data-panel="{{ $section.id }}" class="section-panel material-section-panel" {{ if ne $index 0 }}hidden{{ end }}>
                 {{ template "section-content" $section }}
             </div>
             {{ end }}
@@ -219,184 +224,141 @@
     </div>
 
     <!-- Video Modal -->
-    <div id="video-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm opacity-0 transition-opacity duration-300" onclick="closeVideo()">
-        <div class="relative w-full max-w-5xl transform scale-95 transition-transform duration-300" id="video-modal-content" onclick="event.stopPropagation()">
-            <button class="absolute -top-12 right-0 p-2 text-white hover:text-gray-300 focus:outline-none" onclick="closeVideo()">
+    <div id="video-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm opacity-0 transition-opacity duration-300" data-close-modal>
+        <div class="relative w-full max-w-5xl transform scale-95 transition-transform duration-300" id="video-modal-content">
+            <button class="absolute -top-12 right-0 p-2 text-white hover:text-gray-300 focus:outline-none" data-close-modal>
                 <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
             </button>
-            <div class="relative aspect-video bg-black rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/10">
+            <div class="relative aspect-video bg-black rounded-xl overflow-hidden ring-1 ring-white/10">
                 <iframe id="youtube-iframe" class="w-full h-full" src="" title="Video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
     </div>
 
     <script>
-      // Seguimiento del mouse para el efecto de los puntos del fondo
-      document.addEventListener("mousemove", (e) => {
-        document.body.style.setProperty("--mouse-x", e.clientX + "px");
-        document.body.style.setProperty("--mouse-y", e.clientY + "px");
-      });
+      // 1. Mouse Effect (Throttled with requestAnimationFrame)
+      if (window.matchMedia('(pointer:fine)').matches) {
+        let raf = null;
+        document.addEventListener("mousemove", (e) => {
+          if (raf) return;
+          raf = requestAnimationFrame(() => {
+            document.body.style.setProperty("--mouse-x", e.clientX + "px");
+            document.body.style.setProperty("--mouse-y", e.clientY + "px");
+            raf = null;
+          });
+        }, { passive: true });
+      }
 
-      // Hide mobile navbar on scroll down, show on scroll up (Clean toggle version)
+      // 2. Sticky Navbar Hide/Show (Clean Toggle Version)
       (function() {
         const wrapper = document.getElementById('mobile-nav-wrapper');
         if (!wrapper) return;
-
         let lastY = window.scrollY;
         let ticking = false;
-
         document.addEventListener('scroll', () => {
           if (ticking) return;
           ticking = true;
-
           window.requestAnimationFrame(() => {
             const y = window.scrollY;
             const diff = y - lastY;
-
-            // Sensibilidad de 3px y solo activa después de los 40px de scroll
             if (Math.abs(diff) > 3 || y <= 40) {
               wrapper.classList.toggle('is-hidden', diff > 3 && y > 40);
             }
-
             lastY = y;
             ticking = false;
           });
         }, { passive: true });
       })();
 
-      // Valores constantes para el efecto de brillo
-      document.addEventListener("DOMContentLoaded", () => {
-        document.body.style.setProperty("--glow-opacity", "0.6");
-        document.body.style.setProperty("--glow-radius", "180px");
-        
-        // Check hash on load
-        const hash = window.location.hash.substring(1);
-        if (hash) {
-            switchDesktopSection(hash);
-        }
-
-      });
-
-      // Section Switching Logic
-      function switchDesktopSection(sectionId) {
-          const normalizedSectionId = String(sectionId || '').replace(/^desktop-section-/, '');
-
-          // Hide all sections
-          document.querySelectorAll('.section-panel').forEach(el => el.classList.add('hidden'));
-          
-          // Show target section
-          const target = document.getElementById('desktop-section-' + normalizedSectionId);
-          if(target) target.classList.remove('hidden');
-          
-          // Update sidebar active state (Desktop)
-          const desktopActiveClasses = ['text-primary', 'dark:text-white', 'bg-gray-50/80', 'dark:bg-slate-800', 'border-slate-300', 'dark:border-accent', 'font-semibold'];
-          const desktopInactiveClasses = ['text-text-muted', 'dark:text-slate-300', 'hover:text-primary', 'dark:hover:text-slate-200', 'hover:bg-gray-50/50', 'dark:hover:bg-slate-800/30', 'border-transparent'];
-
-          document.querySelectorAll('.nav-item').forEach(el => {
-              el.classList.remove(...desktopActiveClasses);
-              el.classList.add(...desktopInactiveClasses);
-          });
-          const activeBtn = document.querySelector(`button[data-target="desktop-section-${normalizedSectionId}"]`);
-          if(activeBtn) {
-              activeBtn.classList.remove(...desktopInactiveClasses);
-              activeBtn.classList.add(...desktopActiveClasses);
-          }
-
-          // Update mobile nav active state
-          const mobileActiveClasses = ['bg-gray-100', 'dark:bg-slate-800', 'text-slate-900', 'dark:text-white', 'border-gray-200', 'dark:border-slate-700'];
-          const mobileInactiveClasses = ['border-gray-100/50', 'dark:border-slate-800/50', 'text-text-muted', 'dark:text-slate-400', 'hover:bg-gray-50', 'dark:hover:bg-slate-800/50', 'hover:border-gray-200', 'dark:hover:border-slate-700', 'hover:text-slate-900', 'dark:hover:text-slate-200'];
-
-          document.querySelectorAll('.mobile-nav-item').forEach(el => {
-             el.classList.remove(...mobileActiveClasses);
-             el.classList.add(...mobileInactiveClasses);
-          });
-          
-          const activeMobileBtn = document.querySelector(`a[data-target="desktop-section-${normalizedSectionId}"]`);
-          if(activeMobileBtn) {
-             activeMobileBtn.classList.remove(...mobileInactiveClasses);
-             activeMobileBtn.classList.add(...mobileActiveClasses);
-             // Ensure it's visible if scrolling happened
-             activeMobileBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-          }
-
-          // Reset section scroll to top on section change.
-          if (window.matchMedia('(min-width: 768px)').matches && target) {
-              const sectionScroll = target.querySelector('.section-scroll');
-              if (sectionScroll) sectionScroll.scrollTop = 0;
-          }
-          // Update URL hash without scrolling
-          history.replaceState(null, null, '#' + normalizedSectionId);
-      }
-
-      // Video Modal Logic
+      // 3. UI State & Logic
+      const panels = document.querySelectorAll('[data-panel]');
+      const navItems = document.querySelectorAll('[data-section]');
       const modal = document.getElementById('video-modal');
       const modalContent = document.getElementById('video-modal-content');
       const iframe = document.getElementById('youtube-iframe');
       const isDesktop = () => window.matchMedia('(min-width: 768px)').matches;
 
-      window.openMedia = function(el) {
-          if (!el) return;
+      function setSection(id, smooth = true) {
+        const normalizedId = String(id || '').replace(/^desktop-section-/, '');
+        
+        // Update Panels & Nav Items via Data Attributes
+        panels.forEach(p => p.hidden = p.dataset.panel !== normalizedId);
+        navItems.forEach(n => n.dataset.active = String(n.dataset.section === normalizedId));
 
-          const provider = el.dataset.provider;
-          if (provider === 'drive') {
-              const previewUrl = el.dataset.url;
-              if (!previewUrl) return;
+        // Sync Mobile Scroll
+        const activeMobile = document.querySelector(`.mobile-nav-item[data-section="${normalizedId}"]`);
+        activeMobile?.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', block: 'nearest', inline: 'center' });
 
-              const viewUrl = previewUrl.replace('/preview', '/view');
-              if (!isDesktop()) {
-                  window.open(viewUrl, '_blank');
-              } else {
-                  openDriveVideo(previewUrl);
-              }
-              return;
-          }
+        // Reset Panel Scroll
+        const targetPanel = document.querySelector(`[data-panel="${normalizedId}"]`);
+        if (isDesktop() && targetPanel) {
+          targetPanel.querySelector('.section-scroll')?.scrollTo({ top: 0 });
+        }
 
-          const videoId = el.dataset.id;
-          if (!videoId) return;
-
-          if (!isDesktop()) {
-              window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank');
-          } else {
-              openVideo(videoId);
-          }
+        // URL Management
+        if (window.location.hash !== '#' + normalizedId) {
+          history.replaceState(null, null, '#' + normalizedId);
+        }
       }
 
-      function openVideo(videoId) {
-          if (!videoId) return;
-          iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-          showModal();
-      };
+      // Event Delegation
+      document.addEventListener('click', (e) => {
+        // Section Switching
+        const trigger = e.target.closest('[data-section]');
+        if (trigger) {
+          e.preventDefault();
+          setSection(trigger.dataset.section);
+          return;
+        }
 
-      function openDriveVideo(url) {
-          if (!url) return;
-          iframe.src = url;
-          showModal();
-      };
+        // Media Opening
+        const mediaBtn = e.target.closest('[data-open-media]');
+        if (mediaBtn) {
+          e.preventDefault();
+          const { provider, id, url } = mediaBtn.dataset;
+          const desktop = isDesktop();
+
+          if (provider === 'drive') {
+            const viewUrl = url.replace('/preview', '/view');
+            if (!desktop) window.open(viewUrl, '_blank');
+            else { iframe.src = url; showModal(); }
+          } else {
+            if (!desktop) window.open(`https://www.youtube.com/watch?v=${id}`, '_blank');
+            else { iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1`; showModal(); }
+          }
+          return;
+        }
+        if (e.target.closest('[data-close-modal]') || e.target === modal) {
+          closeVideo();
+        }
+      });
 
       function showModal() {
-          modal.classList.remove('hidden');
-          setTimeout(() => {
-              modal.classList.remove('opacity-0');
-              modalContent.classList.remove('scale-95');
-              modalContent.classList.add('scale-100');
-          }, 10);
-          document.body.style.overflow = 'hidden';
+        modal.classList.remove('hidden');
+        setTimeout(() => {
+          modal.classList.remove('opacity-0');
+          modalContent.classList.replace('scale-95', 'scale-100');
+        }, 10);
+        document.body.style.overflow = 'hidden';
       }
 
-      window.closeVideo = function() {
-          modal.classList.add('opacity-0');
-          modalContent.classList.remove('scale-100');
-          modalContent.classList.add('scale-95');
-          setTimeout(() => {
-              modal.classList.add('hidden');
-              iframe.src = '';
-              document.body.style.overflow = 'auto';
-          }, 300);
+      function closeVideo() {
+        modal.classList.add('opacity-0');
+        modalContent.classList.replace('scale-100', 'scale-95');
+        setTimeout(() => {
+          modal.classList.add('hidden');
+          iframe.src = '';
+          document.body.style.overflow = 'auto';
+        }, 300);
       };
 
       document.addEventListener('keydown', (e) => { 
-          if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeVideo(); 
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeVideo(); 
       });
+
+      // Init from Hash
+      const initialId = window.location.hash.slice(1) || panels[0]?.dataset.panel;
+      if (initialId) setSection(initialId, false);
     </script>
   </body>
 </html>
