@@ -236,7 +236,7 @@
     </div>
 
     <script>
-      // 1. Mouse Effect (Throttled with requestAnimationFrame)
+      // 1. Mouse Glow Effect (Optimized)
       if (window.matchMedia('(pointer:fine)').matches) {
         let raf = null;
         document.addEventListener("mousemove", (e) => {
@@ -249,7 +249,7 @@
         }, { passive: true });
       }
 
-      // 3. UI State & Logic
+      // 2. UI State & Logic
       const panels = document.querySelectorAll('[data-panel]');
       const navItems = document.querySelectorAll('[data-section]');
       const modal = document.getElementById('video-modal');
@@ -260,24 +260,25 @@
       function setSection(id, smooth = true) {
         const normalizedId = String(id || '').replace(/^desktop-section-/, '');
         
-        // Update Panels & Nav Items via Data Attributes
+        // Critical: Switch visibility immediately
         panels.forEach(p => p.hidden = p.dataset.panel !== normalizedId);
         navItems.forEach(n => n.dataset.active = String(n.dataset.section === normalizedId));
-
-        // Sync Mobile Scroll
-        const activeMobile = document.querySelector(`.mobile-nav-item[data-section="${normalizedId}"]`);
-        activeMobile?.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', block: 'nearest', inline: 'center' });
-
-        // Reset Panel Scroll
-        const targetPanel = document.querySelector(`[data-panel="${normalizedId}"]`);
-        if (isDesktop() && targetPanel) {
-          targetPanel.querySelector('.section-scroll')?.scrollTo({ top: 0 });
-        }
 
         // URL Management
         if (window.location.hash !== '#' + normalizedId) {
           history.replaceState(null, null, '#' + normalizedId);
         }
+
+        // Defer non-critical UI updates to keep switching snappy
+        requestAnimationFrame(() => {
+          const activeMobile = document.querySelector(`.mobile-nav-item[data-section="${normalizedId}"]`);
+          activeMobile?.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', block: 'nearest', inline: 'center' });
+
+          const targetPanel = document.querySelector(`[data-panel="${normalizedId}"]`);
+          if (isDesktop() && targetPanel) {
+            targetPanel.querySelector('.section-scroll')?.scrollTo({ top: 0 });
+          }
+        });
       }
 
       // Event Delegation

@@ -113,7 +113,7 @@
       for (const card of grid.children) {
         await card.querySelector("img")?.decode().catch(() => {});
         card.dataset.reveal = "true";
-        await new Promise(r => setTimeout(r, 20));
+        await new Promise(r => setTimeout(r, 10));
       }
     })();
     </script>
