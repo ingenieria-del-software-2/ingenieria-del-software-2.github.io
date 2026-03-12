@@ -3,7 +3,7 @@
 El principal objetivo es permitir compartir videos entre los usuarios&lt;/p>
 &lt;p>AppMaker busca posicionarse en el mercado de aplicaciones, busca conectar esta aplicación con sus otras aplicaciones que poseen gran cantidad de usuarios.&lt;/p>
 &lt;h2>Aplicaciones requeridas&lt;span class="hx:absolute hx:-mt-20" id="aplicaciones-requeridas">&lt;/span>
-&lt;a href="#aplicaciones-requeridas" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>La aplicación constará de tres componentes:&lt;/p>
+&lt;a href="#aplicaciones-requeridas" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;p>La aplicación constará de tres componentes:&lt;/p>
 &lt;ul>
 &lt;li>Un servidor (Application Server), el cual será responsable de conectar a los usuarios.&lt;/li>
 &lt;li>Un servidor (Auth Server), el cual será responsable de la administración de los application servers y autenticación de usuarios&lt;/li>
@@ -13,17 +13,17 @@ El principal objetivo es permitir compartir videos entre los usuarios&lt;/p>
 &lt;/ul>
 &lt;p>&lt;img src="../img/tp/diagrama.png" alt="Componentes" loading="lazy" />&lt;/p>
 &lt;h3>Application Server&lt;span class="hx:absolute hx:-mt-20" id="application-server">&lt;/span>
-&lt;a href="#application-server" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Se trata de una aplicación por consola destinada a mantenerse en ejecución por períodos prolongados de tiempo.&lt;/p>
+&lt;a href="#application-server" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Se trata de una aplicación por consola destinada a mantenerse en ejecución por períodos prolongados de tiempo.&lt;/p>
 &lt;p>Esta aplicación debe brindar una interfaz REST [1] para la comunicación de los diferentes usuarios.&lt;/p>
 &lt;p>Este servidor se comunicará con los &lt;em>Shared servers&lt;/em> (explicado a continuación). En el caso que la &lt;em>aplicación Android&lt;/em> (explicada a continuación) necesitará de algún servicio del &lt;em>Shared Servers&lt;/em>, &lt;strong>el &lt;em>Application server&lt;/em> deberá de actuar de fachada.&lt;/strong>.&lt;/p>
 &lt;h4>Servicio de alta de solicitud de contacto de usuario&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-alta-de-solicitud-de-contacto-de-usuario">&lt;/span>
-&lt;a href="#servicio-de-alta-de-solicitud-de-contacto-de-usuario" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá enviar una solicitud de conexión/amistad a un usuario.&lt;/p>
+&lt;a href="#servicio-de-alta-de-solicitud-de-contacto-de-usuario" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá enviar una solicitud de conexión/amistad a un usuario.&lt;/p>
 &lt;h4>Servicio de aceptación de solicitud de contacto&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-aceptación-de-solicitud-de-contacto">&lt;/span>
-&lt;a href="#servicio-de-aceptaci%c3%b3n-de-solicitud-de-contacto" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá aceptar una solicitud de contacto que recibe un usuario.&lt;/p>
+&lt;a href="#servicio-de-aceptaci%c3%b3n-de-solicitud-de-contacto" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá aceptar una solicitud de contacto que recibe un usuario.&lt;/p>
 &lt;h4>Servicio de reacción a un video&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-reacción-a-un-video">&lt;/span>
-&lt;a href="#servicio-de-reacci%c3%b3n-a-un-video" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá dar de alta una reacción de un usuario a un video (me gusta, no me gusta).&lt;/p>
+&lt;a href="#servicio-de-reacci%c3%b3n-a-un-video" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá dar de alta una reacción de un usuario a un video (me gusta, no me gusta).&lt;/p>
 &lt;h4>Servicio de alta de comentario de video&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-alta-de-comentario-de-video">&lt;/span>
-&lt;a href="#servicio-de-alta-de-comentario-de-video" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá enviar un comentario asociado a un video. El comentario tendrá la siguiente información:&lt;/p>
+&lt;a href="#servicio-de-alta-de-comentario-de-video" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá enviar un comentario asociado a un video. El comentario tendrá la siguiente información:&lt;/p>
 &lt;ul>
 &lt;li>Mensaje&lt;/li>
 &lt;li>Usuario que realizó el comentario&lt;/li>
@@ -31,7 +31,7 @@ El principal objetivo es permitir compartir videos entre los usuarios&lt;/p>
 &lt;li>Video sobre la cual fue realizado el comentario&lt;/li>
 &lt;/ul>
 &lt;h4>Servicio de mensaje directo a usuario&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-mensaje-directo-a-usuario">&lt;/span>
-&lt;a href="#servicio-de-mensaje-directo-a-usuario" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá enviar un mensaje a un usuario. Esto permitirá que los usuarios puedan mantener una conversación. El mensaje tendrá la siguiente información:&lt;/p>
+&lt;a href="#servicio-de-mensaje-directo-a-usuario" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá enviar un mensaje a un usuario. Esto permitirá que los usuarios puedan mantener una conversación. El mensaje tendrá la siguiente información:&lt;/p>
 &lt;ul>
 &lt;li>Mensaje&lt;/li>
 &lt;li>Usuario que envia el mensaje (emisor)&lt;/li>
@@ -39,9 +39,9 @@ El principal objetivo es permitir compartir videos entre los usuarios&lt;/p>
 &lt;li>Hora y fecha&lt;/li>
 &lt;/ul>
 &lt;h4>Servicio de listado de videos de un usuario&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-listado-de-videos-de-un-usuario">&lt;/span>
-&lt;a href="#servicio-de-listado-de-videos-de-un-usuario" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá listar los videos disponibles de un usuario&lt;/p>
+&lt;a href="#servicio-de-listado-de-videos-de-un-usuario" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá listar los videos disponibles de un usuario&lt;/p>
 &lt;h4>Servicio de listado de videos en pantalla principal&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-listado-de-videos-en-pantalla-principal">&lt;/span>
-&lt;a href="#servicio-de-listado-de-videos-en-pantalla-principal" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá listar los videos disponibles para un usuario en su pantalla principal. Este servicio deberá utilizar un sistema de reglas que permitirá establecer un criterio flexible de importancia a los videos.&lt;/p>
+&lt;a href="#servicio-de-listado-de-videos-en-pantalla-principal" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá listar los videos disponibles para un usuario en su pantalla principal. Este servicio deberá utilizar un sistema de reglas que permitirá establecer un criterio flexible de importancia a los videos.&lt;/p>
 &lt;p>Las reglas deben permitir el cálculo de la importancia del video utilizando, entre otras cosas, la siguientes variables:&lt;/p>
 &lt;ul>
 &lt;li>Actividad el usuario (publicaciones por día, cantidad de reacciones, horario de las publicaciones)&lt;/li>
@@ -62,6 +62,8 @@ El principal objetivo es permitir compartir videos entre los usuarios&lt;/p>
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copiar código"
+aria-label="Copiar código"
+data-copied-label="¡Copiado!"
 >
 &lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
 &lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
@@ -70,19 +72,19 @@ title="Copiar código"
 &lt;/div>
 &lt;p>Para el sistema de reglas, se sugiere la utilización de alguno de los siguientes motores:&lt;/p>
 &lt;h4>JS&lt;span class="hx:absolute hx:-mt-20" id="js">&lt;/span>
-&lt;a href="#js" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;ul>
+&lt;a href="#js" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;ul>
 &lt;li>&lt;a href="https://github.com/noolsjs/nools"target="_blank" rel="noopener">Nools&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://github.com/mithunsatheesh/node-rules"target="_blank" rel="noopener">Node Rules&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://github.com/jruizgit/rules"target="_blank" rel="noopener">Rules&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://github.com/cachecontrol/json-rules-engine"target="_blank" rel="noopener">Json Rules Engine&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;h4>Python&lt;span class="hx:absolute hx:-mt-20" id="python">&lt;/span>
-&lt;a href="#python" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;ul>
+&lt;a href="#python" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;ul>
 &lt;li>&lt;a href="https://github.com/jruizgit/rules"target="_blank" rel="noopener">durable_rules&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://github.com/venmo/business-rules"target="_blank" rel="noopener">business-rules&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;h4>Servicio de alta de video&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-alta-de-video">&lt;/span>
-&lt;a href="#servicio-de-alta-de-video" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá publicar un video. Los videos contendrán la siguiente información:&lt;/p>
+&lt;a href="#servicio-de-alta-de-video" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá publicar un video. Los videos contendrán la siguiente información:&lt;/p>
 &lt;ul>
 &lt;li>Título (opcional)&lt;/li>
 &lt;li>Contenido multimedia (video)&lt;/li>
@@ -95,10 +97,10 @@ title="Copiar código"
 &lt;p>Este servicio deberá utilizar el servicio de administración de archivos del &lt;em>Media Server&lt;/em> para almacenar el contenido multimedia asociado al video&lt;/p>
 &lt;p>Es posible alojar el archivo multimedia utilizando el servicio de storage de &lt;a href="https://firebase.google.com/docs/storage/?hl=es-419"target="_blank" rel="noopener">Firebase&lt;/a>, y luego indicar la url de acceso al servicio de &lt;em>Media Server&lt;/em>.&lt;/p>
 &lt;h4>Servicio de estado&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-estado">&lt;/span>
-&lt;a href="#servicio-de-estado" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servició tiene como objetivo brindar una respuesta rápida que permita ser consultada para conocer si el servidor se encuentra activo.
+&lt;a href="#servicio-de-estado" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servició tiene como objetivo brindar una respuesta rápida que permita ser consultada para conocer si el servidor se encuentra activo.
 Este servicio debé ser consultado a traves de la URI /ping&lt;/p>
 &lt;h4>Servicio de consulta de datos de uso&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-consulta-de-datos-de-uso">&lt;/span>
-&lt;a href="#servicio-de-consulta-de-datos-de-uso" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio deberá brindar datos acerca del uso del application server.&lt;/p>
+&lt;a href="#servicio-de-consulta-de-datos-de-uso" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio deberá brindar datos acerca del uso del application server.&lt;/p>
 &lt;p>Este servicio debé ser consultado a traves de la URI /stats y brindará información, como por ejemplo:&lt;/p>
 &lt;ul>
 &lt;li>Cantidad de requests por minuto.&lt;/li>
@@ -107,21 +109,21 @@ Este servicio debé ser consultado a traves de la URI /ping&lt;/p>
 &lt;li>Etc&lt;/li>
 &lt;/ul>
 &lt;h2>Shared Servers&lt;span class="hx:absolute hx:-mt-20" id="shared-servers">&lt;/span>
-&lt;a href="#shared-servers" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>Dado que se requiere poseer varios Application servers (por ejemplo, estas pueden ser instancias del mismo servicio por zona geográfica o distintas apps de una misma empresa que interactuan entre sí) y que se requiere trabajar con una arquitectura orientada al uso de micro servicios, se desarrollarán distintos servidores con servicios bien especificos que pueden ser utilizados en diversos contextos&lt;/p>
+&lt;a href="#shared-servers" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;p>Dado que se requiere poseer varios Application servers (por ejemplo, estas pueden ser instancias del mismo servicio por zona geográfica o distintas apps de una misma empresa que interactuan entre sí) y que se requiere trabajar con una arquitectura orientada al uso de micro servicios, se desarrollarán distintos servidores con servicios bien especificos que pueden ser utilizados en diversos contextos&lt;/p>
 &lt;p>Ambos &lt;em>Shared Servers&lt;/em> deberán tener una interfaz de usuario WEB orientado a usuarios de negocio quienes principalmente utilizaran el sistema para poder ver estado de cada Application Server.
 Los usuarios finales nunca utilizaran esta plataforma, ya que solo utilizaran el cliente Android el cual se comunica con su &lt;em>Application Server&lt;/em>. Esta plataforma será unicamente utilizada por usuarios administrativos/ejecutivos.&lt;/p>
 &lt;h3>Auth Server&lt;span class="hx:absolute hx:-mt-20" id="auth-server">&lt;/span>
-&lt;a href="#auth-server" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>AppMaker© nos solicita que se desarrolle un servidor encargado de la administración de usuarios, login y Application servers.
+&lt;a href="#auth-server" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>AppMaker© nos solicita que se desarrolle un servidor encargado de la administración de usuarios, login y Application servers.
 Este servidor será el encargado de brindar servicios de uso común como autenticación y login, tanto para el &lt;em>Application Server&lt;/em> como para otros que servicios que lo requieran.
 El objetivo de la administración de application servers es el de conocer el estado y el uso de estos. Para esto el &lt;em>Auth Server&lt;/em> deberá consultar a los application servers, registrados previamente, para conocer datos acerca del uso del mismo.&lt;/p>
 &lt;h4>Servicio de autenticación (login)&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-autenticación-login">&lt;/span>
-&lt;a href="#servicio-de-autenticaci%c3%b3n-login" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá a los usuarios poder ingresar al sistema, obteniendo un token que deberá ser utilizado por los demás servicios.&lt;/p>
+&lt;a href="#servicio-de-autenticaci%c3%b3n-login" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá a los usuarios poder ingresar al sistema, obteniendo un token que deberá ser utilizado por los demás servicios.&lt;/p>
 &lt;h4>Servicio de recupero de contraseña&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-recupero-de-contraseña">&lt;/span>
-&lt;a href="#servicio-de-recupero-de-contrase%c3%b1a" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá a los usuarios poder recuperar una cuenta. Este servicio deberá generar un token, que deberá ser utilizado para definir una nueva contraseña, y enviarlo por e-mail.&lt;/p>
+&lt;a href="#servicio-de-recupero-de-contrase%c3%b1a" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá a los usuarios poder recuperar una cuenta. Este servicio deberá generar un token, que deberá ser utilizado para definir una nueva contraseña, y enviarlo por e-mail.&lt;/p>
 &lt;h4>Servicio de configuración de contraseña&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-configuración-de-contraseña">&lt;/span>
-&lt;a href="#servicio-de-configuraci%c3%b3n-de-contrase%c3%b1a" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá a un usuario definir una nueva contraseña. Este servicio verificará que se haya solicitado un token utilizando el &lt;em>Servicio de recupero de contraseña&lt;/em>.&lt;/p>
+&lt;a href="#servicio-de-configuraci%c3%b3n-de-contrase%c3%b1a" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá a un usuario definir una nueva contraseña. Este servicio verificará que se haya solicitado un token utilizando el &lt;em>Servicio de recupero de contraseña&lt;/em>.&lt;/p>
 &lt;h4>Servicio de registro&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-registro">&lt;/span>
-&lt;a href="#servicio-de-registro" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá a los usuarios darse de alta en el sistema. El usuario deberá brindar sus datos personales para poder completar el registro.&lt;/p>
+&lt;a href="#servicio-de-registro" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá a los usuarios darse de alta en el sistema. El usuario deberá brindar sus datos personales para poder completar el registro.&lt;/p>
 &lt;p>Datos personales:&lt;/p>
 &lt;ul>
 &lt;li>Nombre y Apellido&lt;/li>
@@ -130,27 +132,27 @@ El objetivo de la administración de application servers es el de conocer el est
 &lt;li>Foto de perfil&lt;/li>
 &lt;/ul>
 &lt;h4>Servicio de consulta de perfil&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-consulta-de-perfil">&lt;/span>
-&lt;a href="#servicio-de-consulta-de-perfil" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá consultar el perfil de un usuario. El mismo está compuesto por :&lt;/p>
+&lt;a href="#servicio-de-consulta-de-perfil" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá consultar el perfil de un usuario. El mismo está compuesto por :&lt;/p>
 &lt;ul>
 &lt;li>Datos personales (Nombre, Apellido, EMail)&lt;/li>
 &lt;li>Foto de perfil&lt;/li>
 &lt;/ul>
 &lt;h4>Servicio de modificación de perfil&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-modificación-de-perfil">&lt;/span>
-&lt;a href="#servicio-de-modificaci%c3%b3n-de-perfil" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio permite a un usuario actualizar su perfil, debe permitir modificar y actualizar los siguientes datos:&lt;/p>
+&lt;a href="#servicio-de-modificaci%c3%b3n-de-perfil" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permite a un usuario actualizar su perfil, debe permitir modificar y actualizar los siguientes datos:&lt;/p>
 &lt;ul>
 &lt;li>Datos personales (Nombre, Apellido, Dirección, e-mail, Cuenta de Facebook, GMail, etc)&lt;/li>
 &lt;li>Foto de perfil&lt;/li>
 &lt;/ul>
 &lt;h4>Servicio de administración de app server&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-administración-de-app-server">&lt;/span>
-&lt;a href="#servicio-de-administraci%c3%b3n-de-app-server" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá registrar un app server. Esto devolverá un token que podrá ser utilizado para interactuar con los demás servicios.&lt;/p>
+&lt;a href="#servicio-de-administraci%c3%b3n-de-app-server" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá registrar un app server. Esto devolverá un token que podrá ser utilizado para interactuar con los demás servicios.&lt;/p>
 &lt;h4>Servicio de reportes&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-reportes">&lt;/span>
-&lt;a href="#servicio-de-reportes" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Servicio que mostrará estádisticas y datos de uso acerca de los &lt;em>Application servers&lt;/em>.&lt;/p>
+&lt;a href="#servicio-de-reportes" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Servicio que mostrará estádisticas y datos de uso acerca de los &lt;em>Application servers&lt;/em>.&lt;/p>
 &lt;h4>Servicio de estado actual&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-estado-actual">&lt;/span>
-&lt;a href="#servicio-de-estado-actual" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Servicio que podrá visualizar el estado actual de todos los &lt;em>Application Servers&lt;/em> corriendo. Se valora el uso de gráficos.&lt;/p>
+&lt;a href="#servicio-de-estado-actual" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Servicio que podrá visualizar el estado actual de todos los &lt;em>Application Servers&lt;/em> corriendo. Se valora el uso de gráficos.&lt;/p>
 &lt;h3>Media Server&lt;span class="hx:absolute hx:-mt-20" id="media-server">&lt;/span>
-&lt;a href="#media-server" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Este servidor será el encargado de proveer los distintos recursos multimedia que los Application Server puedan llegar a solicitar&lt;/p>
+&lt;a href="#media-server" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Este servidor será el encargado de proveer los distintos recursos multimedia que los Application Server puedan llegar a solicitar&lt;/p>
 &lt;h4>Servicio para administración de recursos&lt;span class="hx:absolute hx:-mt-20" id="servicio-para-administración-de-recursos">&lt;/span>
-&lt;a href="#servicio-para-administraci%c3%b3n-de-recursos" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Servicio que permitirá administrar los recursos que contiene el &lt;em>Media Server&lt;/em> (alta, listado, baja).
+&lt;a href="#servicio-para-administraci%c3%b3n-de-recursos" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Servicio que permitirá administrar los recursos que contiene el &lt;em>Media Server&lt;/em> (alta, listado, baja).
 Cada archivo deberá contener la siguiente metadata asociada:&lt;/p>
 &lt;ul>
 &lt;li>Nombre de archivo&lt;/li>
@@ -159,34 +161,34 @@ Cada archivo deberá contener la siguiente metadata asociada:&lt;/p>
 &lt;/ul>
 &lt;p>Este servicio deberá devolver, entre sus datos, la url que permite acceder a este de forma remota.&lt;/p>
 &lt;h4>Interfaz WEB&lt;span class="hx:absolute hx:-mt-20" id="interfaz-web">&lt;/span>
-&lt;a href="#interfaz-web" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>La interfaz WEB deberá brindar una GUI que permita la administración de archivos y de application servers.
+&lt;a href="#interfaz-web" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>La interfaz WEB deberá brindar una GUI que permita la administración de archivos y de application servers.
 A continuación se da una breve descripción de la funcionalidad deseada para la interfaz WEB del &lt;em>Shared Server&lt;/em>.&lt;/p>
 &lt;h5>Login&lt;span class="hx:absolute hx:-mt-20" id="login">&lt;/span>
-&lt;a href="#login" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h5>&lt;p>La interfaz WEB deberá solicitar usuario y contraseña para acceder a la administración de datos. Estos usuarios serán de uso exclusivo para la interfaz WEB.&lt;/p>
+&lt;a href="#login" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h5>&lt;p>La interfaz WEB deberá solicitar usuario y contraseña para acceder a la administración de datos. Estos usuarios serán de uso exclusivo para la interfaz WEB.&lt;/p>
 &lt;h5>Administración de recursos&lt;span class="hx:absolute hx:-mt-20" id="administración-de-recursos">&lt;/span>
-&lt;a href="#administraci%c3%b3n-de-recursos" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h5>&lt;p>Se deberá mostrar el listado de recursos disponibles en el servidor. Deberá mostrar la información asociada a cada archivo (ver definición de API para ver los datos a mostra).
+&lt;a href="#administraci%c3%b3n-de-recursos" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h5>&lt;p>Se deberá mostrar el listado de recursos disponibles en el servidor. Deberá mostrar la información asociada a cada archivo (ver definición de API para ver los datos a mostra).
 Se deberá además permitir la administración de estos.&lt;/p>
 &lt;h5>Administración de usuarios&lt;span class="hx:absolute hx:-mt-20" id="administración-de-usuarios">&lt;/span>
-&lt;a href="#administraci%c3%b3n-de-usuarios" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h5>&lt;p>Se deberá mostrar un listado de los usuarios registrados. Se deberá además permitir la administración de estos.&lt;/p>
+&lt;a href="#administraci%c3%b3n-de-usuarios" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h5>&lt;p>Se deberá mostrar un listado de los usuarios registrados. Se deberá además permitir la administración de estos.&lt;/p>
 &lt;h5>Administración de application servers&lt;span class="hx:absolute hx:-mt-20" id="administración-de-application-servers">&lt;/span>
-&lt;a href="#administraci%c3%b3n-de-application-servers" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h5>&lt;p>Se deberá mostrar un listado de los application servers registrados. Se deberá además permitir la administración de estos.&lt;/p>
+&lt;a href="#administraci%c3%b3n-de-application-servers" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h5>&lt;p>Se deberá mostrar un listado de los application servers registrados. Se deberá además permitir la administración de estos.&lt;/p>
 &lt;h5>Panel para visualización de datos y estadísticas de application servers&lt;span class="hx:absolute hx:-mt-20" id="panel-para-visualización-de-datos-y-estadísticas-de-application-servers">&lt;/span>
-&lt;a href="#panel-para-visualizaci%c3%b3n-de-datos-y-estad%c3%adsticas-de-application-servers" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h5>&lt;p>Se deberá mostrar un panel que muestre datos y estadísticas de uso los diferentes application servers utilizando diferentes tipos de gráficos. Los datos y gráficos a mostrar deberán ser validados con el ayudante asignado.&lt;/p>
+&lt;a href="#panel-para-visualizaci%c3%b3n-de-datos-y-estad%c3%adsticas-de-application-servers" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h5>&lt;p>Se deberá mostrar un panel que muestre datos y estadísticas de uso los diferentes application servers utilizando diferentes tipos de gráficos. Los datos y gráficos a mostrar deberán ser validados con el ayudante asignado.&lt;/p>
 &lt;p>Ejemplo de estos datos pueden ser: cantidad de consultas por minuto, cantidad de videos publicados por día, cantidad de usuarios registrados, cantidad de usuarios activos.&lt;/p>
 &lt;h3>Android Client&lt;span class="hx:absolute hx:-mt-20" id="android-client">&lt;/span>
-&lt;a href="#android-client" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Este cliente se comunicará únicamente con un &lt;em>Application Server&lt;/em>. A continuación se dará una breve descripción de las funcionalidades esperadas para la aplicación Android. Se deberá validar con el ayudante asignado el alcance de las mismas.&lt;/p>
+&lt;a href="#android-client" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Este cliente se comunicará únicamente con un &lt;em>Application Server&lt;/em>. A continuación se dará una breve descripción de las funcionalidades esperadas para la aplicación Android. Se deberá validar con el ayudante asignado el alcance de las mismas.&lt;/p>
 &lt;h4>Registro&lt;span class="hx:absolute hx:-mt-20" id="registro">&lt;/span>
-&lt;a href="#registro" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>En caso de que la persona que desee utilizar la aplicación no tenga un usuario registrado la aplicación debe permitir poder registrar un usuario nuevo. Este registro deberá poder ser integrado con un servicio externo de autenticación, permitiendo ingresar las credenciales y utilizar los datos asociados de la cuenta para completar el registro del usuario dentro del sistema.&lt;/p>
+&lt;a href="#registro" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>En caso de que la persona que desee utilizar la aplicación no tenga un usuario registrado la aplicación debe permitir poder registrar un usuario nuevo. Este registro deberá poder ser integrado con un servicio externo de autenticación, permitiendo ingresar las credenciales y utilizar los datos asociados de la cuenta para completar el registro del usuario dentro del sistema.&lt;/p>
 &lt;h4>Autenticación&lt;span class="hx:absolute hx:-mt-20" id="autenticación">&lt;/span>
-&lt;a href="#autenticaci%c3%b3n" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Para que el cliente pueda enviar y recibir conversaciones el mismo debe autentificarse con el servidor. Para esto el cliente debe permitir al usuario ingresar usuario y contraseña.
+&lt;a href="#autenticaci%c3%b3n" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Para que el cliente pueda enviar y recibir conversaciones el mismo debe autentificarse con el servidor. Para esto el cliente debe permitir al usuario ingresar usuario y contraseña.
 Se deberá diseñar una pantalla de ingreso a la aplicación.
 Cuando la autenticación es exitosa, se almacenará un token de autenticación para realizar las operaciones con el servidor.&lt;/p>
 &lt;h4>Perfil de usuario&lt;span class="hx:absolute hx:-mt-20" id="perfil-de-usuario">&lt;/span>
-&lt;a href="#perfil-de-usuario" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Los usuarios podrán visualizar su perfil o el de otros usuarios. El perfil tendrá los datos del usuario y sus videos&lt;/p>
+&lt;a href="#perfil-de-usuario" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Los usuarios podrán visualizar su perfil o el de otros usuarios. El perfil tendrá los datos del usuario y sus videos&lt;/p>
 &lt;h4>Chat&lt;span class="hx:absolute hx:-mt-20" id="chat">&lt;/span>
-&lt;a href="#chat" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Los usuarios que se encuentren conectados podrán intercambiar mensajes a través de la aplicación. El Chat solo estará disponibles entre usuarios conectados.&lt;/p>
+&lt;a href="#chat" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Los usuarios que se encuentren conectados podrán intercambiar mensajes a través de la aplicación. El Chat solo estará disponibles entre usuarios conectados.&lt;/p>
 &lt;h4>Publicación de videos&lt;span class="hx:absolute hx:-mt-20" id="publicación-de-videos">&lt;/span>
-&lt;a href="#publicaci%c3%b3n-de-videos" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Los usuarios deberán poder publicar videos. Estos videos pueden ser privados (sólo por mis contactos) o públicos (accesible por todos).&lt;/p>
+&lt;a href="#publicaci%c3%b3n-de-videos" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Los usuarios deberán poder publicar videos. Estos videos pueden ser privados (sólo por mis contactos) o públicos (accesible por todos).&lt;/p>
 &lt;p>Los videos contendrán la siguiente información:&lt;/p>
 &lt;ul>
 &lt;li>Título (opcional)&lt;/li>
@@ -197,23 +199,23 @@ Cuando la autenticación es exitosa, se almacenará un token de autenticación p
 &lt;li>Visibilidad (public/private)&lt;/li>
 &lt;/ul>
 &lt;h4>Muro de videos&lt;span class="hx:absolute hx:-mt-20" id="muro-de-videos">&lt;/span>
-&lt;a href="#muro-de-videos" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Los usuarios podrán visualizar los videos publicadas por los demás usuarios de la aplicación. Además podrán generar una reacción al video (like, dislike).&lt;/p>
+&lt;a href="#muro-de-videos" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Los usuarios podrán visualizar los videos publicadas por los demás usuarios de la aplicación. Además podrán generar una reacción al video (like, dislike).&lt;/p>
 &lt;h4>Conectar usuarios&lt;span class="hx:absolute hx:-mt-20" id="conectar-usuarios">&lt;/span>
-&lt;a href="#conectar-usuarios" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Un usuario puede enviar una solicitud de conexión a otro usuario. Este último podrá aceptar o rechazar la solicitud.&lt;/p>
+&lt;a href="#conectar-usuarios" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Un usuario puede enviar una solicitud de conexión a otro usuario. Este último podrá aceptar o rechazar la solicitud.&lt;/p>
 &lt;h4>Comentar videos&lt;span class="hx:absolute hx:-mt-20" id="comentar-videos">&lt;/span>
-&lt;a href="#comentar-videos" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Un usuario puede realizar comentarios en los videos otro integrante de la plataforma. Estos comentarios pueden realizarse a nivel publicación del video o en un momento determinado del video&lt;/p>
+&lt;a href="#comentar-videos" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Un usuario puede realizar comentarios en los videos otro integrante de la plataforma. Estos comentarios pueden realizarse a nivel publicación del video o en un momento determinado del video&lt;/p>
 &lt;h4>Interfaz gráfica&lt;span class="hx:absolute hx:-mt-20" id="interfaz-gráfica">&lt;/span>
-&lt;a href="#interfaz-gr%c3%a1fica" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Para el diseño de la interfaz deben respetarse las &lt;a href="https://www.google.com/design/spec/material-design/introduction.html"target="_blank" rel="noopener">guías de diseño propuestas por Google&lt;/a>.&lt;/p>
+&lt;a href="#interfaz-gr%c3%a1fica" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Para el diseño de la interfaz deben respetarse las &lt;a href="https://www.google.com/design/spec/material-design/introduction.html"target="_blank" rel="noopener">guías de diseño propuestas por Google&lt;/a>.&lt;/p>
 &lt;h4>Notificaciónes &lt;em>Push&lt;/em>&lt;span class="hx:absolute hx:-mt-20" id="notificaciónes-push">&lt;/span>
-&lt;a href="#notificaci%c3%b3nes-push" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Para el envío y recepción de notificaciones del sistema (ej. solicitudes de amistad, nuevos videos o mensajes de Chat) se deberá utilizar el servicio de notificaciones push de &lt;a href="https://firebase.google.com/products/cloud-messaging/"target="_blank" rel="noopener">FCM&lt;/a>&lt;/p>
+&lt;a href="#notificaci%c3%b3nes-push" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Para el envío y recepción de notificaciones del sistema (ej. solicitudes de amistad, nuevos videos o mensajes de Chat) se deberá utilizar el servicio de notificaciones push de &lt;a href="https://firebase.google.com/products/cloud-messaging/"target="_blank" rel="noopener">FCM&lt;/a>&lt;/p>
 &lt;h2>Requerimiento No Funcionales&lt;span class="hx:absolute hx:-mt-20" id="requerimiento-no-funcionales">&lt;/span>
-&lt;a href="#requerimiento-no-funcionales" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h2>Tecnologias&lt;span class="hx:absolute hx:-mt-20" id="tecnologias">&lt;/span>
-&lt;a href="#tecnologias" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>Para el desarrollo de los server se podrá utilizar &lt;strong>Python&lt;/strong> o &lt;strong>NodeJS&lt;/strong> y &lt;strong>PostgreSQL&lt;/strong> y/o &lt;strong>MongoDB&lt;/strong> como motor de base de datos.
+&lt;a href="#requerimiento-no-funcionales" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;h2>Tecnologias&lt;span class="hx:absolute hx:-mt-20" id="tecnologias">&lt;/span>
+&lt;a href="#tecnologias" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;p>Para el desarrollo de los server se podrá utilizar &lt;strong>Python&lt;/strong> o &lt;strong>NodeJS&lt;/strong> y &lt;strong>PostgreSQL&lt;/strong> y/o &lt;strong>MongoDB&lt;/strong> como motor de base de datos.
 Esta elección será responsabilidad del grupo y la misma deberá estar justificada en la documentación técnica que formará parte del TP.&lt;/p>
 &lt;p>Para el desarrollo de la App se utilizará &lt;strong>Kotlin&lt;/strong> como lenguaje de programación.&lt;/p>
 &lt;p>Para el desarrollo de la WebApp se utilizará &lt;strong>React&lt;/strong> como biblioteca.&lt;/p>
 &lt;h3>Empaquetamiento&lt;span class="hx:absolute hx:-mt-20" id="empaquetamiento">&lt;/span>
-&lt;a href="#empaquetamiento" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Cada uno de los desarrollos solicitados debe empaquetarse según el estandar de la plataforma, es decir:&lt;/p>
+&lt;a href="#empaquetamiento" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Cada uno de los desarrollos solicitados debe empaquetarse según el estandar de la plataforma, es decir:&lt;/p>
 &lt;ul>
 &lt;li>&lt;em>Python&lt;/em>: Python Setuptools (&lt;code>setup.py&lt;/code> y &lt;code>requeriments.txt&lt;/code>)&lt;/li>
 &lt;li>&lt;em>Node&lt;/em>: Node Package Manager (&lt;code>npm&lt;/code>, &lt;code>package.json&lt;/code>), Yarn Package Manager(&lt;a href="https://yarnpkg.com/lang/en/"target="_blank" rel="noopener">https://yarnpkg.com/lang/en/&lt;/a>)&lt;/li>
@@ -221,9 +223,9 @@ Esta elección será responsabilidad del grupo y la misma deberá estar justific
 &lt;/ul>
 &lt;p>Además, los servidores deberán traer un &lt;code>Dockerfile&lt;/code> que permita correrlos sin necesidad de tener instalado los respectivos lenguajes.&lt;/p>
 &lt;h3>Despliegue en la Nube&lt;span class="hx:absolute hx:-mt-20" id="despliegue-en-la-nube">&lt;/span>
-&lt;a href="#despliegue-en-la-nube" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Ambos servidores, tanto el &lt;em>Application server&lt;/em> como el &lt;em>Shared Server&lt;/em>, se deberán disponibilizar en la nube utilizando una plataforma como servicio (&lt;em>PAAS&lt;/em>). Se recomienda usar &lt;a href="https://www.heroku.com/"target="_blank" rel="noopener">Heroku&lt;/a> ya que cuenta con todos los requerimientos tecnológicos pedidos anteriormente.&lt;/p>
+&lt;a href="#despliegue-en-la-nube" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Ambos servidores, tanto el &lt;em>Application server&lt;/em> como el &lt;em>Shared Server&lt;/em>, se deberán disponibilizar en la nube utilizando una plataforma como servicio (&lt;em>PAAS&lt;/em>). Se recomienda usar &lt;a href="https://www.heroku.com/"target="_blank" rel="noopener">Heroku&lt;/a> ya que cuenta con todos los requerimientos tecnológicos pedidos anteriormente.&lt;/p>
 &lt;h3>Log&lt;span class="hx:absolute hx:-mt-20" id="log">&lt;/span>
-&lt;a href="#log" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Los servidores deben contar con un sistema de log en donde se registren los eventos que se generen durante la ejecución. El sistema de log debe permitir configurar el nivel de los eventos que desean registrar. Estos niveles son:&lt;/p>
+&lt;a href="#log" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Los servidores deben contar con un sistema de log en donde se registren los eventos que se generen durante la ejecución. El sistema de log debe permitir configurar el nivel de los eventos que desean registrar. Estos niveles son:&lt;/p>
 &lt;table>
 &lt;thead>
 &lt;tr>
@@ -253,7 +255,7 @@ Esta elección será responsabilidad del grupo y la misma deberá estar justific
 &lt;p>Es necesario recalcar que para que un log sea útil, debe poder ser accedido.&lt;/p>
 &lt;p>El cliente Android deberá utilizar el &lt;a href="http://developer.android.com/intl/es/reference/android/util/Log.html"target="_blank" rel="noopener">sistema de log por defecto&lt;/a>&lt;/p>
 &lt;h3>Pruebas y Métricas&lt;span class="hx:absolute hx:-mt-20" id="pruebas-y-métricas">&lt;/span>
-&lt;a href="#pruebas-y-m%c3%a9tricas" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>El desarrollo de la aplicación se deberá adaptar a los estándares de calidad utilizados por AppMaker©. Dentro de estos estándares se encuentran:&lt;/p>
+&lt;a href="#pruebas-y-m%c3%a9tricas" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>El desarrollo de la aplicación se deberá adaptar a los estándares de calidad utilizados por AppMaker©. Dentro de estos estándares se encuentran:&lt;/p>
 &lt;ul>
 &lt;li>Pruebas unitarias [2]&lt;/li>
 &lt;li>Métricas: code coverage debe ser mayor a 75% [3]&lt;/li>
@@ -263,7 +265,7 @@ Esta elección será responsabilidad del grupo y la misma deberá estar justific
 &lt;/ul>
 &lt;p>&lt;strong>Nota:&lt;/strong> Esta sección hace solo referencía al &lt;em>Application server&lt;/em> y a los &lt;em>Shared servers&lt;/em>. No se toma como requerimiento el realizar pruebas sobre el cliente Android, aunque es recomendado como una buena práctica.&lt;/p>
 &lt;h3>Integración continua / Despligue continuo&lt;span class="hx:absolute hx:-mt-20" id="integración-continua--despligue-continuo">&lt;/span>
-&lt;a href="#integraci%c3%b3n-continua--despligue-continuo" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Las pruebas y métricas anteriormente mencionadas deberan correr bajo una plataforma de integración continua. Se sugiere el uso de &lt;a href="https://travis-ci.org/"target="_blank" rel="noopener">TravisCI&lt;/a>, pero se podrá utilizar otro previa justificación.&lt;/p>
+&lt;a href="#integraci%c3%b3n-continua--despligue-continuo" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Las pruebas y métricas anteriormente mencionadas deberan correr bajo una plataforma de integración continua. Se sugiere el uso de &lt;a href="https://travis-ci.org/"target="_blank" rel="noopener">TravisCI&lt;/a>, pero se podrá utilizar otro previa justificación.&lt;/p>
 &lt;p>El resultado del &lt;em>code coverage&lt;/em> debe ser desplegado automáticamente a una plataforma que permita visualizarlas, entre muchas posibilidades se encuentran:&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="https://coveralls.io/"target="_blank" rel="noopener">Coveralls&lt;/a>&lt;/li>
@@ -272,7 +274,7 @@ Esta elección será responsabilidad del grupo y la misma deberá estar justific
 &lt;/ul>
 &lt;p>Finalmente, el despliegue al servidor de &lt;em>PAAS&lt;/em> elegido deberá ser automático. Este deberá tener en cuenta como la actualización de la base de datos (cambios en las tablas, etc). El mecanismo utilizado para disparar dicho despliegue (utilizar el branch &lt;em>master&lt;/em> como productivo, utilizar un tags con nombre especial) será definido por los desarrolladores y deberá ser detallado en la documentación.&lt;/p>
 &lt;h3>Documentación&lt;span class="hx:absolute hx:-mt-20" id="documentación">&lt;/span>
-&lt;a href="#documentaci%c3%b3n" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Se deberá entregar la siguiente documentación:&lt;/p>
+&lt;a href="#documentaci%c3%b3n" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Se deberá entregar la siguiente documentación:&lt;/p>
 &lt;ul>
 &lt;li>Application Server:
 &lt;ul>
@@ -296,16 +298,16 @@ Esta elección será responsabilidad del grupo y la misma deberá estar justific
 &lt;/ul>
 &lt;p>Se espera que dicha documentación se elabore de manera incremental y que cada entrega parcial tenga parte de la misma.&lt;/p>
 &lt;h2>Instancias de entrega&lt;span class="hx:absolute hx:-mt-20" id="instancias-de-entrega">&lt;/span>
-&lt;a href="#instancias-de-entrega" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>&lt;em>Estas fechas pueden modificarse durante el cuatrimestre debido al contexto&lt;/em>&lt;/p>
+&lt;a href="#instancias-de-entrega" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;p>&lt;em>Estas fechas pueden modificarse durante el cuatrimestre debido al contexto&lt;/em>&lt;/p>
 &lt;p>| Instancia | Fecha |
 | Checkpoint 1 | clase 4 (07/05/20) |
 | Checkpoint 2 | clase 8 (04/06/20) |
 | Checkpoint 3 | clase 12 (02/07/20) |
 | Entrega | clase 16 (30/07/20) |&lt;/p>
 &lt;h3>Criterios de Aceptación&lt;span class="hx:absolute hx:-mt-20" id="criterios-de-aceptación">&lt;/span>
-&lt;a href="#criterios-de-aceptaci%c3%b3n" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>En cada checkpoint se deberá acordar el alcance de la entrega con cada ayudante.&lt;/p>
+&lt;a href="#criterios-de-aceptaci%c3%b3n" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>En cada checkpoint se deberá acordar el alcance de la entrega con cada ayudante.&lt;/p>
 &lt;h2>Referencias&lt;span class="hx:absolute hx:-mt-20" id="referencias">&lt;/span>
-&lt;a href="#referencias" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;ol>
+&lt;a href="#referencias" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;ol>
 &lt;li>&lt;a href="http://en.wikipedia.org/wiki/Representational_state_transfer"target="_blank" rel="noopener">REST&lt;/a>&lt;/li>
 &lt;li>&lt;a href="http://en.wikipedia.org/wiki/Unit_testing"target="_blank" rel="noopener">Unit Test&lt;/a>&lt;/li>
 &lt;li>&lt;a href="http://en.wikipedia.org/wiki/Code_coverage"target="_blank" rel="noopener">Code Coverage&lt;/a>&lt;/li>

@@ -2,7 +2,7 @@
 &lt;p>&lt;em>Actualizado al 27-ago-2025&lt;/em>&lt;/p>
 &lt;hr>
 &lt;h2>TL;DR&lt;span class="hx:absolute hx:-mt-20" id="tldr">&lt;/span>
-&lt;a href="#tldr" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;ul>
+&lt;a href="#tldr" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;ul>
 &lt;li>&lt;strong>GCP&lt;/strong>: &lt;strong>USD 300 en créditos (90 días)&lt;/strong>, más &lt;em>Always Free&lt;/em> en &lt;strong>Compute Engine&lt;/strong> y &lt;strong>Cloud Storage&lt;/strong>.&lt;/li>
 &lt;li>&lt;strong>AWS&lt;/strong>: &lt;strong>Free Tier (12 meses)&lt;/strong> para &lt;strong>EC2&lt;/strong>, &lt;strong>S3&lt;/strong> y &lt;strong>RDS&lt;/strong>, más &lt;strong>créditos promocionales&lt;/strong> de monto variable.&lt;/li>
 &lt;li>&lt;strong>Azure&lt;/strong>: &lt;strong>USD 200 en créditos (30 días)&lt;/strong> y &lt;strong>12 meses de servicios gratis&lt;/strong> para &lt;strong>VMs&lt;/strong> y &lt;strong>Blob Storage&lt;/strong>.&lt;/li>
@@ -10,7 +10,7 @@
 &lt;/ul>
 &lt;hr>
 &lt;h2>Cuadro comparativo (resumen)&lt;span class="hx:absolute hx:-mt-20" id="cuadro-comparativo-resumen">&lt;/span>
-&lt;a href="#cuadro-comparativo-resumen" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;table>
+&lt;a href="#cuadro-comparativo-resumen" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;table>
 &lt;thead>
 &lt;tr>
 &lt;th>Proveedor&lt;/th>
@@ -87,8 +87,8 @@
 • En &lt;strong>AWS&lt;/strong>: &lt;em>upload&lt;/em> firmado a &lt;strong>S3&lt;/strong> → &lt;strong>MediaConvert&lt;/strong> → &lt;em>HLS&lt;/em> a S3. &lt;strong>Basic tier&lt;/strong> desde &lt;strong>USD 0.0075/min normalizado&lt;/strong> (720p≈×2 &amp;ldquo;minutos normalizados&amp;rdquo;).&lt;/p>
 &lt;hr>
 &lt;h2>Stacks “mínimo viable” recomendados&lt;span class="hx:absolute hx:-mt-20" id="stacks-mínimo-viable-recomendados">&lt;/span>
-&lt;a href="#stacks-m%c3%adnimo-viable-recomendados" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>GCP (equilibrado con créditos)&lt;span class="hx:absolute hx:-mt-20" id="gcp-equilibrado-con-créditos">&lt;/span>
-&lt;a href="#gcp-equilibrado-con-cr%c3%a9ditos" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
+&lt;a href="#stacks-m%c3%adnimo-viable-recomendados" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;h3>GCP (equilibrado con créditos)&lt;span class="hx:absolute hx:-mt-20" id="gcp-equilibrado-con-créditos">&lt;/span>
+&lt;a href="#gcp-equilibrado-con-cr%c3%a9ditos" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;ul>
 &lt;li>&lt;strong>API/Backend&lt;/strong> en &lt;strong>Compute Engine e2-micro&lt;/strong> (cuidar región soportada por &lt;em>Always Free&lt;/em>).&lt;/li>
 &lt;li>&lt;strong>Objetos&lt;/strong> en &lt;strong>Cloud Storage&lt;/strong> con &lt;strong>URLs firmadas&lt;/strong>.&lt;/li>
 &lt;li>&lt;strong>DB&lt;/strong>: &lt;strong>Cloud SQL&lt;/strong> (créditos) y/o &lt;strong>Firestore&lt;/strong> para eventos/simple KV.&lt;/li>
@@ -97,7 +97,7 @@
 &lt;li>&lt;strong>Arranque&lt;/strong>: &lt;strong>USD 300/90 días&lt;/strong> + productos &lt;em>Always Free&lt;/em>. (&lt;a href="https://cloud.google.com/free"title="Free Trial and Free Tier Services and Products"target="_blank" rel="noopener">Google Cloud&lt;/a>)&lt;/li>
 &lt;/ul>
 &lt;h3>AWS (VOD barato para demos)&lt;span class="hx:absolute hx:-mt-20" id="aws-vod-barato-para-demos">&lt;/span>
-&lt;a href="#aws-vod-barato-para-demos" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
+&lt;a href="#aws-vod-barato-para-demos" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;ul>
 &lt;li>&lt;strong>API/Backend&lt;/strong> en &lt;strong>EC2&lt;/strong> &lt;em>micro&lt;/em> (12 m &lt;em>free&lt;/em>).&lt;/li>
 &lt;li>&lt;strong>Objetos&lt;/strong> en &lt;strong>S3&lt;/strong> — en los primeros 12 m tenés &lt;strong>100 GB/mes de salida&lt;/strong> en el Free Tier.&lt;/li>
 &lt;li>&lt;strong>DB&lt;/strong>: &lt;strong>RDS&lt;/strong> &lt;em>micro&lt;/em> (12 m) y &lt;strong>DynamoDB&lt;/strong> &lt;em>free tier&lt;/em> permanente.&lt;/li>
@@ -105,7 +105,7 @@
 &lt;li>&lt;strong>VOD&lt;/strong>: &lt;strong>MediaConvert&lt;/strong> &lt;em>Basic tier&lt;/em>. (&lt;a href="https://aws.amazon.com/blogs/aws/aws-free-tier-data-transfer-expansion-100-gb-from-regions-and-1-tb-from-amazon-cloudfront-per-month/"title="AWS Free Tier Data Transfer Expansion – 100 GB From ..."target="_blank" rel="noopener">Amazon Web Services, Inc.&lt;/a>)&lt;/li>
 &lt;/ul>
 &lt;h3>Azure (K8s sin fee de control plane)&lt;span class="hx:absolute hx:-mt-20" id="azure-k8s-sin-fee-de-control-plane">&lt;/span>
-&lt;a href="#azure-k8s-sin-fee-de-control-plane" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
+&lt;a href="#azure-k8s-sin-fee-de-control-plane" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;ul>
 &lt;li>&lt;strong>API/Backend&lt;/strong> en &lt;strong>VM B1s&lt;/strong> (12 m &lt;em>free&lt;/em> si sos nuevo).&lt;/li>
 &lt;li>&lt;strong>Objetos&lt;/strong> en &lt;strong>Blob Storage&lt;/strong> con SAS.&lt;/li>
 &lt;li>&lt;strong>DB&lt;/strong>: &lt;strong>PostgreSQL Flexible Server&lt;/strong> (usá créditos).&lt;/li>
@@ -114,13 +114,13 @@
 &lt;li>&lt;strong>NoSQL&lt;/strong>: &lt;strong>Cosmos DB Free Tier&lt;/strong> (1000 RU/s + 25 GB &lt;em>lifetime&lt;/em>). (&lt;a href="https://azure.microsoft.com/en-us/pricing/free-services"title="Explore Free Azure Services"target="_blank" rel="noopener">Microsoft Azure&lt;/a>)&lt;/li>
 &lt;/ul>
 &lt;h3>Opción “sin nube pesada”&lt;span class="hx:absolute hx:-mt-20" id="opción-sin-nube-pesada">&lt;/span>
-&lt;a href="#opci%c3%b3n-sin-nube-pesada" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
+&lt;a href="#opci%c3%b3n-sin-nube-pesada" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;ul>
 &lt;li>&lt;strong>Render&lt;/strong>: web services + cron; &lt;strong>Postgres Free&lt;/strong> (30 días); usar &lt;strong>S3/R2&lt;/strong> para objetos; FFmpeg en un worker.&lt;/li>
 &lt;li>&lt;strong>Railway&lt;/strong>: deploy simple con crédito único (~USD 5); luego plan pago.&lt;/li>
 &lt;/ul>
 &lt;hr>
 &lt;h3>Detalle de créditos / free tier&lt;span class="hx:absolute hx:-mt-20" id="detalle-de-créditos--free-tier">&lt;/span>
-&lt;a href="#detalle-de-cr%c3%a9ditos--free-tier" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
+&lt;a href="#detalle-de-cr%c3%a9ditos--free-tier" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;ul>
 &lt;li>&lt;strong>GCP&lt;/strong>: &lt;strong>USD 300 por 90 días&lt;/strong>; además &lt;strong>Free Tier&lt;/strong> “siempre gratis” para varios productos (Compute Engine e2-micro, Cloud Storage, etc.) y lo &lt;strong>Always Free no consume&lt;/strong> tus créditos.&lt;/li>
 &lt;li>&lt;strong>AWS&lt;/strong>: &lt;strong>Free Tier de 12 meses&lt;/strong> (EC2 micro, S3, RDS, etc.), complementado con &lt;strong>créditos promocionales&lt;/strong> cuyo monto y duración dependen de programas como AWS Activate.&lt;/li>
 &lt;li>&lt;strong>Azure&lt;/strong>: &lt;strong>USD 200 por 30 días&lt;/strong> + &lt;strong>12 meses gratis&lt;/strong> en servicios elegibles (VM B1s, Blob y otros).&lt;/li>
@@ -128,21 +128,21 @@
 &lt;li>&lt;strong>Railway&lt;/strong>: &lt;strong>no&lt;/strong> free “mensual”: da un &lt;strong>crédito único ≈ USD 5&lt;/strong> para probar; luego plan pago.&lt;/li>
 &lt;/ul>
 &lt;h2>Consejos para no pasarte de presupuesto&lt;span class="hx:absolute hx:-mt-20" id="consejos-para-no-pasarte-de-presupuesto">&lt;/span>
-&lt;a href="#consejos-para-no-pasarte-de-presupuesto" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;ul>
+&lt;a href="#consejos-para-no-pasarte-de-presupuesto" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;ul>
 &lt;li>&lt;strong>Controlá el &lt;em>egress&lt;/em>&lt;/strong>: en AWS, los &lt;strong>100 GB/mes&lt;/strong> de salida del &lt;em>Free Tier&lt;/em> cubren pruebas razonables el primer año. (&lt;a href="https://aws.amazon.com/blogs/aws/aws-free-tier-data-transfer-expansion-100-gb-from-regions-and-1-tb-from-amazon-cloudfront-per-month/"title="AWS Free Tier Data Transfer Expansion – 100 GB From ..."target="_blank" rel="noopener">Amazon Web Services, Inc.&lt;/a>)&lt;/li>
 &lt;li>&lt;strong>Discos chicos&lt;/strong>: mantené los discos de VMs cerca de &lt;strong>30 GB&lt;/strong> para seguir en &lt;em>free tiers&lt;/em> iniciales (según proveedor). (&lt;a href="https://aws.amazon.com/free/"title="Free Cloud Computing Services - AWS Free Tier"target="_blank" rel="noopener">Amazon Web Services, Inc.&lt;/a>)&lt;/li>
 &lt;li>&lt;strong>Apagá lo que no uses&lt;/strong>: clusters, VMs &lt;em>idle&lt;/em>, &lt;em>pipelines&lt;/em> de transcode terminados.&lt;/li>
 &lt;/ul>
 &lt;hr>
 &lt;h2>Enlaces oficiales&lt;span class="hx:absolute hx:-mt-20" id="enlaces-oficiales">&lt;/span>
-&lt;a href="#enlaces-oficiales" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;ul>
+&lt;a href="#enlaces-oficiales" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;ul>
 &lt;li>&lt;strong>Google Cloud&lt;/strong>: &lt;em>Free &amp;amp; Always Free&lt;/em> y precios por producto; &lt;strong>Transcoder API&lt;/strong>. (&lt;a href="https://cloud.google.com/free"title="Free Trial and Free Tier Services and Products"target="_blank" rel="noopener">Google Cloud&lt;/a>)&lt;/li>
 &lt;li>&lt;strong>AWS&lt;/strong>: &lt;em>Free Tier&lt;/em> general, &lt;strong>RDS Free Tier&lt;/strong>, &lt;strong>MediaConvert&lt;/strong> precios, &lt;strong>S3&lt;/strong> precios/egress. (&lt;a href="https://aws.amazon.com/free/"title="Free Cloud Computing Services - AWS Free Tier"target="_blank" rel="noopener">Amazon Web Services, Inc.&lt;/a>)&lt;/li>
 &lt;li>&lt;strong>Azure&lt;/strong>: &lt;em>Free services&lt;/em> y cuenta, &lt;strong>Cosmos DB Free Tier&lt;/strong> (detalles &lt;em>lifetime&lt;/em>), retiro de &lt;strong>Media Services&lt;/strong>. (&lt;a href="https://azure.microsoft.com/en-us/pricing/free-services"title="Explore Free Azure Services"target="_blank" rel="noopener">Microsoft Azure&lt;/a>)&lt;/li>
 &lt;/ul>
 &lt;hr>
 &lt;h2>Recursos de cátedra (opcional)&lt;span class="hx:absolute hx:-mt-20" id="recursos-de-cátedra-opcional">&lt;/span>
-&lt;a href="#recursos-de-c%c3%a1tedra-opcional" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;ul>
+&lt;a href="#recursos-de-c%c3%a1tedra-opcional" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;ul>
 &lt;li>
 &lt;p>&lt;strong>Repositorio &amp;ldquo;cloudcomputing-demo&amp;rdquo;&lt;/strong> con &lt;em>scripts&lt;/em> y ejemplos de despliegue:
 &lt;a href="https://github.com/ingenieria-del-software-2/cloudcomputing-demo"target="_blank" rel="noopener">https://github.com/ingenieria-del-software-2/cloudcomputing-demo&lt;/a> — ver demo03 (aws y gcp) para tips rápidos&lt;/p>
@@ -159,7 +159,7 @@
 &lt;hr></description></item><item><title>Ajustes en el contrato de actualización (PUT vs PATCH) del TP2C 2025</title><link>https://ingenieria-del-software-2.github.io/blog/2025-08-24-trabajo-practico-2c-2025/</link><pubDate>Sun, 24 Aug 2025 13:00:00 +0000</pubDate><guid>https://ingenieria-del-software-2.github.io/blog/2025-08-24-trabajo-practico-2c-2025/</guid><description>
 &lt;p>Detectamos una inconsistencia en la especificación OpenAPI del enunciado original para actualizar canciones (&lt;code>PUT /songs/{id}&lt;/code>). El contrato permitía &lt;strong>cuerpos parciales&lt;/strong> (ninguna propiedad &lt;code>required&lt;/code>), lo que &lt;strong>contradice la semántica estándar de HTTP&lt;/strong>: &lt;strong>PUT&lt;/strong> reemplaza la representación &lt;strong>completa&lt;/strong> del recurso y es &lt;strong>idempotente&lt;/strong>; no es &lt;em>safe&lt;/em>. (&lt;a href="https://www.rfc-editor.org/rfc/rfc9110.html"title="RFC 9110: HTTP Semantics"target="_blank" rel="noopener">RFC Editor&lt;/a>, &lt;a href="https://datatracker.ietf.org/doc/html/rfc9110"title="RFC 9110 - HTTP Semantics"target="_blank" rel="noopener">IETF Datatracker&lt;/a>)&lt;/p>
 &lt;h3>📌 &lt;strong>¿Qué cambiamos?&lt;/strong>&lt;span class="hx:absolute hx:-mt-20" id="-qué-cambiamos">&lt;/span>
-&lt;a href="#-qu%c3%a9-cambiamos" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
+&lt;a href="#-qu%c3%a9-cambiamos" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;ul>
 &lt;li>
 &lt;p>&lt;strong>Antes&lt;/strong>: &lt;code>UpdateSongRequest&lt;/code> &lt;strong>no&lt;/strong> exigía campos obligatorios, habilitando un “PUT parcial”.&lt;/p>
 &lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
@@ -173,6 +173,8 @@
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copiar código"
+aria-label="Copiar código"
+data-copied-label="¡Copiado!"
 >
 &lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
 &lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
@@ -196,6 +198,8 @@ title="Copiar código"
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copiar código"
+aria-label="Copiar código"
+data-copied-label="¡Copiado!"
 >
 &lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
 &lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
@@ -206,7 +210,7 @@ title="Copiar código"
 &lt;/ul>
 &lt;p>&lt;em>Nota OpenAPI&lt;/em>: &lt;code>requestBody.required: true&lt;/code> solo marca que &lt;strong>hay&lt;/strong> cuerpo; los &lt;strong>campos obligatorios&lt;/strong> se definen en el &lt;strong>Schema&lt;/strong> mediante &lt;code>required: [...]&lt;/code>. (&lt;a href="https://swagger.io/docs/specification/v3_0/describing-request-body/describing-request-body/"title="Describing Request Body"target="_blank" rel="noopener">Swagger&lt;/a>, &lt;a href="https://spec.openapis.org/oas/v3.0.3.html"title="OpenAPI Specification v3.0.3"target="_blank" rel="noopener">OpenAPI Initiative Publications&lt;/a>)&lt;/p>
 &lt;h3>&lt;strong>Ejemplo de uso (PUT = reemplazo completo)&lt;/strong>&lt;span class="hx:absolute hx:-mt-20" id="ejemplo-de-uso-put--reemplazo-completo">&lt;/span>
-&lt;a href="#ejemplo-de-uso-put--reemplazo-completo" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+&lt;a href="#ejemplo-de-uso-put--reemplazo-completo" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 &lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;title&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;Bohemian Rhapsody&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;artist&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;Queen&amp;#34;&lt;/span>
@@ -214,6 +218,8 @@ title="Copiar código"
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copiar código"
+aria-label="Copiar código"
+data-copied-label="¡Copiado!"
 >
 &lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
 &lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
@@ -221,7 +227,7 @@ title="Copiar código"
 &lt;/div>
 &lt;/div>
 &lt;h3>🔍 &lt;strong>Recordatorio rápido de semántica HTTP (safe / idempotent)&lt;/strong>&lt;span class="hx:absolute hx:-mt-20" id="-recordatorio-rápido-de-semántica-http-safe--idempotent">&lt;/span>
-&lt;a href="#-recordatorio-r%c3%a1pido-de-sem%c3%a1ntica-http-safe--idempotent" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
+&lt;a href="#-recordatorio-r%c3%a1pido-de-sem%c3%a1ntica-http-safe--idempotent" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;ul>
 &lt;li>&lt;strong>GET&lt;/strong> → &lt;em>safe&lt;/em> e &lt;em>idempotent&lt;/em>.&lt;/li>
 &lt;li>&lt;strong>POST&lt;/strong> → no &lt;em>safe&lt;/em>, no &lt;em>idempotent&lt;/em> por defecto.&lt;/li>
 &lt;li>&lt;strong>PUT&lt;/strong> → no &lt;em>safe&lt;/em>, &lt;strong>sí idempotent&lt;/strong> (reemplaza por completo).&lt;/li>
@@ -241,14 +247,14 @@ RFC 9110 §9.2.2 — &lt;a href="https://www.rfc-editor.org/rfc/rfc9110.html#nam
 &lt;/li>
 &lt;/ul>
 &lt;h3>&lt;strong>¿Qué significa este cambio para vos?&lt;/strong>&lt;span class="hx:absolute hx:-mt-20" id="qué-significa-este-cambio-para-vos">&lt;/span>
-&lt;a href="#qu%c3%a9-significa-este-cambio-para-vos" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
+&lt;a href="#qu%c3%a9-significa-este-cambio-para-vos" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;ul>
 &lt;li>Si tu implementación hacía que &lt;strong>PUT&lt;/strong> aceptara parciales, ajustala para que &lt;strong>requiera&lt;/strong> &lt;code>title&lt;/code> y &lt;code>artist&lt;/code> (reemplazo completo).&lt;/li>
 &lt;li>Si ya tenías &lt;strong>PUT&lt;/strong> como reemplazo total, no necesitás cambios.&lt;/li>
 &lt;li>El formato de respuestas &lt;strong>no cambia&lt;/strong>.&lt;/li>
 &lt;/ul>
 &lt;hr>
 &lt;h3>Fuentes&lt;span class="hx:absolute hx:-mt-20" id="fuentes">&lt;/span>
-&lt;a href="#fuentes" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
+&lt;a href="#fuentes" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;ul>
 &lt;li>RFC 9110 — HTTP Semantics (definiciones de &lt;em>safe&lt;/em> e &lt;em>idempotent&lt;/em>; PUT/DELETE idempotentes):
 &lt;a href="https://www.rfc-editor.org/rfc/rfc9110.html"target="_blank" rel="noopener">https://www.rfc-editor.org/rfc/rfc9110.html&lt;/a> (&lt;a href="https://www.rfc-editor.org/rfc/rfc9110.html"title="RFC 9110: HTTP Semantics"target="_blank" rel="noopener">RFC Editor&lt;/a>)&lt;/li>
 &lt;li>MDN — Métodos HTTP (tabla de safe/idempotent):

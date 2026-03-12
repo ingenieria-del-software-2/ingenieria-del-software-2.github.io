@@ -11,7 +11,7 @@
 &lt;p>Por favor, de encontrar más errores en la especificación, reportarlos.&lt;/p></description></item><item><title>Contenidos Minimos</title><link>https://ingenieria-del-software-2.github.io/blog/2017-03-20-contenidos-minimos/</link><pubDate>Mon, 20 Mar 2017 00:00:00 +0000</pubDate><guid>https://ingenieria-del-software-2.github.io/blog/2017-03-20-contenidos-minimos/</guid><description>
 &lt;p>Les envío los contenidos mínimos para cada entrega que aparecen en las diapositivas. Recuerden que deben charlar con el ayudante designado acerca del plan de trabajo (funcionalidad a entregar) en cada entrega.&lt;/p>
 &lt;h2>Checkpoint 1&lt;span class="hx:absolute hx:-mt-20" id="checkpoint-1">&lt;/span>
-&lt;a href="#checkpoint-1" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;ul>
+&lt;a href="#checkpoint-1" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;ul>
 &lt;li>Documentación: mockups(web, android), REST API app server&lt;/li>
 &lt;li>Funcionalidad:
 &lt;ul>
@@ -23,7 +23,7 @@
 &lt;/li>
 &lt;/ul>
 &lt;h2>Checkpoint 2&lt;span class="hx:absolute hx:-mt-20" id="checkpoint-2">&lt;/span>
-&lt;a href="#checkpoint-2" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;ul>
+&lt;a href="#checkpoint-2" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;ul>
 &lt;li>Documentación: diseño diagrama + modelo de datos (app, shared y android)&lt;/li>
 &lt;li>Unit test + code coverage &amp;gt; &lt;strong>75%&lt;/strong>&lt;/li>
 &lt;li>Funcionalidad:
@@ -47,7 +47,7 @@
 &lt;/li>
 &lt;/ul>
 &lt;h2>Checkpoint 3&lt;span class="hx:absolute hx:-mt-20" id="checkpoint-3">&lt;/span>
-&lt;a href="#checkpoint-3" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;ul>
+&lt;a href="#checkpoint-3" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;ul>
 &lt;li>Documentación: manual de instalación y configuración (app server, shared server)&lt;/li>
 &lt;li>Unit testing + code coverage &amp;gt; &lt;strong>75%&lt;/strong>&lt;/li>
 &lt;li>Funcionalidad:
@@ -71,7 +71,7 @@
 &lt;/li>
 &lt;/ul>
 &lt;h2>Checkpoint 4&lt;span class="hx:absolute hx:-mt-20" id="checkpoint-4">&lt;/span>
-&lt;a href="#checkpoint-4" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>&lt;strong>Totalidad del TP&lt;/strong>&lt;/p></description></item><item><title>Clase II</title><link>https://ingenieria-del-software-2.github.io/blog/2017-03-17-clase-ii/</link><pubDate>Fri, 17 Mar 2017 00:00:00 +0000</pubDate><guid>https://ingenieria-del-software-2.github.io/blog/2017-03-17-clase-ii/</guid><description>
+&lt;a href="#checkpoint-4" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;p>&lt;strong>Totalidad del TP&lt;/strong>&lt;/p></description></item><item><title>Clase II</title><link>https://ingenieria-del-software-2.github.io/blog/2017-03-17-clase-ii/</link><pubDate>Fri, 17 Mar 2017 00:00:00 +0000</pubDate><guid>https://ingenieria-del-software-2.github.io/blog/2017-03-17-clase-ii/</guid><description>
 &lt;p>Pueden encontrar las diapositivas de las dos primeras clases en el sitio oficial de la materia.&lt;/p>
 &lt;p>Les dejo el link de las diapositivas de la clase de este Jueves: &lt;a href="https://docs.google.com/presentation/d/1XQkto1XUHUQdHM8y7qSowX96N2dWj-FX3MNcycldSeQ/edit?usp=sharing"target="_blank" rel="noopener">link&lt;/a>&lt;/p>
 &lt;p>Además les dejo un articulo interesante y útil de la gente de netflix acerca de la implementación de descarga de contenidos en su aplicación: &lt;a href="https://techblog.netflix.com/2017/03/downloads-on-android.html"target="_blank" rel="noopener">link&lt;/a>&lt;/p>

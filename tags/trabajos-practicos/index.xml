@@ -1,7 +1,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ingeniería del Software 2 – Trabajos-Practicos</title><link>https://ingenieria-del-software-2.github.io/tags/trabajos-practicos/</link><description>Recent content in Trabajos-Practicos on Ingeniería del Software 2</description><generator>Hugo -- gohugo.io</generator><language>es-AR</language><lastBuildDate>Sun, 24 Aug 2025 13:00:00 +0000</lastBuildDate><atom:link href="https://ingenieria-del-software-2.github.io/tags/trabajos-practicos/index.xml" rel="self" type="application/rss+xml"/><item><title>Ajustes en el contrato de actualización (PUT vs PATCH) del TP2C 2025</title><link>https://ingenieria-del-software-2.github.io/blog/2025-08-24-trabajo-practico-2c-2025/</link><pubDate>Sun, 24 Aug 2025 13:00:00 +0000</pubDate><guid>https://ingenieria-del-software-2.github.io/blog/2025-08-24-trabajo-practico-2c-2025/</guid><description>
 &lt;p>Detectamos una inconsistencia en la especificación OpenAPI del enunciado original para actualizar canciones (&lt;code>PUT /songs/{id}&lt;/code>). El contrato permitía &lt;strong>cuerpos parciales&lt;/strong> (ninguna propiedad &lt;code>required&lt;/code>), lo que &lt;strong>contradice la semántica estándar de HTTP&lt;/strong>: &lt;strong>PUT&lt;/strong> reemplaza la representación &lt;strong>completa&lt;/strong> del recurso y es &lt;strong>idempotente&lt;/strong>; no es &lt;em>safe&lt;/em>. (&lt;a href="https://www.rfc-editor.org/rfc/rfc9110.html"title="RFC 9110: HTTP Semantics"target="_blank" rel="noopener">RFC Editor&lt;/a>, &lt;a href="https://datatracker.ietf.org/doc/html/rfc9110"title="RFC 9110 - HTTP Semantics"target="_blank" rel="noopener">IETF Datatracker&lt;/a>)&lt;/p>
 &lt;h3>📌 &lt;strong>¿Qué cambiamos?&lt;/strong>&lt;span class="hx:absolute hx:-mt-20" id="-qué-cambiamos">&lt;/span>
-&lt;a href="#-qu%c3%a9-cambiamos" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
+&lt;a href="#-qu%c3%a9-cambiamos" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;ul>
 &lt;li>
 &lt;p>&lt;strong>Antes&lt;/strong>: &lt;code>UpdateSongRequest&lt;/code> &lt;strong>no&lt;/strong> exigía campos obligatorios, habilitando un “PUT parcial”.&lt;/p>
 &lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
@@ -15,6 +15,8 @@
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copiar código"
+aria-label="Copiar código"
+data-copied-label="¡Copiado!"
 >
 &lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
 &lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
@@ -38,6 +40,8 @@ title="Copiar código"
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copiar código"
+aria-label="Copiar código"
+data-copied-label="¡Copiado!"
 >
 &lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
 &lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
@@ -48,7 +52,7 @@ title="Copiar código"
 &lt;/ul>
 &lt;p>&lt;em>Nota OpenAPI&lt;/em>: &lt;code>requestBody.required: true&lt;/code> solo marca que &lt;strong>hay&lt;/strong> cuerpo; los &lt;strong>campos obligatorios&lt;/strong> se definen en el &lt;strong>Schema&lt;/strong> mediante &lt;code>required: [...]&lt;/code>. (&lt;a href="https://swagger.io/docs/specification/v3_0/describing-request-body/describing-request-body/"title="Describing Request Body"target="_blank" rel="noopener">Swagger&lt;/a>, &lt;a href="https://spec.openapis.org/oas/v3.0.3.html"title="OpenAPI Specification v3.0.3"target="_blank" rel="noopener">OpenAPI Initiative Publications&lt;/a>)&lt;/p>
 &lt;h3>&lt;strong>Ejemplo de uso (PUT = reemplazo completo)&lt;/strong>&lt;span class="hx:absolute hx:-mt-20" id="ejemplo-de-uso-put--reemplazo-completo">&lt;/span>
-&lt;a href="#ejemplo-de-uso-put--reemplazo-completo" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+&lt;a href="#ejemplo-de-uso-put--reemplazo-completo" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
 &lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;title&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;Bohemian Rhapsody&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
 &lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;artist&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;Queen&amp;#34;&lt;/span>
@@ -56,6 +60,8 @@ title="Copiar código"
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copiar código"
+aria-label="Copiar código"
+data-copied-label="¡Copiado!"
 >
 &lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
 &lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
@@ -63,7 +69,7 @@ title="Copiar código"
 &lt;/div>
 &lt;/div>
 &lt;h3>🔍 &lt;strong>Recordatorio rápido de semántica HTTP (safe / idempotent)&lt;/strong>&lt;span class="hx:absolute hx:-mt-20" id="-recordatorio-rápido-de-semántica-http-safe--idempotent">&lt;/span>
-&lt;a href="#-recordatorio-r%c3%a1pido-de-sem%c3%a1ntica-http-safe--idempotent" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
+&lt;a href="#-recordatorio-r%c3%a1pido-de-sem%c3%a1ntica-http-safe--idempotent" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;ul>
 &lt;li>&lt;strong>GET&lt;/strong> → &lt;em>safe&lt;/em> e &lt;em>idempotent&lt;/em>.&lt;/li>
 &lt;li>&lt;strong>POST&lt;/strong> → no &lt;em>safe&lt;/em>, no &lt;em>idempotent&lt;/em> por defecto.&lt;/li>
 &lt;li>&lt;strong>PUT&lt;/strong> → no &lt;em>safe&lt;/em>, &lt;strong>sí idempotent&lt;/strong> (reemplaza por completo).&lt;/li>
@@ -83,14 +89,14 @@ RFC 9110 §9.2.2 — &lt;a href="https://www.rfc-editor.org/rfc/rfc9110.html#nam
 &lt;/li>
 &lt;/ul>
 &lt;h3>&lt;strong>¿Qué significa este cambio para vos?&lt;/strong>&lt;span class="hx:absolute hx:-mt-20" id="qué-significa-este-cambio-para-vos">&lt;/span>
-&lt;a href="#qu%c3%a9-significa-este-cambio-para-vos" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
+&lt;a href="#qu%c3%a9-significa-este-cambio-para-vos" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;ul>
 &lt;li>Si tu implementación hacía que &lt;strong>PUT&lt;/strong> aceptara parciales, ajustala para que &lt;strong>requiera&lt;/strong> &lt;code>title&lt;/code> y &lt;code>artist&lt;/code> (reemplazo completo).&lt;/li>
 &lt;li>Si ya tenías &lt;strong>PUT&lt;/strong> como reemplazo total, no necesitás cambios.&lt;/li>
 &lt;li>El formato de respuestas &lt;strong>no cambia&lt;/strong>.&lt;/li>
 &lt;/ul>
 &lt;hr>
 &lt;h3>Fuentes&lt;span class="hx:absolute hx:-mt-20" id="fuentes">&lt;/span>
-&lt;a href="#fuentes" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
+&lt;a href="#fuentes" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;ul>
 &lt;li>RFC 9110 — HTTP Semantics (definiciones de &lt;em>safe&lt;/em> e &lt;em>idempotent&lt;/em>; PUT/DELETE idempotentes):
 &lt;a href="https://www.rfc-editor.org/rfc/rfc9110.html"target="_blank" rel="noopener">https://www.rfc-editor.org/rfc/rfc9110.html&lt;/a> (&lt;a href="https://www.rfc-editor.org/rfc/rfc9110.html"title="RFC 9110: HTTP Semantics"target="_blank" rel="noopener">RFC Editor&lt;/a>)&lt;/li>
 &lt;li>MDN — Métodos HTTP (tabla de safe/idempotent):
@@ -105,7 +111,7 @@ RFC 9110 §9.2.2 — &lt;a href="https://www.rfc-editor.org/rfc/rfc9110.html#nam
 &lt;hr></description></item><item><title>Ajustes en el contrato del enunciado del TP1C 2025</title><link>https://ingenieria-del-software-2.github.io/blog/2025-03-13-trabajo-practico-1c-2025-typo/</link><pubDate>Thu, 13 Mar 2025 17:10:00 +0000</pubDate><guid>https://ingenieria-del-software-2.github.io/blog/2025-03-13-trabajo-practico-1c-2025-typo/</guid><description>
 &lt;p>Detectamos una inconsistencia en la especificación OpenAPI del enunciado original para la creación de cursos (&lt;code>POST /courses&lt;/code>). Inicialmente, el contrato requería que el &lt;code>id&lt;/code> fuera un UUID, cuando en realidad &lt;strong>solo los extras evaluaban su uso&lt;/strong>. Para alinearlo con los requisitos base, &lt;strong>se corrigió el contrato para que el identificador sea un número entero en la versión estándar&lt;/strong>.&lt;/p>
 &lt;h3>📌 &lt;strong>¿Qué cambiamos?&lt;/strong>&lt;span class="hx:absolute hx:-mt-20" id="-qué-cambiamos">&lt;/span>
-&lt;a href="#-qu%c3%a9-cambiamos" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
+&lt;a href="#-qu%c3%a9-cambiamos" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;ul>
 &lt;li>
 &lt;p>&lt;strong>Antes&lt;/strong>: Se exigía que el &lt;code>id&lt;/code> fuera un &lt;code>string&lt;/code> con formato UUID.&lt;/p>
 &lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
@@ -119,6 +125,8 @@ RFC 9110 §9.2.2 — &lt;a href="https://www.rfc-editor.org/rfc/rfc9110.html#nam
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copiar código"
+aria-label="Copiar código"
+data-copied-label="¡Copiado!"
 >
 &lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
 &lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
@@ -139,6 +147,8 @@ title="Copiar código"
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copiar código"
+aria-label="Copiar código"
+data-copied-label="¡Copiado!"
 >
 &lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
 &lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
@@ -148,7 +158,7 @@ title="Copiar código"
 &lt;/li>
 &lt;/ul>
 &lt;h3>🔍 &lt;strong>¿Qué significa este cambio?&lt;/strong>&lt;span class="hx:absolute hx:-mt-20" id="-qué-significa-este-cambio">&lt;/span>
-&lt;a href="#-qu%c3%a9-significa-este-cambio" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
+&lt;a href="#-qu%c3%a9-significa-este-cambio" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;ul>
 &lt;li>En la versión estándar, el &lt;code>id&lt;/code> de los cursos será numérico (&lt;code>integer&lt;/code>).&lt;/li>
 &lt;li>&lt;strong>Solo si se implementa el extra de UUID&lt;/strong>, el &lt;code>id&lt;/code> pasará a ser un &lt;code>string&lt;/code> con formato UUID.&lt;/li>
 &lt;li>La especificación OpenAPI fue actualizada para reflejar esto correctamente.&lt;/li>
@@ -173,7 +183,7 @@ Si ya empezaste tu implementación con UUID v4, &lt;strong>no es necesario cambi
 &lt;p>Ya se encuentra disponible el enunciado del trabajo práctico&lt;/p>
 &lt;p>&lt;a href="https://ingenieria-del-software-2.github.io/tps/historico/2021/1/tp/enunciado/"target="_blank" rel="noopener">Enunciado&lt;/a>&lt;/p></description></item><item><title>Bookbnb</title><link>https://ingenieria-del-software-2.github.io/blog/2020-10-04-trabajo-practico/</link><pubDate>Sun, 04 Oct 2020 00:00:00 +0000</pubDate><guid>https://ingenieria-del-software-2.github.io/blog/2020-10-04-trabajo-practico/</guid><description>
 &lt;h1>Bookbnb&lt;/h1>&lt;h2>Indice&lt;span class="hx:absolute hx:-mt-20" id="indice">&lt;/span>
-&lt;a href="#indice" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;ol>
+&lt;a href="#indice" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;ol>
 &lt;li>&lt;a href="#descripci%c3%b3n">Descripción&lt;/a>&lt;/li>
 &lt;li>&lt;a href="#requisitos">Requisitos&lt;/a>
 &lt;ol>
@@ -217,17 +227,17 @@ Si ya empezaste tu implementación con UUID v4, &lt;strong>no es necesario cambi
 &lt;/ol>
 &lt;hr>
 &lt;h2>Descripción&lt;span class="hx:absolute hx:-mt-20" id="descripción">&lt;/span>
-&lt;a href="#descripci%c3%b3n" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>Una importante empresa ha decidido encargarnos el desarrollo de una plataforma digital llamada Bookbnb dedicada a la oferta de alojamientos a particulares mediante la cual los anfitriones pueden publicitar y contratar el arriendo de sus propiedades con sus huéspedes.&lt;/p>
+&lt;a href="#descripci%c3%b3n" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;p>Una importante empresa ha decidido encargarnos el desarrollo de una plataforma digital llamada Bookbnb dedicada a la oferta de alojamientos a particulares mediante la cual los anfitriones pueden publicitar y contratar el arriendo de sus propiedades con sus huéspedes.&lt;/p>
 &lt;hr>
 &lt;h2>Requisitos&lt;span class="hx:absolute hx:-mt-20" id="requisitos">&lt;/span>
-&lt;a href="#requisitos" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>A continuación se describirán una serie de Épicas e Historias de usuario indicando la funcionalidad a cumplir por la plataforma.
+&lt;a href="#requisitos" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;p>A continuación se describirán una serie de Épicas e Historias de usuario indicando la funcionalidad a cumplir por la plataforma.
 Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &amp;ldquo;bonus&amp;rdquo; los cuales deberán ser analizados junto con el ayudante para definir su alcance y prioridad.&lt;/p>
 &lt;p>&lt;em>En caso de que se observe alguna definición ambigua o la falta de la misma, esta debe ser aclarada y definida por el grupo junto a su corrector&lt;/em>&lt;/p>
 &lt;h3>Epicas&lt;span class="hx:absolute hx:-mt-20" id="epicas">&lt;/span>
-&lt;a href="#epicas" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;hr>
+&lt;a href="#epicas" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;hr>
 &lt;!-- Registro, login y perfil -->
 &lt;h4>Usuarios&lt;span class="hx:absolute hx:-mt-20" id="usuarios">&lt;/span>
-&lt;a href="#usuarios" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Como usuario quiero poder registrarme y tener una cuenta para poder acceder a los servicios de la plataforma.&lt;/p>
+&lt;a href="#usuarios" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Como usuario quiero poder registrarme y tener una cuenta para poder acceder a los servicios de la plataforma.&lt;/p>
 &lt;p>Historias de usuario relacionadas:&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="#registro-de-usuarios">Registro&lt;/a>&lt;/li>
@@ -238,7 +248,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;li>&lt;a href="#login-de-administradores">Login Administradores&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;h4>Perfil&lt;span class="hx:absolute hx:-mt-20" id="perfil">&lt;/span>
-&lt;a href="#perfil" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Como usuario quiero poder editar mi perfil y acceder tanto a mi perfil como al de otros usuarios para conocer y que me conozcan otros usuarios.&lt;/p>
+&lt;a href="#perfil" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Como usuario quiero poder editar mi perfil y acceder tanto a mi perfil como al de otros usuarios para conocer y que me conozcan otros usuarios.&lt;/p>
 &lt;p>Historias de usuario relacionadas:&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="#edici%c3%b3n-de-perfil">Edicion de perfil&lt;/a>&lt;/li>
@@ -247,7 +257,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;!-- Huesped Recomendaciones, búsquedas, reserva y pago -->
 &lt;h4>Búsquedas&lt;span class="hx:absolute hx:-mt-20" id="búsquedas">&lt;/span>
-&lt;a href="#b%c3%basquedas" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Como huesped quiero poder realizar búsquedas de alojamientos con distintos filtros para visualizar las publicaciones que me interesen&lt;/p>
+&lt;a href="#b%c3%basquedas" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Como huesped quiero poder realizar búsquedas de alojamientos con distintos filtros para visualizar las publicaciones que me interesen&lt;/p>
 &lt;p>Historias de usuario relacionadas:&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="#b%c3%basqueda-de-alojamiento-geograficamente">Búsquedas de alojamientos geograficamente&lt;/a>&lt;/li>
@@ -256,13 +266,13 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;li>&lt;a href="#b%c3%basqueda-de-alojamiento-por-precio">Búsquedas de alojamientos por rango de precios&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;h4>Recomendaciones&lt;span class="hx:absolute hx:-mt-20" id="recomendaciones">&lt;/span>
-&lt;a href="#recomendaciones" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Como huesped quiero poder recibir recomendaciones de alojamientos para encontrar de manera más simple las publicaciones que me resulten interesantes.&lt;/p>
+&lt;a href="#recomendaciones" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Como huesped quiero poder recibir recomendaciones de alojamientos para encontrar de manera más simple las publicaciones que me resulten interesantes.&lt;/p>
 &lt;p>Historias de usuario relacionadas:&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="#recomendaciones-de-alojamientos">Recomendaciones de alojamientos&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;h4>Reservas&lt;span class="hx:absolute hx:-mt-20" id="reservas">&lt;/span>
-&lt;a href="#reservas" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Como huesped quiero poder acceder a una publicación para realizar reserva de un alojamiento&lt;/p>
+&lt;a href="#reservas" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Como huesped quiero poder acceder a una publicación para realizar reserva de un alojamiento&lt;/p>
 &lt;p>Historias de usuario relacionadas:&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="#visualizaci%c3%b3n-de-publicaci%c3%b3n">Visualizar publicación&lt;/a>&lt;/li>
@@ -270,14 +280,14 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;li>&lt;a href="#pago-de-reserva">Pagos de reserva&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;h4>Consultas&lt;span class="hx:absolute hx:-mt-20" id="consultas">&lt;/span>
-&lt;a href="#consultas" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Como huesped quiero poder realizar consultas sobre una publicación para esclarecer dudas.&lt;/p>
+&lt;a href="#consultas" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Como huesped quiero poder realizar consultas sobre una publicación para esclarecer dudas.&lt;/p>
 &lt;p>Historias de usuario relacionadas:&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="#consultas-publicas">Consultas públicas&lt;/a>&lt;/li>
 &lt;li>&lt;a href="#consultas-privadas">Consultas privadas&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;h4>Calificación de alojamiento&lt;span class="hx:absolute hx:-mt-20" id="calificación-de-alojamiento">&lt;/span>
-&lt;a href="#calificaci%c3%b3n-de-alojamiento" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Como huesped o anfitrion quiero poder calificar una experiencia de alojamiento que realice para informar mi opinion.&lt;/p>
+&lt;a href="#calificaci%c3%b3n-de-alojamiento" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Como huesped o anfitrion quiero poder calificar una experiencia de alojamiento que realice para informar mi opinion.&lt;/p>
 &lt;p>Historias de usuario relacionadas:&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="#calificacion-cuantitativa-de-alojamiento">Calificación cuantitativa de alojamiento&lt;/a>&lt;/li>
@@ -286,7 +296,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;li>&lt;a href="#calificacion-cualitativa-de-huesped">Calificación cualitativa de huesped&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;h4>Mis reservas&lt;span class="hx:absolute hx:-mt-20" id="mis-reservas">&lt;/span>
-&lt;a href="#mis-reservas" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Como huesped quiero poder listar mis reservas realizadas y por realizar para visualizar mi historial en la plataforma.&lt;/p>
+&lt;a href="#mis-reservas" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Como huesped quiero poder listar mis reservas realizadas y por realizar para visualizar mi historial en la plataforma.&lt;/p>
 &lt;p>Historias de usuario relacionadas:&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="#historico-de-reservas">Listar historico de reservas&lt;/a>&lt;/li>
@@ -294,7 +304,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;!-- Anfitrion Recomendaciones, búsquedas, reserva y pago -->
 &lt;h4>Publicaciones&lt;span class="hx:absolute hx:-mt-20" id="publicaciones">&lt;/span>
-&lt;a href="#publicaciones" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Como anfitrion quiero poder dar de alta, editar y visualizar una publicacion para que realicen reservas de mi alojamiento.&lt;/p>
+&lt;a href="#publicaciones" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Como anfitrion quiero poder dar de alta, editar y visualizar una publicacion para que realicen reservas de mi alojamiento.&lt;/p>
 &lt;p>Historias de usuario relacionadas:&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="#alta-de-publicaci%c3%b3n">Alta de publicaciones&lt;/a>&lt;/li>
@@ -303,7 +313,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;li>&lt;a href="#listado-de-publicaciones">Listar de publicaciones&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;h4>Notificaciones&lt;span class="hx:absolute hx:-mt-20" id="notificaciones">&lt;/span>
-&lt;a href="#notificaciones" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Como usuario quiero recibir notificaciones al dispositivo que utilizo para informarme sobre actividades en la plataforma&lt;/p>
+&lt;a href="#notificaciones" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Como usuario quiero recibir notificaciones al dispositivo que utilizo para informarme sobre actividades en la plataforma&lt;/p>
 &lt;p>Historias de usuario relacionadas:&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="#notificacion-por-nuevo-mensaje">Notificacion por nuevo mensaje&lt;/a>&lt;/li>
@@ -311,7 +321,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;!-- Anfitrion Recomendaciones, búsquedas, reserva y pago -->
 &lt;h4>Administración de usuarios&lt;span class="hx:absolute hx:-mt-20" id="administración-de-usuarios">&lt;/span>
-&lt;a href="#administraci%c3%b3n-de-usuarios" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Como administrador del sistema quiero poder gestionar los usuarios que estan registrados en el mismo para administrar su uso&lt;/p>
+&lt;a href="#administraci%c3%b3n-de-usuarios" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Como administrador del sistema quiero poder gestionar los usuarios que estan registrados en el mismo para administrar su uso&lt;/p>
 &lt;p>Historias de usuario relacionadas:&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="#listar-usuarios-del-sistema">Listar usuarios del sistema&lt;/a>&lt;/li>
@@ -321,7 +331,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;li>&lt;a href="#carga-de-saldo">Carga de saldo&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;h4>Administración de publicaciones&lt;span class="hx:absolute hx:-mt-20" id="administración-de-publicaciones">&lt;/span>
-&lt;a href="#administraci%c3%b3n-de-publicaciones" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Como administrador del sistema quiero poder gestionar las publicaciones que se encuentran en el mismo para administrar su uso&lt;/p>
+&lt;a href="#administraci%c3%b3n-de-publicaciones" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Como administrador del sistema quiero poder gestionar las publicaciones que se encuentran en el mismo para administrar su uso&lt;/p>
 &lt;p>Historias de usuario relacionadas:&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="#listado-de-publicaciones">Listado de publicaciones&lt;/a>&lt;/li>
@@ -329,7 +339,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;li>&lt;a href="#bloquear-publicaci%c3%b3n">Bloqueo de publicación&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;h4>Administración de servidores&lt;span class="hx:absolute hx:-mt-20" id="administración-de-servidores">&lt;/span>
-&lt;a href="#administraci%c3%b3n-de-servidores" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Como administrador del sistema quiero poder gestionar los servidores que se encuentran en el mismo para administrar su uso&lt;/p>
+&lt;a href="#administraci%c3%b3n-de-servidores" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Como administrador del sistema quiero poder gestionar los servidores que se encuentran en el mismo para administrar su uso&lt;/p>
 &lt;p>Historias de usuario relacionadas:&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="#listado-de-servidores">Listado de servidores&lt;/a>&lt;/li>
@@ -338,13 +348,13 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;li>&lt;a href="#bloquear-de-servidor">Bloqueo de servidor&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;h4>Métricas&lt;span class="hx:absolute hx:-mt-20" id="métricas">&lt;/span>
-&lt;a href="#m%c3%a9tricas" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Como administrador del sistema quiero poder visualizar métricas e información de la plataforma para administrar evaluar el estado del negocio&lt;/p>
+&lt;a href="#m%c3%a9tricas" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Como administrador del sistema quiero poder visualizar métricas e información de la plataforma para administrar evaluar el estado del negocio&lt;/p>
 &lt;p>Historias de usuario relacionadas:&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="#metricas-de-negocio">Métricas de negocio&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;h4>Bonus&lt;span class="hx:absolute hx:-mt-20" id="bonus">&lt;/span>
-&lt;a href="#bonus" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Las funcionalidades y requerimientos extras, estan siendo definidas por el cliente, pero en una primer captura de requisitos surgio lo siguiente&lt;/p>
+&lt;a href="#bonus" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Las funcionalidades y requerimientos extras, estan siendo definidas por el cliente, pero en una primer captura de requisitos surgio lo siguiente&lt;/p>
 &lt;p>Historias de usuario relacionadas:&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="#uso-de-reglas-para-configurar-disponibilidad-geografica">Uso de reglas para configurar disponibilidad geografica&lt;/a>&lt;/li>
@@ -353,9 +363,9 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h3>Historias de Usuario&lt;span class="hx:absolute hx:-mt-20" id="historias-de-usuario">&lt;/span>
-&lt;a href="#historias-de-usuario" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;hr>
+&lt;a href="#historias-de-usuario" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;hr>
 &lt;h4>Registro de usuarios&lt;span class="hx:absolute hx:-mt-20" id="registro-de-usuarios">&lt;/span>
-&lt;a href="#registro-de-usuarios" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#registro-de-usuarios" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>
 &lt;p>Como usuario no registrado quiero registrame en la plataforma para acceder a las funcionalidades del sistema. El usuario podrá determinar que tipo de perfil utilizará en la cuenta al momento de registrarse:&lt;/p>
@@ -391,7 +401,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Login de usuarios con usuario y contraseña&lt;span class="hx:absolute hx:-mt-20" id="login-de-usuarios-con-usuario-y-contraseña">&lt;/span>
-&lt;a href="#login-de-usuarios-con-usuario-y-contrase%c3%b1a" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#login-de-usuarios-con-usuario-y-contrase%c3%b1a" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Como Usuario quiero ingresar a mi cuenta en la plataforma utilizando usuario y contraseña para acceder a las funcionalidades del sistema&lt;/li>
 &lt;/ul>
@@ -419,7 +429,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Login de usuarios con proveedores de identidad federada&lt;span class="hx:absolute hx:-mt-20" id="login-de-usuarios-con-proveedores-de-identidad-federada">&lt;/span>
-&lt;a href="#login-de-usuarios-con-proveedores-de-identidad-federada" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#login-de-usuarios-con-proveedores-de-identidad-federada" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Como Usuario quiero ingresar con mi cuenta en la plataforma con proveedores de &lt;a href="https://openid.net/connect/"target="_blank" rel="noopener">identidad federada&lt;/a> para acceder a las funcionalidades del sistema&lt;/li>
 &lt;/ul>
@@ -447,7 +457,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Registro de administradores&lt;span class="hx:absolute hx:-mt-20" id="registro-de-administradores">&lt;/span>
-&lt;a href="#registro-de-administradores" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#registro-de-administradores" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>
 &lt;p>Como administrador quiero poder dar de alta a otros administradores en la plataforma para acceder a las funcionalidades del sistema.
@@ -477,7 +487,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Login de administradores&lt;span class="hx:absolute hx:-mt-20" id="login-de-administradores">&lt;/span>
-&lt;a href="#login-de-administradores" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#login-de-administradores" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Como Administrador quiero ingresar con mi cuenta en la plataformapara acceder a las funcionalidades del sistema&lt;/li>
 &lt;/ul>
@@ -505,7 +515,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Recupero de contraseña&lt;span class="hx:absolute hx:-mt-20" id="recupero-de-contraseña">&lt;/span>
-&lt;a href="#recupero-de-contrase%c3%b1a" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#recupero-de-contrase%c3%b1a" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Como Usuario quiero poder recuperar mi contraseña en caso de que no la recuerde&lt;/li>
 &lt;/ul>
@@ -520,7 +530,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Edición de perfil&lt;span class="hx:absolute hx:-mt-20" id="edición-de-perfil">&lt;/span>
-&lt;a href="#edici%c3%b3n-de-perfil" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#edici%c3%b3n-de-perfil" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Como Usuario quiero poder editar los datos de mi perfil de usuario para mantener actualizada mi información personal.&lt;/li>
 &lt;/ul>
@@ -536,7 +546,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Visualización de perfil propio&lt;span class="hx:absolute hx:-mt-20" id="visualización-de-perfil-propio">&lt;/span>
-&lt;a href="#visualizaci%c3%b3n-de-perfil-propio" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#visualizaci%c3%b3n-de-perfil-propio" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Como Usuario quiero poder visualizar los datos de mi perfil de usuario para revisar mi información&lt;/li>
 &lt;/ul>
@@ -552,7 +562,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Visualización de perfil de otros usuarios&lt;span class="hx:absolute hx:-mt-20" id="visualización-de-perfil-de-otros-usuarios">&lt;/span>
-&lt;a href="#visualizaci%c3%b3n-de-perfil-de-otros-usuarios" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#visualizaci%c3%b3n-de-perfil-de-otros-usuarios" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Como Usuario quiero poder visualizar los datos de los otros usuarios para conocer su información de contacto&lt;/li>
 &lt;/ul>
@@ -567,7 +577,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Búsqueda de alojamiento geograficamente&lt;span class="hx:absolute hx:-mt-20" id="búsqueda-de-alojamiento-geograficamente">&lt;/span>
-&lt;a href="#b%c3%basqueda-de-alojamiento-geograficamente" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#b%c3%basqueda-de-alojamiento-geograficamente" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Como huesped quiero poder realizar búsquedas de alojamientos geograficamente para visualizar las publicaciones y así concretar una reserva&lt;/li>
 &lt;/ul>
@@ -588,7 +598,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Búsqueda de alojamiento por caracteristicas&lt;span class="hx:absolute hx:-mt-20" id="búsqueda-de-alojamiento-por-caracteristicas">&lt;/span>
-&lt;a href="#b%c3%basqueda-de-alojamiento-por-caracteristicas" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#b%c3%basqueda-de-alojamiento-por-caracteristicas" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Como huesped quiero poder realizar búsquedas de alojamientos por sus caracteristica para visualizar las publicaciones y así concretar una reserva&lt;/li>
 &lt;/ul>
@@ -609,7 +619,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Búsqueda de alojamiento por fechas&lt;span class="hx:absolute hx:-mt-20" id="búsqueda-de-alojamiento-por-fechas">&lt;/span>
-&lt;a href="#b%c3%basqueda-de-alojamiento-por-fechas" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#b%c3%basqueda-de-alojamiento-por-fechas" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Como huesped quiero poder realizar búsquedas de alojamientos por fechas de checkin y checkout para visualizar las publicaciones y así concretar una reserva&lt;/li>
 &lt;/ul>
@@ -630,7 +640,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Búsqueda de alojamiento por precio&lt;span class="hx:absolute hx:-mt-20" id="búsqueda-de-alojamiento-por-precio">&lt;/span>
-&lt;a href="#b%c3%basqueda-de-alojamiento-por-precio" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#b%c3%basqueda-de-alojamiento-por-precio" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Como huesped quiero poder realizar búsquedas de alojamientos por precio para visualizar las publicaciones y así concretar una reserva&lt;/li>
 &lt;/ul>
@@ -657,7 +667,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Recomendaciones de alojamientos&lt;span class="hx:absolute hx:-mt-20" id="recomendaciones-de-alojamientos">&lt;/span>
-&lt;a href="#recomendaciones-de-alojamientos" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#recomendaciones-de-alojamientos" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Como huesped quiero recibir recomendaciones afines a mi perfil para poder encontrar con mayor facilidad una reserva de alojamiento&lt;/li>
 &lt;/ul>
@@ -671,7 +681,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Visualización de publicación&lt;span class="hx:absolute hx:-mt-20" id="visualización-de-publicación">&lt;/span>
-&lt;a href="#visualizaci%c3%b3n-de-publicaci%c3%b3n" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#visualizaci%c3%b3n-de-publicaci%c3%b3n" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Como huesped quiero poder visualizar una publicacion de un alojamiento para ver sus fotos y/o videos y revisar sus características.&lt;/li>
 &lt;/ul>
@@ -686,7 +696,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Reserva de alojamiento&lt;span class="hx:absolute hx:-mt-20" id="reserva-de-alojamiento">&lt;/span>
-&lt;a href="#reserva-de-alojamiento" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#reserva-de-alojamiento" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Como huesped quiero poder reservar un alojamiento para poder alojarme en el mismo&lt;/li>
 &lt;/ul>
@@ -701,7 +711,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Pago de reserva&lt;span class="hx:absolute hx:-mt-20" id="pago-de-reserva">&lt;/span>
-&lt;a href="#pago-de-reserva" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#pago-de-reserva" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Como huesped quiero poder pagar la reserva un alojamiento para poder finalizar la reserva&lt;/li>
 &lt;/ul>
@@ -722,7 +732,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Consultas públicas&lt;span class="hx:absolute hx:-mt-20" id="consultas-públicas">&lt;/span>
-&lt;a href="#consultas-p%c3%bablicas" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;ul>
+&lt;a href="#consultas-p%c3%bablicas" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;ul>
 &lt;li>Como huesped quiero poder realizar comentarios con consultas en una publicación para poder consultarle al anfitrion mis dudas&lt;/li>
 &lt;/ul>
 &lt;p>&lt;strong>Criterios de aceptación&lt;/strong>&lt;/p>
@@ -736,7 +746,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Consultas privadas&lt;span class="hx:absolute hx:-mt-20" id="consultas-privadas">&lt;/span>
-&lt;a href="#consultas-privadas" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;ul>
+&lt;a href="#consultas-privadas" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;ul>
 &lt;li>Como huesped quiero poder realizar con consultas privadas a un anfitrion para poder consultarle mis dudas&lt;/li>
 &lt;/ul>
 &lt;p>&lt;strong>Criterios de aceptación&lt;/strong>&lt;/p>
@@ -750,7 +760,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Calificación cuantitativa del alojamiento&lt;span class="hx:absolute hx:-mt-20" id="calificación-cuantitativa-del-alojamiento">&lt;/span>
-&lt;a href="#calificaci%c3%b3n-cuantitativa-del-alojamiento" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#calificaci%c3%b3n-cuantitativa-del-alojamiento" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Como huesped quiero poder realizar una calificación cuantitativa del alojamiento para así poder brindar mi opinión del mismo&lt;/li>
 &lt;/ul>
@@ -765,7 +775,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Calificación cualitativa del alojamiento&lt;span class="hx:absolute hx:-mt-20" id="calificación-cualitativa-del-alojamiento">&lt;/span>
-&lt;a href="#calificaci%c3%b3n-cualitativa-del-alojamiento" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#calificaci%c3%b3n-cualitativa-del-alojamiento" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Como huesped quiero poder realizar una opinion mas detallada del alojamiento para así poder brindar mi opinión del mismo&lt;/li>
 &lt;/ul>
@@ -780,7 +790,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Calificación cuantitativa de huesped&lt;span class="hx:absolute hx:-mt-20" id="calificación-cuantitativa-de-huesped">&lt;/span>
-&lt;a href="#calificaci%c3%b3n-cuantitativa-de-huesped" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#calificaci%c3%b3n-cuantitativa-de-huesped" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Como anfitrion quiero poder realizar una calificación cuantitativa del huesped que reservo mi alojamiento para así poder brindar mi opinin del mismo&lt;/li>
 &lt;/ul>
@@ -795,7 +805,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Calificación cualitativa de huesped&lt;span class="hx:absolute hx:-mt-20" id="calificación-cualitativa-de-huesped">&lt;/span>
-&lt;a href="#calificaci%c3%b3n-cualitativa-de-huesped" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#calificaci%c3%b3n-cualitativa-de-huesped" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Como anfitrion quiero poder realizar una opinion mas detallada del huesped para así poder brindar mi opinin del mismo&lt;/li>
 &lt;/ul>
@@ -810,7 +820,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Historico de reservas&lt;span class="hx:absolute hx:-mt-20" id="historico-de-reservas">&lt;/span>
-&lt;a href="#historico-de-reservas" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#historico-de-reservas" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Como huesped quiero poder visualizar todas las reservas de alojamientos que realicé para así poder controlar mi historial&lt;/li>
 &lt;/ul>
@@ -825,7 +835,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Reservas favoritas&lt;span class="hx:absolute hx:-mt-20" id="reservas-favoritas">&lt;/span>
-&lt;a href="#reservas-favoritas" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#reservas-favoritas" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Como huesped quiero poder seleccionar publicaciones de alojamientos como favoritas para luego poder revisarlas con mas detalle o compartirlas&lt;/li>
 &lt;/ul>
@@ -840,7 +850,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Alta de publicación&lt;span class="hx:absolute hx:-mt-20" id="alta-de-publicación">&lt;/span>
-&lt;a href="#alta-de-publicaci%c3%b3n" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#alta-de-publicaci%c3%b3n" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Como anfitrion quiero poder dar de alta una publicacion de mi alojamiento para que realicen reservas del mismo y poder cobrar su uso&lt;/li>
 &lt;/ul>
@@ -855,7 +865,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Edición de publicación&lt;span class="hx:absolute hx:-mt-20" id="edición-de-publicación">&lt;/span>
-&lt;a href="#edici%c3%b3n-de-publicaci%c3%b3n" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#edici%c3%b3n-de-publicaci%c3%b3n" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Como anfitrion quiero poder modificar una publicacion ya realizada para actualizar su contenido&lt;/li>
 &lt;/ul>
@@ -865,7 +875,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Visualizacin de publicación&lt;span class="hx:absolute hx:-mt-20" id="visualizacin-de-publicación">&lt;/span>
-&lt;a href="#visualizacin-de-publicaci%c3%b3n" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#visualizacin-de-publicaci%c3%b3n" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Como anfitrion quiero poder visualizar una publicacion ya realizada para revisar su contenido&lt;/li>
 &lt;/ul>
@@ -875,7 +885,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Listado de publicaciones&lt;span class="hx:absolute hx:-mt-20" id="listado-de-publicaciones">&lt;/span>
-&lt;a href="#listado-de-publicaciones" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#listado-de-publicaciones" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Como anfitrion quiero poder listar mis publicaciones realizadas para administrarlas&lt;/li>
 &lt;/ul>
@@ -886,7 +896,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;hr>
 &lt;!-- Backoffice -->
 &lt;h4>Listar usuarios del sistema&lt;span class="hx:absolute hx:-mt-20" id="listar-usuarios-del-sistema">&lt;/span>
-&lt;a href="#listar-usuarios-del-sistema" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#listar-usuarios-del-sistema" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Como administrador del sistema quiero poder listar todos los usuario del sistema para gestionar su uso&lt;/li>
 &lt;/ul>
@@ -896,7 +906,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Visualizar perfil de usuario&lt;span class="hx:absolute hx:-mt-20" id="visualizar-perfil-de-usuario">&lt;/span>
-&lt;a href="#visualizar-perfil-de-usuario" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#visualizar-perfil-de-usuario" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Como administrador del sistema quiero poder visualizar el perfil de un usuario del sistema para verificar sus datos&lt;/li>
 &lt;/ul>
@@ -906,7 +916,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Bloquear usuario&lt;span class="hx:absolute hx:-mt-20" id="bloquear-usuario">&lt;/span>
-&lt;a href="#bloquear-usuario" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#bloquear-usuario" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Como administrador del sistema quiero poder bloquear y desbloquear un usuario del sistema para controlar su ingreso a la plataforma&lt;/li>
 &lt;/ul>
@@ -916,7 +926,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Listado de publicaciones&lt;span class="hx:absolute hx:-mt-20" id="listado-de-publicaciones-1">&lt;/span>
-&lt;a href="#listado-de-publicaciones-1" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#listado-de-publicaciones-1" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Como administrador del sistema quiero poder listar todas las publicaciones de alojamientos que se encuentren en el sistema para acceder a ellas&lt;/li>
 &lt;/ul>
@@ -926,7 +936,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Visualización de publicaciones&lt;span class="hx:absolute hx:-mt-20" id="visualización-de-publicaciones">&lt;/span>
-&lt;a href="#visualizaci%c3%b3n-de-publicaciones" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#visualizaci%c3%b3n-de-publicaciones" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Como administrador del sistema quiero poder visualizar una publicación de un alojamiento para verificar su contenido.&lt;/li>
 &lt;/ul>
@@ -936,7 +946,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Bloqueo de publicación&lt;span class="hx:absolute hx:-mt-20" id="bloqueo-de-publicación">&lt;/span>
-&lt;a href="#bloqueo-de-publicaci%c3%b3n" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#bloqueo-de-publicaci%c3%b3n" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Como administrador del sistema quiero poder bloquear una publicación de un alojamiento que se encuentren en el sistema para que no puedan acceder a la misma&lt;/li>
 &lt;/ul>
@@ -946,7 +956,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Listar transacciones&lt;span class="hx:absolute hx:-mt-20" id="listar-transacciones">&lt;/span>
-&lt;a href="#listar-transacciones" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#listar-transacciones" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Como administrador del sistema quiero poder listar todas las transacciones de reservas y sus pagos para poder controlar su uso de la plataforma&lt;/li>
 &lt;/ul>
@@ -956,7 +966,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Carga de saldo&lt;span class="hx:absolute hx:-mt-20" id="carga-de-saldo">&lt;/span>
-&lt;a href="#carga-de-saldo" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#carga-de-saldo" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Como administrador del sistema quiero poder cargar saldo en la billetear de un cliente para poder realizar campañas de beneficios o solucionar inconvenientes&lt;/li>
 &lt;/ul>
@@ -966,7 +976,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Listado de servidores&lt;span class="hx:absolute hx:-mt-20" id="listado-de-servidores">&lt;/span>
-&lt;a href="#listado-de-servidores" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#listado-de-servidores" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Como administrador del sistema quiero poder listar todos los servidores que se encuentren dentro del sistema para controlar su uso&lt;/li>
 &lt;/ul>
@@ -976,7 +986,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Visualización de servidor&lt;span class="hx:absolute hx:-mt-20" id="visualización-de-servidor">&lt;/span>
-&lt;a href="#visualizaci%c3%b3n-de-servidor" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#visualizaci%c3%b3n-de-servidor" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Como administrador del sistema quiero visualizar la información de un servidor que se encuentre en el sistema para verificar que sea válida&lt;/li>
 &lt;/ul>
@@ -986,7 +996,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Alta de servidor&lt;span class="hx:absolute hx:-mt-20" id="alta-de-servidor">&lt;/span>
-&lt;a href="#alta-de-servidor" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#alta-de-servidor" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Como administrador del sistema quiero poder dar de alta un nuevo servidor para que pueda acceder a los distintos servicios del sistema&lt;/li>
 &lt;/ul>
@@ -1001,7 +1011,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Bloqueo de servidor&lt;span class="hx:absolute hx:-mt-20" id="bloqueo-de-servidor">&lt;/span>
-&lt;a href="#bloqueo-de-servidor" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#bloqueo-de-servidor" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Como administrador del sistema quiero poder bloquear un nuevo servidor para que no pueda acceder a los distintos servicios del sistema&lt;/li>
 &lt;/ul>
@@ -1016,7 +1026,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Métricas de negocio&lt;span class="hx:absolute hx:-mt-20" id="métricas-de-negocio">&lt;/span>
-&lt;a href="#m%c3%a9tricas-de-negocio" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#m%c3%a9tricas-de-negocio" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Como administrador del sistema quiero poder visualizar distintas métricas del negocio para medir el uso de la plataforma y sus servicios&lt;/li>
 &lt;/ul>
@@ -1026,7 +1036,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Uso de reglas para configurar disponibilidad geografica&lt;span class="hx:absolute hx:-mt-20" id="uso-de-reglas-para-configurar-disponibilidad-geografica">&lt;/span>
-&lt;a href="#uso-de-reglas-para-configurar-disponibilidad-geografica" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#uso-de-reglas-para-configurar-disponibilidad-geografica" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Se requiere brindar un servicio, el cual pueda consumir de una API externa el estado de la pandemia en una región geográfica en particular. Esta información junto a otras reglas definidas por los administradores, deberán definir si las publicaciones que se encuentren en dicha región estan disponibles o no&lt;/li>
 &lt;/ul>
@@ -1036,7 +1046,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Cambios en el smart contract&lt;span class="hx:absolute hx:-mt-20" id="cambios-en-el-smart-contract">&lt;/span>
-&lt;a href="#cambios-en-el-smart-contract" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#cambios-en-el-smart-contract" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Se requiere realizar una serie de cambios en el smart contract que administra la gestión de pagos.&lt;/li>
 &lt;/ul>
@@ -1046,7 +1056,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h4>Uso de kubernetes&lt;span class="hx:absolute hx:-mt-20" id="uso-de-kubernetes">&lt;/span>
-&lt;a href="#uso-de-kubernetes" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
+&lt;a href="#uso-de-kubernetes" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Descripción&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Se requiere realizar una migración de los servicios backend de la plataforma a kubernetes&lt;/li>
 &lt;/ul>
@@ -1056,31 +1066,31 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h2>Requisitos No Funcionales&lt;span class="hx:absolute hx:-mt-20" id="requisitos-no-funcionales">&lt;/span>
-&lt;a href="#requisitos-no-funcionales" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Componentes&lt;span class="hx:absolute hx:-mt-20" id="componentes">&lt;/span>
-&lt;a href="#componentes" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>La plataforma constará de los siguientes componentes:&lt;/p>
+&lt;a href="#requisitos-no-funcionales" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;h3>Componentes&lt;span class="hx:absolute hx:-mt-20" id="componentes">&lt;/span>
+&lt;a href="#componentes" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>La plataforma constará de los siguientes componentes:&lt;/p>
 &lt;h3>Aplicación mobile&lt;span class="hx:absolute hx:-mt-20" id="aplicación-mobile">&lt;/span>
-&lt;a href="#aplicaci%c3%b3n-mobile" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Una aplicación mobile, el cual será utilizado por los usuarios.
+&lt;a href="#aplicaci%c3%b3n-mobile" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Una aplicación mobile, el cual será utilizado por los usuarios.
 &lt;em>Las tecnologias a utilizar son detalladas en la sección &lt;a href="#tecnologias">tecnologias&lt;/a>&lt;/em>&lt;/p>
 &lt;h3>Backoffice web&lt;span class="hx:absolute hx:-mt-20" id="backoffice-web">&lt;/span>
-&lt;a href="#backoffice-web" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Un backoffice web, el cual será utilizado por los administradores.&lt;/p>
+&lt;a href="#backoffice-web" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Un backoffice web, el cual será utilizado por los administradores.&lt;/p>
 &lt;p>&lt;em>Las tecnologías a utilizar son detalladas en la sección &lt;a href="#tecnologias">tecnologias&lt;/a>&lt;/em>&lt;/p>
 &lt;h3>Servicios backend&lt;span class="hx:absolute hx:-mt-20" id="servicios-backend">&lt;/span>
-&lt;a href="#servicios-backend" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Distintos servicios de backend para brindar soporte a la plataforma. Como enfoque se recomienda orientar estos servicios hacia una arquitetura de &lt;a href="https://martinfowler.com/articles/microservices.html"target="_blank" rel="noopener">microservices&lt;/a>. Dicha arquitectura propuesta deberá ser convalidada junto al ayudante.
+&lt;a href="#servicios-backend" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Distintos servicios de backend para brindar soporte a la plataforma. Como enfoque se recomienda orientar estos servicios hacia una arquitetura de &lt;a href="https://martinfowler.com/articles/microservices.html"target="_blank" rel="noopener">microservices&lt;/a>. Dicha arquitectura propuesta deberá ser convalidada junto al ayudante.
 &lt;em>Las tecnologías a utilizar son detalladas en la sección &lt;a href="#tecnologias">tecnologias&lt;/a>&lt;/em>&lt;/p>
 &lt;h3>Smart contract&lt;span class="hx:absolute hx:-mt-20" id="smart-contract">&lt;/span>
-&lt;a href="#smart-contract" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>La gestión de pagos de las transacciones se realizará utilizando un smart contract, el cual será provisto por la cátedra&lt;/p>
+&lt;a href="#smart-contract" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>La gestión de pagos de las transacciones se realizará utilizando un smart contract, el cual será provisto por la cátedra&lt;/p>
 &lt;hr>
 &lt;h3>Tecnologias&lt;span class="hx:absolute hx:-mt-20" id="tecnologias">&lt;/span>
-&lt;a href="#tecnologias" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Stack de tecnologías recomendadas para el desarrollo de los distintos componentes.&lt;/p>
+&lt;a href="#tecnologias" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Stack de tecnologías recomendadas para el desarrollo de los distintos componentes.&lt;/p>
 &lt;h4>Aplicación mobile&lt;span class="hx:absolute hx:-mt-20" id="aplicación-mobile-1">&lt;/span>
-&lt;a href="#aplicaci%c3%b3n-mobile-1" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Para el desarrollo de la App se podrá optar por:&lt;/p>
+&lt;a href="#aplicaci%c3%b3n-mobile-1" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Para el desarrollo de la App se podrá optar por:&lt;/p>
 &lt;ul>
 &lt;li>Desarrollar sobre &lt;a href="https://developer.android.com/"target="_blank" rel="noopener">Android&lt;/a> nativo utilizando &lt;a href="https://kotlinlang.org/"target="_blank" rel="noopener">Kotlin&lt;/a> como lenguaje de programación.&lt;/li>
 &lt;li>Desarrollar sobre &lt;a href="https://reactnative.dev/"target="_blank" rel="noopener">React Native&lt;/a> utilizando &lt;a href="https://developer.mozilla.org/es/docs/Web/JavaScript"target="_blank" rel="noopener">JavaScript&lt;/a> como lenguaje de programación.&lt;/li>
 &lt;/ul>
 &lt;hr>
 &lt;h4>Servicios backend&lt;span class="hx:absolute hx:-mt-20" id="servicios-backend-1">&lt;/span>
-&lt;a href="#servicios-backend-1" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Para el desarrollo de los servicios backend se deberá utilizar como lenguajes de programación:&lt;/p>
+&lt;a href="#servicios-backend-1" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Para el desarrollo de los servicios backend se deberá utilizar como lenguajes de programación:&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="https://www.python.org/"target="_blank" rel="noopener">Python&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://developer.mozilla.org/es/docs/Web/JavaScript"target="_blank" rel="noopener">JavaScript&lt;/a>&lt;/li>
@@ -1111,19 +1121,19 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;p>Esta elección será responsabilidad del grupo y la misma deberá estar consensuada junto al ayudante. Ademas quedará justificada en la documentación técnica que formará parte del TP.&lt;/p>
 &lt;hr>
 &lt;h4>Backoffice web&lt;span class="hx:absolute hx:-mt-20" id="backoffice-web-1">&lt;/span>
-&lt;a href="#backoffice-web-1" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Para el desarrollo del backoffice web se utilizará React como biblioteca.&lt;/p>
+&lt;a href="#backoffice-web-1" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Para el desarrollo del backoffice web se utilizará React como biblioteca.&lt;/p>
 &lt;hr>
 &lt;h4>Notificaciones push&lt;span class="hx:absolute hx:-mt-20" id="notificaciones-push">&lt;/span>
-&lt;a href="#notificaciones-push" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Para el uso de notificaciones push se recomienda utilizar el servicio provisto por firebase &lt;a href="https://firebase.google.com/docs/cloud-messaging?hl=es"target="_blank" rel="noopener">Cloud Messaging&lt;/a>&lt;/p>
+&lt;a href="#notificaciones-push" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Para el uso de notificaciones push se recomienda utilizar el servicio provisto por firebase &lt;a href="https://firebase.google.com/docs/cloud-messaging?hl=es"target="_blank" rel="noopener">Cloud Messaging&lt;/a>&lt;/p>
 &lt;hr>
 &lt;h4>Contenido multimedia&lt;span class="hx:absolute hx:-mt-20" id="contenido-multimedia">&lt;/span>
-&lt;a href="#contenido-multimedia" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Para el uso de contenido multimediase recomienda utilizar el servicio provisto por firebase &lt;a href="https://firebase.google.com/docs/storage?hl=es"target="_blank" rel="noopener">Storage&lt;/a>&lt;/p>
+&lt;a href="#contenido-multimedia" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Para el uso de contenido multimediase recomienda utilizar el servicio provisto por firebase &lt;a href="https://firebase.google.com/docs/storage?hl=es"target="_blank" rel="noopener">Storage&lt;/a>&lt;/p>
 &lt;hr>
 &lt;h4>Chat&lt;span class="hx:absolute hx:-mt-20" id="chat">&lt;/span>
-&lt;a href="#chat" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Para el uso del chat en tiempo real se recomienda utilizar el servicio provisto por firebase &lt;a href="https://firebase.google.com/docs/database?hl=es"target="_blank" rel="noopener">Real time database&lt;/a>&lt;/p>
+&lt;a href="#chat" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Para el uso del chat en tiempo real se recomienda utilizar el servicio provisto por firebase &lt;a href="https://firebase.google.com/docs/database?hl=es"target="_blank" rel="noopener">Real time database&lt;/a>&lt;/p>
 &lt;hr>
 &lt;h3>Log&lt;span class="hx:absolute hx:-mt-20" id="log">&lt;/span>
-&lt;a href="#log" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Los servidores deben contar con un sistema de log en donde se registren los eventos que se generen durante la ejecución. El sistema de log debe permitir configurar el nivel de los eventos que desean registrar. Estos niveles son:&lt;/p>
+&lt;a href="#log" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Los servidores deben contar con un sistema de log en donde se registren los eventos que se generen durante la ejecución. El sistema de log debe permitir configurar el nivel de los eventos que desean registrar. Estos niveles son:&lt;/p>
 &lt;table>
 &lt;thead>
 &lt;tr>
@@ -1153,7 +1163,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;p>Estos logs deberán ser almacenados de tal manera que puedan ser accedidos en cualquier momento&lt;/p>
 &lt;hr>
 &lt;h3>Monitoreo&lt;span class="hx:absolute hx:-mt-20" id="monitoreo">&lt;/span>
-&lt;a href="#monitoreo" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Para el monitoreo de los servicios se recomiendan alguna de las siguientes librerias/plataformas&lt;/p>
+&lt;a href="#monitoreo" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Para el monitoreo de los servicios se recomiendan alguna de las siguientes librerias/plataformas&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="https://prometheus.io/"target="_blank" rel="noopener">Prometheus&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://grafana.com/"target="_blank" rel="noopener">Grafana&lt;/a>&lt;/li>
@@ -1161,7 +1171,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;/ul>
 &lt;hr>
 &lt;h3>Empaquetamiento&lt;span class="hx:absolute hx:-mt-20" id="empaquetamiento">&lt;/span>
-&lt;a href="#empaquetamiento" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Cada uno de los desarrollos solicitados debe empaquetarse según el estandar de la plataforma, es decir:&lt;/p>
+&lt;a href="#empaquetamiento" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Cada uno de los desarrollos solicitados debe empaquetarse según el estandar de la plataforma, es decir:&lt;/p>
 &lt;ul>
 &lt;li>&lt;em>Python&lt;/em>: Python Setuptools (&lt;code>setup.py&lt;/code> y &lt;code>requeriments.txt&lt;/code>)&lt;/li>
 &lt;li>&lt;em>Node&lt;/em>: Node Package Manager (&lt;code>npm&lt;/code>, &lt;code>package.json&lt;/code>), Yarn Package Manager(&lt;a href="https://yarnpkg.com/lang/en/"target="_blank" rel="noopener">https://yarnpkg.com/lang/en/&lt;/a>)&lt;/li>
@@ -1170,7 +1180,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;p>Además, los servidores deberán traer un &lt;code>Dockerfile&lt;/code> que permita correrlos sin necesidad de tener instalado los respectivos lenguajes.&lt;/p>
 &lt;hr>
 &lt;h3>Testing&lt;span class="hx:absolute hx:-mt-20" id="testing">&lt;/span>
-&lt;a href="#testing" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>El desarrollo de la aplicación se deberá adaptar a los estándares de calidad utilizados por AppMaker©. Dentro de estos estándares se encuentran:&lt;/p>
+&lt;a href="#testing" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>El desarrollo de la aplicación se deberá adaptar a los estándares de calidad utilizados por AppMaker©. Dentro de estos estándares se encuentran:&lt;/p>
 &lt;ul>
 &lt;li>Pruebas unitarias&lt;/li>
 &lt;li>Métricas: code coverage debe ser mayor a 75%&lt;/li>
@@ -1181,7 +1191,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;p>&lt;strong>Nota:&lt;/strong> Esta sección hace solo referencía a los servicios de backend No se toma como requerimiento el realizar pruebas sobre el cliente Android, aunque es recomendado como una buena práctica.&lt;/p>
 &lt;hr>
 &lt;h3>CI-CD&lt;span class="hx:absolute hx:-mt-20" id="ci-cd">&lt;/span>
-&lt;a href="#ci-cd" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Las pruebas y métricas anteriormente mencionadas deberan correr bajo una plataforma de integración continua.&lt;/p>
+&lt;a href="#ci-cd" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Las pruebas y métricas anteriormente mencionadas deberan correr bajo una plataforma de integración continua.&lt;/p>
 &lt;p>Se sugiere el uso de &lt;a href="https://travis-ci.org/"target="_blank" rel="noopener">TravisCI&lt;/a> ó &lt;a href="https://github.com/features/actions"target="_blank" rel="noopener">GitHub Actions&lt;/a>, pero se podrá utilizar otro previa justificación.&lt;/p>
 &lt;p>El resultado del &lt;em>code coverage&lt;/em> debe ser desplegado automáticamente a una plataforma que permita visualizarlas, entre muchas posibilidades se encuentran:&lt;/p>
 &lt;ul>
@@ -1192,15 +1202,15 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;p>Finalmente, el despliegue al servidor de &lt;em>PAAS&lt;/em> elegido deberá ser automático. Este deberá tener en cuenta como la actualización de la base de datos (cambios en las tablas, etc). El mecanismo utilizado para disparar dicho despliegue (utilizar el branch &lt;em>master&lt;/em> como productivo, utilizar un tags con nombre especial) será definido por los desarrolladores y deberá ser detallado en la documentación&lt;/p>
 &lt;hr>
 &lt;h3>Despliegue en la Nube&lt;span class="hx:absolute hx:-mt-20" id="despliegue-en-la-nube">&lt;/span>
-&lt;a href="#despliegue-en-la-nube" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Los servidores, se deberán disponibilizar en la nube utilizando una plataforma como servicio (&lt;em>&lt;a href="https://en.wikipedia.org/wiki/Platform_as_a_service"target="_blank" rel="noopener">PAAS&lt;/a>&lt;/em>).&lt;/p>
+&lt;a href="#despliegue-en-la-nube" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Los servidores, se deberán disponibilizar en la nube utilizando una plataforma como servicio (&lt;em>&lt;a href="https://en.wikipedia.org/wiki/Platform_as_a_service"target="_blank" rel="noopener">PAAS&lt;/a>&lt;/em>).&lt;/p>
 &lt;p>Se recomienda usar &lt;a href="https://www.heroku.com/"target="_blank" rel="noopener">Heroku&lt;/a> ya que cuenta con todos los requerimientos tecnológicos pedidos anteriormente.&lt;/p>
 &lt;hr>
 &lt;h3>UX&lt;span class="hx:absolute hx:-mt-20" id="ux">&lt;/span>
-&lt;a href="#ux" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Se deberá presentar evidencia de prototipado del diseño de pantallas, las cuales serán convalidadas junto al ayudante a cargo&lt;/p>
+&lt;a href="#ux" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Se deberá presentar evidencia de prototipado del diseño de pantallas, las cuales serán convalidadas junto al ayudante a cargo&lt;/p>
 &lt;p>Para el diseño de la interfaz deben respetarse las guías de diseño propuestas por Google con &lt;em>&lt;a href="https://material.io/design/"target="_blank" rel="noopener">Material Design&lt;/a>&lt;/em>.&lt;/p>
 &lt;hr>
 &lt;h3>Documentación&lt;span class="hx:absolute hx:-mt-20" id="documentación">&lt;/span>
-&lt;a href="#documentaci%c3%b3n" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Se deberá entregar la siguiente documentación:&lt;/p>
+&lt;a href="#documentaci%c3%b3n" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Se deberá entregar la siguiente documentación:&lt;/p>
 &lt;ul>
 &lt;li>
 &lt;p>Servicios Backend:&lt;/p>
@@ -1227,7 +1237,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 &lt;p>&lt;em>Se espera que dicha documentación se elabore de manera incremental y que cada entrega parcial tenga parte de la misma.&lt;/em>&lt;/p>
 &lt;hr>
 &lt;h2>Instancias de entrega&lt;span class="hx:absolute hx:-mt-20" id="instancias-de-entrega">&lt;/span>
-&lt;a href="#instancias-de-entrega" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;table>
+&lt;a href="#instancias-de-entrega" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;table>
 &lt;thead>
 &lt;tr>
 &lt;th>Instancia&lt;/th>
@@ -1262,7 +1272,7 @@ Dentro de estos requisitos se encuentran definidos un conjunto de requisitos &am
 El principal objetivo es permitir compartir videos entre los usuarios&lt;/p>
 &lt;p>AppMaker busca posicionarse en el mercado de aplicaciones, busca conectar esta aplicación con sus otras aplicaciones que poseen gran cantidad de usuarios.&lt;/p>
 &lt;h2>Aplicaciones requeridas&lt;span class="hx:absolute hx:-mt-20" id="aplicaciones-requeridas">&lt;/span>
-&lt;a href="#aplicaciones-requeridas" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>La aplicación constará de tres componentes:&lt;/p>
+&lt;a href="#aplicaciones-requeridas" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;p>La aplicación constará de tres componentes:&lt;/p>
 &lt;ul>
 &lt;li>Un servidor (Application Server), el cual será responsable de conectar a los usuarios.&lt;/li>
 &lt;li>Un servidor (Auth Server), el cual será responsable de la administración de los application servers y autenticación de usuarios&lt;/li>
@@ -1272,17 +1282,17 @@ El principal objetivo es permitir compartir videos entre los usuarios&lt;/p>
 &lt;/ul>
 &lt;p>&lt;img src="../img/tp/diagrama.png" alt="Componentes" loading="lazy" />&lt;/p>
 &lt;h3>Application Server&lt;span class="hx:absolute hx:-mt-20" id="application-server">&lt;/span>
-&lt;a href="#application-server" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Se trata de una aplicación por consola destinada a mantenerse en ejecución por períodos prolongados de tiempo.&lt;/p>
+&lt;a href="#application-server" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Se trata de una aplicación por consola destinada a mantenerse en ejecución por períodos prolongados de tiempo.&lt;/p>
 &lt;p>Esta aplicación debe brindar una interfaz REST [1] para la comunicación de los diferentes usuarios.&lt;/p>
 &lt;p>Este servidor se comunicará con los &lt;em>Shared servers&lt;/em> (explicado a continuación). En el caso que la &lt;em>aplicación Android&lt;/em> (explicada a continuación) necesitará de algún servicio del &lt;em>Shared Servers&lt;/em>, &lt;strong>el &lt;em>Application server&lt;/em> deberá de actuar de fachada.&lt;/strong>.&lt;/p>
 &lt;h4>Servicio de alta de solicitud de contacto de usuario&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-alta-de-solicitud-de-contacto-de-usuario">&lt;/span>
-&lt;a href="#servicio-de-alta-de-solicitud-de-contacto-de-usuario" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá enviar una solicitud de conexión/amistad a un usuario.&lt;/p>
+&lt;a href="#servicio-de-alta-de-solicitud-de-contacto-de-usuario" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá enviar una solicitud de conexión/amistad a un usuario.&lt;/p>
 &lt;h4>Servicio de aceptación de solicitud de contacto&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-aceptación-de-solicitud-de-contacto">&lt;/span>
-&lt;a href="#servicio-de-aceptaci%c3%b3n-de-solicitud-de-contacto" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá aceptar una solicitud de contacto que recibe un usuario.&lt;/p>
+&lt;a href="#servicio-de-aceptaci%c3%b3n-de-solicitud-de-contacto" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá aceptar una solicitud de contacto que recibe un usuario.&lt;/p>
 &lt;h4>Servicio de reacción a un video&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-reacción-a-un-video">&lt;/span>
-&lt;a href="#servicio-de-reacci%c3%b3n-a-un-video" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá dar de alta una reacción de un usuario a un video (me gusta, no me gusta).&lt;/p>
+&lt;a href="#servicio-de-reacci%c3%b3n-a-un-video" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá dar de alta una reacción de un usuario a un video (me gusta, no me gusta).&lt;/p>
 &lt;h4>Servicio de alta de comentario de video&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-alta-de-comentario-de-video">&lt;/span>
-&lt;a href="#servicio-de-alta-de-comentario-de-video" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá enviar un comentario asociado a un video. El comentario tendrá la siguiente información:&lt;/p>
+&lt;a href="#servicio-de-alta-de-comentario-de-video" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá enviar un comentario asociado a un video. El comentario tendrá la siguiente información:&lt;/p>
 &lt;ul>
 &lt;li>Mensaje&lt;/li>
 &lt;li>Usuario que realizó el comentario&lt;/li>
@@ -1290,7 +1300,7 @@ El principal objetivo es permitir compartir videos entre los usuarios&lt;/p>
 &lt;li>Video sobre la cual fue realizado el comentario&lt;/li>
 &lt;/ul>
 &lt;h4>Servicio de mensaje directo a usuario&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-mensaje-directo-a-usuario">&lt;/span>
-&lt;a href="#servicio-de-mensaje-directo-a-usuario" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá enviar un mensaje a un usuario. Esto permitirá que los usuarios puedan mantener una conversación. El mensaje tendrá la siguiente información:&lt;/p>
+&lt;a href="#servicio-de-mensaje-directo-a-usuario" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá enviar un mensaje a un usuario. Esto permitirá que los usuarios puedan mantener una conversación. El mensaje tendrá la siguiente información:&lt;/p>
 &lt;ul>
 &lt;li>Mensaje&lt;/li>
 &lt;li>Usuario que envia el mensaje (emisor)&lt;/li>
@@ -1298,9 +1308,9 @@ El principal objetivo es permitir compartir videos entre los usuarios&lt;/p>
 &lt;li>Hora y fecha&lt;/li>
 &lt;/ul>
 &lt;h4>Servicio de listado de videos de un usuario&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-listado-de-videos-de-un-usuario">&lt;/span>
-&lt;a href="#servicio-de-listado-de-videos-de-un-usuario" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá listar los videos disponibles de un usuario&lt;/p>
+&lt;a href="#servicio-de-listado-de-videos-de-un-usuario" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá listar los videos disponibles de un usuario&lt;/p>
 &lt;h4>Servicio de listado de videos en pantalla principal&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-listado-de-videos-en-pantalla-principal">&lt;/span>
-&lt;a href="#servicio-de-listado-de-videos-en-pantalla-principal" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá listar los videos disponibles para un usuario en su pantalla principal. Este servicio deberá utilizar un sistema de reglas que permitirá establecer un criterio flexible de importancia a los videos.&lt;/p>
+&lt;a href="#servicio-de-listado-de-videos-en-pantalla-principal" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá listar los videos disponibles para un usuario en su pantalla principal. Este servicio deberá utilizar un sistema de reglas que permitirá establecer un criterio flexible de importancia a los videos.&lt;/p>
 &lt;p>Las reglas deben permitir el cálculo de la importancia del video utilizando, entre otras cosas, la siguientes variables:&lt;/p>
 &lt;ul>
 &lt;li>Actividad el usuario (publicaciones por día, cantidad de reacciones, horario de las publicaciones)&lt;/li>
@@ -1321,6 +1331,8 @@ El principal objetivo es permitir compartir videos entre los usuarios&lt;/p>
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copiar código"
+aria-label="Copiar código"
+data-copied-label="¡Copiado!"
 >
 &lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
 &lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
@@ -1329,19 +1341,19 @@ title="Copiar código"
 &lt;/div>
 &lt;p>Para el sistema de reglas, se sugiere la utilización de alguno de los siguientes motores:&lt;/p>
 &lt;h4>JS&lt;span class="hx:absolute hx:-mt-20" id="js">&lt;/span>
-&lt;a href="#js" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;ul>
+&lt;a href="#js" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;ul>
 &lt;li>&lt;a href="https://github.com/noolsjs/nools"target="_blank" rel="noopener">Nools&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://github.com/mithunsatheesh/node-rules"target="_blank" rel="noopener">Node Rules&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://github.com/jruizgit/rules"target="_blank" rel="noopener">Rules&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://github.com/cachecontrol/json-rules-engine"target="_blank" rel="noopener">Json Rules Engine&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;h4>Python&lt;span class="hx:absolute hx:-mt-20" id="python">&lt;/span>
-&lt;a href="#python" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;ul>
+&lt;a href="#python" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;ul>
 &lt;li>&lt;a href="https://github.com/jruizgit/rules"target="_blank" rel="noopener">durable_rules&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://github.com/venmo/business-rules"target="_blank" rel="noopener">business-rules&lt;/a>&lt;/li>
 &lt;/ul>
 &lt;h4>Servicio de alta de video&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-alta-de-video">&lt;/span>
-&lt;a href="#servicio-de-alta-de-video" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá publicar un video. Los videos contendrán la siguiente información:&lt;/p>
+&lt;a href="#servicio-de-alta-de-video" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá publicar un video. Los videos contendrán la siguiente información:&lt;/p>
 &lt;ul>
 &lt;li>Título (opcional)&lt;/li>
 &lt;li>Contenido multimedia (video)&lt;/li>
@@ -1354,10 +1366,10 @@ title="Copiar código"
 &lt;p>Este servicio deberá utilizar el servicio de administración de archivos del &lt;em>Media Server&lt;/em> para almacenar el contenido multimedia asociado al video&lt;/p>
 &lt;p>Es posible alojar el archivo multimedia utilizando el servicio de storage de &lt;a href="https://firebase.google.com/docs/storage/?hl=es-419"target="_blank" rel="noopener">Firebase&lt;/a>, y luego indicar la url de acceso al servicio de &lt;em>Media Server&lt;/em>.&lt;/p>
 &lt;h4>Servicio de estado&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-estado">&lt;/span>
-&lt;a href="#servicio-de-estado" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servició tiene como objetivo brindar una respuesta rápida que permita ser consultada para conocer si el servidor se encuentra activo.
+&lt;a href="#servicio-de-estado" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servició tiene como objetivo brindar una respuesta rápida que permita ser consultada para conocer si el servidor se encuentra activo.
 Este servicio debé ser consultado a traves de la URI /ping&lt;/p>
 &lt;h4>Servicio de consulta de datos de uso&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-consulta-de-datos-de-uso">&lt;/span>
-&lt;a href="#servicio-de-consulta-de-datos-de-uso" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio deberá brindar datos acerca del uso del application server.&lt;/p>
+&lt;a href="#servicio-de-consulta-de-datos-de-uso" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio deberá brindar datos acerca del uso del application server.&lt;/p>
 &lt;p>Este servicio debé ser consultado a traves de la URI /stats y brindará información, como por ejemplo:&lt;/p>
 &lt;ul>
 &lt;li>Cantidad de requests por minuto.&lt;/li>
@@ -1366,21 +1378,21 @@ Este servicio debé ser consultado a traves de la URI /ping&lt;/p>
 &lt;li>Etc&lt;/li>
 &lt;/ul>
 &lt;h2>Shared Servers&lt;span class="hx:absolute hx:-mt-20" id="shared-servers">&lt;/span>
-&lt;a href="#shared-servers" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>Dado que se requiere poseer varios Application servers (por ejemplo, estas pueden ser instancias del mismo servicio por zona geográfica o distintas apps de una misma empresa que interactuan entre sí) y que se requiere trabajar con una arquitectura orientada al uso de micro servicios, se desarrollarán distintos servidores con servicios bien especificos que pueden ser utilizados en diversos contextos&lt;/p>
+&lt;a href="#shared-servers" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;p>Dado que se requiere poseer varios Application servers (por ejemplo, estas pueden ser instancias del mismo servicio por zona geográfica o distintas apps de una misma empresa que interactuan entre sí) y que se requiere trabajar con una arquitectura orientada al uso de micro servicios, se desarrollarán distintos servidores con servicios bien especificos que pueden ser utilizados en diversos contextos&lt;/p>
 &lt;p>Ambos &lt;em>Shared Servers&lt;/em> deberán tener una interfaz de usuario WEB orientado a usuarios de negocio quienes principalmente utilizaran el sistema para poder ver estado de cada Application Server.
 Los usuarios finales nunca utilizaran esta plataforma, ya que solo utilizaran el cliente Android el cual se comunica con su &lt;em>Application Server&lt;/em>. Esta plataforma será unicamente utilizada por usuarios administrativos/ejecutivos.&lt;/p>
 &lt;h3>Auth Server&lt;span class="hx:absolute hx:-mt-20" id="auth-server">&lt;/span>
-&lt;a href="#auth-server" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>AppMaker© nos solicita que se desarrolle un servidor encargado de la administración de usuarios, login y Application servers.
+&lt;a href="#auth-server" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>AppMaker© nos solicita que se desarrolle un servidor encargado de la administración de usuarios, login y Application servers.
 Este servidor será el encargado de brindar servicios de uso común como autenticación y login, tanto para el &lt;em>Application Server&lt;/em> como para otros que servicios que lo requieran.
 El objetivo de la administración de application servers es el de conocer el estado y el uso de estos. Para esto el &lt;em>Auth Server&lt;/em> deberá consultar a los application servers, registrados previamente, para conocer datos acerca del uso del mismo.&lt;/p>
 &lt;h4>Servicio de autenticación (login)&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-autenticación-login">&lt;/span>
-&lt;a href="#servicio-de-autenticaci%c3%b3n-login" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá a los usuarios poder ingresar al sistema, obteniendo un token que deberá ser utilizado por los demás servicios.&lt;/p>
+&lt;a href="#servicio-de-autenticaci%c3%b3n-login" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá a los usuarios poder ingresar al sistema, obteniendo un token que deberá ser utilizado por los demás servicios.&lt;/p>
 &lt;h4>Servicio de recupero de contraseña&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-recupero-de-contraseña">&lt;/span>
-&lt;a href="#servicio-de-recupero-de-contrase%c3%b1a" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá a los usuarios poder recuperar una cuenta. Este servicio deberá generar un token, que deberá ser utilizado para definir una nueva contraseña, y enviarlo por e-mail.&lt;/p>
+&lt;a href="#servicio-de-recupero-de-contrase%c3%b1a" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá a los usuarios poder recuperar una cuenta. Este servicio deberá generar un token, que deberá ser utilizado para definir una nueva contraseña, y enviarlo por e-mail.&lt;/p>
 &lt;h4>Servicio de configuración de contraseña&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-configuración-de-contraseña">&lt;/span>
-&lt;a href="#servicio-de-configuraci%c3%b3n-de-contrase%c3%b1a" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá a un usuario definir una nueva contraseña. Este servicio verificará que se haya solicitado un token utilizando el &lt;em>Servicio de recupero de contraseña&lt;/em>.&lt;/p>
+&lt;a href="#servicio-de-configuraci%c3%b3n-de-contrase%c3%b1a" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá a un usuario definir una nueva contraseña. Este servicio verificará que se haya solicitado un token utilizando el &lt;em>Servicio de recupero de contraseña&lt;/em>.&lt;/p>
 &lt;h4>Servicio de registro&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-registro">&lt;/span>
-&lt;a href="#servicio-de-registro" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá a los usuarios darse de alta en el sistema. El usuario deberá brindar sus datos personales para poder completar el registro.&lt;/p>
+&lt;a href="#servicio-de-registro" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá a los usuarios darse de alta en el sistema. El usuario deberá brindar sus datos personales para poder completar el registro.&lt;/p>
 &lt;p>Datos personales:&lt;/p>
 &lt;ul>
 &lt;li>Nombre y Apellido&lt;/li>
@@ -1389,27 +1401,27 @@ El objetivo de la administración de application servers es el de conocer el est
 &lt;li>Foto de perfil&lt;/li>
 &lt;/ul>
 &lt;h4>Servicio de consulta de perfil&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-consulta-de-perfil">&lt;/span>
-&lt;a href="#servicio-de-consulta-de-perfil" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá consultar el perfil de un usuario. El mismo está compuesto por :&lt;/p>
+&lt;a href="#servicio-de-consulta-de-perfil" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá consultar el perfil de un usuario. El mismo está compuesto por :&lt;/p>
 &lt;ul>
 &lt;li>Datos personales (Nombre, Apellido, EMail)&lt;/li>
 &lt;li>Foto de perfil&lt;/li>
 &lt;/ul>
 &lt;h4>Servicio de modificación de perfil&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-modificación-de-perfil">&lt;/span>
-&lt;a href="#servicio-de-modificaci%c3%b3n-de-perfil" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio permite a un usuario actualizar su perfil, debe permitir modificar y actualizar los siguientes datos:&lt;/p>
+&lt;a href="#servicio-de-modificaci%c3%b3n-de-perfil" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permite a un usuario actualizar su perfil, debe permitir modificar y actualizar los siguientes datos:&lt;/p>
 &lt;ul>
 &lt;li>Datos personales (Nombre, Apellido, Dirección, e-mail, Cuenta de Facebook, GMail, etc)&lt;/li>
 &lt;li>Foto de perfil&lt;/li>
 &lt;/ul>
 &lt;h4>Servicio de administración de app server&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-administración-de-app-server">&lt;/span>
-&lt;a href="#servicio-de-administraci%c3%b3n-de-app-server" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá registrar un app server. Esto devolverá un token que podrá ser utilizado para interactuar con los demás servicios.&lt;/p>
+&lt;a href="#servicio-de-administraci%c3%b3n-de-app-server" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá registrar un app server. Esto devolverá un token que podrá ser utilizado para interactuar con los demás servicios.&lt;/p>
 &lt;h4>Servicio de reportes&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-reportes">&lt;/span>
-&lt;a href="#servicio-de-reportes" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Servicio que mostrará estádisticas y datos de uso acerca de los &lt;em>Application servers&lt;/em>.&lt;/p>
+&lt;a href="#servicio-de-reportes" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Servicio que mostrará estádisticas y datos de uso acerca de los &lt;em>Application servers&lt;/em>.&lt;/p>
 &lt;h4>Servicio de estado actual&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-estado-actual">&lt;/span>
-&lt;a href="#servicio-de-estado-actual" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Servicio que podrá visualizar el estado actual de todos los &lt;em>Application Servers&lt;/em> corriendo. Se valora el uso de gráficos.&lt;/p>
+&lt;a href="#servicio-de-estado-actual" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Servicio que podrá visualizar el estado actual de todos los &lt;em>Application Servers&lt;/em> corriendo. Se valora el uso de gráficos.&lt;/p>
 &lt;h3>Media Server&lt;span class="hx:absolute hx:-mt-20" id="media-server">&lt;/span>
-&lt;a href="#media-server" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Este servidor será el encargado de proveer los distintos recursos multimedia que los Application Server puedan llegar a solicitar&lt;/p>
+&lt;a href="#media-server" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Este servidor será el encargado de proveer los distintos recursos multimedia que los Application Server puedan llegar a solicitar&lt;/p>
 &lt;h4>Servicio para administración de recursos&lt;span class="hx:absolute hx:-mt-20" id="servicio-para-administración-de-recursos">&lt;/span>
-&lt;a href="#servicio-para-administraci%c3%b3n-de-recursos" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Servicio que permitirá administrar los recursos que contiene el &lt;em>Media Server&lt;/em> (alta, listado, baja).
+&lt;a href="#servicio-para-administraci%c3%b3n-de-recursos" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Servicio que permitirá administrar los recursos que contiene el &lt;em>Media Server&lt;/em> (alta, listado, baja).
 Cada archivo deberá contener la siguiente metadata asociada:&lt;/p>
 &lt;ul>
 &lt;li>Nombre de archivo&lt;/li>
@@ -1418,34 +1430,34 @@ Cada archivo deberá contener la siguiente metadata asociada:&lt;/p>
 &lt;/ul>
 &lt;p>Este servicio deberá devolver, entre sus datos, la url que permite acceder a este de forma remota.&lt;/p>
 &lt;h4>Interfaz WEB&lt;span class="hx:absolute hx:-mt-20" id="interfaz-web">&lt;/span>
-&lt;a href="#interfaz-web" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>La interfaz WEB deberá brindar una GUI que permita la administración de archivos y de application servers.
+&lt;a href="#interfaz-web" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>La interfaz WEB deberá brindar una GUI que permita la administración de archivos y de application servers.
 A continuación se da una breve descripción de la funcionalidad deseada para la interfaz WEB del &lt;em>Shared Server&lt;/em>.&lt;/p>
 &lt;h5>Login&lt;span class="hx:absolute hx:-mt-20" id="login">&lt;/span>
-&lt;a href="#login" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h5>&lt;p>La interfaz WEB deberá solicitar usuario y contraseña para acceder a la administración de datos. Estos usuarios serán de uso exclusivo para la interfaz WEB.&lt;/p>
+&lt;a href="#login" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h5>&lt;p>La interfaz WEB deberá solicitar usuario y contraseña para acceder a la administración de datos. Estos usuarios serán de uso exclusivo para la interfaz WEB.&lt;/p>
 &lt;h5>Administración de recursos&lt;span class="hx:absolute hx:-mt-20" id="administración-de-recursos">&lt;/span>
-&lt;a href="#administraci%c3%b3n-de-recursos" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h5>&lt;p>Se deberá mostrar el listado de recursos disponibles en el servidor. Deberá mostrar la información asociada a cada archivo (ver definición de API para ver los datos a mostra).
+&lt;a href="#administraci%c3%b3n-de-recursos" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h5>&lt;p>Se deberá mostrar el listado de recursos disponibles en el servidor. Deberá mostrar la información asociada a cada archivo (ver definición de API para ver los datos a mostra).
 Se deberá además permitir la administración de estos.&lt;/p>
 &lt;h5>Administración de usuarios&lt;span class="hx:absolute hx:-mt-20" id="administración-de-usuarios">&lt;/span>
-&lt;a href="#administraci%c3%b3n-de-usuarios" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h5>&lt;p>Se deberá mostrar un listado de los usuarios registrados. Se deberá además permitir la administración de estos.&lt;/p>
+&lt;a href="#administraci%c3%b3n-de-usuarios" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h5>&lt;p>Se deberá mostrar un listado de los usuarios registrados. Se deberá además permitir la administración de estos.&lt;/p>
 &lt;h5>Administración de application servers&lt;span class="hx:absolute hx:-mt-20" id="administración-de-application-servers">&lt;/span>
-&lt;a href="#administraci%c3%b3n-de-application-servers" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h5>&lt;p>Se deberá mostrar un listado de los application servers registrados. Se deberá además permitir la administración de estos.&lt;/p>
+&lt;a href="#administraci%c3%b3n-de-application-servers" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h5>&lt;p>Se deberá mostrar un listado de los application servers registrados. Se deberá además permitir la administración de estos.&lt;/p>
 &lt;h5>Panel para visualización de datos y estadísticas de application servers&lt;span class="hx:absolute hx:-mt-20" id="panel-para-visualización-de-datos-y-estadísticas-de-application-servers">&lt;/span>
-&lt;a href="#panel-para-visualizaci%c3%b3n-de-datos-y-estad%c3%adsticas-de-application-servers" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h5>&lt;p>Se deberá mostrar un panel que muestre datos y estadísticas de uso los diferentes application servers utilizando diferentes tipos de gráficos. Los datos y gráficos a mostrar deberán ser validados con el ayudante asignado.&lt;/p>
+&lt;a href="#panel-para-visualizaci%c3%b3n-de-datos-y-estad%c3%adsticas-de-application-servers" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h5>&lt;p>Se deberá mostrar un panel que muestre datos y estadísticas de uso los diferentes application servers utilizando diferentes tipos de gráficos. Los datos y gráficos a mostrar deberán ser validados con el ayudante asignado.&lt;/p>
 &lt;p>Ejemplo de estos datos pueden ser: cantidad de consultas por minuto, cantidad de videos publicados por día, cantidad de usuarios registrados, cantidad de usuarios activos.&lt;/p>
 &lt;h3>Android Client&lt;span class="hx:absolute hx:-mt-20" id="android-client">&lt;/span>
-&lt;a href="#android-client" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Este cliente se comunicará únicamente con un &lt;em>Application Server&lt;/em>. A continuación se dará una breve descripción de las funcionalidades esperadas para la aplicación Android. Se deberá validar con el ayudante asignado el alcance de las mismas.&lt;/p>
+&lt;a href="#android-client" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Este cliente se comunicará únicamente con un &lt;em>Application Server&lt;/em>. A continuación se dará una breve descripción de las funcionalidades esperadas para la aplicación Android. Se deberá validar con el ayudante asignado el alcance de las mismas.&lt;/p>
 &lt;h4>Registro&lt;span class="hx:absolute hx:-mt-20" id="registro">&lt;/span>
-&lt;a href="#registro" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>En caso de que la persona que desee utilizar la aplicación no tenga un usuario registrado la aplicación debe permitir poder registrar un usuario nuevo. Este registro deberá poder ser integrado con un servicio externo de autenticación, permitiendo ingresar las credenciales y utilizar los datos asociados de la cuenta para completar el registro del usuario dentro del sistema.&lt;/p>
+&lt;a href="#registro" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>En caso de que la persona que desee utilizar la aplicación no tenga un usuario registrado la aplicación debe permitir poder registrar un usuario nuevo. Este registro deberá poder ser integrado con un servicio externo de autenticación, permitiendo ingresar las credenciales y utilizar los datos asociados de la cuenta para completar el registro del usuario dentro del sistema.&lt;/p>
 &lt;h4>Autenticación&lt;span class="hx:absolute hx:-mt-20" id="autenticación">&lt;/span>
-&lt;a href="#autenticaci%c3%b3n" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Para que el cliente pueda enviar y recibir conversaciones el mismo debe autentificarse con el servidor. Para esto el cliente debe permitir al usuario ingresar usuario y contraseña.
+&lt;a href="#autenticaci%c3%b3n" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Para que el cliente pueda enviar y recibir conversaciones el mismo debe autentificarse con el servidor. Para esto el cliente debe permitir al usuario ingresar usuario y contraseña.
 Se deberá diseñar una pantalla de ingreso a la aplicación.
 Cuando la autenticación es exitosa, se almacenará un token de autenticación para realizar las operaciones con el servidor.&lt;/p>
 &lt;h4>Perfil de usuario&lt;span class="hx:absolute hx:-mt-20" id="perfil-de-usuario">&lt;/span>
-&lt;a href="#perfil-de-usuario" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Los usuarios podrán visualizar su perfil o el de otros usuarios. El perfil tendrá los datos del usuario y sus videos&lt;/p>
+&lt;a href="#perfil-de-usuario" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Los usuarios podrán visualizar su perfil o el de otros usuarios. El perfil tendrá los datos del usuario y sus videos&lt;/p>
 &lt;h4>Chat&lt;span class="hx:absolute hx:-mt-20" id="chat">&lt;/span>
-&lt;a href="#chat" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Los usuarios que se encuentren conectados podrán intercambiar mensajes a través de la aplicación. El Chat solo estará disponibles entre usuarios conectados.&lt;/p>
+&lt;a href="#chat" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Los usuarios que se encuentren conectados podrán intercambiar mensajes a través de la aplicación. El Chat solo estará disponibles entre usuarios conectados.&lt;/p>
 &lt;h4>Publicación de videos&lt;span class="hx:absolute hx:-mt-20" id="publicación-de-videos">&lt;/span>
-&lt;a href="#publicaci%c3%b3n-de-videos" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Los usuarios deberán poder publicar videos. Estos videos pueden ser privados (sólo por mis contactos) o públicos (accesible por todos).&lt;/p>
+&lt;a href="#publicaci%c3%b3n-de-videos" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Los usuarios deberán poder publicar videos. Estos videos pueden ser privados (sólo por mis contactos) o públicos (accesible por todos).&lt;/p>
 &lt;p>Los videos contendrán la siguiente información:&lt;/p>
 &lt;ul>
 &lt;li>Título (opcional)&lt;/li>
@@ -1456,23 +1468,23 @@ Cuando la autenticación es exitosa, se almacenará un token de autenticación p
 &lt;li>Visibilidad (public/private)&lt;/li>
 &lt;/ul>
 &lt;h4>Muro de videos&lt;span class="hx:absolute hx:-mt-20" id="muro-de-videos">&lt;/span>
-&lt;a href="#muro-de-videos" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Los usuarios podrán visualizar los videos publicadas por los demás usuarios de la aplicación. Además podrán generar una reacción al video (like, dislike).&lt;/p>
+&lt;a href="#muro-de-videos" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Los usuarios podrán visualizar los videos publicadas por los demás usuarios de la aplicación. Además podrán generar una reacción al video (like, dislike).&lt;/p>
 &lt;h4>Conectar usuarios&lt;span class="hx:absolute hx:-mt-20" id="conectar-usuarios">&lt;/span>
-&lt;a href="#conectar-usuarios" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Un usuario puede enviar una solicitud de conexión a otro usuario. Este último podrá aceptar o rechazar la solicitud.&lt;/p>
+&lt;a href="#conectar-usuarios" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Un usuario puede enviar una solicitud de conexión a otro usuario. Este último podrá aceptar o rechazar la solicitud.&lt;/p>
 &lt;h4>Comentar videos&lt;span class="hx:absolute hx:-mt-20" id="comentar-videos">&lt;/span>
-&lt;a href="#comentar-videos" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Un usuario puede realizar comentarios en los videos otro integrante de la plataforma. Estos comentarios pueden realizarse a nivel publicación del video o en un momento determinado del video&lt;/p>
+&lt;a href="#comentar-videos" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Un usuario puede realizar comentarios en los videos otro integrante de la plataforma. Estos comentarios pueden realizarse a nivel publicación del video o en un momento determinado del video&lt;/p>
 &lt;h4>Interfaz gráfica&lt;span class="hx:absolute hx:-mt-20" id="interfaz-gráfica">&lt;/span>
-&lt;a href="#interfaz-gr%c3%a1fica" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Para el diseño de la interfaz deben respetarse las &lt;a href="https://www.google.com/design/spec/material-design/introduction.html"target="_blank" rel="noopener">guías de diseño propuestas por Google&lt;/a>.&lt;/p>
+&lt;a href="#interfaz-gr%c3%a1fica" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Para el diseño de la interfaz deben respetarse las &lt;a href="https://www.google.com/design/spec/material-design/introduction.html"target="_blank" rel="noopener">guías de diseño propuestas por Google&lt;/a>.&lt;/p>
 &lt;h4>Notificaciónes &lt;em>Push&lt;/em>&lt;span class="hx:absolute hx:-mt-20" id="notificaciónes-push">&lt;/span>
-&lt;a href="#notificaci%c3%b3nes-push" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Para el envío y recepción de notificaciones del sistema (ej. solicitudes de amistad, nuevos videos o mensajes de Chat) se deberá utilizar el servicio de notificaciones push de &lt;a href="https://firebase.google.com/products/cloud-messaging/"target="_blank" rel="noopener">FCM&lt;/a>&lt;/p>
+&lt;a href="#notificaci%c3%b3nes-push" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Para el envío y recepción de notificaciones del sistema (ej. solicitudes de amistad, nuevos videos o mensajes de Chat) se deberá utilizar el servicio de notificaciones push de &lt;a href="https://firebase.google.com/products/cloud-messaging/"target="_blank" rel="noopener">FCM&lt;/a>&lt;/p>
 &lt;h2>Requerimiento No Funcionales&lt;span class="hx:absolute hx:-mt-20" id="requerimiento-no-funcionales">&lt;/span>
-&lt;a href="#requerimiento-no-funcionales" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h2>Tecnologias&lt;span class="hx:absolute hx:-mt-20" id="tecnologias">&lt;/span>
-&lt;a href="#tecnologias" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>Para el desarrollo de los server se podrá utilizar &lt;strong>Python&lt;/strong> o &lt;strong>NodeJS&lt;/strong> y &lt;strong>PostgreSQL&lt;/strong> y/o &lt;strong>MongoDB&lt;/strong> como motor de base de datos.
+&lt;a href="#requerimiento-no-funcionales" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;h2>Tecnologias&lt;span class="hx:absolute hx:-mt-20" id="tecnologias">&lt;/span>
+&lt;a href="#tecnologias" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;p>Para el desarrollo de los server se podrá utilizar &lt;strong>Python&lt;/strong> o &lt;strong>NodeJS&lt;/strong> y &lt;strong>PostgreSQL&lt;/strong> y/o &lt;strong>MongoDB&lt;/strong> como motor de base de datos.
 Esta elección será responsabilidad del grupo y la misma deberá estar justificada en la documentación técnica que formará parte del TP.&lt;/p>
 &lt;p>Para el desarrollo de la App se utilizará &lt;strong>Kotlin&lt;/strong> como lenguaje de programación.&lt;/p>
 &lt;p>Para el desarrollo de la WebApp se utilizará &lt;strong>React&lt;/strong> como biblioteca.&lt;/p>
 &lt;h3>Empaquetamiento&lt;span class="hx:absolute hx:-mt-20" id="empaquetamiento">&lt;/span>
-&lt;a href="#empaquetamiento" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Cada uno de los desarrollos solicitados debe empaquetarse según el estandar de la plataforma, es decir:&lt;/p>
+&lt;a href="#empaquetamiento" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Cada uno de los desarrollos solicitados debe empaquetarse según el estandar de la plataforma, es decir:&lt;/p>
 &lt;ul>
 &lt;li>&lt;em>Python&lt;/em>: Python Setuptools (&lt;code>setup.py&lt;/code> y &lt;code>requeriments.txt&lt;/code>)&lt;/li>
 &lt;li>&lt;em>Node&lt;/em>: Node Package Manager (&lt;code>npm&lt;/code>, &lt;code>package.json&lt;/code>), Yarn Package Manager(&lt;a href="https://yarnpkg.com/lang/en/"target="_blank" rel="noopener">https://yarnpkg.com/lang/en/&lt;/a>)&lt;/li>
@@ -1480,9 +1492,9 @@ Esta elección será responsabilidad del grupo y la misma deberá estar justific
 &lt;/ul>
 &lt;p>Además, los servidores deberán traer un &lt;code>Dockerfile&lt;/code> que permita correrlos sin necesidad de tener instalado los respectivos lenguajes.&lt;/p>
 &lt;h3>Despliegue en la Nube&lt;span class="hx:absolute hx:-mt-20" id="despliegue-en-la-nube">&lt;/span>
-&lt;a href="#despliegue-en-la-nube" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Ambos servidores, tanto el &lt;em>Application server&lt;/em> como el &lt;em>Shared Server&lt;/em>, se deberán disponibilizar en la nube utilizando una plataforma como servicio (&lt;em>PAAS&lt;/em>). Se recomienda usar &lt;a href="https://www.heroku.com/"target="_blank" rel="noopener">Heroku&lt;/a> ya que cuenta con todos los requerimientos tecnológicos pedidos anteriormente.&lt;/p>
+&lt;a href="#despliegue-en-la-nube" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Ambos servidores, tanto el &lt;em>Application server&lt;/em> como el &lt;em>Shared Server&lt;/em>, se deberán disponibilizar en la nube utilizando una plataforma como servicio (&lt;em>PAAS&lt;/em>). Se recomienda usar &lt;a href="https://www.heroku.com/"target="_blank" rel="noopener">Heroku&lt;/a> ya que cuenta con todos los requerimientos tecnológicos pedidos anteriormente.&lt;/p>
 &lt;h3>Log&lt;span class="hx:absolute hx:-mt-20" id="log">&lt;/span>
-&lt;a href="#log" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Los servidores deben contar con un sistema de log en donde se registren los eventos que se generen durante la ejecución. El sistema de log debe permitir configurar el nivel de los eventos que desean registrar. Estos niveles son:&lt;/p>
+&lt;a href="#log" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Los servidores deben contar con un sistema de log en donde se registren los eventos que se generen durante la ejecución. El sistema de log debe permitir configurar el nivel de los eventos que desean registrar. Estos niveles son:&lt;/p>
 &lt;table>
 &lt;thead>
 &lt;tr>
@@ -1512,7 +1524,7 @@ Esta elección será responsabilidad del grupo y la misma deberá estar justific
 &lt;p>Es necesario recalcar que para que un log sea útil, debe poder ser accedido.&lt;/p>
 &lt;p>El cliente Android deberá utilizar el &lt;a href="http://developer.android.com/intl/es/reference/android/util/Log.html"target="_blank" rel="noopener">sistema de log por defecto&lt;/a>&lt;/p>
 &lt;h3>Pruebas y Métricas&lt;span class="hx:absolute hx:-mt-20" id="pruebas-y-métricas">&lt;/span>
-&lt;a href="#pruebas-y-m%c3%a9tricas" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>El desarrollo de la aplicación se deberá adaptar a los estándares de calidad utilizados por AppMaker©. Dentro de estos estándares se encuentran:&lt;/p>
+&lt;a href="#pruebas-y-m%c3%a9tricas" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>El desarrollo de la aplicación se deberá adaptar a los estándares de calidad utilizados por AppMaker©. Dentro de estos estándares se encuentran:&lt;/p>
 &lt;ul>
 &lt;li>Pruebas unitarias [2]&lt;/li>
 &lt;li>Métricas: code coverage debe ser mayor a 75% [3]&lt;/li>
@@ -1522,7 +1534,7 @@ Esta elección será responsabilidad del grupo y la misma deberá estar justific
 &lt;/ul>
 &lt;p>&lt;strong>Nota:&lt;/strong> Esta sección hace solo referencía al &lt;em>Application server&lt;/em> y a los &lt;em>Shared servers&lt;/em>. No se toma como requerimiento el realizar pruebas sobre el cliente Android, aunque es recomendado como una buena práctica.&lt;/p>
 &lt;h3>Integración continua / Despligue continuo&lt;span class="hx:absolute hx:-mt-20" id="integración-continua--despligue-continuo">&lt;/span>
-&lt;a href="#integraci%c3%b3n-continua--despligue-continuo" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Las pruebas y métricas anteriormente mencionadas deberan correr bajo una plataforma de integración continua. Se sugiere el uso de &lt;a href="https://travis-ci.org/"target="_blank" rel="noopener">TravisCI&lt;/a>, pero se podrá utilizar otro previa justificación.&lt;/p>
+&lt;a href="#integraci%c3%b3n-continua--despligue-continuo" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Las pruebas y métricas anteriormente mencionadas deberan correr bajo una plataforma de integración continua. Se sugiere el uso de &lt;a href="https://travis-ci.org/"target="_blank" rel="noopener">TravisCI&lt;/a>, pero se podrá utilizar otro previa justificación.&lt;/p>
 &lt;p>El resultado del &lt;em>code coverage&lt;/em> debe ser desplegado automáticamente a una plataforma que permita visualizarlas, entre muchas posibilidades se encuentran:&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="https://coveralls.io/"target="_blank" rel="noopener">Coveralls&lt;/a>&lt;/li>
@@ -1531,7 +1543,7 @@ Esta elección será responsabilidad del grupo y la misma deberá estar justific
 &lt;/ul>
 &lt;p>Finalmente, el despliegue al servidor de &lt;em>PAAS&lt;/em> elegido deberá ser automático. Este deberá tener en cuenta como la actualización de la base de datos (cambios en las tablas, etc). El mecanismo utilizado para disparar dicho despliegue (utilizar el branch &lt;em>master&lt;/em> como productivo, utilizar un tags con nombre especial) será definido por los desarrolladores y deberá ser detallado en la documentación.&lt;/p>
 &lt;h3>Documentación&lt;span class="hx:absolute hx:-mt-20" id="documentación">&lt;/span>
-&lt;a href="#documentaci%c3%b3n" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Se deberá entregar la siguiente documentación:&lt;/p>
+&lt;a href="#documentaci%c3%b3n" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Se deberá entregar la siguiente documentación:&lt;/p>
 &lt;ul>
 &lt;li>Application Server:
 &lt;ul>
@@ -1555,16 +1567,16 @@ Esta elección será responsabilidad del grupo y la misma deberá estar justific
 &lt;/ul>
 &lt;p>Se espera que dicha documentación se elabore de manera incremental y que cada entrega parcial tenga parte de la misma.&lt;/p>
 &lt;h2>Instancias de entrega&lt;span class="hx:absolute hx:-mt-20" id="instancias-de-entrega">&lt;/span>
-&lt;a href="#instancias-de-entrega" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>&lt;em>Estas fechas pueden modificarse durante el cuatrimestre debido al contexto&lt;/em>&lt;/p>
+&lt;a href="#instancias-de-entrega" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;p>&lt;em>Estas fechas pueden modificarse durante el cuatrimestre debido al contexto&lt;/em>&lt;/p>
 &lt;p>| Instancia | Fecha |
 | Checkpoint 1 | clase 4 (07/05/20) |
 | Checkpoint 2 | clase 8 (04/06/20) |
 | Checkpoint 3 | clase 12 (02/07/20) |
 | Entrega | clase 16 (30/07/20) |&lt;/p>
 &lt;h3>Criterios de Aceptación&lt;span class="hx:absolute hx:-mt-20" id="criterios-de-aceptación">&lt;/span>
-&lt;a href="#criterios-de-aceptaci%c3%b3n" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>En cada checkpoint se deberá acordar el alcance de la entrega con cada ayudante.&lt;/p>
+&lt;a href="#criterios-de-aceptaci%c3%b3n" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>En cada checkpoint se deberá acordar el alcance de la entrega con cada ayudante.&lt;/p>
 &lt;h2>Referencias&lt;span class="hx:absolute hx:-mt-20" id="referencias">&lt;/span>
-&lt;a href="#referencias" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;ol>
+&lt;a href="#referencias" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;ol>
 &lt;li>&lt;a href="http://en.wikipedia.org/wiki/Representational_state_transfer"target="_blank" rel="noopener">REST&lt;/a>&lt;/li>
 &lt;li>&lt;a href="http://en.wikipedia.org/wiki/Unit_testing"target="_blank" rel="noopener">Unit Test&lt;/a>&lt;/li>
 &lt;li>&lt;a href="http://en.wikipedia.org/wiki/Code_coverage"target="_blank" rel="noopener">Code Coverage&lt;/a>&lt;/li>
@@ -1573,25 +1585,24 @@ Esta elección será responsabilidad del grupo y la misma deberá estar justific
 &lt;h1>Foodie&lt;/h1>&lt;p>Una importante empresa, AppMaker©, ha decidido encargarnos el desarrollo de una &lt;strong>plataforma para el delivery de comida/items alrededor del mundo&lt;/strong>. El principal objetivo es permitir conectar en tiempo real a personas de todo el mundo.&lt;/p>
 &lt;p>AppMaker busca posicionarse en el mercado de aplicaciones, deseando conectar esta aplicación con sus otras aplicaciones que poseen gran cantidad de usuarios.&lt;/p>
 &lt;h2>Aplicaciones requeridas&lt;span class="hx:absolute hx:-mt-20" id="aplicaciones-requeridas">&lt;/span>
-&lt;a href="#aplicaciones-requeridas" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>La aplicación constará de tres componentes:&lt;/p>
+&lt;a href="#aplicaciones-requeridas" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;p>La aplicación constará de tres componentes:&lt;/p>
 &lt;ul>
 &lt;li>Un &lt;strong>servidor&lt;/strong>, &lt;em>Application Server&lt;/em>, el cual será responsable de conectar a los usuarios.&lt;/li>
 &lt;li>Una aplicación &lt;strong>Android&lt;/strong>, el cual será utilizado por los usuarios.&lt;/li>
 &lt;li>Una &lt;strong>Interfaz Web&lt;/strong> en donde se administrarán los datos de la aplicación.&lt;/li>
 &lt;/ul>
-&lt;p>
-&lt;img src="../components.png" alt="Componentes" loading="lazy" />&lt;/p>
+&lt;p>&lt;img src="../components.png" alt="Componentes" loading="lazy" />&lt;/p>
 &lt;h3>Application Server&lt;span class="hx:absolute hx:-mt-20" id="application-server">&lt;/span>
-&lt;a href="#application-server" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Se trata de una aplicación por consola destinada a mantenerse en ejecución por períodos prolongados de tiempo.&lt;/p>
+&lt;a href="#application-server" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Se trata de una aplicación por consola destinada a mantenerse en ejecución por períodos prolongados de tiempo.&lt;/p>
 &lt;p>Esta aplicación debe brindar una interfaz REST [1] para la comunicación de los diferentes usuarios.&lt;/p>
 &lt;h4>Servicio de autenticación (login)&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-autenticación-login">&lt;/span>
-&lt;a href="#servicio-de-autenticaci%c3%b3n-login" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá a los usuarios poder ingresar al sistema, obteniendo un token que deberá ser utilizado por los demás servicios.&lt;/p>
+&lt;a href="#servicio-de-autenticaci%c3%b3n-login" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá a los usuarios poder ingresar al sistema, obteniendo un token que deberá ser utilizado por los demás servicios.&lt;/p>
 &lt;h4>Servicio de recupero de contraseña&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-recupero-de-contraseña">&lt;/span>
-&lt;a href="#servicio-de-recupero-de-contrase%c3%b1a" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá a los usuarios poder recuperar una cuenta. Este servicio deberá generar un token, que deberá ser utilizado para definir una nueva contraseña, y enviarlo por e-mail.&lt;/p>
+&lt;a href="#servicio-de-recupero-de-contrase%c3%b1a" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá a los usuarios poder recuperar una cuenta. Este servicio deberá generar un token, que deberá ser utilizado para definir una nueva contraseña, y enviarlo por e-mail.&lt;/p>
 &lt;h4>Servicio de configuración de contraseña&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-configuración-de-contraseña">&lt;/span>
-&lt;a href="#servicio-de-configuraci%c3%b3n-de-contrase%c3%b1a" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá a un usuario definir una nueva contraseña. Este servicio verificará que se haya solicitado un token utilizando el &lt;em>Servicio de recupero de contraseña&lt;/em>.&lt;/p>
+&lt;a href="#servicio-de-configuraci%c3%b3n-de-contrase%c3%b1a" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá a un usuario definir una nueva contraseña. Este servicio verificará que se haya solicitado un token utilizando el &lt;em>Servicio de recupero de contraseña&lt;/em>.&lt;/p>
 &lt;h4>Servicio de registro&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-registro">&lt;/span>
-&lt;a href="#servicio-de-registro" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá a los usuarios darse de alta en el sistema. El usuario deberá brindar sus datos personales para poder completar el registro.&lt;/p>
+&lt;a href="#servicio-de-registro" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá a los usuarios darse de alta en el sistema. El usuario deberá brindar sus datos personales para poder completar el registro.&lt;/p>
 &lt;p>Datos personales:&lt;/p>
 &lt;ul>
 &lt;li>Nombre y Apellido&lt;/li>
@@ -1603,63 +1614,63 @@ Esta elección será responsabilidad del grupo y la misma deberá estar justific
 &lt;li>Balance: sólo &lt;code>delivery&lt;/code>. Plata disponible para retirar en función de los pedidos realizados. Ver sección &lt;strong>Cobro de pedidos&lt;/strong>&lt;/li>
 &lt;/ul>
 &lt;h4>Servicio de consulta de perfil&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-consulta-de-perfil">&lt;/span>
-&lt;a href="#servicio-de-consulta-de-perfil" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá consultar el perfil de un usuario. El mismo está compuesto por :&lt;/p>
+&lt;a href="#servicio-de-consulta-de-perfil" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá consultar el perfil de un usuario. El mismo está compuesto por :&lt;/p>
 &lt;ul>
 &lt;li>Datos personales (Nombre, Apellido, EMail)&lt;/li>
 &lt;li>Foto de perfil&lt;/li>
 &lt;li>Reputación: Ver seccion &lt;strong>Reputacion&lt;/strong>&lt;/li>
 &lt;/ul>
 &lt;h4>Servicio de modificación de perfil&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-modificación-de-perfil">&lt;/span>
-&lt;a href="#servicio-de-modificaci%c3%b3n-de-perfil" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio permite a un usuario actualizar su perfil, debe permitir modificar y actualizar los siguientes datos:&lt;/p>
+&lt;a href="#servicio-de-modificaci%c3%b3n-de-perfil" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permite a un usuario actualizar su perfil, debe permitir modificar y actualizar los siguientes datos:&lt;/p>
 &lt;ul>
 &lt;li>Datos personales (Nombre, Apellido, Dirección, e-mail, Cuenta de Facebook, GMail, etc)&lt;/li>
 &lt;li>Foto de perfil&lt;/li>
 &lt;/ul>
 &lt;h4>Servicio para envío de mensajes&lt;span class="hx:absolute hx:-mt-20" id="servicio-para-envío-de-mensajes">&lt;/span>
-&lt;a href="#servicio-para-env%c3%ado-de-mensajes" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá poder enviar mensajes a un usuario o a varios, a través de un canal de conversación entre la persona que realizó el pedido y la persona responsable de la entrega. Se recomienda la utilización de &lt;a href="https://firebase.google.com/docs/cloud-messaging/?hl=es-419"target="_blank" rel="noopener">Firebase Cloud Messaging&lt;/a> o algún servicio similar para la administración de mensajes en tiempo real.&lt;/p>
+&lt;a href="#servicio-para-env%c3%ado-de-mensajes" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá poder enviar mensajes a un usuario o a varios, a través de un canal de conversación entre la persona que realizó el pedido y la persona responsable de la entrega. Se recomienda la utilización de &lt;a href="https://firebase.google.com/docs/cloud-messaging/?hl=es-419"target="_blank" rel="noopener">Firebase Cloud Messaging&lt;/a> o algún servicio similar para la administración de mensajes en tiempo real.&lt;/p>
 &lt;h4>Servicio de direccionamiento&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-direccionamiento">&lt;/span>
-&lt;a href="#servicio-de-direccionamiento" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Servicio que utilizará a uno de un tercero para poder determinar los caminos posibles para el viaje que necesario para realizar la entrega del pedido. Se deberá utilizar algún servicio de direccionamiento como lo puede ser &lt;a href="https://developers.google.com/maps/documentation/directions/"target="_blank" rel="noopener">Google Directions Api&lt;/a>.&lt;/p>
+&lt;a href="#servicio-de-direccionamiento" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Servicio que utilizará a uno de un tercero para poder determinar los caminos posibles para el viaje que necesario para realizar la entrega del pedido. Se deberá utilizar algún servicio de direccionamiento como lo puede ser &lt;a href="https://developers.google.com/maps/documentation/directions/"target="_blank" rel="noopener">Google Directions Api&lt;/a>.&lt;/p>
 &lt;h4>Servicio de pedidos disponibles&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-pedidos-disponibles">&lt;/span>
-&lt;a href="#servicio-de-pedidos-disponibles" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio permite a un delivery saber que pedidos tiene disponibles para aceptar. Debe brindar al delivery toda la información acerca del pasajero y el pedido.&lt;/p>
+&lt;a href="#servicio-de-pedidos-disponibles" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permite a un delivery saber que pedidos tiene disponibles para aceptar. Debe brindar al delivery toda la información acerca del pasajero y el pedido.&lt;/p>
 &lt;p>Se deberá dar la posiblidad de filtrar pedidos marcados como favores. Consultar sección &lt;em>Cadena de Favores&lt;/em> para más información.&lt;/p>
 &lt;h4>Servicio de pedidos realizados&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-pedidos-realizados">&lt;/span>
-&lt;a href="#servicio-de-pedidos-realizados" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio permite a un usuario o delivery administrar y conocer que pedidos realizón en un período de tiempo.&lt;/p>
+&lt;a href="#servicio-de-pedidos-realizados" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permite a un usuario o delivery administrar y conocer que pedidos realizón en un período de tiempo.&lt;/p>
 &lt;h4>Servicio de delivery disponibles&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-delivery-disponibles">&lt;/span>
-&lt;a href="#servicio-de-delivery-disponibles" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Este servicio permite a los ususarios visualizar los deliveries que se encuentran a su alrededor. Debe dar la posición del delivery, además, de información acerca de él.&lt;/p>
+&lt;a href="#servicio-de-delivery-disponibles" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permite a los ususarios visualizar los deliveries que se encuentran a su alrededor. Debe dar la posición del delivery, además, de información acerca de él.&lt;/p>
 &lt;h4>Servicio de posicionamiento&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-posicionamiento">&lt;/span>
-&lt;a href="#servicio-de-posicionamiento" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Una vez iniciado un viaje, el servidor deberá conocer la posición del delivery. Para ello, se deberá enviar periódicamente su posición. Esto permitirá al servidor:&lt;/p>
+&lt;a href="#servicio-de-posicionamiento" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Una vez iniciado un viaje, el servidor deberá conocer la posición del delivery. Para ello, se deberá enviar periódicamente su posición. Esto permitirá al servidor:&lt;/p>
 &lt;ul>
 &lt;li>Corroborar que realmente se está realizando el viaje.&lt;/li>
 &lt;li>Calcular la distancia y tiempo de viaje con exactitud&lt;/li>
 &lt;/ul>
 &lt;h4>Servicio de cotización de entrega&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-cotización-de-entrega">&lt;/span>
-&lt;a href="#servicio-de-cotizaci%c3%b3n-de-entrega" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Permite saber, con un margen de error, el costo de un pedido antes de realizarlo. Ver sección &lt;strong>Cotización de entrega&lt;/strong>.&lt;/p>
+&lt;a href="#servicio-de-cotizaci%c3%b3n-de-entrega" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Permite saber, con un margen de error, el costo de un pedido antes de realizarlo. Ver sección &lt;strong>Cotización de entrega&lt;/strong>.&lt;/p>
 &lt;h4>Servicio de cobro de pedido&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-cobro-de-pedido">&lt;/span>
-&lt;a href="#servicio-de-cobro-de-pedido" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>El sistema debe permitir marcar que el importe correspondiente a un envío fue retirado por el delivery de su cuenta.&lt;/p>
+&lt;a href="#servicio-de-cobro-de-pedido" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>El sistema debe permitir marcar que el importe correspondiente a un envío fue retirado por el delivery de su cuenta.&lt;/p>
 &lt;p>#####Cobro de pedidos&lt;/p>
 &lt;p>Por cada pedido realizado el delivery recibirá el &lt;code>85%&lt;/code> del importe correspondiente a los cargos del envío. Este importe se incorporará al balance que posee en su cuenta.&lt;/p>
 &lt;p>El retiro de plata será realizado por un sistema externo.&lt;/p>
 &lt;p>Además es posible abonar el pedido utilizando el &lt;strong>sistema de favores&lt;/strong>. Consultar sección &lt;em>Cadena de Favores&lt;/em> para más información&lt;/p>
 &lt;h4>Sistema de reputación&lt;span class="hx:absolute hx:-mt-20" id="sistema-de-reputación">&lt;/span>
-&lt;a href="#sistema-de-reputaci%c3%b3n" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>El sistema debe poseer un sistema de puntación en base del registro de actividades de los usuarios y deliveries. Esta puntación permitirá conocer que tan confiable es el usuario/delivery para el uso del sistema.&lt;/p>
+&lt;a href="#sistema-de-reputaci%c3%b3n" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>El sistema debe poseer un sistema de puntación en base del registro de actividades de los usuarios y deliveries. Esta puntación permitirá conocer que tan confiable es el usuario/delivery para el uso del sistema.&lt;/p>
 &lt;p>El sistema de puntación tendrá un puntaje dentro del rango &lt;code>1-5&lt;/code>&lt;/p>
 &lt;p>&lt;strong>Cadena de Favores&lt;/strong>&lt;/p>
 &lt;p>El sistema otorgará la posiblidad de marcar un envío como cadena de favores. El usuario que generá el pedido deberá indicar cuantos puntos de gratitud otorgará a la persona que se encargue de realizar el delivery del pedido. Para esto el usuario deberá tener la cantidad de puntos de gratitud suficientes en su cuenta.&lt;/p>
 &lt;p>El usuario luego podrá cambiar los puntos de gratitud para beneficios exclusivos; como por ejemplo envíos gratis.&lt;/p>
 &lt;h4>Suscripciones&lt;span class="hx:absolute hx:-mt-20" id="suscripciones">&lt;/span>
-&lt;a href="#suscripciones" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>El sistema debe permitir dos tipos de suscripción para los usuarios: &lt;code>flat&lt;/code> y &lt;code>premium&lt;/code>.&lt;/p>
+&lt;a href="#suscripciones" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>El sistema debe permitir dos tipos de suscripción para los usuarios: &lt;code>flat&lt;/code> y &lt;code>premium&lt;/code>.&lt;/p>
 &lt;p>La suscripción de tipo &lt;code>flat&lt;/code> es la suscripción por defecto que tendrá cada usuario en el momento de registrarse. El sistema debe permitir poder realizar un upgrade en su suscripción para poder pasar a usuario &lt;code>premium&lt;/code>. Esta suscripción le permitirá acceder a beneficios exclusivos y envíos grátis.&lt;/p>
 &lt;p>La suscripción tendrá un cargo fijo mensual. Para esto el usuario deberá ingresar una tarjeta de crédito.&lt;/p>
 &lt;p>&lt;em>Se asume que el cobró lo realizará un sistema externo.&lt;/em>&lt;/p>
 &lt;h5>Beneficios&lt;span class="hx:absolute hx:-mt-20" id="beneficios">&lt;/span>
-&lt;a href="#beneficios" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h5>&lt;p>A continuación se mencionan algunos beneficios a modo de ejemplo:&lt;/p>
+&lt;a href="#beneficios" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h5>&lt;p>A continuación se mencionan algunos beneficios a modo de ejemplo:&lt;/p>
 &lt;ul>
 &lt;li>5 envíos gratis por mes&lt;/li>
 &lt;li>25% de descuento los fines de semana&lt;/li>
 &lt;li>Cada X envíos se otorga un 10% de descuento para el próximo.&lt;/li>
 &lt;/ul>
 &lt;h4>Cotización de entrega&lt;span class="hx:absolute hx:-mt-20" id="cotización-de-entrega">&lt;/span>
-&lt;a href="#cotizaci%c3%b3n-de-entrega" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Debido a la necesidad de poder tener flexibilidad a la hora de establecer los precios para mantenerse competitivo. AppMaker© exige que el cálculo del precio sea realizado utilizando un sistema de reglas.&lt;/p>
+&lt;a href="#cotizaci%c3%b3n-de-entrega" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Debido a la necesidad de poder tener flexibilidad a la hora de establecer los precios para mantenerse competitivo. AppMaker© exige que el cálculo del precio sea realizado utilizando un sistema de reglas.&lt;/p>
 &lt;p>El servidor deberá permitir la modificación y guardado de las mismas manteniendo un registro de cambios. Además, deberá permitir al usuario hacer pruebas con las reglas escritas previo a quedar efectivas en la cotización de las entregas.&lt;/p>
 &lt;p>Para el sistema de reglas, se sugiere la utilización de alguno de los siguientes motores:&lt;/p>
 &lt;ul>
@@ -1699,58 +1710,58 @@ Esta elección será responsabilidad del grupo y la misma deberá estar justific
 &lt;/li>
 &lt;/ul>
 &lt;h4>Interfaz WEB&lt;span class="hx:absolute hx:-mt-20" id="interfaz-web">&lt;/span>
-&lt;a href="#interfaz-web" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>La interfaz WEB deberá brindar una GUI que permita la administración de datos.&lt;/p>
+&lt;a href="#interfaz-web" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>La interfaz WEB deberá brindar una GUI que permita la administración de datos.&lt;/p>
 &lt;h5>Login&lt;span class="hx:absolute hx:-mt-20" id="login">&lt;/span>
-&lt;a href="#login" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h5>&lt;p>La interfaz WEB deberá solicitar usuario y contraseña para acceder a la administración de datos. Estos usuarios serán de uso exclusivo para la interfaz WEB.&lt;/p>
+&lt;a href="#login" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h5>&lt;p>La interfaz WEB deberá solicitar usuario y contraseña para acceder a la administración de datos. Estos usuarios serán de uso exclusivo para la interfaz WEB.&lt;/p>
 &lt;h5>Administración de usuarios&lt;span class="hx:absolute hx:-mt-20" id="administración-de-usuarios">&lt;/span>
-&lt;a href="#administraci%c3%b3n-de-usuarios" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h5>&lt;p>La interfaz WEB debe permitir la administración de usuarios/deliveries.&lt;/p>
+&lt;a href="#administraci%c3%b3n-de-usuarios" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h5>&lt;p>La interfaz WEB debe permitir la administración de usuarios/deliveries.&lt;/p>
 &lt;h5>Visualización de estadísticas&lt;span class="hx:absolute hx:-mt-20" id="visualización-de-estadísticas">&lt;/span>
-&lt;a href="#visualizaci%c3%b3n-de-estad%c3%adsticas" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h5>&lt;p>La interfaz WEB debe mostrar gráficos de actividad de los usuarios dentro del sistema. Se deberán visualizar al menos las siguientes estadísticas:&lt;/p>
+&lt;a href="#visualizaci%c3%b3n-de-estad%c3%adsticas" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h5>&lt;p>La interfaz WEB debe mostrar gráficos de actividad de los usuarios dentro del sistema. Se deberán visualizar al menos las siguientes estadísticas:&lt;/p>
 &lt;ul>
 &lt;li>Cantidad de usuarios registrados&lt;/li>
 &lt;li>Cantidad de pedidos entregados&lt;/li>
 &lt;li>Cantidad de pedidos cancelados&lt;/li>
 &lt;/ul>
 &lt;h5>Administración de balances&lt;span class="hx:absolute hx:-mt-20" id="administración-de-balances">&lt;/span>
-&lt;a href="#administraci%c3%b3n-de-balances" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h5>&lt;p>La interfaz WEB debe permitir administrar los balances de los usuarios de tipo &lt;code>delivery&lt;/code>. Esto servirá para que un administrador actualicé el balance en caso de que un delivery haya cobrado el importe correspondiente a los pedidos realizados.&lt;/p>
+&lt;a href="#administraci%c3%b3n-de-balances" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h5>&lt;p>La interfaz WEB debe permitir administrar los balances de los usuarios de tipo &lt;code>delivery&lt;/code>. Esto servirá para que un administrador actualicé el balance en caso de que un delivery haya cobrado el importe correspondiente a los pedidos realizados.&lt;/p>
 &lt;h5>Administración de suscripciones&lt;span class="hx:absolute hx:-mt-20" id="administración-de-suscripciones">&lt;/span>
-&lt;a href="#administraci%c3%b3n-de-suscripciones" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h5>&lt;p>La interfaz WEB debe permitir administrar las suscripciones de los usuarios. Esto servirá para actualizar el estado de una suscripción. Por ejemplo, cancelar una suscripción de tipo &lt;code>premium&lt;/code> por falta de pago.&lt;/p>
+&lt;a href="#administraci%c3%b3n-de-suscripciones" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h5>&lt;p>La interfaz WEB debe permitir administrar las suscripciones de los usuarios. Esto servirá para actualizar el estado de una suscripción. Por ejemplo, cancelar una suscripción de tipo &lt;code>premium&lt;/code> por falta de pago.&lt;/p>
 &lt;h3>Android Client&lt;span class="hx:absolute hx:-mt-20" id="android-client">&lt;/span>
-&lt;a href="#android-client" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Este cliente se comunicará únicamente con un &lt;a href="#application-server">Application Server&lt;/a>. A continuación se dará una breve descripción de las funcionalidades esperadas para la aplicación Android. Se deberá validar con el ayudante asignado el alcance de las mismas.&lt;/p>
+&lt;a href="#android-client" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Este cliente se comunicará únicamente con un &lt;a href="#application-server">Application Server&lt;/a>. A continuación se dará una breve descripción de las funcionalidades esperadas para la aplicación Android. Se deberá validar con el ayudante asignado el alcance de las mismas.&lt;/p>
 &lt;h4>Registro&lt;span class="hx:absolute hx:-mt-20" id="registro">&lt;/span>
-&lt;a href="#registro" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>En caso de que la persona que desee utilizar la aplicación no tenga un usuario registrado la aplicación debe permitir poder registrar un usuario nuevo. Este registro deberá poder ser integrado con Facebook/Gmail, permitiendo ingresar las credenciales de facebook/gmail y utilizar los datos asociados de la cuenta para completar el registro del usuario dentro del sistema.&lt;/p>
+&lt;a href="#registro" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>En caso de que la persona que desee utilizar la aplicación no tenga un usuario registrado la aplicación debe permitir poder registrar un usuario nuevo. Este registro deberá poder ser integrado con Facebook/Gmail, permitiendo ingresar las credenciales de facebook/gmail y utilizar los datos asociados de la cuenta para completar el registro del usuario dentro del sistema.&lt;/p>
 &lt;h4>Autenticación&lt;span class="hx:absolute hx:-mt-20" id="autenticación">&lt;/span>
-&lt;a href="#autenticaci%c3%b3n" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Para que el cliente pueda enviar y recibir conversaciones el mismo debe autentificarse con el servidor. Para esto el cliente debe permitir al usuario ingresar usuario y contraseña. Se deberá diseñar una pantalla de ingreso a la aplicación.
+&lt;a href="#autenticaci%c3%b3n" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Para que el cliente pueda enviar y recibir conversaciones el mismo debe autentificarse con el servidor. Para esto el cliente debe permitir al usuario ingresar usuario y contraseña. Se deberá diseñar una pantalla de ingreso a la aplicación.
 Cuando la autenticación es exitosa, se almacenará un token de autenticación para realizar las operaciones con el servidor.&lt;/p>
 &lt;h4>Perfil de usuario&lt;span class="hx:absolute hx:-mt-20" id="perfil-de-usuario">&lt;/span>
-&lt;a href="#perfil-de-usuario" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Los usuarios podrán visualizar su perfil o el de otros usuarios. El perfil tendrá los datos del usuario y sus actividades dentro del sistema. Dentro de las actividades se deberá mostrar estadísticas del usuario (organizaciones a la que pertenece, cantidad de mensajes enviados).&lt;/p>
+&lt;a href="#perfil-de-usuario" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Los usuarios podrán visualizar su perfil o el de otros usuarios. El perfil tendrá los datos del usuario y sus actividades dentro del sistema. Dentro de las actividades se deberá mostrar estadísticas del usuario (organizaciones a la que pertenece, cantidad de mensajes enviados).&lt;/p>
 &lt;h4>Seguimiento del pedido&lt;span class="hx:absolute hx:-mt-20" id="seguimiento-del-pedido">&lt;/span>
-&lt;a href="#seguimiento-del-pedido" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>La aplicación debe permitir conocer la ubicación del delivery y el tiempo estimado de entrega del mismo. Para el seguimiento del pedido se deberá mostrar un mapa con la &lt;code>ubicación&lt;/code> del delivery y el &lt;code>tiempo estimado&lt;/code> de envío.&lt;/p>
+&lt;a href="#seguimiento-del-pedido" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>La aplicación debe permitir conocer la ubicación del delivery y el tiempo estimado de entrega del mismo. Para el seguimiento del pedido se deberá mostrar un mapa con la &lt;code>ubicación&lt;/code> del delivery y el &lt;code>tiempo estimado&lt;/code> de envío.&lt;/p>
 &lt;p>####Realización pedido&lt;/p>
 &lt;p>La aplicación debe permitir realizar un pedido indicando la fecha, el origen y el destino del mismo. Una vez indicado los datos del pedido, se deberá mostrar un mapa con los deliveries disponibles. El sistema asignará uno de forma automática mostrando la reputación y la posibilidad de confirmar o buscar otro delivery disponible.&lt;/p>
 &lt;h4>Consulta de favores&lt;span class="hx:absolute hx:-mt-20" id="consulta-de-favores">&lt;/span>
-&lt;a href="#consulta-de-favores" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>La aplicación deberá permitir listar los pedidos marcados como favores que publicaron los demás usuarios. No es necesario ser un usuario de delivery para poder realizar estos pedidos.&lt;/p>
+&lt;a href="#consulta-de-favores" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>La aplicación deberá permitir listar los pedidos marcados como favores que publicaron los demás usuarios. No es necesario ser un usuario de delivery para poder realizar estos pedidos.&lt;/p>
 &lt;p>Consultar sección &lt;em>Cadena de Favores&lt;/em> para más información&lt;/p>
 &lt;h4>Chat Usuario-Delivery&lt;span class="hx:absolute hx:-mt-20" id="chat-usuario-delivery">&lt;/span>
-&lt;a href="#chat-usuario-delivery" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Después que un delivery haya aceptado el pedido, se habilitará un chat entre ellos. Esta función esta destinada a subsanar el error del GPS a la hora de ubicar correctamente el pedido. Se recomienda la utilización de &lt;a href="https://firebase.google.com/docs/cloud-messaging/?hl=es-419"target="_blank" rel="noopener">Firebase Cloud Messaging&lt;/a> o algún servicio similar para la administración de mensajes en tiempo real.&lt;/p>
+&lt;a href="#chat-usuario-delivery" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Después que un delivery haya aceptado el pedido, se habilitará un chat entre ellos. Esta función esta destinada a subsanar el error del GPS a la hora de ubicar correctamente el pedido. Se recomienda la utilización de &lt;a href="https://firebase.google.com/docs/cloud-messaging/?hl=es-419"target="_blank" rel="noopener">Firebase Cloud Messaging&lt;/a> o algún servicio similar para la administración de mensajes en tiempo real.&lt;/p>
 &lt;h4>Interfaz gráfica&lt;span class="hx:absolute hx:-mt-20" id="interfaz-gráfica">&lt;/span>
-&lt;a href="#interfaz-gr%c3%a1fica" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Para el diseño de la interfaz deben respetarse las &lt;a href="https://www.google.com/design/spec/material-design/introduction.html"target="_blank" rel="noopener">guías de diseño propuestas por Google&lt;/a>.&lt;/p>
+&lt;a href="#interfaz-gr%c3%a1fica" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Para el diseño de la interfaz deben respetarse las &lt;a href="https://www.google.com/design/spec/material-design/introduction.html"target="_blank" rel="noopener">guías de diseño propuestas por Google&lt;/a>.&lt;/p>
 &lt;h4>Notificaciónes &lt;em>Push&lt;/em>&lt;span class="hx:absolute hx:-mt-20" id="notificaciónes-push">&lt;/span>
-&lt;a href="#notificaci%c3%b3nes-push" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Para el envío y recepción de notificaciones del sistema (ej. mensajes de Chat, cambios de estado de la compra) se deberá utilizar el servicio de notificaciones push de &lt;a href="https://firebase.google.com/products/cloud-messaging/"target="_blank" rel="noopener">FCM&lt;/a>&lt;/p>
+&lt;a href="#notificaci%c3%b3nes-push" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Para el envío y recepción de notificaciones del sistema (ej. mensajes de Chat, cambios de estado de la compra) se deberá utilizar el servicio de notificaciones push de &lt;a href="https://firebase.google.com/products/cloud-messaging/"target="_blank" rel="noopener">FCM&lt;/a>&lt;/p>
 &lt;h2>Tecnologias&lt;span class="hx:absolute hx:-mt-20" id="tecnologias">&lt;/span>
-&lt;a href="#tecnologias" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>Para el desarrollo del &lt;em>Application Server&lt;/em> se podrá utilizar &lt;strong>Python&lt;/strong> o &lt;strong>NodeJS&lt;/strong> y &lt;strong>PostgreSQL&lt;/strong> y/o &lt;strong>MongoDB&lt;/strong> como motor de base de datos.&lt;/p>
+&lt;a href="#tecnologias" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;p>Para el desarrollo del &lt;em>Application Server&lt;/em> se podrá utilizar &lt;strong>Python&lt;/strong> o &lt;strong>NodeJS&lt;/strong> y &lt;strong>PostgreSQL&lt;/strong> y/o &lt;strong>MongoDB&lt;/strong> como motor de base de datos.&lt;/p>
 &lt;p>Esta elección será responsabilidad del grupo y la misma deberá estar justificada en la documentación técnica que formará parte del TP.&lt;/p>
 &lt;h3>Empaquetamiento&lt;span class="hx:absolute hx:-mt-20" id="empaquetamiento">&lt;/span>
-&lt;a href="#empaquetamiento" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Cada uno de los desarrollos solicitados debe empaquetarse según el estandar de la plataforma, es decir:&lt;/p>
+&lt;a href="#empaquetamiento" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Cada uno de los desarrollos solicitados debe empaquetarse según el estandar de la plataforma, es decir:&lt;/p>
 &lt;ul>
 &lt;li>&lt;em>Application Server&lt;/em>: Python Setuptools (&lt;code>setup.py&lt;/code> y &lt;code>requeriments.txt&lt;/code>) ó Node Package Manager (&lt;code>npm&lt;/code>, &lt;code>package.json&lt;/code>), Yarn Package Manager(&lt;a href="https://yarnpkg.com/lang/en/%29"target="_blank" rel="noopener">https://yarnpkg.com/lang/en/)&lt;/a>. Según corresponda&lt;/li>
 &lt;li>&lt;em>Android Client&lt;/em>: Android Application Package (&lt;code>apk&lt;/code>)&lt;/li>
 &lt;/ul>
 &lt;p>Además, el servidor deberá traer un &lt;code>Dockerfile&lt;/code> que permita correrlos sin necesidad de tener instalado los respectivos lenguajes.&lt;/p>
 &lt;h3>Despliegue en la Nube&lt;span class="hx:absolute hx:-mt-20" id="despliegue-en-la-nube">&lt;/span>
-&lt;a href="#despliegue-en-la-nube" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>El &lt;a href="#application-server">Application Server&lt;/a>, se deberán disponibilizar en la nube utilizando una plataforma como servicio (&lt;em>PAAS&lt;/em>). Se recomienda usar &lt;a href="https://www.heroku.com/"target="_blank" rel="noopener">Heroku&lt;/a> ya que cuenta con todos los requerimientos tecnológicos pedidos anteriormente.&lt;/p>
+&lt;a href="#despliegue-en-la-nube" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>El &lt;a href="#application-server">Application Server&lt;/a>, se deberán disponibilizar en la nube utilizando una plataforma como servicio (&lt;em>PAAS&lt;/em>). Se recomienda usar &lt;a href="https://www.heroku.com/"target="_blank" rel="noopener">Heroku&lt;/a> ya que cuenta con todos los requerimientos tecnológicos pedidos anteriormente.&lt;/p>
 &lt;h3>Log&lt;span class="hx:absolute hx:-mt-20" id="log">&lt;/span>
-&lt;a href="#log" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Los servidores deben contar con un sistema de log en donde se registren los eventos que se generen durante la ejecución. El sistema de log debe permitir configurar el nivel de los eventos que desean registrar. Estos niveles son:&lt;/p>
+&lt;a href="#log" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Los servidores deben contar con un sistema de log en donde se registren los eventos que se generen durante la ejecución. El sistema de log debe permitir configurar el nivel de los eventos que desean registrar. Estos niveles son:&lt;/p>
 &lt;table>
 &lt;thead>
 &lt;tr>
@@ -1780,7 +1791,7 @@ Cuando la autenticación es exitosa, se almacenará un token de autenticación p
 &lt;p>Es necesario recalcar que para que un log sea útil, debe poder ser accedido.&lt;/p>
 &lt;p>El cliente Android deberá utilizar el &lt;a href="http://developer.android.com/intl/es/reference/android/util/Log.html"target="_blank" rel="noopener">sistema de log por defecto&lt;/a>&lt;/p>
 &lt;h3>Pruebas y Métricas&lt;span class="hx:absolute hx:-mt-20" id="pruebas-y-métricas">&lt;/span>
-&lt;a href="#pruebas-y-m%c3%a9tricas" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>El desarrollo de la aplicación se deberá adaptar a los estándares de calidad utilizados por AppMaker©. Dentro de estos estándares se encuentran:&lt;/p>
+&lt;a href="#pruebas-y-m%c3%a9tricas" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>El desarrollo de la aplicación se deberá adaptar a los estándares de calidad utilizados por AppMaker©. Dentro de estos estándares se encuentran:&lt;/p>
 &lt;ul>
 &lt;li>Pruebas unitarias [2]&lt;/li>
 &lt;li>Métricas: code coverage debe ser mayor a 75% [3]&lt;/li>
@@ -1790,7 +1801,7 @@ Cuando la autenticación es exitosa, se almacenará un token de autenticación p
 &lt;/ul>
 &lt;p>&lt;strong>Nota:&lt;/strong> Esta sección hace solo referencía al &lt;em>Application server&lt;/em>. No se toma como requerimiento el realizar pruebas sobre el cliente Android.&lt;/p>
 &lt;h3>Integración continua / Despligue continuo&lt;span class="hx:absolute hx:-mt-20" id="integración-continua--despligue-continuo">&lt;/span>
-&lt;a href="#integraci%c3%b3n-continua--despligue-continuo" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Las pruebas y métricas anteriormente mencionadas deberan correr bajo una plataforma de integración continua. Se sugiere el uso de &lt;a href="https://travis-ci.org/"target="_blank" rel="noopener">TravisCI&lt;/a>, pero se podrá utilizar otro previa justificación.&lt;/p>
+&lt;a href="#integraci%c3%b3n-continua--despligue-continuo" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Las pruebas y métricas anteriormente mencionadas deberan correr bajo una plataforma de integración continua. Se sugiere el uso de &lt;a href="https://travis-ci.org/"target="_blank" rel="noopener">TravisCI&lt;/a>, pero se podrá utilizar otro previa justificación.&lt;/p>
 &lt;p>El resultado del &lt;em>code coverage&lt;/em> debe ser desplegado automáticamente a una plataforma que permita visualizarlas, entre muchas posibilidades se encuentran:&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="https://coveralls.io/"target="_blank" rel="noopener">Coveralls&lt;/a>&lt;/li>
@@ -1799,7 +1810,7 @@ Cuando la autenticación es exitosa, se almacenará un token de autenticación p
 &lt;/ul>
 &lt;p>Finalmente, el despliegue al servidor de &lt;em>PAAS&lt;/em> elegido deberá ser automático. Este deberá tener en cuenta como la actualización de la base de datos (cambios en las tablas, etc). El mecanismo utilizado para disparar dicho despliegue (utilizar el branch &lt;em>master&lt;/em> como productivo, utilizar un tags con nombre especial) será definido por los desarrolladores y deberá ser detallado en la documentación.&lt;/p>
 &lt;h3>Documentación&lt;span class="hx:absolute hx:-mt-20" id="documentación">&lt;/span>
-&lt;a href="#documentaci%c3%b3n" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Se deberá entregar la siguiente documentación:&lt;/p>
+&lt;a href="#documentaci%c3%b3n" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Se deberá entregar la siguiente documentación:&lt;/p>
 &lt;ul>
 &lt;li>Application Server:&lt;/li>
 &lt;li>Manual de administrador: Instalación y configuración&lt;/li>
@@ -1811,7 +1822,7 @@ Cuando la autenticación es exitosa, se almacenará un token de autenticación p
 &lt;/ul>
 &lt;p>Se espera que dicha documentación se elabore de manera incremental y que cada entrega parcial tenga parte de la misma.&lt;/p>
 &lt;h2>Instancias de entrega&lt;span class="hx:absolute hx:-mt-20" id="instancias-de-entrega">&lt;/span>
-&lt;a href="#instancias-de-entrega" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;table>
+&lt;a href="#instancias-de-entrega" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;table>
 &lt;thead>
 &lt;tr>
 &lt;th>Instancia&lt;/th>
@@ -1838,9 +1849,9 @@ Cuando la autenticación es exitosa, se almacenará un token de autenticación p
 &lt;/tbody>
 &lt;/table>
 &lt;h3>Criterios de Aceptación&lt;span class="hx:absolute hx:-mt-20" id="criterios-de-aceptación">&lt;/span>
-&lt;a href="#criterios-de-aceptaci%c3%b3n" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>En cada checkpoint se deberá acordar el alcance de la entrega con cada ayudante.&lt;/p>
+&lt;a href="#criterios-de-aceptaci%c3%b3n" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>En cada checkpoint se deberá acordar el alcance de la entrega con cada ayudante.&lt;/p>
 &lt;h2>Referencias&lt;span class="hx:absolute hx:-mt-20" id="referencias">&lt;/span>
-&lt;a href="#referencias" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;ol>
+&lt;a href="#referencias" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;ol>
 &lt;li>&lt;a href="http://en.wikipedia.org/wiki/Representational_state_transfer"target="_blank" rel="noopener">REST&lt;/a>&lt;/li>
 &lt;li>&lt;a href="http://en.wikipedia.org/wiki/Unit_testing"target="_blank" rel="noopener">Unit Test&lt;/a>&lt;/li>
 &lt;li>&lt;a href="http://en.wikipedia.org/wiki/Code_coverage"target="_blank" rel="noopener">Code Coverage&lt;/a>&lt;/li>
