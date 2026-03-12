@@ -1,6 +1,6 @@
 ---
 
-title: "Historias obligatorias/optativas"
+title: "20252C - Planificación"
 ---
 
 
