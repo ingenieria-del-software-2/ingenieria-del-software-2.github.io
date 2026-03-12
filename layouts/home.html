@@ -71,11 +71,11 @@
 <body class="bg-engineering relative selection:bg-slate-200 selection:text-slate-900 dark:text-slate-200 dark:selection:bg-slate-700 dark:selection:text-white">
 
     <!-- Hero Section -->
-    <section id="home-hero" class="relative min-h-[80svh] md:min-h-svh px-6 flex flex-col justify-center overflow-hidden pb-12">
+    <section id="home-hero" class="relative min-h-[80svh] md:min-h-svh px-6 flex flex-col justify-center overflow-hidden pb-12 pt-0">
         
         <div class="max-w-md md:max-w-4xl lg:max-w-6xl mx-auto w-full relative z-10 flex flex-col justify-center">
             <!-- Header (Always first) -->
-            <header class="flex flex-col items-start max-sm:pt-8 mb-10 md:mb-6 lg:mb-8">
+            <header class="flex flex-col items-start pt-8 md:pt-0 mb-10 md:mb-6 lg:mb-8">
                 <div class="mb-4 md:mb-6 flex items-center gap-4 self-start hero-animate hero-animate-delay-1">
                     <span class="px-2 py-0.5 border border-slate-400 dark:border-white text-[10px] md:text-[11px] font-sans text-slate-800 dark:text-slate-950 uppercase tracking-widest bg-white dark:bg-white font-medium transition-colors">FIUBA</span>
                     <span class="h-px w-10 bg-slate-300 dark:bg-slate-700"></span>
@@ -90,7 +90,7 @@
             </header>
             
             <!-- Dashboard Grid Layout -->
-            <div class="flex flex-col md:grid md:grid-cols-12 gap-x-10 lg:gap-x-16 pt-0 md:pt-8">
+            <div class="flex flex-col md:grid md:grid-cols-12 gap-x-10 lg:gap-x-16 pt-0 md:pt-4">
                 
                 <!-- 1. Timeline: Desktop (Border Below, Order 1) | Mobile (No Borders, Order 2) -->
                 <figure id="main-timeline" class="order-2 md:order-1 md:col-span-12 w-full select-none relative mb-12 md:mb-16 md:pb-16 md:border-b md:border-slate-100/80 dark:md:border-slate-800 invisible" aria-label="Línea de tiempo del curso">
@@ -179,29 +179,18 @@
                         Esta es la página web de la materia de la Facultad de Ingeniería de la Universidad de Buenos Aires.
                     </p>
                     
-                    {{ $inscripcionURL := .Site.Params.inscripcion.url | default "" }}
-                    {{ if and $inscripcionURL (not (hasPrefix $inscripcionURL "http")) }}
-                        {{ $inscripcionURL = printf "https://%s" $inscripcionURL }}
-                    {{ end }}
-                    <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-                        <a href="{{ "/material" | relURL }}" class="group flex items-center justify-center gap-3 px-8 py-3.5 border border-slate-900 dark:border-slate-200 text-slate-900 dark:text-slate-200 hover:bg-slate-900 dark:hover:bg-slate-200 hover:text-white dark:hover:text-slate-900 transition-all w-full sm:w-auto active:translate-y-0.5 min-w-[180px]">
-                            <svg class="w-[18px] h-[18px] fill-current" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
-                            <span class="font-sans font-medium text-[11px] tracking-[0.2em] whitespace-nowrap">PROGRAMA</span>
+                    <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mt-2">
+                        <!-- Programa (Principal) -->
+                        <a href="{{ "/material" | relURL }}" class="group flex items-center justify-center gap-3 px-6 py-3.5 bg-slate-900 dark:bg-slate-100 border border-slate-900 dark:border-slate-100 text-white dark:text-slate-950 hover:bg-slate-800 dark:hover:bg-white transition-all w-full sm:w-[220px] md:w-[260px] active:translate-y-0.5 shadow-sm">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg>
+                            <span class="font-sans font-medium text-[11px] tracking-[0.2em] whitespace-nowrap uppercase">Programa</span>
                         </a>
-                        
-                        <div class="flex flex-col gap-2 w-full sm:w-auto">
-                            {{ if $inscripcionURL }}
-                            <a href="{{ $inscripcionURL | safeURL }}" target="_blank" rel="noopener noreferrer" class="group relative px-8 py-3.5 bg-slate-900 dark:bg-slate-100 border border-slate-900 dark:border-slate-100 text-white dark:text-slate-950 hover:bg-slate-800 dark:hover:bg-white hover:border-slate-800 dark:hover:border-white flex items-center justify-center gap-3 w-full sm:w-auto transition-all active:translate-y-0.5 min-w-[180px] shadow-sm dark:shadow-[0_8px_24px_-14px_rgba(255,255,255,0.55)]">
-                                <svg class="w-4 h-4 text-slate-100 dark:text-slate-950 group-hover:text-white dark:group-hover:text-slate-950 fill-current" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
-                                <span class="font-sans font-medium text-[11px] tracking-[0.2em] whitespace-nowrap">INSCRIPCIÓN</span>
-                            </a>
-                            {{ else }}
-                            <button class="group relative px-8 py-3.5 bg-[repeating-linear-gradient(45deg,rgba(255,255,255,0.6),rgba(255,255,255,0.6)_10px,rgba(241,245,249,0.8)_10px,rgba(241,245,249,0.8)_20px)] dark:bg-[repeating-linear-gradient(45deg,rgba(51,65,85,0.92),rgba(51,65,85,0.92)_10px,rgba(71,85,105,0.92)_10px,rgba(71,85,105,0.92)_20px)] border border-slate-200 dark:border-slate-500 text-slate-400 dark:text-slate-200 cursor-not-allowed flex items-center justify-center gap-3 w-full sm:w-auto transition-colors min-w-[180px] opacity-70 dark:opacity-95 dark:shadow-[inset_0_0_0_1px_rgba(255,255,255,0.06)]" disabled>
-                                <svg class="w-4 h-4 text-slate-400 dark:text-slate-200 fill-current" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-                                <span class="font-sans font-medium text-[11px] tracking-[0.2em] whitespace-nowrap">INSCRIPCIÓN</span>
-                            </button>
-                            {{ end }}
-                        </div>
+
+                        <!-- Trabajos Prácticos (Secundario) -->
+                        <a href="{{ "/tps" | relURL }}" class="group flex items-center justify-center gap-3 px-6 py-3.5 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-900 dark:hover:text-slate-200 transition-all w-full sm:w-[220px] md:w-[260px] active:translate-y-0.5">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>
+                            <span class="font-sans font-medium text-[11px] tracking-[0.2em] whitespace-nowrap uppercase">Trabajos Prácticos</span>
+                        </a>
                     </div>
                 </section>
             </div>
