@@ -189,3 +189,113 @@ body:has(#home-hero) .hextra-nav-container .hextra-max-navbar-width > a[href="/"
     background-color: #ffffff !important;
     border-top-color: #f1f5f9 !important; /* slate-100 */
 }
+
+/* Page Context Menu - Elegant & Subtle */
+.hextra-page-context-menu > div {
+    border-radius: 8px !important;
+    border: 1px solid #f1f5f9 !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    transition: all 0.2s ease !important;
+}
+
+.hextra-page-context-menu:hover > div {
+    border-color: #e2e8f0 !important;
+    background-color: #f8fafc !important;
+}
+
+.dark .hextra-page-context-menu > div {
+    border-color: rgba(255, 255, 255, 0.05) !important;
+    background-color: transparent !important;
+}
+
+.dark .hextra-page-context-menu:hover > div {
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    background-color: rgba(255, 255, 255, 0.02) !important;
+}
+
+.hextra-page-context-menu-copy {
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    color: var(--color-text-muted) !important;
+    padding: 6px 8px !important; 
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important; /* Más lento y progresivo */
+    display: flex !important;
+    align-items: center !important;
+}
+
+.hextra-page-context-menu:hover .hextra-page-context-menu-copy {
+    padding: 6px 4px 6px 12px !important; 
+}
+
+.hextra-page-context-menu-copy span {
+    max-width: 0;
+    opacity: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important; /* Sincronizado a 0.8s */
+    display: inline-block;
+}
+
+.hextra-page-context-menu:hover .hextra-page-context-menu-copy span {
+    max-width: 100px; /* Ajuste para que quepa el texto */
+    opacity: 1;
+    margin-left: 8px;
+}
+
+.hextra-page-context-menu-toggle {
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    color: var(--color-text-muted) !important;
+    padding: 6px 8px 6px 4px !important;
+    transition: all 0.2s ease !important;
+}
+
+.hextra-page-context-menu-copy:hover, .hextra-page-context-menu-toggle:hover {
+    color: var(--color-text-main) !important;
+}
+
+.dark .hextra-page-context-menu-copy:hover, .dark .hextra-page-context-menu-toggle:hover {
+    color: #f8fafc !important;
+}
+
+.hextra-page-context-menu-dropdown {
+    border-radius: 8px !important;
+    border: 1px solid #e2e8f0 !important;
+    background-color: #ffffff !important;
+    padding: 4px !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02) !important; /* Sombra mínima casi imperceptible */
+    margin-top: 4px !important;
+}
+
+.dark .hextra-page-context-menu-dropdown {
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    background-color: #020617 !important;
+    box-shadow: none !important;
+}
+
+.hextra-page-context-menu-dropdown button, 
+.hextra-page-context-menu-dropdown a {
+    border-radius: 6px !important;
+    padding: 7px 10px !important;
+    font-size: 11px !important;
+    color: var(--color-text-muted) !important;
+    transition: all 0.15s ease !important;
+}
+
+.hextra-page-context-menu-dropdown button:hover, 
+.hextra-page-context-menu-dropdown a:hover {
+    background-color: #f1f5f9 !important;
+    color: var(--color-accent) !important;
+}
+
+.dark .hextra-page-context-menu-dropdown button:hover, 
+.dark .hextra-page-context-menu-dropdown a:hover {
+    background-color: rgba(56, 189, 248, 0.08) !important;
+    color: var(--color-accent) !important;
+}
+
+/* Iconos sutiles */
+.hextra-page-context-menu .hx\:size-4 {
+    opacity: 0.6;
+}

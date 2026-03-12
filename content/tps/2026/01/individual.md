@@ -17,7 +17,7 @@ Si surge cualquier pregunta sobre los requerimientos o el alcance, podés consul
 
 La entrega del proyecto se realizará mediante un repositorio privado en GitHub. Cada candidato deberá crear su propio repositorio y agregar a su corrector como colaborador para que pueda ser evaluado. Se recomienda iniciar tempranamente y hacer commits pequeños que agreguen funcionalidad incrementalmente. No se evaluará ningún commit realizado luego de la fecha y hora límite de entrega.
 
-⚠️ **Aviso importante:** Si durante la revisión de tu entrega surge alguna duda o inconsistencia, el equipo docente podrá solicitar una breve defensa oral a través de una reunión virtual (Google Meet u otra plataforma similar).
+**Aviso importante:** Si durante la revisión de tu entrega surge alguna duda o inconsistencia, el equipo docente podrá solicitar una breve defensa oral a través de una reunión virtual (Google Meet u otra plataforma similar).
 
 El repositorio debe incluir un archivo `README.md` (en español) con:
 

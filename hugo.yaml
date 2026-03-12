@@ -40,6 +40,19 @@ build:
     - source: '(postcss|tailwind)\.config\.js'
       target: css
 
+outputs:
+  page: [html, markdown]
+  section: [html, rss, markdown]
+
+mediaTypes:
+  "text/markdown":
+    suffixes: ["md"]
+
+outputFormats:
+  markdown:
+    mediaType: "text/markdown"
+    isPlainText: true
+
 menu:
   main:
     - name: "Docentes"
@@ -81,6 +94,10 @@ params:
   navbar:
     displayTitle: true
     displayLogo: false
+
+  page:
+    contextMenu:
+      enable: true
 
   search:
     enable: false
