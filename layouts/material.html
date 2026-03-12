@@ -177,33 +177,35 @@
       <main
         class="col-span-1 lg:col-span-9 xl:col-span-10 px-4 md:px-6 lg:px-10 md:pt-8 md:h-[calc(100dvh-7rem)] md:min-h-0 md:overflow-hidden md:flex md:flex-col"
       >
-        <!-- Mobile YouTube Channel Block -->
-        {{ with .Site.Data.material.youtube_channel }}
-        <div class="lg:hidden mt-4 md:mt-0 mb-6 pb-5 border-b border-gray-100 dark:border-slate-800 md:shrink-0">
-            <a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-3.5 px-4 py-3.5 w-full border-l-2 border-red-500 bg-gray-50/80 dark:bg-slate-800/50 hover:bg-red-50/80 dark:hover:bg-red-950/30 transition-colors">
-                <svg class="w-6 h-6 text-red-600 dark:text-red-500 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M21.582 6.186a2.6 2.6 0 0 0-1.838-1.839C18.125 3.9 12 3.9 12 3.9s-6.125 0-7.744.447A2.6 2.6 0 0 0 2.418 6.186C2 7.805 2 12 2 12s0 4.195.418 5.814a2.6 2.6 0 0 0 1.838 1.839C5.875 20.1 12 20.1 12 20.1s6.125 0 7.744-.447a2.6 2.6 0 0 0 1.838-1.839C22 16.195 22 12 22 12s0-4.195-.418-5.814zM10 15.464V8.536L16 12l-6 3.464z"/></svg>
-                <div class="flex-1 flex flex-col min-w-0">
-                    <span class="font-sans text-[13px] font-semibold uppercase tracking-tight text-slate-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">Canal de YouTube</span>
-                    <span class="text-[11px] text-text-muted dark:text-slate-400 truncate">Clases y material audiovisual</span>
-                </div>
-                <svg class="w-4 h-4 text-slate-400 group-hover:text-red-500 shrink-0 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
-            </a>
-        </div>
-        {{ end }}
+        <!-- Mobile/Tablet Header Row -->
+        <div class="lg:hidden mt-4 md:mt-0 mb-6 border-b border-gray-100 dark:border-slate-800 md:shrink-0">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 pb-6">
+                {{ with .Site.Data.material.youtube_channel }}
+                <a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-4 px-4 py-3.5 w-full md:w-auto md:min-w-[320px] border-l-2 md:border-l-4 border-red-500 bg-gray-50/80 dark:bg-slate-800/50 hover:bg-red-50/80 dark:hover:bg-red-950/30 transition-all">
+                    <div class="relative flex shrink-0 items-center justify-center">
+                        <svg class="w-6 h-6 md:w-7 md:h-7 text-red-600 dark:text-red-500 transition-transform group-hover:scale-110" viewBox="0 0 24 24" fill="currentColor"><path d="M21.582 6.186a2.6 2.6 0 0 0-1.838-1.839C18.125 3.9 12 3.9 12 3.9s-6.125 0-7.744.447A2.6 2.6 0 0 0 2.418 6.186C2 7.805 2 12 2 12s0 4.195.418 5.814a2.6 2.6 0 0 0 1.838 1.839C5.875 20.1 12 20.1 12 20.1s6.125 0 7.744-.447a2.6 2.6 0 0 0 1.838-1.839C22 16.195 22 12 22 12s0-4.195-.418-5.814zM10 15.464V8.536L16 12l-6 3.464z"/></svg>
+                    </div>
+                    <div class="flex-1 flex flex-col min-w-0 ml-0.5">
+                        <span class="font-sans text-[13px] font-bold uppercase tracking-tight text-slate-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">Canal de YouTube</span>
+                        <span class="text-[11px] text-text-muted dark:text-slate-400 truncate font-medium">Clases y material audiovisual</span>
+                    </div>
+                    <svg class="w-4 h-4 text-slate-300 group-hover:text-red-500 shrink-0 group-hover:translate-x-1.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                </a>
+                {{ end }}
 
-        <!-- Mobile Quick Unit Selector -->
-        <div class="lg:hidden mt-0 md:mt-0 mb-6 pb-1 md:shrink-0">
-          <div class="flex flex-wrap gap-2">
-            {{ range $index, $section := .Site.Data.material.sections }}
-            <a
-              href="#desktop-section-{{ .id }}"
-              data-target="desktop-section-{{ .id }}"
-              onclick="switchDesktopSection('{{ .id }}'); return false;"
-              class="mobile-nav-item px-4 py-2 md:px-2.5 md:py-1 border text-[10px] font-sans font-medium uppercase tracking-widest rounded-full whitespace-nowrap transition-colors {{ if eq $index 0 }}bg-black dark:bg-white text-white dark:text-slate-900 border-black dark:border-white{{ else }}bg-white dark:bg-slate-900 text-text-muted dark:text-slate-300 border-gray-100 dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-800{{ end }}"
-              >{{ .id }}</a
-            >
-            {{ end }}
-          </div>
+                <!-- Mobile Quick Unit Selector -->
+                <div class="flex flex-wrap gap-2.5 md:justify-end">
+                    {{ range $index, $section := .Site.Data.material.sections }}
+                    <a
+                      href="#desktop-section-{{ .id }}"
+                      data-target="desktop-section-{{ .id }}"
+                      onclick="switchDesktopSection('{{ .id }}'); return false;"
+                      class="mobile-nav-item px-4 py-2 md:px-3 md:py-1.5 border text-[10px] font-sans font-bold uppercase tracking-widest rounded-full whitespace-nowrap transition-all {{ if eq $index 0 }}bg-black dark:bg-white text-white dark:text-slate-900 border-black dark:border-white{{ else }}bg-white dark:bg-slate-900 text-text-muted dark:text-slate-300 border-gray-100 dark:border-slate-700 hover:border-gray-300 dark:hover:border-slate-500 hover:bg-gray-50 dark:hover:bg-slate-800{{ end }}"
+                      >{{ .id }}</a
+                    >
+                    {{ end }}
+                </div>
+            </div>
         </div>
 
         <div class="md:flex-1 md:min-h-0">
