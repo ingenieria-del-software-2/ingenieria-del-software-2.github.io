@@ -14,8 +14,6 @@ Bazaar es el marketplace donde cualquier persona puede convertirse en vendedor e
 
 Detrás de esa simplicidad, Bazaar garantiza lo que importa: que cuando alguien paga, el producto esté disponible; que si el pago falla, no se cobre; que si dos personas quieren el último item, solo una se lo lleve. Confianza y consistencia, en cada transacción.
 
----
-
 ## Índice
 
 **1. Usuarios** — Gestión de cuentas: registro, acceso y recuperación.
@@ -99,7 +97,6 @@ Detrás de esa simplicidad, Bazaar garantiza lo que importa: que cuando alguien 
 
 # Historias de Usuario
 
-
 ## Épica: Usuarios
 
 ### Registro de usuarios
@@ -130,8 +127,6 @@ Detrás de esa simplicidad, Bazaar garantiza lo que importa: que cuando alguien 
   - Cuando intenta continuar con el registro
   - Entonces el sistema indica los requisitos y no permite continuar.
 
----
-
 ### Login con email y contraseña
 
 <!-- Status: Obligatoria -->
@@ -159,8 +154,6 @@ Detrás de esa simplicidad, Bazaar garantiza lo que importa: que cuando alguien 
   - Dado que un usuario tiene la sesión expirada
   - Cuando intenta realizar una acción autenticada
   - Entonces el sistema lo redirige al login y conserva la acción pendiente cuando sea posible.
-
----
 
 ### Recupero de contraseña
 
@@ -195,8 +188,6 @@ Detrás de esa simplicidad, Bazaar garantiza lo que importa: que cuando alguien 
   - Cuando intenta solicitar un nuevo recupero
   - Entonces el sistema limita la frecuencia de envío de emails para prevenir abuso.
 
----
-
 ### Login con proveedor federado
 
 <!-- Status: Optativa -->
@@ -219,8 +210,6 @@ Detrás de esa simplicidad, Bazaar garantiza lo que importa: que cuando alguien 
   - Dado que el proveedor de identidad externo no responde
   - Cuando un usuario intenta autenticarse a través de ese proveedor
   - Entonces el sistema informa el error y ofrece el login con email y contraseña como alternativa.
-
----
 
 ### Registro con PIN
 
@@ -250,8 +239,6 @@ Detrás de esa simplicidad, Bazaar garantiza lo que importa: que cuando alguien 
   - Cuando intenta usar su PIN desde un dispositivo diferente
   - Entonces el sistema no permite el acceso por PIN y requiere autenticación completa.
 
----
-
 ## Épica: Perfil
 
 ### Edición de perfil
@@ -277,8 +264,6 @@ Detrás de esa simplicidad, Bazaar garantiza lo que importa: que cuando alguien 
   - Cuando intenta guardarlos
   - Entonces el sistema indica los errores y no persiste los cambios.
 
----
-
 ### Visualización de perfil propio
 
 <!-- Status: Obligatoria -->
@@ -296,8 +281,6 @@ Detrás de esa simplicidad, Bazaar garantiza lo que importa: que cuando alguien 
   - Dado que un usuario está viendo su propio perfil
   - Cuando quiere editarlo
   - Entonces tiene acceso directo a la edición del mismo.
-
----
 
 ### Visualización de perfil público
 
@@ -322,8 +305,6 @@ Detrás de esa simplicidad, Bazaar garantiza lo que importa: que cuando alguien 
   - Cuando otro usuario intenta acceder a su perfil
   - Entonces el sistema indica que el perfil no está disponible.
 
----
-
 ### Compartir link de producto
 
 <!-- Status: Optativa -->
@@ -346,8 +327,6 @@ Detrás de esa simplicidad, Bazaar garantiza lo que importa: que cuando alguien 
   - Dado que el producto fue dado de baja o deshabilitado después de que el link fue compartido
   - Cuando alguien intenta abrirlo
   - Entonces el sistema muestra un mensaje indicando que el producto no está disponible.
-
----
 
 ## Épica: Catálogo
 
@@ -384,8 +363,6 @@ Detrás de esa simplicidad, Bazaar garantiza lo que importa: que cuando alguien 
   - Cuando accede a la home
   - Entonces puede ver los productos recientes y navegar el catálogo, pero las acciones que requieren autenticación (agregar al carrito, comprar) le solicitan iniciar sesión.
 
----
-
 ### Productos populares en home
 
 <!-- Status: Optativa -->
@@ -416,8 +393,6 @@ Los productos populares se determinan por volumen de ventas en los últimos 30 d
   - Cuando el sistema calcula los populares
   - Entonces ese producto no aparece en la sección, independientemente de su historial anterior.
 
----
-
 ### Listado y búsqueda de productos
 
 <!-- Status: Obligatoria -->
@@ -446,8 +421,6 @@ Los productos populares se determinan por volumen de ventas en los últimos 30 d
   - Cuando un usuario navega el catálogo o realiza una búsqueda
   - Entonces esos productos no aparecen en los resultados.
 
----
-
 ### Detalle de producto
 
 <!-- Status: Obligatoria -->
@@ -470,8 +443,6 @@ Los productos populares se determinan por volumen de ventas en los últimos 30 d
   - Dado que un producto fue deshabilitado por el vendedor o el administrador
   - Cuando un usuario intenta acceder al detalle de ese producto
   - Entonces el sistema muestra un mensaje indicando que el producto no está disponible.
-
----
 
 ### Filtros avanzados de búsqueda
 
@@ -501,8 +472,6 @@ Los productos populares se determinan por volumen de ventas en los últimos 30 d
   - Cuando los elimina
   - Entonces el catálogo vuelve a mostrar todos los productos disponibles sin restricciones.
 
----
-
 ### Ordenamiento de resultados
 
 <!-- Status: Optativa -->
@@ -525,8 +494,6 @@ Los productos populares se determinan por volumen de ventas en los últimos 30 d
   - Dado que un usuario navega el catálogo
   - Cuando no selecciona ningún criterio de orden
   - Entonces los productos se muestran ordenados por relevancia (coincidencia con búsqueda activa) o por fecha descendente si no hay búsqueda activa.
-
----
 
 ## Épica: Carrito
 
@@ -558,8 +525,6 @@ Los productos populares se determinan por volumen de ventas en los últimos 30 d
   - Cuando vuelve a iniciar sesión
   - Entonces el carrito conserva los productos agregados previamente.
 
----
-
 ### Gestión del carrito
 
 <!-- Status: Obligatoria -->
@@ -587,8 +552,6 @@ Los productos populares se determinan por volumen de ventas en los últimos 30 d
   - Dado que un producto en el carrito queda sin stock o es deshabilitado antes del checkout
   - Cuando el usuario revisa su carrito
   - Entonces el carrito señaliza ese item como no disponible e impide proceder al checkout mientras el problema persista.
-
----
 
 ## Épica: Checkout y Órdenes
 
@@ -638,8 +601,6 @@ El carrito puede contener productos de múltiples vendedores. El grupo decide si
   - Dado que un usuario completa el checkout con una dirección de entrega válida
   - Cuando la orden es confirmada
   - Entonces la dirección queda registrada en la orden y el vendedor puede verla en el detalle de la venta.
-
----
 
 ### Estado y seguimiento de orden
 
@@ -697,8 +658,6 @@ Las transiciones siguen un flujo definido y no es posible retroceder a un estado
   - Cuando el comprador confirma que recibió el pedido
   - Entonces la orden pasa al estado "entregada".
 
----
-
 ### Historial de compras
 
 <!-- Status: Obligatoria -->
@@ -721,8 +680,6 @@ Las transiciones siguen un flujo definido y no es posible retroceder a un estado
   - Dado que un comprador está en su historial de compras
   - Cuando aplica un filtro por estado
   - Entonces el listado muestra únicamente las órdenes en ese estado.
-
----
 
 ### Cancelar orden
 
@@ -752,8 +709,6 @@ Las transiciones siguen un flujo definido y no es posible retroceder a un estado
   - Cuando la orden se cancela
   - Entonces el stock de cada item de la orden se restaura automáticamente.
 
----
-
 ### Reembolso simulado al cancelar
 
 <!-- Status: Optativa -->
@@ -776,8 +731,6 @@ Las transiciones siguen un flujo definido y no es posible retroceder a un estado
   - Dado que una orden nunca tuvo el pago aprobado
   - Cuando es cancelada
   - Entonces no se inicia ningún proceso de reembolso.
-
----
 
 ### Aplicar cupón en checkout
 
@@ -806,8 +759,6 @@ Las transiciones siguen un flujo definido y no es posible retroceder a un estado
   - Dado que un comprador aplica un cupón a su orden
   - Cuando el descuento calculado supera el total de la orden
   - Entonces el sistema aplica un máximo del 100% y el monto final no puede ser negativo.
-
----
 
 ## Épica: Vendedor
 
@@ -842,8 +793,6 @@ Las categorías disponibles son predefinidas por el sistema; no es responsabilid
   - Dado que un vendedor ingresó un stock inicial negativo
   - Cuando intenta publicar el producto
   - Entonces el sistema indica el error y no crea el producto.
-
----
 
 ### Gestión de stock y publicaciones
 
@@ -883,8 +832,6 @@ Las categorías disponibles son predefinidas por el sistema; no es responsabilid
   - Cuando agrega, elimina o reordena las imágenes de ese producto
   - Entonces los cambios se reflejan de inmediato en el detalle del producto; la primera imagen en el orden definido se utiliza como imagen principal en el catálogo; no es posible dejar un producto sin imágenes.
 
----
-
 ### Historial de ventas
 
 <!-- Status: Obligatoria -->
@@ -912,8 +859,6 @@ Las categorías disponibles son predefinidas por el sistema; no es responsabilid
   - Dado que un vendedor está en su historial de ventas
   - Cuando aplica un filtro por estado
   - Entonces el listado muestra únicamente las ventas en ese estado.
-
----
 
 ### Crear y gestionar cupones de descuento
 
@@ -944,8 +889,6 @@ Los códigos de cupón son únicos a nivel global en la plataforma, independient
   - Dado que un vendedor tiene cupones creados
   - Cuando accede a la gestión de cupones
   - Entonces puede ver todos sus cupones con código, porcentaje, fecha de vencimiento y estado (activo/inactivo/vencido).
-
----
 
 ## Épica: Reviews
 
@@ -982,8 +925,6 @@ Los códigos de cupón son únicos a nivel global en la plataforma, independient
   - Cuando el comprador quiere calificar los productos recibidos
   - Entonces puede dejar una calificación con puntaje (1 a 5) y comentario opcional para cada producto de esa orden.
 
----
-
 ### Reputación del vendedor en perfil público
 
 <!-- Status: Optativa -->
@@ -1012,8 +953,6 @@ Los códigos de cupón son únicos a nivel global en la plataforma, independient
   - Cuando se calcula su reputación
   - Entonces solo se consideran calificaciones asociadas a órdenes en estado "entregada".
 
----
-
 ## Épica: Administración
 
 ### Listar usuarios del sistema
@@ -1033,8 +972,6 @@ Los códigos de cupón son únicos a nivel global en la plataforma, independient
   - Dado que un administrador está en el panel de usuarios
   - Cuando ingresa un término de búsqueda
   - Entonces el sistema filtra el listado mostrando solo los usuarios que coinciden.
-
----
 
 ### Bloquear y desbloquear usuario
 
@@ -1064,8 +1001,6 @@ Los códigos de cupón son únicos a nivel global en la plataforma, independient
   - Cuando intenta bloquearla
   - Entonces el sistema rechaza la operación.
 
----
-
 ### Listar y moderar productos
 
 <!-- Status: Obligatoria -->
@@ -1094,8 +1029,6 @@ Los códigos de cupón son únicos a nivel global en la plataforma, independient
   - Cuando selecciona un producto del listado
   - Entonces puede ver todos sus datos incluyendo el vendedor y el historial de cambios de estado.
 
----
-
 ### Listar órdenes del sistema
 
 <!-- Status: Obligatoria -->
@@ -1123,8 +1056,6 @@ Los códigos de cupón son únicos a nivel global en la plataforma, independient
   - Dado que un administrador está viendo el detalle de una orden
   - Cuando intenta modificar su estado
   - Entonces el sistema no le permite hacerlo; la gestión de estados es exclusiva del vendedor y el comprador.
-
----
 
 ## Épica: Métricas
 
@@ -1161,8 +1092,6 @@ Los códigos de cupón son únicos a nivel global en la plataforma, independient
   - Cuando selecciona un período
   - Entonces el sistema ofrece al menos los períodos predefinidos de 7, 30 y 90 días. Un rango personalizado queda a criterio del grupo.
 
----
-
 ### Métricas por categoría
 
 <!-- Status: Optativa -->
@@ -1180,8 +1109,6 @@ Los códigos de cupón son únicos a nivel global en la plataforma, independient
   - Dado que un administrador está en las métricas por categoría
   - Cuando selecciona un rango de fechas
   - Entonces las métricas por categoría se recalculan para ese período.
-
----
 
 ### Exportar datos de métricas
 
@@ -1205,8 +1132,6 @@ Los códigos de cupón son únicos a nivel global en la plataforma, independient
   - Dado que un administrador no seleccionó ningún período
   - Cuando intenta exportar las métricas
   - Entonces el sistema indica que debe elegir un rango de fechas antes de proceder.
-
----
 
 ## Épica: Wishlist
 
@@ -1238,8 +1163,6 @@ Los códigos de cupón son únicos a nivel global en la plataforma, independient
   - Cuando intenta agregar un producto a la wishlist
   - Entonces el sistema lo redirige al login y retoma la acción al completar la autenticación.
 
----
-
 ### Visualización de wishlist
 
 <!-- Status: Optativa -->
@@ -1268,8 +1191,6 @@ Los códigos de cupón son únicos a nivel global en la plataforma, independient
   - Cuando accede a ella
   - Entonces el sistema muestra un estado vacío con un mensaje claro que lo invita a explorar el catálogo.
 
----
-
 ## Épica: Notificaciones
 
 ### Notificación de cambio de estado de orden
@@ -1295,8 +1216,6 @@ Los códigos de cupón son únicos a nivel global en la plataforma, independient
   - Cuando toca la notificación
   - Entonces la aplicación lo lleva directamente al detalle de la orden correspondiente.
 
----
-
 ### Notificación de stock bajo al vendedor
 
 <!-- Status: Optativa -->
@@ -1319,8 +1238,6 @@ Los códigos de cupón son únicos a nivel global en la plataforma, independient
   - Dado que un producto del vendedor aún tenía unidades disponibles
   - Cuando el stock llega a cero
   - Entonces el vendedor recibe una notificación específica indicando que el producto quedó sin stock.
-
----
 
 ## Épica: Recomendaciones
 
@@ -1366,7 +1283,6 @@ Los siguientes incumplimientos **bloquean la evaluación** del proyecto y requie
 - **Pipeline de CI roto**: La rama principal debe estar en estado ejecutable en todo momento. Un CI en rojo que no se atiende en la sesión siguiente es un bloqueante.
 - **Secretos en el código fuente o historial de Git**: Cualquier credencial, token o secret que aparezca en el repositorio (incluso en commits anteriores) requiere rotación inmediata y limpieza del historial.
 
-
 ### Componentes
 
 La plataforma debe construirse como un conjunto de servicios con responsabilidades bien delimitadas y bases de datos independientes. La identificación de los dominios, la descomposición en servicios y los contratos entre ellos quedan a criterio del grupo y deben justificarse mediante decisiones de arquitectura documentadas. Se espera que el diseño garantice consistencia ante fallos parciales en los flujos que involucran múltiples servicios.
@@ -1396,7 +1312,6 @@ La experiencia de usuario es parte del producto. Antes de escribir código de in
 - **Feedback temprano**: los prototipos deben presentarse en el primer checkpoint. A partir de ahí, el diseño se itera en las weeklies con acompañamiento del ayudante.
 - **Accesibilidad básica**: las interfaces deben contemplar contraste de color legible y tamaños de texto adecuados para uso en dispositivos móviles.
 
-
 ### Integridad y Flujo de Datos
 
 Los flujos que involucran múltiples servicios deben garantizar consistencia ante fallos parciales. En particular:
@@ -1408,7 +1323,6 @@ Los flujos que involucran múltiples servicios deben garantizar consistencia ant
 - **Resiliencia en la comunicación entre servicios**: Las llamadas entre servicios deben contemplar estrategias ante fallos transitorios. Se recomienda aplicar patrones como Retry (con backoff exponencial) y Circuit Breaker para evitar cascadas de fallo. La elección y justificación de estos patrones debe quedar documentada en los ADRs correspondientes.
 - **Resiliencia en la capa de presentación**: La aplicación mobile y el backoffice deben manejar explícitamente los estados de error y latencia: indicadores de carga, mensajes de error accionables ante fallos de red, y comportamiento coherente ante respuestas parciales o timeout del backend. No se acepta que un fallo de red deje la interfaz en un estado inconsistente o sin feedback al usuario.
 
-
 ### Testing
 
 El desarrollo debe incluir:
@@ -1418,9 +1332,6 @@ El desarrollo debe incluir:
 - **Contratos de API** entre servicios definidos con OpenAPI/Swagger como fuente de verdad para la comunicación. Se valora positivamente la verificación automatizada de estos contratos (ej: Pact, Schemathesis, Dredd).
 - **Pruebas de carga y estrés**: ejecutar al menos un escenario de carga simulando usuarios concurrentes sobre los endpoints críticos. Documentar los resultados, cuellos de botella identificados y acciones tomadas (se recomienda k6 o Artillery).
 - Cobertura de tests superior al **70%** en los servicios backend.
-
-
-
 
 ### Gestión de Ingeniería
 
@@ -1452,7 +1363,6 @@ Como alternativa avanzada, el grupo puede optar por desplegar la plataforma en K
 - CI: correr automáticamente ante cada push y **bloquear el merge** ante fallas en los tests. Se recomienda incorporar análisis estático de seguridad (SAST).
 - CD: despliegue automático al entorno productivo desde el branch principal o mediante tags, documentado.
 
-
 **Gestión de imágenes y media**
 
 Los archivos multimedia deben almacenarse en un servicio externo de objetos (ej. AWS S3, Google Cloud Storage, Cloudinary o equivalente). No guardar binarios en la base de datos ni en el filesystem del servidor; solo se persiste la URL.
@@ -1466,7 +1376,6 @@ Otros formatos deben rechazarse con un error descriptivo. Las URLs deben ser pú
 ### Observabilidad
 
 **Monitoreo**
-
 
 Cada servicio debe exponer dos endpoints con semántica diferenciada:
 
@@ -1485,7 +1394,6 @@ Cada servicio debe contar con log estructurado con niveles configurables:
 - **Warn**: condición anómala que no impide la funcionalidad básica.
 - **Info**: acción iniciada por el usuario o el sistema, trazable en el historial.
 - **Debug**: contexto técnico para diagnóstico sin necesidad del código fuente.
-
 
 ### Seguridad
 
@@ -1550,10 +1458,6 @@ Al finalizar el trabajo, el grupo debe haber implementado:
 
 _El alcance específico de cada checkpoint se acuerda con el corrector asignado al inicio de cada período._
 
----
-
----
-
 ## Historias obligatorias
 
 | #   | Historia                         | Épica               | Puntos |
@@ -1581,8 +1485,6 @@ _El alcance específico de cada checkpoint se acuerda con el corrector asignado 
 | 21  | Métricas del sistema             | Métricas            |      5 |
 
 **Puntaje total obligatorio: 63 pts.**
-
----
 
 ## Historias optativas
 
@@ -1613,8 +1515,6 @@ Cada historia optativa tiene un puntaje asociado. El grupo debe seleccionar las 
 
 **Puntaje máximo disponible: 59 pts.**
 
----
-
 ## Mínimo de puntos por tamaño de equipo
 
 | Integrantes | Mínimo optativas | Total mínimo | % del total |
@@ -1630,8 +1530,6 @@ El total mínimo considera los 63 pts de historias obligatorias más el mínimo 
 ## Referencias Técnicas
 
 Este documento centraliza los conceptos técnicos utilizados en el enunciado de Bazaar. Para cada concepto se incluye una descripción de lo que la cátedra entiende por él, qué se espera del grupo al aplicarlo, y referencias para profundizar.
-
----
 
 **Arquitectura y Diseño**
 
@@ -1671,8 +1569,6 @@ Documento corto que registra una decisión de diseño relevante. Cada ADR debe i
 - [ADR GitHub](https://adr.github.io/)
 - [Plantilla de ADR (Michael Nygard)](https://github.com/joelparkerhenderson/architecture-decision-record/blob/main/locales/en/templates/decision-record-template-by-michael-nygard/index.md)
 
----
-
 **Resiliencia y Patrones Distribuidos**
 
 **Saga Pattern**
@@ -1709,8 +1605,6 @@ Una operación es idempotente si ejecutarla múltiples veces produce el mismo re
 - **Fallo permanente**: condición que no se resolverá sin intervención (pago rechazado por fondos insuficientes, datos inválidos). La respuesta esperada es compensar el flujo o notificar al usuario.
 
 La distinción concreta para cada flujo la define el grupo y la acuerda con su corrector.
-
----
 
 **Testing**
 
@@ -1753,8 +1647,6 @@ Análisis estático del código fuente para detectar vulnerabilidades de segurid
 - [Bandit (Python)](https://bandit.readthedocs.io/)
 - [Semgrep](https://semgrep.dev/)
 
----
-
 **Observabilidad**
 
 **Health Checks**
@@ -1782,8 +1674,6 @@ Prometheus recolecta métricas de runtime (latencia, tasa de errores, uso de rec
 - [Prometheus](https://prometheus.io/docs/introduction/overview/)
 - [Grafana](https://grafana.com/docs/grafana/latest/)
 
----
-
 **APIs y Contratos**
 
 **OpenAPI / Swagger**
@@ -1799,8 +1689,6 @@ Estilo arquitectónico para diseño de APIs sobre HTTP. La cátedra espera el us
 
 - [REST — Wikipedia](https://en.wikipedia.org/wiki/Representational_state_transfer)
 - [HTTP Status Codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
-
----
 
 **Frontend y Mobile**
 
@@ -1836,8 +1724,6 @@ El enunciado exige que la UI maneje explícitamente los estados de error y laten
 - [React Query — Error Handling](https://tanstack.com/query/latest/docs/framework/react/guides/query-retries)
 - [Expo Offline Support](https://docs.expo.dev/versions/latest/sdk/netinfo/)
 
----
-
 **Gateway de Pagos**
 
 El checkout debe integrarse con un servicio de pagos externo real usando su entorno de pruebas (sandbox). No se acepta simular el pago internamente con un flag o un mock hardcodeado — la llamada al servicio externo debe existir. No es necesario procesar pagos reales.
@@ -1863,8 +1749,6 @@ Relevante para el contexto local (Argentina). Cuenta con sandbox y credenciales 
 
 Como alternativa, el grupo puede implementar un microservicio propio que simule un gateway de pagos con comportamiento configurable (aprobar, rechazar, timeout). Esta opción es válida si se documenta en un ADR y permite controlar escenarios de fallo para testing. No reemplaza la necesidad de diseñar el flujo como si fuera un servicio externo real.
 
----
-
 **Mobile y Notificaciones**
 
 **Firebase Cloud Messaging (FCM)**
@@ -1873,8 +1757,6 @@ Servicio de Google para el envío de notificaciones push a dispositivos móviles
 
 - [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging)
 - [FCM con React Native](https://rnfirebase.io/messaging/usage)
-
----
 
 **Seguridad y Privacidad**
 
