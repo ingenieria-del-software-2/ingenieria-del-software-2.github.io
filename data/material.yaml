@@ -104,6 +104,7 @@ sections:
       - url: "https://www.youtube.com/watch?v=QUjMeu9C-9o"
       - url: "https://www.youtube.com/watch?v=Og3jFsy0JXk"
       - url: "https://www.youtube.com/watch?v=yNStEV0oGEc"
+      - url: "https://www.youtube.com/watch?v=l7vEzGkCsQM"
     resources:
       - title: "What is DevOps (AWS)"
         url: "https://aws.amazon.com/devops/"
