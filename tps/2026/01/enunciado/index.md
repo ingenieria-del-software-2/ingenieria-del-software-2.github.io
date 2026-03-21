@@ -4,7 +4,8 @@
 
 Comprá. Vendé. Conectate.
 
-<img width="1260" height="763" alt="bazaar-banner" src="https://github.com/user-attachments/assets/17c6a59e-0400-4937-8be2-9eb89240e364" />
+<img width="1260" height="763" alt="bazaar-banner" src="https://github.com/user-attachments/assets/848412bf-feb5-4cb7-92e6-5af5656a045c" />
+
 
 **Descripción**
 
