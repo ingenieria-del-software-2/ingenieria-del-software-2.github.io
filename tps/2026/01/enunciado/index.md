@@ -4,6 +4,8 @@
 
 Comprá. Vendé. Conectate.
 
+<img width="1260" height="763" alt="bazaar-banner" src="https://github.com/user-attachments/assets/17c6a59e-0400-4937-8be2-9eb89240e364" />
+
 ## Descripción
 
 Bazaar es el marketplace donde cualquier persona puede convertirse en vendedor en minutos o encontrar exactamente lo que busca en segundos. Sin barreras de entrada, sin intermediarios innecesarios: el catálogo lo construyen los propios usuarios.
@@ -23,8 +25,8 @@ Gestión de cuentas: registro, acceso y recuperación.
 - [Registro de usuarios](#registro-de-usuarios)
 - [Login con email y contraseña](#login-con-email-y-contraseña)
 - [Recupero de contraseña](#recupero-de-contraseña)
-- [Login con proveedor federado](#login-con-proveedor-federado) _(optativa)_
-- [Registro con PIN](#registro-con-pin) _(optativa)_
+- [Login con proveedor federado](#login-con-proveedor-federado)
+- [Registro con PIN](#registro-con-pin)
 
 ### 2. Perfil
 
@@ -32,19 +34,19 @@ Identidad del usuario dentro de la plataforma.
 
 - [Edición de perfil](#edición-de-perfil)
 - [Visualización de perfil propio](#visualización-de-perfil-propio)
-- [Visualización de perfil público](#visualización-de-perfil-público) _(optativa)_
+- [Visualización de perfil público](#visualización-de-perfil-público)
 
 ### 3. Catálogo
 
 Exploración y búsqueda de productos disponibles.
 
 - [Home](#home)
-- [Productos populares en home](#productos-populares-en-home) _(optativa)_
+- [Productos populares en home](#productos-populares-en-home)
 - [Listado y búsqueda de productos](#listado-y-búsqueda-de-productos)
 - [Detalle de producto](#detalle-de-producto)
-- [Compartir link de producto](#compartir-link-de-producto) _(optativa)_
-- [Filtros avanzados de búsqueda](#filtros-avanzados-de-búsqueda) _(optativa)_
-- [Ordenamiento de resultados](#ordenamiento-de-resultados) _(optativa)_
+- [Compartir link de producto](#compartir-link-de-producto)
+- [Filtros avanzados de búsqueda](#filtros-avanzados-de-búsqueda)
+- [Ordenamiento de resultados](#ordenamiento-de-resultados)
 
 ### 4. Carrito
 
@@ -60,9 +62,9 @@ Flujo de compra, pago y seguimiento del estado de cada orden.
 - [Checkout e inicio de pago](#checkout-e-inicio-de-pago)
 - [Estado y seguimiento de orden](#estado-y-seguimiento-de-orden)
 - [Historial de compras](#historial-de-compras)
-- [Cancelar orden](#cancelar-orden) _(optativa)_
-- [Reembolso simulado al cancelar](#reembolso-simulado-al-cancelar) _(optativa)_
-- [Aplicar cupón en checkout](#aplicar-cupón-en-checkout) _(optativa)_
+- [Cancelar orden](#cancelar-orden)
+- [Reembolso simulado al cancelar](#reembolso-simulado-al-cancelar)
+- [Aplicar cupón en checkout](#aplicar-cupón-en-checkout)
 
 ### 6. Vendedor
 
@@ -71,7 +73,7 @@ Publicación de productos y administración de las propias ventas.
 - [Publicar producto](#publicar-producto)
 - [Gestión de stock y publicaciones](#gestión-de-stock-y-publicaciones)
 - [Historial de ventas](#historial-de-ventas)
-- [Crear y gestionar cupones de descuento](#crear-y-gestionar-cupones-de-descuento) _(optativa)_
+- [Crear y gestionar cupones de descuento](#crear-y-gestionar-cupones-de-descuento)
 
 ### 7. Administración
 
@@ -87,35 +89,35 @@ Backoffice para la gestión de usuarios y contenido de la plataforma.
 Indicadores de actividad y salud de la plataforma.
 
 - [Métricas del sistema](#métricas-del-sistema)
-- [Métricas por categoría](#métricas-por-categoría) _(optativa)_
-- [Exportar datos de métricas](#exportar-datos-de-métricas) _(optativa)_
+- [Métricas por categoría](#métricas-por-categoría)
+- [Exportar datos de métricas](#exportar-datos-de-métricas)
 
 ### 9. Reviews
 
 Calificaciones y reputación dentro del ecosistema de compras.
 
-- [Calificar producto y vendedor](#calificar-producto-y-vendedor) _(optativa)_
-- [Reputación del vendedor en perfil público](#reputación-del-vendedor-en-perfil-público) _(optativa)_
+- [Calificar producto y vendedor](#calificar-producto-y-vendedor)
+- [Reputación del vendedor en perfil público](#reputación-del-vendedor-en-perfil-público)
 
 ### 10. Wishlist
 
 Lista de deseos del comprador.
 
-- [Agregar / quitar de wishlist](#agregar--quitar-de-wishlist) _(optativa)_
-- [Visualización de wishlist](#visualización-de-wishlist) _(optativa)_
+- [Agregar / quitar de wishlist](#agregar--quitar-de-wishlist)
+- [Visualización de wishlist](#visualización-de-wishlist)
 
 ### 11. Notificaciones
 
 Comunicación proactiva al comprador y al vendedor.
 
-- [Notificación de cambio de estado de orden](#notificación-de-cambio-de-estado-de-orden) _(optativa)_
-- [Notificación de stock bajo al vendedor](#notificación-de-stock-bajo-al-vendedor) _(optativa)_
+- [Notificación de cambio de estado de orden](#notificación-de-cambio-de-estado-de-orden)
+- [Notificación de stock bajo al vendedor](#notificación-de-stock-bajo-al-vendedor)
 
 ### 12. Recomendaciones
 
 Descubrimiento personalizado de productos.
 
-- [Recomendaciones basadas en historial](#recomendaciones-basadas-en-historial) _(optativa)_
+- [Recomendaciones basadas en historial](#recomendaciones-basadas-en-historial)
 
 ---
 
