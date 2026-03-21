@@ -4,8 +4,7 @@
 
 Descubrí más. Escuchá mejor.
 
-<img width="1260" height="763" alt="melodia-banner" src="https://github.com/user-attachments/assets/e21c274a-15d8-4994-9096-cb015962ed13" />
-
+<img width="1260" height="763" alt="melodia-banner" src="https://github.com/user-attachments/assets/3e6bf277-79dc-496f-9230-482f68d69204" />
 
 ## Descripción
 
