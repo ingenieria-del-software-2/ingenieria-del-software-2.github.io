@@ -1380,7 +1380,7 @@ Cada grupo debe desarrollar:
 
 **Tecnologías**
 
-- Servicios backend: lenguaje a elección del grupo; se sugiere Python, Node.js o Go por ser los lenguajes donde la cátedra tiene más expertise para acompañar. Frameworks y bases de datos libres (se recomienda PostgreSQL y/o MongoDB).
+- Servicios backend: **lenguaje a elección del grupo**; se sugiere Python, Node.js o Go por ser los lenguajes donde la cátedra tiene más expertise para acompañar. Frameworks y bases de datos libres (se recomienda PostgreSQL y/o MongoDB).
 - Aplicación mobile: React Native (recomendado).
 - Backoffice web: React (recomendado).
 
