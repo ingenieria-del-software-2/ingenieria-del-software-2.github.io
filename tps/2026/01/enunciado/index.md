@@ -1309,7 +1309,7 @@ La experiencia de usuario es parte del producto. Antes de escribir código de in
 - **Prototipado**: wireframes o mockups de los flujos principales (se recomienda Figma o equivalente), incluyendo la app mobile y el backoffice. Pueden apoyarse en herramientas como Stitch de Google o similares, y en sistemas de diseño ya probados.
 - **Sistema de diseño**: elegir un sistema de diseño (ej. Material Design, Apple HIG u otro) y mantenerlo consistente en toda la interfaz.
 - **Decisiones de UX**: cómo se comporta el usuario en la aplicación, cómo se ve y cómo se navega son decisiones creativas del equipo. Lo importante es que puedan explicar por qué tomaron esas decisiones.
-- **Feedback temprano**: los prototipos deben presentarse en el primer checkpoint. A partir de ahí, el diseño se itera en las weeklies con acompañamiento del ayudante.
+- **Feedback temprano**: los prototipos deben presentarse en el Checkpoint 1. A partir de ahí, el diseño se itera en las weeklies con acompañamiento del ayudante.
 - **Accesibilidad básica**: las interfaces deben contemplar contraste de color legible y tamaños de texto adecuados para uso en dispositivos móviles.
 
 ### Integridad y Flujo de Datos
@@ -1432,31 +1432,31 @@ Se valora positivamente:
 
 El proyecto se desarrolla en forma iterativa e incremental a lo largo de tres checkpoints y una entrega final. Cada instancia dura aproximadamente 3–4 semanas.
 
+
 **Dinámica de trabajo**
 
 El corrector asignado a cada grupo actúa como **Product Owner** durante todo el cuatrimestre. Al inicio de cada checkpoint, el grupo acuerda con el corrector el conjunto de historias de usuario a trabajar en ese período. Ese acuerdo queda registrado en el backlog del grupo.
 
 Durante el checkpoint, el grupo trabaja semanalmente de forma iterativa. En cada sesión semanal el corrector evalúa el avance funcional y el estado de las distintas [dimensiones de calidad](#requisitos-no-funcionales) del proyecto. Al finalizar el período, el grupo realiza la entrega formal de las historias acordadas.
 
-**Alcance del proyecto**
+**Instancias**
 
-Al finalizar el trabajo, el grupo debe haber implementado:
+| Instancia    | Duración aprox. | Fecha      | Recomendaciones                                                                                                                                          |
+| ------------ | --------------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Checkpoint 0 | —               | 27/03/2026 | Organizar el equipo, reconocer componentes, conocer herramientas. Establecer una matriz de conocimientos del equipo                                      |
+| Checkpoint 1 | 3–4 semanas     | 17/04/2026 | Diseñar arquitectura, armar repositorios, automatizar CI/CD en todos los componentes. Al menos un CRUD básico funcional. Presentar prototipos UX (wireframes/mockups) de los flujos principales |
+| Checkpoint 2 | 3–4 semanas     | 12/05/2026 | E2E de la plataforma con todos los CRUD básicos al 100% o avanzados. 70% historias requeridas finalizadas, 50% historias optativas finalizadas            |
+| Checkpoint 3 | 3–4 semanas     | 05/06/2026 | 100% historias requeridas finalizadas, 80% historias optativas finalizadas                                                                               |
+| Entrega      | —               | 26/06/2026 | Trabajo completo más demo funcional                                                                                                                      |
+
+_Las recomendaciones son orientativas y deben revisarse con el ayudante docente asignado al inicio de cada período. El alcance específico de cada checkpoint se acuerda con el corrector._
+
+**Al finalizar el trabajo**, el grupo debe haber implementado:
 
 - **Todas las historias obligatorias**, cumpliendo sus criterios de aceptación.
 - **Todos los Requisitos No Funcionales** definidos en este documento.
 - **Un mínimo de puntos en historias optativas** según la cantidad de integrantes del grupo (ver [Historias optativas](#historias-optativas)).
 
-**Instancias**
-
-| Instancia    | Duración aprox. | Fecha      |
-| ------------ | --------------- | ---------- |
-| Checkpoint 0 | —               | 27/03/2026 |
-| Checkpoint 1 | 3–4 semanas     | 17/04/2026 |
-| Checkpoint 2 | 3–4 semanas     | 12/05/2026 |
-| Checkpoint 3 | 3–4 semanas     | 05/06/2026 |
-| Entrega      | —               | 26/06/2026 |
-
-_El alcance específico de cada checkpoint se acuerda con el corrector asignado al inicio de cada período._
 
 ## Historias obligatorias
 
