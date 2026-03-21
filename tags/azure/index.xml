@@ -11,7 +11,7 @@
 &lt;/thead>
 &lt;tbody>
 &lt;tr>
-&lt;td style="text-align: left">Equilibrio costo / servicios / docs&lt;/td>
+&lt;td style="text-align: left">Equilibrio costo / servicios administrados&lt;/td>
 &lt;td style="text-align: left">&lt;strong>GCP&lt;/strong> (USD 300 / 90 días + Always Free)&lt;/td>
 &lt;/tr>
 &lt;tr>
@@ -416,7 +416,7 @@
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
-&lt;p>&lt;strong>Cuándo:&lt;/strong> buena relación facilidad / costo / servicios administrados.&lt;/p>
+&lt;p>&lt;strong>Cuándo:&lt;/strong> buena relación facilidad / costo / servicios administrados. El repo de cátedra incluye el mismo Terraform de AWS modelado para GCP (ver &lt;code>03-demo&lt;/code>).&lt;/p>
 &lt;p>&lt;strong>AWS — La que más material de cátedra tiene&lt;/strong>&lt;/p>
 &lt;table>
 &lt;thead>

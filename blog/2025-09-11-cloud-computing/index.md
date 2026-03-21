@@ -8,7 +8,7 @@ _Actualizado al 21-mar-2026_
 
 | Si necesitás…                               | Elegí                                            |
 | :------------------------------------------ | :----------------------------------------------- |
-| Equilibrio costo / servicios / docs         | **GCP** (USD 300 / 90 días + Always Free)        |
+| Equilibrio costo / servicios administrados  | **GCP** (USD 300 / 90 días + Always Free)        |
 | Seguir el material de cátedra al pie        | **AWS** (USD 200 créditos + demos del repo)      |
 | DB gratis por 12 meses sin créditos         | **Azure** (PostgreSQL / MySQL Flexible Server)   |
 | DX simple, deploy rápido, sin DevOps pesado | **Render** / **Railway** / **Fly.io**            |
@@ -142,7 +142,7 @@ El panorama "moderno, gratis y simple" para MySQL es más limitado:
 | VOD            | Transcoder API → HLS                                  |
 | CI/CD          | GitHub Actions + Terraform                            |
 
-**Cuándo:** buena relación facilidad / costo / servicios administrados.
+**Cuándo:** buena relación facilidad / costo / servicios administrados. El repo de cátedra incluye el mismo Terraform de AWS modelado para GCP (ver `03-demo`).
 
 **AWS — La que más material de cátedra tiene**
 
