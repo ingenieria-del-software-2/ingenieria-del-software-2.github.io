@@ -1384,7 +1384,7 @@ Cada servicio debe exponer dos endpoints con semántica diferenciada:
 
 **`/livez` y `/readyz` no son equivalentes**: no deben compartir lógica. Un endpoint que responde `200 OK` sin validar lo que corresponde a su semántica no cumple. No usar un único `/health` genérico.
 
-Cada servicio debe contar además con un sistema de **observabilidad** (APM o equivalente) para supervisar su estado operativo y facilitar el diagnóstico de fallas. Se valora incorporar **trazabilidad distribuida** con un trace/correlation ID propagado entre servicios.
+**Cada servicio debe contar además con un sistema de observabilidad** (APM o equivalente) para supervisar su estado operativo y facilitar el diagnóstico de fallas. Se valora incorporar **trazabilidad distribuida** con un trace/correlation ID propagado entre servicios.
 
 **Logs**
 
