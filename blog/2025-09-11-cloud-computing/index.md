@@ -1,90 +1,190 @@
-# Cloud sin Vueltas: La guía práctica para hostear tu proyecto y cuidar tu bolsillo
+# Guía de cátedra 2026: Cloud Computing
 
-_Actualizado al 27-ago-2025_
+_Actualizado al 21-mar-2026_
 
 ---
 
 ## TL;DR
 
--   **GCP**: **USD 300 en créditos (90 días)**, más _Always Free_ en **Compute Engine** y **Cloud Storage**.
--   **AWS**: **Free Tier (12 meses)** para **EC2**, **S3** y **RDS**, más **créditos promocionales** de monto variable.
--   **Azure**: **USD 200 en créditos (30 días)** y **12 meses de servicios gratis** para **VMs** y **Blob Storage**.
--   **Render/Railway**: soluciones _out-of-the-box_ con _free tiers_ limitados, ideales para demos rápidas sin DevOps.
+-   **GCP** sigue siendo una opción muy fuerte: **USD 300 en créditos por 90 días** + varios productos **Always Free** (Compute Engine e2-micro, Cloud Storage, Firestore) y un crédito mensual en **GKE** que cubre la gestión de **un** cluster Autopilot o zonal Standard.
+-   **AWS**: ofrece **hasta USD 200 en créditos** + **Free Plan de hasta 6 meses** + servicios **Always Free**.
+-   **Azure** ofrece **USD 200 por 30 días**, **20+ servicios gratis por 12 meses** y **65+ always-free**. Ahora incluye **Azure Database for PostgreSQL Flexible Server** dentro de la oferta de 12 meses.
+-   **Render** sigue siendo excelente para demos rápidas: **750 free instance hours por workspace por mes**, pero los web services gratis duermen tras **15 min** idle y **Postgres Free expira a 30 días**.
+-   **Railway** hoy da **30 días / USD 5** de trial y luego cae a un **plan Free con USD 1/mes** de recursos.
 
 ---
 
 ## Cuadro comparativo (resumen)
 
-| Proveedor   | Compute (VM)                                                                | Storage (objetos)                                                     | SQL (gestionado)                                                            | NoSQL (doc/clave)                                                          | K8s manejado                                                              | Transcoder VOD                                                                                            | ML (casos de uso)                                                             | Créditos / Free tier                                                                     |
-| ----------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------------- | -------------------------------------------------------------------------- | ------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| **GCP**     | **Compute Engine** (e2-micro entra en _Always Free_ en regiones soportadas) | **Cloud Storage** (_Always Free_ con límites mensuales)               | **Cloud SQL** (Postgres/MySQL: sin free tier, pero cubierto por créditos)   | **Firestore** (free tier diaria; 1 GiB de storage gratis)                  | **GKE** (Autopilot: pago por pod; Standard cobra _cluster mgmt_ \$0.10/h) | **Transcoder API** (≈ **USD 0.03/min HD**; flujo: upload firmado a GCS → job → HLS en GCS)                | **Recommendations AI / Vertex AI**; _Matching Engine_ para búsqueda semántica | **USD 300 por 90 días** + “Always Free” (no consume créditos si estás dentro de límites) |
-| **AWS**     | **EC2** (t2/t3.micro 750 h/mes por 12 m)                                    | **S3** (free tier 12 m: 5 GB, 20k GET, 2k PUT, **100 GB egress/mes**) | **RDS** (Postgres/MySQL 750 h/mes + 20 GB por 12 m)                         | **DynamoDB** (free tier permanente con capacidad/almacenamiento incluidos) | **EKS** (control plane **\$0.10/h** por _cluster_; nodo aparte)           | **MediaConvert** (_Basic tier_ desde **USD 0.0075/min normalizado**; HLS a S3)                            | **Amazon Personalize** para ranking/recomendaciones                           | **Free Tier (12 meses)** + créditos promocionales (monto variable)                       |
-| **Azure**   | **Azure VMs** (B1s entra en 12 m free)                                      | **Blob Storage** (incluido en 12 m free con límites)                  | **Azure PostgreSQL Flexible Server** (generalmente sin free; usar créditos) | **Cosmos DB** (_Free Tier_ opcional: **1000 RU/s + 25 GB**)                | **AKS** (control plane **sin costo**; pagás nodos/VMs)                    | **Media Services** **retirado** (usar **FFmpeg+Batch/Functions** o partners; Video Indexer solo análisis) | **Azure ML** (entrenar propio recomendador; _Personalizer_ en retiro)         | **USD 200 por 30 días** + “12 meses gratis”                                              |
-| **Render**  | **Web services/cron** (containers; _free_ para comenzar)                    | — (usás S3/R2 si necesitás objetos)                                   | **Postgres** (**Free** expira a **30 días**; luego pago)                    | **Key-Value (Redis-compatible)** con opción Free                           | N/A (no K8s)                                                              | Sin transcode gestionado (usar FFmpeg o integrar GCP/AWS)                                                 | Sin ML gestionado                                                             | **Free tier** (p. ej. 750 h acumuladas) + **Postgres Free 30 días**                      |
-| **Railway** | **Deploy de containers** (DX simple)                                        | — (objetos externos)                                                  | **Postgres gestionado**                                                     | **Redis**                                                                  | N/A                                                                       | Sin transcode gestionado                                                                                  | Sin ML gestionado                                                             | **Crédito único ~USD 5** en _free trial_; luego plan pago                                |
+| Proveedor   | Compute (VM)                                                                                                         | Storage (objetos)                                                                            | SQL (gestionado)                                                                                            | NoSQL (doc/clave)                                                          | K8s manejado                                                                                                                   | Transcoder VOD                                                                                            | ML (casos de uso)                                                                                    | Créditos / Free tier                                                                                              |
+| ----------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **GCP**     | **Compute Engine** (e2-micro Always Free en `us-west1`, `us-central1`, `us-east1`) | **Cloud Storage** (5 GB-mes + ops + 100 GB egreso/mes en regiones US elegibles)              | **Cloud SQL** (sin Always Free; sí créditos y **free trial instance** de 30 días)                           | **Firestore** (1 GiB + cuotas diarias gratis)                              | **GKE**: fee de gestión **USD 0.10/h para todos los clusters**; Free Tier cubre **1 Autopilot o 1 zonal Standard**             | **Transcoder API** (≈ **USD 0.03/min HD**; upload a GCS → job → HLS en GCS)                               | **Vertex AI Search for commerce** (recomendaciones); **Vertex AI Vector Search** (búsqueda semántica) | **USD 300 por 90 días** + 20+ productos Always Free                                                              |
+| **AWS**     | **EC2** (usar créditos o Free Plan)                                                                                  | **S3** (cubierto por créditos y Free Plan)                                                   | **RDS** (Postgres/MySQL — cubierto por créditos y Free Plan)                                                | **DynamoDB** (free tier permanente con capacidad/almacenamiento incluidos) | **EKS** (**USD 0.10/h** por cluster en soporte estándar; **USD 0.60/h** en extended support)                                   | **MediaConvert** (_Basic tier_ desde **USD 0.0075/min normalizado**; HLS a S3)                            | **Amazon Personalize** para ranking/recomendaciones                                                  | Hasta **USD 200 en créditos** + **Free Plan de hasta 6 meses** + servicios Always Free                            |
+| **Azure**   | **Azure VMs** burstable B-series (12 m free; Microsoft destaca B2pts v2 / B2ats v2)                                  | **Blob Storage** (5 GB LRS hot + operaciones gratis)                                         | **Azure DB for PostgreSQL Flexible Server** y **MySQL Flexible Server**: **12 meses free** (B1MS + 32 GB)   | **Cosmos DB** Free Tier opcional: **1000 RU/s + 25 GB** de por vida        | **AKS** (gestión del cluster gratis; pagás nodos/VMs)                                                                          | **Media Services retirado**; usar partners o compute propio. **Video Indexer** solo para análisis          | **Azure ML**; **Personalizer** retirándose el **1-oct-2026**                                          | **USD 200 / 30 días** + **20+ servicios gratis 12 meses** + **65+ always-free**                                   |
+| **Render**  | **Web services/cron** (containers; duermen tras **15 min** idle)                                                     | — (usás S3/R2/B2 si necesitás objetos)                                                       | **Postgres Free** (**1 GB**, expira a **30 días**; luego pago)                                              | **Key-Value (Redis-compatible)** con opción Free                           | N/A                                                                                                                            | Sin transcode gestionado (usar FFmpeg o integrar GCP/AWS)                                                 | Sin ML gestionado                                                                                    | **750 free instance hours / workspace / mes** + Postgres Free 30 días                                             |
+| **Railway** | **Deploy de containers** (DX simple)                                                                                 | Object storage según plan; para casos simples usar storage externo                           | **Postgres gestionado** según uso                                                                           | **Redis** y otros add-ons                                                  | N/A                                                                                                                            | Sin transcode gestionado                                                                                  | Sin ML gestionado                                                                                    | **Trial de 30 días + USD 5**, luego **plan Free con USD 1/mes**                                                   |
 
 _Notas VOD:_
-• En **GCP**: _upload_ firmado a **Cloud Storage** → **Transcoder API** → _HLS_ en GCS. Precio de salida aprox. **USD 0.03/min (HD)**.
-• En **AWS**: _upload_ firmado a **S3** → **MediaConvert** → _HLS_ a S3. **Basic tier** desde **USD 0.0075/min normalizado** (720p≈×2 "minutos normalizados").
+- En **GCP**: _upload_ firmado a **Cloud Storage** → **Transcoder API** → _HLS_ en GCS. Precio de salida aprox. **USD 0.03/min (HD)**.
+- En **AWS**: _upload_ firmado a **S3** → **MediaConvert** → _HLS_ a S3. **Basic tier** desde **USD 0.0075/min normalizado** (720p ≈ ×2 "minutos normalizados").
 
 ---
 
-## Stacks “mínimo viable” recomendados
+## Notas rápidas por proveedor
 
-### GCP (equilibrado con créditos)
+### GCP
 
--   **API/Backend** en **Compute Engine e2-micro** (cuidar región soportada por _Always Free_).
+Sigue siendo excelente para cursada. En 2026 es incluso más atractivo por tres motivos:
+
+1. **USD 300 / 90 días** sigue igual.
+2. El conjunto **Always Free** sigue muy utilizable (Compute Engine, Cloud Storage, Firestore).
+3. Ahora hay un **free trial instance** de **Cloud SQL** de 30 días, además del trial general.
+
+**GKE**: el fee de gestión de **USD 0.10/h aplica a todos los clusters** (Autopilot y Standard). La Free Tier cubre ese cargo para **un** cluster Autopilot o zonal Standard, pero **no** cubre compute, red, discos ni balanceadores.
+
+### AWS
+
+AWS ofrece al crear una cuenta:
+
+-   Hasta **USD 200 en créditos**.
+-   Un **Free Plan de hasta 6 meses**.
+-   Servicios **Always Free** separados (como DynamoDB).
+
+Conviene si querés aprender el ecosistema AWS por inserción laboral. Para VOD, **MediaConvert** sigue siendo competitivo.
+
+### Azure
+
+Azure mejoró bastante para un TP con DB relacional. El cambio más importante es que el free offer ahora incluye **PostgreSQL Flexible Server** y **MySQL Flexible Server** por 12 meses con:
+
+-   **750 horas** de Flexible Server **B1MS**
+-   **32 GB** de storage
+-   **32 GB** de backup storage
+
+Eso hace que un stack API + Postgres + Blob Storage (+ opcionalmente AKS) sea mucho más razonable que antes sin depender solo del crédito inicial.
+
+**VMs**: Microsoft hoy destaca **B2pts v2 / B2ats v2** en la oferta de 12 meses, aunque otra landing todavía menciona B1s.
+
+**Punto flojo VOD**: **Media Services ya fue retirado**. La recomendación oficial es migrar a partners (Bitmovin, MediaKind, Ravnur, etc.) para encoding/streaming, **Video Indexer** para análisis de audio/video, o resolver VOD con storage + compute propio.
+
+**ML**: **Azure AI Personalizer** no permite crear recursos nuevos desde el 20-sep-2023 y se retira el **1-oct-2026**.
+
+### Render
+
+Sigue siendo ideal para demos, prototipos y deploys sin DevOps pesado. Pero conviene explicitar sus límites:
+
+-   El web service gratis **duerme a los 15 minutos** sin tráfico.
+-   Hay **750 free instance hours** por workspace por mes calendario.
+-   No hay disco persistente en el free web service.
+-   **Postgres Free** tiene **1 GB** fijo y **expira a los 30 días**.
+
+Excelente para **mostrar algo**, menos bueno para una demo que tenga que permanecer siempre online o conservar estado local.
+
+### Railway
+
+La situación cambió un poco para mejor. Ya no es "solo trial de USD 5 y después plan pago":
+
+-   Primero tenés **30 días y USD 5** de trial.
+-   Después queda un **plan Free** con **USD 1/mes** de recursos, aunque con límites bajos.
+
+Para proyectos chicos es cómodo. Si el equipo decide seguir pagando, los planes pagos son razonables y la DX sigue siendo muy buena.
+
+---
+
+## Stacks recomendados para cursada
+
+### Opción 1 — La más equilibrada: **GCP**
+
+-   **API/Backend** en **Compute Engine e2-micro** (Always Free en regiones soportadas).
 -   **Objetos** en **Cloud Storage** con **URLs firmadas**.
--   **DB**: **Cloud SQL** (créditos) y/o **Firestore** para eventos/simple KV.
--   **Opcional K8s**: **GKE Autopilot** si querés practicar orquestación.
+-   **DB**: **Firestore** o **Cloud SQL** (créditos / free trial instance de 30 días).
+-   **Opcional K8s**: **GKE Autopilot** (recordá que el free tier solo cubre el fee de gestión).
 -   **VOD**: **Transcoder API** (HLS).
--   **Arranque**: **USD 300/90 días** + productos _Always Free_. ([Google Cloud][7])
+-   **CI/CD**: GitHub Actions + **Terraform** si querés IaC real.
 
-### AWS (VOD barato para demos)
+**Cuándo elegirla**: si querés buena relación entre facilidad, costo y servicios administrados.
 
--   **API/Backend** en **EC2** _micro_ (12 m _free_).
--   **Objetos** en **S3** — en los primeros 12 m tenés **100 GB/mes de salida** en el Free Tier.
--   **DB**: **RDS** _micro_ (12 m) y **DynamoDB** _free tier_ permanente.
--   **Opcional K8s**: **EKS** (ojo control plane).
--   **VOD**: **MediaConvert** _Basic tier_. ([Amazon Web Services, Inc.][8])
+### Opción 2 — La mejor para relacional gratis: **Azure**
 
-### Azure (K8s sin fee de control plane)
-
--   **API/Backend** en **VM B1s** (12 m _free_ si sos nuevo).
+-   **API/Backend** en **VM burstable B-series** (12 m free).
 -   **Objetos** en **Blob Storage** con SAS.
--   **DB**: **PostgreSQL Flexible Server** (usá créditos).
--   **K8s**: **AKS** (control plane gratis; pagás nodos).
--   **VOD**: **Media Services está retirado** → **FFmpeg** en VM/Batch o _partners_.
--   **NoSQL**: **Cosmos DB Free Tier** (1000 RU/s + 25 GB _lifetime_). ([Microsoft Azure][3])
+-   **DB**: **Azure Database for PostgreSQL Flexible Server** (12 meses gratis: B1MS + 32 GB).
+-   **K8s**: **AKS** solo si querés practicar Kubernetes (control plane gratis; pagás nodos).
+-   **NoSQL**: **Cosmos DB Free Tier** (1000 RU/s + 25 GB lifetime).
+-   **VOD**: Media Services ya no existe → **FFmpeg** en VM/Batch o partners externos.
 
-### Opción “sin nube pesada”
+**Cuándo elegirla**: si tu backend necesita **Postgres** sí o sí y querés evitar depender solo del crédito inicial.
+
+### Opción 3 — AWS, solo si te suma algo concreto
+
+-   **Sí** si querés aprender AWS por inserción laboral.
+-   **No como opción por defecto** para "quiero gastar cero" — los créditos iniciales (USD 200) y el Free Plan (6 meses) se agotan rápido.
+
+Stack sugerido: **EC2** (con créditos) + **S3** + **RDS** (con créditos) + **DynamoDB** Always Free + **MediaConvert** para VOD.
+
+### Opción 4 — Cero fricción operativa: **Render / Railway**
 
 -   **Render**: web services + cron; **Postgres Free** (30 días); usar **S3/R2** para objetos; FFmpeg en un worker.
--   **Railway**: deploy simple con crédito único (~USD 5); luego plan pago.
+-   **Railway**: deploy simple con trial (30 días + USD 5); luego plan Free (USD 1/mes).
+
+**Cuándo elegirlas**: demos rápidas y prototipos. Para workloads que necesiten estar siempre online, los planes pagos de ambas plataformas son accesibles y mantienen la misma simplicidad operativa.
 
 ---
-
-### Detalle de créditos / free tier
-
--   **GCP**: **USD 300 por 90 días**; además **Free Tier** “siempre gratis” para varios productos (Compute Engine e2-micro, Cloud Storage, etc.) y lo **Always Free no consume** tus créditos.
--   **AWS**: **Free Tier de 12 meses** (EC2 micro, S3, RDS, etc.), complementado con **créditos promocionales** cuyo monto y duración dependen de programas como AWS Activate.
--   **Azure**: **USD 200 por 30 días** + **12 meses gratis** en servicios elegibles (VM B1s, Blob y otros).
--   **Render**: plan **Free** para comenzar (p.ej., 750 h totales en instancias _Free_), y **Postgres Free expira a 30 días**.
--   **Railway**: **no** free “mensual”: da un **crédito único ≈ USD 5** para probar; luego plan pago.
 
 ## Consejos para no pasarte de presupuesto
 
--   **Controlá el _egress_**: en AWS, los **100 GB/mes** de salida del _Free Tier_ cubren pruebas razonables el primer año. ([Amazon Web Services, Inc.][8])
--   **Discos chicos**: mantené los discos de VMs cerca de **30 GB** para seguir en _free tiers_ iniciales (según proveedor). ([Amazon Web Services, Inc.][2])
--   **Apagá lo que no uses**: clusters, VMs _idle_, _pipelines_ de transcode terminados.
+-   **No subas a Kubernetes "porque sí"**. En una materia, muchas veces una VM o **Render / Railway** resuelven mejor y más barato.
+-   **Cuidá el egreso**. Sigue siendo uno de los costos más traicioneros en cualquier proveedor.
+-   **Apagá VMs y limpiá recursos zombie**: discos, IPs flotantes, balanceadores, buckets sin uso.
+-   **Poné alertas de billing desde el día 1** en cualquier nube.
+-   **En AWS, controlá tus créditos** — los USD 200 y el Free Plan de 6 meses se agotan rápido si no prestás atención.
+-   **En Azure, no planifiques sobre Media Services** porque ya no existe.
+-   **En GCP, no confundas "GKE cluster fee cubierto" con "cluster gratis"**: los nodos, pods, red y discos siguen costando.
+-   **Discos chicos**: mantené los discos de VMs cerca de **30 GB** para seguir en free tiers iniciales (según proveedor).
 
 ---
 
 ## Enlaces oficiales
 
--   **Google Cloud**: _Free & Always Free_ y precios por producto; **Transcoder API**. ([Google Cloud][7])
--   **AWS**: _Free Tier_ general, **RDS Free Tier**, **MediaConvert** precios, **S3** precios/egress. ([Amazon Web Services, Inc.][2])
--   **Azure**: _Free services_ y cuenta, **Cosmos DB Free Tier** (detalles _lifetime_), retiro de **Media Services**. ([Microsoft Azure][3])
+### Google Cloud
+-   [Free Trial y Free Tier](https://cloud.google.com/free)
+-   [Detalle del Free Tier](https://docs.cloud.google.com/free/docs/free-cloud-features)
+-   [GKE pricing](https://cloud.google.com/kubernetes-engine/pricing)
+-   [Cloud SQL pricing](https://cloud.google.com/sql/pricing)
+-   [Cloud SQL free trial instance](https://docs.cloud.google.com/sql/docs/mysql/free-trial-instance)
+-   [Transcoder API pricing](https://cloud.google.com/transcoder/pricing)
+-   [Vertex AI Search for commerce](https://docs.cloud.google.com/retail/docs/predict)
+-   [Vertex AI Vector Search](https://docs.cloud.google.com/vertex-ai/docs/vector-search/overview)
+
+### AWS
+-   [AWS Free Tier](https://aws.amazon.com/free/)
+-   [Free Tier FAQs](https://aws.amazon.com/free/free-tier-faqs/)
+-   [Tracking Free Tier usage](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/tracking-free-tier-usage.html)
+-   [Amazon RDS Free Tier](https://aws.amazon.com/rds/free/)
+-   [Amazon S3 free storage](https://aws.amazon.com/free/storage/s3/)
+-   [DynamoDB pricing](https://aws.amazon.com/dynamodb/pricing/)
+-   [Amazon EKS pricing](https://aws.amazon.com/eks/pricing/)
+-   [MediaConvert pricing](https://aws.amazon.com/mediaconvert/pricing/)
+-   [Amazon Personalize pricing](https://aws.amazon.com/personalize/pricing/)
+
+### Azure
+-   [Azure free account](https://azure.microsoft.com/en-us/free/)
+-   [Azure free services](https://azure.microsoft.com/en-us/pricing/free-services/)
+-   [Azure purchase options](https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account/)
+-   [AKS pricing](https://azure.microsoft.com/en-us/pricing/details/kubernetes-service/)
+-   [Cosmos DB pricing](https://azure.microsoft.com/en-us/pricing/details/cosmos-db/serverless/)
+-   [PostgreSQL Flexible Server pricing](https://azure.microsoft.com/en-us/pricing/details/postgresql/flexible-server/)
+-   [Media Services retirement guide](https://learn.microsoft.com/en-us/azure/media-services/latest/azure-media-services-retirement)
+-   [Azure AI Personalizer docs](https://learn.microsoft.com/en-us/azure/ai-services/personalizer/)
+
+### Render
+-   [Render pricing](https://render.com/pricing)
+-   [Deploy for Free](https://render.com/docs/free)
+-   [Render Postgres](https://render.com/docs/postgresql)
+
+### Railway
+-   [Railway pricing](https://railway.com/pricing)
+-   [Railway docs: pricing](https://docs.railway.com/pricing)
+-   [Railway docs: free trial](https://docs.railway.com/pricing/free-trial)
 
 ---
 
@@ -100,19 +200,4 @@ _Notas VOD:_
     [https://drive.google.com/file/d/145UHzRo0DJabGZFRC_3eVcHvPkhxy1V3](https://drive.google.com/file/d/145UHzRo0DJabGZFRC_3eVcHvPkhxy1V3) — permite levantar todo el IaC full e2e CI/CD
 
 ---
-
-[1]: https://cloud.google.com/free/docs/free-cloud-features "Free cloud features and trial offer"
-[2]: https://aws.amazon.com/free/ "Free Cloud Computing Services - AWS Free Tier"
-[3]: https://azure.microsoft.com/en-us/pricing/free-services "Explore Free Azure Services"
-[4]: https://cloud.google.com/pricing/list "Pricing per product"
-[5]: https://cloud.google.com/firestore/pricing "Firestore pricing"
-[6]: https://cloud.google.com/transcoder/pricing "Transcoder API pricing"
-[7]: https://cloud.google.com/free "Free Trial and Free Tier Services and Products"
-[8]: https://aws.amazon.com/blogs/aws/aws-free-tier-data-transfer-expansion-100-gb-from-regions-and-1-tb-from-amazon-cloudfront-per-month/ "AWS Free Tier Data Transfer Expansion – 100 GB From ..."
-[9]: https://aws.amazon.com/rds/free/ "Amazon RDS Free Tier | Cloud Relational Database"
-[10]: https://aws.amazon.com/dynamodb/pricing/ "Amazon DynamoDB Pricing | NoSQL Key-Value Database"
-[11]: https://aws.amazon.com/mediaconvert/pricing/ "AWS Elemental MediaConvert Pricing"
-[12]: https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account "Create Your Azure Free Account Or Pay As You Go"
-[13]: https://azure.microsoft.com/en-us/pricing/details/cosmos-db/autoscale-provisioned/ "Azure Cosmos DB pricing"
-[14]: https://learn.microsoft.com/en-us/lifecycle/end-of-support/end-of-support-2024 "Ending Support in 2024 - Microsoft Lifecycle"
 

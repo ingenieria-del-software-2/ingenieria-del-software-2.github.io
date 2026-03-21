@@ -1483,14 +1483,11 @@ El despliegue al entorno productivo debe ser automático desde el branch princip
 
 ### Despliegue en la Nube
 
-Los servicios deben desplegarse en la nube utilizando una plataforma como servicio (PaaS) o un orquestador de contenedores. Se debe elegir una plataforma que cuente con plan gratuito o de bajo costo vigente. Algunas opciones disponibles en 2026:
+Los servicios deben desplegarse en la nube utilizando una **plataforma como servicio (PaaS)**, o un **orquestador de contenedores gestionado** o directamente un **cloud provider** para grupos que prefieran mayor control de infraestructura. La elección queda a criterio del grupo y debe estar documentada y justificada en un ADR.
 
-- **Render** — free tier para servicios web y bases de datos con limitaciones de uptime.
-- **Fly.io** — plan gratuito con máquinas compartidas; apto para múltiples servicios pequeños.
-- **Koyeb** — free tier sin límite de tiempo para instancias nano.
-- **Supabase** — opción gratuita para bases de datos PostgreSQL administradas.
+Se debe elegir una alternativa que cuente con un plan gratuito o de bajo costo vigente. Para un análisis detallado de las opciones disponibles (proveedores, free tiers, stacks recomendados y consejos de presupuesto), consultar la **[Guía de cátedra: Cloud Computing](https://ingenieria-del-software-2.github.io/blog/2025-09-11-cloud-computing/)**.
 
-La elección de plataforma debe estar documentada y justificada. Se debe garantizar que el entorno de producción sea reproducible y que el despliegue ocurra de forma automatizada desde el pipeline de CI/CD.
+Se debe garantizar que el entorno de producción sea reproducible y que el despliegue ocurra de forma automatizada desde el pipeline de CI/CD.
 
 ### Despliegue usando k8s
 
@@ -1613,17 +1610,6 @@ _El alcance específico de cada checkpoint se acuerda con el corrector asignado 
 **Puntaje total obligatorio: 63 pts.**
 
 ---
-
-## Resumen de guardrails
-
-| Métrica                            | Valor |     Objetivo | Estado     |
-| ---------------------------------- | ----: | -----------: | ---------- |
-| Historias Totales                  |    42 |        30–50 | **Óptimo** |
-| Balance Obligatorias               |   50% |       40–60% | **Óptimo** |
-| Puntaje Obligatorio (suma puntos)  |    63 |            — |            |
-| Complejidad Opcional (suma puntos) |    59 |        40–70 | **Óptimo** |
-| Total puntaje (oblig. + opcional)  |   122 |            — |            |
-| Mínimo optativas (equipo de 5)     |    26 |            — |            |
 
 ## Historias optativas
 
@@ -1800,16 +1786,21 @@ Análisis estático del código fuente para detectar vulnerabilidades de segurid
 
 #### Health Checks
 
-Endpoint `/health` que valida no solo que el proceso está activo, sino que sus dependencias críticas (base de datos, servicios externos) son accesibles. Un health check que retorna `200 OK` sin verificar la conexión a la base de datos **no cumple el requisito**. Se espera que distinga entre disponibilidad del proceso y disponibilidad real del servicio.
+Cada servicio debe exponer probes con semántica diferenciada, como se indica en la sección de Monitoreo: **`/livez`** para validar que el proceso está vivo (sin consultar dependencias externas) y **`/readyz`** para confirmar que puede atender requests correctamente (validando dependencias críticas como la base de datos). No usar un único `/health` genérico.
 
-- [Health Check API Pattern](https://microservices.io/patterns/observability/health-check-api.html)
+- [Separate Readiness and Liveness Probes](https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/health-checks?view=aspnetcore-10.0#separate-readiness-and-liveness-probes)
 
-#### Logs estructurados y Correlation ID
+#### Logs estructurados
 
-Los logs deben emitirse en formato estructurado (JSON) con niveles configurables (Error, Warn, Info, Debug). Para poder rastrear una operación distribuida a través de múltiples servicios, cada request debe generar un **correlation ID** que se propaga en los headers y aparece en todos los logs relacionados.
+Los logs deben emitirse en formato estructurado (JSON) con niveles configurables (Error, Warn, Info, Debug).
 
 - [Structured Logging](https://www.structuredlogging.io/)
-- [Correlation ID Pattern](https://microservices.io/patterns/observability/distributed-tracing.html)
+
+#### Trazabilidad distribuida
+
+Para rastrear una operación a través de múltiples servicios, cada request debe generar un **trace/correlation ID** que se propaga en los headers entre servicios. Se valora contar con herramientas que permitan consultar estas trazas.
+
+- [Distributed Tracing Pattern](https://microservices.io/patterns/observability/distributed-tracing.html)
 
 #### Prometheus y Grafana
 
