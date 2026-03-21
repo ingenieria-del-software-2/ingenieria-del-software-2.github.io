@@ -19,8 +19,8 @@
 &lt;td style="text-align: left">&lt;strong>AWS&lt;/strong> (USD 200 créditos + demos del repo)&lt;/td>
 &lt;/tr>
 &lt;tr>
-&lt;td style="text-align: left">Postgres gratis por 12 meses&lt;/td>
-&lt;td style="text-align: left">&lt;strong>Azure&lt;/strong> (PostgreSQL Flexible Server free 12 m)&lt;/td>
+&lt;td style="text-align: left">DB gratis por 12 meses sin créditos&lt;/td>
+&lt;td style="text-align: left">&lt;strong>Azure&lt;/strong> (PostgreSQL / MySQL Flexible Server)&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align: left">DX simple, deploy rápido, sin DevOps pesado&lt;/td>
@@ -325,43 +325,46 @@
 &lt;/table>
 &lt;hr>
 &lt;h2>Notas por proveedor&lt;span class="hx:absolute hx:-mt-20" id="notas-por-proveedor">&lt;/span>
-&lt;a href="#notas-por-proveedor" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;p>&lt;strong>GCP&lt;/strong> — Sigue siendo la opción más equilibrada para cursada:&lt;/p>
-&lt;ol>
-&lt;li>USD 300 / 90 días sin cambios.&lt;/li>
+&lt;a href="#notas-por-proveedor" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;p>&lt;strong>GCP&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>USD 300 / 90 días de crédito inicial.&lt;/li>
 &lt;li>Always Free muy usable: Compute Engine e2-micro, Cloud Storage, Firestore.&lt;/li>
-&lt;li>Nuevo free trial instance de Cloud SQL (30 días, disponible para MySQL, PostgreSQL y SQL Server), separado del trial general.&lt;/li>
-&lt;/ol>
-&lt;p>GKE — cuidado: el fee de gestión (USD 0.10/h) aplica a &lt;em>todos&lt;/em> los clusters. La Free Tier solo cubre ese cargo para un cluster Autopilot o zonal Standard. Compute, red, discos y balanceadores siguen costando.&lt;/p>
-&lt;p>&lt;strong>AWS&lt;/strong> — Al crear la cuenta elegís entre Free Plan y Paid Plan:&lt;/p>
+&lt;li>Free trial instance de Cloud SQL (30 días, disponible para MySQL, PostgreSQL y SQL Server), separado del trial general.&lt;/li>
+&lt;li>GKE: el fee de gestión (USD 0.10/h) aplica a &lt;em>todos&lt;/em> los clusters. La Free Tier solo cubre ese cargo para un cluster Autopilot o zonal Standard; compute, red, discos y balanceadores siguen costando.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>AWS&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Hasta USD 200 en créditos (expiran a los 12 meses).&lt;/li>
 &lt;li>Free Plan de hasta 6 meses. Si se vence y no hacés upgrade a Paid Plan dentro del período de retención, &lt;strong>la cuenta se cierra&lt;/strong>.&lt;/li>
 &lt;li>Servicios Always Free por separado (como DynamoDB).&lt;/li>
+&lt;li>La cátedra tiene demos paso a paso en el &lt;a href="https://github.com/ingenieria-del-software-2/cloudcomputing-demo"target="_blank" rel="noopener">repo cloudcomputing-demo&lt;/a>. Para VOD, MediaConvert es competitivo.&lt;/li>
 &lt;/ul>
-&lt;p>La cátedra tiene clases prácticas y el &lt;a href="https://github.com/ingenieria-del-software-2/cloudcomputing-demo"target="_blank" rel="noopener">repo cloudcomputing-demo&lt;/a> con demos paso a paso para AWS y GCP. Si querés seguir el material al pie, es la opción más acompañada. Para VOD, MediaConvert sigue siendo competitivo.&lt;/p>
-&lt;p>&lt;strong>Azure&lt;/strong> — Mejoró mucho para TPs con DB relacional. La oferta gratuita ahora incluye PostgreSQL Flexible Server y MySQL Flexible Server por 12 meses con 750 h B1MS + 32 GB storage + 32 GB backup.&lt;/p>
-&lt;p>&lt;strong>Importante:&lt;/strong> para conservar los servicios gratis de 12 meses después del trial de USD 200, hay que pasar a pay-as-you-go dentro de los 30 días. Sin ese paso, no se activan automáticamente.&lt;/p>
-&lt;p>Un stack API + Postgres + Blob Storage (+ opcionalmente AKS) es mucho más viable que antes sin depender solo del crédito inicial. VMs: Microsoft destaca B2pts v2 / B2ats v2 en la oferta de 12 meses (otra landing todavía menciona B1s).&lt;/p>
-&lt;p>⚠️ VOD: Media Services fue retirado. Migrar a partners o FFmpeg propio.
-⚠️ ML: Azure AI Personalizer no permite recursos nuevos desde sep-2023 y se retira el 1-oct-2026.&lt;/p>
-&lt;p>&lt;strong>Render&lt;/strong> — Ideal para deployar sin DevOps pesado. Limitaciones a tener en cuenta:&lt;/p>
+&lt;p>&lt;strong>Azure&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>La oferta gratuita incluye PostgreSQL Flexible Server y MySQL Flexible Server por 12 meses (750 h B1MS + 32 GB storage + 32 GB backup).&lt;/li>
+&lt;li>Para conservar estos servicios después del trial de USD 200, hay que pasar a pay-as-you-go dentro de los 30 días; sin ese paso, no se activan.&lt;/li>
+&lt;li>VMs: Microsoft destaca B2pts v2 / B2ats v2 en la oferta de 12 meses (otra landing todavía menciona B1s).&lt;/li>
+&lt;li>⚠️ Media Services fue retirado — migrar a partners o FFmpeg propio.&lt;/li>
+&lt;li>⚠️ AI Personalizer no permite recursos nuevos desde sep-2023 y se retira el 1-oct-2026.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Render&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Web service gratis duerme a los 15 min sin tráfico.&lt;/li>
 &lt;li>750 free instance hours por workspace por mes.&lt;/li>
 &lt;li>Sin disco persistente en free tier.&lt;/li>
 &lt;li>Postgres Free: 1 GB, &lt;strong>expira a 30 días&lt;/strong>.&lt;/li>
+&lt;li>Muchos equipos la usan con éxito durante toda la cursada trabajando dentro de estos límites.&lt;/li>
 &lt;/ul>
-&lt;p>Muchos equipos la usan con éxito durante toda la cursada trabajando dentro de estos límites.&lt;/p>
-&lt;p>&lt;strong>Railway&lt;/strong> — Mejoró respecto a cuatrimestres anteriores:&lt;/p>
+&lt;p>&lt;strong>Railway&lt;/strong>&lt;/p>
 &lt;ul>
-&lt;li>Primero: 30 días + USD 5 de trial. El trial puede ser Full o Limited según si Railway logra verificar tu cuenta con GitHub; en el Limited hay restricciones de red y puertos que pueden afectar si consumís APIs externas.&lt;/li>
-&lt;li>Después: plan Free con USD 1/mes de recursos (límites bajos).&lt;/li>
+&lt;li>Trial: 30 días + USD 5. Puede ser Full o Limited según si Railway logra verificar tu cuenta con GitHub; en el Limited hay restricciones de red y puertos.&lt;/li>
+&lt;li>Después: plan Free con USD 1/mes de recursos (límites bajos). Los planes pagos son razonables.&lt;/li>
 &lt;/ul>
-&lt;p>Para proyectos chicos es cómodo. La DX sigue siendo muy buena y los planes pagos son razonables.&lt;/p>
-&lt;p>&lt;strong>Fly.io&lt;/strong> — Deploy global con Fly Machines (autostop/autostart) y muy buena DX con Docker. El trial es corto (7 días o 2 VM-hours) y después pasa a pay-as-you-go, pero el modelo de billing por segundo y autostop lo hacen muy económico para proyectos de cursada.&lt;/p>
+&lt;p>&lt;strong>Fly.io&lt;/strong>&lt;/p>
 &lt;ul>
+&lt;li>Deploy global con Fly Machines (autostop/autostart), billing por segundo. El trial es corto (7 días o 2 VM-hours), después pasa a pay-as-you-go.&lt;/li>
 &lt;li>Objetos: Tigris (S3-compatible, sin egress, presigned URLs).&lt;/li>
-&lt;li>DB: Managed Postgres (desde USD 38/mes) o autogestionado (unsupported). Desde feb-2026, el tráfico privado inter-región de Managed Postgres se cobra igual que el de Machines — si app y DB están en regiones distintas, el costo puede sorprender.&lt;/li>
+&lt;li>DB: Managed Postgres (desde USD 38/mes) o autogestionado. Si app y DB están en regiones distintas, el tráfico inter-región se cobra.&lt;/li>
 &lt;li>Volumes: disco local al host, sin replicación automática — hacer backups propios.&lt;/li>
 &lt;li>FKS (K8s): closed beta, no recomendado para la materia.&lt;/li>
 &lt;/ul>
@@ -492,7 +495,7 @@
 &lt;/table>
 &lt;p>&lt;strong>Cuándo:&lt;/strong> seguir el material de clase directamente o aprender AWS por inserción laboral. Ojo: los créditos (USD 200) y el Free Plan (6 meses) se agotan rápido.&lt;/p>
 &lt;p>&lt;strong>Recursos:&lt;/strong> ver &lt;a href="https://github.com/ingenieria-del-software-2/cloudcomputing-demo"target="_blank" rel="noopener">cloudcomputing-demo&lt;/a>, especialmente &lt;code>03-demo&lt;/code> (AWS y GCP).&lt;/p>
-&lt;p>&lt;strong>Azure — La mejor para relacional gratis&lt;/strong>&lt;/p>
+&lt;p>&lt;strong>Azure — DB gratis por 12 meses&lt;/strong>&lt;/p>
 &lt;table>
 &lt;thead>
 &lt;tr>
@@ -527,7 +530,7 @@
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
-&lt;p>&lt;strong>Cuándo:&lt;/strong> el backend necesita Postgres sí o sí y querés evitar depender solo del crédito inicial.&lt;/p>
+&lt;p>&lt;strong>Cuándo:&lt;/strong> querés Postgres o MySQL gratis por 12 meses sin depender solo del crédito inicial.&lt;/p>
 &lt;p>&lt;strong>PaaS ligeros — Render / Railway / Fly.io&lt;/strong>&lt;/p>
 &lt;table>
 &lt;thead>
