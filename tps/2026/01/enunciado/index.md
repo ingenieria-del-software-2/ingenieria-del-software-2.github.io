@@ -1572,10 +1572,11 @@ Al finalizar el trabajo, el grupo debe haber implementado:
 
 | Instancia    | Duración aprox. | Fecha      |
 | ------------ | --------------- | ---------- |
-| Checkpoint 1 | 3–4 semanas     | A definir  |
-| Checkpoint 2 | 3–4 semanas     | A definir  |
-| Checkpoint 3 | 3–4 semanas     | A definir  |
-| Entrega      | —               | A definir  |
+| Checkpoint 0 | —               | 27/03/2026 |
+| Checkpoint 1 | 3–4 semanas     | 17/04/2026 |
+| Checkpoint 2 | 3–4 semanas     | 12/05/2026 |
+| Checkpoint 3 | 3–4 semanas     | 05/06/2026 |
+| Entrega      | —               | 26/06/2026 |
 
 _El alcance específico de cada checkpoint se acuerda con el corrector asignado al inicio de cada período._
 
