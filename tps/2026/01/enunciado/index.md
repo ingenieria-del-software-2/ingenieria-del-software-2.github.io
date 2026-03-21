@@ -1510,7 +1510,7 @@ Se debe entregar:
 - **Contratos de API** documentados con Swagger/OpenAPI, preferentemente autogenerado.
 - **Diagramas de arquitectura** (se recomienda C4 Model: contexto, contenedores y componentes).
 - **Registro de Decisiones de Arquitectura (ADRs)** para las decisiones de diseño relevantes. Cada ADR debe incluir: contexto del problema, decisión tomada, alternativas descartadas y consecuencias esperadas.
-- **Retrospectiva final del proyecto** al finalizarlo.
+- **Retrospectiva final del proyecto**.
 
 Se valora positivamente:
 
