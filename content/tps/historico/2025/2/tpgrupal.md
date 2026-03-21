@@ -8,8 +8,7 @@ subtitle: "Grupal"
 
 Descubrí más. Escuchá mejor.
 
-<img width="1260" height="763" alt="melodia-banner" src="https://github.com/user-attachments/assets/6e0887ca-ed38-4583-8114-e865b46fe6ba" />
-
+<img width="1260" height="763" alt="melodia-banner" src="https://github.com/user-attachments/assets/3e6bf277-79dc-496f-9230-482f68d69204" />
 
 ## Descripción
 

@@ -181,25 +181,33 @@
                     
                     <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mt-2">
                         <!-- Programa (Principal) -->
-                        <a href="{{ "/material" | relURL }}" class="group flex items-center justify-center gap-3 px-6 py-3.5 bg-slate-900 dark:bg-slate-100 border border-slate-900 dark:border-slate-100 text-white dark:text-slate-950 hover:bg-slate-800 dark:hover:bg-white transition-all w-full sm:w-[220px] md:w-[260px] active:translate-y-0.5 shadow-sm">
+                        <a href="{{ "/material" | relURL }}" class="group flex items-center justify-center gap-2 px-4 py-3 bg-slate-900 dark:bg-slate-100 border border-slate-900 dark:border-slate-100 text-white dark:text-slate-950 hover:bg-slate-800 dark:hover:bg-white transition-all w-full sm:w-auto active:translate-y-0.5 shadow-sm">
                             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg>
-                            <span class="font-sans font-medium text-[11px] tracking-[0.2em] whitespace-nowrap uppercase">Programa</span>
+                            <span class="font-sans font-medium text-[11px] tracking-wider whitespace-nowrap uppercase">Programa</span>
                         </a>
 
                         <!-- Trabajos Prácticos (Dinámico) -->
                         {{- $tpsLink := "/tps" | relURL -}}
                         {{- $latestTP := "" -}}
+                        {{- $latestDir := "" -}}
                         {{- $allTPs := where .Site.RegularPages "Section" "tps" -}}
                         {{- range sort $allTPs "File.Path" "desc" -}}
-                            {{- if and (not $latestTP) (not (findRE "historico" .File.Path)) -}}
-                                {{- $latestTP = .Permalink -}}
+                            {{- if not (findRE "historico" .File.Path) -}}
+                                {{- if not $latestDir -}}
+                                    {{- $latestTP = .Permalink -}}
+                                    {{- $latestDir = .File.Dir -}}
+                                {{- else if eq .File.Dir $latestDir -}}
+                                    {{- if findRE "enunciado" .File.Path -}}
+                                        {{- $latestTP = .Permalink -}}
+                                    {{- end -}}
+                                {{- end -}}
                             {{- end -}}
                         {{- end -}}
                         {{- if $latestTP }}{{ $tpsLink = $latestTP }}{{ end -}}
 
-                        <a href="{{ $tpsLink }}" class="group flex items-center justify-center gap-3 px-6 py-3.5 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-900 dark:hover:text-slate-200 transition-all w-full sm:w-[220px] md:w-[260px] active:translate-y-0.5">
+                        <a href="{{ $tpsLink }}" class="group flex items-center justify-center gap-2 px-4 py-3 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-900 dark:hover:text-slate-200 transition-all w-full sm:w-auto active:translate-y-0.5">
                             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>
-                            <span class="font-sans font-medium text-[11px] tracking-[0.2em] whitespace-nowrap uppercase">Trabajos Prácticos</span>
+                            <span class="font-sans font-medium text-[11px] tracking-wider whitespace-nowrap uppercase">Trabajos Prácticos</span>
                         </a>
                     </div>
                 </section>
