@@ -62,7 +62,7 @@
 &lt;tr>
 &lt;td style="text-align: left">&lt;strong>Render&lt;/strong>&lt;/td>
 &lt;td style="text-align: left">Web services / cron&lt;/td>
-&lt;td style="text-align: left">Containers; duermen tras &lt;strong>15 min&lt;/strong> idle&lt;/td>
+&lt;td style="text-align: left">Containers; duermen tras 15 min idle&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align: left">&lt;strong>Railway&lt;/strong>&lt;/td>
@@ -72,7 +72,7 @@
 &lt;tr>
 &lt;td style="text-align: left">&lt;strong>Fly.io&lt;/strong>&lt;/td>
 &lt;td style="text-align: left">Fly Machines&lt;/td>
-&lt;td style="text-align: left">Billing por segundo; &lt;code>shared-cpu-1x 256MB&lt;/code> ~USD 2/mes (varía por región); &lt;strong>autostop/autostart&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">Billing por segundo; &lt;code>shared-cpu-1x 256MB&lt;/code> ~USD 2/mes (varía por región); autostop/autostart&lt;/td>
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
@@ -113,8 +113,8 @@
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align: left">&lt;strong>Fly.io&lt;/strong>&lt;/td>
-&lt;td style="text-align: left">&lt;strong>Tigris&lt;/strong> (S3-compatible)&lt;/td>
-&lt;td style="text-align: left">&lt;strong>5 GB free&lt;/strong>, cache global, sin egress&lt;/td>
+&lt;td style="text-align: left">Tigris (S3-compatible)&lt;/td>
+&lt;td style="text-align: left">5 GB free, cache global, sin egress&lt;/td>
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
@@ -156,7 +156,7 @@
 &lt;tr>
 &lt;td style="text-align: left">&lt;strong>Fly.io&lt;/strong>&lt;/td>
 &lt;td style="text-align: left">Managed Postgres&lt;/td>
-&lt;td style="text-align: left">Desde &lt;strong>USD 38/mes&lt;/strong>; alternativa autogestionada (unsupported)&lt;/td>
+&lt;td style="text-align: left">Desde USD 38/mes; alternativa autogestionada (unsupported)&lt;/td>
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
@@ -210,7 +210,7 @@
 &lt;tr>
 &lt;td style="text-align: left">&lt;strong>GCP&lt;/strong>&lt;/td>
 &lt;td style="text-align: left">GKE&lt;/td>
-&lt;td style="text-align: left">USD 0.10/h por cluster; Free Tier cubre &lt;strong>1 Autopilot o 1 zonal Standard&lt;/strong> (solo fee de gestión, no compute/red/discos)&lt;/td>
+&lt;td style="text-align: left">USD 0.10/h por cluster; Free Tier cubre 1 Autopilot o 1 zonal Standard (solo fee de gestión, no compute/red/discos)&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align: left">&lt;strong>AWS&lt;/strong>&lt;/td>
@@ -311,72 +311,65 @@
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align: left">&lt;strong>Render&lt;/strong>&lt;/td>
-&lt;td style="text-align: left">&lt;strong>750 free instance hours / workspace / mes&lt;/strong> + Postgres Free 30 días&lt;/td>
+&lt;td style="text-align: left">750 free instance hours / workspace / mes + Postgres Free 30 días&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align: left">&lt;strong>Railway&lt;/strong>&lt;/td>
-&lt;td style="text-align: left">Trial &lt;strong>30 días + USD 5&lt;/strong>, luego plan Free &lt;strong>USD 1/mes&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">Trial 30 días + USD 5, luego plan Free USD 1/mes&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align: left">&lt;strong>Fly.io&lt;/strong>&lt;/td>
-&lt;td style="text-align: left">Free trial: &lt;strong>7 días o 2 VM-hours&lt;/strong>; luego Pay As You Go&lt;/td>
+&lt;td style="text-align: left">Free trial: 7 días o 2 VM-hours; luego Pay As You Go&lt;/td>
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
 &lt;hr>
 &lt;h2>Notas por proveedor&lt;span class="hx:absolute hx:-mt-20" id="notas-por-proveedor">&lt;/span>
-&lt;a href="#notas-por-proveedor" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;h3>GCP&lt;span class="hx:absolute hx:-mt-20" id="gcp">&lt;/span>
-&lt;a href="#gcp" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Sigue siendo la opción más equilibrada para cursada:&lt;/p>
+&lt;a href="#notas-por-proveedor" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;p>&lt;strong>GCP&lt;/strong> — Sigue siendo la opción más equilibrada para cursada:&lt;/p>
 &lt;ol>
-&lt;li>&lt;strong>USD 300 / 90 días&lt;/strong> sin cambios.&lt;/li>
-&lt;li>&lt;strong>Always Free&lt;/strong> muy usable: Compute Engine e2-micro, Cloud Storage, Firestore.&lt;/li>
-&lt;li>Nuevo &lt;strong>free trial instance de Cloud SQL&lt;/strong> (30 días, disponible para MySQL, PostgreSQL y SQL Server), separado del trial general.&lt;/li>
+&lt;li>USD 300 / 90 días sin cambios.&lt;/li>
+&lt;li>Always Free muy usable: Compute Engine e2-micro, Cloud Storage, Firestore.&lt;/li>
+&lt;li>Nuevo free trial instance de Cloud SQL (30 días, disponible para MySQL, PostgreSQL y SQL Server), separado del trial general.&lt;/li>
 &lt;/ol>
-&lt;p>&lt;strong>GKE — cuidado:&lt;/strong> el fee de gestión (USD 0.10/h) aplica a &lt;em>todos&lt;/em> los clusters. La Free Tier solo cubre ese cargo para &lt;strong>un&lt;/strong> cluster Autopilot o zonal Standard. Compute, red, discos y balanceadores siguen costando.&lt;/p>
-&lt;h3>AWS&lt;span class="hx:absolute hx:-mt-20" id="aws">&lt;/span>
-&lt;a href="#aws" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Al crear la cuenta elegís entre &lt;strong>Free Plan&lt;/strong> y &lt;strong>Paid Plan&lt;/strong>:&lt;/p>
+&lt;p>GKE — cuidado: el fee de gestión (USD 0.10/h) aplica a &lt;em>todos&lt;/em> los clusters. La Free Tier solo cubre ese cargo para un cluster Autopilot o zonal Standard. Compute, red, discos y balanceadores siguen costando.&lt;/p>
+&lt;p>&lt;strong>AWS&lt;/strong> — Al crear la cuenta elegís entre Free Plan y Paid Plan:&lt;/p>
 &lt;ul>
-&lt;li>Hasta &lt;strong>USD 200 en créditos&lt;/strong> (expiran a los 12 meses).&lt;/li>
-&lt;li>&lt;strong>Free Plan de hasta 6 meses&lt;/strong>. Si se vence y no hacés upgrade a Paid Plan dentro del período de retención, &lt;strong>la cuenta se cierra&lt;/strong>.&lt;/li>
-&lt;li>Servicios &lt;strong>Always Free&lt;/strong> por separado (como DynamoDB).&lt;/li>
+&lt;li>Hasta USD 200 en créditos (expiran a los 12 meses).&lt;/li>
+&lt;li>Free Plan de hasta 6 meses. Si se vence y no hacés upgrade a Paid Plan dentro del período de retención, &lt;strong>la cuenta se cierra&lt;/strong>.&lt;/li>
+&lt;li>Servicios Always Free por separado (como DynamoDB).&lt;/li>
 &lt;/ul>
-&lt;p>La cátedra tiene clases prácticas y el &lt;a href="https://github.com/ingenieria-del-software-2/cloudcomputing-demo"target="_blank" rel="noopener">repo cloudcomputing-demo&lt;/a> con demos paso a paso para AWS y GCP. Si querés seguir el material al pie, es la opción más acompañada. Para VOD, &lt;strong>MediaConvert&lt;/strong> sigue siendo competitivo.&lt;/p>
-&lt;h3>Azure&lt;span class="hx:absolute hx:-mt-20" id="azure">&lt;/span>
-&lt;a href="#azure" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Mejoró mucho para TPs con DB relacional. Lo más importante: la oferta gratuita ahora incluye &lt;strong>PostgreSQL Flexible Server&lt;/strong> y &lt;strong>MySQL Flexible Server&lt;/strong> por 12 meses con 750 h B1MS + 32 GB storage + 32 GB backup.&lt;/p>
-&lt;p>&lt;strong>Importante:&lt;/strong> para conservar los servicios gratis de 12 meses después del trial de USD 200, hay que pasar a &lt;strong>pay-as-you-go dentro de los 30 días&lt;/strong>. Sin ese paso, no se activan automáticamente.&lt;/p>
-&lt;p>Un stack API + Postgres + Blob Storage (+ opcionalmente AKS) es mucho más viable que antes sin depender solo del crédito inicial.&lt;/p>
-&lt;p>&lt;strong>VMs:&lt;/strong> Microsoft destaca &lt;strong>B2pts v2 / B2ats v2&lt;/strong> en la oferta de 12 meses (otra landing todavía menciona B1s).&lt;/p>
-&lt;p>&lt;strong>⚠️ VOD:&lt;/strong> Media Services fue retirado. Migrar a partners o FFmpeg propio.&lt;/p>
-&lt;p>&lt;strong>⚠️ ML:&lt;/strong> Azure AI Personalizer no permite recursos nuevos desde sep-2023 y se retira el 1-oct-2026.&lt;/p>
-&lt;h3>Render&lt;span class="hx:absolute hx:-mt-20" id="render">&lt;/span>
-&lt;a href="#render" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Ideal para deployar sin DevOps pesado. Limitaciones a tener en cuenta:&lt;/p>
+&lt;p>La cátedra tiene clases prácticas y el &lt;a href="https://github.com/ingenieria-del-software-2/cloudcomputing-demo"target="_blank" rel="noopener">repo cloudcomputing-demo&lt;/a> con demos paso a paso para AWS y GCP. Si querés seguir el material al pie, es la opción más acompañada. Para VOD, MediaConvert sigue siendo competitivo.&lt;/p>
+&lt;p>&lt;strong>Azure&lt;/strong> — Mejoró mucho para TPs con DB relacional. La oferta gratuita ahora incluye PostgreSQL Flexible Server y MySQL Flexible Server por 12 meses con 750 h B1MS + 32 GB storage + 32 GB backup.&lt;/p>
+&lt;p>&lt;strong>Importante:&lt;/strong> para conservar los servicios gratis de 12 meses después del trial de USD 200, hay que pasar a pay-as-you-go dentro de los 30 días. Sin ese paso, no se activan automáticamente.&lt;/p>
+&lt;p>Un stack API + Postgres + Blob Storage (+ opcionalmente AKS) es mucho más viable que antes sin depender solo del crédito inicial. VMs: Microsoft destaca B2pts v2 / B2ats v2 en la oferta de 12 meses (otra landing todavía menciona B1s).&lt;/p>
+&lt;p>⚠️ VOD: Media Services fue retirado. Migrar a partners o FFmpeg propio.
+⚠️ ML: Azure AI Personalizer no permite recursos nuevos desde sep-2023 y se retira el 1-oct-2026.&lt;/p>
+&lt;p>&lt;strong>Render&lt;/strong> — Ideal para deployar sin DevOps pesado. Limitaciones a tener en cuenta:&lt;/p>
 &lt;ul>
-&lt;li>Web service gratis &lt;strong>duerme a los 15 min&lt;/strong> sin tráfico.&lt;/li>
-&lt;li>&lt;strong>750 free instance hours&lt;/strong> por workspace por mes.&lt;/li>
+&lt;li>Web service gratis duerme a los 15 min sin tráfico.&lt;/li>
+&lt;li>750 free instance hours por workspace por mes.&lt;/li>
 &lt;li>Sin disco persistente en free tier.&lt;/li>
-&lt;li>&lt;strong>Postgres Free&lt;/strong>: 1 GB, &lt;strong>expira a 30 días&lt;/strong>.&lt;/li>
+&lt;li>Postgres Free: 1 GB, &lt;strong>expira a 30 días&lt;/strong>.&lt;/li>
 &lt;/ul>
-&lt;p>Excelente para &lt;em>mostrar algo&lt;/em>, no tanto para algo que deba estar siempre online.&lt;/p>
-&lt;h3>Railway&lt;span class="hx:absolute hx:-mt-20" id="railway">&lt;/span>
-&lt;a href="#railway" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Mejoró respecto a cuatrimestres anteriores:&lt;/p>
+&lt;p>Muchos equipos la usan con éxito durante toda la cursada trabajando dentro de estos límites.&lt;/p>
+&lt;p>&lt;strong>Railway&lt;/strong> — Mejoró respecto a cuatrimestres anteriores:&lt;/p>
 &lt;ul>
-&lt;li>Primero: &lt;strong>30 días + USD 5&lt;/strong> de trial. El trial puede ser &lt;strong>Full&lt;/strong> o &lt;strong>Limited&lt;/strong> según si Railway logra verificar tu cuenta con GitHub; en el Limited hay restricciones de red y puertos que pueden afectar si consumís APIs externas.&lt;/li>
-&lt;li>Después: &lt;strong>plan Free con USD 1/mes&lt;/strong> de recursos (límites bajos).&lt;/li>
+&lt;li>Primero: 30 días + USD 5 de trial. El trial puede ser Full o Limited según si Railway logra verificar tu cuenta con GitHub; en el Limited hay restricciones de red y puertos que pueden afectar si consumís APIs externas.&lt;/li>
+&lt;li>Después: plan Free con USD 1/mes de recursos (límites bajos).&lt;/li>
 &lt;/ul>
 &lt;p>Para proyectos chicos es cómodo. La DX sigue siendo muy buena y los planes pagos son razonables.&lt;/p>
-&lt;h3>Fly.io&lt;span class="hx:absolute hx:-mt-20" id="flyio">&lt;/span>
-&lt;a href="#flyio" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Deploy global con &lt;strong>Fly Machines&lt;/strong> (autostop/autostart) y muy buena DX con Docker. El trial es corto (&lt;strong>7 días&lt;/strong> o &lt;strong>2 VM-hours&lt;/strong>) y no hay free allowances después — conviene más para pay-as-you-go.&lt;/p>
+&lt;p>&lt;strong>Fly.io&lt;/strong> — Deploy global con Fly Machines (autostop/autostart) y muy buena DX con Docker. El trial es corto (7 días o 2 VM-hours) y después pasa a pay-as-you-go, pero el modelo de billing por segundo y autostop lo hacen muy económico para proyectos de cursada.&lt;/p>
 &lt;ul>
-&lt;li>&lt;strong>Objetos:&lt;/strong> Tigris (S3-compatible, sin egress, presigned URLs).&lt;/li>
-&lt;li>&lt;strong>DB:&lt;/strong> Managed Postgres (desde USD 38/mes) o autogestionado (unsupported). Desde feb-2026, el tráfico privado inter-región de Managed Postgres se cobra igual que el de Machines — si app y DB están en regiones distintas, el costo puede sorprender.&lt;/li>
-&lt;li>&lt;strong>Volumes:&lt;/strong> disco local al host, sin replicación automática — hacer backups propios.&lt;/li>
-&lt;li>&lt;strong>FKS (K8s):&lt;/strong> closed beta, no recomendado para la materia.&lt;/li>
+&lt;li>Objetos: Tigris (S3-compatible, sin egress, presigned URLs).&lt;/li>
+&lt;li>DB: Managed Postgres (desde USD 38/mes) o autogestionado (unsupported). Desde feb-2026, el tráfico privado inter-región de Managed Postgres se cobra igual que el de Machines — si app y DB están en regiones distintas, el costo puede sorprender.&lt;/li>
+&lt;li>Volumes: disco local al host, sin replicación automática — hacer backups propios.&lt;/li>
+&lt;li>FKS (K8s): closed beta, no recomendado para la materia.&lt;/li>
 &lt;/ul>
 &lt;hr>
 &lt;h2>Bases de datos gestionadas&lt;span class="hx:absolute hx:-mt-20" id="bases-de-datos-gestionadas">&lt;/span>
-&lt;a href="#bases-de-datos-gestionadas" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;p>Independientemente de la plataforma de deploy, a veces conviene elegir la DB por separado. Opciones pensadas para &lt;strong>PostgreSQL o MySQL gestionado&lt;/strong> con costo inicial muy bajo o nulo.&lt;/p>
-&lt;h3>PostgreSQL&lt;span class="hx:absolute hx:-mt-20" id="postgresql">&lt;/span>
-&lt;a href="#postgresql" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;table>
+&lt;a href="#bases-de-datos-gestionadas" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;p>Independientemente de la plataforma de deploy, a veces conviene elegir la DB por separado. Opciones pensadas para PostgreSQL o MySQL gestionado con costo inicial muy bajo o nulo.&lt;/p>
+&lt;p>&lt;strong>PostgreSQL&lt;/strong>&lt;/p>
+&lt;table>
 &lt;thead>
 &lt;tr>
 &lt;th style="text-align: left">Servicio&lt;/th>
@@ -402,8 +395,8 @@
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
-&lt;h3>MySQL&lt;span class="hx:absolute hx:-mt-20" id="mysql">&lt;/span>
-&lt;a href="#mysql" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>El panorama &amp;ldquo;moderno, gratis y simple&amp;rdquo; para MySQL es más limitado:&lt;/p>
+&lt;p>&lt;strong>MySQL&lt;/strong>&lt;/p>
+&lt;p>El panorama &amp;ldquo;moderno, gratis y simple&amp;rdquo; para MySQL es más limitado:&lt;/p>
 &lt;table>
 &lt;thead>
 &lt;tr>
@@ -422,16 +415,16 @@
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
-&lt;h3>Recomendación rápida&lt;span class="hx:absolute hx:-mt-20" id="recomendación-rápida">&lt;/span>
-&lt;a href="#recomendaci%c3%b3n-r%c3%a1pida" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>PostgreSQL gratis y sin fricción&lt;/strong> → &lt;strong>Neon&lt;/strong>&lt;/li>
-&lt;li>&lt;strong>PostgreSQL + backend completo&lt;/strong> → &lt;strong>Supabase&lt;/strong>&lt;/li>
-&lt;li>&lt;strong>MySQL gestionado&lt;/strong> → &lt;strong>Railway&lt;/strong> para empezar rápido, &lt;strong>Azure MySQL&lt;/strong> para más previsibilidad&lt;/li>
+&lt;p>&lt;strong>Recomendación rápida&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>PostgreSQL gratis y sin fricción → &lt;strong>Neon&lt;/strong>&lt;/li>
+&lt;li>PostgreSQL + backend completo → &lt;strong>Supabase&lt;/strong>&lt;/li>
+&lt;li>MySQL gestionado → &lt;strong>Railway&lt;/strong> para empezar rápido, &lt;strong>Azure MySQL&lt;/strong> para más previsibilidad&lt;/li>
 &lt;/ul>
 &lt;hr>
 &lt;h2>Stacks recomendados&lt;span class="hx:absolute hx:-mt-20" id="stacks-recomendados">&lt;/span>
-&lt;a href="#stacks-recomendados" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;h3>GCP — La más equilibrada&lt;span class="hx:absolute hx:-mt-20" id="gcp--la-más-equilibrada">&lt;/span>
-&lt;a href="#gcp--la-m%c3%a1s-equilibrada" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;table>
+&lt;a href="#stacks-recomendados" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;p>&lt;strong>GCP — La más equilibrada&lt;/strong>&lt;/p>
+&lt;table>
 &lt;thead>
 &lt;tr>
 &lt;th style="text-align: left">Capa&lt;/th>
@@ -466,8 +459,8 @@
 &lt;/tbody>
 &lt;/table>
 &lt;p>&lt;strong>Cuándo:&lt;/strong> buena relación facilidad / costo / servicios administrados.&lt;/p>
-&lt;h3>AWS — La que más material de cátedra tiene&lt;span class="hx:absolute hx:-mt-20" id="aws--la-que-más-material-de-cátedra-tiene">&lt;/span>
-&lt;a href="#aws--la-que-m%c3%a1s-material-de-c%c3%a1tedra-tiene" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;table>
+&lt;p>&lt;strong>AWS — La que más material de cátedra tiene&lt;/strong>&lt;/p>
+&lt;table>
 &lt;thead>
 &lt;tr>
 &lt;th style="text-align: left">Capa&lt;/th>
@@ -499,8 +492,8 @@
 &lt;/table>
 &lt;p>&lt;strong>Cuándo:&lt;/strong> seguir el material de clase directamente o aprender AWS por inserción laboral. Ojo: los créditos (USD 200) y el Free Plan (6 meses) se agotan rápido.&lt;/p>
 &lt;p>&lt;strong>Recursos:&lt;/strong> ver &lt;a href="https://github.com/ingenieria-del-software-2/cloudcomputing-demo"target="_blank" rel="noopener">cloudcomputing-demo&lt;/a>, especialmente &lt;code>03-demo&lt;/code> (AWS y GCP).&lt;/p>
-&lt;h3>Azure — La mejor para relacional gratis&lt;span class="hx:absolute hx:-mt-20" id="azure--la-mejor-para-relacional-gratis">&lt;/span>
-&lt;a href="#azure--la-mejor-para-relacional-gratis" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;table>
+&lt;p>&lt;strong>Azure — La mejor para relacional gratis&lt;/strong>&lt;/p>
+&lt;table>
 &lt;thead>
 &lt;tr>
 &lt;th style="text-align: left">Capa&lt;/th>
@@ -535,8 +528,8 @@
 &lt;/tbody>
 &lt;/table>
 &lt;p>&lt;strong>Cuándo:&lt;/strong> el backend necesita Postgres sí o sí y querés evitar depender solo del crédito inicial.&lt;/p>
-&lt;h3>PaaS ligeros — Render / Railway / Fly.io&lt;span class="hx:absolute hx:-mt-20" id="paas-ligeros--render--railway--flyio">&lt;/span>
-&lt;a href="#paas-ligeros--render--railway--flyio" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;table>
+&lt;p>&lt;strong>PaaS ligeros — Render / Railway / Fly.io&lt;/strong>&lt;/p>
+&lt;table>
 &lt;thead>
 &lt;tr>
 &lt;th style="text-align: left">Plataforma&lt;/th>
@@ -569,92 +562,24 @@
 &lt;li>&lt;strong>AWS:&lt;/strong> los USD 200 y el Free Plan de 6 meses se agotan rápido si no prestás atención.&lt;/li>
 &lt;li>&lt;strong>Azure:&lt;/strong> no planifiques sobre Media Services — ya no existe.&lt;/li>
 &lt;li>&lt;strong>GCP:&lt;/strong> &amp;ldquo;GKE cluster fee cubierto&amp;rdquo; ≠ &amp;ldquo;cluster gratis&amp;rdquo; — nodos, pods, red y discos siguen costando.&lt;/li>
-&lt;li>&lt;strong>Discos:&lt;/strong> mantené los de VMs cerca de &lt;strong>30 GB&lt;/strong> para seguir en free tiers iniciales.&lt;/li>
+&lt;li>&lt;strong>Discos:&lt;/strong> mantené los de VMs cerca de 30 GB para seguir en free tiers iniciales.&lt;/li>
 &lt;li>&lt;strong>Fly.io:&lt;/strong> usá autostop/autostart (Machines detenidas no cobran CPU/RAM, pero volumes y rootfs sí pueden facturar). Los volumes no se replican solos — armá backups de verdad.&lt;/li>
 &lt;/ol>
 &lt;hr>
 &lt;h2>Enlaces oficiales&lt;span class="hx:absolute hx:-mt-20" id="enlaces-oficiales">&lt;/span>
-&lt;a href="#enlaces-oficiales" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;h3>Google Cloud&lt;span class="hx:absolute hx:-mt-20" id="google-cloud">&lt;/span>
-&lt;a href="#google-cloud" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;a href="https://cloud.google.com/free"target="_blank" rel="noopener">Free Trial y Free Tier&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://docs.cloud.google.com/free/docs/free-cloud-features"target="_blank" rel="noopener">Detalle del Free Tier&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://cloud.google.com/kubernetes-engine/pricing"target="_blank" rel="noopener">GKE pricing&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://cloud.google.com/sql/pricing"target="_blank" rel="noopener">Cloud SQL pricing&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://docs.cloud.google.com/sql/docs/mysql/free-trial-instance"target="_blank" rel="noopener">Cloud SQL free trial instance&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://cloud.google.com/transcoder/pricing"target="_blank" rel="noopener">Transcoder API pricing&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://docs.cloud.google.com/retail/docs/predict"target="_blank" rel="noopener">Vertex AI Search for Commerce&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://docs.cloud.google.com/vertex-ai/docs/vector-search/overview"target="_blank" rel="noopener">Vertex AI Vector Search&lt;/a>&lt;/li>
-&lt;/ul>
-&lt;h3>AWS&lt;span class="hx:absolute hx:-mt-20" id="aws-1">&lt;/span>
-&lt;a href="#aws-1" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;a href="https://aws.amazon.com/free/"target="_blank" rel="noopener">AWS Free Tier&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://aws.amazon.com/free/compute/"target="_blank" rel="noopener">AWS Free Tier — Compute&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://aws.amazon.com/free/free-tier-faqs/"target="_blank" rel="noopener">Free Tier FAQs&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/tracking-free-tier-usage.html"target="_blank" rel="noopener">Tracking Free Tier usage&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://aws.amazon.com/rds/free/"target="_blank" rel="noopener">Amazon RDS Free Tier&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://aws.amazon.com/free/storage/s3/"target="_blank" rel="noopener">Amazon S3 free storage&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://aws.amazon.com/dynamodb/pricing/"target="_blank" rel="noopener">DynamoDB pricing&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://aws.amazon.com/eks/pricing/"target="_blank" rel="noopener">Amazon EKS pricing&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://aws.amazon.com/mediaconvert/pricing/"target="_blank" rel="noopener">MediaConvert pricing&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://aws.amazon.com/personalize/pricing/"target="_blank" rel="noopener">Amazon Personalize pricing&lt;/a>&lt;/li>
-&lt;/ul>
-&lt;h3>Azure&lt;span class="hx:absolute hx:-mt-20" id="azure-1">&lt;/span>
-&lt;a href="#azure-1" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;a href="https://azure.microsoft.com/en-us/free/"target="_blank" rel="noopener">Azure free account&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://azure.microsoft.com/en-us/pricing/free-services/"target="_blank" rel="noopener">Azure free services&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account/"target="_blank" rel="noopener">Azure purchase options&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://azure.microsoft.com/en-us/pricing/details/kubernetes-service/"target="_blank" rel="noopener">AKS pricing&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://azure.microsoft.com/en-us/pricing/details/cosmos-db/autoscale-provisioned/"target="_blank" rel="noopener">Cosmos DB pricing&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://azure.microsoft.com/en-us/pricing/details/postgresql/flexible-server/"target="_blank" rel="noopener">PostgreSQL Flexible Server pricing&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://azure.microsoft.com/en-us/pricing/free-services/"target="_blank" rel="noopener">MySQL Flexible Server pricing&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://learn.microsoft.com/en-us/azure/media-services/latest/azure-media-services-retirement"target="_blank" rel="noopener">Media Services retirement guide&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://learn.microsoft.com/en-us/azure/ai-services/personalizer/"target="_blank" rel="noopener">Azure AI Personalizer docs&lt;/a>&lt;/li>
-&lt;/ul>
-&lt;h3>Render&lt;span class="hx:absolute hx:-mt-20" id="render-1">&lt;/span>
-&lt;a href="#render-1" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;a href="https://render.com/pricing"target="_blank" rel="noopener">Render pricing&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://render.com/docs/free"target="_blank" rel="noopener">Deploy for Free&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://render.com/docs/postgresql"target="_blank" rel="noopener">Render Postgres&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://render.com/docs/key-value"target="_blank" rel="noopener">Render Key Value&lt;/a>&lt;/li>
-&lt;/ul>
-&lt;h3>Railway&lt;span class="hx:absolute hx:-mt-20" id="railway-1">&lt;/span>
-&lt;a href="#railway-1" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;a href="https://railway.com/pricing"target="_blank" rel="noopener">Railway pricing&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://docs.railway.com/pricing"target="_blank" rel="noopener">Railway docs: pricing&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://docs.railway.com/pricing/free-trial"target="_blank" rel="noopener">Railway docs: free trial&lt;/a>&lt;/li>
-&lt;/ul>
-&lt;h3>Fly.io&lt;span class="hx:absolute hx:-mt-20" id="flyio-1">&lt;/span>
-&lt;a href="#flyio-1" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;a href="https://fly.io/docs/about/free-trial/"target="_blank" rel="noopener">Free Trial&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://fly.io/docs/about/pricing/"target="_blank" rel="noopener">Pricing&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://fly.io/docs/machines/"target="_blank" rel="noopener">Fly Machines&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://fly.io/docs/launch/autostop-autostart/"target="_blank" rel="noopener">Autostop/autostart&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://fly.io/docs/volumes/overview/"target="_blank" rel="noopener">Fly Volumes&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://fly.io/docs/mpg/"target="_blank" rel="noopener">Managed Postgres&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://fly.io/docs/upstash/redis/"target="_blank" rel="noopener">Upstash for Redis&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://fly.io/docs/kubernetes/"target="_blank" rel="noopener">Fly Kubernetes&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://fly.io/docs/reference/regions/"target="_blank" rel="noopener">Regions&lt;/a>&lt;/li>
-&lt;/ul>
-&lt;h3>Tigris&lt;span class="hx:absolute hx:-mt-20" id="tigris">&lt;/span>
-&lt;a href="#tigris" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;a href="https://fly.io/docs/tigris/"target="_blank" rel="noopener">Tigris en Fly Docs&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://www.tigrisdata.com/pricing/"target="_blank" rel="noopener">Tigris pricing&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://www.tigrisdata.com/docs/account-management/billing/"target="_blank" rel="noopener">Tigris billing&lt;/a>&lt;/li>
-&lt;/ul>
-&lt;h3>Neon&lt;span class="hx:absolute hx:-mt-20" id="neon">&lt;/span>
-&lt;a href="#neon" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;a href="https://neon.com/pricing"target="_blank" rel="noopener">Neon pricing&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://neon.com/docs/introduction"target="_blank" rel="noopener">Neon docs&lt;/a>&lt;/li>
-&lt;/ul>
-&lt;h3>Supabase&lt;span class="hx:absolute hx:-mt-20" id="supabase">&lt;/span>
-&lt;a href="#supabase" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;a href="https://supabase.com/pricing"target="_blank" rel="noopener">Supabase pricing&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://supabase.com/docs"target="_blank" rel="noopener">Supabase docs&lt;/a>&lt;/li>
-&lt;/ul>
+&lt;a href="#enlaces-oficiales" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;p>&lt;strong>Google Cloud&lt;/strong> — &lt;a href="https://cloud.google.com/free"target="_blank" rel="noopener">Free Trial y Free Tier&lt;/a> · &lt;a href="https://docs.cloud.google.com/free/docs/free-cloud-features"target="_blank" rel="noopener">Detalle del Free Tier&lt;/a> · &lt;a href="https://cloud.google.com/kubernetes-engine/pricing"target="_blank" rel="noopener">GKE pricing&lt;/a> · &lt;a href="https://cloud.google.com/sql/pricing"target="_blank" rel="noopener">Cloud SQL pricing&lt;/a> · &lt;a href="https://docs.cloud.google.com/sql/docs/mysql/free-trial-instance"target="_blank" rel="noopener">Cloud SQL free trial instance&lt;/a> · &lt;a href="https://cloud.google.com/transcoder/pricing"target="_blank" rel="noopener">Transcoder API pricing&lt;/a> · &lt;a href="https://docs.cloud.google.com/retail/docs/predict"target="_blank" rel="noopener">Vertex AI Search for Commerce&lt;/a> · &lt;a href="https://docs.cloud.google.com/vertex-ai/docs/vector-search/overview"target="_blank" rel="noopener">Vertex AI Vector Search&lt;/a>&lt;/p>
+&lt;p>&lt;strong>AWS&lt;/strong> — &lt;a href="https://aws.amazon.com/free/"target="_blank" rel="noopener">Free Tier&lt;/a> · &lt;a href="https://aws.amazon.com/free/compute/"target="_blank" rel="noopener">Free Tier — Compute&lt;/a> · &lt;a href="https://aws.amazon.com/free/free-tier-faqs/"target="_blank" rel="noopener">Free Tier FAQs&lt;/a> · &lt;a href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/tracking-free-tier-usage.html"target="_blank" rel="noopener">Tracking Free Tier usage&lt;/a> · &lt;a href="https://aws.amazon.com/rds/free/"target="_blank" rel="noopener">RDS Free Tier&lt;/a> · &lt;a href="https://aws.amazon.com/free/storage/s3/"target="_blank" rel="noopener">S3 free storage&lt;/a> · &lt;a href="https://aws.amazon.com/dynamodb/pricing/"target="_blank" rel="noopener">DynamoDB pricing&lt;/a> · &lt;a href="https://aws.amazon.com/eks/pricing/"target="_blank" rel="noopener">EKS pricing&lt;/a> · &lt;a href="https://aws.amazon.com/mediaconvert/pricing/"target="_blank" rel="noopener">MediaConvert pricing&lt;/a> · &lt;a href="https://aws.amazon.com/personalize/pricing/"target="_blank" rel="noopener">Personalize pricing&lt;/a>&lt;/p>
+&lt;p>&lt;strong>Azure&lt;/strong> — &lt;a href="https://azure.microsoft.com/en-us/free/"target="_blank" rel="noopener">Free account&lt;/a> · &lt;a href="https://azure.microsoft.com/en-us/pricing/free-services/"target="_blank" rel="noopener">Free services&lt;/a> · &lt;a href="https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account/"target="_blank" rel="noopener">Purchase options&lt;/a> · &lt;a href="https://azure.microsoft.com/en-us/pricing/details/kubernetes-service/"target="_blank" rel="noopener">AKS pricing&lt;/a> · &lt;a href="https://azure.microsoft.com/en-us/pricing/details/cosmos-db/autoscale-provisioned/"target="_blank" rel="noopener">Cosmos DB pricing&lt;/a> · &lt;a href="https://azure.microsoft.com/en-us/pricing/details/postgresql/flexible-server/"target="_blank" rel="noopener">PostgreSQL Flexible Server pricing&lt;/a> · &lt;a href="https://azure.microsoft.com/en-us/pricing/free-services/"target="_blank" rel="noopener">MySQL Flexible Server pricing&lt;/a> · &lt;a href="https://learn.microsoft.com/en-us/azure/media-services/latest/azure-media-services-retirement"target="_blank" rel="noopener">Media Services retirement&lt;/a> · &lt;a href="https://learn.microsoft.com/en-us/azure/ai-services/personalizer/"target="_blank" rel="noopener">AI Personalizer docs&lt;/a>&lt;/p>
+&lt;p>&lt;strong>Render&lt;/strong> — &lt;a href="https://render.com/pricing"target="_blank" rel="noopener">Pricing&lt;/a> · &lt;a href="https://render.com/docs/free"target="_blank" rel="noopener">Deploy for Free&lt;/a> · &lt;a href="https://render.com/docs/postgresql"target="_blank" rel="noopener">Postgres&lt;/a> · &lt;a href="https://render.com/docs/key-value"target="_blank" rel="noopener">Key Value&lt;/a>&lt;/p>
+&lt;p>&lt;strong>Railway&lt;/strong> — &lt;a href="https://railway.com/pricing"target="_blank" rel="noopener">Pricing&lt;/a> · &lt;a href="https://docs.railway.com/pricing"target="_blank" rel="noopener">Docs: pricing&lt;/a> · &lt;a href="https://docs.railway.com/pricing/free-trial"target="_blank" rel="noopener">Docs: free trial&lt;/a>&lt;/p>
+&lt;p>&lt;strong>Fly.io&lt;/strong> — &lt;a href="https://fly.io/docs/about/free-trial/"target="_blank" rel="noopener">Free Trial&lt;/a> · &lt;a href="https://fly.io/docs/about/pricing/"target="_blank" rel="noopener">Pricing&lt;/a> · &lt;a href="https://fly.io/docs/machines/"target="_blank" rel="noopener">Machines&lt;/a> · &lt;a href="https://fly.io/docs/launch/autostop-autostart/"target="_blank" rel="noopener">Autostop/autostart&lt;/a> · &lt;a href="https://fly.io/docs/volumes/overview/"target="_blank" rel="noopener">Volumes&lt;/a> · &lt;a href="https://fly.io/docs/mpg/"target="_blank" rel="noopener">Managed Postgres&lt;/a> · &lt;a href="https://fly.io/docs/upstash/redis/"target="_blank" rel="noopener">Upstash for Redis&lt;/a> · &lt;a href="https://fly.io/docs/kubernetes/"target="_blank" rel="noopener">Kubernetes&lt;/a> · &lt;a href="https://fly.io/docs/reference/regions/"target="_blank" rel="noopener">Regions&lt;/a>&lt;/p>
+&lt;p>&lt;strong>Tigris&lt;/strong> — &lt;a href="https://fly.io/docs/tigris/"target="_blank" rel="noopener">Docs en Fly&lt;/a> · &lt;a href="https://www.tigrisdata.com/pricing/"target="_blank" rel="noopener">Pricing&lt;/a> · &lt;a href="https://www.tigrisdata.com/docs/account-management/billing/"target="_blank" rel="noopener">Billing&lt;/a>&lt;/p>
+&lt;p>&lt;strong>Neon&lt;/strong> — &lt;a href="https://neon.com/pricing"target="_blank" rel="noopener">Pricing&lt;/a> · &lt;a href="https://neon.com/docs/introduction"target="_blank" rel="noopener">Docs&lt;/a>&lt;/p>
+&lt;p>&lt;strong>Supabase&lt;/strong> — &lt;a href="https://supabase.com/pricing"target="_blank" rel="noopener">Pricing&lt;/a> · &lt;a href="https://supabase.com/docs"target="_blank" rel="noopener">Docs&lt;/a>&lt;/p>
 &lt;hr>
 &lt;h2>Recursos de cátedra&lt;span class="hx:absolute hx:-mt-20" id="recursos-de-cátedra">&lt;/span>
 &lt;a href="#recursos-de-c%c3%a1tedra" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;ul>
-&lt;li>&lt;strong>Repo con scripts y ejemplos de despliegue:&lt;/strong> &lt;a href="https://github.com/ingenieria-del-software-2/cloudcomputing-demo"target="_blank" rel="noopener">cloudcomputing-demo&lt;/a> — ver &lt;code>03-demo&lt;/code> (AWS y GCP) para tips rápidos.&lt;/li>
-&lt;li>&lt;strong>Video tutorial — Crea tu primera cuenta en AWS:&lt;/strong> &lt;a href="https://drive.google.com/file/d/1vps1XS2ReZ0CXFjKIOoqhzMM8YfiU1gh"target="_blank" rel="noopener">Google Drive&lt;/a>&lt;/li>
-&lt;li>&lt;strong>Demo 3 grabada (IaC full e2e CI/CD):&lt;/strong> &lt;a href="https://drive.google.com/file/d/145UHzRo0DJabGZFRC_3eVcHvPkhxy1V3"target="_blank" rel="noopener">Google Drive&lt;/a>&lt;/li>
+&lt;li>Repo con scripts y ejemplos de despliegue: &lt;a href="https://github.com/ingenieria-del-software-2/cloudcomputing-demo"target="_blank" rel="noopener">cloudcomputing-demo&lt;/a> — ver &lt;code>03-demo&lt;/code> (AWS y GCP) para tips rápidos.&lt;/li>
+&lt;li>Video tutorial — Crea tu primera cuenta en AWS: &lt;a href="https://drive.google.com/file/d/1vps1XS2ReZ0CXFjKIOoqhzMM8YfiU1gh"target="_blank" rel="noopener">Google Drive&lt;/a>&lt;/li>
+&lt;li>Demo 3 grabada (IaC full e2e CI/CD): &lt;a href="https://drive.google.com/file/d/145UHzRo0DJabGZFRC_3eVcHvPkhxy1V3"target="_blank" rel="noopener">Google Drive&lt;/a>&lt;/li>
 &lt;/ul></description></item></channel></rss>
