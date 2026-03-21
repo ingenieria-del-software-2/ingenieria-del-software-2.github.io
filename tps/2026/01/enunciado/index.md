@@ -1660,23 +1660,23 @@ Este documento centraliza los conceptos técnicos utilizados en el enunciado de 
 
 ---
 
-### Arquitectura y Diseño
+**Arquitectura y Diseño**
 
-#### Microservicios
+**Microservicios**
 
 Un estilo arquitectónico en el que el sistema se descompone en servicios pequeños e independientes, cada uno con su propia base de datos y desplegable de forma autónoma. La cátedra espera que cada servicio tenga responsabilidad bien delimitada, que no comparta base de datos con otros servicios, y que los contratos entre ellos estén documentados.
 
 - [Microservices — Martin Fowler](https://martinfowler.com/articles/microservices.html)
 - [Microservices.io — Patterns](https://microservices.io/patterns/index.html)
 
-#### Domain-Driven Design (DDD)
+**Domain-Driven Design (DDD)**
 
 Enfoque de diseño que alinea el modelo de software con el dominio del negocio. Los conceptos clave esperados son: identificación de **Bounded Contexts** (límites del dominio), **Entities** y **Value Objects**, y el uso del lenguaje ubicuo para nombrar los elementos del sistema. No se exige una implementación completa de DDD táctico, pero sí que las decisiones de descomposición en servicios estén justificadas en términos del dominio.
 
 - [DDD — Domain-Driven Design (Martin Fowler)](https://martinfowler.com/bliki/DomainDrivenDesign.html)
 - [DDD Reference (Eric Evans)](https://www.domainlanguage.com/ddd/reference/)
 
-#### API Gateway
+**API Gateway**
 
 Componente que actúa como punto único de entrada al sistema desde los clientes (mobile, backoffice). Centraliza el enrutamiento hacia los servicios backend, la validación de tokens de autenticación y el rate limiting. La cátedra lo considera un componente esperado de la arquitectura. Su implementación y decisiones de diseño deben documentarse en un ADR.
 
@@ -1684,14 +1684,14 @@ Componente que actúa como punto único de entrada al sistema desde los clientes
 - [NGINX API Gateway](https://www.nginx.com/learn/api-gateway/)
 - [Kong Gateway (open source)](https://konghq.com/products/kong-gateway)
 
-#### C4 Model
+**C4 Model**
 
 Framework para documentar la arquitectura de software en cuatro niveles de abstracción: Contexto, Contenedores, Componentes y Código. La cátedra espera al menos los tres primeros niveles. Se recomienda usar PlantUML o Structurizr para generarlos.
 
 - [C4 Model](https://c4model.com/)
 - [Structurizr (herramienta)](https://structurizr.com/)
 
-#### Architecture Decision Records (ADR)
+**Architecture Decision Records (ADR)**
 
 Documento corto que registra una decisión de diseño relevante. Cada ADR debe incluir: contexto del problema, decisión tomada, alternativas descartadas y consecuencias esperadas. La cátedra espera un ADR por cada decisión significativa (elección de tecnología, patrón de comunicación, adopción o no del API Gateway, etc.).
 
@@ -1700,16 +1700,16 @@ Documento corto que registra una decisión de diseño relevante. Cada ADR debe i
 
 ---
 
-### Resiliencia y Patrones Distribuidos
+**Resiliencia y Patrones Distribuidos**
 
-#### Saga Pattern
+**Saga Pattern**
 
 Patrón para manejar transacciones distribuidas que involucran múltiples servicios sin usar transacciones ACID globales. Existen dos variantes: **coreografía** (cada servicio reacciona a eventos de otros) y **orquestación** (un coordinador central dirige el flujo). La cátedra espera que los flujos críticos como el checkout definan explícitamente su estrategia de compensación ante fallos parciales.
 
 - [Saga Pattern — Microservices.io](https://microservices.io/patterns/data/saga.html)
 - [Saga Orchestration vs Choreography](https://microservices.io/post/microservices/2019/07/09/developing-sagas-part-1.html)
 
-#### Circuit Breaker
+**Circuit Breaker**
 
 Patrón que evita que un servicio siga intentando llamar a otro que está fallando, cortando el circuito temporalmente y fallando rápido. Tiene tres estados: **cerrado** (operación normal), **abierto** (falla rápida sin intentar la llamada) y **semi-abierto** (prueba si el servicio se recuperó). La cátedra espera que las llamadas entre servicios que puedan fallar lo implementen o justifiquen en un ADR por qué no es necesario.
 
@@ -1717,20 +1717,20 @@ Patrón que evita que un servicio siga intentando llamar a otro que está fallan
 - [Resilience4j (Java)](https://resilience4j.readme.io/docs/circuitbreaker)
 - [circuitbreaker (Python)](https://pypi.org/project/circuitbreaker/)
 
-#### Retry con backoff exponencial
+**Retry con backoff exponencial**
 
 Estrategia para reintentar una operación fallida esperando un tiempo creciente entre intentos (ej: 1s, 2s, 4s, 8s...) más un componente aleatorio (jitter) para evitar picos de carga sincronizados. La cátedra espera que las operaciones que se puedan reintentar sin efectos secundarios (idempotentes) usen esta estrategia ante fallos transitorios.
 
 - [Exponential Backoff and Jitter (AWS)](https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/)
 
-#### Idempotencia
+**Idempotencia**
 
 Una operación es idempotente si ejecutarla múltiples veces produce el mismo resultado que ejecutarla una sola vez. La cátedra exige idempotencia en operaciones que modifiquen estado y puedan reintentarse: pagos, actualizaciones de stock, emisión de eventos. La implementación típica usa un **idempotency key** por request que el servidor almacena para detectar duplicados.
 
 - [Idempotency — Stripe API Docs](https://stripe.com/docs/api/idempotent_requests)
 - [Designing Robust and Predictable APIs with Idempotency](https://multithreaded.stitchfix.com/blog/2017/06/26/patterns-of-soa-idempotency/)
 
-#### Fallos transitorios vs. permanentes
+**Fallos transitorios vs. permanentes**
 
 - **Fallo transitorio**: condición temporal que se espera que se resuelva sola (timeout de red, servicio momentáneamente no disponible). La respuesta esperada es reintentar con backoff.
 - **Fallo permanente**: condición que no se resolverá sin intervención (pago rechazado por fondos insuficientes, datos inválidos). La respuesta esperada es compensar el flujo o notificar al usuario.
@@ -1739,9 +1739,9 @@ La distinción concreta para cada flujo la define el grupo y la acuerda con su c
 
 ---
 
-### Testing
+**Testing**
 
-#### Pirámide de Tests
+**Pirámide de Tests**
 
 La cátedra espera que la suite de tests incluya los tres niveles:
 1. **Unitarios**: validan lógica de negocio de cada servicio de forma aislada. Cobertura mínima: 70%.
@@ -1750,7 +1750,7 @@ La cátedra espera que la suite de tests incluya los tres niveles:
 
 - [Test Pyramid — Martin Fowler](https://martinfowler.com/bliki/TestPyramid.html)
 
-#### Contract Testing
+**Contract Testing**
 
 Pruebas que verifican que dos servicios que se comunican entre sí cumplen el contrato acordado. El objetivo es detectar incompatibilidades entre servicios sin necesidad de un entorno completo levantado. El nivel mínimo esperado es al menos un contrato definido y verificado entre dos servicios del flujo de checkout.
 
@@ -1766,14 +1766,14 @@ La cátedra no impone una herramienta específica. Las opciones más comunes son
 - [Dredd](https://dredd.org/en/latest/)
 - [oasdiff](https://github.com/Tufin/oasdiff)
 
-#### Pruebas de carga y estrés (k6 / Artillery)
+**Pruebas de carga y estrés (k6 / Artillery)**
 
 Pruebas que evalúan el comportamiento del sistema bajo carga sostenida (load testing) o picos extremos (stress testing). La cátedra exige pruebas sobre los endpoints críticos del flujo de checkout. Los resultados deben presentarse con métricas de latencia (p50, p95, p99) y tasa de errores. Las pruebas pueden ejecutarse localmente; no es requerido integrarlas al pipeline de CI.
 
 - [k6 — Load Testing](https://k6.io/)
 - [Artillery](https://www.artillery.io/)
 
-#### SAST (Static Application Security Testing)
+**SAST (Static Application Security Testing)**
 
 Análisis estático del código fuente para detectar vulnerabilidades de seguridad sin ejecutar el programa. La cátedra recomienda incorporarlo al pipeline de CI. Herramientas comunes: Bandit (Python), ESLint security plugin (Node.js), Semgrep (multi-lenguaje).
 
@@ -1782,27 +1782,27 @@ Análisis estático del código fuente para detectar vulnerabilidades de segurid
 
 ---
 
-### Observabilidad
+**Observabilidad**
 
-#### Health Checks
+**Health Checks (`/livez` y `/readyz`)**
 
 Cada servicio debe exponer probes con semántica diferenciada, como se indica en la sección de Monitoreo: **`/livez`** para validar que el proceso está vivo (sin consultar dependencias externas) y **`/readyz`** para confirmar que puede atender requests correctamente (validando dependencias críticas como la base de datos). No usar un único `/health` genérico.
 
 - [Separate Readiness and Liveness Probes](https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/health-checks?view=aspnetcore-10.0#separate-readiness-and-liveness-probes)
 
-#### Logs estructurados
+**Logs estructurados**
 
 Los logs deben emitirse en formato estructurado (JSON) con niveles configurables (Error, Warn, Info, Debug).
 
 - [Structured Logging](https://www.structuredlogging.io/)
 
-#### Trazabilidad distribuida
+**Trazabilidad distribuida**
 
 Para rastrear una operación a través de múltiples servicios, cada request debe generar un **trace/correlation ID** que se propaga en los headers entre servicios. Se valora contar con herramientas que permitan consultar estas trazas.
 
 - [Distributed Tracing Pattern](https://microservices.io/patterns/observability/distributed-tracing.html)
 
-#### Prometheus y Grafana
+**Prometheus y Grafana**
 
 Prometheus recolecta métricas de runtime (latencia, tasa de errores, uso de recursos) que los servicios exponen vía un endpoint `/metrics`. Grafana permite visualizarlas en dashboards. La cátedra los recomienda para observabilidad, pero acepta alternativas equivalentes.
 
@@ -1811,16 +1811,16 @@ Prometheus recolecta métricas de runtime (latencia, tasa de errores, uso de rec
 
 ---
 
-### APIs y Contratos
+**APIs y Contratos**
 
-#### OpenAPI / Swagger
+**OpenAPI / Swagger**
 
 Especificación estándar para documentar APIs REST. La cátedra espera que los contratos de API estén documentados con OpenAPI, preferentemente autogenerado desde el código. Debe incluir todos los endpoints, parámetros, cuerpos de request/response y códigos de error.
 
 - [OpenAPI Specification](https://swagger.io/specification/)
 - [Swagger UI](https://swagger.io/tools/swagger-ui/)
 
-#### REST
+**REST**
 
 Estilo arquitectónico para diseño de APIs sobre HTTP. La cátedra espera el uso correcto de verbos HTTP (GET, POST, PUT, PATCH, DELETE), códigos de estado semánticos (200, 201, 400, 401, 403, 404, 409, 500) y recursos nombrados como sustantivos en plural.
 
@@ -1829,18 +1829,18 @@ Estilo arquitectónico para diseño de APIs sobre HTTP. La cátedra espera el us
 
 ---
 
-### Frontend y Mobile
+**Frontend y Mobile**
 
 La cátedra recomienda React (para el backoffice web) y React Native (para la app mobile), pero cada grupo puede elegir su stack libremente siempre que cumpla los requisitos funcionales y no funcionales del enunciado.
 
-#### React
+**React**
 
 Biblioteca de JavaScript para construir interfaces de usuario declarativas basadas en componentes. Para el backoffice del administrador, la cátedra recomienda React con alguna librería de componentes (MUI, Chakra UI, etc.).
 
 - [React — Documentación oficial](https://react.dev/)
 - [React Router — Navegación en SPAs](https://reactrouter.com/)
 
-#### React Native
+**React Native**
 
 Framework para construir aplicaciones móviles nativas usando React. Permite compartir lógica entre Android e iOS. La cátedra recomienda Expo como punto de entrada por simplificar el setup inicial, pero los grupos pueden optar por el bare workflow si necesitan mayor control nativo.
 
@@ -1848,7 +1848,7 @@ Framework para construir aplicaciones móviles nativas usando React. Permite com
 - [Expo — Getting Started](https://docs.expo.dev/)
 - [React Navigation — Navegación en React Native](https://reactnavigation.org/)
 
-#### Manejo de estado y datos del servidor
+**Manejo de estado y datos del servidor**
 
 Para el estado global de la aplicación (sesión, carrito, preferencias), se recomienda una solución explícita. Para el estado derivado de llamadas a la API (productos, órdenes), se recomienda una librería que gestione caché, reintentos y estados de carga, alineándose con el RNF de resiliencia en la capa de presentación.
 
@@ -1856,7 +1856,7 @@ Para el estado global de la aplicación (sesión, carrito, preferencias), se rec
 - [Zustand — Estado global liviano](https://zustand-demo.pmnd.rs/)
 - [Redux Toolkit](https://redux-toolkit.js.org/)
 
-#### Resiliencia en la capa de presentación
+**Resiliencia en la capa de presentación**
 
 El enunciado exige que la UI maneje explícitamente los estados de error y latencia: indicadores de carga, mensajes accionables ante fallos de red, y comportamiento coherente ante timeouts. React Query y SWR implementan reintentos automáticos y estados de carga/error listos para usar.
 
@@ -1865,13 +1865,13 @@ El enunciado exige que la UI maneje explícitamente los estados de error y laten
 
 ---
 
-### Gateway de Pagos
+**Gateway de Pagos**
 
 El checkout debe integrarse con un servicio de pagos externo real usando su entorno de pruebas (sandbox). No se acepta simular el pago internamente con un flag o un mock hardcodeado — la llamada al servicio externo debe existir. No es necesario procesar pagos reales.
 
 La cátedra recomienda las siguientes opciones, todas con sandbox gratuito:
 
-#### Stripe
+**Stripe**
 
 Opción recomendada para proyectos académicos. Tiene excelente documentación, SDKs oficiales para los lenguajes más usados (Node.js, Python, etc.) y un sandbox completo con tarjetas de prueba predefinidas. Su API de idempotency keys es un buen ejemplo práctico del patrón de idempotencia requerido en el enunciado.
 
@@ -1879,22 +1879,22 @@ Opción recomendada para proyectos académicos. Tiene excelente documentación, 
 - [Stripe — Quickstart](https://stripe.com/docs/development/quickstart)
 - [Stripe — SDKs](https://stripe.com/docs/libraries)
 
-#### MercadoPago
+**MercadoPago**
 
 Relevante para el contexto local (Argentina). Cuenta con sandbox y credenciales de prueba. Los grupos que quieran una integración más cercana al mercado local pueden optar por esta alternativa.
 
 - [MercadoPago — Developers](https://www.mercadopago.com.ar/developers/es)
 - [MercadoPago — Sandbox y pruebas](https://www.mercadopago.com.ar/developers/es/docs/checkout-api/integration-test/make-test-purchase)
 
-#### Servicio de pagos propio (mock externo)
+**Servicio de pagos propio (mock externo)**
 
 Como alternativa, el grupo puede implementar un microservicio propio que simule un gateway de pagos con comportamiento configurable (aprobar, rechazar, timeout). Esta opción es válida si se documenta en un ADR y permite controlar escenarios de fallo para testing. No reemplaza la necesidad de diseñar el flujo como si fuera un servicio externo real.
 
 ---
 
-### Mobile y Notificaciones
+**Mobile y Notificaciones**
 
-#### Firebase Cloud Messaging (FCM)
+**Firebase Cloud Messaging (FCM)**
 
 Servicio de Google para el envío de notificaciones push a dispositivos móviles Android e iOS. La cátedra lo recomienda para implementar el pack N6 (Notificaciones). El servicio backend emite el mensaje a FCM, que se encarga de entregarlo al dispositivo del usuario.
 
@@ -1903,9 +1903,9 @@ Servicio de Google para el envío de notificaciones push a dispositivos móviles
 
 ---
 
-### Seguridad y Privacidad
+**Seguridad y Privacidad**
 
-#### Privacy by Design
+**Privacy by Design**
 
 Principio que establece que la protección de datos personales debe incorporarse al diseño del sistema desde el inicio, no como una capa agregada después. La cátedra espera: recolección mínima de datos (solo los necesarios para la funcionalidad), control de acceso explícito por operación, y que los datos sensibles no aparezcan en logs ni respuestas de error.
 
