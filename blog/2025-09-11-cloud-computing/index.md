@@ -95,55 +95,8 @@ _Actualizado al 21-mar-2026_
 | **AWS**     | Hasta **USD 200 créditos** + Free Plan hasta 6 meses + Always Free    |
 | **Azure**   | **USD 200 / 30 días** + 20+ servicios 12 meses + 65+ always-free      |
 | **Render**  | 750 free instance hours / workspace / mes + Postgres Free 30 días     |
-| **Railway** | Trial 30 días + USD 5, luego plan Free USD 1/mes                      |
+| **Railway** | Trial 30 días + USD 5 (Full o Limited según verificación GitHub), luego plan Free USD 1/mes |
 | **Fly.io**  | Free trial: 7 días o 2 VM-hours; luego Pay As You Go                  |
-
----
-
-## Notas por proveedor
-
-**GCP**
-
-- USD 300 / 90 días de crédito inicial.
-- Always Free muy usable: Compute Engine e2-micro, Cloud Storage, Firestore.
-- Free trial instance de Cloud SQL (30 días, disponible para MySQL, PostgreSQL y SQL Server), separado del trial general.
-- GKE: el fee de gestión (USD 0.10/h) aplica a _todos_ los clusters. La Free Tier solo cubre ese cargo para un cluster Autopilot o zonal Standard; compute, red, discos y balanceadores siguen costando.
-
-**AWS**
-
-- Hasta USD 200 en créditos (expiran a los 12 meses).
-- Free Plan de hasta 6 meses. Si se vence y no hacés upgrade a Paid Plan dentro del período de retención, **la cuenta se cierra**.
-- Servicios Always Free por separado (como DynamoDB).
-- La cátedra tiene demos paso a paso en el [repo cloudcomputing-demo](https://github.com/ingenieria-del-software-2/cloudcomputing-demo). Para VOD, MediaConvert es competitivo.
-
-**Azure**
-
-- La oferta gratuita incluye PostgreSQL Flexible Server y MySQL Flexible Server por 12 meses (750 h B1MS + 32 GB storage + 32 GB backup).
-- Para conservar estos servicios después del trial de USD 200, hay que pasar a pay-as-you-go dentro de los 30 días; sin ese paso, no se activan.
-- VMs: Microsoft destaca B2pts v2 / B2ats v2 en la oferta de 12 meses (otra landing todavía menciona B1s).
-- ⚠️ Media Services fue retirado — migrar a partners o FFmpeg propio.
-- ⚠️ AI Personalizer no permite recursos nuevos desde sep-2023 y se retira el 1-oct-2026.
-
-**Render**
-
-- Web service gratis duerme a los 15 min sin tráfico.
-- 750 free instance hours por workspace por mes.
-- Sin disco persistente en free tier.
-- Postgres Free: 1 GB, **expira a 30 días**.
-- Muchos equipos la usan con éxito durante toda la cursada trabajando dentro de estos límites.
-
-**Railway**
-
-- Trial: 30 días + USD 5. Puede ser Full o Limited según si Railway logra verificar tu cuenta con GitHub; en el Limited hay restricciones de red y puertos.
-- Después: plan Free con USD 1/mes de recursos (límites bajos). Los planes pagos son razonables.
-
-**Fly.io**
-
-- Deploy global con Fly Machines (autostop/autostart), billing por segundo. El trial es corto (7 días o 2 VM-hours), después pasa a pay-as-you-go.
-- Objetos: Tigris (S3-compatible, sin egress, presigned URLs).
-- DB: Managed Postgres (desde USD 38/mes) o autogestionado. Si app y DB están en regiones distintas, el tráfico inter-región se cobra.
-- Volumes: disco local al host, sin replicación automática — hacer backups propios.
-- FKS (K8s): closed beta, no recomendado para la materia.
 
 ---
 
@@ -236,11 +189,11 @@ El panorama "moderno, gratis y simple" para MySQL es más limitado:
 2. **Cuidá el egreso** — sigue siendo uno de los costos más traicioneros en cualquier proveedor.
 3. **Apagá VMs y limpiá recursos zombie:** discos, IPs flotantes, balanceadores, buckets sin uso.
 4. **Poné alertas de billing desde el día 1** en cualquier nube.
-5. **AWS:** los USD 200 y el Free Plan de 6 meses se agotan rápido si no prestás atención.
-6. **Azure:** no planifiques sobre Media Services — ya no existe.
+5. **AWS:** los USD 200 y el Free Plan de 6 meses se agotan rápido. Si no hacés upgrade a Paid Plan antes de que venza, **la cuenta se cierra**.
+6. **Azure:** para conservar los servicios gratis de 12 meses, hay que pasar a pay-as-you-go dentro de los 30 días del trial. No planifiques sobre Media Services — ya no existe.
 7. **GCP:** "GKE cluster fee cubierto" ≠ "cluster gratis" — nodos, pods, red y discos siguen costando.
 8. **Discos:** mantené los de VMs cerca de 30 GB para seguir en free tiers iniciales.
-9. **Fly.io:** usá autostop/autostart (Machines detenidas no cobran CPU/RAM, pero volumes y rootfs sí pueden facturar). Los volumes no se replican solos — armá backups de verdad.
+9. **Fly.io:** usá autostop/autostart (Machines detenidas no cobran CPU/RAM, pero volumes y rootfs sí pueden facturar). Si app y DB están en regiones distintas, el tráfico inter-región se cobra. Los volumes no se replican solos — armá backups.
 
 ---
 
