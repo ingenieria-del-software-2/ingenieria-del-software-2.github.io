@@ -6,7 +6,7 @@ Comprá. Vendé. Conectate.
 
 <img width="1260" height="763" alt="bazaar-banner" src="https://github.com/user-attachments/assets/17c6a59e-0400-4937-8be2-9eb89240e364" />
 
-## Descripción
+**Descripción**
 
 Bazaar es el marketplace donde cualquier persona puede convertirse en vendedor en minutos o encontrar exactamente lo que busca en segundos. Sin barreras de entrada, sin intermediarios innecesarios: el catálogo lo construyen los propios usuarios.
 
@@ -18,9 +18,7 @@ Detrás de esa simplicidad, Bazaar garantiza lo que importa: que cuando alguien 
 
 ## Índice
 
-### 1. Usuarios
-
-Gestión de cuentas: registro, acceso y recuperación.
+**1. Usuarios** — Gestión de cuentas: registro, acceso y recuperación.
 
 - [Registro de usuarios](#registro-de-usuarios)
 - [Login con email y contraseña](#login-con-email-y-contraseña)
@@ -28,17 +26,13 @@ Gestión de cuentas: registro, acceso y recuperación.
 - [Login con proveedor federado](#login-con-proveedor-federado)
 - [Registro con PIN](#registro-con-pin)
 
-### 2. Perfil
-
-Identidad del usuario dentro de la plataforma.
+**2. Perfil** — Identidad del usuario dentro de la plataforma.
 
 - [Edición de perfil](#edición-de-perfil)
 - [Visualización de perfil propio](#visualización-de-perfil-propio)
 - [Visualización de perfil público](#visualización-de-perfil-público)
 
-### 3. Catálogo
-
-Exploración y búsqueda de productos disponibles.
+**3. Catálogo** — Exploración y búsqueda de productos disponibles.
 
 - [Home](#home)
 - [Productos populares en home](#productos-populares-en-home)
@@ -48,16 +42,12 @@ Exploración y búsqueda de productos disponibles.
 - [Filtros avanzados de búsqueda](#filtros-avanzados-de-búsqueda)
 - [Ordenamiento de resultados](#ordenamiento-de-resultados)
 
-### 4. Carrito
-
-Selección y gestión de productos antes de la compra.
+**4. Carrito** — Selección y gestión de productos antes de la compra.
 
 - [Agregar producto al carrito](#agregar-producto-al-carrito)
 - [Gestión del carrito](#gestión-del-carrito)
 
-### 5. Checkout y Órdenes
-
-Flujo de compra, pago y seguimiento del estado de cada orden.
+**5. Checkout y Órdenes** — Flujo de compra, pago y seguimiento del estado de cada orden.
 
 - [Checkout e inicio de pago](#checkout-e-inicio-de-pago)
 - [Estado y seguimiento de orden](#estado-y-seguimiento-de-orden)
@@ -66,64 +56,49 @@ Flujo de compra, pago y seguimiento del estado de cada orden.
 - [Reembolso simulado al cancelar](#reembolso-simulado-al-cancelar)
 - [Aplicar cupón en checkout](#aplicar-cupón-en-checkout)
 
-### 6. Vendedor
-
-Publicación de productos y administración de las propias ventas.
+**6. Vendedor** — Publicación de productos y administración de las propias ventas.
 
 - [Publicar producto](#publicar-producto)
 - [Gestión de stock y publicaciones](#gestión-de-stock-y-publicaciones)
 - [Historial de ventas](#historial-de-ventas)
 - [Crear y gestionar cupones de descuento](#crear-y-gestionar-cupones-de-descuento)
 
-### 7. Administración
-
-Backoffice para la gestión de usuarios y contenido de la plataforma.
+**7. Administración** — Backoffice para la gestión de usuarios y contenido de la plataforma.
 
 - [Listar usuarios del sistema](#listar-usuarios-del-sistema)
 - [Bloquear y desbloquear usuario](#bloquear-y-desbloquear-usuario)
 - [Listar y moderar productos](#listar-y-moderar-productos)
 - [Listar órdenes del sistema](#listar-órdenes-del-sistema)
 
-### 8. Métricas
-
-Indicadores de actividad y salud de la plataforma.
+**8. Métricas** — Indicadores de actividad y salud de la plataforma.
 
 - [Métricas del sistema](#métricas-del-sistema)
 - [Métricas por categoría](#métricas-por-categoría)
 - [Exportar datos de métricas](#exportar-datos-de-métricas)
 
-### 9. Reviews
-
-Calificaciones y reputación dentro del ecosistema de compras.
+**9. Reviews** — Calificaciones y reputación dentro del ecosistema de compras.
 
 - [Calificar producto y vendedor](#calificar-producto-y-vendedor)
 - [Reputación del vendedor en perfil público](#reputación-del-vendedor-en-perfil-público)
 
-### 10. Wishlist
-
-Lista de deseos del comprador.
+**10. Wishlist** — Lista de deseos del comprador.
 
 - [Agregar / quitar de wishlist](#agregar--quitar-de-wishlist)
 - [Visualización de wishlist](#visualización-de-wishlist)
 
-### 11. Notificaciones
-
-Comunicación proactiva al comprador y al vendedor.
+**11. Notificaciones** — Comunicación proactiva al comprador y al vendedor.
 
 - [Notificación de cambio de estado de orden](#notificación-de-cambio-de-estado-de-orden)
 - [Notificación de stock bajo al vendedor](#notificación-de-stock-bajo-al-vendedor)
 
-### 12. Recomendaciones
-
-Descubrimiento personalizado de productos.
+**12. Recomendaciones** — Descubrimiento personalizado de productos.
 
 - [Recomendaciones basadas en historial](#recomendaciones-basadas-en-historial)
 
 ---
 
-## Historias de Usuario
+# Historias de Usuario
 
----
 
 ## Épica: Usuarios
 
@@ -1383,13 +1358,14 @@ El registro del historial de navegación (qué productos visita el usuario y en 
 
 ## Requisitos No Funcionales
 
-### Red Lines
+**Red Lines**
 
 Los siguientes incumplimientos **bloquean la evaluación** del proyecto y requieren corrección inmediata:
 
 - **Base de datos compartida entre servicios**: Cada servicio debe tener su propio esquema de persistencia. El acceso directo a la base de datos de otro servicio no está permitido.
 - **Pipeline de CI roto**: La rama principal debe estar en estado ejecutable en todo momento. Un CI en rojo que no se atiende en la sesión siguiente es un bloqueante.
 - **Secretos en el código fuente o historial de Git**: Cualquier credencial, token o secret que aparezca en el repositorio (incluso en commits anteriores) requiere rotación inmediata y limpieza del historial.
+
 
 ### Componentes
 
@@ -1402,15 +1378,24 @@ Cada grupo debe desarrollar:
 - Un **backoffice web** para administración.
 - Un **API Gateway** como punto único de entrada al sistema, que centralice el enrutamiento hacia los servicios backend, la validación de tokens de sesión y el rate limiting. Su diseño e implementación deben justificarse en un ADR. En caso excepcional de no adoptarlo, el grupo debe documentar el mecanismo alternativo con la misma rigurosidad y justificar la decisión.
 
-### Tecnologías
+**Tecnologías**
 
-**Servicios backend**: Python o Node.js, con los frameworks y bases de datos que el grupo elija y justifique. Se recomienda PostgreSQL y/o MongoDB.
-
-**Aplicación mobile**: Se recomienda React Native.
-
-**Backoffice web**: Se recomienda React.
+- Servicios backend: lenguaje a elección del grupo; se sugiere Python, Node.js o Go por ser los lenguajes donde la cátedra tiene más expertise para acompañar. Frameworks y bases de datos libres (se recomienda PostgreSQL y/o MongoDB).
+- Aplicación mobile: React Native (recomendado).
+- Backoffice web: React (recomendado).
 
 La elección tecnológica debe quedar justificada en la documentación técnica del proyecto.
+
+### UX
+
+La experiencia de usuario es parte del producto. Antes de escribir código de interfaz, el equipo debe pensar cómo se ve, cómo se navega y por qué. Se espera:
+
+- **Prototipado**: wireframes o mockups de los flujos principales (se recomienda Figma o equivalente), incluyendo la app mobile y el backoffice. Pueden apoyarse en herramientas como Stitch de Google o similares, y en sistemas de diseño ya probados.
+- **Sistema de diseño**: elegir un sistema de diseño (ej. Material Design, Apple HIG u otro) y mantenerlo consistente en toda la interfaz.
+- **Decisiones de UX**: cómo se comporta el usuario en la aplicación, cómo se ve y cómo se navega son decisiones creativas del equipo. Lo importante es que puedan explicar por qué tomaron esas decisiones.
+- **Feedback temprano**: los prototipos deben presentarse en el primer checkpoint. A partir de ahí, el diseño se itera en las weeklies con acompañamiento del ayudante.
+- **Accesibilidad básica**: las interfaces deben contemplar contraste de color legible y tamaños de texto adecuados para uso en dispositivos móviles.
+
 
 ### Integridad y Flujo de Datos
 
@@ -1423,42 +1408,6 @@ Los flujos que involucran múltiples servicios deben garantizar consistencia ant
 - **Resiliencia en la comunicación entre servicios**: Las llamadas entre servicios deben contemplar estrategias ante fallos transitorios. Se recomienda aplicar patrones como Retry (con backoff exponencial) y Circuit Breaker para evitar cascadas de fallo. La elección y justificación de estos patrones debe quedar documentada en los ADRs correspondientes.
 - **Resiliencia en la capa de presentación**: La aplicación mobile y el backoffice deben manejar explícitamente los estados de error y latencia: indicadores de carga, mensajes de error accionables ante fallos de red, y comportamiento coherente ante respuestas parciales o timeout del backend. No se acepta que un fallo de red deje la interfaz en un estado inconsistente o sin feedback al usuario.
 
-### Log
-
-Cada servicio debe contar con un sistema de log estructurado con niveles configurables:
-
-| Nivel | Criterio |
-| ----- | -------- |
-| Error | Falla catastrófica que impide ejecutar la funcionalidad. |
-| Warn  | Condición anómala que no impide la funcionalidad básica. |
-| Info  | Acción iniciada por el usuario o el sistema trazable en el historial. |
-| Debug | Contexto técnico para diagnóstico sin necesidad del código fuente. |
-
-### Monitoreo
-
-Cada servicio debe exponer endpoints de monitoreo con semántica diferenciada:
-
-- **`/livez`**: indica que el proceso está vivo y puede seguir ejecutándose. Debe limitarse a validaciones locales al proceso (por ejemplo, que el servidor HTTP siga respondiendo). No debe validar conectividad con base de datos ni con otros servicios remotos.
-- **`/readyz`**: indica que el servicio está en condiciones de atender requests correctamente. Debe validar las dependencias críticas para su operación, como la base de datos u otros servicios externos necesarios para ejecutar su funcionalidad principal. Un servicio que responde HTTP pero no puede cumplir su caso de uso principal no debe considerarse ready.
-
-A los efectos de este requisito:
-
-- un endpoint que responda `200 OK` sin validar aquello que efectivamente determina si el servicio puede operar según el tipo de probe expuesta no cumple;
-- **`/livez` y `/readyz` no son equivalentes** y no deben reutilizar la misma lógica;
-- si una dependencia externa falla y eso impide operar correctamente, esa situación debe reflejarse en **`/readyz`**, no en **`/livez`**.
-
-No se recomienda usar **`/health`** como único endpoint de monitoreo, ya que su semántica es ambigua y no distingue entre disponibilidad del proceso y capacidad real de operación.
-
-Además, **cada servicio debe contar con un sistema de monitoreo/observabilidad** que permita supervisar su estado operativo y facilitar el diagnóstico de fallas. Esta capacidad puede implementarse mediante un APM o herramientas equivalentes; la tecnología utilizada queda a elección del equipo.
-
-Se valora positivamente incorporar **trazabilidad distribuida** mediante un trace/correlation ID propagado entre servicios, junto con herramientas que permitan su consulta.
-
-### Empaquetamiento
-
-- Servicios backend: `Dockerfile` + archivo de dependencias correspondiente al lenguaje elegido.
-- Aplicación mobile: APK o equivalente.
-
-Se debe poder levantar el entorno completo de forma reproducible. Se recomienda proveer un `docker-compose` para el entorno de desarrollo local.
 
 ### Testing
 
@@ -1470,17 +1419,14 @@ El desarrollo debe incluir:
 - **Pruebas de carga y estrés**: ejecutar al menos un escenario de carga simulando usuarios concurrentes sobre los endpoints críticos. Documentar los resultados, cuellos de botella identificados y acciones tomadas (se recomienda k6 o Artillery).
 - Cobertura de tests superior al **70%** en los servicios backend.
 
-### CI-CD
 
-El pipeline de CI debe correr automáticamente ante cada push y **bloquear el merge** ante fallas en los tests. Se recomienda incorporar análisis estático de seguridad (SAST) como parte del pipeline.
 
-El despliegue al entorno productivo debe ser automático desde el branch principal o mediante tags, y debe estar documentado.
 
 ### Gestión de Ingeniería
 
 - **Trazabilidad backlog-repositorio**: Cada pull request debe referenciar la historia o tarea que lo origina. Se esperan mensajes de commit descriptivos; no se exige un formato estricto ni referencia a tickets en cada commit individual, pero no se aceptan commits genéricos sin contexto ("fix", "changes", "wip").
 - **Atomicidad en Git**: Cada pull request debe representar un cambio lógico coherente. No deben mezclarse features no relacionadas en un mismo PR.
-- **Uso de herramientas de IA**: Se espera que los equipos utilicen herramientas de asistencia con IA como parte natural del desarrollo. Lo que se evalúa no es si se usó IA, sino la calidad de la dirección: evidencia de flujos estructurados de trabajo con IA (ej. archivos de contexto como `AGENTS.md` o equivalentes), y capacidad de cada integrante de explicar y defender cualquier parte del código en la defensa del proyecto. Las decisiones de arquitectura deben ser del equipo, no defaults aceptados sin criterio; los ADRs deben reflejar alternativas evaluadas. El equipo es responsable final del código independientemente de la herramienta que lo produjo.
+- **Uso de herramientas de IA**: Se espera que los equipos utilicen herramientas de asistencia con IA como parte natural del desarrollo. Lo que se evalúa no es si se usó IA, sino la calidad de la dirección: evidencia de flujos estructurados de trabajo con IA (ej.`AGENTS.md`, `.agents/skills` o equivalentes), y **capacidad de cada integrante de explicar y defender cualquier parte del código en la defensa del proyecto**. Las decisiones de arquitectura deben ser del equipo, no defaults aceptados sin criterio; los ADRs deben reflejar alternativas evaluadas. El equipo es responsable final del código independientemente de la herramienta que lo produjo.
 - **Backlog actualizado**: El backlog debe reflejar el estado real del proyecto en cada sesión de seguimiento. Deben existir tareas explícitas para trabajo de infraestructura, testing e integración, no solo para funcionalidades de negocio.
 
 ### Despliegue en la Nube
@@ -1491,30 +1437,55 @@ Se debe elegir una alternativa que cuente con un plan gratuito o de bajo costo v
 
 Se debe garantizar que el entorno de producción sea reproducible y que el despliegue ocurra de forma automatizada desde el pipeline de CI/CD.
 
-### Despliegue usando k8s
+**Despliegue usando k8s**
 
 Como alternativa avanzada, el grupo puede optar por desplegar la plataforma en Kubernetes. Esta decisión debe estar justificada y documentada.
 
-### UX
+**Empaquetamiento**
 
-El diseño de la interfaz debe ser presentado y validado con el ayudante antes de comenzar el desarrollo de las pantallas. Se espera:
+- Servicios backend: `Dockerfile` + archivo de dependencias correspondiente al lenguaje elegido.
+- Aplicación mobile: APK o equivalente.
+- Entorno local: se debe poder levantar el entorno completo de forma reproducible (se recomienda `docker-compose`).
 
-- **Prototipado**: wireframes o mockups de los flujos principales (se recomienda Figma o equivalente), incluyendo la app mobile y el backoffice.
-- **Sistema de diseño**: el grupo debe elegir y justificar el sistema de diseño adoptado (ej. Material Design, Apple HIG u otro). No se impone una guía específica, pero la elección debe ser consistente en toda la interfaz y documentada.
-- **Validación con el ayudante**: los prototipos deben presentarse en el primer checkpoint para recibir feedback antes de implementar. Los cambios significativos de diseño posteriores al checkpoint deben volver a validarse.
-- **Accesibilidad básica**: las interfaces deben contemplar contraste de color legible y tamaños de texto adecuados para uso en dispositivos móviles.
+**CI-CD**
 
-### Gestión de imágenes y media
+- CI: correr automáticamente ante cada push y **bloquear el merge** ante fallas en los tests. Se recomienda incorporar análisis estático de seguridad (SAST).
+- CD: despliegue automático al entorno productivo desde el branch principal o mediante tags, documentado.
 
-Los archivos multimedia deben almacenarse en un servicio externo de objetos (ej. AWS S3, Google Cloud Storage, Cloudinary o equivalente). El sistema no debe guardar binarios en la base de datos ni en el sistema de archivos del servidor; solo persiste la URL de acceso.
 
-| Tipo | Formatos aceptados | Tamaño máximo |
-| ---- | ------------------ | ------------- |
-| Imágenes de perfil | JPEG, PNG, WebP | 5 MB |
-| Imágenes de producto | JPEG, PNG, WebP | 10 MB por archivo |
-| Videos de producto _(opcional)_ | MP4, WebM | 50 MB |
+**Gestión de imágenes y media**
 
-Otros formatos deben rechazarse con un error descriptivo. Las URLs generadas deben ser públicamente accesibles sin autenticación. Se recomienda implementar limpieza de archivos huérfanos al reemplazar o eliminar un archivo para evitar acumulación en el storage.
+Los archivos multimedia deben almacenarse en un servicio externo de objetos (ej. AWS S3, Google Cloud Storage, Cloudinary o equivalente). No guardar binarios en la base de datos ni en el filesystem del servidor; solo se persiste la URL.
+
+- Imágenes de perfil: JPEG, PNG o WebP, hasta 5 MB.
+- Imágenes de producto: JPEG, PNG o WebP, hasta 10 MB por archivo.
+- Videos de producto _(opcional)_: MP4 o WebM, hasta 50 MB.
+
+Otros formatos deben rechazarse con un error descriptivo. Las URLs deben ser públicamente accesibles. Se recomienda limpiar archivos huérfanos al reemplazar o eliminar media.
+
+### Observabilidad
+
+**Monitoreo**
+
+
+Cada servicio debe exponer dos endpoints con semántica diferenciada:
+
+- **`/livez`**: valida que el proceso está vivo. Solo verificaciones locales (ej: el servidor HTTP responde). No debe consultar base de datos ni servicios externos.
+- **`/readyz`**: valida que el servicio puede operar correctamente. Debe verificar dependencias críticas (ej: base de datos). Un servicio que responde HTTP pero no puede cumplir su funcionalidad principal no es ready.
+
+**`/livez` y `/readyz` no son equivalentes**: no deben compartir lógica. Un endpoint que responde `200 OK` sin validar lo que corresponde a su semántica no cumple. No usar un único `/health` genérico.
+
+Cada servicio debe contar además con un sistema de **observabilidad** (APM o equivalente) para supervisar su estado operativo y facilitar el diagnóstico de fallas. Se valora incorporar **trazabilidad distribuida** con un trace/correlation ID propagado entre servicios.
+
+**Logs**
+
+Cada servicio debe contar con log estructurado con niveles configurables:
+
+- **Error**: falla que impide ejecutar la funcionalidad.
+- **Warn**: condición anómala que no impide la funcionalidad básica.
+- **Info**: acción iniciada por el usuario o el sistema, trazable en el historial.
+- **Debug**: contexto técnico para diagnóstico sin necesidad del código fuente.
+
 
 ### Seguridad
 
@@ -1523,7 +1494,7 @@ Otros formatos deben rechazarse con un error descriptivo. Las URLs generadas deb
 - **Protección de datos personales**: Los datos sensibles de los usuarios (email, dirección, historial de compras) solo deben recolectarse si son estrictamente necesarios para la funcionalidad. No deben exponerse en logs, respuestas de error ni endpoints no autorizados. El acceso a datos de otros usuarios debe estar controlado por autorización explícita en cada operación.
 - **Minimización de datos en APIs**: Las respuestas de la API no deben incluir campos innecesarios. En particular, nunca deben retornarse contraseñas, tokens internos ni datos privados de otros usuarios, aunque estén disponibles en la base de datos.
 
-#### Lineamientos técnicos de autenticación
+**Lineamientos técnicos de autenticación**
 
 - **Tokens de sesión**: Se recomienda el uso de JWT con tiempo de expiración configurable. El token debe incluir el identificador de usuario y el rol.
 - **Tokens de recupero**: Deben generarse con al menos 128 bits de entropía (ej. UUID v4 o equivalente), almacenarse hasheados en la base de datos y expirar en máximo 1 hora.
@@ -1585,29 +1556,29 @@ _El alcance específico de cada checkpoint se acuerda con el corrector asignado 
 
 ## Historias obligatorias
 
-| #   | Historia                         | Épica               | Puntos | Motivo de obligatoriedad                                   |
-| --- | -------------------------------- | ------------------- | -----: | ---------------------------------------------------------- |
-| 1   | Registro de usuarios             | Usuarios            |      2 | Identidad base del sistema                                 |
-| 2   | Login con email y contraseña     | Usuarios            |      2 | Acceso seguro y continuo                                   |
-| 3   | Recupero de contraseña           | Usuarios            |      3 | Soporte y seguridad                                        |
-| 4   | Edición de perfil                | Perfil              |      3 | Identidad del usuario en el marketplace                    |
-| 5   | Visualización de perfil propio   | Perfil              |      1 | Acceso a edición y gestión de publicaciones                |
-| 6   | Home                             | Catálogo            |      3 | Pantalla de entrada y descubrimiento de productos          |
-| 7   | Listado y búsqueda de productos  | Catálogo            |      3 | Descubribilidad del catálogo                               |
-| 8   | Detalle de producto              | Catálogo            |      2 | Información necesaria para la decisión de compra           |
-| 9   | Agregar producto al carrito      | Carrito             |      2 | Inicio del flujo de compra                                 |
-| 10  | Gestión del carrito              | Carrito             |      3 | Control sobre la selección antes del checkout              |
-| 11  | Checkout e inicio de pago        | Checkout y Órdenes  |      8 | Flujo core del negocio; requiere consistencia distribuida  |
-| 12  | Estado y seguimiento de orden    | Checkout y Órdenes  |      5 | Transparencia y confianza del comprador                    |
-| 13  | Historial de compras             | Checkout y Órdenes  |      2 | Trazabilidad y soporte                                     |
-| 14  | Publicar producto                | Vendedor            |      3 | Core para el lado oferta del marketplace                   |
-| 15  | Gestión de stock y publicaciones | Vendedor            |      3 | Consistencia del catálogo                                  |
-| 16  | Historial de ventas              | Vendedor            |      3 | Gestión y seguimiento de las propias ventas                |
-| 17  | Listar usuarios del sistema      | Administración      |      1 | Operación mínima de backoffice                             |
-| 18  | Bloquear y desbloquear usuario   | Administración      |      2 | Control de abuso y cumplimiento de políticas               |
-| 19  | Listar y moderar productos       | Administración      |      5 | Calidad y moderación del catálogo                          |
-| 20  | Listar órdenes del sistema       | Administración      |      2 | Visibilidad operativa y soporte ante reclamos              |
-| 21  | Métricas del sistema             | Métricas            |      5 | Visibilidad del uso y salud del negocio                    |
+| #   | Historia                         | Épica               | Puntos |
+| --- | -------------------------------- | ------------------- | -----: |
+| 1   | Registro de usuarios             | Usuarios            |      2 |
+| 2   | Login con email y contraseña     | Usuarios            |      2 |
+| 3   | Recupero de contraseña           | Usuarios            |      3 |
+| 4   | Edición de perfil                | Perfil              |      3 |
+| 5   | Visualización de perfil propio   | Perfil              |      1 |
+| 6   | Home                             | Catálogo            |      3 |
+| 7   | Listado y búsqueda de productos  | Catálogo            |      3 |
+| 8   | Detalle de producto              | Catálogo            |      2 |
+| 9   | Agregar producto al carrito      | Carrito             |      2 |
+| 10  | Gestión del carrito              | Carrito             |      3 |
+| 11  | Checkout e inicio de pago        | Checkout y Órdenes  |      8 |
+| 12  | Estado y seguimiento de orden    | Checkout y Órdenes  |      5 |
+| 13  | Historial de compras             | Checkout y Órdenes  |      2 |
+| 14  | Publicar producto                | Vendedor            |      3 |
+| 15  | Gestión de stock y publicaciones | Vendedor            |      3 |
+| 16  | Historial de ventas              | Vendedor            |      3 |
+| 17  | Listar usuarios del sistema      | Administración      |      1 |
+| 18  | Bloquear y desbloquear usuario   | Administración      |      2 |
+| 19  | Listar y moderar productos       | Administración      |      5 |
+| 20  | Listar órdenes del sistema       | Administración      |      2 |
+| 21  | Métricas del sistema             | Métricas            |      5 |
 
 **Puntaje total obligatorio: 63 pts.**
 
@@ -1786,7 +1757,7 @@ Análisis estático del código fuente para detectar vulnerabilidades de segurid
 
 **Observabilidad**
 
-**Health Checks (`/livez` y `/readyz`)**
+**Health Checks**
 
 Cada servicio debe exponer probes con semántica diferenciada, como se indica en la sección de Monitoreo: **`/livez`** para validar que el proceso está vivo (sin consultar dependencias externas) y **`/readyz`** para confirmar que puede atender requests correctamente (validando dependencias críticas como la base de datos). No usar un único `/health` genérico.
 
@@ -1911,6 +1882,6 @@ Servicio de Google para el envío de notificaciones push a dispositivos móviles
 
 Principio que establece que la protección de datos personales debe incorporarse al diseño del sistema desde el inicio, no como una capa agregada después. La cátedra espera: recolección mínima de datos (solo los necesarios para la funcionalidad), control de acceso explícito por operación, y que los datos sensibles no aparezcan en logs ni respuestas de error.
 
-- [Privacy by Design — Ann Cavoukian](https://www.ipc.on.ca/wp-content/uploads/resources/7foundationalprinciples.pdf)
+- [Privacy by Design — Ann Cavoukian](https://student.cs.uwaterloo.ca/~cs492/papers/7foundationalprinciples_longer.pdf)
 - [OWASP Privacy Risks](https://owasp.org/www-project-top-10-privacy-risks/)
 

@@ -303,7 +303,7 @@
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align: left">&lt;strong>AWS&lt;/strong>&lt;/td>
-&lt;td style="text-align: left">Hasta &lt;strong>USD 200 créditos&lt;/strong> + Free Plan hasta 6 meses + Always Free&lt;/td>
+&lt;td style="text-align: left">Plan gratuito hasta 6 meses + &lt;strong>USD 200 créditos&lt;/strong> (vencen a 12 meses) + Always Free&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align: left">&lt;strong>Azure&lt;/strong>&lt;/td>
@@ -400,7 +400,7 @@
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align: left">DB&lt;/td>
-&lt;td style="text-align: left">Firestore o Cloud SQL (créditos / free trial 30 días)&lt;/td>
+&lt;td style="text-align: left">Firestore o Cloud SQL&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align: left">K8s (opcional)&lt;/td>
@@ -428,7 +428,7 @@
 &lt;tbody>
 &lt;tr>
 &lt;td style="text-align: left">API / Backend&lt;/td>
-&lt;td style="text-align: left">EC2 (con créditos)&lt;/td>
+&lt;td style="text-align: left">EC2&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align: left">Objetos&lt;/td>
@@ -436,7 +436,7 @@
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align: left">DB&lt;/td>
-&lt;td style="text-align: left">RDS (con créditos) + DynamoDB Always Free&lt;/td>
+&lt;td style="text-align: left">RDS + DynamoDB&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align: left">VOD&lt;/td>
@@ -448,7 +448,7 @@
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
-&lt;p>&lt;strong>Cuándo:&lt;/strong> seguir el material de clase directamente o aprender AWS por inserción laboral. Ojo: los créditos (USD 200) y el Free Plan (6 meses) se agotan rápido.&lt;/p>
+&lt;p>&lt;strong>Cuándo:&lt;/strong> seguir el material de clase directamente o aprender AWS por inserción laboral.&lt;/p>
 &lt;p>&lt;strong>Recursos:&lt;/strong> ver &lt;a href="https://github.com/ingenieria-del-software-2/cloudcomputing-demo"target="_blank" rel="noopener">cloudcomputing-demo&lt;/a>, especialmente &lt;code>03-demo&lt;/code> (AWS y GCP).&lt;/p>
 &lt;p>&lt;strong>Azure — DB gratis por 12 meses&lt;/strong>&lt;/p>
 &lt;table>
@@ -461,7 +461,7 @@
 &lt;tbody>
 &lt;tr>
 &lt;td style="text-align: left">API / Backend&lt;/td>
-&lt;td style="text-align: left">VM burstable B-series (12 meses free)&lt;/td>
+&lt;td style="text-align: left">VM burstable B-series&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align: left">Objetos&lt;/td>
@@ -469,7 +469,7 @@
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align: left">DB&lt;/td>
-&lt;td style="text-align: left">PostgreSQL Flexible Server (12 meses: B1MS + 32 GB)&lt;/td>
+&lt;td style="text-align: left">PostgreSQL Flexible Server&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align: left">NoSQL&lt;/td>
@@ -485,7 +485,7 @@
 &lt;/tr>
 &lt;/tbody>
 &lt;/table>
-&lt;p>&lt;strong>Cuándo:&lt;/strong> querés Postgres o MySQL gratis por 12 meses sin depender solo del crédito inicial.&lt;/p>
+&lt;p>&lt;strong>Cuándo:&lt;/strong> querés DB gratis sin depender solo del crédito inicial.&lt;/p>
 &lt;p>&lt;strong>PaaS ligeros — Render / Railway / Fly.io&lt;/strong>&lt;/p>
 &lt;table>
 &lt;thead>
@@ -497,11 +497,11 @@
 &lt;tbody>
 &lt;tr>
 &lt;td style="text-align: left">&lt;strong>Render&lt;/strong>&lt;/td>
-&lt;td style="text-align: left">Web services + cron · Postgres Free (30 días) · S3/R2 para objetos · FFmpeg en worker&lt;/td>
+&lt;td style="text-align: left">Web services + cron · Postgres Free · S3/R2 para objetos · FFmpeg en worker&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align: left">&lt;strong>Railway&lt;/strong>&lt;/td>
-&lt;td style="text-align: left">Deploy simple · Trial 30 días + USD 5 → Free USD 1/mes · Postgres o MySQL integrado&lt;/td>
+&lt;td style="text-align: left">Deploy simple · Postgres o MySQL integrado&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align: left">&lt;strong>Fly.io&lt;/strong>&lt;/td>
@@ -517,7 +517,7 @@
 &lt;li>&lt;strong>Cuidá el egreso&lt;/strong> — sigue siendo uno de los costos más traicioneros en cualquier proveedor.&lt;/li>
 &lt;li>&lt;strong>Apagá VMs y limpiá recursos zombie:&lt;/strong> discos, IPs flotantes, balanceadores, buckets sin uso.&lt;/li>
 &lt;li>&lt;strong>Poné alertas de billing desde el día 1&lt;/strong> en cualquier nube.&lt;/li>
-&lt;li>&lt;strong>AWS:&lt;/strong> los USD 200 y el Free Plan de 6 meses se agotan rápido. Si no hacés upgrade a Paid Plan antes de que venza, &lt;strong>la cuenta se cierra&lt;/strong>.&lt;/li>
+&lt;li>&lt;strong>AWS:&lt;/strong> si no hacés upgrade a Paid Plan antes de que venza el plan gratuito, &lt;strong>la cuenta se cierra&lt;/strong>.&lt;/li>
 &lt;li>&lt;strong>Azure:&lt;/strong> para conservar los servicios gratis de 12 meses, hay que pasar a pay-as-you-go dentro de los 30 días del trial. No planifiques sobre Media Services — ya no existe.&lt;/li>
 &lt;li>&lt;strong>GCP:&lt;/strong> &amp;ldquo;GKE cluster fee cubierto&amp;rdquo; ≠ &amp;ldquo;cluster gratis&amp;rdquo; — nodos, pods, red y discos siguen costando.&lt;/li>
 &lt;li>&lt;strong>Discos:&lt;/strong> mantené los de VMs cerca de 30 GB para seguir en free tiers iniciales.&lt;/li>

@@ -92,7 +92,7 @@ _Actualizado al 21-mar-2026_
 | Proveedor   | Oferta                                                                |
 | :---------- | :-------------------------------------------------------------------- |
 | **GCP**     | **USD 300 / 90 días** + 20+ productos Always Free                     |
-| **AWS**     | Hasta **USD 200 créditos** + Free Plan hasta 6 meses + Always Free    |
+| **AWS**     | Plan gratuito hasta 6 meses + **USD 200 créditos** (vencen a 12 meses) + Always Free |
 | **Azure**   | **USD 200 / 30 días** + 20+ servicios 12 meses + 65+ always-free      |
 | **Render**  | 750 free instance hours / workspace / mes + Postgres Free 30 días     |
 | **Railway** | Trial 30 días + USD 5 (Full o Limited según verificación GitHub), luego plan Free USD 1/mes |
@@ -137,7 +137,7 @@ El panorama "moderno, gratis y simple" para MySQL es más limitado:
 | :------------- | :---------------------------------------------------- |
 | API / Backend  | Compute Engine e2-micro (Always Free)                 |
 | Objetos        | Cloud Storage + URLs firmadas                         |
-| DB             | Firestore o Cloud SQL (créditos / free trial 30 días) |
+| DB             | Firestore o Cloud SQL                                 |
 | K8s (opcional) | GKE Autopilot (free tier solo cubre fee de gestión)   |
 | VOD            | Transcoder API → HLS                                  |
 | CI/CD          | GitHub Actions + Terraform                            |
@@ -148,13 +148,13 @@ El panorama "moderno, gratis y simple" para MySQL es más limitado:
 
 | Capa          | Servicio                                  |
 | :------------ | :---------------------------------------- |
-| API / Backend | EC2 (con créditos)                        |
+| API / Backend | EC2                                       |
 | Objetos       | S3                                        |
-| DB            | RDS (con créditos) + DynamoDB Always Free |
+| DB            | RDS + DynamoDB                            |
 | VOD           | MediaConvert → HLS                        |
 | CI/CD         | GitHub Actions + Terraform                |
 
-**Cuándo:** seguir el material de clase directamente o aprender AWS por inserción laboral. Ojo: los créditos (USD 200) y el Free Plan (6 meses) se agotan rápido.
+**Cuándo:** seguir el material de clase directamente o aprender AWS por inserción laboral.
 
 **Recursos:** ver [cloudcomputing-demo](https://github.com/ingenieria-del-software-2/cloudcomputing-demo), especialmente `03-demo` (AWS y GCP).
 
@@ -162,21 +162,21 @@ El panorama "moderno, gratis y simple" para MySQL es más limitado:
 
 | Capa           | Servicio                                            |
 | :------------- | :-------------------------------------------------- |
-| API / Backend  | VM burstable B-series (12 meses free)               |
+| API / Backend  | VM burstable B-series                               |
 | Objetos        | Blob Storage + SAS                                  |
-| DB             | PostgreSQL Flexible Server (12 meses: B1MS + 32 GB) |
+| DB             | PostgreSQL Flexible Server                          |
 | NoSQL          | Cosmos DB Free Tier (1000 RU/s + 25 GB lifetime)    |
 | K8s (opcional) | AKS (control plane gratis; pagás nodos)             |
 | VOD            | ⚠️ FFmpeg en VM/Batch o partners externos           |
 
-**Cuándo:** querés Postgres o MySQL gratis por 12 meses sin depender solo del crédito inicial.
+**Cuándo:** querés DB gratis sin depender solo del crédito inicial.
 
 **PaaS ligeros — Render / Railway / Fly.io**
 
 | Plataforma  | Stack típico                                                                                                |
 | :---------- | :---------------------------------------------------------------------------------------------------------- |
-| **Render**  | Web services + cron · Postgres Free (30 días) · S3/R2 para objetos · FFmpeg en worker                       |
-| **Railway** | Deploy simple · Trial 30 días + USD 5 → Free USD 1/mes · Postgres o MySQL integrado                         |
+| **Render**  | Web services + cron · Postgres Free · S3/R2 para objetos · FFmpeg en worker                                  |
+| **Railway** | Deploy simple · Postgres o MySQL integrado                                                                   |
 | **Fly.io**  | Fly Machines (autostop/autostart) · Tigris para objetos · Managed Postgres o autogestionado · Upstash Redis |
 
 **Cuándo:** priorizás DX simple sin DevOps pesado, o el equipo quiere iterar rápido sin gestionar infraestructura. Para workloads siempre online, los planes pagos de las tres son accesibles.
@@ -189,7 +189,7 @@ El panorama "moderno, gratis y simple" para MySQL es más limitado:
 2. **Cuidá el egreso** — sigue siendo uno de los costos más traicioneros en cualquier proveedor.
 3. **Apagá VMs y limpiá recursos zombie:** discos, IPs flotantes, balanceadores, buckets sin uso.
 4. **Poné alertas de billing desde el día 1** en cualquier nube.
-5. **AWS:** los USD 200 y el Free Plan de 6 meses se agotan rápido. Si no hacés upgrade a Paid Plan antes de que venza, **la cuenta se cierra**.
+5. **AWS:** si no hacés upgrade a Paid Plan antes de que venza el plan gratuito, **la cuenta se cierra**.
 6. **Azure:** para conservar los servicios gratis de 12 meses, hay que pasar a pay-as-you-go dentro de los 30 días del trial. No planifiques sobre Media Services — ya no existe.
 7. **GCP:** "GKE cluster fee cubierto" ≠ "cluster gratis" — nodos, pods, red y discos siguen costando.
 8. **Discos:** mantené los de VMs cerca de 30 GB para seguir en free tiers iniciales.
