@@ -1432,13 +1432,13 @@ Se valora positivamente:
 
 El proyecto se desarrolla en forma iterativa e incremental a lo largo de tres checkpoints y una entrega final. Cada instancia dura aproximadamente 3–4 semanas.
 
-### Dinámica de trabajo
+**Dinámica de trabajo**
 
 El corrector asignado a cada grupo actúa como **Product Owner** durante todo el cuatrimestre. Al inicio de cada checkpoint, el grupo acuerda con el corrector el conjunto de historias de usuario a trabajar en ese período. Ese acuerdo queda registrado en el backlog del grupo.
 
 Durante el checkpoint, el grupo trabaja semanalmente de forma iterativa. En cada sesión semanal el corrector evalúa el avance funcional y el estado de las distintas [dimensiones de calidad](#requisitos-no-funcionales) del proyecto. Al finalizar el período, el grupo realiza la entrega formal de las historias acordadas.
 
-### Alcance del proyecto
+**Alcance del proyecto**
 
 Al finalizar el trabajo, el grupo debe haber implementado:
 
@@ -1446,7 +1446,7 @@ Al finalizar el trabajo, el grupo debe haber implementado:
 - **Todos los Requisitos No Funcionales** definidos en este documento.
 - **Un mínimo de puntos en historias optativas** según la cantidad de integrantes del grupo (ver [Historias optativas](#historias-optativas)).
 
-### Instancias
+**Instancias**
 
 | Instancia    | Duración aprox. | Fecha      |
 | ------------ | --------------- | ---------- |
@@ -1515,7 +1515,7 @@ Cada historia optativa tiene un puntaje asociado. El grupo debe seleccionar las 
 
 **Puntaje máximo disponible: 59 pts.**
 
-## Mínimo de puntos por tamaño de equipo
+## Puntaje mínimo por equipo
 
 | Integrantes | Mínimo optativas | Total mínimo | % del total |
 | :---------: | :--------------: | :----------: | :---------: |
