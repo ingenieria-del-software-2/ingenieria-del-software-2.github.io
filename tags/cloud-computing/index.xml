@@ -10,8 +10,8 @@
 &lt;li>&lt;strong>Railway&lt;/strong> hoy da &lt;strong>30 días / USD 5&lt;/strong> de trial y luego cae a un &lt;strong>plan Free con USD 1/mes&lt;/strong> de recursos.&lt;/li>
 &lt;/ul>
 &lt;hr>
-&lt;h2>Cuadro comparativo (resumen)&lt;span class="hx:absolute hx:-mt-20" id="cuadro-comparativo-resumen">&lt;/span>
-&lt;a href="#cuadro-comparativo-resumen" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;table>
+&lt;h2>Cuadro comparativo&lt;span class="hx:absolute hx:-mt-20" id="cuadro-comparativo">&lt;/span>
+&lt;a href="#cuadro-comparativo" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;table>
 &lt;thead>
 &lt;tr>
 &lt;th>Proveedor&lt;/th>
