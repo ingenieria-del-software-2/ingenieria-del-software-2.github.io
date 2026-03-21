@@ -3,7 +3,6 @@ youtube_channel: "https://www.youtube.com/@IngSoft2/videos"
 sections:
   - id: backend
     title: Desarrollo Backend
-    emoji: ⚙️
     description: Diseño e implementación de APIs REST, buenas prácticas y testing del lado del servidor.
     topics:
       - rest history
@@ -41,7 +40,6 @@ sections:
 
   - id: arquitectura
     title: Arquitectura de Software
-    emoji: 🏛️
     description: Conceptos fundamentales de arquitectura de software, patrones de diseño y toma de decisiones arquitectónicas.
     topics:
       - monolithic vs microservices
@@ -83,7 +81,6 @@ sections:
 
   - id: devops
     title: DevOps
-    emoji: 🚀
     description: Cultura DevOps, integración continua, despliegue continuo, infraestructura como código y contenedores.
     topics:
       - devops movement
@@ -135,7 +132,6 @@ sections:
 
   - id: frontend
     title: Desarrollo Frontend
-    emoji: 💻
     description: Desarrollo de interfaces de usuario modernas utilizando React y gestión de estado.
     topics:
       - html css js
@@ -166,7 +162,6 @@ sections:
 
   - id: mobile
     title: Desarrollo Móvil
-    emoji: 📱
     description: Creación de aplicaciones móviles nativas y multiplataforma con React Native.
     topics:
       - react native
@@ -187,7 +182,6 @@ sections:
 
   - id: cloud
     title: Cloud Computing
-    emoji: ☁️
     description: Servicios en la nube, AWS, modelos de servicio y arquitectura cloud.
     topics:
       - cloud service models
@@ -233,7 +227,6 @@ sections:
 
   - id: pm
     title: Project Management
-    emoji: 📊
     description: Metodologías ágiles, gestión de equipos y planificación de proyectos de software.
     topics:
       - planning and backlog
@@ -280,7 +273,6 @@ sections:
 
   - id: calidad
     title: Calidad de Software
-    emoji: 🧪
     description: Estrategias de testing, TDD, BDD y aseguramiento de la calidad en el ciclo de vida.
     topics:
       - internal and external quality
@@ -313,7 +305,6 @@ sections:
 
   - id: operaciones
     title: Operaciones
-    emoji: 🔧
     description: Gestión de operaciones, monitoreo, confiabilidad del sitio y manejo de incidentes en producción.
     topics:
       - production release
@@ -334,7 +325,6 @@ sections:
 
   - id: databases
     title: Bases de Datos
-    emoji: 🗄️
     description: Bases de datos relacionales y NoSQL, modelado de datos y persistencia.
     topics:
       - relational databases
@@ -349,7 +339,6 @@ sections:
 
   - id: ux
     title: UX Design
-    emoji: 🎨
     description: Diseño centrado en el usuario, usabilidad y prototipado.
     topics:
       - kano model
@@ -375,7 +364,6 @@ sections:
 
   - id: especiales
     title: Temas Especiales
-    emoji: ⭐
     description: Temas avanzados y especializados en tecnologías emergentes y seguridad.
     topics:
       - blockchain
