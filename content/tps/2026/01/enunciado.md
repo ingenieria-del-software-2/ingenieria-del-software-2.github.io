@@ -358,7 +358,7 @@ Detrás de esa simplicidad, Bazaar garantiza lo que importa: que cuando alguien 
 
 - CA 4: Sección de recomendaciones
   - Dado que un usuario accede a la home
-  - Cuando el sistema tiene recomendaciones disponibles para ese usuario (requiere A5)
+  - Cuando el sistema tiene recomendaciones personalizadas disponibles para ese usuario
   - Entonces la home muestra una sección de recomendaciones personalizadas además de los productos recientes.
 
 - CA 5: Usuario no autenticado
@@ -618,11 +618,11 @@ Los estados válidos de una orden son:
 Los estados de excepción son:
 
 - `pago rechazado` — el pago fue denegado por el gateway.
-- `cancelada` — la orden fue cancelada antes del envío (optativa C5).
-- `reembolso en proceso` — se inició el reembolso tras la cancelación (optativa C5 + reembolso simulado).
+- `cancelada` — la orden fue cancelada antes del envío.
+- `reembolso en proceso` — se inició el reembolso tras la cancelación de la orden.
 - `reembolso procesado` — el reembolso fue completado.
 
-Las transiciones siguen un flujo definido y no es posible retroceder a un estado anterior salvo por cancelación explícita. Los estados `cancelada`, `reembolso en proceso` y `reembolso procesado` deben estar contemplados en el modelo de datos aunque el grupo no implemente las historias optativas C5. En ese caso las transiciones hacia esos estados no estarán disponibles en la UI.
+Las transiciones siguen un flujo definido y no es posible retroceder a un estado anterior salvo por cancelación explícita. Los estados `cancelada`, `reembolso en proceso` y `reembolso procesado` deben estar contemplados en el modelo de datos aunque el grupo no implemente las funcionalidades optativas de cancelación y reembolso. En ese caso las transiciones hacia esos estados no estarán disponibles en la UI.
 
 **Criterios de aceptación**
 
@@ -1250,7 +1250,7 @@ Los códigos de cupón son únicos a nivel global en la plataforma, independient
 
 **Descripción**: Como **usuario**, quiero **ver productos recomendados según mi actividad en la plataforma** para **descubrir productos relevantes sin necesidad de buscarlos activamente**.
 
-El registro del historial de navegación (qué productos visita el usuario y en qué categorías navega) es parte del scope de esta historia. El grupo debe diseñar e implementar el mecanismo de captura como parte de A5; no se asume que exista previamente.
+El registro del historial de navegación (qué productos visita el usuario y en qué categorías navega) forma parte de esta historia: el grupo debe diseñar e implementar el mecanismo de captura; no se asume que exista previamente.
 
 **Criterios de aceptación**
 
@@ -1756,7 +1756,7 @@ Como alternativa, el grupo puede implementar un microservicio propio que simule 
 
 **Firebase Cloud Messaging (FCM)**
 
-Servicio de Google para el envío de notificaciones push a dispositivos móviles Android e iOS. La cátedra lo recomienda para implementar el pack N6 (Notificaciones). El servicio backend emite el mensaje a FCM, que se encarga de entregarlo al dispositivo del usuario.
+Servicio de Google para el envío de notificaciones push a dispositivos móviles Android e iOS. La cátedra lo recomienda para implementar notificaciones push. El servicio backend emite el mensaje a FCM, que se encarga de entregarlo al dispositivo del usuario.
 
 - [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging)
 - [FCM con React Native](https://rnfirebase.io/messaging/usage)
