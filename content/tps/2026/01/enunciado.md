@@ -1,6 +1,7 @@
 ---
 title: "2026C1 - Bazaar"
 subtitle: "Grupal"
+description: "Trabajo práctico grupal del 1er cuatrimestre 2026: Bazaar, un marketplace con foco en catálogo, carrito, checkout, órdenes, métricas y arquitectura de microservicios."
 ---
 
 # Bazaar
