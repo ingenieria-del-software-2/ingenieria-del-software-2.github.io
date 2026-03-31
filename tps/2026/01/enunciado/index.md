@@ -4,7 +4,9 @@
 
 Comprá. Vendé. Conectate.
 
-## Descripción
+<img width="1260" height="763" alt="bazaar-banner" src="https://github.com/user-attachments/assets/8f0d7e71-ccb7-4ea4-810c-ce474ada3ee1" />
+
+**Descripción**
 
 Bazaar es el marketplace donde cualquier persona puede convertirse en vendedor en minutos o encontrar exactamente lo que busca en segundos. Sin barreras de entrada, sin intermediarios innecesarios: el catálogo lo construyen los propios usuarios.
 
@@ -12,116 +14,88 @@ Bazaar es el marketplace donde cualquier persona puede convertirse en vendedor e
 
 Detrás de esa simplicidad, Bazaar garantiza lo que importa: que cuando alguien paga, el producto esté disponible; que si el pago falla, no se cobre; que si dos personas quieren el último item, solo una se lo lleve. Confianza y consistencia, en cada transacción.
 
----
-
 ## Índice
 
-### 1. Usuarios
-
-Gestión de cuentas: registro, acceso y recuperación.
+**1. Usuarios** — Gestión de cuentas: registro, acceso y recuperación.
 
 - [Registro de usuarios](#registro-de-usuarios)
 - [Login con email y contraseña](#login-con-email-y-contraseña)
 - [Recupero de contraseña](#recupero-de-contraseña)
-- [Login con proveedor federado](#login-con-proveedor-federado) _(optativa)_
-- [Registro con PIN](#registro-con-pin) _(optativa)_
+- [Login con proveedor federado](#login-con-proveedor-federado)
+- [Registro con PIN](#registro-con-pin)
 
-### 2. Perfil
-
-Identidad del usuario dentro de la plataforma.
+**2. Perfil** — Identidad del usuario dentro de la plataforma.
 
 - [Edición de perfil](#edición-de-perfil)
 - [Visualización de perfil propio](#visualización-de-perfil-propio)
-- [Visualización de perfil público](#visualización-de-perfil-público) _(optativa)_
+- [Visualización de perfil público](#visualización-de-perfil-público)
 
-### 3. Catálogo
-
-Exploración y búsqueda de productos disponibles.
+**3. Catálogo** — Exploración y búsqueda de productos disponibles.
 
 - [Home](#home)
-- [Productos populares en home](#productos-populares-en-home) _(optativa)_
+- [Productos populares en home](#productos-populares-en-home)
 - [Listado y búsqueda de productos](#listado-y-búsqueda-de-productos)
 - [Detalle de producto](#detalle-de-producto)
-- [Compartir link de producto](#compartir-link-de-producto) _(optativa)_
-- [Filtros avanzados de búsqueda](#filtros-avanzados-de-búsqueda) _(optativa)_
-- [Ordenamiento de resultados](#ordenamiento-de-resultados) _(optativa)_
+- [Compartir link de producto](#compartir-link-de-producto)
+- [Filtros avanzados de búsqueda](#filtros-avanzados-de-búsqueda)
+- [Ordenamiento de resultados](#ordenamiento-de-resultados)
 
-### 4. Carrito
-
-Selección y gestión de productos antes de la compra.
+**4. Carrito** — Selección y gestión de productos antes de la compra.
 
 - [Agregar producto al carrito](#agregar-producto-al-carrito)
 - [Gestión del carrito](#gestión-del-carrito)
 
-### 5. Checkout y Órdenes
-
-Flujo de compra, pago y seguimiento del estado de cada orden.
+**5. Checkout y Órdenes** — Flujo de compra, pago y seguimiento del estado de cada orden.
 
 - [Checkout e inicio de pago](#checkout-e-inicio-de-pago)
 - [Estado y seguimiento de orden](#estado-y-seguimiento-de-orden)
 - [Historial de compras](#historial-de-compras)
-- [Cancelar orden](#cancelar-orden) _(optativa)_
-- [Reembolso simulado al cancelar](#reembolso-simulado-al-cancelar) _(optativa)_
-- [Aplicar cupón en checkout](#aplicar-cupón-en-checkout) _(optativa)_
+- [Cancelar orden](#cancelar-orden)
+- [Reembolso simulado al cancelar](#reembolso-simulado-al-cancelar)
+- [Aplicar cupón en checkout](#aplicar-cupón-en-checkout)
 
-### 6. Vendedor
-
-Publicación de productos y administración de las propias ventas.
+**6. Vendedor** — Publicación de productos y administración de las propias ventas.
 
 - [Publicar producto](#publicar-producto)
 - [Gestión de stock y publicaciones](#gestión-de-stock-y-publicaciones)
 - [Historial de ventas](#historial-de-ventas)
-- [Crear y gestionar cupones de descuento](#crear-y-gestionar-cupones-de-descuento) _(optativa)_
+- [Crear y gestionar cupones de descuento](#crear-y-gestionar-cupones-de-descuento)
 
-### 7. Administración
-
-Backoffice para la gestión de usuarios y contenido de la plataforma.
+**7. Administración** — Backoffice para la gestión de usuarios y contenido de la plataforma.
 
 - [Listar usuarios del sistema](#listar-usuarios-del-sistema)
 - [Bloquear y desbloquear usuario](#bloquear-y-desbloquear-usuario)
 - [Listar y moderar productos](#listar-y-moderar-productos)
 - [Listar órdenes del sistema](#listar-órdenes-del-sistema)
 
-### 8. Métricas
-
-Indicadores de actividad y salud de la plataforma.
+**8. Métricas** — Indicadores de actividad y salud de la plataforma.
 
 - [Métricas del sistema](#métricas-del-sistema)
-- [Métricas por categoría](#métricas-por-categoría) _(optativa)_
-- [Exportar datos de métricas](#exportar-datos-de-métricas) _(optativa)_
+- [Métricas por categoría](#métricas-por-categoría)
+- [Exportar datos de métricas](#exportar-datos-de-métricas)
 
-### 9. Reviews
+**9. Reviews** — Calificaciones y reputación dentro del ecosistema de compras.
 
-Calificaciones y reputación dentro del ecosistema de compras.
+- [Calificar producto y vendedor](#calificar-producto-y-vendedor)
+- [Reputación del vendedor en perfil público](#reputación-del-vendedor-en-perfil-público)
 
-- [Calificar producto y vendedor](#calificar-producto-y-vendedor) _(optativa)_
-- [Reputación del vendedor en perfil público](#reputación-del-vendedor-en-perfil-público) _(optativa)_
+**10. Wishlist** — Lista de deseos del comprador.
 
-### 10. Wishlist
+- [Agregar / quitar de wishlist](#agregar--quitar-de-wishlist)
+- [Visualización de wishlist](#visualización-de-wishlist)
 
-Lista de deseos del comprador.
+**11. Notificaciones** — Comunicación proactiva al comprador y al vendedor.
 
-- [Agregar / quitar de wishlist](#agregar--quitar-de-wishlist) _(optativa)_
-- [Visualización de wishlist](#visualización-de-wishlist) _(optativa)_
+- [Notificación de cambio de estado de orden](#notificación-de-cambio-de-estado-de-orden)
+- [Notificación de stock bajo al vendedor](#notificación-de-stock-bajo-al-vendedor)
 
-### 11. Notificaciones
+**12. Recomendaciones** — Descubrimiento personalizado de productos.
 
-Comunicación proactiva al comprador y al vendedor.
-
-- [Notificación de cambio de estado de orden](#notificación-de-cambio-de-estado-de-orden) _(optativa)_
-- [Notificación de stock bajo al vendedor](#notificación-de-stock-bajo-al-vendedor) _(optativa)_
-
-### 12. Recomendaciones
-
-Descubrimiento personalizado de productos.
-
-- [Recomendaciones basadas en historial](#recomendaciones-basadas-en-historial) _(optativa)_
+- [Recomendaciones basadas en historial](#recomendaciones-basadas-en-historial)
 
 ---
 
-## Historias de Usuario
-
----
+# Historias de Usuario
 
 ## Épica: Usuarios
 
@@ -153,8 +127,6 @@ Descubrimiento personalizado de productos.
   - Cuando intenta continuar con el registro
   - Entonces el sistema indica los requisitos y no permite continuar.
 
----
-
 ### Login con email y contraseña
 
 <!-- Status: Obligatoria -->
@@ -182,8 +154,6 @@ Descubrimiento personalizado de productos.
   - Dado que un usuario tiene la sesión expirada
   - Cuando intenta realizar una acción autenticada
   - Entonces el sistema lo redirige al login y conserva la acción pendiente cuando sea posible.
-
----
 
 ### Recupero de contraseña
 
@@ -218,8 +188,6 @@ Descubrimiento personalizado de productos.
   - Cuando intenta solicitar un nuevo recupero
   - Entonces el sistema limita la frecuencia de envío de emails para prevenir abuso.
 
----
-
 ### Login con proveedor federado
 
 <!-- Status: Optativa -->
@@ -242,8 +210,6 @@ Descubrimiento personalizado de productos.
   - Dado que el proveedor de identidad externo no responde
   - Cuando un usuario intenta autenticarse a través de ese proveedor
   - Entonces el sistema informa el error y ofrece el login con email y contraseña como alternativa.
-
----
 
 ### Registro con PIN
 
@@ -273,8 +239,6 @@ Descubrimiento personalizado de productos.
   - Cuando intenta usar su PIN desde un dispositivo diferente
   - Entonces el sistema no permite el acceso por PIN y requiere autenticación completa.
 
----
-
 ## Épica: Perfil
 
 ### Edición de perfil
@@ -300,8 +264,6 @@ Descubrimiento personalizado de productos.
   - Cuando intenta guardarlos
   - Entonces el sistema indica los errores y no persiste los cambios.
 
----
-
 ### Visualización de perfil propio
 
 <!-- Status: Obligatoria -->
@@ -319,8 +281,6 @@ Descubrimiento personalizado de productos.
   - Dado que un usuario está viendo su propio perfil
   - Cuando quiere editarlo
   - Entonces tiene acceso directo a la edición del mismo.
-
----
 
 ### Visualización de perfil público
 
@@ -345,8 +305,6 @@ Descubrimiento personalizado de productos.
   - Cuando otro usuario intenta acceder a su perfil
   - Entonces el sistema indica que el perfil no está disponible.
 
----
-
 ### Compartir link de producto
 
 <!-- Status: Optativa -->
@@ -369,8 +327,6 @@ Descubrimiento personalizado de productos.
   - Dado que el producto fue dado de baja o deshabilitado después de que el link fue compartido
   - Cuando alguien intenta abrirlo
   - Entonces el sistema muestra un mensaje indicando que el producto no está disponible.
-
----
 
 ## Épica: Catálogo
 
@@ -399,15 +355,13 @@ Descubrimiento personalizado de productos.
 
 - CA 4: Sección de recomendaciones
   - Dado que un usuario accede a la home
-  - Cuando el sistema tiene recomendaciones disponibles para ese usuario (requiere A5)
+  - Cuando el sistema tiene recomendaciones personalizadas disponibles para ese usuario
   - Entonces la home muestra una sección de recomendaciones personalizadas además de los productos recientes.
 
 - CA 5: Usuario no autenticado
   - Dado que un usuario no inició sesión
   - Cuando accede a la home
   - Entonces puede ver los productos recientes y navegar el catálogo, pero las acciones que requieren autenticación (agregar al carrito, comprar) le solicitan iniciar sesión.
-
----
 
 ### Productos populares en home
 
@@ -439,8 +393,6 @@ Los productos populares se determinan por volumen de ventas en los últimos 30 d
   - Cuando el sistema calcula los populares
   - Entonces ese producto no aparece en la sección, independientemente de su historial anterior.
 
----
-
 ### Listado y búsqueda de productos
 
 <!-- Status: Obligatoria -->
@@ -469,8 +421,6 @@ Los productos populares se determinan por volumen de ventas en los últimos 30 d
   - Cuando un usuario navega el catálogo o realiza una búsqueda
   - Entonces esos productos no aparecen en los resultados.
 
----
-
 ### Detalle de producto
 
 <!-- Status: Obligatoria -->
@@ -493,8 +443,6 @@ Los productos populares se determinan por volumen de ventas en los últimos 30 d
   - Dado que un producto fue deshabilitado por el vendedor o el administrador
   - Cuando un usuario intenta acceder al detalle de ese producto
   - Entonces el sistema muestra un mensaje indicando que el producto no está disponible.
-
----
 
 ### Filtros avanzados de búsqueda
 
@@ -524,8 +472,6 @@ Los productos populares se determinan por volumen de ventas en los últimos 30 d
   - Cuando los elimina
   - Entonces el catálogo vuelve a mostrar todos los productos disponibles sin restricciones.
 
----
-
 ### Ordenamiento de resultados
 
 <!-- Status: Optativa -->
@@ -548,8 +494,6 @@ Los productos populares se determinan por volumen de ventas en los últimos 30 d
   - Dado que un usuario navega el catálogo
   - Cuando no selecciona ningún criterio de orden
   - Entonces los productos se muestran ordenados por relevancia (coincidencia con búsqueda activa) o por fecha descendente si no hay búsqueda activa.
-
----
 
 ## Épica: Carrito
 
@@ -581,8 +525,6 @@ Los productos populares se determinan por volumen de ventas en los últimos 30 d
   - Cuando vuelve a iniciar sesión
   - Entonces el carrito conserva los productos agregados previamente.
 
----
-
 ### Gestión del carrito
 
 <!-- Status: Obligatoria -->
@@ -610,8 +552,6 @@ Los productos populares se determinan por volumen de ventas en los últimos 30 d
   - Dado que un producto en el carrito queda sin stock o es deshabilitado antes del checkout
   - Cuando el usuario revisa su carrito
   - Entonces el carrito señaliza ese item como no disponible e impide proceder al checkout mientras el problema persista.
-
----
 
 ## Épica: Checkout y Órdenes
 
@@ -662,8 +602,6 @@ El carrito puede contener productos de múltiples vendedores. El grupo decide si
   - Cuando la orden es confirmada
   - Entonces la dirección queda registrada en la orden y el vendedor puede verla en el detalle de la venta.
 
----
-
 ### Estado y seguimiento de orden
 
 <!-- Status: Obligatoria -->
@@ -677,11 +615,11 @@ Los estados válidos de una orden son:
 Los estados de excepción son:
 
 - `pago rechazado` — el pago fue denegado por el gateway.
-- `cancelada` — la orden fue cancelada antes del envío (optativa C5).
-- `reembolso en proceso` — se inició el reembolso tras la cancelación (optativa C5 + reembolso simulado).
+- `cancelada` — la orden fue cancelada antes del envío.
+- `reembolso en proceso` — se inició el reembolso tras la cancelación de la orden.
 - `reembolso procesado` — el reembolso fue completado.
 
-Las transiciones siguen un flujo definido y no es posible retroceder a un estado anterior salvo por cancelación explícita. Los estados `cancelada`, `reembolso en proceso` y `reembolso procesado` deben estar contemplados en el modelo de datos aunque el grupo no implemente las historias optativas C5. En ese caso las transiciones hacia esos estados no estarán disponibles en la UI.
+Las transiciones siguen un flujo definido y no es posible retroceder a un estado anterior salvo por cancelación explícita. Los estados `cancelada`, `reembolso en proceso` y `reembolso procesado` deben estar contemplados en el modelo de datos aunque el grupo no implemente las funcionalidades optativas de cancelación y reembolso. En ese caso las transiciones hacia esos estados no estarán disponibles en la UI.
 
 **Criterios de aceptación**
 
@@ -720,8 +658,6 @@ Las transiciones siguen un flujo definido y no es posible retroceder a un estado
   - Cuando el comprador confirma que recibió el pedido
   - Entonces la orden pasa al estado "entregada".
 
----
-
 ### Historial de compras
 
 <!-- Status: Obligatoria -->
@@ -744,8 +680,6 @@ Las transiciones siguen un flujo definido y no es posible retroceder a un estado
   - Dado que un comprador está en su historial de compras
   - Cuando aplica un filtro por estado
   - Entonces el listado muestra únicamente las órdenes en ese estado.
-
----
 
 ### Cancelar orden
 
@@ -775,8 +709,6 @@ Las transiciones siguen un flujo definido y no es posible retroceder a un estado
   - Cuando la orden se cancela
   - Entonces el stock de cada item de la orden se restaura automáticamente.
 
----
-
 ### Reembolso simulado al cancelar
 
 <!-- Status: Optativa -->
@@ -799,8 +731,6 @@ Las transiciones siguen un flujo definido y no es posible retroceder a un estado
   - Dado que una orden nunca tuvo el pago aprobado
   - Cuando es cancelada
   - Entonces no se inicia ningún proceso de reembolso.
-
----
 
 ### Aplicar cupón en checkout
 
@@ -829,8 +759,6 @@ Las transiciones siguen un flujo definido y no es posible retroceder a un estado
   - Dado que un comprador aplica un cupón a su orden
   - Cuando el descuento calculado supera el total de la orden
   - Entonces el sistema aplica un máximo del 100% y el monto final no puede ser negativo.
-
----
 
 ## Épica: Vendedor
 
@@ -865,8 +793,6 @@ Las categorías disponibles son predefinidas por el sistema; no es responsabilid
   - Dado que un vendedor ingresó un stock inicial negativo
   - Cuando intenta publicar el producto
   - Entonces el sistema indica el error y no crea el producto.
-
----
 
 ### Gestión de stock y publicaciones
 
@@ -906,8 +832,6 @@ Las categorías disponibles son predefinidas por el sistema; no es responsabilid
   - Cuando agrega, elimina o reordena las imágenes de ese producto
   - Entonces los cambios se reflejan de inmediato en el detalle del producto; la primera imagen en el orden definido se utiliza como imagen principal en el catálogo; no es posible dejar un producto sin imágenes.
 
----
-
 ### Historial de ventas
 
 <!-- Status: Obligatoria -->
@@ -935,8 +859,6 @@ Las categorías disponibles son predefinidas por el sistema; no es responsabilid
   - Dado que un vendedor está en su historial de ventas
   - Cuando aplica un filtro por estado
   - Entonces el listado muestra únicamente las ventas en ese estado.
-
----
 
 ### Crear y gestionar cupones de descuento
 
@@ -967,8 +889,6 @@ Los códigos de cupón son únicos a nivel global en la plataforma, independient
   - Dado que un vendedor tiene cupones creados
   - Cuando accede a la gestión de cupones
   - Entonces puede ver todos sus cupones con código, porcentaje, fecha de vencimiento y estado (activo/inactivo/vencido).
-
----
 
 ## Épica: Reviews
 
@@ -1005,8 +925,6 @@ Los códigos de cupón son únicos a nivel global en la plataforma, independient
   - Cuando el comprador quiere calificar los productos recibidos
   - Entonces puede dejar una calificación con puntaje (1 a 5) y comentario opcional para cada producto de esa orden.
 
----
-
 ### Reputación del vendedor en perfil público
 
 <!-- Status: Optativa -->
@@ -1035,8 +953,6 @@ Los códigos de cupón son únicos a nivel global en la plataforma, independient
   - Cuando se calcula su reputación
   - Entonces solo se consideran calificaciones asociadas a órdenes en estado "entregada".
 
----
-
 ## Épica: Administración
 
 ### Listar usuarios del sistema
@@ -1056,8 +972,6 @@ Los códigos de cupón son únicos a nivel global en la plataforma, independient
   - Dado que un administrador está en el panel de usuarios
   - Cuando ingresa un término de búsqueda
   - Entonces el sistema filtra el listado mostrando solo los usuarios que coinciden.
-
----
 
 ### Bloquear y desbloquear usuario
 
@@ -1087,8 +1001,6 @@ Los códigos de cupón son únicos a nivel global en la plataforma, independient
   - Cuando intenta bloquearla
   - Entonces el sistema rechaza la operación.
 
----
-
 ### Listar y moderar productos
 
 <!-- Status: Obligatoria -->
@@ -1117,8 +1029,6 @@ Los códigos de cupón son únicos a nivel global en la plataforma, independient
   - Cuando selecciona un producto del listado
   - Entonces puede ver todos sus datos incluyendo el vendedor y el historial de cambios de estado.
 
----
-
 ### Listar órdenes del sistema
 
 <!-- Status: Obligatoria -->
@@ -1146,8 +1056,6 @@ Los códigos de cupón son únicos a nivel global en la plataforma, independient
   - Dado que un administrador está viendo el detalle de una orden
   - Cuando intenta modificar su estado
   - Entonces el sistema no le permite hacerlo; la gestión de estados es exclusiva del vendedor y el comprador.
-
----
 
 ## Épica: Métricas
 
@@ -1184,8 +1092,6 @@ Los códigos de cupón son únicos a nivel global en la plataforma, independient
   - Cuando selecciona un período
   - Entonces el sistema ofrece al menos los períodos predefinidos de 7, 30 y 90 días. Un rango personalizado queda a criterio del grupo.
 
----
-
 ### Métricas por categoría
 
 <!-- Status: Optativa -->
@@ -1203,8 +1109,6 @@ Los códigos de cupón son únicos a nivel global en la plataforma, independient
   - Dado que un administrador está en las métricas por categoría
   - Cuando selecciona un rango de fechas
   - Entonces las métricas por categoría se recalculan para ese período.
-
----
 
 ### Exportar datos de métricas
 
@@ -1228,8 +1132,6 @@ Los códigos de cupón son únicos a nivel global en la plataforma, independient
   - Dado que un administrador no seleccionó ningún período
   - Cuando intenta exportar las métricas
   - Entonces el sistema indica que debe elegir un rango de fechas antes de proceder.
-
----
 
 ## Épica: Wishlist
 
@@ -1261,8 +1163,6 @@ Los códigos de cupón son únicos a nivel global en la plataforma, independient
   - Cuando intenta agregar un producto a la wishlist
   - Entonces el sistema lo redirige al login y retoma la acción al completar la autenticación.
 
----
-
 ### Visualización de wishlist
 
 <!-- Status: Optativa -->
@@ -1291,8 +1191,6 @@ Los códigos de cupón son únicos a nivel global en la plataforma, independient
   - Cuando accede a ella
   - Entonces el sistema muestra un estado vacío con un mensaje claro que lo invita a explorar el catálogo.
 
----
-
 ## Épica: Notificaciones
 
 ### Notificación de cambio de estado de orden
@@ -1318,8 +1216,6 @@ Los códigos de cupón son únicos a nivel global en la plataforma, independient
   - Cuando toca la notificación
   - Entonces la aplicación lo lleva directamente al detalle de la orden correspondiente.
 
----
-
 ### Notificación de stock bajo al vendedor
 
 <!-- Status: Optativa -->
@@ -1343,8 +1239,6 @@ Los códigos de cupón son únicos a nivel global en la plataforma, independient
   - Cuando el stock llega a cero
   - Entonces el vendedor recibe una notificación específica indicando que el producto quedó sin stock.
 
----
-
 ## Épica: Recomendaciones
 
 ### Recomendaciones basadas en historial
@@ -1353,7 +1247,7 @@ Los códigos de cupón son únicos a nivel global en la plataforma, independient
 
 **Descripción**: Como **usuario**, quiero **ver productos recomendados según mi actividad en la plataforma** para **descubrir productos relevantes sin necesidad de buscarlos activamente**.
 
-El registro del historial de navegación (qué productos visita el usuario y en qué categorías navega) es parte del scope de esta historia. El grupo debe diseñar e implementar el mecanismo de captura como parte de A5; no se asume que exista previamente.
+El registro del historial de navegación (qué productos visita el usuario y en qué categorías navega) forma parte de esta historia: el grupo debe diseñar e implementar el mecanismo de captura; no se asume que exista previamente.
 
 **Criterios de aceptación**
 
@@ -1381,7 +1275,7 @@ El registro del historial de navegación (qué productos visita el usuario y en 
 
 ## Requisitos No Funcionales
 
-### Red Lines
+**Red Lines**
 
 Los siguientes incumplimientos **bloquean la evaluación** del proyecto y requieren corrección inmediata:
 
@@ -1400,19 +1294,23 @@ Cada grupo debe desarrollar:
 - Un **backoffice web** para administración.
 - Un **API Gateway** como punto único de entrada al sistema, que centralice el enrutamiento hacia los servicios backend, la validación de tokens de sesión y el rate limiting. Su diseño e implementación deben justificarse en un ADR. En caso excepcional de no adoptarlo, el grupo debe documentar el mecanismo alternativo con la misma rigurosidad y justificar la decisión.
 
-### Tecnologías
+**Tecnologías**
 
-**Servicios backend**: Python o Node.js, con los frameworks y bases de datos que el grupo elija y justifique. Se recomienda PostgreSQL y/o MongoDB.
-
-Se requiere que al menos dos microservicios estén implementados en lenguajes distintos entre sí. Por ejemplo: el servicio de usuarios en Python/FastAPI y el servicio de pagos en Node.js/Express. La combinación de lenguajes queda a criterio del grupo y debe quedar documentada.
-
-Se requiere además utilizar al menos dos tecnologías de base de datos distintas: una relacional (SQL) y una no relacional (NoSQL). La elección de qué tecnología usa cada servicio queda a criterio del grupo y debe justificarse en la documentación.
-
-**Aplicación mobile**: Se recomienda React Native.
-
-**Backoffice web**: Se recomienda React.
+- Servicios backend: **lenguaje a elección del grupo**; se sugiere Python, Node.js o Go por ser los lenguajes donde la cátedra tiene más expertise para acompañar. Frameworks y bases de datos libres (se recomienda PostgreSQL y/o MongoDB).
+- Aplicación mobile: React Native (recomendado).
+- Backoffice web: React (recomendado).
 
 La elección tecnológica debe quedar justificada en la documentación técnica del proyecto.
+
+### UX
+
+La experiencia de usuario es parte del producto. Antes de escribir código de interfaz, el equipo debe pensar cómo se ve, cómo se navega y por qué. Se espera:
+
+- **Prototipado**: wireframes o mockups de los flujos principales (se recomienda Figma o equivalente), incluyendo la app mobile y el backoffice. Pueden apoyarse en herramientas como Stitch de Google o similares, y en sistemas de diseño ya probados.
+- **Sistema de diseño**: elegir un sistema de diseño (ej. Material Design, Apple HIG u otro) y mantenerlo consistente en toda la interfaz.
+- **Decisiones de UX**: cómo se comporta el usuario en la aplicación, cómo se ve y cómo se navega son decisiones creativas del equipo. Lo importante es que puedan explicar por qué tomaron esas decisiones.
+- **Feedback temprano**: los prototipos deben presentarse en el Checkpoint 1. A partir de ahí, el diseño se itera en las weeklies con acompañamiento del ayudante.
+- **Accesibilidad básica**: las interfaces deben contemplar contraste de color legible y tamaños de texto adecuados para uso en dispositivos móviles.
 
 ### Integridad y Flujo de Datos
 
@@ -1425,43 +1323,6 @@ Los flujos que involucran múltiples servicios deben garantizar consistencia ant
 - **Resiliencia en la comunicación entre servicios**: Las llamadas entre servicios deben contemplar estrategias ante fallos transitorios. Se recomienda aplicar patrones como Retry (con backoff exponencial) y Circuit Breaker para evitar cascadas de fallo. La elección y justificación de estos patrones debe quedar documentada en los ADRs correspondientes.
 - **Resiliencia en la capa de presentación**: La aplicación mobile y el backoffice deben manejar explícitamente los estados de error y latencia: indicadores de carga, mensajes de error accionables ante fallos de red, y comportamiento coherente ante respuestas parciales o timeout del backend. No se acepta que un fallo de red deje la interfaz en un estado inconsistente o sin feedback al usuario.
 
-### Log
-
-Cada servicio debe contar con un sistema de log estructurado con niveles configurables:
-
-| Nivel | Criterio |
-| ----- | -------- |
-| Error | Falla catastrófica que impide ejecutar la funcionalidad. |
-| Warn  | Condición anómala que no impide la funcionalidad básica. |
-| Info  | Acción iniciada por el usuario o el sistema trazable en el historial. |
-| Debug | Contexto técnico para diagnóstico sin necesidad del código fuente. |
-
-### Monitoreo
-
-Cada servicio debe exponer endpoints de monitoreo con semántica diferenciada:
-
-- **`/livez`**: indica que el proceso está vivo y puede seguir ejecutándose. Debe limitarse a validaciones locales al proceso (por ejemplo, que el servidor HTTP siga respondiendo). No debe validar conectividad con base de datos ni con otros servicios remotos.
-- **`/readyz`**: indica que el servicio está en condiciones de atender requests correctamente. Debe validar las dependencias críticas para su operación, como la base de datos u otros servicios externos necesarios para ejecutar su funcionalidad principal. Un servicio que responde HTTP pero no puede cumplir su caso de uso principal no debe considerarse ready.
-
-A los efectos de este requisito:
-
-- un endpoint que responda `200 OK` sin validar aquello que efectivamente determina si el servicio puede operar según el tipo de probe expuesta no cumple;
-- **`/livez` y `/readyz` no son equivalentes** y no deben reutilizar la misma lógica;
-- si una dependencia externa falla y eso impide operar correctamente, esa situación debe reflejarse en **`/readyz`**, no en **`/livez`**.
-
-No se recomienda usar **`/health`** como único endpoint de monitoreo, ya que su semántica es ambigua y no distingue entre disponibilidad del proceso y capacidad real de operación.
-
-Además, **cada servicio debe contar con un sistema de monitoreo/observabilidad** que permita supervisar su estado operativo y facilitar el diagnóstico de fallas. Esta capacidad puede implementarse mediante un APM o herramientas equivalentes; la tecnología utilizada queda a elección del equipo.
-
-Se valora positivamente incorporar **trazabilidad distribuida** mediante un trace/correlation ID propagado entre servicios, junto con herramientas que permitan su consulta.
-
-### Empaquetamiento
-
-- Servicios backend: `Dockerfile` + archivo de dependencias correspondiente al lenguaje elegido.
-- Aplicación mobile: APK o equivalente.
-
-Se debe poder levantar el entorno completo de forma reproducible. Se recomienda proveer un `docker-compose` para el entorno de desarrollo local.
-
 ### Testing
 
 El desarrollo debe incluir:
@@ -1472,54 +1333,67 @@ El desarrollo debe incluir:
 - **Pruebas de carga y estrés**: ejecutar al menos un escenario de carga simulando usuarios concurrentes sobre los endpoints críticos. Documentar los resultados, cuellos de botella identificados y acciones tomadas (se recomienda k6 o Artillery).
 - Cobertura de tests superior al **70%** en los servicios backend.
 
-### CI-CD
-
-El pipeline de CI debe correr automáticamente ante cada push y **bloquear el merge** ante fallas en los tests. Se recomienda incorporar análisis estático de seguridad (SAST) como parte del pipeline.
-
-El despliegue al entorno productivo debe ser automático desde el branch principal o mediante tags, y debe estar documentado.
-
 ### Gestión de Ingeniería
 
 - **Trazabilidad backlog-repositorio**: Cada pull request debe referenciar la historia o tarea que lo origina. Se esperan mensajes de commit descriptivos; no se exige un formato estricto ni referencia a tickets en cada commit individual, pero no se aceptan commits genéricos sin contexto ("fix", "changes", "wip").
 - **Atomicidad en Git**: Cada pull request debe representar un cambio lógico coherente. No deben mezclarse features no relacionadas en un mismo PR.
-- **Uso de herramientas de IA**: Se espera que los equipos utilicen herramientas de asistencia con IA como parte natural del desarrollo. Lo que se evalúa no es si se usó IA, sino la calidad de la dirección: evidencia de flujos estructurados de trabajo con IA (ej. archivos de contexto como `AGENTS.md` o equivalentes), y capacidad de cada integrante de explicar y defender cualquier parte del código en la defensa del proyecto. Las decisiones de arquitectura deben ser del equipo, no defaults aceptados sin criterio; los ADRs deben reflejar alternativas evaluadas. El equipo es responsable final del código independientemente de la herramienta que lo produjo.
+- **Uso de herramientas de IA**: Se espera que los equipos utilicen herramientas de asistencia con IA como parte natural del desarrollo. Lo que se evalúa no es si se usó IA, sino la calidad de la dirección: evidencia de flujos estructurados de trabajo con IA (ej.`AGENTS.md`, `.agents/skills` o equivalentes), y **capacidad de cada integrante de explicar y defender cualquier parte del código en la defensa del proyecto**. Las decisiones de arquitectura deben ser del equipo, no defaults aceptados sin criterio; los ADRs deben reflejar alternativas evaluadas. El equipo es responsable final del código independientemente de la herramienta que lo produjo.
 - **Backlog actualizado**: El backlog debe reflejar el estado real del proyecto en cada sesión de seguimiento. Deben existir tareas explícitas para trabajo de infraestructura, testing e integración, no solo para funcionalidades de negocio.
 
 ### Despliegue en la Nube
 
-Los servicios deben desplegarse en la nube utilizando una plataforma como servicio (PaaS) o un orquestador de contenedores. Se debe elegir una plataforma que cuente con plan gratuito o de bajo costo vigente. Algunas opciones disponibles en 2026:
+Los servicios deben desplegarse en la nube utilizando una **plataforma como servicio (PaaS)**, o un **orquestador de contenedores gestionado** o directamente un **cloud provider** para grupos que prefieran mayor control de infraestructura. La elección queda a criterio del grupo y debe estar documentada y justificada en un ADR.
 
-- **Render** — free tier para servicios web y bases de datos con limitaciones de uptime.
-- **Fly.io** — plan gratuito con máquinas compartidas; apto para múltiples servicios pequeños.
-- **Koyeb** — free tier sin límite de tiempo para instancias nano.
-- **Supabase** — opción gratuita para bases de datos PostgreSQL administradas.
+Se debe elegir una alternativa que cuente con un plan gratuito o de bajo costo vigente. Para un análisis detallado de las opciones disponibles (proveedores, free tiers, stacks recomendados y consejos de presupuesto), consultar la **[Guía de cátedra: Cloud Computing](https://ingenieria-del-software-2.github.io/blog/2025-09-11-cloud-computing/)**.
 
-La elección de plataforma debe estar documentada y justificada. Se debe garantizar que el entorno de producción sea reproducible y que el despliegue ocurra de forma automatizada desde el pipeline de CI/CD.
+Se debe garantizar que el entorno de producción sea reproducible y que el despliegue ocurra de forma automatizada desde el pipeline de CI/CD.
 
-### Despliegue usando k8s
+**Despliegue usando k8s**
 
 Como alternativa avanzada, el grupo puede optar por desplegar la plataforma en Kubernetes. Esta decisión debe estar justificada y documentada.
 
-### UX
+**Empaquetamiento**
 
-El diseño de la interfaz debe ser presentado y validado con el ayudante antes de comenzar el desarrollo de las pantallas. Se espera:
+- Servicios backend: `Dockerfile` + archivo de dependencias correspondiente al lenguaje elegido.
+- Aplicación mobile: APK o equivalente.
+- Entorno local: se debe poder levantar el entorno completo de forma reproducible (se recomienda `docker-compose`).
 
-- **Prototipado**: wireframes o mockups de los flujos principales (se recomienda Figma o equivalente), incluyendo la app mobile y el backoffice.
-- **Sistema de diseño**: el grupo debe elegir y justificar el sistema de diseño adoptado (ej. Material Design, Apple HIG u otro). No se impone una guía específica, pero la elección debe ser consistente en toda la interfaz y documentada.
-- **Validación con el ayudante**: los prototipos deben presentarse en el primer checkpoint para recibir feedback antes de implementar. Los cambios significativos de diseño posteriores al checkpoint deben volver a validarse.
-- **Accesibilidad básica**: las interfaces deben contemplar contraste de color legible y tamaños de texto adecuados para uso en dispositivos móviles.
+**CI-CD**
 
-### Gestión de imágenes y media
+- CI: correr automáticamente ante cada push y **bloquear el merge** ante fallas en los tests. Se recomienda incorporar análisis estático de seguridad (SAST).
+- CD: despliegue automático al entorno productivo desde el branch principal o mediante tags, documentado.
 
-Los archivos multimedia deben almacenarse en un servicio externo de objetos (ej. AWS S3, Google Cloud Storage, Cloudinary o equivalente). El sistema no debe guardar binarios en la base de datos ni en el sistema de archivos del servidor; solo persiste la URL de acceso.
+**Gestión de imágenes y media**
 
-| Tipo | Formatos aceptados | Tamaño máximo |
-| ---- | ------------------ | ------------- |
-| Imágenes de perfil | JPEG, PNG, WebP | 5 MB |
-| Imágenes de producto | JPEG, PNG, WebP | 10 MB por archivo |
-| Videos de producto _(opcional)_ | MP4, WebM | 50 MB |
+Los archivos multimedia deben almacenarse en un servicio externo de objetos (ej. AWS S3, Google Cloud Storage, Cloudinary o equivalente). No guardar binarios en la base de datos ni en el filesystem del servidor; solo se persiste la URL.
 
-Otros formatos deben rechazarse con un error descriptivo. Las URLs generadas deben ser públicamente accesibles sin autenticación. Se recomienda implementar limpieza de archivos huérfanos al reemplazar o eliminar un archivo para evitar acumulación en el storage.
+- Imágenes de perfil: JPEG, PNG o WebP, hasta 5 MB.
+- Imágenes de producto: JPEG, PNG o WebP, hasta 10 MB por archivo.
+- Videos de producto _(opcional)_: MP4 o WebM, hasta 50 MB.
+
+Otros formatos deben rechazarse con un error descriptivo. Las URLs deben ser públicamente accesibles. Se recomienda limpiar archivos huérfanos al reemplazar o eliminar media.
+
+### Observabilidad
+
+**Monitoreo**
+
+Cada servicio debe exponer dos endpoints con semántica diferenciada:
+
+- **`/livez`**: valida que el proceso está vivo. Solo verificaciones locales (ej: el servidor HTTP responde). No debe consultar base de datos ni servicios externos.
+- **`/readyz`**: valida que el servicio puede operar correctamente. Debe verificar dependencias críticas (ej: base de datos). Un servicio que responde HTTP pero no puede cumplir su funcionalidad principal no es ready.
+
+**`/livez` y `/readyz` no son equivalentes**: no deben compartir lógica. Un endpoint que responde `200 OK` sin validar lo que corresponde a su semántica no cumple. No usar un único `/health` genérico.
+
+**Cada servicio debe contar además con un sistema de observabilidad** (APM o equivalente) para supervisar su estado operativo y facilitar el diagnóstico de fallas. Se valora incorporar **trazabilidad distribuida** con un trace/correlation ID propagado entre servicios.
+
+**Logs**
+
+Cada servicio debe contar con log estructurado con niveles configurables:
+
+- **Error**: falla que impide ejecutar la funcionalidad.
+- **Warn**: condición anómala que no impide la funcionalidad básica.
+- **Info**: acción iniciada por el usuario o el sistema, trazable en el historial.
+- **Debug**: contexto técnico para diagnóstico sin necesidad del código fuente.
 
 ### Seguridad
 
@@ -1528,7 +1402,7 @@ Otros formatos deben rechazarse con un error descriptivo. Las URLs generadas deb
 - **Protección de datos personales**: Los datos sensibles de los usuarios (email, dirección, historial de compras) solo deben recolectarse si son estrictamente necesarios para la funcionalidad. No deben exponerse en logs, respuestas de error ni endpoints no autorizados. El acceso a datos de otros usuarios debe estar controlado por autorización explícita en cada operación.
 - **Minimización de datos en APIs**: Las respuestas de la API no deben incluir campos innecesarios. En particular, nunca deben retornarse contraseñas, tokens internos ni datos privados de otros usuarios, aunque estén disponibles en la base de datos.
 
-#### Lineamientos técnicos de autenticación
+**Lineamientos técnicos de autenticación**
 
 - **Tokens de sesión**: Se recomienda el uso de JWT con tiempo de expiración configurable. El token debe incluir el identificador de usuario y el rol.
 - **Tokens de recupero**: Deben generarse con al menos 128 bits de entropía (ej. UUID v4 o equivalente), almacenarse hasheados en la base de datos y expirar en máximo 1 hora.
@@ -1544,7 +1418,7 @@ Se debe entregar:
 - **Contratos de API** documentados con Swagger/OpenAPI, preferentemente autogenerado.
 - **Diagramas de arquitectura** (se recomienda C4 Model: contexto, contenedores y componentes).
 - **Registro de Decisiones de Arquitectura (ADRs)** para las decisiones de diseño relevantes. Cada ADR debe incluir: contexto del problema, decisión tomada, alternativas descartadas y consecuencias esperadas.
-- **Análisis postmortem** al cierre del proyecto.
+- **Retrospectiva final del proyecto**.
 
 Se valora positivamente:
 
@@ -1558,34 +1432,338 @@ Se valora positivamente:
 
 El proyecto se desarrolla en forma iterativa e incremental a lo largo de tres checkpoints y una entrega final. Cada instancia dura aproximadamente 3–4 semanas.
 
-### Dinámica de trabajo
+
+**Dinámica de trabajo**
 
 El corrector asignado a cada grupo actúa como **Product Owner** durante todo el cuatrimestre. Al inicio de cada checkpoint, el grupo acuerda con el corrector el conjunto de historias de usuario a trabajar en ese período. Ese acuerdo queda registrado en el backlog del grupo.
 
 Durante el checkpoint, el grupo trabaja semanalmente de forma iterativa. En cada sesión semanal el corrector evalúa el avance funcional y el estado de las distintas [dimensiones de calidad](#requisitos-no-funcionales) del proyecto. Al finalizar el período, el grupo realiza la entrega formal de las historias acordadas.
 
-### Alcance del proyecto
+**Instancias**
 
-Al finalizar el trabajo, el grupo debe haber implementado:
+| Instancia    | Duración aprox. | Fecha      | Recomendaciones                                                                                                                                          |
+| ------------ | --------------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Checkpoint 0 | —               | 27/03/2026 | Organizar el equipo, reconocer componentes, conocer herramientas. Establecer una matriz de conocimientos del equipo                                      |
+| Checkpoint 1 | 3–4 semanas     | 17/04/2026 | Diseñar arquitectura, armar repositorios, automatizar CI/CD en todos los componentes. Al menos un CRUD básico funcional. Presentar prototipos UX (wireframes/mockups) de los flujos principales |
+| Checkpoint 2 | 3–4 semanas     | 12/05/2026 | E2E de la plataforma con todos los CRUD básicos al 100% o avanzados. 70% historias requeridas finalizadas, 50% historias optativas finalizadas            |
+| Checkpoint 3 | 3–4 semanas     | 05/06/2026 | 100% historias requeridas finalizadas, 80% historias optativas finalizadas                                                                               |
+| Entrega      | —               | 26/06/2026 | Trabajo completo más demo funcional                                                                                                                      |
+
+_Las recomendaciones son orientativas y deben revisarse con el ayudante docente asignado al inicio de cada período. El alcance específico de cada checkpoint se acuerda con el corrector._
+
+**Al finalizar el trabajo**, el grupo debe haber implementado:
 
 - **Todas las historias obligatorias**, cumpliendo sus criterios de aceptación.
 - **Todos los Requisitos No Funcionales** definidos en este documento.
-- **Un mínimo de puntos en historias optativas** según la cantidad de integrantes del grupo (ver [Historias optativas](./historias-optativas.md)).
+- **Un mínimo de puntos en historias optativas** según la cantidad de integrantes del grupo (ver [Historias optativas](#historias-optativas)).
 
-### Instancias
 
-| Instancia    | Duración aprox. | Fecha      |
-| ------------ | --------------- | ---------- |
-| Checkpoint 1 | 3–4 semanas     | A definir  |
-| Checkpoint 2 | 3–4 semanas     | A definir  |
-| Checkpoint 3 | 3–4 semanas     | A definir  |
-| Entrega      | —               | A definir  |
+## Historias obligatorias
 
-_El alcance específico de cada checkpoint se acuerda con el corrector asignado al inicio de cada período._
+| #   | Historia                         | Épica               | Puntos |
+| --- | -------------------------------- | ------------------- | -----: |
+| 1   | Registro de usuarios             | Usuarios            |      2 |
+| 2   | Login con email y contraseña     | Usuarios            |      2 |
+| 3   | Recupero de contraseña           | Usuarios            |      3 |
+| 4   | Edición de perfil                | Perfil              |      3 |
+| 5   | Visualización de perfil propio   | Perfil              |      1 |
+| 6   | Home                             | Catálogo            |      3 |
+| 7   | Listado y búsqueda de productos  | Catálogo            |      3 |
+| 8   | Detalle de producto              | Catálogo            |      2 |
+| 9   | Agregar producto al carrito      | Carrito             |      2 |
+| 10  | Gestión del carrito              | Carrito             |      3 |
+| 11  | Checkout e inicio de pago        | Checkout y Órdenes  |      8 |
+| 12  | Estado y seguimiento de orden    | Checkout y Órdenes  |      5 |
+| 13  | Historial de compras             | Checkout y Órdenes  |      2 |
+| 14  | Publicar producto                | Vendedor            |      3 |
+| 15  | Gestión de stock y publicaciones | Vendedor            |      3 |
+| 16  | Historial de ventas              | Vendedor            |      3 |
+| 17  | Listar usuarios del sistema      | Administración      |      1 |
+| 18  | Bloquear y desbloquear usuario   | Administración      |      2 |
+| 19  | Listar y moderar productos       | Administración      |      5 |
+| 20  | Listar órdenes del sistema       | Administración      |      2 |
+| 21  | Métricas del sistema             | Métricas            |      5 |
+
+**Puntaje total obligatorio: 63 pts.**
+
+## Historias optativas
+
+Cada historia optativa tiene un puntaje asociado. El grupo debe seleccionar las historias que implementará y alcanzar el mínimo de puntos requerido según su cantidad de integrantes.
+
+| #   | Historia                                    | Épica              | Puntos |
+| --- | ------------------------------------------- | ------------------ | ------ |
+| 22  | Login con proveedor federado                | Usuarios           | 3      |
+| 23  | Registro con PIN                            | Usuarios           | 2      |
+| 24  | Visualización de perfil público             | Perfil             | 2      |
+| 25  | Compartir link de producto                  | Catálogo           | 2      |
+| 26  | Productos populares en home                 | Catálogo           | 3      |
+| 27  | Filtros avanzados de búsqueda               | Catálogo           | 3      |
+| 28  | Ordenamiento de resultados                  | Catálogo           | 2      |
+| 29  | Agregar / quitar de wishlist                | Wishlist           | 2      |
+| 30  | Visualización de wishlist                   | Wishlist           | 2      |
+| 31  | Calificar producto y vendedor               | Reviews            | 5      |
+| 32  | Reputación del vendedor en perfil público   | Reviews            | 3      |
+| 33  | Crear y gestionar cupones de descuento      | Vendedor           | 5      |
+| 34  | Aplicar cupón en checkout                   | Checkout y Órdenes | 3      |
+| 35  | Cancelar orden                              | Checkout y Órdenes | 3      |
+| 36  | Reembolso simulado al cancelar              | Checkout y Órdenes | 2      |
+| 37  | Notificación de cambio de estado de orden   | Notificaciones     | 5      |
+| 38  | Notificación de stock bajo al vendedor      | Notificaciones     | 2      |
+| 39  | Recomendaciones basadas en historial        | Recomendaciones    | 5      |
+| 40  | Métricas por categoría                      | Métricas           | 3      |
+| 41  | Exportar datos de métricas                  | Métricas           | 2      |
+
+**Puntaje máximo disponible: 59 pts.**
+
+## Puntaje mínimo por equipo
+
+| Integrantes | Mínimo optativas | Total mínimo | % del total |
+| :---------: | :--------------: | :----------: | :---------: |
+| 4           | 20 pts           | 83 pts       | 68%         |
+| 5           | 26 pts           | 89 pts       | 73%         |
+| 6           | 32 pts           | 95 pts       | 78%         |
+
+El total mínimo considera los 63 pts de historias obligatorias más el mínimo de optativas requerido según el tamaño del equipo. El pool disponible de optativas es de 59 pts.
 
 ---
 
-## Material de referencia
+## Referencias Técnicas
 
-Ver [referencias-tecnicas.md](./referencias-tecnicas.md) para el glosario completo de conceptos técnicos, referencias y lo que la cátedra entiende por cada uno.
+Este documento centraliza los conceptos técnicos utilizados en el enunciado de Bazaar. Para cada concepto se incluye una descripción de lo que la cátedra entiende por él, qué se espera del grupo al aplicarlo, y referencias para profundizar.
+
+**Arquitectura y Diseño**
+
+**Microservicios**
+
+Un estilo arquitectónico en el que el sistema se descompone en servicios pequeños e independientes, cada uno con su propia base de datos y desplegable de forma autónoma. La cátedra espera que cada servicio tenga responsabilidad bien delimitada, que no comparta base de datos con otros servicios, y que los contratos entre ellos estén documentados.
+
+- [Microservices — Martin Fowler](https://martinfowler.com/articles/microservices.html)
+- [Microservices.io — Patterns](https://microservices.io/patterns/index.html)
+
+**Domain-Driven Design (DDD)**
+
+Enfoque de diseño que alinea el modelo de software con el dominio del negocio. Los conceptos clave esperados son: identificación de **Bounded Contexts** (límites del dominio), **Entities** y **Value Objects**, y el uso del lenguaje ubicuo para nombrar los elementos del sistema. No se exige una implementación completa de DDD táctico, pero sí que las decisiones de descomposición en servicios estén justificadas en términos del dominio.
+
+- [DDD — Domain-Driven Design (Martin Fowler)](https://martinfowler.com/bliki/DomainDrivenDesign.html)
+- [DDD Reference (Eric Evans)](https://www.domainlanguage.com/ddd/reference/)
+
+**API Gateway**
+
+Componente que actúa como punto único de entrada al sistema desde los clientes (mobile, backoffice). Centraliza el enrutamiento hacia los servicios backend, la validación de tokens de autenticación y el rate limiting. La cátedra lo considera un componente esperado de la arquitectura. Su implementación y decisiones de diseño deben documentarse en un ADR.
+
+- [API Gateway Pattern](https://microservices.io/patterns/apigateway.html)
+- [NGINX API Gateway](https://www.nginx.com/learn/api-gateway/)
+- [Kong Gateway (open source)](https://konghq.com/products/kong-gateway)
+
+**C4 Model**
+
+Framework para documentar la arquitectura de software en cuatro niveles de abstracción: Contexto, Contenedores, Componentes y Código. La cátedra espera al menos los tres primeros niveles. Se recomienda usar PlantUML o Structurizr para generarlos.
+
+- [C4 Model](https://c4model.com/)
+- [Structurizr (herramienta)](https://structurizr.com/)
+
+**Architecture Decision Records (ADR)**
+
+Documento corto que registra una decisión de diseño relevante. Cada ADR debe incluir: contexto del problema, decisión tomada, alternativas descartadas y consecuencias esperadas. La cátedra espera un ADR por cada decisión significativa (elección de tecnología, patrón de comunicación, adopción o no del API Gateway, etc.).
+
+- [ADR GitHub](https://adr.github.io/)
+- [Plantilla de ADR (Michael Nygard)](https://github.com/joelparkerhenderson/architecture-decision-record/blob/main/locales/en/templates/decision-record-template-by-michael-nygard/index.md)
+
+**Resiliencia y Patrones Distribuidos**
+
+**Saga Pattern**
+
+Patrón para manejar transacciones distribuidas que involucran múltiples servicios sin usar transacciones ACID globales. Existen dos variantes: **coreografía** (cada servicio reacciona a eventos de otros) y **orquestación** (un coordinador central dirige el flujo). La cátedra espera que los flujos críticos como el checkout definan explícitamente su estrategia de compensación ante fallos parciales.
+
+- [Saga Pattern — Microservices.io](https://microservices.io/patterns/data/saga.html)
+- [Saga Orchestration vs Choreography](https://microservices.io/post/microservices/2019/07/09/developing-sagas-part-1.html)
+
+**Circuit Breaker**
+
+Patrón que evita que un servicio siga intentando llamar a otro que está fallando, cortando el circuito temporalmente y fallando rápido. Tiene tres estados: **cerrado** (operación normal), **abierto** (falla rápida sin intentar la llamada) y **semi-abierto** (prueba si el servicio se recuperó). La cátedra espera que las llamadas entre servicios que puedan fallar lo implementen o justifiquen en un ADR por qué no es necesario.
+
+- [Circuit Breaker — Martin Fowler](https://martinfowler.com/bliki/CircuitBreaker.html)
+- [Resilience4j (Java)](https://resilience4j.readme.io/docs/circuitbreaker)
+- [circuitbreaker (Python)](https://pypi.org/project/circuitbreaker/)
+
+**Retry con backoff exponencial**
+
+Estrategia para reintentar una operación fallida esperando un tiempo creciente entre intentos (ej: 1s, 2s, 4s, 8s...) más un componente aleatorio (jitter) para evitar picos de carga sincronizados. La cátedra espera que las operaciones que se puedan reintentar sin efectos secundarios (idempotentes) usen esta estrategia ante fallos transitorios.
+
+- [Exponential Backoff and Jitter (AWS)](https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/)
+
+**Idempotencia**
+
+Una operación es idempotente si ejecutarla múltiples veces produce el mismo resultado que ejecutarla una sola vez. La cátedra exige idempotencia en operaciones que modifiquen estado y puedan reintentarse: pagos, actualizaciones de stock, emisión de eventos. La implementación típica usa un **idempotency key** por request que el servidor almacena para detectar duplicados.
+
+- [Idempotency — Stripe API Docs](https://stripe.com/docs/api/idempotent_requests)
+- [Designing Robust and Predictable APIs with Idempotency](https://multithreaded.stitchfix.com/blog/2017/06/26/patterns-of-soa-idempotency/)
+
+**Fallos transitorios vs. permanentes**
+
+- **Fallo transitorio**: condición temporal que se espera que se resuelva sola (timeout de red, servicio momentáneamente no disponible). La respuesta esperada es reintentar con backoff.
+- **Fallo permanente**: condición que no se resolverá sin intervención (pago rechazado por fondos insuficientes, datos inválidos). La respuesta esperada es compensar el flujo o notificar al usuario.
+
+La distinción concreta para cada flujo la define el grupo y la acuerda con su corrector.
+
+**Testing**
+
+**Pirámide de Tests**
+
+La cátedra espera que la suite de tests incluya los tres niveles:
+1. **Unitarios**: validan lógica de negocio de cada servicio de forma aislada. Cobertura mínima: 70%.
+2. **Integración**: validan la interacción entre servicios core (ej: checkout + stock + pagos).
+3. **Contrato**: validan que los contratos entre servicios se cumplen (ver Contract Testing).
+
+- [Test Pyramid — Martin Fowler](https://martinfowler.com/bliki/TestPyramid.html)
+
+**Contract Testing**
+
+Pruebas que verifican que dos servicios que se comunican entre sí cumplen el contrato acordado. El objetivo es detectar incompatibilidades entre servicios sin necesidad de un entorno completo levantado. El nivel mínimo esperado es al menos un contrato definido y verificado entre dos servicios del flujo de checkout.
+
+La cátedra no impone una herramienta específica. Las opciones más comunes son:
+
+- **Pact** — enfoque consumer-driven: el consumer define sus expectativas y el provider las verifica. Mayor expresividad, mayor curva de entrada.
+- **Schemathesis** — genera tests automáticamente desde la spec OpenAPI y los ejecuta contra el servicio real. Muy bajo esfuerzo de configuración.
+- **Dredd** — valida que la implementación cumpla la spec OpenAPI declarada. Similar a Schemathesis.
+- **oasdiff** — detecta breaking changes entre versiones de la spec. Útil para incorporar en CI.
+
+- [Pact — Contract Testing](https://pact.io/)
+- [Schemathesis](https://schemathesis.readthedocs.io/)
+- [Dredd](https://dredd.org/en/latest/)
+- [oasdiff](https://github.com/Tufin/oasdiff)
+
+**Pruebas de carga y estrés (k6 / Artillery)**
+
+Pruebas que evalúan el comportamiento del sistema bajo carga sostenida (load testing) o picos extremos (stress testing). La cátedra exige pruebas sobre los endpoints críticos del flujo de checkout. Los resultados deben presentarse con métricas de latencia (p50, p95, p99) y tasa de errores. Las pruebas pueden ejecutarse localmente; no es requerido integrarlas al pipeline de CI.
+
+- [k6 — Load Testing](https://k6.io/)
+- [Artillery](https://www.artillery.io/)
+
+**SAST (Static Application Security Testing)**
+
+Análisis estático del código fuente para detectar vulnerabilidades de seguridad sin ejecutar el programa. La cátedra recomienda incorporarlo al pipeline de CI. Herramientas comunes: Bandit (Python), ESLint security plugin (Node.js), Semgrep (multi-lenguaje).
+
+- [Bandit (Python)](https://bandit.readthedocs.io/)
+- [Semgrep](https://semgrep.dev/)
+
+**Observabilidad**
+
+**Health Checks**
+
+Cada servicio debe exponer probes con semántica diferenciada, como se indica en la sección de Monitoreo: **`/livez`** para validar que el proceso está vivo (sin consultar dependencias externas) y **`/readyz`** para confirmar que puede atender requests correctamente (validando dependencias críticas como la base de datos). No usar un único `/health` genérico.
+
+- [Separate Readiness and Liveness Probes](https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/health-checks?view=aspnetcore-10.0#separate-readiness-and-liveness-probes)
+
+**Logs estructurados**
+
+Los logs deben emitirse en formato estructurado (JSON) con niveles configurables (Error, Warn, Info, Debug).
+
+- [Structured Logging](https://www.structuredlogging.io/)
+
+**Trazabilidad distribuida**
+
+Para rastrear una operación a través de múltiples servicios, cada request debe generar un **trace/correlation ID** que se propaga en los headers entre servicios. Se valora contar con herramientas que permitan consultar estas trazas.
+
+- [Distributed Tracing Pattern](https://microservices.io/patterns/observability/distributed-tracing.html)
+
+**Prometheus y Grafana**
+
+Prometheus recolecta métricas de runtime (latencia, tasa de errores, uso de recursos) que los servicios exponen vía un endpoint `/metrics`. Grafana permite visualizarlas en dashboards. La cátedra los recomienda para observabilidad, pero acepta alternativas equivalentes.
+
+- [Prometheus](https://prometheus.io/docs/introduction/overview/)
+- [Grafana](https://grafana.com/docs/grafana/latest/)
+
+**APIs y Contratos**
+
+**OpenAPI / Swagger**
+
+Especificación estándar para documentar APIs REST. La cátedra espera que los contratos de API estén documentados con OpenAPI, preferentemente autogenerado desde el código. Debe incluir todos los endpoints, parámetros, cuerpos de request/response y códigos de error.
+
+- [OpenAPI Specification](https://swagger.io/specification/)
+- [Swagger UI](https://swagger.io/tools/swagger-ui/)
+
+**REST**
+
+Estilo arquitectónico para diseño de APIs sobre HTTP. La cátedra espera el uso correcto de verbos HTTP (GET, POST, PUT, PATCH, DELETE), códigos de estado semánticos (200, 201, 400, 401, 403, 404, 409, 500) y recursos nombrados como sustantivos en plural.
+
+- [REST — Wikipedia](https://en.wikipedia.org/wiki/Representational_state_transfer)
+- [HTTP Status Codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
+
+**Frontend y Mobile**
+
+La cátedra recomienda React (para el backoffice web) y React Native (para la app mobile), pero cada grupo puede elegir su stack libremente siempre que cumpla los requisitos funcionales y no funcionales del enunciado.
+
+**React**
+
+Biblioteca de JavaScript para construir interfaces de usuario declarativas basadas en componentes. Para el backoffice del administrador, la cátedra recomienda React con alguna librería de componentes (MUI, Chakra UI, etc.).
+
+- [React — Documentación oficial](https://react.dev/)
+- [React Router — Navegación en SPAs](https://reactrouter.com/)
+
+**React Native**
+
+Framework para construir aplicaciones móviles nativas usando React. Permite compartir lógica entre Android e iOS. La cátedra recomienda Expo como punto de entrada por simplificar el setup inicial, pero los grupos pueden optar por el bare workflow si necesitan mayor control nativo.
+
+- [React Native — Documentación oficial](https://reactnative.dev/docs/getting-started)
+- [Expo — Getting Started](https://docs.expo.dev/)
+- [React Navigation — Navegación en React Native](https://reactnavigation.org/)
+
+**Manejo de estado y datos del servidor**
+
+Para el estado global de la aplicación (sesión, carrito, preferencias), se recomienda una solución explícita. Para el estado derivado de llamadas a la API (productos, órdenes), se recomienda una librería que gestione caché, reintentos y estados de carga, alineándose con el RNF de resiliencia en la capa de presentación.
+
+- [React Query (TanStack Query)](https://tanstack.com/query/latest)
+- [Zustand — Estado global liviano](https://zustand-demo.pmnd.rs/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+
+**Resiliencia en la capa de presentación**
+
+El enunciado exige que la UI maneje explícitamente los estados de error y latencia: indicadores de carga, mensajes accionables ante fallos de red, y comportamiento coherente ante timeouts. React Query y SWR implementan reintentos automáticos y estados de carga/error listos para usar.
+
+- [React Query — Error Handling](https://tanstack.com/query/latest/docs/framework/react/guides/query-retries)
+- [Expo Offline Support](https://docs.expo.dev/versions/latest/sdk/netinfo/)
+
+**Gateway de Pagos**
+
+El checkout debe integrarse con un servicio de pagos externo real usando su entorno de pruebas (sandbox). No se acepta simular el pago internamente con un flag o un mock hardcodeado — la llamada al servicio externo debe existir. No es necesario procesar pagos reales.
+
+La cátedra recomienda las siguientes opciones, todas con sandbox gratuito:
+
+**Stripe**
+
+Opción recomendada para proyectos académicos. Tiene excelente documentación, SDKs oficiales para los lenguajes más usados (Node.js, Python, etc.) y un sandbox completo con tarjetas de prueba predefinidas. Su API de idempotency keys es un buen ejemplo práctico del patrón de idempotencia requerido en el enunciado.
+
+- [Stripe — Testing](https://stripe.com/docs/testing)
+- [Stripe — Quickstart](https://stripe.com/docs/development/quickstart)
+- [Stripe — SDKs](https://stripe.com/docs/libraries)
+
+**MercadoPago**
+
+Relevante para el contexto local (Argentina). Cuenta con sandbox y credenciales de prueba. Los grupos que quieran una integración más cercana al mercado local pueden optar por esta alternativa.
+
+- [MercadoPago — Developers](https://www.mercadopago.com.ar/developers/es)
+- [MercadoPago — Sandbox y pruebas](https://www.mercadopago.com.ar/developers/es/docs/checkout-api/integration-test/make-test-purchase)
+
+**Servicio de pagos propio (mock externo)**
+
+Como alternativa, el grupo puede implementar un microservicio propio que simule un gateway de pagos con comportamiento configurable (aprobar, rechazar, timeout). Esta opción es válida si se documenta en un ADR y permite controlar escenarios de fallo para testing. No reemplaza la necesidad de diseñar el flujo como si fuera un servicio externo real.
+
+**Mobile y Notificaciones**
+
+**Firebase Cloud Messaging (FCM)**
+
+Servicio de Google para el envío de notificaciones push a dispositivos móviles Android e iOS. La cátedra lo recomienda para implementar notificaciones push. El servicio backend emite el mensaje a FCM, que se encarga de entregarlo al dispositivo del usuario.
+
+- [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging)
+- [FCM con React Native](https://rnfirebase.io/messaging/usage)
+
+**Seguridad y Privacidad**
+
+**Privacy by Design**
+
+Principio que establece que la protección de datos personales debe incorporarse al diseño del sistema desde el inicio, no como una capa agregada después. La cátedra espera: recolección mínima de datos (solo los necesarios para la funcionalidad), control de acceso explícito por operación, y que los datos sensibles no aparezcan en logs ni respuestas de error.
+
+- [Privacy by Design — Ann Cavoukian](https://student.cs.uwaterloo.ca/~cs492/papers/7foundationalprinciples_longer.pdf)
+- [OWASP Privacy Risks](https://owasp.org/www-project-top-10-privacy-risks/)
 
