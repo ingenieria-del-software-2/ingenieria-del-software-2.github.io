@@ -1299,7 +1299,7 @@ Cada grupo debe desarrollar:
 
 **Tecnologías**
 
-- Servicios backend: **lenguaje a elección del grupo**; se sugiere Python, Node.js o Go por ser los lenguajes donde la cátedra tiene más expertise para acompañar. Frameworks y bases de datos libres (se recomienda PostgreSQL y/o MongoDB).
+- Servicios backend: **lenguaje a elección del grupo**; se sugiere Python, Node.js o Go por ser los lenguajes donde la cátedra tiene más expertise para acompañar. Frameworks y bases de datos libres (se recomienda PostgreSQL y/o MongoDB). Se requiere que al menos dos microservicios estén implementados en lenguajes distintos entre sí. Se requiere además utilizar al menos dos tecnologías de base de datos distintas: una relacional (SQL) y una no relacional (NoSQL). La elección queda a criterio del grupo y debe justificarse en la documentación.
 - Aplicación mobile: React Native (recomendado).
 - Backoffice web: React (recomendado).
 
