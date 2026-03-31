@@ -1,0 +1,585 @@
+swagger: '2.0'
+info: 
+  description: API para el shared server de Comprame
+  title: Comprame - Shared Server API
+  version: 1.0.0
+host: Comprame.7552.fi.uba.ar
+schemes: 
+  - http
+basePath: /api
+consumes: 
+  - application/json
+produces: 
+  - application/json
+securityDefinitions:
+  BusinessToken:
+    type: apiKey
+    in: query
+    name: token
+  ApplicationToken:
+    type: apiKey
+    in: query
+    name: token
+tags:
+  - name: delivery
+    description: |
+      Llamados relacionados con consultas acerca de envios
+  - name: tracking
+    description: |
+      Llamados relacionados con la administracion del seguimiento de los envios
+  - name: app server
+    description: |
+      Llamados relacionados con la administración de app severs
+  - name: payment
+    description: |
+      Llamados relacionados con la administración de los pagos
+paths:
+  /token:
+    post:
+      tags:
+        - user
+      description: "Endpoint para generar un token para utilizar en los servicios del sistema (login)"
+      parameters: 
+        - description: "Datos para generar token"
+          in: body
+          name: body
+          required: true
+          schema: 
+            $ref: '#/definitions/BusinessUserCredentials'
+      responses: 
+        201: 
+          description: "Token generado correctamente"
+          schema:
+            properties:
+              metadata:
+                $ref: '#/definitions/EntityMetadata'
+              token:
+                $ref: "#/definitions/Token"
+        400: 
+          description: "Incumplimiento de precondiciones (parámetros faltantes)"
+          schema: 
+            $ref: "#/definitions/Error"
+        401:
+          description: Unauthorized
+          schema:
+              $ref: '#/definitions/Error'
+        500: 
+          description: "Unexpected error"
+          schema: 
+            $ref: "#/definitions/Error"
+      summary: "Generar token de usuario de negocio"      
+  /servers:
+    get:
+      tags:
+        - app server
+      security:
+        - BusinessToken: []
+      description: |
+          Devuelve toda la información acerca de todos los application servers indicados.
+      responses: 
+        200: 
+          description: "Todos los application servers indicados"
+          schema: 
+            properties: 
+              metadata: 
+                $ref: "#/definitions/CollectionMetadata"
+              servers: 
+                items: 
+                  $ref: '#/definitions/Server'
+        401:
+          description: Unauthorized
+          schema:
+              $ref: '#/definitions/Error'
+        500: 
+          description: "Unexpected error"
+          schema: 
+            $ref: "#/definitions/Error"
+      summary: "Listado de application servers"
+    post:
+      tags:
+        - app server
+      security:
+        - BusinessToken: []
+      description: |
+        Endpoint para dar de alta un servidor. Se ignorarán los campos de id, _rev y lastConnection
+      parameters: 
+        - description: "Datos para dar de alta un servidor"
+          in: body
+          name: body
+          required: true
+          schema: 
+            $ref: "#/definitions/Server"
+      responses: 
+        201: 
+          description: "Alta correcta"
+          schema:
+            properties:
+              metadata:
+                $ref: '#/definitions/EntityMetadata'
+              server:
+                $ref: '#/definitions/CreateServerResponse'
+        400: 
+          description: "Incumplimiento de precondiciones (parámetros faltantes)"
+          schema: 
+            $ref: "#/definitions/Error"
+        500: 
+          description: "Unexpected error"
+          schema: 
+            $ref: "#/definitions/Error"
+      summary: "Dar de un application server"
+  /servers/{serverId}:
+    parameters: 
+      - description: "Identificador del servidor"
+        in: path
+        name: serverId
+        required: true
+        type: string
+    get:
+      tags:
+        - app server
+      security:
+        - BusinessToken: []
+      description: "Devuelve toda la información del servidor"
+      responses: 
+        200: 
+          description: "Información del servidor"
+          schema: 
+            properties: 
+              metadata: 
+                $ref: "#/definitions/EntityMetadata"
+              server: 
+                $ref: "#/definitions/Server"
+        401:
+          description: Unauthorized
+          schema:
+              $ref: '#/definitions/Error'
+        404: 
+          description: "Servidor inexistente"
+          schema: 
+            $ref: "#/definitions/Error"
+        500: 
+          description: "Unexpected error"
+          schema: 
+            $ref: "#/definitions/Error"
+      summary: "Obtener información de un servidor"
+    put:
+      tags:
+        - app server
+      security:
+        - BusinessToken: []
+      description: |
+        Modificación de los datos de un servidor. Se ignorarán los campos de `id`, `createdBy`, `createdTime` y `lastConnection`
+      parameters: 
+        - description: Datos para modificar a del servidor
+          in: body
+          name: body
+          required: true
+          schema: 
+            $ref: "#/definitions/Server"
+      responses: 
+        200: 
+          description: "Modificación correcta"
+          schema:
+            properties:
+              metadata:
+                $ref: '#/definitions/EntityMetadata'
+              server:
+                $ref: "#/definitions/Server"
+        400: 
+          description: "Incumplimiento de precondiciones (parámetros faltantes)"
+          schema: 
+            $ref: "#/definitions/Error"
+        404: 
+          description: "No existe el recurso solicitado"
+          schema: 
+            $ref: "#/definitions/Error"
+        409:
+          description: Conflicto en el update (esta mal el valor de `_rev`)
+          schema: 
+            $ref: "#/definitions/Error"
+        500: 
+          description: "Unexpected error"
+          schema: 
+            $ref: "#/definitions/Error"
+      summary: "Actualización de información de un servidor"
+    post:
+      tags:
+        - app server
+      security:
+        - BusinessToken: []
+      description: |
+        Endpoint para resetear el token. Debe invalidar el anterior.
+      responses: 
+        201: 
+          description: "Nuevo token"
+          schema:
+            properties:
+              metadata:
+                $ref: '#/definitions/EntityMetadata'
+              server:
+                $ref: '#/definitions/CreateServerResponse'
+        400: 
+          description: "Incumplimiento de precondiciones (parámetros faltantes)"
+          schema: 
+            $ref: "#/definitions/Error"
+        500: 
+          description: "Unexpected error"
+          schema: 
+            $ref: "#/definitions/Error"
+      summary: "Resetear un token de un servidor"
+    delete:
+      tags:
+        - app server
+      security:
+        - BusinessToken: []
+      description: "Endpoint para dar de baja un servidor"
+      responses: 
+        204: 
+          description: "Baja correcta"
+        401:
+          description: Unauthorized
+          schema:
+              $ref: '#/definitions/Error'
+        404: 
+          description: "No existe el recurso solicitado"
+          schema: 
+            $ref: "#/definitions/Error"
+        500: 
+          description: "Unexpected error"
+          schema: 
+            $ref: "#/definitions/Error"
+      summary: "Eliminar un servidor"
+  /payments:
+    get:
+      tags:
+      - "payment"
+      summary: "Get my payments"
+      operationId: "getPayments"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Payment"
+        401:
+          description: "Invalid credentials"
+    post:
+      tags:
+      - "payment"
+      summary: "Create a new payment"
+      description: ""
+      operationId: "addPayment"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Payment's information"
+        required: true
+        schema:
+          $ref: "#/definitions/Payment"
+      responses:
+        201:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Payment"
+        401:
+          description: "Unauthorized"
+  /payments/methods:
+    get:
+      tags:
+      - "payment"
+      summary: "Get available payment methods"
+      description: "Returns all the payment methods availables"
+      operationId: "getPaymethods"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Paymethod"
+        401:
+          description: "Invalid credentials"
+  /deliveries/estimate:
+    post:
+      tags: 
+        - delivery
+      security:
+        - ApplicationToken: []
+      description: Estimar el valor de un envío
+      parameters: 
+        - in: body
+          name: body
+          required: true
+          schema: 
+            $ref: "#/definitions/Trip"
+      responses: 
+        200: 
+          description: "Validación correcta"
+          schema:
+            properties:
+              metadata:
+                $ref: '#/definitions/EntityMetadata'
+              cost:
+                $ref: '#/definitions/Cost'
+        400: 
+          description: "Incumplimiento de precondiciones (parámetros faltantes)"
+          schema: 
+            $ref: "#/definitions/Error"
+        401:
+          description: Unauthorized
+          schema:
+              $ref: '#/definitions/Error'
+        402:
+          description: |
+            El pasajero debe normalizar su situación de pago.
+            No se le debe permitir realizar el pago.
+          schema:
+            $ref: '#/definitions/Error'
+        500: 
+          description: "Unexpected error"
+          schema: 
+            $ref: "#/definitions/Error"
+      summary: "Validar usuario de aplicación"
+  /tracking:
+    post:
+      tags:
+      - "tracking"
+      summary: "Crea un nuevo envio para su seguimiento"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Información del envío"
+        required: true
+        schema:
+          $ref: "#/definitions/Tracking"
+      responses:
+        201:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Tracking"
+        401:
+          description: "Unauthorized"
+  /tracking/{trackingId}:
+    parameters: 
+      - description: "Identificador del envío"
+        in: path
+        name: trackingId
+        required: true
+        type: string
+    get:
+      tags:
+        - tracking
+      security:
+        - ApplicationToken: []
+        - BusinessToken: []
+      description: "Devuelve toda la información del viaje"
+      responses: 
+        200: 
+          description: "Información del envío"
+          schema: 
+            type: "array"
+            items:
+              $ref: "#/definitions/Tracking"
+        401:
+          description: Unauthorized
+          schema:
+              $ref: '#/definitions/Error'
+        404: 
+          description: "Viaje inexistente"
+          schema: 
+            $ref: "#/definitions/Error"
+        500: 
+          description: "Unexpected error"
+          schema: 
+            $ref: "#/definitions/Error"
+      summary: "Obtener información de un viaje"
+      
+definitions:
+  Version:
+    type: string
+    description: Versión de la api
+  Id:
+    type: string
+    description: |
+      Se guarda como un string, pero podría ser un número
+      es dependiente de la implementación.
+  Timestamp:
+    type: number
+    description: |
+      Tiempo en epoch      
+  Ref:
+    type: string
+    description: |
+      Hash que es utilizado para prevenir colosiones.
+      Cuando se crea un elemento, se debe pasar un valor de undefined (o no debe estar).
+      Al actualizar, el servidor chequeará que este valor sea igual al guardado, de no coincidir,
+      significa que otro actualizó el recurso, por ende, la actualización debe fallar.
+  Error: 
+    properties: 
+      code: 
+        format: int32
+        type: integer
+      message: 
+        type: string
+    type: object
+  EntityMetadata:
+    properties:
+      version:
+        $ref: '#/definitions/Version'
+  CollectionMetadata: 
+    properties: 
+      total:
+        description: Cantidad de elementos existentes
+        type: integer
+      version: 
+        $ref: '#/definitions/Version'
+    type: object
+  CreateServerResponse:
+    properties:
+      server:
+        $ref: '#/definitions/Server'
+      token:
+        $ref: '#/definitions/Token'
+  Server:
+    properties:
+      id:
+        $ref: '#/definitions/Id'
+      _rev:
+        $ref: '#/definitions/Ref'
+      createdBy:
+        $ref: '#/definitions/Id'
+      createdTime:
+        $ref: '#/definitions/Timestamp'
+      name:
+        type: string
+        description: Nombre del application server
+      lastConnection:
+        $ref: '#/definitions/Timestamp'
+  BusinessUserCredentials:
+    properties:
+      username:
+        type: string
+      password:
+        type: string
+        format: password
+  Token:
+    properties:
+      expiresAt:
+        $ref: '#/definitions/Timestamp'
+      token:  
+        type: string
+        description: Token de autenticación
+  Paymethod:
+    type: "object"
+    properties:
+      paymethod:
+        type: "string"
+      parameters:
+        type: "array"
+        items:
+          $ref: '#/definitions/PaymethodType'
+  PaymethodType:
+    type: "object"
+    properties:
+      method:
+        type: "string"
+  Payment_Paymethod:
+    type: "object"
+    properties:
+      epiration_month:
+        type: "string"
+      expiration_year:
+        type: "string"
+      method:
+        type: "string"
+      number:
+        type: "string"
+      type:
+        type: "string"
+  Payment:
+    type: "object"
+    properties:
+      transaction_id:
+        type: "string"
+      currency:
+        type: "string"  
+      value:
+        type: "number"
+        format: "float"
+      paymentMethod:
+        $ref:  "#/definitions/Payment_Paymethod"
+  Cost:
+    properties:
+      currency:
+        type: string
+        description: Moneda de acuerdo a ISO 4217
+      value:
+        type: number
+        description: Valor
+  Location:
+    description: |
+      Las coordenadas utilizan la especificación de [GeoJSON](https://geojson.org/geojson-spec.html#coordinate-reference-system-objects)
+      donde `lon` es el primer número, mientras `lat` el segundo
+    properties:
+      lat:
+        type: number
+      lon:
+        type: number
+  Address:
+    properties:
+      street:
+        description: Dirección en texto (opcional)
+        type: string
+      location:
+        $ref: "#/definitions/Location"
+  Endpoint:
+    properties:
+      address:
+        $ref: '#/definitions/Address'
+      timestamp:
+        $ref: '#/definitions/Timestamp'
+  Step:
+    properties:
+      location:
+        $ref: '#/definitions/Location'
+      timestamp:
+        $ref: '#/definitions/Timestamp'
+  Trip:
+    type: object
+    properties:
+      id:
+        $ref: '#/definitions/Id'
+      applicationOwner:
+        $ref: '#/definitions/Id'
+      start:
+        $ref: "#/definitions/Endpoint"
+      end:
+        $ref: "#/definitions/Endpoint"
+      distance:
+        description: Distancia en metros (si esta disponible)
+        type: number
+      route:
+        items:
+          $ref: '#/definitions/Step'
+      cost:
+        $ref: '#/definitions/Cost'
+  
+  Tracking:
+    properties:
+      id:
+        description: identificador del envío
+        type: string
+      status:
+        description: estado en el que se encuentra el envío
+        type: string
+      updateAt:
+        $ref: '#/definitions/Timestamp'
