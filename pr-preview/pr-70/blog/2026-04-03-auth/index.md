@@ -10,8 +10,6 @@
 | **Policies y cuotas**         | **Tyk OSS**                   | Muy completo, pero con Redis como costo operativo. ([Tyk][3])                                                                                                 |
 | **JWT del equipo en gateway** | **Kong OSS**                  | Encaja con JWT propio; OIDC directo en OSS suma fricción. ([Kong DB-less][4], [Kong JWT][25], [Kong OIDC][8])                                                 |
 | **Extensibilidad**            | **Apache APISIX**             | Muy flexible, pero con más configuración explícita. ([Apache APISIX][2])                                                                                      |
-| **Delegar identidad**         | **IdP externo + gateway**     | Menos complejidad en login y sesión, pero más garantías delegadas al proveedor. ([OpenID Connect][40], [Firebase][19], [Clerk Expo][30])                      |
-| **Token del equipo**          | **IdP externo + JWT propio**  | Desacopla a los servicios del IdP, pero agrega exchange, refresh y operación. ([OpenID Connect][40], [Firebase][21], [Clerk Token][31])                       |
 
 ---
 

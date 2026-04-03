@@ -39,16 +39,6 @@
 &lt;td style="text-align: left">&lt;strong>Apache APISIX&lt;/strong>&lt;/td>
 &lt;td style="text-align: left">Muy flexible, pero con más configuración explícita. (&lt;a href="https://apisix.apache.org/docs/apisix/plugins/openid-connect/"target="_blank" rel="noopener">Apache APISIX&lt;/a>)&lt;/td>
 &lt;/tr>
-&lt;tr>
-&lt;td style="text-align: left">&lt;strong>Delegar identidad&lt;/strong>&lt;/td>
-&lt;td style="text-align: left">&lt;strong>IdP externo + gateway&lt;/strong>&lt;/td>
-&lt;td style="text-align: left">Menos complejidad en login y sesión, pero más garantías delegadas al proveedor. (&lt;a href="https://openid.net/specs/openid-connect-core-1_0.html"target="_blank" rel="noopener">OpenID Connect&lt;/a>, &lt;a href="https://firebase.google.com/docs/auth"target="_blank" rel="noopener">Firebase&lt;/a>, &lt;a href="https://clerk.com/docs/expo/getting-started/quickstart"target="_blank" rel="noopener">Clerk Expo&lt;/a>)&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align: left">&lt;strong>Token del equipo&lt;/strong>&lt;/td>
-&lt;td style="text-align: left">&lt;strong>IdP externo + JWT propio&lt;/strong>&lt;/td>
-&lt;td style="text-align: left">Desacopla a los servicios del IdP, pero agrega exchange, refresh y operación. (&lt;a href="https://openid.net/specs/openid-connect-core-1_0.html"target="_blank" rel="noopener">OpenID Connect&lt;/a>, &lt;a href="https://firebase.google.com/docs/auth/admin/verify-id-tokens"target="_blank" rel="noopener">Firebase&lt;/a>, &lt;a href="https://clerk.com/docs/guides/force-token-refresh"target="_blank" rel="noopener">Clerk Token&lt;/a>)&lt;/td>
-&lt;/tr>
 &lt;/tbody>
 &lt;/table>
 &lt;hr>
