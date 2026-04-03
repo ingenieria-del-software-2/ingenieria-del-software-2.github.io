@@ -58,7 +58,6 @@
 &lt;thead>
 &lt;tr>
 &lt;th style="text-align: left">Producto&lt;/th>
-&lt;th style="text-align: left">Cuándo elegirlo&lt;/th>
 &lt;th style="text-align: left">Modelo mental&lt;/th>
 &lt;th style="text-align: left">Operación&lt;/th>
 &lt;th style="text-align: left">Dependencias&lt;/th>
@@ -69,7 +68,6 @@
 &lt;tbody>
 &lt;tr>
 &lt;td style="text-align: left">&lt;strong>KrakenD CE&lt;/strong>&lt;/td>
-&lt;td style="text-align: left">Simplicidad + BFF sin extras&lt;/td>
 &lt;td style="text-align: left">Declarativo, BFF/agregación (&lt;a href="https://www.krakend.io/docs/design/backend-for-frontend/"target="_blank" rel="noopener">KrakenD&lt;/a>)&lt;/td>
 &lt;td style="text-align: left">Muy buena; Dockerfile inmutable (&lt;a href="https://www.krakend.io/docs/deploying/docker/"target="_blank" rel="noopener">KrakenD&lt;/a>)&lt;/td>
 &lt;td style="text-align: left">Sin DB/Redis (&lt;a href="https://www.krakend.io/docs/deploying/docker/"target="_blank" rel="noopener">KrakenD&lt;/a>)&lt;/td>
@@ -78,7 +76,6 @@
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align: left">&lt;strong>Apache APISIX&lt;/strong>&lt;/td>
-&lt;td style="text-align: left">Máxima flexibilidad de plugins&lt;/td>
 &lt;td style="text-align: left">Gateway de plugins, cloud-native (&lt;a href="https://apisix.apache.org/docs/apisix/plugins/openid-connect/"target="_blank" rel="noopener">APISIX&lt;/a>)&lt;/td>
 &lt;td style="text-align: left">Standalone reduce ops, pero exige más config explícita (&lt;a href="https://apisix.apache.org/docs/apisix/deployment-modes/"target="_blank" rel="noopener">APISIX&lt;/a>)&lt;/td>
 &lt;td style="text-align: left">Sin etcd en Standalone (&lt;a href="https://apisix.apache.org/docs/apisix/deployment-modes/"target="_blank" rel="noopener">APISIX&lt;/a>)&lt;/td>
@@ -87,7 +84,6 @@
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align: left">&lt;strong>Tyk OSS&lt;/strong>&lt;/td>
-&lt;td style="text-align: left">Rate limiting avanzado; se acepta Redis&lt;/td>
 &lt;td style="text-align: left">&lt;em>Batteries included&lt;/em>, fuerte en policies (&lt;a href="https://tyk.io/docs/5.7/tyk-open-source/"target="_blank" rel="noopener">Tyk&lt;/a>)&lt;/td>
 &lt;td style="text-align: left">Fácil de levantar, arrastra Redis (&lt;a href="https://tyk.io/docs/apim/open-source/installation"target="_blank" rel="noopener">Tyk&lt;/a>)&lt;/td>
 &lt;td style="text-align: left">Redis obligatorio (&lt;a href="https://tyk.io/docs/apim/open-source/installation"target="_blank" rel="noopener">Tyk&lt;/a>)&lt;/td>
@@ -96,7 +92,6 @@
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align: left">&lt;strong>Traefik OSS + ForwardAuth&lt;/strong>&lt;/td>
-&lt;td style="text-align: left">Edge router liviano; auth delegada&lt;/td>
 &lt;td style="text-align: left">Application proxy; auth en servicio externo (&lt;a href="https://doc.traefik.io/traefik/master/features/"target="_blank" rel="noopener">Traefik Features&lt;/a>, &lt;a href="https://doc.traefik.io/traefik/v3.4/middlewares/http/forwardauth/"target="_blank" rel="noopener">Traefik ForwardAuth&lt;/a>)&lt;/td>
 &lt;td style="text-align: left">Muy buena; hot reload, labels/CRDs (&lt;a href="https://doc.traefik.io/traefik/setup/docker/"target="_blank" rel="noopener">Traefik Docker&lt;/a>)&lt;/td>
 &lt;td style="text-align: left">Sin DB; auth depende del servicio externo (&lt;a href="https://doc.traefik.io/traefik/v3.4/middlewares/http/forwardauth/"target="_blank" rel="noopener">Traefik ForwardAuth&lt;/a>)&lt;/td>
@@ -105,7 +100,6 @@
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align: left">&lt;strong>Kong OSS&lt;/strong>&lt;/td>
-&lt;td style="text-align: left">El equipo emite su propio JWT&lt;/td>
 &lt;td style="text-align: left">Plugin-based, muy flexible (&lt;a href="https://developer.konghq.com/gateway/db-less-mode/"target="_blank" rel="noopener">Kong&lt;/a>)&lt;/td>
 &lt;td style="text-align: left">DB-less simplifica bastante (&lt;a href="https://developer.konghq.com/gateway/db-less-mode/"target="_blank" rel="noopener">Kong&lt;/a>)&lt;/td>
 &lt;td style="text-align: left">Sin DB en modo DB-less (&lt;a href="https://developer.konghq.com/gateway/db-less-mode/"target="_blank" rel="noopener">Kong&lt;/a>)&lt;/td>
