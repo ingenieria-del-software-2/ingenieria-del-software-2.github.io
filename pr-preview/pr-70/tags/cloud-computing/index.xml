@@ -208,6 +208,69 @@
 &lt;/tbody>
 &lt;/table>
 &lt;hr>
+&lt;h2>Opciones de IdP&lt;span class="hx:absolute hx:-mt-20" id="opciones-de-idp">&lt;/span>
+&lt;a href="#opciones-de-idp" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;p>Además de elegir gateway, conviene decidir quién resuelve identidad y sesión. En esta guía aparecen tres familias:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Plataformas gestionadas&lt;/strong>: Clerk, Firebase Authentication, Supabase Auth, Auth0.&lt;/li>
+&lt;li>&lt;strong>Plataformas self-hosted&lt;/strong>: Keycloak.&lt;/li>
+&lt;li>&lt;strong>Auth propia&lt;/strong>: implementada por el equipo.&lt;/li>
+&lt;/ul>
+&lt;p>Todas pueden encajar con el patrón &lt;code>IdP + gateway&lt;/code>: el proveedor resuelve login, registro, sesión y recuperación; el gateway valida el token; y la autorización fina junto con el estado real del dominio siguen fuera del IdP.&lt;/p>
+&lt;div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+&lt;iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/5KChrGWFcpk?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video">&lt;/iframe>
+&lt;/div>
+&lt;h3>IdP externo + gateway&lt;span class="hx:absolute hx:-mt-20" id="idp-externo--gateway">&lt;/span>
+&lt;a href="#idp-externo--gateway" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Este patrón conviene cuando el objetivo no es construir identidad desde cero, sino llegar rápido a una API protegida con login razonable, sesión larga y validación de tokens.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">Opción&lt;/th>
+&lt;th style="text-align: left">Tipo&lt;/th>
+&lt;th style="text-align: left">Qué simplifica&lt;/th>
+&lt;th style="text-align: left">Trade-off principal&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Clerk&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">Plataforma de auth gestionada&lt;/td>
+&lt;td style="text-align: left">UIs prearmadas para &lt;code>sign-in&lt;/code> y gestión de perfil; integración rápida; plan gratis con hasta &lt;code>50.000&lt;/code> Monthly Retained Users. (&lt;a href="https://clerk.com/pricing"target="_blank" rel="noopener">Clerk Pricing&lt;/a>, &lt;a href="https://clerk.com/docs/reference/components/authentication/sign-in"target="_blank" rel="noopener">Clerk SignIn&lt;/a>, &lt;a href="https://clerk.com/docs/reference/components/user/user-profile"target="_blank" rel="noopener">Clerk UserProfile&lt;/a>)&lt;/td>
+&lt;td style="text-align: left">Muy baja fricción, pero servicio cerrado y mayor dependencia del proveedor.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Firebase Authentication&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">Auth gestionada, muy común en mobile&lt;/td>
+&lt;td style="text-align: left">Email/password, reset por email, providers federados y UI prearmada. En el upgrade a Identity Platform agrega MFA, SAML y generic OIDC; ahí también aparecen el límite de &lt;code>3.000&lt;/code> DAUs en Spark y el tier sin costo de &lt;code>50.000&lt;/code> MAUs en Blaze. (&lt;a href="https://firebase.google.com/docs/auth"target="_blank" rel="noopener">Firebase&lt;/a>)&lt;/td>
+&lt;td style="text-align: left">Muy práctico y bien documentado, pero algunas garantías finas quedan delegadas al proveedor.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Supabase Auth&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">Auth gestionada integrada a plataforma backend&lt;/td>
+&lt;td style="text-align: left">Password, magic link, OTP, social login y SSO; &lt;code>50.000&lt;/code> MAUs en Free; buen fit si el equipo también quiere DB, storage y APIs en la misma plataforma. (&lt;a href="https://supabase.com/docs/guides/auth"target="_blank" rel="noopener">Supabase Auth&lt;/a>, &lt;a href="https://supabase.com/docs/guides/platform/billing-on-supabase"target="_blank" rel="noopener">Supabase Billing&lt;/a>)&lt;/td>
+&lt;td style="text-align: left">Muy cómodo, pero mete dependencia de plataforma más amplia, no solo de identidad.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Auth0&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">Plataforma de identidad más enterprise&lt;/td>
+&lt;td style="text-align: left">Hasta &lt;code>25.000&lt;/code> MAUs en Free; passwordless, social login, custom domain y una enterprise connection. (&lt;a href="https://auth0.com/pricing"target="_blank" rel="noopener">Auth0 Pricing&lt;/a>, &lt;a href="https://auth0.com/docs/customize/custom-domains"target="_blank" rel="noopener">Auth0 Custom Domains&lt;/a>, &lt;a href="https://auth0.com/docs/authenticate/passwordless"target="_blank" rel="noopener">Auth0 Passwordless&lt;/a>)&lt;/td>
+&lt;td style="text-align: left">Muy completo, pero puede sentirse más pesado que otras opciones de esta guía.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Keycloak&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">IdP self-hosted / authorization server&lt;/td>
+&lt;td style="text-align: left">OIDC, OAuth2 y SAML; consola admin centralizada; federation y Authorization Services. (&lt;a href="https://www.keycloak.org/"target="_blank" rel="noopener">Keycloak&lt;/a>, &lt;a href="https://www.keycloak.org/docs/latest/authorization_services/index.html"target="_blank" rel="noopener">Keycloak Authz&lt;/a>)&lt;/td>
+&lt;td style="text-align: left">Mucho resuelto sin escribir auth propia, pero hay que operarlo: contenedor, DB relacional y configuración propia del servicio. (&lt;a href="https://www.keycloak.org/server/containers"target="_blank" rel="noopener">Keycloak Container&lt;/a>, &lt;a href="https://www.keycloak.org/server/db"target="_blank" rel="noopener">Keycloak DB&lt;/a>, &lt;a href="https://www.keycloak.org/docs/latest/server_admin/"target="_blank" rel="noopener">Keycloak Admin&lt;/a>)&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3>Cuándo conviene&lt;span class="hx:absolute hx:-mt-20" id="cuándo-conviene">&lt;/span>
+&lt;a href="#cu%c3%a1ndo-conviene" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;ul>
+&lt;li>&lt;strong>Si el foco está en llegar rápido a login, sesión y recuperación&lt;/strong>, un IdP externo reduce bastante la superficie de implementación.&lt;/li>
+&lt;li>&lt;strong>Si se quiere más control sin implementar auth propia&lt;/strong>, Keycloak resuelve mucho, pero agrega operación.&lt;/li>
+&lt;li>&lt;strong>Si hay que demostrar garantías muy específicas&lt;/strong> sobre reset, revocación, hashing o storage del token, conviene distinguir con cuidado entre controles propios, self-hosted y delegados al proveedor.&lt;/li>
+&lt;/ul>
+&lt;p>Ninguna de estas plataformas reemplaza al gateway, a la DB propia del dominio ni a la autorización fina. En otras palabras: &lt;strong>identidad y sesión pueden delegarse; autorización fina y enforcement final, no&lt;/strong>. (&lt;a href="https://www.oauth.com/oauth2-servers/the-resource-server/"target="_blank" rel="noopener">OAuth Resource Server&lt;/a>, &lt;a href="https://www.openpolicyagent.org/docs/external-data"target="_blank" rel="noopener">OPA&lt;/a>, &lt;a href="https://www.keycloak.org/docs/latest/authorization_services/index.html"target="_blank" rel="noopener">Keycloak Authz&lt;/a>)&lt;/p>
+&lt;hr>
 &lt;h2>Matices con IdP externos&lt;span class="hx:absolute hx:-mt-20" id="matices-con-idp-externos">&lt;/span>
 &lt;a href="#matices-con-idp-externos" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;p>Los proveedores externos resuelven bien login, sesión, recupero e integración federada, pero no reemplazan el estado propio del dominio ni la autorización fina. En esta guía se usa Firebase como ejemplo frecuente por su adopción en mobile, no como única opción válida. Trabajar sobre OIDC/OAuth2 reduce el costo de cambio, aunque no elimina por completo el vendor lock-in. (&lt;a href="https://openid.net/specs/openid-connect-core-1_0.html"target="_blank" rel="noopener">OpenID Connect&lt;/a>, &lt;a href="https://firebase.google.com/docs/auth"target="_blank" rel="noopener">Firebase&lt;/a>)&lt;/p>
 &lt;p>&lt;strong>Sesión, claims, revocación y bloqueo&lt;/strong>&lt;/p>
@@ -231,42 +294,42 @@
 &lt;tr>
 &lt;td style="text-align: left">Login federado con Google (optativo)&lt;/td>
 &lt;td style="text-align: left">No (valida el token después)&lt;/td>
-&lt;td style="text-align: left">Proveedor de identidad&lt;/td>
+&lt;td style="text-align: left">IdP externo&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align: left">Login con email/password&lt;/td>
 &lt;td style="text-align: left">No&lt;/td>
-&lt;td style="text-align: left">IdP o auth service propio&lt;/td>
+&lt;td style="text-align: left">IdP externo o auth propia&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align: left">Registro con email/password&lt;/td>
 &lt;td style="text-align: left">No&lt;/td>
-&lt;td style="text-align: left">IdP o auth service propio&lt;/td>
+&lt;td style="text-align: left">IdP externo o auth propia&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align: left">Recupero de contraseña&lt;/td>
 &lt;td style="text-align: left">No&lt;/td>
-&lt;td style="text-align: left">IdP o auth service propio&lt;/td>
+&lt;td style="text-align: left">IdP externo o auth propia&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align: left">Hash de contraseñas (ej. BCrypt o scrypt)&lt;/td>
 &lt;td style="text-align: left">No&lt;/td>
-&lt;td style="text-align: left">Delegado al IdP o auth service propio&lt;/td>
+&lt;td style="text-align: left">Delegado al IdP o resuelto por auth propia&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align: left">Reglas mínimas de contraseña&lt;/td>
 &lt;td style="text-align: left">No&lt;/td>
-&lt;td style="text-align: left">Depende del approach de auth elegido&lt;/td>
+&lt;td style="text-align: left">Depende de la opción de identidad elegida&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align: left">Renovación de sesión&lt;/td>
 &lt;td style="text-align: left">No&lt;/td>
-&lt;td style="text-align: left">Depende del approach de auth elegido&lt;/td>
+&lt;td style="text-align: left">Depende de la opción de identidad elegida&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align: left">Emisión del token de API&lt;/td>
 &lt;td style="text-align: left">No (solo valida)&lt;/td>
-&lt;td style="text-align: left">IdP o auth service&lt;/td>
+&lt;td style="text-align: left">IdP o auth service propio&lt;/td>
 &lt;/tr>
 &lt;tr>
 &lt;td style="text-align: left">Validación del token de API&lt;/td>
