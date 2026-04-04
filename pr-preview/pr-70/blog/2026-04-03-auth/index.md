@@ -49,7 +49,7 @@ OIDC resuelve identidad/login. La authz fina puede apoyarse en claims o scopes, 
 
 La decisión principal no es Firebase sí o no, sino `IdP externo` versus `auth propia`. La elección pasa por control, responsabilidades operativas, evidencia de garantías de seguridad, costo de migración y tiempo de implementación. En esta guía, Firebase aparece como ejemplo frecuente, pero el mismo patrón aplica a Clerk u otros proveedores OIDC equivalentes. ([OpenID Connect][40], [Firebase][19], [Clerk Expo][30])
 
-### Regla de decisión
+**Regla de decisión**
 
 Un `IdP externo` no queda legitimado solo por ahorrar tiempo. Solo es defendible si el equipo puede explicar qué requisitos cubre el proveedor, cuáles siguen bajo responsabilidad propia y con qué evidencia va a sostener esa decisión ante la cátedra. Si esa defensa no puede hacerse con precisión, corresponde `auth propia`.
 
