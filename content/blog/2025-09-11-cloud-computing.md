@@ -1,6 +1,7 @@
 ---
 date: "2026-03-21T00:00:00Z"
 title: "Guía de cátedra 2026: Cloud Computing"
+description: "Guía de cátedra sobre cloud computing para 2026: proveedores, free tiers, stacks recomendados, despliegue y criterios de costo para los proyectos."
 tags:
   - cloud-computing
   - aws
@@ -12,10 +13,6 @@ tags:
   - terraform
   - microservicios
   - 2026-1C
----
-
-_Actualizado al 21-mar-2026_
-
 ---
 
 ## TL;DR
