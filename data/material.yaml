@@ -144,6 +144,7 @@ sections:
       - url: "https://www.youtube.com/watch?v=hcfE6Ahek8Q"
       - url: "https://www.youtube.com/watch?v=NNfKKTl4T00"
       - url: "https://www.youtube.com/watch?v=WxgglOYinKY"
+      - url: "https://www.youtube.com/watch?v=QXqrdQlV-Fc"
     resources:
       - title: "How JavaScript Works Behind the Scenes"
         url: "https://www.deepintodev.com/blog/how-javascript-works-behind-the-scenes/"
