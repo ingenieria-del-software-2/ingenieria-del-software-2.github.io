@@ -1410,6 +1410,8 @@ Cada servicio debe contar con log estructurado con niveles configurables:
 - **Refresh de sesión**: Se debe soportar renovación de token sin requerir re-autenticación mientras la sesión sea válida.
 - **Rate limiting**: Los endpoints de login y recupero deben tener límite de intentos por IP y por cuenta.
 
+Para una guía más detallada sobre alternativas de autenticación, manejo de sesión, API Gateway y separación entre auth/authz, consultar la **[Guía de cátedra 2026: API Gateway + Auth/Authz](https://ingenieria-del-software-2.github.io/blog/2026-04-03-auth/)**.
+
 ### Documentación
 
 Se debe entregar:

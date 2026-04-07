@@ -1,9 +1,5 @@
 # Guía de cátedra 2026: Cloud Computing
 
-_Actualizado al 21-mar-2026_
-
----
-
 ## TL;DR
 
 | Si necesitás…                               | Elegí                                            |
