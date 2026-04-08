@@ -65,23 +65,23 @@ Detrás de esa simplicidad, Bazaar garantiza lo que importa: que cuando alguien 
 - [Historial de ventas](#historial-de-ventas)
 - [Crear y gestionar cupones de descuento](#crear-y-gestionar-cupones-de-descuento)
 
-**7. Administración** — Backoffice para la gestión de usuarios y contenido de la plataforma.
+**7. Reviews** — Calificaciones y reputación dentro del ecosistema de compras.
+
+- [Calificar producto y vendedor](#calificar-producto-y-vendedor)
+- [Reputación del vendedor en perfil público](#reputación-del-vendedor-en-perfil-público)
+
+**8. Administración** — Backoffice para la gestión de usuarios y contenido de la plataforma.
 
 - [Listar usuarios del sistema](#listar-usuarios-del-sistema)
 - [Bloquear y desbloquear usuario](#bloquear-y-desbloquear-usuario)
 - [Listar y moderar productos](#listar-y-moderar-productos)
 - [Listar órdenes del sistema](#listar-órdenes-del-sistema)
 
-**8. Métricas** — Indicadores de actividad y salud de la plataforma.
+**9. Métricas** — Indicadores de actividad y salud de la plataforma.
 
 - [Métricas del sistema](#métricas-del-sistema)
 - [Métricas por categoría](#métricas-por-categoría)
 - [Exportar datos de métricas](#exportar-datos-de-métricas)
-
-**9. Reviews** — Calificaciones y reputación dentro del ecosistema de compras.
-
-- [Calificar producto y vendedor](#calificar-producto-y-vendedor)
-- [Reputación del vendedor en perfil público](#reputación-del-vendedor-en-perfil-público)
 
 **10. Wishlist** — Lista de deseos del comprador.
 
@@ -309,29 +309,6 @@ Detrás de esa simplicidad, Bazaar garantiza lo que importa: que cuando alguien 
   - Cuando otro usuario intenta acceder a su perfil
   - Entonces el sistema indica que el perfil no está disponible.
 
-### Compartir link de producto
-
-<!-- Status: Optativa -->
-
-**Descripción**: Como **usuario**, quiero **obtener un link directo a un producto** para **compartirlo con otras personas fuera de la plataforma**.
-
-**Criterios de aceptación**
-
-- CA 1: Link generado correctamente
-  - Dado que un usuario accede al detalle de un producto activo
-  - Cuando utiliza la opción de compartir
-  - Entonces el sistema genera una URL directa al producto que puede copiarse o compartirse.
-
-- CA 2: Link funcional
-  - Dado que alguien tiene el link compartido de un producto disponible
-  - Cuando lo abre
-  - Entonces se muestra el detalle del producto tal como aparece en el catálogo.
-
-- CA 3: Producto no disponible al abrir el link
-  - Dado que el producto fue dado de baja o deshabilitado después de que el link fue compartido
-  - Cuando alguien intenta abrirlo
-  - Entonces el sistema muestra un mensaje indicando que el producto no está disponible.
-
 ## Épica: Catálogo
 
 ### Home
@@ -446,6 +423,29 @@ Los productos populares se determinan por volumen de ventas en los últimos 30 d
 - CA 3: Producto deshabilitado
   - Dado que un producto fue deshabilitado por el vendedor o el administrador
   - Cuando un usuario intenta acceder al detalle de ese producto
+  - Entonces el sistema muestra un mensaje indicando que el producto no está disponible.
+
+### Compartir link de producto
+
+<!-- Status: Optativa -->
+
+**Descripción**: Como **usuario**, quiero **obtener un link directo a un producto** para **compartirlo con otras personas fuera de la plataforma**.
+
+**Criterios de aceptación**
+
+- CA 1: Link generado correctamente
+  - Dado que un usuario accede al detalle de un producto activo
+  - Cuando utiliza la opción de compartir
+  - Entonces el sistema genera una URL directa al producto que puede copiarse o compartirse.
+
+- CA 2: Link funcional
+  - Dado que alguien tiene el link compartido de un producto disponible
+  - Cuando lo abre
+  - Entonces se muestra el detalle del producto tal como aparece en el catálogo.
+
+- CA 3: Producto no disponible al abrir el link
+  - Dado que el producto fue dado de baja o deshabilitado después de que el link fue compartido
+  - Cuando alguien intenta abrirlo
   - Entonces el sistema muestra un mensaje indicando que el producto no está disponible.
 
 ### Filtros avanzados de búsqueda
