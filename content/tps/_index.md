@@ -1,5 +1,6 @@
 ---
 title: Trabajo Prácticos
+description: "Listado de trabajos prácticos vigentes e históricos de la materia."
 cascade:
   type: docs
 ---

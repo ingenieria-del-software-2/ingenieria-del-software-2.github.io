@@ -1,5 +1,6 @@
 ---
 title: "20221C - Spotifiuby"
+description: "Trabajo práctico grupal 2022 1C: Spotifiuby, una plataforma de música online."
 subtitle: "Grupal"
 ---
 # Spotifiuby

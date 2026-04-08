@@ -5,6 +5,7 @@ tags:
 - trabajos-practicos
 - 2025-1C
 title: Ajustes en el contrato del enunciado del TP1C 2025
+description: "Corrección del contrato OpenAPI de creación de cursos del TP1C 2025."
 ---
 
 Detectamos una inconsistencia en la especificación OpenAPI del enunciado original para la creación de cursos (`POST /courses`). Inicialmente, el contrato requería que el `id` fuera un UUID, cuando en realidad **solo los extras evaluaban su uso**. Para alinearlo con los requisitos base, **se corrigió el contrato para que el identificador sea un número entero en la versión estándar**.

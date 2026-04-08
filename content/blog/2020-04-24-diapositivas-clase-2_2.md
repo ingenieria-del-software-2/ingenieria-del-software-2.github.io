@@ -5,6 +5,7 @@ subtitle: Clase 2
 tags:
 - clases 2020-1C
 title: Diapositivas de Servicios Web
+description: "Diapositivas de la Clase 2 sobre servicios web."
 ---
 
 Buenas,les comparto las diapositivas de la segunda clase donde hablamos sobre servicios web.

@@ -6,6 +6,7 @@ tags:
 - trabajos-practicos
 - 2022-1C
 title: Spotifiuby
+description: "Enunciado del trabajo práctico Spotifiuby del primer cuatrimestre de 2022."
 ---
 Ya se encuentra disponible el enunciado del trabajo práctico
 

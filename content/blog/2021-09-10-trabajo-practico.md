@@ -6,6 +6,7 @@ tags:
 - trabajos-practicos
 - 2021-2C
 title: Ubademy
+description: "Enunciado del trabajo práctico Ubademy del segundo cuatrimestre de 2021."
 ---
 Ya se encuentra disponible el enunciado del trabajo práctico
 

@@ -5,6 +5,7 @@ subtitle: Inicio de clases
 tags:
 - noticias 2024-2C
 title: Inicio de clases
+description: "Información de inicio de clases, inscripción y modalidad del segundo cuatrimestre de 2024."
 ---
 
 Hola!

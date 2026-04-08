@@ -4,6 +4,7 @@ subtitle: Requerimientos para cada checkpoint
 tags:
 - 2017-1C
 title: Contenidos Minimos
+description: "Contenidos mínimos esperados en cada checkpoint del trabajo práctico."
 ---
 
 Les envío los contenidos mínimos para cada entrega que aparecen en las diapositivas. Recuerden que deben charlar con el ayudante designado acerca del plan de trabajo (funcionalidad a entregar) en cada entrega.

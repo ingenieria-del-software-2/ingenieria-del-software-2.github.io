@@ -1,5 +1,6 @@
 ---
 title: "20242C - TwitSnap"
+description: "Trabajo práctico grupal 2024 2C: TwitSnap, una red social de mensajes cortos y descubrimiento de contenido."
 subtitle: "Grupal"
 ---
 # TwitSnap

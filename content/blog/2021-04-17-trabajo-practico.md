@@ -6,6 +6,7 @@ tags:
 - trabajos-practicos
 - 2021-1C
 title: SeedyFiuba
+description: "Enunciado del trabajo práctico SeedyFiuba del primer cuatrimestre de 2021."
 ---
 Ya se encuentra disponible el enunciado del trabajo práctico
 

@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Encuestas 2021
+description: "Resultados de las encuestas del primer cuatrimestre de 2021."
 subtitle: Encuestas del primer cuatrimestre del 2021
 ---
 

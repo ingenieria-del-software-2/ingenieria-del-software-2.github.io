@@ -1,5 +1,6 @@
 ---
 title: "20181C - Stories"
+description: "Trabajo práctico grupal 2018 1C: Stories, una red social para compartir experiencias en tiempo real."
 subtitle: "Grupal"
 ---
 # Stories

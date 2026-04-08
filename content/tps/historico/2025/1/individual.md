@@ -1,5 +1,6 @@
 ---
 title: "20251C - Individual"
+description: "Trabajo práctico individual del 1er cuatrimestre 2025."
 subtitle: "Individual"
 ---
 # Ingenieria de Software II

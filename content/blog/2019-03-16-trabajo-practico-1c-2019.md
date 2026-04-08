@@ -6,6 +6,7 @@ tags:
 - trabajos-practicos
 - 2019-1C
 title: Hypechat
+description: "Enunciado del trabajo práctico Hypechat del primer cuatrimestre de 2019."
 ---
 
 Ya se encuentra disponible el enunciado correspondiente al trabajo práctico.

@@ -1,5 +1,6 @@
 ---
 title: "20231C - FiuFit"
+description: "Trabajo práctico grupal 2023 1C: FiuFit, una plataforma para seguimiento de entrenamientos y actividad física."
 subtitle: "Grupal"
 ---
 # FiuFit

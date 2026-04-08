@@ -6,6 +6,7 @@ tags:
 - trabajos-practicos
 - 2020-1C
 title: Chotuve
+description: "Enunciado del trabajo práctico Chotuve del primer cuatrimestre de 2020."
 ---
 
 # Chotuve

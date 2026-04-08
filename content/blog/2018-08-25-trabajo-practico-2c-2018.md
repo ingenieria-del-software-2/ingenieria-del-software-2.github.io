@@ -6,6 +6,7 @@ tags:
 - trabajos-practicos
 - 2018-2C
 title: Comprame
+description: "Enunciado del trabajo práctico Comprame del segundo cuatrimestre de 2018."
 ---
 
 Ya se encuentra disponible el enunciado correspondiente al trabajo práctico.

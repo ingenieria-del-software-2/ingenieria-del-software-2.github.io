@@ -6,6 +6,7 @@ tags:
 - trabajos-practicos
 - 2020-2C
 title: Bookbnb
+description: "Enunciado del trabajo práctico Bookbnb del segundo cuatrimestre de 2020."
 ---
 
 # Bookbnb

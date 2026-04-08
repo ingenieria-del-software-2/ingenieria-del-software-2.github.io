@@ -1,5 +1,6 @@
 ---
 title: "20211C - SeedyFiuba"
+description: "Trabajo práctico grupal 2021 1C: SeedyFiuba, una plataforma colaborativa de financiamiento de proyectos."
 subtitle: "Grupal"
 ---
 # SeedyFiuba

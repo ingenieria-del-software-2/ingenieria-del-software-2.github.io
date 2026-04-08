@@ -1,5 +1,6 @@
 ---
 title: "2026 1C - Individual"
+description: "Trabajo práctico individual del 1er cuatrimestre 2026: servicio backend REST de eCommerce con productos y carrito."
 subtitle: "Individual"
 ---
 # Ingenieria de Software II

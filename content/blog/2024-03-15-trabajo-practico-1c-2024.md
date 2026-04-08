@@ -6,6 +6,7 @@ tags:
 - trabajos-practicos
 - 2024-1C
 title: Match!
+description: "Enunciado del trabajo práctico Match! del primer cuatrimestre de 2024."
 ---
 Ya se encuentra disponible el enunciado del trabajo práctico
 

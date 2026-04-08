@@ -6,6 +6,7 @@ tags:
 - trabajos-practicos
 - 2023-1C
 title: FIU-FIT
+description: "Enunciado del trabajo práctico FIU-FIT del primer cuatrimestre de 2023."
 ---
 Ya se encuentra disponible el enunciado del trabajo práctico
 

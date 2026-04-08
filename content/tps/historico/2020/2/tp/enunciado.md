@@ -1,5 +1,6 @@
 ---
 title: "20202C - Bookbnb"
+description: "Trabajo práctico grupal 2020 2C: Bookbnb, una plataforma de alojamientos y reservas."
 subtitle: "Grupal"
 ---
 # Bookbnb

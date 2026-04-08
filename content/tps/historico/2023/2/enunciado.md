@@ -1,5 +1,6 @@
 ---
 title: "20232C - SnapMsg"
+description: "Trabajo práctico grupal 2023 2C: SnapMsg, una red social de mensajes cortos."
 subtitle: "Grupal"
 ---
 # SnapMsg

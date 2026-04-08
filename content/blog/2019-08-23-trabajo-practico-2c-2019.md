@@ -6,6 +6,7 @@ tags:
 - trabajos-practicos
 - 2019-2C
 title: Foodie
+description: "Enunciado del trabajo práctico Foodie del segundo cuatrimestre de 2019."
 ---
 
 # Foodie

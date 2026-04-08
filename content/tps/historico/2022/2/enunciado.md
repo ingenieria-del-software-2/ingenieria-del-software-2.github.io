@@ -1,5 +1,6 @@
 ---
 title: "20222C - FI-UBER"
+description: "Trabajo práctico grupal 2022 2C: FI-UBER, una plataforma de transporte de pasajeros en tiempo real."
 subtitle: "Grupal"
 ---
 

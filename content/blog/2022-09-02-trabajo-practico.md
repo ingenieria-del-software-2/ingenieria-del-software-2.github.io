@@ -6,6 +6,7 @@ tags:
 - trabajos-practicos
 - 2022-2C
 title: FI-UBER
+description: "Enunciado del trabajo práctico FI-UBER del segundo cuatrimestre de 2022."
 ---
 Ya se encuentra disponible el enunciado del trabajo práctico
 

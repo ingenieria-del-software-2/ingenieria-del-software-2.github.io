@@ -1,5 +1,6 @@
 ---
 title: "20191C - HypeChat"
+description: "Trabajo práctico grupal 2019 1C: HypeChat, una plataforma de comunicación para equipos de trabajo."
 subtitle: "Grupal"
 ---
 # HypeChat

@@ -1,5 +1,6 @@
 ---
 title: "20212C - Ubademy"
+description: "Trabajo práctico grupal 2021 2C: Ubademy, una plataforma de cursos en línea."
 subtitle: "Grupal"
 ---
 # Ubademy

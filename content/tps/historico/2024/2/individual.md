@@ -1,5 +1,6 @@
 ---
 title: "20242C - Individual"
+description: "Trabajo práctico individual del 2do cuatrimestre 2024."
 subtitle: "Individual"
 ---
 # Ingenieria de Software II

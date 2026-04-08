@@ -5,6 +5,7 @@ subtitle: null
 tags:
 - noticias 2024-2C
 title: Fechas presenciales
+description: "Listado de fechas presenciales previstas para cursada, parciales y recuperatorios."
 ---
 
 Hola,

@@ -5,6 +5,7 @@ subtitle: null
 tags:
 - noticias 2020-1C
 title: Fechas de parcial
+description: "Fechas y modalidad del parcial y del recuperatorio."
 ---
 
 Ya esta definida la fecha y modalidad del parcial y del recuperatorio.

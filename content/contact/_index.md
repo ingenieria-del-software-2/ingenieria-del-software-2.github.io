@@ -1,5 +1,6 @@
 ---
 title: Contacto
+description: "Canales oficiales de contacto y comunicación de la materia."
 subtitle: Métodos de comunicación
 toc: false
 ---

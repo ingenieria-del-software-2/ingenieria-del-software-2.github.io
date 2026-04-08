@@ -1,5 +1,6 @@
 ---
 title: "20182C - Comprame"
+description: "Trabajo práctico grupal 2018 2C: Comprame, un e-commerce para compra y venta de productos."
 subtitle: "Grupal"
 ---
 # Comprame

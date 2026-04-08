@@ -5,6 +5,7 @@ subtitle: Clase 2
 tags:
 - clases 2020-1C
 title: Diapositivas de Herramientas y Metodologias
+description: "Diapositivas de la Clase 2 sobre herramientas y metodologías."
 ---
 
 Buenas,les comparto las diapositivas de la segunda clase donde hablamos sobre herramientas y metodologías.
@@ -17,4 +18,3 @@ Buenas,les comparto las diapositivas de la segunda clase donde hablamos sobre he
   <iframe src="https://docs.google.com/presentation/d/1_K1mjJ32mlQh3wycZt2MfxvqGA_kVwA7HI2GwtBWGp4/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 <!-- Google embed ends -->
 </div>
-

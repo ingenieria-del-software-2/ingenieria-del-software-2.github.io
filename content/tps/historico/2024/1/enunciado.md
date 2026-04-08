@@ -1,5 +1,6 @@
 ---
 title: "20241C - Match!"
+description: "Trabajo práctico grupal 2024 1C: Match!, una aplicación para conocer gente, hacer match y chatear."
 subtitle: "Grupal"
 ---
 # Match!
@@ -1273,5 +1274,4 @@ _Se espera que dicha documentación se elabore de manera incremental y que cada 
     
 ## Material de referencia
   
-
 

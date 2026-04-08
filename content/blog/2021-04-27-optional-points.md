@@ -5,6 +5,7 @@ subtitle: Historias de usuario Optativas
 tags:
 - noticias 2021-1C
 title: Historias de Usuario II
+description: "Historias de usuario optativas y puntaje mínimo adicional para aprobar el trabajo práctico."
 ---
 
 # Historias de usuario optativas
@@ -44,5 +45,4 @@ En la siguiente tabla se definio la estimaciön de puntos para las historias de 
 | Métricas de transacciones |  2 |
 | Uso de reglas para configurar disponibilidad geografica |  13 |
 | Implementacion de sistema de votos para veedores |  13 |
-
 

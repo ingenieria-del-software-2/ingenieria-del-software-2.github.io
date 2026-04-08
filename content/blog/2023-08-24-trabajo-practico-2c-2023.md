@@ -6,6 +6,7 @@ tags:
 - trabajos-practicos
 - 2023-2C
 title: SnapMsg
+description: "Enunciado del trabajo práctico SnapMsg del segundo cuatrimestre de 2023."
 ---
 Ya se encuentra disponible el enunciado del trabajo práctico
 

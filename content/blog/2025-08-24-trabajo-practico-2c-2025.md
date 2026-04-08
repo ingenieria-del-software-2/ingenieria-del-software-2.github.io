@@ -3,6 +3,7 @@
 date: "2025-08-24T13:00:00Z"
 subtitle: "Enunciado del 2do Cuatrimestre 2025"
 title: "Ajustes en el contrato de actualización (PUT vs PATCH) del TP2C 2025"
+description: "Aclaración sobre el contrato de actualización de canciones del TP2C 2025."
 tags:
 - trabajos-practicos
 - 2025-2C

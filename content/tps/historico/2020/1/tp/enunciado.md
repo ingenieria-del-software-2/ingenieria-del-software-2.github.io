@@ -1,5 +1,6 @@
 ---
 title: "20201C - Chotuve"
+description: "Trabajo práctico grupal 2020 1C: Chotuve, una plataforma para compartir videos."
 subtitle: "Grupal"
 ---
 # Chotuve

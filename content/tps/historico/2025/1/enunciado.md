@@ -1,6 +1,7 @@
 ---
 
 title: "20251C - ClassConnect"
+description: "Trabajo práctico grupal 2025 1C: ClassConnect, una plataforma de gestión educativa con clases y evaluaciones."
 subtitle: "Grupal"
 ------------------
 

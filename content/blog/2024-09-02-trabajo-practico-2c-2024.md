@@ -6,6 +6,7 @@ tags:
 - trabajos-practicos
 - 2024-2C
 title: TwitSnap
+description: "Enunciado del trabajo práctico TwitSnap del segundo cuatrimestre de 2024."
 ---
 Ya se encuentra disponible el enunciado del trabajo práctico
 

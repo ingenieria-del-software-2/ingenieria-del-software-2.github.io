@@ -1,5 +1,6 @@
 ---
 title: "20172C - Llevame"
+description: "Trabajo práctico grupal 2017 2C: Llevame, una aplicación para gestionar viajes y conectar choferes con pasajeros."
 subtitle: "Grupal"
 ---
 # Llevame
