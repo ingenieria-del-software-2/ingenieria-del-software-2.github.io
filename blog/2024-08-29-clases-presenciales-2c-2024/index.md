@@ -12,3 +12,4 @@ Les pasamos el listado de fechas donde vamos a trabajar de manera presencial en 
 | 3  | 11/11   | Clase especial |
 | 4  | 25/11   | Primer recuperatorio |
 | 5  | 28/11   | Segundo recuperatorio |
+

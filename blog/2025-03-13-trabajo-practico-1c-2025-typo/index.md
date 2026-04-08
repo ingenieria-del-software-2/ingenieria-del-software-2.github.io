@@ -35,3 +35,4 @@ Detectamos una inconsistencia en la especificación OpenAPI del enunciado origin
 Si ya empezaste tu implementación con UUID v4, **no es necesario cambiar nada**, ya que **era parte del extra** y sigue siendo una solución válida. 🚀
 
 Gracias por el feedback y las preguntas, seguimos mejorando el enunciado para mayor claridad. 🚀
+

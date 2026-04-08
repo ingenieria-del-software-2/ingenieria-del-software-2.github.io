@@ -8,4 +8,3 @@ Les comparto el material relacionado a lo que se vió en la primer clase de la m
 - [Formulario de registración](https://forms.gle/3uUNvmcGXYY6BWSHA)
 - [Slack de la materia](https://join.slack.com/t/7552-tallerii/shared_invite/zt-hojel18m-88VeInNBdH4nnYDejPlGvA)
 
-

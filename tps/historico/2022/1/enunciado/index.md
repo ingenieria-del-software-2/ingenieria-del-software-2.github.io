@@ -1507,3 +1507,4 @@ _Se espera que dicha documentación se elabore de manera incremental y que cada 
 | Checkpoint 2 |  26/5 | A definir |
 | Checkpoint 3 |  16/6 | A definir |
 | Entrega Final |  7/7 | A definir |
+

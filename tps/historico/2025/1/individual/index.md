@@ -318,3 +318,4 @@ docker run --name db-container --network <courses-network-name> -p 3306:3306 \
 -   [Conventional Commits](https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13#types)
 - [The Twelve-Factor App](https://12factor.net/es/)
 - [UUID RFC](https://datatracker.ietf.org/doc/html/rfc9562#name-uuid-format)
+

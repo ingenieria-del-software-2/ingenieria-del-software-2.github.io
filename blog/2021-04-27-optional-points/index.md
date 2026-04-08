@@ -39,4 +39,3 @@ En la siguiente tabla se definio la estimaciön de puntos para las historias de 
 | Implementacion de sistema de votos para veedores |  13 |
 
 
-

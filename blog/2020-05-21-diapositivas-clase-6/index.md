@@ -11,4 +11,3 @@ Buenas,les comparto las diapositivas de la sexta clase donde hablamos sobre patr
 <!-- Google embed ends -->
 </div>
 
-

@@ -324,4 +324,3 @@ En cada checkpoint se deberá acordar el alcance de la entrega con cada ayudante
 3. [Code Coverage](http://en.wikipedia.org/wiki/Code_coverage)
 4. [Lint](https://es.wikipedia.org/wiki/Lint)
 
-
