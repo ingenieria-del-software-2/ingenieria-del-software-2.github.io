@@ -27,6 +27,7 @@ Detrás de esa simplicidad, Bazaar garantiza lo que importa: que cuando alguien 
 - [Recupero de contraseña](#recupero-de-contraseña)
 - [Login con proveedor federado](#login-con-proveedor-federado)
 - [Registro con PIN](#registro-con-pin)
+- [Login con datos biométricos](#login-con-datos-biométricos)
 
 **2. Perfil** — Identidad del usuario dentro de la plataforma.
 
@@ -242,6 +243,34 @@ Detrás de esa simplicidad, Bazaar garantiza lo que importa: que cuando alguien 
   - Dado que un usuario tiene PIN configurado en un dispositivo
   - Cuando intenta usar su PIN desde un dispositivo diferente
   - Entonces el sistema no permite el acceso por PIN y requiere autenticación completa.
+
+### Login con datos biométricos
+
+<!-- Status: Optativa -->
+
+**Descripción**: Como **usuario** quiero **ingresar con mi cuenta en la plataforma** utilizando mis **datos biométricos** para **tener una forma de acceso rápida y segura desde el dispositivo móvil**.
+
+**Criterios de aceptación**
+
+- CA 1: Configuración biométrica inicial
+  - Dado que un usuario registrado desea habilitar el login con datos biométricos, tales como identificación por rostro o huella dactilar
+  - Cuando completa el alta biométrica en un dispositivo compatible y confirma la vinculación
+  - Entonces el sistema asocia ese método de autenticación a su cuenta en ese dispositivo.
+
+- CA 2: Login exitoso con datos biométricos
+  - Dado que un usuario registrado cuenta con autenticación biométrica configurada en el dispositivo
+  - Cuando valida su identidad correctamente mediante huella dactilar, reconocimiento facial u otro método
+  - Entonces el sistema permite el ingreso al sistema.
+
+- CA 3: Login fallido
+  - Dado que un usuario intenta autenticarse con datos biométricos
+  - Cuando la validación falla o no coincide con el registro esperado
+  - Entonces el sistema niega el acceso e indica un mensaje de error acorde al usuario.
+
+- CA 4: Sesión expirada
+  - Dado que a un usuario se le expira la sesión
+  - Cuando intenta ejecutar una acción autenticada
+  - Entonces el sistema solicitará al usuario nuevamente el login
 
 ## Épica: Perfil
 
@@ -1518,8 +1547,9 @@ Cada historia optativa tiene un puntaje asociado. El grupo debe seleccionar las 
 | 39  | Recomendaciones basadas en historial        | Recomendaciones    | 5      |
 | 40  | Métricas por categoría                      | Métricas           | 3      |
 | 41  | Exportar datos de métricas                  | Métricas           | 2      |
+| 42  | Registro con datos biométricos              | Usuarios           | 3      |
 
-**Puntaje máximo disponible: 59 pts.**
+**Puntaje máximo disponible: 62 pts.**
 
 ## Puntaje mínimo por equipo
 
