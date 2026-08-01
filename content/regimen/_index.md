@@ -49,9 +49,9 @@ subtitle: "Información sobre la materia"
 
 Los siguientes incumplimientos **bloquean la evaluación** del proyecto y requieren corrección inmediata:
 
--   **Base de datos compartida entre servicios**: cada servicio debe tener su propio esquema de persistencia; no se permite el acceso directo a la base de datos de otro servicio.
 -   **Pipeline de CI roto**: la rama principal debe estar en estado ejecutable en todo momento; un CI en rojo no atendido en la sesión siguiente es un bloqueante.
 -   **Secretos en el código fuente o historial de Git**: cualquier credencial o token que aparezca en el repositorio (incluso en commits anteriores) requiere rotación inmediata y limpieza del historial.
+-   **Evidencia de trabajo individual**: cada integrante del equipo debe contar con evidencia de su participación y trabajo durante el cuatrimestre (commits, PRs, actas de reuniones, etc.). Su ausencia habilita a la cátedra a desaprobar a ese alumno en particular, independientemente de la nota del grupo.
 
 #### Requisitos por checkpoint
 
