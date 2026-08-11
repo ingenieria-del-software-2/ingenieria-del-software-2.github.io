@@ -93,3 +93,8 @@ team:
     pic: "/images/professors/luna.jpeg"
     mail: "ludufour@fi.uba.ar"
     github: "Lunit00ns"
+
+  - name: Jose Slavkis
+    pic: "/images/professors/jose.jpeg"
+    mail: "jslavkis@fi.uba.ar"
+    github: "joseslavkis"
