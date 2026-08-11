@@ -1,0 +1,10 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ingeniería del Software 2 – Clases 2020-1C Android</title><link>https://ingenieria-del-software-2.github.io/pr-preview/pr-73/tags/clases-2020-1c-android/</link><description>Recent content in Clases 2020-1C Android on Ingeniería del Software 2</description><generator>Hugo -- gohugo.io</generator><language>es-AR</language><lastBuildDate>Thu, 21 May 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://ingenieria-del-software-2.github.io/pr-preview/pr-73/tags/clases-2020-1c-android/index.xml" rel="self" type="application/rss+xml"/><item><title>Diapositivas de clase de Mobile</title><link>https://ingenieria-del-software-2.github.io/pr-preview/pr-73/blog/2020-05-21-diapositivas-clase-6/</link><pubDate>Thu, 21 May 2020 00:00:00 +0000</pubDate><guid>https://ingenieria-del-software-2.github.io/pr-preview/pr-73/blog/2020-05-21-diapositivas-clase-6/</guid><description>
+&lt;p>Buenas,les comparto las diapositivas de la sexta clase donde hablamos sobre patrones de arquitectura para una aplicacion en Android&lt;/p>
+&lt;style>
+.responsive-wrap iframe{ max-width: 100%;}
+&lt;/style>
+&lt;div class="responsive-wrap">
+&lt;!-- this is the embed code provided by Google -->
+&lt;iframe src="https://docs.google.com/presentation/d/1ojws3e9nBDw_MzHfpL7WtXj53KFGFAG80GNAVn8Mi0s/embed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true">&lt;/iframe>
+&lt;!-- Google embed ends -->
+&lt;/div></description></item></channel></rss>
