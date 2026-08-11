@@ -83,3 +83,13 @@ team:
     pic: "/images/professors/daniela.jpeg"
     mail: "davela@fi.uba.ar"
     github: "noxethiems"
+
+  - name: Thiago Pacheco
+    pic: "/images/professors/thiago.jpeg"
+    mail: "tpacheco@fi.uba.ar"
+    github: "thiagopservian"
+
+  - name: Luna Dufour
+    pic: "/images/professors/luna.jpeg"
+    mail: "ludufour@fi.uba.ar"
+    github: "Lunit00ns"
