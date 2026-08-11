@@ -34,7 +34,7 @@ subtitle: "Información sobre la materia"
 -   Inicia tras aprobar el TPI.
 -   Se desarrolla en **etapas con entregas**.
 -   Durante la cursada se realizarán **4 checkpoints**. Si un grupo desaprueba **2 de ellos**, pierde la cursada.
--   Se realiza en **equipos de 4–5 personas**, con **docente asignado**.
+-   Se realiza en **equipos de 4–5 personas**, con **docente asignado**, que actúa como **Product Owner** del equipo durante todo el cuatrimestre: al inicio de cada checkpoint acuerda con el grupo las historias a trabajar, y hace seguimiento semanal del avance.
 -   El enunciado se explica al inicio, pero puede **ajustarse** durante el cuatrimestre.
 -   Ante puntos no especificados, se espera **criterio** y decisiones **de producto** (sin alterar el espíritu académico).
 -   **Distribución de tareas**:
@@ -42,6 +42,17 @@ subtitle: "Información sobre la materia"
     -   La distribución debe ser **equitativa**.
     -   No participar en un módulo **no exime** de conocer lo básico de la tecnología (relevante en **parcial/final**).
 -   En cada una de las cuatro entregas se exige un **mínimo** de funcionalidad, documentación, pruebas, etc.
+-   **Metas de historias por checkpoint**: 70% de historias obligatorias y 50% de optativas finalizadas en el Checkpoint 2; 100% de obligatorias y 80% de optativas en el Checkpoint 3.
+-   **Uso de herramientas de IA**: se espera su uso como parte natural del desarrollo. No se evalúa si se usó IA, sino la calidad de la dirección del equipo y la capacidad de **cada integrante de explicar y defender cualquier parte del código** en la defensa del proyecto. El equipo es responsable final del código, independientemente de la herramienta que lo produjo.
+
+#### Red Lines
+
+Los siguientes incumplimientos **bloquean la evaluación** del proyecto y requieren corrección inmediata:
+
+-   **Pipeline de CI roto**: la rama principal debe estar en estado ejecutable en todo momento; un CI en rojo no atendido en la sesión siguiente es un bloqueante.
+-   **Secretos en el código fuente o historial de Git**: cualquier credencial o token que aparezca en el repositorio (incluso en commits anteriores) requiere rotación inmediata y limpieza del historial.
+-   **Evidencia de trabajo individual**: cada integrante del equipo debe contar con evidencia de su participación y trabajo durante el cuatrimestre (commits, PRs, actas de reuniones, etc.). Su ausencia habilita a la cátedra a desaprobar a ese alumno en particular, independientemente de la nota del grupo.
+-   **Ausencia reiterada a checkpoints o sesiones de seguimiento sin justificar**: la falta de participación activa en las instancias de seguimiento del equipo, sin justificación, habilita a la cátedra a desaprobar al alumno ausente, independientemente del resultado del grupo.
 
 #### Requisitos por checkpoint
 
@@ -60,7 +71,7 @@ subtitle: "Información sobre la materia"
 Independientemente de los canales que acuerde cada equipo con su docente, la cátedra dispone de:
 
 -   **Sitio web**: <https://ingenieria-del-software-2.github.io>
--   **Slack**: <https://join.slack.com/t/ta049-ingsoftii/shared_invite/zt-2owpvl6tc-P1NHgQKAbci049EohALmTg>
+-   **Discord**: <https://discord.gg/wDvn7zVvQb>
 
 *Lo informado verbalmente en clase también es válido y debe ser considerado.*
 
