@@ -1,0 +1,276 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ingeniería del Software 2 – 2019-2C</title><link>https://ingenieria-del-software-2.github.io/pr-preview/pr-74/tags/2019-2c/</link><description>Recent content in 2019-2C on Ingeniería del Software 2</description><generator>Hugo -- gohugo.io</generator><language>es-AR</language><lastBuildDate>Fri, 23 Aug 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://ingenieria-del-software-2.github.io/pr-preview/pr-74/tags/2019-2c/index.xml" rel="self" type="application/rss+xml"/><item><title>Foodie</title><link>https://ingenieria-del-software-2.github.io/pr-preview/pr-74/blog/2019-08-23-trabajo-practico-2c-2019/</link><pubDate>Fri, 23 Aug 2019 00:00:00 +0000</pubDate><guid>https://ingenieria-del-software-2.github.io/pr-preview/pr-74/blog/2019-08-23-trabajo-practico-2c-2019/</guid><description>
+&lt;h1>Foodie&lt;/h1>&lt;p>Una importante empresa, AppMaker©, ha decidido encargarnos el desarrollo de una &lt;strong>plataforma para el delivery de comida/items alrededor del mundo&lt;/strong>. El principal objetivo es permitir conectar en tiempo real a personas de todo el mundo.&lt;/p>
+&lt;p>AppMaker busca posicionarse en el mercado de aplicaciones, deseando conectar esta aplicación con sus otras aplicaciones que poseen gran cantidad de usuarios.&lt;/p>
+&lt;h2>Aplicaciones requeridas&lt;span class="hx:absolute hx:-mt-20" id="aplicaciones-requeridas">&lt;/span>
+&lt;a href="#aplicaciones-requeridas" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;p>La aplicación constará de tres componentes:&lt;/p>
+&lt;ul>
+&lt;li>Un &lt;strong>servidor&lt;/strong>, &lt;em>Application Server&lt;/em>, el cual será responsable de conectar a los usuarios.&lt;/li>
+&lt;li>Una aplicación &lt;strong>Android&lt;/strong>, el cual será utilizado por los usuarios.&lt;/li>
+&lt;li>Una &lt;strong>Interfaz Web&lt;/strong> en donde se administrarán los datos de la aplicación.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="../components.png" alt="Componentes" loading="lazy" />&lt;/p>
+&lt;h3>Application Server&lt;span class="hx:absolute hx:-mt-20" id="application-server">&lt;/span>
+&lt;a href="#application-server" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Se trata de una aplicación por consola destinada a mantenerse en ejecución por períodos prolongados de tiempo.&lt;/p>
+&lt;p>Esta aplicación debe brindar una interfaz REST [1] para la comunicación de los diferentes usuarios.&lt;/p>
+&lt;h4>Servicio de autenticación (login)&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-autenticación-login">&lt;/span>
+&lt;a href="#servicio-de-autenticaci%c3%b3n-login" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá a los usuarios poder ingresar al sistema, obteniendo un token que deberá ser utilizado por los demás servicios.&lt;/p>
+&lt;h4>Servicio de recupero de contraseña&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-recupero-de-contraseña">&lt;/span>
+&lt;a href="#servicio-de-recupero-de-contrase%c3%b1a" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá a los usuarios poder recuperar una cuenta. Este servicio deberá generar un token, que deberá ser utilizado para definir una nueva contraseña, y enviarlo por e-mail.&lt;/p>
+&lt;h4>Servicio de configuración de contraseña&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-configuración-de-contraseña">&lt;/span>
+&lt;a href="#servicio-de-configuraci%c3%b3n-de-contrase%c3%b1a" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá a un usuario definir una nueva contraseña. Este servicio verificará que se haya solicitado un token utilizando el &lt;em>Servicio de recupero de contraseña&lt;/em>.&lt;/p>
+&lt;h4>Servicio de registro&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-registro">&lt;/span>
+&lt;a href="#servicio-de-registro" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá a los usuarios darse de alta en el sistema. El usuario deberá brindar sus datos personales para poder completar el registro.&lt;/p>
+&lt;p>Datos personales:&lt;/p>
+&lt;ul>
+&lt;li>Nombre y Apellido&lt;/li>
+&lt;li>Teléfono de contacto&lt;/li>
+&lt;li>E-mail&lt;/li>
+&lt;li>Foto de perfil (opcional para &lt;code>usuario&lt;/code>, obligatoria para &lt;code>delivery&lt;/code>)&lt;/li>
+&lt;li>Rol: &lt;code>delivery&lt;/code> / &lt;code>usuario&lt;/code>.&lt;/li>
+&lt;li>suscripción: flat/premium. Ver sección &lt;strong>Suscripciones&lt;/strong>&lt;/li>
+&lt;li>Balance: sólo &lt;code>delivery&lt;/code>. Plata disponible para retirar en función de los pedidos realizados. Ver sección &lt;strong>Cobro de pedidos&lt;/strong>&lt;/li>
+&lt;/ul>
+&lt;h4>Servicio de consulta de perfil&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-consulta-de-perfil">&lt;/span>
+&lt;a href="#servicio-de-consulta-de-perfil" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá consultar el perfil de un usuario. El mismo está compuesto por :&lt;/p>
+&lt;ul>
+&lt;li>Datos personales (Nombre, Apellido, EMail)&lt;/li>
+&lt;li>Foto de perfil&lt;/li>
+&lt;li>Reputación: Ver seccion &lt;strong>Reputacion&lt;/strong>&lt;/li>
+&lt;/ul>
+&lt;h4>Servicio de modificación de perfil&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-modificación-de-perfil">&lt;/span>
+&lt;a href="#servicio-de-modificaci%c3%b3n-de-perfil" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permite a un usuario actualizar su perfil, debe permitir modificar y actualizar los siguientes datos:&lt;/p>
+&lt;ul>
+&lt;li>Datos personales (Nombre, Apellido, Dirección, e-mail, Cuenta de Facebook, GMail, etc)&lt;/li>
+&lt;li>Foto de perfil&lt;/li>
+&lt;/ul>
+&lt;h4>Servicio para envío de mensajes&lt;span class="hx:absolute hx:-mt-20" id="servicio-para-envío-de-mensajes">&lt;/span>
+&lt;a href="#servicio-para-env%c3%ado-de-mensajes" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permitirá poder enviar mensajes a un usuario o a varios, a través de un canal de conversación entre la persona que realizó el pedido y la persona responsable de la entrega. Se recomienda la utilización de &lt;a href="https://firebase.google.com/docs/cloud-messaging/?hl=es-419"target="_blank" rel="noopener">Firebase Cloud Messaging&lt;/a> o algún servicio similar para la administración de mensajes en tiempo real.&lt;/p>
+&lt;h4>Servicio de direccionamiento&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-direccionamiento">&lt;/span>
+&lt;a href="#servicio-de-direccionamiento" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Servicio que utilizará a uno de un tercero para poder determinar los caminos posibles para el viaje que necesario para realizar la entrega del pedido. Se deberá utilizar algún servicio de direccionamiento como lo puede ser &lt;a href="https://developers.google.com/maps/documentation/directions/"target="_blank" rel="noopener">Google Directions Api&lt;/a>.&lt;/p>
+&lt;h4>Servicio de pedidos disponibles&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-pedidos-disponibles">&lt;/span>
+&lt;a href="#servicio-de-pedidos-disponibles" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permite a un delivery saber que pedidos tiene disponibles para aceptar. Debe brindar al delivery toda la información acerca del pasajero y el pedido.&lt;/p>
+&lt;p>Se deberá dar la posiblidad de filtrar pedidos marcados como favores. Consultar sección &lt;em>Cadena de Favores&lt;/em> para más información.&lt;/p>
+&lt;h4>Servicio de pedidos realizados&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-pedidos-realizados">&lt;/span>
+&lt;a href="#servicio-de-pedidos-realizados" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permite a un usuario o delivery administrar y conocer que pedidos realizón en un período de tiempo.&lt;/p>
+&lt;h4>Servicio de delivery disponibles&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-delivery-disponibles">&lt;/span>
+&lt;a href="#servicio-de-delivery-disponibles" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Este servicio permite a los ususarios visualizar los deliveries que se encuentran a su alrededor. Debe dar la posición del delivery, además, de información acerca de él.&lt;/p>
+&lt;h4>Servicio de posicionamiento&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-posicionamiento">&lt;/span>
+&lt;a href="#servicio-de-posicionamiento" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Una vez iniciado un viaje, el servidor deberá conocer la posición del delivery. Para ello, se deberá enviar periódicamente su posición. Esto permitirá al servidor:&lt;/p>
+&lt;ul>
+&lt;li>Corroborar que realmente se está realizando el viaje.&lt;/li>
+&lt;li>Calcular la distancia y tiempo de viaje con exactitud&lt;/li>
+&lt;/ul>
+&lt;h4>Servicio de cotización de entrega&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-cotización-de-entrega">&lt;/span>
+&lt;a href="#servicio-de-cotizaci%c3%b3n-de-entrega" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Permite saber, con un margen de error, el costo de un pedido antes de realizarlo. Ver sección &lt;strong>Cotización de entrega&lt;/strong>.&lt;/p>
+&lt;h4>Servicio de cobro de pedido&lt;span class="hx:absolute hx:-mt-20" id="servicio-de-cobro-de-pedido">&lt;/span>
+&lt;a href="#servicio-de-cobro-de-pedido" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>El sistema debe permitir marcar que el importe correspondiente a un envío fue retirado por el delivery de su cuenta.&lt;/p>
+&lt;p>#####Cobro de pedidos&lt;/p>
+&lt;p>Por cada pedido realizado el delivery recibirá el &lt;code>85%&lt;/code> del importe correspondiente a los cargos del envío. Este importe se incorporará al balance que posee en su cuenta.&lt;/p>
+&lt;p>El retiro de plata será realizado por un sistema externo.&lt;/p>
+&lt;p>Además es posible abonar el pedido utilizando el &lt;strong>sistema de favores&lt;/strong>. Consultar sección &lt;em>Cadena de Favores&lt;/em> para más información&lt;/p>
+&lt;h4>Sistema de reputación&lt;span class="hx:absolute hx:-mt-20" id="sistema-de-reputación">&lt;/span>
+&lt;a href="#sistema-de-reputaci%c3%b3n" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>El sistema debe poseer un sistema de puntación en base del registro de actividades de los usuarios y deliveries. Esta puntación permitirá conocer que tan confiable es el usuario/delivery para el uso del sistema.&lt;/p>
+&lt;p>El sistema de puntación tendrá un puntaje dentro del rango &lt;code>1-5&lt;/code>&lt;/p>
+&lt;p>&lt;strong>Cadena de Favores&lt;/strong>&lt;/p>
+&lt;p>El sistema otorgará la posiblidad de marcar un envío como cadena de favores. El usuario que generá el pedido deberá indicar cuantos puntos de gratitud otorgará a la persona que se encargue de realizar el delivery del pedido. Para esto el usuario deberá tener la cantidad de puntos de gratitud suficientes en su cuenta.&lt;/p>
+&lt;p>El usuario luego podrá cambiar los puntos de gratitud para beneficios exclusivos; como por ejemplo envíos gratis.&lt;/p>
+&lt;h4>Suscripciones&lt;span class="hx:absolute hx:-mt-20" id="suscripciones">&lt;/span>
+&lt;a href="#suscripciones" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>El sistema debe permitir dos tipos de suscripción para los usuarios: &lt;code>flat&lt;/code> y &lt;code>premium&lt;/code>.&lt;/p>
+&lt;p>La suscripción de tipo &lt;code>flat&lt;/code> es la suscripción por defecto que tendrá cada usuario en el momento de registrarse. El sistema debe permitir poder realizar un upgrade en su suscripción para poder pasar a usuario &lt;code>premium&lt;/code>. Esta suscripción le permitirá acceder a beneficios exclusivos y envíos grátis.&lt;/p>
+&lt;p>La suscripción tendrá un cargo fijo mensual. Para esto el usuario deberá ingresar una tarjeta de crédito.&lt;/p>
+&lt;p>&lt;em>Se asume que el cobró lo realizará un sistema externo.&lt;/em>&lt;/p>
+&lt;h5>Beneficios&lt;span class="hx:absolute hx:-mt-20" id="beneficios">&lt;/span>
+&lt;a href="#beneficios" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h5>&lt;p>A continuación se mencionan algunos beneficios a modo de ejemplo:&lt;/p>
+&lt;ul>
+&lt;li>5 envíos gratis por mes&lt;/li>
+&lt;li>25% de descuento los fines de semana&lt;/li>
+&lt;li>Cada X envíos se otorga un 10% de descuento para el próximo.&lt;/li>
+&lt;/ul>
+&lt;h4>Cotización de entrega&lt;span class="hx:absolute hx:-mt-20" id="cotización-de-entrega">&lt;/span>
+&lt;a href="#cotizaci%c3%b3n-de-entrega" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Debido a la necesidad de poder tener flexibilidad a la hora de establecer los precios para mantenerse competitivo. AppMaker© exige que el cálculo del precio sea realizado utilizando un sistema de reglas.&lt;/p>
+&lt;p>El servidor deberá permitir la modificación y guardado de las mismas manteniendo un registro de cambios. Además, deberá permitir al usuario hacer pruebas con las reglas escritas previo a quedar efectivas en la cotización de las entregas.&lt;/p>
+&lt;p>Para el sistema de reglas, se sugiere la utilización de alguno de los siguientes motores:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/noolsjs/nools"target="_blank" rel="noopener">Nools&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/mithunsatheesh/node-rules"target="_blank" rel="noopener">Node Rules&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/jruizgit/rules"target="_blank" rel="noopener">Rules&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/cachecontrol/json-rules-engine"target="_blank" rel="noopener">Json Rules Engine&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>Las reglas deben permitir el cálculo del precio del viaje utilizando, entre otras cosas, la siguientes variables:&lt;/p>
+&lt;ul>
+&lt;li>Características del delivery (reputación, viajes en el día, viajes en el mes, antigüedad)&lt;/li>
+&lt;li>Características del usuario (reputación, viajes en el día, viajes en el mes, antigüedad, saldo)&lt;/li>
+&lt;li>Método de pago: efectivo/tarjeta&lt;/li>
+&lt;li>Características del pedido (duración, distancia, posición geográfica, fecha y hora)&lt;/li>
+&lt;li>Cantidad de pedido que se realizaron en la última ventana temporal (Hora, 30 mins, 10 mins)&lt;/li>
+&lt;li>Día y horario de la realización del viaje&lt;/li>
+&lt;/ul>
+&lt;p>Se deberán desarrollar a modo de ejemplo las siguientes reglas:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Usuario&lt;/strong>:
+&lt;ul>
+&lt;li>Costo de entrega mínimo de 20ARS (2KM).&lt;/li>
+&lt;li>Precio por KM extra de 15ARS&lt;/li>
+&lt;li>Descuento del 5% los miércoles de 15hs a 16hs&lt;/li>
+&lt;li>Descuento de 100ARS en el primer pedido.&lt;/li>
+&lt;li>Recargo del 10% Lunes a Viernes de 17hs a 19hs.&lt;/li>
+&lt;li>Descuento del 5% a partir del 5 pedido.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>Delivery&lt;/strong>:
+&lt;ul>
+&lt;li>Aumento del 3% de Lunes a Viernes de 17hs a 19hs&lt;/li>
+&lt;li>Aumento del 2% si realizó más de 10 viajes en el día&lt;/li>
+&lt;li>Aumento del 10% durante los fines de semana de 20 a 23hs.&lt;/li>
+&lt;li>Descuento del 20% todos los Domingos de 10 a 14hs.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h4>Interfaz WEB&lt;span class="hx:absolute hx:-mt-20" id="interfaz-web">&lt;/span>
+&lt;a href="#interfaz-web" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>La interfaz WEB deberá brindar una GUI que permita la administración de datos.&lt;/p>
+&lt;h5>Login&lt;span class="hx:absolute hx:-mt-20" id="login">&lt;/span>
+&lt;a href="#login" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h5>&lt;p>La interfaz WEB deberá solicitar usuario y contraseña para acceder a la administración de datos. Estos usuarios serán de uso exclusivo para la interfaz WEB.&lt;/p>
+&lt;h5>Administración de usuarios&lt;span class="hx:absolute hx:-mt-20" id="administración-de-usuarios">&lt;/span>
+&lt;a href="#administraci%c3%b3n-de-usuarios" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h5>&lt;p>La interfaz WEB debe permitir la administración de usuarios/deliveries.&lt;/p>
+&lt;h5>Visualización de estadísticas&lt;span class="hx:absolute hx:-mt-20" id="visualización-de-estadísticas">&lt;/span>
+&lt;a href="#visualizaci%c3%b3n-de-estad%c3%adsticas" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h5>&lt;p>La interfaz WEB debe mostrar gráficos de actividad de los usuarios dentro del sistema. Se deberán visualizar al menos las siguientes estadísticas:&lt;/p>
+&lt;ul>
+&lt;li>Cantidad de usuarios registrados&lt;/li>
+&lt;li>Cantidad de pedidos entregados&lt;/li>
+&lt;li>Cantidad de pedidos cancelados&lt;/li>
+&lt;/ul>
+&lt;h5>Administración de balances&lt;span class="hx:absolute hx:-mt-20" id="administración-de-balances">&lt;/span>
+&lt;a href="#administraci%c3%b3n-de-balances" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h5>&lt;p>La interfaz WEB debe permitir administrar los balances de los usuarios de tipo &lt;code>delivery&lt;/code>. Esto servirá para que un administrador actualicé el balance en caso de que un delivery haya cobrado el importe correspondiente a los pedidos realizados.&lt;/p>
+&lt;h5>Administración de suscripciones&lt;span class="hx:absolute hx:-mt-20" id="administración-de-suscripciones">&lt;/span>
+&lt;a href="#administraci%c3%b3n-de-suscripciones" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h5>&lt;p>La interfaz WEB debe permitir administrar las suscripciones de los usuarios. Esto servirá para actualizar el estado de una suscripción. Por ejemplo, cancelar una suscripción de tipo &lt;code>premium&lt;/code> por falta de pago.&lt;/p>
+&lt;h3>Android Client&lt;span class="hx:absolute hx:-mt-20" id="android-client">&lt;/span>
+&lt;a href="#android-client" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Este cliente se comunicará únicamente con un &lt;a href="#application-server">Application Server&lt;/a>. A continuación se dará una breve descripción de las funcionalidades esperadas para la aplicación Android. Se deberá validar con el ayudante asignado el alcance de las mismas.&lt;/p>
+&lt;h4>Registro&lt;span class="hx:absolute hx:-mt-20" id="registro">&lt;/span>
+&lt;a href="#registro" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>En caso de que la persona que desee utilizar la aplicación no tenga un usuario registrado la aplicación debe permitir poder registrar un usuario nuevo. Este registro deberá poder ser integrado con Facebook/Gmail, permitiendo ingresar las credenciales de facebook/gmail y utilizar los datos asociados de la cuenta para completar el registro del usuario dentro del sistema.&lt;/p>
+&lt;h4>Autenticación&lt;span class="hx:absolute hx:-mt-20" id="autenticación">&lt;/span>
+&lt;a href="#autenticaci%c3%b3n" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Para que el cliente pueda enviar y recibir conversaciones el mismo debe autentificarse con el servidor. Para esto el cliente debe permitir al usuario ingresar usuario y contraseña. Se deberá diseñar una pantalla de ingreso a la aplicación.
+Cuando la autenticación es exitosa, se almacenará un token de autenticación para realizar las operaciones con el servidor.&lt;/p>
+&lt;h4>Perfil de usuario&lt;span class="hx:absolute hx:-mt-20" id="perfil-de-usuario">&lt;/span>
+&lt;a href="#perfil-de-usuario" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Los usuarios podrán visualizar su perfil o el de otros usuarios. El perfil tendrá los datos del usuario y sus actividades dentro del sistema. Dentro de las actividades se deberá mostrar estadísticas del usuario (organizaciones a la que pertenece, cantidad de mensajes enviados).&lt;/p>
+&lt;h4>Seguimiento del pedido&lt;span class="hx:absolute hx:-mt-20" id="seguimiento-del-pedido">&lt;/span>
+&lt;a href="#seguimiento-del-pedido" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>La aplicación debe permitir conocer la ubicación del delivery y el tiempo estimado de entrega del mismo. Para el seguimiento del pedido se deberá mostrar un mapa con la &lt;code>ubicación&lt;/code> del delivery y el &lt;code>tiempo estimado&lt;/code> de envío.&lt;/p>
+&lt;p>####Realización pedido&lt;/p>
+&lt;p>La aplicación debe permitir realizar un pedido indicando la fecha, el origen y el destino del mismo. Una vez indicado los datos del pedido, se deberá mostrar un mapa con los deliveries disponibles. El sistema asignará uno de forma automática mostrando la reputación y la posibilidad de confirmar o buscar otro delivery disponible.&lt;/p>
+&lt;h4>Consulta de favores&lt;span class="hx:absolute hx:-mt-20" id="consulta-de-favores">&lt;/span>
+&lt;a href="#consulta-de-favores" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>La aplicación deberá permitir listar los pedidos marcados como favores que publicaron los demás usuarios. No es necesario ser un usuario de delivery para poder realizar estos pedidos.&lt;/p>
+&lt;p>Consultar sección &lt;em>Cadena de Favores&lt;/em> para más información&lt;/p>
+&lt;h4>Chat Usuario-Delivery&lt;span class="hx:absolute hx:-mt-20" id="chat-usuario-delivery">&lt;/span>
+&lt;a href="#chat-usuario-delivery" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Después que un delivery haya aceptado el pedido, se habilitará un chat entre ellos. Esta función esta destinada a subsanar el error del GPS a la hora de ubicar correctamente el pedido. Se recomienda la utilización de &lt;a href="https://firebase.google.com/docs/cloud-messaging/?hl=es-419"target="_blank" rel="noopener">Firebase Cloud Messaging&lt;/a> o algún servicio similar para la administración de mensajes en tiempo real.&lt;/p>
+&lt;h4>Interfaz gráfica&lt;span class="hx:absolute hx:-mt-20" id="interfaz-gráfica">&lt;/span>
+&lt;a href="#interfaz-gr%c3%a1fica" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Para el diseño de la interfaz deben respetarse las &lt;a href="https://www.google.com/design/spec/material-design/introduction.html"target="_blank" rel="noopener">guías de diseño propuestas por Google&lt;/a>.&lt;/p>
+&lt;h4>Notificaciónes &lt;em>Push&lt;/em>&lt;span class="hx:absolute hx:-mt-20" id="notificaciónes-push">&lt;/span>
+&lt;a href="#notificaci%c3%b3nes-push" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h4>&lt;p>Para el envío y recepción de notificaciones del sistema (ej. mensajes de Chat, cambios de estado de la compra) se deberá utilizar el servicio de notificaciones push de &lt;a href="https://firebase.google.com/products/cloud-messaging/"target="_blank" rel="noopener">FCM&lt;/a>&lt;/p>
+&lt;h2>Tecnologias&lt;span class="hx:absolute hx:-mt-20" id="tecnologias">&lt;/span>
+&lt;a href="#tecnologias" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;p>Para el desarrollo del &lt;em>Application Server&lt;/em> se podrá utilizar &lt;strong>Python&lt;/strong> o &lt;strong>NodeJS&lt;/strong> y &lt;strong>PostgreSQL&lt;/strong> y/o &lt;strong>MongoDB&lt;/strong> como motor de base de datos.&lt;/p>
+&lt;p>Esta elección será responsabilidad del grupo y la misma deberá estar justificada en la documentación técnica que formará parte del TP.&lt;/p>
+&lt;h3>Empaquetamiento&lt;span class="hx:absolute hx:-mt-20" id="empaquetamiento">&lt;/span>
+&lt;a href="#empaquetamiento" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Cada uno de los desarrollos solicitados debe empaquetarse según el estandar de la plataforma, es decir:&lt;/p>
+&lt;ul>
+&lt;li>&lt;em>Application Server&lt;/em>: Python Setuptools (&lt;code>setup.py&lt;/code> y &lt;code>requeriments.txt&lt;/code>) ó Node Package Manager (&lt;code>npm&lt;/code>, &lt;code>package.json&lt;/code>), Yarn Package Manager(&lt;a href="https://yarnpkg.com/lang/en/%29"target="_blank" rel="noopener">https://yarnpkg.com/lang/en/)&lt;/a>. Según corresponda&lt;/li>
+&lt;li>&lt;em>Android Client&lt;/em>: Android Application Package (&lt;code>apk&lt;/code>)&lt;/li>
+&lt;/ul>
+&lt;p>Además, el servidor deberá traer un &lt;code>Dockerfile&lt;/code> que permita correrlos sin necesidad de tener instalado los respectivos lenguajes.&lt;/p>
+&lt;h3>Despliegue en la Nube&lt;span class="hx:absolute hx:-mt-20" id="despliegue-en-la-nube">&lt;/span>
+&lt;a href="#despliegue-en-la-nube" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>El &lt;a href="#application-server">Application Server&lt;/a>, se deberán disponibilizar en la nube utilizando una plataforma como servicio (&lt;em>PAAS&lt;/em>). Se recomienda usar &lt;a href="https://www.heroku.com/"target="_blank" rel="noopener">Heroku&lt;/a> ya que cuenta con todos los requerimientos tecnológicos pedidos anteriormente.&lt;/p>
+&lt;h3>Log&lt;span class="hx:absolute hx:-mt-20" id="log">&lt;/span>
+&lt;a href="#log" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Los servidores deben contar con un sistema de log en donde se registren los eventos que se generen durante la ejecución. El sistema de log debe permitir configurar el nivel de los eventos que desean registrar. Estos niveles son:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Nivel&lt;/th>
+&lt;th>Condiciones&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Error&lt;/td>
+&lt;td>Condición de falla catastrófica, el sistema no puede funcionar. (criterio de las 2 a.m.) Condición que haga que la aplicación no pueda ejecutar una funcionalidad. Ejemplo: No es posible conectarse con la base de datos&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Warn&lt;/td>
+&lt;td>Cualquier condición anómala que afecte el funcionamiento del sistema, pero no impida la funcionalidad básica Ejemplos: Uso de APIs deprecadas, Mal uso de APIs&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Info&lt;/td>
+&lt;td>Cualquier acción correspondiente a un caso de uso iniciada por el usuario o el sistema. Información que permita trazar el historial de las entidades. Ejemplos: Conexión a la base de datos exitosa, Conexión de nuevo cliente&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Debug&lt;/td>
+&lt;td>Información de contexto que permita resolver un problema técnico. Debe ser útil incluso sin el código fuente Ejemplo: Datos de login para la DB&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Es necesario recalcar que para que un log sea útil, debe poder ser accedido.&lt;/p>
+&lt;p>El cliente Android deberá utilizar el &lt;a href="http://developer.android.com/intl/es/reference/android/util/Log.html"target="_blank" rel="noopener">sistema de log por defecto&lt;/a>&lt;/p>
+&lt;h3>Pruebas y Métricas&lt;span class="hx:absolute hx:-mt-20" id="pruebas-y-métricas">&lt;/span>
+&lt;a href="#pruebas-y-m%c3%a9tricas" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>El desarrollo de la aplicación se deberá adaptar a los estándares de calidad utilizados por AppMaker©. Dentro de estos estándares se encuentran:&lt;/p>
+&lt;ul>
+&lt;li>Pruebas unitarias [2]&lt;/li>
+&lt;li>Métricas: code coverage debe ser mayor a 75% [3]&lt;/li>
+&lt;li>Respetar estándar para estilo de codificación: Lint [4]&lt;/li>
+&lt;li>Pruebas de integración utilizando python como lenguaje de scripting.&lt;/li>
+&lt;li>Todas aquellas que se consideren convenientes para garantizar la calidad de las aplicaciones desarrolladas.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Nota:&lt;/strong> Esta sección hace solo referencía al &lt;em>Application server&lt;/em>. No se toma como requerimiento el realizar pruebas sobre el cliente Android.&lt;/p>
+&lt;h3>Integración continua / Despligue continuo&lt;span class="hx:absolute hx:-mt-20" id="integración-continua--despligue-continuo">&lt;/span>
+&lt;a href="#integraci%c3%b3n-continua--despligue-continuo" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Las pruebas y métricas anteriormente mencionadas deberan correr bajo una plataforma de integración continua. Se sugiere el uso de &lt;a href="https://travis-ci.org/"target="_blank" rel="noopener">TravisCI&lt;/a>, pero se podrá utilizar otro previa justificación.&lt;/p>
+&lt;p>El resultado del &lt;em>code coverage&lt;/em> debe ser desplegado automáticamente a una plataforma que permita visualizarlas, entre muchas posibilidades se encuentran:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://coveralls.io/"target="_blank" rel="noopener">Coveralls&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://codecov.io/"target="_blank" rel="noopener">Codecov&lt;/a>&lt;/li>
+&lt;li>Usar &lt;em>Github Pages&lt;/em> para generar una web para visualizarlo&lt;/li>
+&lt;/ul>
+&lt;p>Finalmente, el despliegue al servidor de &lt;em>PAAS&lt;/em> elegido deberá ser automático. Este deberá tener en cuenta como la actualización de la base de datos (cambios en las tablas, etc). El mecanismo utilizado para disparar dicho despliegue (utilizar el branch &lt;em>master&lt;/em> como productivo, utilizar un tags con nombre especial) será definido por los desarrolladores y deberá ser detallado en la documentación.&lt;/p>
+&lt;h3>Documentación&lt;span class="hx:absolute hx:-mt-20" id="documentación">&lt;/span>
+&lt;a href="#documentaci%c3%b3n" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Se deberá entregar la siguiente documentación:&lt;/p>
+&lt;ul>
+&lt;li>Application Server:&lt;/li>
+&lt;li>Manual de administrador: Instalación y configuración&lt;/li>
+&lt;li>Definición de Arquitectura / Diseño de la aplicación (&lt;strong>Debe incluir especificación de Api REST: &lt;a href="https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md"target="_blank" rel="noopener">OpenAPI 2.0&lt;/a>&lt;/strong>)&lt;/li>
+&lt;li>Cliente Android:&lt;/li>
+&lt;li>Manual de usuario&lt;/li>
+&lt;li>Definición de Arquitectura / Diseño de la aplicación&lt;/li>
+&lt;li>Manual de proyecto&lt;/li>
+&lt;/ul>
+&lt;p>Se espera que dicha documentación se elabore de manera incremental y que cada entrega parcial tenga parte de la misma.&lt;/p>
+&lt;h2>Instancias de entrega&lt;span class="hx:absolute hx:-mt-20" id="instancias-de-entrega">&lt;/span>
+&lt;a href="#instancias-de-entrega" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Instancia&lt;/th>
+&lt;th>Fecha&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Checkpoint 1&lt;/td>
+&lt;td>clase 4 (12/09/19)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Checkpoint 2&lt;/td>
+&lt;td>clase 8 (10/10/19)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Checkpoint 3&lt;/td>
+&lt;td>clase 12 (07/11/19)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Entrega&lt;/td>
+&lt;td>clase 16 (05/12/19)&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3>Criterios de Aceptación&lt;span class="hx:absolute hx:-mt-20" id="criterios-de-aceptación">&lt;/span>
+&lt;a href="#criterios-de-aceptaci%c3%b3n" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>En cada checkpoint se deberá acordar el alcance de la entrega con cada ayudante.&lt;/p>
+&lt;h2>Referencias&lt;span class="hx:absolute hx:-mt-20" id="referencias">&lt;/span>
+&lt;a href="#referencias" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;ol>
+&lt;li>&lt;a href="http://en.wikipedia.org/wiki/Representational_state_transfer"target="_blank" rel="noopener">REST&lt;/a>&lt;/li>
+&lt;li>&lt;a href="http://en.wikipedia.org/wiki/Unit_testing"target="_blank" rel="noopener">Unit Test&lt;/a>&lt;/li>
+&lt;li>&lt;a href="http://en.wikipedia.org/wiki/Code_coverage"target="_blank" rel="noopener">Code Coverage&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://es.wikipedia.org/wiki/Lint"target="_blank" rel="noopener">Lint&lt;/a>&lt;/li>
+&lt;/ol></description></item></channel></rss>
