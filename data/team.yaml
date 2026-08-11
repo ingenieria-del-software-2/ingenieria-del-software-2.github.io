@@ -98,3 +98,8 @@ team:
     pic: "/images/professors/jose.jpeg"
     mail: "jslavkis@fi.uba.ar"
     github: "joseslavkis"
+
+  - name: Florencia Pratto
+    pic: "/images/professors/flor.jpeg"
+    mail: "fpratto@fi.uba.ar"
+    github: "fnpratto"
