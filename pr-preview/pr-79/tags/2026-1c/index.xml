@@ -1,0 +1,1071 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ingeniería del Software 2 – 2026-1C</title><link>https://ingenieria-del-software-2.github.io/pr-preview/pr-79/tags/2026-1c/</link><description>Recent content in 2026-1C on Ingeniería del Software 2</description><generator>Hugo -- gohugo.io</generator><language>es-AR</language><lastBuildDate>Fri, 03 Apr 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://ingenieria-del-software-2.github.io/pr-preview/pr-79/tags/2026-1c/index.xml" rel="self" type="application/rss+xml"/><item><title>Guía de cátedra 2026: API Gateway + Auth/Authz</title><link>https://ingenieria-del-software-2.github.io/pr-preview/pr-79/blog/2026-04-03-auth/</link><pubDate>Fri, 03 Apr 2026 00:00:00 +0000</pubDate><guid>https://ingenieria-del-software-2.github.io/pr-preview/pr-79/blog/2026-04-03-auth/</guid><description>
+&lt;p>&lt;strong>En corto&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Elegí &lt;code>auth propia&lt;/code> si identidad, sesión y garantías demostrables forman parte del problema que el equipo quiere resolver.&lt;/li>
+&lt;li>Elegí &lt;code>IdP externo&lt;/code> si querés delegar login y sesión, pero asumí desde el día uno que el dominio igual tendrá que resolver bloqueo de usuarios, ownership y &lt;code>fine-grained authorization&lt;/code>.&lt;/li>
+&lt;li>Referencias rápidas: &lt;a href="#ap%c3%a9ndice-gateways">gateways&lt;/a> e &lt;a href="#ap%c3%a9ndice-idp-externos">IdP externos&lt;/a>.&lt;/li>
+&lt;/ul>
+&lt;h2>El problema&lt;span class="hx:absolute hx:-mt-20" id="el-problema">&lt;/span>
+&lt;a href="#el-problema" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;p>En un monolito, login, sesión y permisos suelen sentirse como un único problema porque todo vive en la misma aplicación y comparte estado. En microservicios no: un mismo request cruza identidad, borde y dominio. Por eso &lt;strong>no alcanza con &amp;ldquo;poner auth en el gateway&amp;rdquo;&lt;/strong>. (&lt;a href="https://microservices.io/post/architecture/2025/04/25/microservices-authn-authz-part-1-introduction.html"target="_blank" rel="noopener">Microservices Auth Intro&lt;/a>, &lt;a href="https://learn.microsoft.com/en-us/azure/api-management/authentication-authorization-overview"target="_blank" rel="noopener">Microsoft APIM Auth&lt;/a>)&lt;/p>
+&lt;p>Por ejemplo, tomemos esta request: &lt;code>POST /orders/123/cancel&lt;/code>.&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Identidad.&lt;/strong> El usuario inicia sesión contra un &lt;code>IdP&lt;/code> o &lt;code>auth service&lt;/code> y obtiene una sesión y un bearer token.&lt;/li>
+&lt;li>&lt;strong>Borde.&lt;/strong> El cliente llama a la API de entrada y el &lt;code>gateway&lt;/code> o &lt;code>BFF&lt;/code> (&lt;code>backend-for-frontend&lt;/code>) decide si el request supera la primera barrera.&lt;/li>
+&lt;li>&lt;strong>Dominio.&lt;/strong> El servicio de &lt;code>orders&lt;/code> consulta ownership, estado del pedido, usuario bloqueado y rol efectivo. Recién ahí decide si la operación está permitida.&lt;/li>
+&lt;/ul>
+&lt;p>El borde autentica y filtra; el dominio autoriza de verdad. En un sistema distribuido no participa una sola identidad, la confianza cambia varias veces y la decisión real necesita datos que no viven todos en el mismo lugar. (&lt;a href="https://microservices.io/post/architecture/2025/04/25/microservices-authn-authz-part-1-introduction.html"target="_blank" rel="noopener">Microservices Auth Intro&lt;/a>, &lt;a href="https://cloud.google.com/blog/products/api-management/identity-propagation-in-an-api-gateway-architecture"target="_blank" rel="noopener">Google Identity Propagation&lt;/a>, &lt;a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-228.pdf"target="_blank" rel="noopener">NIST API Protection&lt;/a>)&lt;/p>
+&lt;p>Un segundo caso muestra otra clase de regla: &lt;code>POST /admin/users/123/block&lt;/code>. Ahí ya no manda ownership, sino rol administrativo, alcance sobre la organización o tenant y trazabilidad de la acción. El token puede traer contexto inicial, pero la decisión real sigue dependiendo de política y estado actual.&lt;/p>
+&lt;div role="img" aria-label="Diagrama">
+&lt;pre class="mermaid hx:mt-6">
+flowchart LR
+Client([Cliente])
+IdP([IdP])
+DOM[(Estado actual del dominio)]
+subgraph Borde
+GW[&amp;#34;gateway o BFF&amp;lt;br/&amp;gt;PEP de borde&amp;#34;]
+TVL[&amp;#34;validación de token&amp;#34;]
+end
+subgraph Plataforma
+AL[&amp;#34;Authorization layer&amp;lt;br/&amp;gt;(opcional, PDP)&amp;#34;]
+DS[&amp;#34;Domain service&amp;lt;br/&amp;gt;PEP final&amp;#34;]
+end
+Client --&amp;gt;|&amp;#34;bearer token&amp;#34;| GW
+GW --&amp;gt;|&amp;#34;firma / exp / formato&amp;#34;| TVL
+TVL --&amp;gt;|&amp;#34;JWKS / introspection&amp;#34;| IdP
+GW --&amp;gt;|&amp;#34;request + contexto&amp;#34;| AL
+AL --&amp;gt;|&amp;#34;blocked / roles&amp;#34;| DOM
+AL --&amp;gt;|&amp;#34;allow preliminar&amp;#34;| DS
+DS --&amp;gt;|&amp;#34;ownership / estado del recurso&amp;#34;| DOM
+DS --&amp;gt;|&amp;#34;allow / deny&amp;#34;| GW
+GW --&amp;gt; Client
+&lt;/pre>
+&lt;/div>&lt;div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+&lt;iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/iX8g4LqF8p8?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video">&lt;/iframe>
+&lt;/div>
+&lt;hr>
+&lt;h2>Preguntas clave&lt;span class="hx:absolute hx:-mt-20" id="preguntas-clave">&lt;/span>
+&lt;a href="#preguntas-clave" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;ol>
+&lt;li>¿Qué identidades participan en este request?&lt;/li>
+&lt;li>¿Dónde cambia la confianza dentro del sistema?&lt;/li>
+&lt;li>¿Cómo se propaga la identidad hasta el servicio que decide?&lt;/li>
+&lt;li>¿Quién toma la decisión de autorización real?&lt;/li>
+&lt;li>¿Qué datos necesita esa decisión y quién es dueño de esos datos?&lt;/li>
+&lt;li>¿Qué queda en el token y qué obliga a consultar el estado actual del dominio?&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;h2>Qué resuelve cada capa&lt;span class="hx:absolute hx:-mt-20" id="qué-resuelve-cada-capa">&lt;/span>
+&lt;a href="#qu%c3%a9-resuelve-cada-capa" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">Capa&lt;/th>
+&lt;th style="text-align: left">Resuelve&lt;/th>
+&lt;th style="text-align: left">No resuelve&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>IdP / auth service&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">login, sesión, recupero y emisión de token&lt;/td>
+&lt;td style="text-align: left">permisos reales de dominio&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>gateway / BFF&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">validación inicial, rate limiting y filtro grueso&lt;/td>
+&lt;td style="text-align: left">ownership, bloqueo de usuarios, reglas de negocio&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Servicio de dominio&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">autorización real sobre el recurso&lt;/td>
+&lt;td style="text-align: left">login o manejo de sesión&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Datos de dominio&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">estado real: roles efectivos, ownership, flags&lt;/td>
+&lt;td style="text-align: left">enforcement por sí solos&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>&lt;strong>Vocabulario mínimo&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>AuthN&lt;/code>: verificar quién es.&lt;/li>
+&lt;li>&lt;code>AuthZ&lt;/code>: decidir qué puede hacer sobre un recurso.&lt;/li>
+&lt;li>&lt;code>BFF&lt;/code>: &lt;code>backend-for-frontend&lt;/code>; una capa backend pensada para una app o canal específico.&lt;/li>
+&lt;li>&lt;code>Claim&lt;/code>: dato portable dentro del token.&lt;/li>
+&lt;li>&lt;code>Scope&lt;/code>: permiso amplio, útil para filtros iniciales.&lt;/li>
+&lt;li>&lt;code>Coarse-grained authorization&lt;/code>: “¿en principio este request podría pasar?”&lt;/li>
+&lt;li>&lt;code>Fine-grained authorization&lt;/code>: “¿esta persona puede hacer esto, sobre este recurso, ahora?” (&lt;a href="https://www.oauth.com/oauth2-servers/the-resource-server/"target="_blank" rel="noopener">OAuth Resource Server&lt;/a>, &lt;a href="https://www.openpolicyagent.org/docs/external-data"target="_blank" rel="noopener">OPA&lt;/a>, &lt;a href="https://www.keycloak.org/docs/latest/authorization_services/index.html"target="_blank" rel="noopener">Keycloak Authz&lt;/a>, &lt;a href="https://curity.io/resources/learn/claims-best-practices/"target="_blank" rel="noopener">Curity Claims&lt;/a>)&lt;/li>
+&lt;/ul>
+&lt;p>Si la autorización empieza a repetirse o a cruzar muchos servicios, puede aparecer una &lt;code>Authorization Layer&lt;/code> o policy engine. Ahí &lt;code>PDP&lt;/code> decide y &lt;code>PEP&lt;/code> hace cumplir. Conviene pensarlo como una opción de madurez, no como punto de partida. (&lt;a href="https://www.openpolicyagent.org/docs/external-data"target="_blank" rel="noopener">OPA&lt;/a>, &lt;a href="https://www.keycloak.org/docs/latest/authorization_services/index.html"target="_blank" rel="noopener">Keycloak Authz&lt;/a>)&lt;/p>
+&lt;p>Si necesitás la versión exhaustiva de esta tabla, está en el &lt;a href="#apendice-matriz-operativa">apéndice de matriz operativa&lt;/a>.&lt;/p>
+&lt;p>Hasta acá separamos responsabilidades. El paso siguiente es entender quién actúa en cada tramo del request y dónde cambia la confianza.&lt;/p>
+&lt;hr>
+&lt;h2>Identidades y confianza&lt;span class="hx:absolute hx:-mt-20" id="identidades-y-confianza">&lt;/span>
+&lt;a href="#identidades-y-confianza" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;p>En auth distribuida no participa solo el usuario final. También existen el cliente, el &lt;code>BFF&lt;/code>, el &lt;code>gateway&lt;/code> y los servicios internos que se llaman entre sí.&lt;/p>
+&lt;p>Conviene distinguir explícitamente entre la autenticación y autorización del servicio llamador y la del usuario final. Esa diferencia importa porque un request puede transportar al mismo tiempo quién inició la acción y qué componente la está ejecutando en ese hop. (&lt;a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-228.pdf"target="_blank" rel="noopener">NIST API Protection&lt;/a>)&lt;/p>
+&lt;p>En hops internos puede importar no solo la identidad del usuario, sino también la identidad del servicio que ejecuta la acción. &lt;code>User identity&lt;/code> y &lt;code>service identity&lt;/code> no son lo mismo, y conviene no mezclarlas.&lt;/p>
+&lt;p>Los puntos que más conviene marcar en el diseño son siempre los mismos: login, emisión del primer token, entrada por &lt;code>gateway&lt;/code> o &lt;code>BFF&lt;/code>, hops inter-servicio y cualquier &lt;code>token exchange&lt;/code> u on-behalf-of flow. El diagrama de identidad y acceso tiene que mostrar dónde se emiten tokens, dónde cambia la confianza y dónde aparecen esos flujos. No alcanza con saber quién inició el request; también importa qué componente lo ejecuta en cada hop y bajo qué relación de confianza. (&lt;a href="https://learn.microsoft.com/en-us/azure/well-architected/architect-role/design-diagrams"target="_blank" rel="noopener">Azure Design Diagrams&lt;/a>, &lt;a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-228.pdf"target="_blank" rel="noopener">NIST API Protection&lt;/a>)&lt;/p>
+&lt;p>&lt;strong>Propagación de identidad&lt;/strong>&lt;/p>
+&lt;p>Con ese mapa, la siguiente decisión ya no es quién participa sino cómo llega la identidad hasta el servicio que protege el recurso.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">Diseño&lt;/th>
+&lt;th style="text-align: left">Qué viaja hasta backend&lt;/th>
+&lt;th style="text-align: left">Ventaja principal&lt;/th>
+&lt;th style="text-align: left">Costo principal&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>External token propagation&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">el token emitido por el &lt;code>IdP&lt;/code>&lt;/td>
+&lt;td style="text-align: left">contexto end-to-end, mejor auditoría, menos moving parts&lt;/td>
+&lt;td style="text-align: left">más acoplamiento al proveedor&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Token exchange / internal token&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">un token interno de plataforma&lt;/td>
+&lt;td style="text-align: left">desacopla al &lt;code>IdP&lt;/code> y normaliza credenciales dentro del sistema&lt;/td>
+&lt;td style="text-align: left">más emisión, renovación y superficie de seguridad&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>&lt;strong>External token propagation&lt;/strong>&lt;/p>
+&lt;p>El token emitido por el proveedor cruza el borde y sigue viaje hacia backend. Propagar el &lt;code>security context&lt;/code> end-to-end mejora la auditoría, evita cuentas genéricas privilegiadas y habilita decisiones más ricas en backend. (&lt;a href="https://cloud.google.com/blog/products/api-management/identity-propagation-in-an-api-gateway-architecture"target="_blank" rel="noopener">Google Identity Propagation&lt;/a>, &lt;a href="https://microservices.io/post/architecture/2025/07/22/microservices-authn-authz-part-3-jwt-authorization.html"target="_blank" rel="noopener">Microservices JWT Authz&lt;/a>)&lt;/p>
+&lt;div role="img" aria-label="Diagrama">
+&lt;pre class="mermaid hx:mt-6">
+flowchart LR
+subgraph A[&amp;#34;External token propagation&amp;#34;]
+direction LR
+IdP1[IdP] --&amp;gt;|token del IdP| Client1[cliente]
+Client1 --&amp;gt;|mismo token| Edge1[gateway o BFF]
+Edge1 --&amp;gt;|mismo token| Svc1[servicio]
+end
+&lt;/pre>
+&lt;/div>&lt;p>&lt;strong>Token exchange / internal token&lt;/strong>&lt;/p>
+&lt;p>El borde o un &lt;code>auth service&lt;/code> valida el token externo y lo intercambia por uno interno. Hay un mecanismo estándar para ese intercambio. También puede servir para cambiar de credencial cuando entra el request a la plataforma, desacoplar a los servicios del proveedor externo y fijar una semántica propia de plataforma. El costo es más serio: claves, expiración, renovación y más decisiones de seguridad. (&lt;a href="https://www.rfc-editor.org/rfc/rfc8693.html"target="_blank" rel="noopener">Token Exchange&lt;/a>, &lt;a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-228.pdf"target="_blank" rel="noopener">NIST API Protection&lt;/a>)&lt;/p>
+&lt;div role="img" aria-label="Diagrama">
+&lt;pre class="mermaid hx:mt-6">
+flowchart LR
+subgraph B[&amp;#34;Token exchange / internal token&amp;#34;]
+direction LR
+IdP2[IdP] --&amp;gt;|token del IdP| Client2[cliente]
+Client2 --&amp;gt;|token externo| Edge2[gateway o auth service]
+Edge2 --&amp;gt;|valida y reemite| Internal[token interno]
+Internal --&amp;gt; Svc2[servicio]
+end
+&lt;/pre>
+&lt;/div>&lt;p>En la práctica, esta decisión define cuánto contexto viaja end-to-end y cuánto costo operativo asumís para desacoplar la plataforma del proveedor.&lt;/p>
+&lt;hr>
+&lt;h2>Autenticación en el borde&lt;span class="hx:absolute hx:-mt-20" id="autenticación-en-el-borde">&lt;/span>
+&lt;a href="#autenticaci%c3%b3n-en-el-borde" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">Patrón&lt;/th>
+&lt;th style="text-align: left">Qué hace el borde&lt;/th>
+&lt;th style="text-align: left">Cuándo encaja&lt;/th>
+&lt;th style="text-align: left">Límite principal&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Validación local de JWT/JWKS&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">verifica firma y &lt;code>claims&lt;/code> localmente&lt;/td>
+&lt;td style="text-align: left">access token &lt;code>JWT&lt;/code> y baja latencia&lt;/td>
+&lt;td style="text-align: left">no ve estado fresco por sí solo&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Introspection remota&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">consulta online si el token está activo&lt;/td>
+&lt;td style="text-align: left">tokens opacos o necesidad de validación revocation-aware&lt;/td>
+&lt;td style="text-align: left">más latencia y dependencia de red&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Delegación a servicio externo de auth&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">pregunta a un &lt;code>auth service&lt;/code> propio&lt;/td>
+&lt;td style="text-align: left">cuando el gateway OSS no resuelve nativamente lo que hace falta&lt;/td>
+&lt;td style="text-align: left">otro hop y contrato propio&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Login/sesión mediado por gateway o BFF&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">el borde participa más directamente del flujo OAuth/OIDC&lt;/td>
+&lt;td style="text-align: left">apps web o BFFs que concentran sesión&lt;/td>
+&lt;td style="text-align: left">más moving parts en el borde&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3>Validación local de &lt;code>JWT/JWKS&lt;/code>&lt;span class="hx:absolute hx:-mt-20" id="validación-local-de-jwtjwks">&lt;/span>
+&lt;a href="#validaci%c3%b3n-local-de-jwtjwks" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Elegila cuando priorizás latencia y el access token ya trae suficiente contexto inicial. El patrón clásico del resource server: firma, expiración, formato y &lt;code>claims&lt;/code> básicos se verifican localmente. Si el access token es un &lt;code>JWT&lt;/code>, existe un perfil interoperable para ese caso. Lo que no resuelve por sí solo es revocación, usuario bloqueado, rol efectivo, ownership o reglas de negocio. (&lt;a href="https://www.oauth.com/oauth2-servers/the-resource-server/"target="_blank" rel="noopener">OAuth Resource Server&lt;/a>, &lt;a href="https://www.rfc-editor.org/rfc/rfc9068"target="_blank" rel="noopener">JWT Access Token Profile&lt;/a>)&lt;/p>
+&lt;h3>Introspection remota&lt;span class="hx:absolute hx:-mt-20" id="introspection-remota">&lt;/span>
+&lt;a href="#introspection-remota" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Conviene cuando necesitás estado más fresco o trabajás con tokens opacos. El borde le pregunta online al authorization server si el token está activo. Ese camino tiene un estándar claro, pero aumenta la dependencia de red y disponibilidad. (&lt;a href="https://www.rfc-editor.org/rfc/rfc7662.html"target="_blank" rel="noopener">Token Introspection&lt;/a>)&lt;/p>
+&lt;h3>External auth&lt;span class="hx:absolute hx:-mt-20" id="external-auth">&lt;/span>
+&lt;a href="#external-auth" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Encaja cuando querés unificar lógica común sin meterla entera en el gateway. Un patrón común es delegar la decisión inicial a un endpoint externo, por ejemplo con &lt;code>ext_authz&lt;/code> o &lt;code>ForwardAuth&lt;/code>. Es útil cuando el gateway OSS no trae capacidades nativas suficientes o cuando el equipo quiere concentrar autenticación común en un servicio propio. (&lt;a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/security/ext_authz_filter.html"target="_blank" rel="noopener">Envoy ext_authz&lt;/a>, &lt;a href="https://doc.traefik.io/traefik/reference/routing-configuration/http/middlewares/forwardauth/"target="_blank" rel="noopener">Traefik ForwardAuth&lt;/a>)&lt;/p>
+&lt;h3>gateway/BFF como cliente &lt;code>OIDC&lt;/code>&lt;span class="hx:absolute hx:-mt-20" id="gatewaybff-como-cliente-oidc">&lt;/span>
+&lt;a href="#gatewaybff-como-cliente-oidc" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Tiene sentido cuando el borde también administra login o sesión de una app web. El borde participa más directamente del flujo de login o sesión y puede actuar como cliente OAuth/OIDC o &lt;code>Relying Party&lt;/code>. Conviene especialmente en aplicaciones web y BFFs. No es sinónimo de validar un bearer token ya emitido. (&lt;a href="https://openid.net/specs/openid-connect-core-1_0.html"target="_blank" rel="noopener">OpenID Connect&lt;/a>, &lt;a href="https://microservices.io/patterns/apigateway.html"target="_blank" rel="noopener">API Gateway Pattern&lt;/a>)&lt;/p>
+&lt;p>Si querés bajar estos patrones a herramientas concretas, fijate el &lt;a href="#apendice-gateways">apéndice de gateways&lt;/a>.&lt;/p>
+&lt;p>Hasta acá definiste qué contexto viaja y cómo lo valida el borde. Falta lo más difícil: con qué datos decide el dominio.&lt;/p>
+&lt;hr>
+&lt;h2>Autorización distribuida&lt;span class="hx:absolute hx:-mt-20" id="autorización-distribuida">&lt;/span>
+&lt;a href="#autorizaci%c3%b3n-distribuida" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;p>La responsabilidad primaria de autorización sigue estando en los servicios, porque son quienes protegen recursos concretos y quienes pueden acceder a datos de aplicación. En el borde solo ves el request; en el dominio ves el recurso, su estado y sus relaciones. (&lt;a href="https://microservices.io/post/architecture/2025/07/22/microservices-authn-authz-part-3-jwt-authorization.html"target="_blank" rel="noopener">Microservices JWT Authz&lt;/a>)&lt;/p>
+&lt;p>&lt;strong>Ojo con esto.&lt;/strong> Un bearer token válido no prueba que una operación esté permitida. Prueba identidad y contexto de acceso. El permiso real puede depender de ownership, estado del recurso, tenant, suspensión del usuario o reglas de negocio.&lt;/p>
+&lt;h3>Claims y scopes&lt;span class="hx:absolute hx:-mt-20" id="claims-y-scopes">&lt;/span>
+&lt;a href="#claims-y-scopes" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Un &lt;code>claim&lt;/code> es un dato que viene dentro del token. Un &lt;code>scope&lt;/code> es un permiso de alto nivel que también puede viajar en el token y suele expresarse como una cadena tipo &lt;code>orders.read&lt;/code>. &lt;code>claims&lt;/code> y &lt;code>scopes&lt;/code> sirven para &lt;code>coarse-grained authorization&lt;/code>. Funcionan bien cuando el dato es chico, estable y suficientemente genérico para viajar en el token:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>scope=payments.read&lt;/code>&lt;/li>
+&lt;li>&lt;code>role=admin&lt;/code>&lt;/li>
+&lt;li>&lt;code>aud=orders-api&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;details>
+&lt;summary> Esto es un ejemplo de access token&lt;/summary>
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
+&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-json" data-lang="json">&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;iss&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;https://iam.example.com&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;sub&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;user_123&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;aud&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;orders-api&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;exp&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">1765197600&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;iat&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">1765194000&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;nbf&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">1765194000&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;jti&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;01HT8M9Y7K4Q2R6W8X1Z3A5B7C&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;client_id&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;mobile-app&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;scope&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;orders.read orders.cancel&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;role&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;customer&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;user_id&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">123&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;tenant_id&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;tenant_42&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;organization_id&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;org_7&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;amr&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="s2">&amp;#34;pwd&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s2">&amp;#34;mfa&amp;#34;&lt;/span>&lt;span class="p">],&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;#34;delegation_id&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;9c4b4d1a-6a66-4e56-8f76-2c5031d9a41b&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copiar código"
+aria-label="Copiar código"
+data-copied-label="¡Copiado!"
+>
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
+&lt;/button>
+&lt;/div>
+&lt;/div>
+&lt;/details>
+&lt;p>No todos los tokens llevan todos esos campos, y los nombres cambian según el &lt;code>IdP&lt;/code> o el diseño de la plataforma. &lt;code>tenant_id&lt;/code>, &lt;code>organization_id&lt;/code>, &lt;code>amr&lt;/code> o &lt;code>delegation_id&lt;/code> son ejemplos opcionales. Lo importante no es memorizar nombres, sino distinguir qué conviene llevar en el token y qué sigue dependiendo del estado actual del dominio.&lt;/p>
+&lt;p>Los &lt;code>claims&lt;/code> y &lt;code>scopes&lt;/code> sirven para filtros iniciales y para parte de la autorización, pero no para todo. Cuando la autorización es muy cambiante o depende de permisos de negocio volátiles, el token por sí solo no alcanza. (&lt;a href="https://curity.io/resources/learn/claims-best-practices/"target="_blank" rel="noopener">Curity Claims&lt;/a>, &lt;a href="https://microservices.io/post/architecture/2025/07/22/microservices-authn-authz-part-3-jwt-authorization.html"target="_blank" rel="noopener">Microservices JWT Authz&lt;/a>)&lt;/p>
+&lt;h3>Datos para decidir&lt;span class="hx:absolute hx:-mt-20" id="datos-para-decidir">&lt;/span>
+&lt;a href="#datos-para-decidir" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Un &lt;code>isAllowed(user, operation, resource)&lt;/code> necesita más que identidad. Para tomar esa decisión conviene separar tres categorías. (&lt;a href="https://microservices.io/post/architecture/2025/07/22/microservices-authn-authz-part-3-jwt-authorization.html"target="_blank" rel="noopener">Microservices JWT Authz&lt;/a>)&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>built-in&lt;/strong>: identidad y roles que vienen del token;&lt;/li>
+&lt;li>&lt;strong>local&lt;/strong>: datos del propio servicio;&lt;/li>
+&lt;li>&lt;strong>remote&lt;/strong>: datos que pertenecen a otros servicios.&lt;/li>
+&lt;/ul>
+&lt;p>Ahí aparece la parte realmente distribuida del problema. Ownership, estado de bloqueo, relaciones, flags y permisos volátiles obligan a consultar el estado actual del dominio o a mantener una estrategia explícita para obtener esos datos. Conviene usar &lt;code>claims&lt;/code> estables para filtrar y combinarlos con business permissions volátiles cuando la regla real depende del dominio. (&lt;a href="https://curity.io/resources/learn/claims-best-practices/"target="_blank" rel="noopener">Curity Claims&lt;/a>, &lt;a href="https://microservices.io/post/architecture/2025/07/22/microservices-authn-authz-part-3-jwt-authorization.html"target="_blank" rel="noopener">Microservices JWT Authz&lt;/a>, &lt;a href="https://www.openpolicyagent.org/docs/external-data"target="_blank" rel="noopener">OPA&lt;/a>, &lt;a href="https://www.keycloak.org/docs/latest/authorization_services/index.html"target="_blank" rel="noopener">Keycloak Authz&lt;/a>)&lt;/p>
+&lt;hr>
+&lt;h2>Quién resuelve identidad&lt;span class="hx:absolute hx:-mt-20" id="quién-resuelve-identidad">&lt;/span>
+&lt;a href="#qui%c3%a9n-resuelve-identidad" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;p>Antes de discutir Firebase, Clerk o Keycloak, hay que entender qué están eligiendo: quién resuelve login, sesión y emisión de tokens. Eso no incluye &lt;code>fine-grained authorization&lt;/code> de negocio, que sigue siendo responsabilidad propia independientemente del proveedor.&lt;/p>
+&lt;div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+&lt;iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/5KChrGWFcpk?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video">&lt;/iframe>
+&lt;/div>
+&lt;p>También conviene separar tres piezas que suelen mezclarse:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>ID token&lt;/code>: le dice al cliente quién es el usuario.&lt;/li>
+&lt;li>&lt;code>access token&lt;/code>: sirve para llamar APIs.&lt;/li>
+&lt;li>&lt;code>refresh token&lt;/code>: renueva la sesión sin volver a autenticarse.&lt;/li>
+&lt;/ul>
+&lt;p>Un error clásico es usar el &lt;code>ID token&lt;/code> como si fuera el token de autorización de la API. Para la API, el token relevante suele ser el &lt;code>access token&lt;/code>. (&lt;a href="https://openid.net/specs/openid-connect-core-1_0.html"target="_blank" rel="noopener">OpenID Connect&lt;/a>, &lt;a href="https://oauth.net/2/refresh-tokens/"target="_blank" rel="noopener">OAuth Refresh Tokens&lt;/a>, &lt;a href="https://www.oauth.com/oauth2-servers/the-resource-server/"target="_blank" rel="noopener">OAuth Resource Server&lt;/a>)&lt;/p>
+&lt;p>Si querés comparar proveedores concretos de identidad, está el &lt;a href="#apendice-idp-externos">apéndice de &lt;code>IdP&lt;/code> externos&lt;/a>.&lt;/p>
+&lt;h3>auth propia&lt;span class="hx:absolute hx:-mt-20" id="auth-propia">&lt;/span>
+&lt;a href="#auth-propia" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Conviene cuando el equipo necesita controlar de punta a punta cómo se resuelven login, sesión, emisión de tokens y manejo de credenciales, o cuando esa implementación forma parte de lo que después va a tener que defender técnicamente. Eso incluye registro, login, hashing, recupero, refresh tokens y emisión de JWT.&lt;/p>
+&lt;p>No implica escribir todo desde cero —Spring Authorization Server, las utilidades OAuth2/JWT de FastAPI o &lt;code>node-oidc-provider&lt;/code> cubren una parte importante del trabajo commodity— pero la seguridad, la operación y las garantías siguen siendo del equipo. (&lt;a href="https://docs.spring.io/spring-authorization-server/reference/overview.html"target="_blank" rel="noopener">Spring Auth Server&lt;/a>, &lt;a href="https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/"target="_blank" rel="noopener">FastAPI Security&lt;/a>, &lt;a href="https://github.com/panva/node-oidc-provider"target="_blank" rel="noopener">node-oidc-provider&lt;/a>)&lt;/p>
+&lt;p>Vale distinguir también entre auth para la propia app y un authorization server OAuth/OIDC reutilizable para terceros. Lo segundo involucra mucho más superficie, y mezclar los dos objetivos es una fuente frecuente de scope creep en el proyecto.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">Trade-off&lt;/th>
+&lt;th style="text-align: left">Detalle&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>A favor&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">Control total sobre identidad, sesiones y claims. Es la opción correcta si el equipo necesita flujos propios, independencia del proveedor o demostrar garantías que ellos mismos implementaron.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>A favor&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">Con librerías modernas, el volumen de código commodity es bastante menor de lo que sugiere la intuición inicial.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>En contra&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">Seguridad, sesiones, recupero, almacenamiento seguro, revocación, auditoría y mitigaciones de abuso quedan bajo responsabilidad del equipo. (&lt;a href="https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html"target="_blank" rel="noopener">OWASP AuthN&lt;/a>, &lt;a href="https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"target="_blank" rel="noopener">OWASP Passwords&lt;/a>)&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3>IdP externo&lt;span class="hx:absolute hx:-mt-20" id="idp-externo">&lt;/span>
+&lt;a href="#idp-externo" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>Si el equipo no quiere construir login, sesión y recuperación desde cero, puede delegar esa parte en un &lt;code>IdP&lt;/code> externo. La decisión real no es “usar Firebase o no”, sino qué parte de identidad resuelve el proveedor y qué parte sigue siendo responsabilidad de la plataforma.&lt;/p>
+&lt;p>Lo que ningún proveedor resuelve por ustedes es si el usuario está bloqueado, qué recursos son suyos, qué flags de negocio aplican y cómo se decide la &lt;code>fine-grained authorization&lt;/code>. Eso sigue siendo responsabilidad del equipo y debe persistirse en el sistema independientemente de quién emite el token. Si quieren comparar proveedores concretos, vean el &lt;a href="#apendice-idp-externos">apéndice de &lt;code>IdP&lt;/code> externos&lt;/a>. (&lt;a href="https://firebase.google.com/docs/auth"target="_blank" rel="noopener">Firebase Auth&lt;/a>, &lt;a href="https://clerk.com/docs/expo/getting-started/quickstart"target="_blank" rel="noopener">Clerk Quickstart&lt;/a>, &lt;a href="https://www.keycloak.org/"target="_blank" rel="noopener">Keycloak&lt;/a>, &lt;a href="https://supabase.com/docs/guides/auth"target="_blank" rel="noopener">Supabase Auth&lt;/a>)&lt;/p>
+&lt;h3>Criterio de validez&lt;span class="hx:absolute hx:-mt-20" id="criterio-de-validez">&lt;/span>
+&lt;a href="#criterio-de-validez" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;p>La regla es simple: la cátedra pide un piso de controles. Si hacen &lt;code>auth propia&lt;/code>, ustedes lo implementan. Si usan un &lt;code>IdP&lt;/code> externo, tienen que poder demostrar que ese proveedor cubre ese mismo piso.&lt;/p>
+&lt;p>Como mínimo:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>sign-up&lt;/code>, &lt;code>login&lt;/code> y &lt;code>password reset&lt;/code>. (&lt;a href="https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html"target="_blank" rel="noopener">OWASP AuthN&lt;/a>, &lt;a href="https://cheatsheetseries.owasp.org/cheatsheets/Forgot_Password_Cheat_Sheet.html"target="_blank" rel="noopener">OWASP Forgot Password&lt;/a>)&lt;/li>
+&lt;li>política mínima de contraseñas y hashing adaptativo, por ejemplo &lt;code>BCrypt&lt;/code> o equivalente. (&lt;a href="https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html"target="_blank" rel="noopener">OWASP AuthN&lt;/a>, &lt;a href="https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"target="_blank" rel="noopener">OWASP Passwords&lt;/a>)&lt;/li>
+&lt;li>&lt;code>password reset token&lt;/code> de uso único, expiración máxima de 1 hora y manejo seguro: suficiente entropía, almacenamiento seguro y sin exposición en logs. (&lt;a href="https://cheatsheetseries.owasp.org/cheatsheets/Forgot_Password_Cheat_Sheet.html"target="_blank" rel="noopener">OWASP Forgot Password&lt;/a>)&lt;/li>
+&lt;li>renovación de sesión, típicamente con &lt;code>refresh token&lt;/code> o mecanismo equivalente. (&lt;a href="https://oauth.net/2/refresh-tokens/"target="_blank" rel="noopener">OAuth Refresh Tokens&lt;/a>, &lt;a href="https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html"target="_blank" rel="noopener">OWASP AuthN&lt;/a>)&lt;/li>
+&lt;li>&lt;code>rate limiting&lt;/code> para &lt;code>login&lt;/code> y &lt;code>password reset&lt;/code>, por IP y por cuenta. (&lt;a href="https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html"target="_blank" rel="noopener">OWASP AuthN&lt;/a>, &lt;a href="https://cheatsheetseries.owasp.org/cheatsheets/Forgot_Password_Cheat_Sheet.html"target="_blank" rel="noopener">OWASP Forgot Password&lt;/a>)&lt;/li>
+&lt;/ul>
+&lt;p>Elegir un &lt;code>IdP&lt;/code> externo no se justifica solo por ir más rápido. Si ese piso no puede demostrarse con precisión y con evidencia oficial, delegar identidad no alcanza como defensa arquitectónica. En ese caso, la opción que queda bien defendida es &lt;code>auth propia&lt;/code>.&lt;/p>
+&lt;h2>Checklist ADR&lt;span class="hx:absolute hx:-mt-20" id="checklist-adr">&lt;/span>
+&lt;a href="#checklist-adr" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;ul>
+&lt;li>¿Qué valida el borde y qué necesita decidir el servicio que ejecuta la operación?&lt;/li>
+&lt;li>¿Qué decisiones se toman con claims del token y cuáles dependen del estado actual del dominio?&lt;/li>
+&lt;li>¿Qué datos externos al token necesita la autorización y de qué servicio salen?&lt;/li>
+&lt;li>¿Cómo llega la identidad al backend: token original, token intercambiado o contexto propagado?&lt;/li>
+&lt;li>¿Qué componente toma la decisión final y por qué ese componente tiene los datos correctos para tomarla?&lt;/li>
+&lt;li>¿Qué parte se delega al IdP y qué parte sigue siendo responsabilidad propia?&lt;/li>
+&lt;li>¿Qué limitación concreta de la solución elegida aceptamos a cambio de sus beneficios?&lt;/li>
+&lt;/ul>
+&lt;h2>Apéndice: Matriz operativa&lt;span class="hx:absolute hx:-mt-20" id="apéndice-matriz-operativa">&lt;/span>
+&lt;a href="#ap%c3%a9ndice-matriz-operativa" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;p>Si necesitás una referencia más exhaustiva para ADR o corrección, esta es la versión detallada de responsabilidades por capa.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">Responsabilidad&lt;/th>
+&lt;th style="text-align: left">¿Pasa por el gateway?&lt;/th>
+&lt;th style="text-align: left">Dónde se implementa&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">&lt;code>Login&lt;/code> federado con Google (optativo)&lt;/td>
+&lt;td style="text-align: left">No (valida el token después)&lt;/td>
+&lt;td style="text-align: left">&lt;code>IdP&lt;/code> externo&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;code>Login&lt;/code> con email/password&lt;/td>
+&lt;td style="text-align: left">No&lt;/td>
+&lt;td style="text-align: left">&lt;code>IdP&lt;/code> externo o &lt;code>auth propia&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">Registro con email/password&lt;/td>
+&lt;td style="text-align: left">No&lt;/td>
+&lt;td style="text-align: left">&lt;code>IdP&lt;/code> externo o &lt;code>auth propia&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">Recupero de contraseña&lt;/td>
+&lt;td style="text-align: left">No&lt;/td>
+&lt;td style="text-align: left">&lt;code>IdP&lt;/code> externo o &lt;code>auth propia&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">Hash de contraseñas (ej. &lt;code>BCrypt&lt;/code> o &lt;code>scrypt&lt;/code>)&lt;/td>
+&lt;td style="text-align: left">No&lt;/td>
+&lt;td style="text-align: left">Delegado al &lt;code>IdP&lt;/code> o resuelto por &lt;code>auth propia&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">Reglas mínimas de contraseña&lt;/td>
+&lt;td style="text-align: left">No&lt;/td>
+&lt;td style="text-align: left">Depende de la opción de identidad elegida&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">Renovación de sesión&lt;/td>
+&lt;td style="text-align: left">No&lt;/td>
+&lt;td style="text-align: left">Depende de la opción de identidad elegida&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">Emisión del token de API&lt;/td>
+&lt;td style="text-align: left">No (solo valida)&lt;/td>
+&lt;td style="text-align: left">&lt;code>IdP&lt;/code> o &lt;code>auth service&lt;/code> propio&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">Validación del token de API&lt;/td>
+&lt;td style="text-align: left">Sí&lt;/td>
+&lt;td style="text-align: left">&lt;code>gateway&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">Decisión de &lt;code>fine-grained authorization&lt;/code>&lt;/td>
+&lt;td style="text-align: left">No&lt;/td>
+&lt;td style="text-align: left">&lt;code>Domain services&lt;/code> o &lt;code>Authorization Layer&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;code>Rate limiting&lt;/code> por IP&lt;/td>
+&lt;td style="text-align: left">Sí&lt;/td>
+&lt;td style="text-align: left">&lt;code>gateway&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;code>Rate limiting&lt;/code> por cuenta/email&lt;/td>
+&lt;td style="text-align: left">Parcial (ver nota)&lt;/td>
+&lt;td style="text-align: left">&lt;code>auth service&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">Bloqueo de usuario&lt;/td>
+&lt;td style="text-align: left">No&lt;/td>
+&lt;td style="text-align: left">Backend + DB de dominio&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">Roles básicos (&lt;code>user&lt;/code>/&lt;code>admin&lt;/code>)&lt;/td>
+&lt;td style="text-align: left">Parcial (&lt;code>claims&lt;/code>/&lt;code>scopes&lt;/code>)&lt;/td>
+&lt;td style="text-align: left">Estado real en DB propia&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;code>Ownership&lt;/code> y &lt;code>fine-grained authorization&lt;/code>&lt;/td>
+&lt;td style="text-align: left">No&lt;/td>
+&lt;td style="text-align: left">Enforcement final en backend con datos del dominio&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">Minimización de datos&lt;/td>
+&lt;td style="text-align: left">No&lt;/td>
+&lt;td style="text-align: left">Backend del dominio&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">Ocultar recursos de usuario bloqueado&lt;/td>
+&lt;td style="text-align: left">No&lt;/td>
+&lt;td style="text-align: left">Backend + queries de dominio&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">Idempotencia de operaciones críticas&lt;/td>
+&lt;td style="text-align: left">No&lt;/td>
+&lt;td style="text-align: left">Servicios de dominio&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;code>/livez&lt;/code> y &lt;code>/readyz&lt;/code>&lt;/td>
+&lt;td style="text-align: left">No&lt;/td>
+&lt;td style="text-align: left">Cada servicio, incluido auth/user&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>&lt;strong>Nota.&lt;/strong> &lt;code>Rate limiting&lt;/code> por cuenta/email suele caer en &lt;code>auth service&lt;/code> porque el identificador viene en el body. &lt;code>claims&lt;/code> y &lt;code>scopes&lt;/code> sirven para &lt;code>coarse-grained authorization&lt;/code>, pero no reemplazan &lt;code>fine-grained authorization&lt;/code> ni el estado real del dominio. (&lt;a href="https://www.krakend.io/docs/endpoints/rate-limit/"target="_blank" rel="noopener">KrakenD Rate Limit&lt;/a>, &lt;a href="https://www.oauth.com/oauth2-servers/the-resource-server/"target="_blank" rel="noopener">OAuth Resource Server&lt;/a>)&lt;/p>
+&lt;hr>
+&lt;h2>Apéndice: Gateways&lt;span class="hx:absolute hx:-mt-20" id="apéndice-gateways">&lt;/span>
+&lt;a href="#ap%c3%a9ndice-gateways" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;p>Con el diseño claro, recién tiene sentido bajar a productos.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">Producto&lt;/th>
+&lt;th style="text-align: left">Modelo mental&lt;/th>
+&lt;th style="text-align: left">Encaja mejor cuando&amp;hellip;&lt;/th>
+&lt;th style="text-align: left">Ojo con&amp;hellip;&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Traefik OSS + ForwardAuth&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">application proxy con auth delegada&lt;/td>
+&lt;td style="text-align: left">querés delegar autenticación a un servicio externo y mantener el gateway simple&lt;/td>
+&lt;td style="text-align: left">&lt;code>ForwardAuth&lt;/code> está en OSS, pero la historia fuerte de OIDC aparece en Traefik Hub. (&lt;a href="https://doc.traefik.io/traefik/master/features/"target="_blank" rel="noopener">Traefik Features&lt;/a>, &lt;a href="https://doc.traefik.io/traefik/reference/routing-configuration/http/middlewares/forwardauth/"target="_blank" rel="noopener">Traefik ForwardAuth&lt;/a>, &lt;a href="https://doc.traefik.io/traefik/setup/docker/"target="_blank" rel="noopener">Traefik Docker&lt;/a>, &lt;a href="https://doc.traefik.io/traefik-hub/api-gateway/secure/middleware/oidc"target="_blank" rel="noopener">Traefik Hub OIDC&lt;/a>)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>KrakenD CE&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">BFF / API gateway declarativo&lt;/td>
+&lt;td style="text-align: left">buscás validación local de JWT y agregación/BFF con pocas piezas&lt;/td>
+&lt;td style="text-align: left">no es el caso más natural para una arquitectura basada en auth service externo por request. (&lt;a href="https://www.krakend.io/docs/authorization/jwt-validation/"target="_blank" rel="noopener">KrakenD JWT&lt;/a>, &lt;a href="https://www.krakend.io/docs/deploying/docker/"target="_blank" rel="noopener">KrakenD Docker&lt;/a>, &lt;a href="https://microservices.io/patterns/apigateway.html"target="_blank" rel="noopener">API Gateway Pattern&lt;/a>)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Tyk OSS&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">gateway más &amp;ldquo;batteries included&amp;rdquo;&lt;/td>
+&lt;td style="text-align: left">querés buen encaje con &lt;code>IdP&lt;/code> externo y una superficie más fuerte de policies&lt;/td>
+&lt;td style="text-align: left">arrastra Redis como costo operativo. (&lt;a href="https://tyk.io/docs/5.7/tyk-open-source/"target="_blank" rel="noopener">Tyk OSS&lt;/a>, &lt;a href="https://tyk.io/docs/apim/open-source/installation"target="_blank" rel="noopener">Tyk Install&lt;/a>, &lt;a href="https://tyk.io/docs/basic-config-and-security/security/authentication-authorization/openid-connect/overview/"target="_blank" rel="noopener">Tyk OIDC&lt;/a>)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Kong OSS&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">gateway plugin-based&lt;/td>
+&lt;td style="text-align: left">te sirve validación local de JWT/JWKS, routing y rate limiting&lt;/td>
+&lt;td style="text-align: left">el plugin &lt;code>JWT&lt;/code> OSS encaja bien; &lt;code>OpenID Connect&lt;/code> e introspection figuran como capacidades Enterprise. (&lt;a href="https://developer.konghq.com/gateway/db-less-mode/"target="_blank" rel="noopener">Kong DB-less&lt;/a>, &lt;a href="https://developer.konghq.com/plugins/jwt/"target="_blank" rel="noopener">Kong JWT&lt;/a>, &lt;a href="https://developer.konghq.com/plugins/jwt/examples/verified-claim/"target="_blank" rel="noopener">Kong JWT Claims&lt;/a>, &lt;a href="https://developer.konghq.com/plugins/openid-connect/"target="_blank" rel="noopener">Kong OIDC&lt;/a>, &lt;a href="https://developer.konghq.com/plugins/oauth2-introspection/"target="_blank" rel="noopener">Kong Introspection&lt;/a>)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Apache APISIX&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">gateway cloud-native de plugins&lt;/td>
+&lt;td style="text-align: left">querés flexibilidad con &lt;code>openid-connect&lt;/code>, introspection y RP flow&lt;/td>
+&lt;td style="text-align: left">la flexibilidad viene con más configuración explícita. (&lt;a href="https://apisix.apache.org/docs/apisix/plugins/openid-connect/"target="_blank" rel="noopener">Apache APISIX&lt;/a>, &lt;a href="https://apisix.apache.org/docs/apisix/installation-guide/"target="_blank" rel="noopener">APISIX Deploy&lt;/a>)&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>&lt;strong>Sin Kubernetes:&lt;/strong> todas estas opciones corren con contenedores. (&lt;a href="https://www.krakend.io/docs/deploying/docker/"target="_blank" rel="noopener">KrakenD Docker&lt;/a>, &lt;a href="https://tyk.io/docs/5.7/tyk-open-source/"target="_blank" rel="noopener">Tyk OSS&lt;/a>, &lt;a href="https://developer.konghq.com/gateway/install/docker-read-only/"target="_blank" rel="noopener">Kong Docker&lt;/a>, &lt;a href="https://doc.traefik.io/traefik/setup/docker/"target="_blank" rel="noopener">Traefik Docker&lt;/a>, &lt;a href="https://apisix.apache.org/docs/apisix/installation-guide/"target="_blank" rel="noopener">APISIX Deploy&lt;/a>)&lt;/p>
+&lt;hr>
+&lt;h2>Apéndice: IdP externos&lt;span class="hx:absolute hx:-mt-20" id="apéndice-idp-externos">&lt;/span>
+&lt;a href="#ap%c3%a9ndice-idp-externos" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;p>Esto sirve como referencia rápida de opciones concretas. Primero definan el criterio de validez; recién después comparen proveedor.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">Opción&lt;/th>
+&lt;th style="text-align: left">Tipo&lt;/th>
+&lt;th style="text-align: left">Qué simplifica&lt;/th>
+&lt;th style="text-align: left">Trade-off principal&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Clerk&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">IdP gestionado&lt;/td>
+&lt;td style="text-align: left">UI prearmada para &lt;code>sign-in&lt;/code>, perfil y flujos comunes; integración rápida. (&lt;a href="https://clerk.com/pricing"target="_blank" rel="noopener">Clerk Pricing&lt;/a>, &lt;a href="https://clerk.com/docs/reference/components/authentication/sign-in"target="_blank" rel="noopener">Clerk SignIn&lt;/a>, &lt;a href="https://clerk.com/docs/reference/components/user/user-profile"target="_blank" rel="noopener">Clerk UserProfile&lt;/a>)&lt;/td>
+&lt;td style="text-align: left">Muy poca fricción, pero más dependencia de un servicio cerrado.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Firebase Authentication&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">IdP gestionado, muy usado en mobile&lt;/td>
+&lt;td style="text-align: left">Email/password, reset, proveedores federados y buen encaje con apps mobile. (&lt;a href="https://firebase.google.com/docs/auth"target="_blank" rel="noopener">Firebase Auth&lt;/a>)&lt;/td>
+&lt;td style="text-align: left">Muy práctico, pero varias garantías finas siguen delegadas al proveedor.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Supabase Auth&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">Auth integrada a plataforma backend&lt;/td>
+&lt;td style="text-align: left">Password, magic link, OTP, social login y buen fit si también usan DB/storage de Supabase. (&lt;a href="https://supabase.com/docs/guides/auth"target="_blank" rel="noopener">Supabase Auth&lt;/a>, &lt;a href="https://supabase.com/docs/guides/platform/billing-on-supabase"target="_blank" rel="noopener">Supabase Billing&lt;/a>)&lt;/td>
+&lt;td style="text-align: left">Cómodo, pero suma dependencia de plataforma, no solo de identidad.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Auth0&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">Plataforma de identidad más enterprise&lt;/td>
+&lt;td style="text-align: left">Passwordless, social login, custom domains y conexiones enterprise. (&lt;a href="https://auth0.com/pricing"target="_blank" rel="noopener">Auth0 Pricing&lt;/a>, &lt;a href="https://auth0.com/docs/customize/custom-domains"target="_blank" rel="noopener">Auth0 Custom Domains&lt;/a>, &lt;a href="https://auth0.com/docs/authenticate/passwordless"target="_blank" rel="noopener">Auth0 Passwordless&lt;/a>)&lt;/td>
+&lt;td style="text-align: left">Muy completo, pero puede sentirse más pesado que otras opciones de esta guía.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Keycloak&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">IdP self-hosted / auth server&lt;/td>
+&lt;td style="text-align: left">OIDC, OAuth2, SAML, consola admin y Authorization Services. (&lt;a href="https://www.keycloak.org/"target="_blank" rel="noopener">Keycloak&lt;/a>, &lt;a href="https://www.keycloak.org/docs/latest/server_admin/"target="_blank" rel="noopener">Keycloak Admin&lt;/a>, &lt;a href="https://www.keycloak.org/docs/latest/authorization_services/index.html"target="_blank" rel="noopener">Keycloak Authz&lt;/a>)&lt;/td>
+&lt;td style="text-align: left">Resuelve mucho sin &lt;code>auth propia&lt;/code>, pero hay que operarlo: contenedor, DB y configuración propia. (&lt;a href="https://www.keycloak.org/server/containers"target="_blank" rel="noopener">Keycloak Container&lt;/a>, &lt;a href="https://www.keycloak.org/server/db"target="_blank" rel="noopener">Keycloak DB&lt;/a>)&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;h2>Apéndice: Caso Firebase&lt;span class="hx:absolute hx:-mt-20" id="apéndice-caso-firebase">&lt;/span>
+&lt;a href="#ap%c3%a9ndice-caso-firebase" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;p>Firebase aparece mucho en proyectos mobile y por eso tiende a colonizar el vocabulario del diseño. Vale entender bien qué resuelve y qué no.&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>verifyIdToken()&lt;/code> no chequea revocación. Un gateway que valida offline tampoco ve &lt;code>disabled=true&lt;/code> de forma inmediata. Un usuario bloqueado puede seguir pasando la barra práctica si su token no venció. (&lt;a href="https://firebase.google.com/docs/auth/admin/verify-id-tokens"target="_blank" rel="noopener">Firebase Verify&lt;/a>, &lt;a href="https://www.rfc-editor.org/rfc/rfc7662.html"target="_blank" rel="noopener">Token Introspection&lt;/a>)&lt;/li>
+&lt;li>Los custom &lt;code>claims&lt;/code> sirven para &lt;code>coarse-grained authorization&lt;/code>, no como depósito de datos de negocio. Los cambios se propagan solo cuando el usuario reautentica o refresca el token. (&lt;a href="https://firebase.google.com/docs/auth/admin/custom-claims"target="_blank" rel="noopener">Firebase Claims&lt;/a>, &lt;a href="https://www.oauth.com/oauth2-servers/the-resource-server/"target="_blank" rel="noopener">OAuth Resource Server&lt;/a>)&lt;/li>
+&lt;li>Hashing y reset son controles delegados. Si la cátedra exige garantías precisas sobre TTL máximo, single-use o almacenamiento del token de reset, hay que poder demostrarlas con documentación oficial. Si no, hay que implementarlas. (&lt;a href="https://firebase.google.com/docs/auth/admin/import-users"target="_blank" rel="noopener">Firebase Scrypt&lt;/a>, &lt;a href="https://firebase.google.com/docs/reference/rest/auth"target="_blank" rel="noopener">Firebase REST Auth&lt;/a>, &lt;a href="https://firebase.google.com/docs/auth/admin"target="_blank" rel="noopener">Firebase Admin&lt;/a>)&lt;/li>
+&lt;/ul></description></item><item><title>Guía de cátedra 2026: Cloud Computing</title><link>https://ingenieria-del-software-2.github.io/pr-preview/pr-79/blog/2025-09-11-cloud-computing/</link><pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate><guid>https://ingenieria-del-software-2.github.io/pr-preview/pr-79/blog/2025-09-11-cloud-computing/</guid><description>
+&lt;h2>TL;DR&lt;span class="hx:absolute hx:-mt-20" id="tldr">&lt;/span>
+&lt;a href="#tldr" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">Si necesitás…&lt;/th>
+&lt;th style="text-align: left">Elegí&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">Equilibrio costo / servicios administrados&lt;/td>
+&lt;td style="text-align: left">&lt;strong>GCP&lt;/strong> (USD 300 / 90 días + Always Free)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">Seguir el material de cátedra al pie&lt;/td>
+&lt;td style="text-align: left">&lt;strong>AWS&lt;/strong> (USD 200 créditos + demos del repo)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">DB gratis por 12 meses sin créditos&lt;/td>
+&lt;td style="text-align: left">&lt;strong>Azure&lt;/strong> (PostgreSQL / MySQL Flexible Server)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">DX simple, deploy rápido, sin DevOps pesado&lt;/td>
+&lt;td style="text-align: left">&lt;strong>Render&lt;/strong> / &lt;strong>Railway&lt;/strong> / &lt;strong>Fly.io&lt;/strong>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">Postgres gestionado sin tarjeta&lt;/td>
+&lt;td style="text-align: left">&lt;strong>Neon&lt;/strong> (free tier sin límite de tiempo)&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;h2>Comparativo por categoría&lt;span class="hx:absolute hx:-mt-20" id="comparativo-por-categoría">&lt;/span>
+&lt;a href="#comparativo-por-categor%c3%ada" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;h3>Compute&lt;span class="hx:absolute hx:-mt-20" id="compute">&lt;/span>
+&lt;a href="#compute" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">Proveedor&lt;/th>
+&lt;th style="text-align: left">Servicio&lt;/th>
+&lt;th style="text-align: left">Detalle clave&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>GCP&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">Compute Engine&lt;/td>
+&lt;td style="text-align: left">e2-micro &lt;strong>Always Free&lt;/strong> en &lt;code>us-west1&lt;/code> / &lt;code>us-central1&lt;/code> / &lt;code>us-east1&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>AWS&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">EC2&lt;/td>
+&lt;td style="text-align: left">Cubierto por créditos y Free Plan&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Azure&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">VMs B-series burstable&lt;/td>
+&lt;td style="text-align: left">12 meses free (B2pts v2 / B2ats v2)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Render&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">Web services / cron&lt;/td>
+&lt;td style="text-align: left">Containers; duermen tras 15 min idle&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Railway&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">Containers&lt;/td>
+&lt;td style="text-align: left">DX simple, trial 30 días + USD 5, luego Free USD 1/mes&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Fly.io&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">Fly Machines&lt;/td>
+&lt;td style="text-align: left">Billing por segundo; &lt;code>shared-cpu-1x 256MB&lt;/code> ~USD 2/mes (varía por región); autostop/autostart&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3>Storage de objetos&lt;span class="hx:absolute hx:-mt-20" id="storage-de-objetos">&lt;/span>
+&lt;a href="#storage-de-objetos" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">Proveedor&lt;/th>
+&lt;th style="text-align: left">Servicio&lt;/th>
+&lt;th style="text-align: left">Free tier&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>GCP&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">Cloud Storage&lt;/td>
+&lt;td style="text-align: left">5 GB-mes + ops + 100 GB egreso/mes (regiones US)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>AWS&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">S3&lt;/td>
+&lt;td style="text-align: left">Cubierto por créditos y Free Plan&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Azure&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">Blob Storage&lt;/td>
+&lt;td style="text-align: left">5 GB LRS hot + operaciones&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Render&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">—&lt;/td>
+&lt;td style="text-align: left">Usar S3 / R2 / B2 externo&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Railway&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">Object storage según plan&lt;/td>
+&lt;td style="text-align: left">Para casos simples, usar storage externo&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Fly.io&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">Tigris (S3-compatible)&lt;/td>
+&lt;td style="text-align: left">5 GB free, cache global, sin egress&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3>SQL gestionado&lt;span class="hx:absolute hx:-mt-20" id="sql-gestionado">&lt;/span>
+&lt;a href="#sql-gestionado" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">Proveedor&lt;/th>
+&lt;th style="text-align: left">Servicio&lt;/th>
+&lt;th style="text-align: left">Free tier&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>GCP&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">Cloud SQL&lt;/td>
+&lt;td style="text-align: left">Sin Always Free; sí créditos + free trial instance 30 días&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>AWS&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">RDS (Postgres/MySQL)&lt;/td>
+&lt;td style="text-align: left">Cubierto por créditos y Free Plan&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Azure&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">PostgreSQL / MySQL Flexible Server&lt;/td>
+&lt;td style="text-align: left">&lt;strong>12 meses free&lt;/strong>: 750 h B1MS + 32 GB storage + 32 GB backup&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Render&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">Postgres Free&lt;/td>
+&lt;td style="text-align: left">1 GB, &lt;strong>expira a 30 días&lt;/strong>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Railway&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">Postgres / MySQL&lt;/td>
+&lt;td style="text-align: left">Según uso (créditos del plan)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Fly.io&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">Managed Postgres&lt;/td>
+&lt;td style="text-align: left">Desde USD 38/mes; alternativa autogestionada (unsupported)&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3>NoSQL&lt;span class="hx:absolute hx:-mt-20" id="nosql">&lt;/span>
+&lt;a href="#nosql" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">Proveedor&lt;/th>
+&lt;th style="text-align: left">Servicio&lt;/th>
+&lt;th style="text-align: left">Free tier&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>GCP&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">Firestore&lt;/td>
+&lt;td style="text-align: left">1 GiB + cuotas diarias gratis&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>AWS&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">DynamoDB&lt;/td>
+&lt;td style="text-align: left">Free tier permanente (capacidad + almacenamiento)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Azure&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">Cosmos DB&lt;/td>
+&lt;td style="text-align: left">Free Tier opcional: 1000 RU/s + 25 GB lifetime&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Render&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">Key-Value (Valkey/Redis-compatible)&lt;/td>
+&lt;td style="text-align: left">Opción Free disponible&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Fly.io&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">Upstash for Redis&lt;/td>
+&lt;td style="text-align: left">Integrado&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3>Kubernetes gestionado&lt;span class="hx:absolute hx:-mt-20" id="kubernetes-gestionado">&lt;/span>
+&lt;a href="#kubernetes-gestionado" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">Proveedor&lt;/th>
+&lt;th style="text-align: left">Servicio&lt;/th>
+&lt;th style="text-align: left">Precio / Free tier&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>GCP&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">GKE&lt;/td>
+&lt;td style="text-align: left">USD 0.10/h por cluster; Free Tier cubre 1 Autopilot o 1 zonal Standard (solo fee de gestión, no compute/red/discos)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>AWS&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">EKS&lt;/td>
+&lt;td style="text-align: left">USD 0.10/h (estándar) / USD 0.60/h (extended support)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Azure&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">AKS&lt;/td>
+&lt;td style="text-align: left">Control plane gratis; pagás nodos/VMs&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Fly.io&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">FKS&lt;/td>
+&lt;td style="text-align: left">USD 75/mes; &lt;strong>closed beta&lt;/strong> — no recomendado para la materia&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3>Transcoding VOD&lt;span class="hx:absolute hx:-mt-20" id="transcoding-vod">&lt;/span>
+&lt;a href="#transcoding-vod" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">Proveedor&lt;/th>
+&lt;th style="text-align: left">Servicio&lt;/th>
+&lt;th style="text-align: left">Precio&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>GCP&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">Transcoder API&lt;/td>
+&lt;td style="text-align: left">≈ USD 0.03/min HD (upload firmado a GCS → job → HLS en GCS)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>AWS&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">MediaConvert&lt;/td>
+&lt;td style="text-align: left">Basic tier desde USD 0.0075/min normalizado (upload firmado a S3 → HLS a S3)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Azure&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">⚠️ &lt;strong>Media Services retirado&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">Usar partners (Bitmovin, MediaKind, Ravnur) o FFmpeg en VM&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Render / Railway / Fly.io&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">—&lt;/td>
+&lt;td style="text-align: left">FFmpeg en worker o integrar GCP/AWS&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3>ML y recomendaciones&lt;span class="hx:absolute hx:-mt-20" id="ml-y-recomendaciones">&lt;/span>
+&lt;a href="#ml-y-recomendaciones" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">Proveedor&lt;/th>
+&lt;th style="text-align: left">Servicio&lt;/th>
+&lt;th style="text-align: left">Nota&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>GCP&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">Vertex AI Search for Commerce · Vertex AI Vector Search&lt;/td>
+&lt;td style="text-align: left">Recomendaciones y búsqueda semántica&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>AWS&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">Amazon Personalize&lt;/td>
+&lt;td style="text-align: left">Ranking / recomendaciones&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Azure&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">Azure ML · ⚠️ Personalizer se retira &lt;strong>1-oct-2026&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">No permite crear recursos nuevos desde sep-2023&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3>Créditos y free tiers&lt;span class="hx:absolute hx:-mt-20" id="créditos-y-free-tiers">&lt;/span>
+&lt;a href="#cr%c3%a9ditos-y-free-tiers" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h3>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">Proveedor&lt;/th>
+&lt;th style="text-align: left">Oferta&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>GCP&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">&lt;strong>USD 300 / 90 días&lt;/strong> + 20+ productos Always Free&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>AWS&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">Plan gratuito hasta 6 meses + &lt;strong>USD 200 créditos&lt;/strong> (vencen a 12 meses) + Always Free&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Azure&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">&lt;strong>USD 200 / 30 días&lt;/strong> + 20+ servicios 12 meses + 65+ always-free&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Render&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">750 free instance hours / workspace / mes + Postgres Free 30 días&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Railway&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">Trial 30 días + USD 5 (Full o Limited según verificación GitHub), luego plan Free USD 1/mes&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Fly.io&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">Free trial: 7 días o 2 VM-hours; luego Pay As You Go&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;hr>
+&lt;h2>Bases de datos gestionadas&lt;span class="hx:absolute hx:-mt-20" id="bases-de-datos-gestionadas">&lt;/span>
+&lt;a href="#bases-de-datos-gestionadas" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;p>Independientemente de la plataforma de deploy, a veces conviene elegir la DB por separado. Opciones pensadas para PostgreSQL o MySQL gestionado con costo inicial muy bajo o nulo.&lt;/p>
+&lt;p>&lt;strong>PostgreSQL&lt;/strong>&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">Servicio&lt;/th>
+&lt;th style="text-align: left">Plan Free&lt;/th>
+&lt;th style="text-align: left">Cuándo elegirlo&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Neon&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">$0, sin límite de tiempo, sin tarjeta. 100 proyectos, 100 CU-h/mes, 0.5 GB/proyecto. Escala a cero en inactividad.&lt;/td>
+&lt;td style="text-align: left">Postgres puro con mínima fricción. La opción más limpia para arrancar sin costos sorpresa.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Supabase&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">2 proyectos activos, 500 MB/proyecto + Auth + Storage + Realtime + Edge Functions + APIs automáticas.&lt;/td>
+&lt;td style="text-align: left">Postgres + backend completo (auth, storage, APIs) en un solo lugar. Muy rendidor para CRUD/paneles/apps con login.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Render Postgres&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">1 GB, 1 base free/workspace, &lt;strong>expira a 30 días&lt;/strong>.&lt;/td>
+&lt;td style="text-align: left">Solo si ya estás en Render para un deploy puntual.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>&lt;strong>MySQL&lt;/strong>&lt;/p>
+&lt;p>El panorama &amp;ldquo;moderno, gratis y simple&amp;rdquo; para MySQL es más limitado:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">Servicio&lt;/th>
+&lt;th style="text-align: left">Detalle&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Railway&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">Trial 30 días + USD 5; templates de MySQL sin configuración. Bueno para arrancar rápido.&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Azure MySQL Flexible Server&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">750 h B1MS + 32 GB por 12 meses. La opción más previsible para todo el cuatrimestre.&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>&lt;strong>Recomendación rápida&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>PostgreSQL gratis y sin fricción → &lt;strong>Neon&lt;/strong>&lt;/li>
+&lt;li>PostgreSQL + backend completo → &lt;strong>Supabase&lt;/strong>&lt;/li>
+&lt;li>MySQL gestionado → &lt;strong>Railway&lt;/strong> para empezar rápido, &lt;strong>Azure MySQL&lt;/strong> para más previsibilidad&lt;/li>
+&lt;/ul>
+&lt;hr>
+&lt;h2>Stacks recomendados&lt;span class="hx:absolute hx:-mt-20" id="stacks-recomendados">&lt;/span>
+&lt;a href="#stacks-recomendados" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;p>&lt;strong>GCP — La más equilibrada&lt;/strong>&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">Capa&lt;/th>
+&lt;th style="text-align: left">Servicio&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">API / Backend&lt;/td>
+&lt;td style="text-align: left">Compute Engine e2-micro (Always Free)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">Objetos&lt;/td>
+&lt;td style="text-align: left">Cloud Storage + URLs firmadas&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">DB&lt;/td>
+&lt;td style="text-align: left">Firestore o Cloud SQL&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">K8s (opcional)&lt;/td>
+&lt;td style="text-align: left">GKE Autopilot (free tier solo cubre fee de gestión)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">VOD&lt;/td>
+&lt;td style="text-align: left">Transcoder API → HLS&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">CI/CD&lt;/td>
+&lt;td style="text-align: left">GitHub Actions + Terraform&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>&lt;strong>Cuándo:&lt;/strong> buena relación facilidad / costo / servicios administrados. El repo de cátedra incluye el mismo Terraform de AWS modelado para GCP (ver &lt;code>03-demo&lt;/code>).&lt;/p>
+&lt;p>&lt;strong>AWS — La que más material de cátedra tiene&lt;/strong>&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">Capa&lt;/th>
+&lt;th style="text-align: left">Servicio&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">API / Backend&lt;/td>
+&lt;td style="text-align: left">EC2&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">Objetos&lt;/td>
+&lt;td style="text-align: left">S3&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">DB&lt;/td>
+&lt;td style="text-align: left">RDS + DynamoDB&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">VOD&lt;/td>
+&lt;td style="text-align: left">MediaConvert → HLS&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">CI/CD&lt;/td>
+&lt;td style="text-align: left">GitHub Actions + Terraform&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>&lt;strong>Cuándo:&lt;/strong> seguir el material de clase directamente o aprender AWS por inserción laboral.&lt;/p>
+&lt;p>&lt;strong>Recursos:&lt;/strong> ver &lt;a href="https://github.com/ingenieria-del-software-2/cloudcomputing-demo"target="_blank" rel="noopener">cloudcomputing-demo&lt;/a>, especialmente &lt;code>03-demo&lt;/code> (AWS y GCP).&lt;/p>
+&lt;p>&lt;strong>Azure — DB gratis por 12 meses&lt;/strong>&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">Capa&lt;/th>
+&lt;th style="text-align: left">Servicio&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">API / Backend&lt;/td>
+&lt;td style="text-align: left">VM burstable B-series&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">Objetos&lt;/td>
+&lt;td style="text-align: left">Blob Storage + SAS&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">DB&lt;/td>
+&lt;td style="text-align: left">PostgreSQL Flexible Server&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">NoSQL&lt;/td>
+&lt;td style="text-align: left">Cosmos DB Free Tier (1000 RU/s + 25 GB lifetime)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">K8s (opcional)&lt;/td>
+&lt;td style="text-align: left">AKS (control plane gratis; pagás nodos)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">VOD&lt;/td>
+&lt;td style="text-align: left">⚠️ FFmpeg en VM/Batch o partners externos&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>&lt;strong>Cuándo:&lt;/strong> querés DB gratis sin depender solo del crédito inicial.&lt;/p>
+&lt;p>&lt;strong>PaaS ligeros — Render / Railway / Fly.io&lt;/strong>&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">Plataforma&lt;/th>
+&lt;th style="text-align: left">Stack típico&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Render&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">Web services + cron · Postgres Free · S3/R2 para objetos · FFmpeg en worker&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Railway&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">Deploy simple · Postgres o MySQL integrado&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;strong>Fly.io&lt;/strong>&lt;/td>
+&lt;td style="text-align: left">Fly Machines (autostop/autostart) · Tigris para objetos · Managed Postgres o autogestionado · Upstash Redis&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>&lt;strong>Cuándo:&lt;/strong> priorizás DX simple sin DevOps pesado, o el equipo quiere iterar rápido sin gestionar infraestructura. Para workloads siempre online, los planes pagos de las tres son accesibles.&lt;/p>
+&lt;hr>
+&lt;h2>Consejos para no pasarte de presupuesto&lt;span class="hx:absolute hx:-mt-20" id="consejos-para-no-pasarte-de-presupuesto">&lt;/span>
+&lt;a href="#consejos-para-no-pasarte-de-presupuesto" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;ol>
+&lt;li>&lt;strong>No subas a Kubernetes &amp;ldquo;porque sí.&amp;rdquo;&lt;/strong> Una VM o Render/Railway muchas veces resuelven mejor y más barato.&lt;/li>
+&lt;li>&lt;strong>Cuidá el egreso&lt;/strong> — sigue siendo uno de los costos más traicioneros en cualquier proveedor.&lt;/li>
+&lt;li>&lt;strong>Apagá VMs y limpiá recursos zombie:&lt;/strong> discos, IPs flotantes, balanceadores, buckets sin uso.&lt;/li>
+&lt;li>&lt;strong>Poné alertas de billing desde el día 1&lt;/strong> en cualquier nube.&lt;/li>
+&lt;li>&lt;strong>AWS:&lt;/strong> si no hacés upgrade a Paid Plan antes de que venza el plan gratuito, &lt;strong>la cuenta se cierra&lt;/strong>.&lt;/li>
+&lt;li>&lt;strong>Azure:&lt;/strong> para conservar los servicios gratis de 12 meses, hay que pasar a pay-as-you-go dentro de los 30 días del trial. No planifiques sobre Media Services — ya no existe.&lt;/li>
+&lt;li>&lt;strong>GCP:&lt;/strong> &amp;ldquo;GKE cluster fee cubierto&amp;rdquo; ≠ &amp;ldquo;cluster gratis&amp;rdquo; — nodos, pods, red y discos siguen costando.&lt;/li>
+&lt;li>&lt;strong>Discos:&lt;/strong> mantené los de VMs cerca de 30 GB para seguir en free tiers iniciales.&lt;/li>
+&lt;li>&lt;strong>Fly.io:&lt;/strong> usá autostop/autostart (Machines detenidas no cobran CPU/RAM, pero volumes y rootfs sí pueden facturar). Si app y DB están en regiones distintas, el tráfico inter-región se cobra. Los volumes no se replican solos — armá backups.&lt;/li>
+&lt;/ol>
+&lt;hr>
+&lt;h2>Enlaces oficiales&lt;span class="hx:absolute hx:-mt-20" id="enlaces-oficiales">&lt;/span>
+&lt;a href="#enlaces-oficiales" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;p>&lt;strong>Google Cloud&lt;/strong> — &lt;a href="https://cloud.google.com/free"target="_blank" rel="noopener">Free Trial y Free Tier&lt;/a> · &lt;a href="https://docs.cloud.google.com/free/docs/free-cloud-features"target="_blank" rel="noopener">Detalle del Free Tier&lt;/a> · &lt;a href="https://cloud.google.com/kubernetes-engine/pricing"target="_blank" rel="noopener">GKE pricing&lt;/a> · &lt;a href="https://cloud.google.com/sql/pricing"target="_blank" rel="noopener">Cloud SQL pricing&lt;/a> · &lt;a href="https://docs.cloud.google.com/sql/docs/mysql/free-trial-instance"target="_blank" rel="noopener">Cloud SQL free trial instance&lt;/a> · &lt;a href="https://cloud.google.com/transcoder/pricing"target="_blank" rel="noopener">Transcoder API pricing&lt;/a> · &lt;a href="https://docs.cloud.google.com/retail/docs/predict"target="_blank" rel="noopener">Vertex AI Search for Commerce&lt;/a> · &lt;a href="https://docs.cloud.google.com/vertex-ai/docs/vector-search/overview"target="_blank" rel="noopener">Vertex AI Vector Search&lt;/a>&lt;/p>
+&lt;p>&lt;strong>AWS&lt;/strong> — &lt;a href="https://aws.amazon.com/free/"target="_blank" rel="noopener">Free Tier&lt;/a> · &lt;a href="https://aws.amazon.com/free/compute/"target="_blank" rel="noopener">Free Tier — Compute&lt;/a> · &lt;a href="https://aws.amazon.com/free/free-tier-faqs/"target="_blank" rel="noopener">Free Tier FAQs&lt;/a> · &lt;a href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/tracking-free-tier-usage.html"target="_blank" rel="noopener">Tracking Free Tier usage&lt;/a> · &lt;a href="https://aws.amazon.com/rds/free/"target="_blank" rel="noopener">RDS Free Tier&lt;/a> · &lt;a href="https://aws.amazon.com/free/storage/s3/"target="_blank" rel="noopener">S3 free storage&lt;/a> · &lt;a href="https://aws.amazon.com/dynamodb/pricing/"target="_blank" rel="noopener">DynamoDB pricing&lt;/a> · &lt;a href="https://aws.amazon.com/eks/pricing/"target="_blank" rel="noopener">EKS pricing&lt;/a> · &lt;a href="https://aws.amazon.com/mediaconvert/pricing/"target="_blank" rel="noopener">MediaConvert pricing&lt;/a> · &lt;a href="https://aws.amazon.com/personalize/pricing/"target="_blank" rel="noopener">Personalize pricing&lt;/a>&lt;/p>
+&lt;p>&lt;strong>Azure&lt;/strong> — &lt;a href="https://azure.microsoft.com/en-us/free/"target="_blank" rel="noopener">Free account&lt;/a> · &lt;a href="https://azure.microsoft.com/en-us/pricing/free-services/"target="_blank" rel="noopener">Free services&lt;/a> · &lt;a href="https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account/"target="_blank" rel="noopener">Purchase options&lt;/a> · &lt;a href="https://azure.microsoft.com/en-us/pricing/details/kubernetes-service/"target="_blank" rel="noopener">AKS pricing&lt;/a> · &lt;a href="https://azure.microsoft.com/en-us/pricing/details/cosmos-db/autoscale-provisioned/"target="_blank" rel="noopener">Cosmos DB pricing&lt;/a> · &lt;a href="https://azure.microsoft.com/en-us/pricing/details/postgresql/flexible-server/"target="_blank" rel="noopener">PostgreSQL Flexible Server pricing&lt;/a> · &lt;a href="https://azure.microsoft.com/en-us/pricing/free-services/"target="_blank" rel="noopener">MySQL Flexible Server pricing&lt;/a> · &lt;a href="https://learn.microsoft.com/en-us/azure/media-services/latest/azure-media-services-retirement"target="_blank" rel="noopener">Media Services retirement&lt;/a> · &lt;a href="https://learn.microsoft.com/en-us/azure/ai-services/personalizer/"target="_blank" rel="noopener">AI Personalizer docs&lt;/a>&lt;/p>
+&lt;p>&lt;strong>Render&lt;/strong> — &lt;a href="https://render.com/pricing"target="_blank" rel="noopener">Pricing&lt;/a> · &lt;a href="https://render.com/docs/free"target="_blank" rel="noopener">Deploy for Free&lt;/a> · &lt;a href="https://render.com/docs/postgresql"target="_blank" rel="noopener">Postgres&lt;/a> · &lt;a href="https://render.com/docs/key-value"target="_blank" rel="noopener">Key Value&lt;/a>&lt;/p>
+&lt;p>&lt;strong>Railway&lt;/strong> — &lt;a href="https://railway.com/pricing"target="_blank" rel="noopener">Pricing&lt;/a> · &lt;a href="https://docs.railway.com/pricing"target="_blank" rel="noopener">Docs: pricing&lt;/a> · &lt;a href="https://docs.railway.com/pricing/free-trial"target="_blank" rel="noopener">Docs: free trial&lt;/a>&lt;/p>
+&lt;p>&lt;strong>Fly.io&lt;/strong> — &lt;a href="https://fly.io/docs/about/free-trial/"target="_blank" rel="noopener">Free Trial&lt;/a> · &lt;a href="https://fly.io/docs/about/pricing/"target="_blank" rel="noopener">Pricing&lt;/a> · &lt;a href="https://fly.io/docs/machines/"target="_blank" rel="noopener">Machines&lt;/a> · &lt;a href="https://fly.io/docs/launch/autostop-autostart/"target="_blank" rel="noopener">Autostop/autostart&lt;/a> · &lt;a href="https://fly.io/docs/volumes/overview/"target="_blank" rel="noopener">Volumes&lt;/a> · &lt;a href="https://fly.io/docs/mpg/"target="_blank" rel="noopener">Managed Postgres&lt;/a> · &lt;a href="https://fly.io/docs/upstash/redis/"target="_blank" rel="noopener">Upstash for Redis&lt;/a> · &lt;a href="https://fly.io/docs/kubernetes/"target="_blank" rel="noopener">Kubernetes&lt;/a> · &lt;a href="https://fly.io/docs/reference/regions/"target="_blank" rel="noopener">Regions&lt;/a>&lt;/p>
+&lt;p>&lt;strong>Tigris&lt;/strong> — &lt;a href="https://fly.io/docs/tigris/"target="_blank" rel="noopener">Docs en Fly&lt;/a> · &lt;a href="https://www.tigrisdata.com/pricing/"target="_blank" rel="noopener">Pricing&lt;/a> · &lt;a href="https://www.tigrisdata.com/docs/account-management/billing/"target="_blank" rel="noopener">Billing&lt;/a>&lt;/p>
+&lt;p>&lt;strong>Neon&lt;/strong> — &lt;a href="https://neon.com/pricing"target="_blank" rel="noopener">Pricing&lt;/a> · &lt;a href="https://neon.com/docs/introduction"target="_blank" rel="noopener">Docs&lt;/a>&lt;/p>
+&lt;p>&lt;strong>Supabase&lt;/strong> — &lt;a href="https://supabase.com/pricing"target="_blank" rel="noopener">Pricing&lt;/a> · &lt;a href="https://supabase.com/docs"target="_blank" rel="noopener">Docs&lt;/a>&lt;/p>
+&lt;hr>
+&lt;h2>Recursos de cátedra&lt;span class="hx:absolute hx:-mt-20" id="recursos-de-cátedra">&lt;/span>
+&lt;a href="#recursos-de-c%c3%a1tedra" class="subheading-anchor" aria-label="Enlace permanente a esta sección">&lt;/a>&lt;/h2>&lt;ul>
+&lt;li>Repo con scripts y ejemplos de despliegue: &lt;a href="https://github.com/ingenieria-del-software-2/cloudcomputing-demo"target="_blank" rel="noopener">cloudcomputing-demo&lt;/a> — ver &lt;code>03-demo&lt;/code> (AWS y GCP) para tips rápidos.&lt;/li>
+&lt;li>Video tutorial — Crea tu primera cuenta en AWS: &lt;a href="https://drive.google.com/file/d/1vps1XS2ReZ0CXFjKIOoqhzMM8YfiU1gh"target="_blank" rel="noopener">Google Drive&lt;/a>&lt;/li>
+&lt;li>Demo 3 grabada (IaC full e2e CI/CD): &lt;a href="https://drive.google.com/file/d/145UHzRo0DJabGZFRC_3eVcHvPkhxy1V3"target="_blank" rel="noopener">Google Drive&lt;/a>&lt;/li>
+&lt;/ul></description></item></channel></rss>
