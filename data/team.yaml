@@ -9,16 +9,6 @@ team:
     mail: "icarol@fi.uba.ar"
     github: "IgnacioCarol"
 
-  - name: Matias Fonseca
-    pic: "/images/professors/fonseca.png"
-    mail: "mfonseca@fi.uba.ar"
-    github: "matfonseca"
-
-  - name: Nicolás Pablo Fernández Theillet
-    pic: "/images/professors/nico.jpeg"
-    mail: "nflabo@gmail.com"
-    github: "npfernandeztheillet"
-
   - name: Paulo Cuneo
     pic: "/images/professors/paulo.jpeg"
     mail: "cuneo.paulo.cesar@gmail.com"
@@ -73,11 +63,6 @@ team:
     pic: "/images/professors/niko.jpg"
     mail: "nrsanchez@fi.uba.ar"
     github: "nikorsanchez"
-
-  - name: Daniela Ailin Vela
-    pic: "/images/professors/daniela.jpeg"
-    mail: "davela@fi.uba.ar"
-    github: "noxethiems"
 
   - name: Thiago Pacheco
     pic: "/images/professors/thiago.jpeg"
