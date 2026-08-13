@@ -50,6 +50,26 @@ Los siguientes incumplimientos **bloquean la evaluación** del proyecto y requie
 -   **Evidencia de trabajo individual**: cada integrante del equipo debe contar con evidencia de su participación y trabajo durante el cuatrimestre (commits, PRs, actas de reuniones, etc.). Su ausencia habilita a la cátedra a desaprobar a ese alumno en particular, independientemente de la nota del grupo.
 -   **Ausencia reiterada a checkpoints o sesiones de seguimiento sin justificar**: la falta de participación activa en las instancias de seguimiento del equipo, sin justificación, habilita a la cátedra a desaprobar al alumno ausente, independientemente del resultado del grupo.
 
+#### Dimensiones de Evaluación
+
+El seguimiento semanal y la evaluación final del TPG se basan en **7 dimensiones de calidad**, jerarquizadas por su impacto en la ingeniería de la solución:
+
+1.  **Diseño de Software y Modelado** _(crítico)_: estructura de la solución, desacoplamiento, aplicación de patrones y modelado del dominio.
+2.  **Confiabilidad y Calidad de Validación** _(alto)_: rigor en la suite de pruebas (unitarias, integración, carga) y automatización del pipeline (CI).
+3.  **Integridad y Flujo de Datos** _(alto)_: gestión del estado, persistencia coherente y manejo de la asincronía y el error.
+4.  **Gestión de Ingeniería** _(medio)_: trazabilidad entre backlog y repositorio, atomicidad en Git y uso crítico de herramientas de asistencia (IA).
+5.  **Resiliencia e Infraestructura** _(alto)_: soporte de ejecución, observabilidad (logs/health), seguridad de secretos y estabilidad del entorno.
+6.  **Mantenibilidad y Documentación** _(bajo)_: contratos de comunicación, registro de decisiones técnicas (ADR) y facilidad de transferencia.
+7.  **Ética y Privacidad** _(bajo)_: seguridad por diseño, protección de datos sensibles y transparencia en la autoría del código.
+
+Cada dimensión se valora en una escala de 1 a 10, agrupada en tres niveles de rigor:
+
+-   **Insuficiente (1-3)**: solución con debilidades estructurales o deuda técnica no gestionada.
+-   **Aceptable (4-6)**: estándar profesional de ingeniería — diseño sólido, validado y con proceso trazable.
+-   **Riguroso (7-10)**: solución resiliente que demuestra manejo avanzado de la complejidad, la observabilidad y los atributos de calidad.
+
+Todos los integrantes deben poder **justificar las decisiones técnicas** tomadas y explicar la lógica implementada, independientemente de las herramientas utilizadas para su generación.
+
 #### Requisitos por checkpoint
 
 | Etapa             | Entregables mínimos                                                                                          |
