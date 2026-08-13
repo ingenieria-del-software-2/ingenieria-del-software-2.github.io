@@ -103,3 +103,4 @@ Independientemente de los canales que acuerde cada equipo con su docente, la cá
 -   Para favorecer exposiciones, algunas clases podrían ser de **mayor duración** (a confirmar).
 -   La **participación** será considerada en las calificaciones.
 -   **Originalidad**: todas las entregas (individuales y grupales) deben ser de creación propia, **sin excepciones**.
+-   **Evaluación individual**: la cátedra se reserva la posibilidad de tomar un parcial o final de forma individual a un alumno en particular, cuando lo considere necesario para verificar su comprensión real del trabajo entregado.
