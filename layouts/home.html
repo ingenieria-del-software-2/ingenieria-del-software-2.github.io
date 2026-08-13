@@ -188,22 +188,27 @@
 
                         <!-- Trabajos Prácticos (Dinámico) -->
                         {{- $tpsLink := "/tps" | relURL -}}
-                        {{- $latestTP := "" -}}
-                        {{- $latestDir := "" -}}
+                        {{- $start := time .Site.Data.fechas.inicio -}}
+                        {{- $year := int ($start.Format "2006") -}}
+                        {{- $semester := cond (le (int ($start.Format "1")) 6) 1 2 -}}
+                        {{- $currentPattern := printf `^tps/%d/0?%d/` $year $semester -}}
+                        {{- $individualTP := "" -}}
+                        {{- $groupTP := "" -}}
                         {{- $allTPs := where .Site.RegularPages "Section" "tps" -}}
-                        {{- range sort $allTPs "File.Path" "desc" -}}
-                            {{- if not (findRE "historico" .File.Path) -}}
-                                {{- if not $latestDir -}}
-                                    {{- $latestTP = .Permalink -}}
-                                    {{- $latestDir = .File.Dir -}}
-                                {{- else if eq .File.Dir $latestDir -}}
-                                    {{- if findRE "enunciado" .File.Path -}}
-                                        {{- $latestTP = .Permalink -}}
-                                    {{- end -}}
+                        {{- range $allTPs -}}
+                            {{- if findRE $currentPattern .File.Path -}}
+                                {{- if findRE `/enunciado\.md$` .File.Path -}}
+                                    {{- $groupTP = .RelPermalink -}}
+                                {{- else if findRE `/individual\.md$` .File.Path -}}
+                                    {{- $individualTP = .RelPermalink -}}
                                 {{- end -}}
                             {{- end -}}
                         {{- end -}}
-                        {{- if $latestTP }}{{ $tpsLink = $latestTP }}{{ end -}}
+                        {{- if $groupTP -}}
+                            {{- $tpsLink = $groupTP -}}
+                        {{- else if $individualTP -}}
+                            {{- $tpsLink = $individualTP -}}
+                        {{- end -}}
 
                         <a href="{{ $tpsLink }}" class="group flex items-center justify-center gap-2 px-4 py-3 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-900 dark:hover:text-slate-200 transition-all w-full sm:w-auto active:translate-y-0.5">
                             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>
