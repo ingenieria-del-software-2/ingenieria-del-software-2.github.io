@@ -1,5 +1,5 @@
 ---
-title: "2026 1C - Individual"
+title: "20261C - Individual"
 description: "Trabajo práctico individual del 1er cuatrimestre 2026: servicio backend REST de eCommerce con productos y carrito."
 subtitle: "Individual"
 ---
