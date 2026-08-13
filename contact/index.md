@@ -1,9 +1,9 @@
 # Contacto
 
 
-## Slack 
+## Discord 
  
- - [https://ta049-ingsoftii.slack.com/](https://ta049-ingsoftii.slack.com/)
+ - [https://discord.gg/wDvn7zVvQb](https://discord.gg/wDvn7zVvQb)
 
 
 ## Github
@@ -12,5 +12,5 @@
  
 ## Canal de youtube
  
- - [https://www.youtube.com/channel/UCWTyZXkzYAGYWvP1qc7U_dA](https://www.youtube.com/channel/UCWTyZXkzYAGYWvP1qc7U_dA) 
+ - [https://www.youtube.com/channel/UCWTyZXkzYAGYWvP1qc7U_dA](https://www.youtube.com/channel/UCWTyZXkzYAGYWvP1qc7U_dA)
 
