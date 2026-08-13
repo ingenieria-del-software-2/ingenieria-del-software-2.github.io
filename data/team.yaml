@@ -14,7 +14,7 @@ team:
     mail: "mfonseca@fi.uba.ar"
     github: "matfonseca"
 
-  - name: Nicolás Pablo Fernández Theillet  
+  - name: Nicolás Pablo Fernández Theillet
     pic: "/images/professors/nico.jpeg"
     mail: "nflabo@gmail.com"
     github: "npfernandeztheillet"
@@ -34,7 +34,7 @@ team:
     mail: "recheconea@fi.uba.ar"
     github: "recheconea"
 
-  - name: Matías Rotondo 
+  - name: Matías Rotondo
     pic: "/images/professors/rotondo.png"
     mail: "mrotondo@fi.uba.ar"
     github: "MatiasRotondo"
@@ -100,6 +100,6 @@ team:
     github: "joseslavkis"
 
   - name: Florencia Pratto
-    pic: "/images/professors/flor.jpeg"
+    pic: "/images/professors/flor.jpg"
     mail: "fpratto@fi.uba.ar"
     github: "fnpratto"
