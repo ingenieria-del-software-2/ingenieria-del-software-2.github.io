@@ -1,5 +1,23 @@
 youtube_channel: "https://www.youtube.com/@IngSoft2/videos"
 
+hall_of_fame:
+  id: muro-fama
+  title: Muro de la Fama
+  description: Creados por estudiantes que convirtieron una idea en un producto.
+  videos:
+    - url: "https://youtu.be/IzI6-AVkESI"
+      title: "Grupo 16 - Entrega final"
+      description: "1C 2026"
+    - url: "https://youtu.be/SNiF_JKAzSk"
+      title: "Grupo 15 - Bazaar"
+      description: "1C 2026"
+    - url: "https://youtu.be/RMf2_ob0YKU"
+      title: "Grupo 02 - Gran BazaAR"
+      description: "1C 2026"
+    - url: "https://youtu.be/0ACJvD0-gGs"
+      title: "Grupo 01 - Bazaar"
+      description: "1C 2026"
+
 sections:
   - id: backend
     title: Desarrollo Backend

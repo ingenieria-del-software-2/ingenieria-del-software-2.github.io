@@ -117,6 +117,41 @@
     </div>
 {{ end }}
 
+{{ define "hall-of-fame-content" }}
+    <div class="mb-6 border-b border-gray-100 pb-5 dark:border-slate-800 md:mb-8 md:pb-7 md:shrink-0">
+        <div class="grid min-w-0 grid-cols-1 gap-5 md:grid-cols-12 md:items-end md:gap-6">
+            <div class="min-w-0 md:col-span-7">
+                <div class="mb-3 flex items-center gap-2 font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-amber-600 dark:text-amber-400">
+                    <span class="h-px w-6 bg-amber-500/70"></span>
+                    Hecho por estudiantes
+                </div>
+                <h1 class="font-sans text-3xl font-black uppercase leading-none tracking-tighter text-slate-900 dark:text-slate-100 md:text-4xl xl:text-5xl">
+                    Muro <span class="font-medium text-slate-400 dark:text-slate-300">de la Fama</span>
+                </h1>
+            </div>
+            <div class="min-w-0 md:col-span-5 md:border-l md:border-gray-100 md:pl-6 dark:md:border-slate-800">
+                <p class="font-sans text-sm font-light leading-relaxed text-text-muted dark:text-slate-300">
+                    {{ .description }}
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-scroll overflow-x-hidden md:flex-1 md:min-h-0 md:overflow-y-auto md:pr-2">
+        <section class="border border-gray-100 bg-white/40 p-5 dark:border-slate-800 dark:bg-slate-900/10 md:p-7">
+            <div class="relative mb-7 border-b border-amber-900/10 pb-5 dark:border-amber-100/10">
+                <span class="font-sans text-[10px] font-bold uppercase tracking-widest text-amber-700 dark:text-amber-300">Entregas finales</span>
+            </div>
+
+            <div class="relative grid min-w-0 grid-cols-2 gap-x-6 gap-y-9 xl:grid-cols-4">
+                {{ range .videos }}
+                    {{ partial "video-card.html" . }}
+                {{ end }}
+            </div>
+        </section>
+    </div>
+{{ end }}
+
 {{ define "main" }}
 <!doctype html>
 <html lang="es" class="motion-safe:scroll-smooth">
@@ -156,7 +191,7 @@
         class="hidden lg:block lg:col-span-3 xl:col-span-2 border-r border-gray-100 dark:border-slate-800 sticky top-16 overflow-y-auto py-8 pr-6 scrollbar-thin"
       >
         {{ with .Site.Data.material.youtube_channel }}
-        <div class="mb-8 pl-4">
+        <div class="mb-2 pl-4">
             <a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-3 px-3 py-3 w-full border-l-2 border-red-500 bg-gray-50/80 dark:bg-slate-800/50 hover:bg-red-50/80 dark:hover:bg-red-950/30 transition-colors">
                 <svg class="w-5 h-5 text-red-600 dark:text-red-500 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M21.582 6.186a2.6 2.6 0 0 0-1.838-1.839C18.125 3.9 12 3.9 12 3.9s-6.125 0-7.744.447A2.6 2.6 0 0 0 2.418 6.186C2 7.805 2 12 2 12s0 4.195.418 5.814a2.6 2.6 0 0 0 1.838 1.839C5.875 20.1 12 20.1 12 20.1s6.125 0 7.744-.447a2.6 2.6 0 0 0 1.838-1.839C22 16.195 22 12 22 12s0-4.195-.418-5.814zM10 15.464V8.536L16 12l-6 3.464z"/></svg>
                 <div class="flex-1 flex flex-col min-w-0">
@@ -164,6 +199,19 @@
                 </div>
                 <svg class="w-3 h-3 text-slate-400 group-hover:text-red-500 shrink-0 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
             </a>
+        </div>
+        {{ end }}
+        {{ with .Site.Data.material.hall_of_fame }}
+        <div class="mb-8 pl-4">
+            <button
+                class="nav-item group flex w-full min-w-0 items-center gap-3 border-l-2 border-transparent px-3 py-2.5 text-left text-text-muted transition-colors hover:border-slate-200 hover:bg-gray-50/50 hover:text-primary data-[active=true]:border-amber-400/60 data-[active=true]:bg-gray-50/80 data-[active=true]:text-primary dark:text-slate-300 dark:hover:border-slate-700 dark:hover:bg-slate-800/30 dark:hover:text-slate-100 dark:data-[active=true]:border-amber-400/40 dark:data-[active=true]:bg-slate-800/50 dark:data-[active=true]:text-white"
+                data-section="{{ .id }}"
+                data-active="false"
+            >
+                <svg class="h-3.5 w-3.5 shrink-0 text-amber-500/80 dark:text-amber-400/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m12 3 2.1 4.25 4.7.68-3.4 3.32.8 4.68L12 13.72l-4.2 2.21.8-4.68-3.4-3.32 4.7-.68L12 3Z"/></svg>
+                <span class="min-w-0 flex-1 font-sans text-[12px] font-medium leading-tight">{{ .title }}</span>
+                <span class="shrink-0 pl-2 text-[10px] opacity-50">{{ len .videos }}</span>
+            </button>
         </div>
         {{ end }}
         <div class="mb-8 pl-4">
@@ -186,19 +234,31 @@
         </div>
       </aside>
       <main
-        class="col-span-1 lg:col-span-9 xl:col-span-10 px-4 md:px-6 lg:px-10 md:pt-4 lg:pt-8 md:h-[calc(100dvh-7rem)] md:min-h-0 md:flex md:flex-col"
+        class="col-span-1 min-w-0 overflow-x-hidden lg:col-span-9 xl:col-span-10 px-4 md:px-6 lg:px-10 md:pt-4 lg:pt-8 md:h-[calc(100dvh-7rem)] md:min-h-0 md:flex md:flex-col"
       >
         <!-- Mobile Navigation (Compact Pill-style Toolbar) -->
         <div id="mobile-nav-wrapper" class="lg:hidden relative z-10 bg-white/90 dark:bg-slate-950/90 backdrop-blur-md border-b border-gray-100 dark:border-slate-800 -mx-4 px-4 md:-mx-6 md:px-6 mb-6">
             <div id="mobile-nav-container" class="flex flex-wrap items-center gap-2 py-3 scrollbar-none [scrollbar-width:none]">
                 {{ with .Site.Data.material.youtube_channel }}
-                <a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="shrink-0 flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-transparent text-slate-500 dark:text-slate-400 border border-gray-200 dark:border-slate-800 hover:bg-gray-50 dark:hover:bg-slate-800/50 transition-colors" title="Canal de YouTube">
+                <a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="shrink-0 flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-transparent text-slate-600 dark:text-slate-300 border border-red-200/80 dark:border-red-500/25 hover:bg-red-50/50 dark:hover:bg-red-950/20 transition-colors" title="Canal de YouTube">
                     <svg class="w-3.5 h-3.5 text-red-600 dark:text-red-500" viewBox="0 0 24 24" fill="currentColor"><path d="M21.582 6.186a2.6 2.6 0 0 0-1.838-1.839C18.125 3.9 12 3.9 12 3.9s-6.125 0-7.744.447A2.6 2.6 0 0 0 2.418 6.186C2 7.805 2 12 2 12s0 4.195.418 5.814a2.6 2.6 0 0 0 1.838 1.839C5.875 20.1 12 20.1 12 20.1s6.125 0 7.744-.447a2.6 2.6 0 0 0 1.838-1.839C22 16.195 22 12 22 12s0-4.195-.418-5.814zM10 15.464V8.536L16 12l-6 3.464z"/></svg>
                     <span class="text-[10px] font-sans font-bold uppercase tracking-tight">YouTube</span>
                 </a>
                 <div class="w-px h-4 bg-gray-200 dark:bg-slate-700 shrink-0 mx-1"></div>
                 {{ end }}
-                
+                {{ with .Site.Data.material.hall_of_fame }}
+                <a
+                  href="#{{ .id }}"
+                  data-section="{{ .id }}"
+                  data-active="false"
+                  class="mobile-nav-item shrink-0 flex items-center gap-1.5 rounded-full border border-gray-100 px-3.5 py-1.5 font-sans text-[10px] font-bold uppercase tracking-widest text-slate-500 transition-all hover:bg-gray-50 dark:border-slate-800/50 dark:text-slate-400 dark:hover:bg-slate-800/50"
+                >
+                    <svg class="h-3 w-3 text-amber-500/80 dark:text-amber-400/70" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2.8 2.7 5.47 6.04.88-4.37 4.26 1.03 6.02L12 16.59l-5.4 2.84 1.03-6.02-4.37-4.26 6.04-.88L12 2.8Z"/></svg>
+                    <span>Muro de la Fama</span>
+                </a>
+                <div class="mx-1 h-4 w-px shrink-0 bg-gray-200 dark:bg-slate-700"></div>
+                {{ end }}
+
                 {{ range $index, $section := .Site.Data.material.sections }}
                 <a
                   href="#{{ .id }}"
@@ -216,6 +276,11 @@
             {{ range $index, $section := .Site.Data.material.sections }}
             <div id="desktop-section-{{ $section.id }}" data-panel="{{ $section.id }}" class="section-panel material-section-panel" {{ if ne $index 0 }}hidden{{ end }}>
                 {{ template "section-content" $section }}
+            </div>
+            {{ end }}
+            {{ with .Site.Data.material.hall_of_fame }}
+            <div id="desktop-section-{{ .id }}" data-panel="{{ .id }}" class="section-panel material-section-panel" hidden>
+                {{ template "hall-of-fame-content" . }}
             </div>
             {{ end }}
         </div>

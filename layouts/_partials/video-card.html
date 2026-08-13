@@ -17,7 +17,7 @@
     $cacheKey
   -}}
   {{- $meta := $metaRaw | transform.Unmarshal -}}
-  {{- $title = $meta.title -}}
+  {{- $title = default $meta.title $v.title -}}
   {{- $thumb = $meta.thumb -}}
   {{- $duration = $meta.duration -}}
 {{- end -}}
