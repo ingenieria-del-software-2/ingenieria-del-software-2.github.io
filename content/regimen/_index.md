@@ -34,7 +34,7 @@ subtitle: "Información sobre la materia"
 -   Inicia tras aprobar el TPI.
 -   Se desarrolla en **etapas con entregas**.
 -   Durante la cursada se realizarán **4 checkpoints**. Si un grupo desaprueba **2 de ellos**, pierde la cursada.
--   Se realiza en **equipos de 4–5 personas**, con **docente asignado**, que actúa como **Product Owner** del equipo durante todo el cuatrimestre: al inicio de cada checkpoint acuerda con el grupo las historias a trabajar, y hace seguimiento semanal del avance.
+-   Se realiza en **equipos**, cuyo tamaño se informa al inicio de cada cuatrimestre, con **docente asignado**, que actúa como **Product Owner** del equipo durante todo el cuatrimestre: al inicio de cada checkpoint acuerda con el grupo las historias a trabajar, y hace seguimiento semanal del avance.
 -   El enunciado se explica al inicio, pero puede **ajustarse** durante el cuatrimestre.
 -   Ante puntos no especificados, se espera **criterio** y decisiones **de producto** (sin alterar el espíritu académico).
 -   **Distribución de tareas**:
@@ -42,7 +42,7 @@ subtitle: "Información sobre la materia"
     -   La distribución debe ser **equitativa**.
     -   No participar en un módulo **no exime** de conocer lo básico de la tecnología (relevante en **parcial/final**).
 -   En cada una de las cuatro entregas se exige un **mínimo** de funcionalidad, documentación, pruebas, etc.
--   **Metas de historias por checkpoint**: 70% de historias obligatorias y 50% de optativas finalizadas en el Checkpoint 2; 100% de obligatorias y 80% de optativas en el Checkpoint 3.
+-   **Metas de historias por checkpoint**: como referencia orientativa, se espera un avance progresivo — 70% de historias obligatorias y 50% de optativas para el Checkpoint 2; 100% de obligatorias y 80% de optativas para el Checkpoint 3. El cumplimiento de cada checkpoint se evalúa contra el alcance acordado con el docente-PO para ese período, no como un umbral fijo igual para todos los grupos.
 -   **Uso de herramientas de IA**: se espera su uso como parte natural del desarrollo. No se evalúa si se usó IA, sino la calidad de la dirección del equipo y la capacidad de **cada integrante de explicar y defender cualquier parte del código** en la defensa del proyecto. El equipo es responsable final del código, independientemente de la herramienta que lo produjo.
 
 #### Red Lines
@@ -103,3 +103,4 @@ Independientemente de los canales que acuerde cada equipo con su docente, la cá
 -   Para favorecer exposiciones, algunas clases podrían ser de **mayor duración** (a confirmar).
 -   La **participación** será considerada en las calificaciones.
 -   **Originalidad**: todas las entregas (individuales y grupales) deben ser de creación propia, **sin excepciones**.
+-   **Evaluación individual**: la cátedra se reserva la posibilidad de tomar un parcial o final de forma individual a un alumno en particular, cuando lo considere necesario para verificar su comprensión real del trabajo entregado.
