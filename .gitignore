@@ -17,3 +17,6 @@ ehthumbs.db
 
 node_modules/
 hugo_stats.json
+
+# YouTube admin credentials (local only, never commit)
+.env.youtube
