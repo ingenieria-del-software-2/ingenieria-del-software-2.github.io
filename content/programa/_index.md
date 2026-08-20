@@ -72,10 +72,4 @@ Escribir el código es la mitad del trabajo. La otra mitad es que siga andando c
 
 ---
 
-### Además, del lado del stack
-
-React y React Native aparecen de forma transversal — como el vehículo con el que se construyen las interfaces de cada trabajo práctico, no como un módulo aparte. Se dan las bases (componentes, hooks, estado, estrategias de renderizado) para que el foco del cuatrimestre siga estando en los 6 módulos de arriba.
-
----
-
 _Este programa surge de los contenidos mínimos aprobados por el Consejo Superior para la asignatura (Plan TA049 y equivalentes), adaptados cuatrimestre a cuatrimestre al proyecto grupal en curso. Para el detalle de cómo se evalúa, ver el [Régimen de Aprobación](../regimen)._
