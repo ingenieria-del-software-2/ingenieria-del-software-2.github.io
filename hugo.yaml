@@ -63,6 +63,10 @@ menu:
       pageRef: "/regimen"
       weight: 3
 
+    - name: "Programa"
+      pageRef: "/programa"
+      weight: 4
+
     - name: "TPs"
       pageRef: "/tps"
       weight: 5
