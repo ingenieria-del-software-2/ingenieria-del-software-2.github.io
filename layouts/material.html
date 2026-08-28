@@ -73,7 +73,7 @@
               </div>
 
               <div>
-                  <div class="grid min-w-0 grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-3">
+                  <div data-class-videos class="grid min-w-0 grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-3">
                       {{ range collections.Reverse .videos }}
                           {{ partial "video-card.html" . }}
                       {{ end }}
@@ -157,10 +157,10 @@
 <div id="material-page" class="bg-engineering text-text-main dark:text-slate-200 font-sans antialiased min-h-screen flex flex-col selection:bg-black selection:text-white dark:selection:bg-slate-700">
 
     <div
-      class="flex-grow max-w-[1600px] mx-auto w-full grid grid-cols-1 lg:grid-cols-12"
+      class="flex-grow max-w-[1600px] mx-auto w-full grid grid-cols-1 lg:grid-cols-[16rem_minmax(0,1fr)]"
     >
       <aside
-        class="hidden lg:block lg:col-span-3 xl:col-span-2 border-r border-gray-100 dark:border-slate-800 sticky top-16 overflow-y-auto py-8 pr-6 scrollbar-thin"
+        class="hidden lg:block border-r border-gray-100 dark:border-slate-800 sticky top-16 overflow-y-auto py-8 pr-6 scrollbar-thin"
       >
         {{ with hugo.Data.material.youtube_channel }}
         <div class="mb-2 pl-4">
@@ -195,7 +195,7 @@
           <div class="space-y-1">
             {{ range $index, $section := hugo.Data.material.sections }}
             <button 
-                class="nav-item w-full min-w-0 flex items-center justify-between px-3 py-3 text-[12px] font-sans border-l-2 transition-colors cursor-pointer text-text-muted dark:text-slate-300 hover:text-primary dark:hover:text-slate-200 hover:bg-gray-50/50 dark:hover:bg-slate-800/30 border-transparent data-[active=true]:text-primary data-[active=true]:dark:text-white data-[active=true]:bg-gray-50/80 data-[active=true]:dark:bg-slate-800 data-[active=true]:border-slate-300 data-[active=true]:dark:border-accent data-[active=true]:font-semibold"
+                class="nav-item w-full min-w-0 flex items-center justify-between px-3 py-3 text-[12px] font-sans border-l-2 transition-colors cursor-pointer text-text-muted dark:text-slate-300 hover:text-primary dark:hover:text-slate-200 hover:bg-gray-50/50 dark:hover:bg-slate-800/30 border-transparent data-[active=true]:text-primary data-[active=true]:dark:text-white data-[active=true]:bg-gray-50/80 data-[active=true]:dark:bg-slate-800 data-[active=true]:border-slate-300 data-[active=true]:dark:border-accent"
                 data-section="{{ $section.id }}"
                 data-active="{{ if eq $index 0 }}true{{ else }}false{{ end }}">
               <span class="block min-w-0 flex-1 text-left leading-tight whitespace-normal">{{ $section.title }}</span>
@@ -206,7 +206,7 @@
         </div>
       </aside>
       <main
-        class="col-span-1 min-w-0 overflow-x-hidden lg:col-span-9 xl:col-span-10 px-4 md:px-6 lg:px-10 md:pt-4 lg:pt-8 md:h-[calc(100dvh-7rem)] md:min-h-0 md:flex md:flex-col"
+        class="min-w-0 overflow-x-hidden px-4 md:px-6 lg:px-10 md:pt-4 lg:pt-8 md:h-[calc(100dvh-7rem)] md:min-h-0 md:flex md:flex-col"
       >
         <!-- Mobile Navigation (Compact Pill-style Toolbar) -->
         <div id="mobile-nav-wrapper" class="lg:hidden relative z-10 bg-white/90 dark:bg-slate-950/90 backdrop-blur-md border-b border-gray-100 dark:border-slate-800 -mx-4 px-4 md:-mx-6 md:px-6 mb-6">
@@ -293,6 +293,16 @@
       const modalContent = document.getElementById('video-modal-content');
       const iframe = document.getElementById('youtube-iframe');
       const isDesktop = () => window.matchMedia('(min-width: 768px)').matches;
+
+      const recentWindowMs = 7 * 24 * 60 * 60 * 1000;
+      const now = Date.now();
+      document.querySelectorAll('[data-class-videos] [data-publish-date]').forEach(card => {
+        const age = now - Date.parse(card.dataset.publishDate);
+        if (!Number.isFinite(age) || age < 0 || age >= recentWindowMs) return;
+
+        card.dataset.recent = 'true';
+        card.querySelector('[data-recent-marker]')?.removeAttribute('hidden');
+      });
 
       function setSection(id, smooth = true) {
         const normalizedId = String(id || '').replace(/^desktop-section-/, '');

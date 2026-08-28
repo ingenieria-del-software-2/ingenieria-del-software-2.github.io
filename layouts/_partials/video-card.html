@@ -5,6 +5,7 @@
 {{- $title := $v.title -}}
 {{- $thumb := $v.thumb -}}
 {{- $duration := $v.duration -}}
+{{- $publishDate := $v.publishDate -}}
 {{- $driveURL := "" -}}
 
 {{- if $isDrive -}}
@@ -13,13 +14,14 @@
   {{- $vidId = replaceRE `^.*(youtu\.be/|v/|u/\w/|embed/|watch\?v=|&v=)([^#&?]{11}).*$` `$2` $v.url -}}
   {{- $cacheKey := cond (ne $vidId "") $vidId $v.url -}}
   {{- $metaRaw := partialCached "ytmeta.html"
-    (dict "vidId" $vidId "title" $title "thumb" $thumb "duration" $duration)
+    (dict "vidId" $vidId "title" $title "thumb" $thumb "duration" $duration "publishDate" $publishDate)
     $cacheKey
   -}}
   {{- $meta := $metaRaw | transform.Unmarshal -}}
   {{- $title = default $meta.title $v.title -}}
   {{- $thumb = $meta.thumb -}}
   {{- $duration = $meta.duration -}}
+  {{- $publishDate = $meta.publishDate -}}
 {{- end -}}
 
 {{- $durationLabel := "" -}}
@@ -38,13 +40,15 @@
 
 <a
   href="#"
-  class="group cursor-pointer animate-fade-up block"
+  class="video-card group cursor-pointer animate-fade-up block"
   data-open-media="true"
   data-provider="{{ if $isDrive }}drive{{ else }}youtube{{ end }}"
   data-id="{{ $vidId }}"
   data-url="{{ if $isDrive }}{{ $driveURL }}{{ end }}"
+  data-recent="false"
+  {{ with $publishDate }}data-publish-date="{{ . }}"{{ end }}
 >
-  <div class="relative aspect-video bg-gray-50 dark:bg-slate-900 overflow-hidden rounded-lg mb-3 border border-gray-100 dark:border-slate-800 transition-[transform,border-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-0.5 group-hover:border-slate-300 dark:group-hover:border-slate-600">
+  <div class="relative aspect-video bg-gray-50 dark:bg-slate-900 overflow-hidden rounded-lg mb-3 border border-gray-100 dark:border-slate-800 transition-[transform,border-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-0.5 group-hover:border-slate-300 dark:group-hover:border-slate-600 group-data-[recent=true]:border-accent/35 dark:group-data-[recent=true]:border-accent/45">
     {{ if $isDrive }}
       <iframe
         src="{{ $driveURL }}"
@@ -61,6 +65,8 @@
         src="{{ $thumb }}"
       />
     {{ end }}
+
+    <span data-recent-marker hidden class="recent-video-marker absolute right-2.5 top-2.5 z-10 block h-[7px] w-[7px] rounded-full border border-white/80 bg-accent shadow-[0_1px_4px_rgba(15,23,42,0.22)] dark:border-slate-950/80" role="img" aria-label="Publicado recientemente"></span>
 
     <div class="absolute inset-0 bg-gradient-to-t from-slate-900/35 via-slate-900/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
       <span class="w-11 h-11 rounded-full bg-slate-900/60 ring-1 ring-white/60 shadow-md flex items-center justify-center transform translate-y-1.5 scale-95 group-hover:translate-y-0 group-hover:scale-100 transition-all duration-300">

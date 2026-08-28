@@ -277,6 +277,27 @@
     --glow-radius: 180px;
 }
 
+.recent-video-marker {
+    animation: recent-video-pulse 2.6s ease-in-out infinite;
+}
+
+@keyframes recent-video-pulse {
+    0%, 100% {
+        box-shadow: 0 1px 4px rgb(15 23 42 / 0.22), 0 0 0 0 rgb(56 189 248 / 0.35);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 1px 4px rgb(15 23 42 / 0.18), 0 0 0 4px rgb(56 189 248 / 0);
+        transform: scale(1.08);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .recent-video-marker {
+        animation: none;
+    }
+}
+
 html.hx\:overflow-hidden:has(#material-page) #mobile-nav-wrapper,
 html.hx\:overflow-hidden:has(#material-page) .hextra-nav-container {
     display: none !important;
