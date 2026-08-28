@@ -1,4 +1,4 @@
-{{- if .IsHome -}}
+{{- if or .IsHome (eq .Layout "team") -}}
   {{ partial "css.html" . }}
 {{- end -}}
 
