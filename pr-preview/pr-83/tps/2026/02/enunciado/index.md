@@ -2,6 +2,8 @@
 
 # Discordia
 
+![Logo](logo.svg)
+
 Armá tu server. Sumá tu gente. Hablá en tiempo real.
 
 **Descripción**
