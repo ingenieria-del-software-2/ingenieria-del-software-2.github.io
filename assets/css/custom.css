@@ -172,6 +172,14 @@ body:has(#home-hero) .hextra-nav-container .hextra-max-navbar-width > a[href="/"
     border-bottom-color: #f1f5f9 !important; /* slate-100 */
 }
 
+body:has(#home-hero) .hextra-nav-container:not(:is(html[class~="dark"] *)) {
+    border-bottom-color: #e2e8f0 !important;
+}
+
+body:has(#home-hero) .hextra-nav-container-blur:not(:is(html[class~="dark"] *)) {
+    border-bottom-color: #e2e8f0 !important;
+}
+
 /* Footer */
 .hextra-footer {
     border-top-width: 1px;

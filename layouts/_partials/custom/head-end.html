@@ -1,3 +1,7 @@
+{{- if .IsHome -}}
+  {{ partial "css.html" . }}
+{{- end -}}
+
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll('.hextra-sidebar-item > a[href$="/tps/historico/"]').forEach(link => {

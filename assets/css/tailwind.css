@@ -7,6 +7,7 @@
 @theme {
   --color-primary: #0f172a;
   --color-accent: #38bdf8;
+  --color-accent-light: #0369a1;
   --color-title-accent: #0ea5e9;
 
   --color-gestion: #9f1239;
@@ -28,9 +29,62 @@
   }
 }
 
+/* Home timeline runtime positioning. */
+#main-timeline [data-date],
+#hoy-marker {
+    left: var(--x, 0%) !important;
+    translate: 0 -50% !important;
+    will-change: left, translate;
+}
+
+#preclass-line {
+    width: 100%;
+    transform-origin: left center;
+    translate: 0 -50% !important;
+    transform: scaleX(var(--w, 0));
+    will-change: transform, translate;
+}
+
+.timeline-point[data-next-milestone="true"] {
+    border-color: var(--color-accent-light);
+    box-shadow: 0 0 0 4px rgb(3 105 161 / 0.14);
+}
+
+.dark .timeline-point[data-next-milestone="true"] {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 4px rgb(56 189 248 / 0.2);
+}
+
+@keyframes home-fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(1rem);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-animate {
+    opacity: 0;
+    animation: home-fade-in-up 0.7s ease-out forwards;
+}
+
+.hero-animate-delay-1 { animation-delay: 0.1s; }
+.hero-animate-delay-2 { animation-delay: 0.2s; }
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-animate {
+        opacity: 1;
+        animation: none;
+        transform: none;
+    }
+}
+
 .bg-engineering {
     background-color: #ffffff;
-    background-image: radial-gradient(#e2e8f0 0.8px, transparent 0.8px);
+    background-image: radial-gradient(#cbd5e1 0.8px, transparent 0.8px);
     background-size: 40px 40px;
     position: relative;
 }
@@ -40,7 +94,7 @@
     content: '';
     position: fixed;
     inset: 0;
-    background-image: radial-gradient(#94a3b8 1px, transparent 1px);
+    background-image: radial-gradient(#64748b 1px, transparent 1px);
     background-size: 40px 40px;
     pointer-events: none;
     z-index: -1;
@@ -70,23 +124,23 @@
 .mask-unified {
     color: #0f172a;
     background-image:
+        url('../images/fiuba.svg'),
         linear-gradient(to bottom,
             rgba(15, 23, 42, 0.97) 0%,
-            rgba(15, 23, 42, 0.89) 48%,
-            rgba(30, 41, 59, 0.8) 52%,
-            rgba(30, 41, 59, 0.9) 100%
+            rgba(15, 23, 42, 0.93) 48%,
+            rgba(30, 41, 59, 0.88) 52%,
+            rgba(30, 41, 59, 0.94) 100%
         ),
-        url('../images/fiuba.svg'),
         linear-gradient(to bottom, #ffffff, #ffffff);
 
     background-size:
-        100% 100%,
         120% auto,
+        100% 100%,
         100% 100%;
 
     background-position:
-        center center,
         center 40%,
+        center center,
         center center;
 
     background-repeat: no-repeat;
@@ -132,7 +186,7 @@
 
 @media (min-width: 1024px) {
     .mask-unified {
-        background-size: 100% 100%, 75% auto, 100% 100%;
+        background-size: 75% auto, 100% 100%, 100% 100%;
     }
     
     .dark .mask-unified {
