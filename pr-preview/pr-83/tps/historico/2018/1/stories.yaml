@@ -1,0 +1,619 @@
+swagger: '2.0'
+info: 
+  description: API para el shared server de Stories
+  title: Stories - Shared Server API
+  version: 1.0.0
+host: stories.7552.fi.uba.ar
+schemes: 
+  - http
+basePath: /api
+consumes: 
+  - application/json
+produces: 
+  - application/json
+securityDefinitions:
+  BusinessToken:
+    type: apiKey
+    in: query
+    name: token
+  ApplicationToken:
+    type: apiKey
+    in: query
+    name: token
+tags:
+  - name: files
+    description: |
+      Llamados relacionados con la administracion de archivos
+  - name: app server
+    description: |
+      Llamados relacionados con la administración de app severs
+  - name: user
+    description: |
+      Llamados que puede realizar los usuarios 
+paths:
+  /user:
+     post:
+      tags:
+        - user
+      security:
+        - ApplicationToken: []
+      description: "Registra creenciales de un usuario de aplicación"
+      parameters: 
+        - description: "informacion del usuario"
+          in: body
+          name: body
+          required: true
+          schema: 
+            $ref: '#/definitions/ApplicationUserWithPassword'
+      responses: 
+        200: 
+          description: "Validación correcta"
+          schema:
+            properties:
+              metadata:
+                $ref: '#/definitions/EntityMetadata'
+              user:
+                $ref: '#/definitions/ApplicationUser'
+        400: 
+          description: "Incumplimiento de precondiciones (parámetros faltantes) o validación fallida"
+          schema: 
+            $ref: "#/definitions/Error"
+        401:
+          description: Unauthorized
+          schema:
+              $ref: '#/definitions/Error'
+        500: 
+          description: "Unexpected error"
+          schema: 
+            $ref: "#/definitions/Error"
+      summary: "Registra usuario de aplicación"
+  /token:
+    post:
+      tags:
+        - user
+      description: "Endpoint para generar un token para utilizar en los servicios del sistema (login)"
+      parameters: 
+        - description: "Datos para generar token"
+          in: body
+          name: body
+          required: true
+          schema: 
+            $ref: '#/definitions/BusinessUserCredentials'
+      responses: 
+        201: 
+          description: "Token generado correctamente"
+          schema:
+            properties:
+              metadata:
+                $ref: '#/definitions/EntityMetadata'
+              token:
+                $ref: "#/definitions/Token"
+        400: 
+          description: "Incumplimiento de precondiciones (parámetros faltantes)"
+          schema: 
+            $ref: "#/definitions/Error"
+        401:
+          description: Unauthorized
+          schema:
+              $ref: '#/definitions/Error'
+        500: 
+          description: "Unexpected error"
+          schema: 
+            $ref: "#/definitions/Error"
+      summary: "Generar token de usuario de negocio"      
+  /servers:
+    get:
+      tags:
+        - app server
+      security:
+        - BusinessToken: []
+      description: |
+          Devuelve toda la información acerca de todos los application servers indicados.
+      responses: 
+        200: 
+          description: "Todos los application servers indicados"
+          schema: 
+            properties: 
+              metadata: 
+                $ref: "#/definitions/CollectionMetadata"
+              servers: 
+                items: 
+                  $ref: '#/definitions/Server'
+        401:
+          description: Unauthorized
+          schema:
+              $ref: '#/definitions/Error'
+        500: 
+          description: "Unexpected error"
+          schema: 
+            $ref: "#/definitions/Error"
+      summary: "Listado de application servers"
+    post:
+      tags:
+        - app server
+      security:
+        - BusinessToken: []
+      description: |
+        Endpoint para dar de alta un servidor. Se ignorarán los campos de id, _rev y lastConnection
+      parameters: 
+        - description: "Datos para dar de alta un servidor"
+          in: body
+          name: body
+          required: true
+          schema: 
+            $ref: "#/definitions/Server"
+      responses: 
+        201: 
+          description: "Alta correcta"
+          schema:
+            properties:
+              metadata:
+                $ref: '#/definitions/EntityMetadata'
+              server:
+                $ref: '#/definitions/CreateServerResponse'
+        400: 
+          description: "Incumplimiento de precondiciones (parámetros faltantes)"
+          schema: 
+            $ref: "#/definitions/Error"
+        500: 
+          description: "Unexpected error"
+          schema: 
+            $ref: "#/definitions/Error"
+      summary: "Dar de un application server"
+  /servers/{serverId}:
+    parameters: 
+      - description: "Identificador del servidor"
+        in: path
+        name: serverId
+        required: true
+        type: string
+    get:
+      tags:
+        - app server
+      security:
+        - BusinessToken: []
+      description: "Devuelve toda la información del servidor"
+      responses: 
+        200: 
+          description: "Información del servidor"
+          schema: 
+            properties: 
+              metadata: 
+                $ref: "#/definitions/EntityMetadata"
+              server: 
+                $ref: "#/definitions/Server"
+        401:
+          description: Unauthorized
+          schema:
+              $ref: '#/definitions/Error'
+        404: 
+          description: "Servidor inexistente"
+          schema: 
+            $ref: "#/definitions/Error"
+        500: 
+          description: "Unexpected error"
+          schema: 
+            $ref: "#/definitions/Error"
+      summary: "Obtener información de un servidor"
+    put:
+      tags:
+        - app server
+      security:
+        - BusinessToken: []
+      description: |
+        Modificación de los datos de un servidor. Se ignorarán los campos de `id`, `createdBy`, `createdTime` y `lastConnection`
+      parameters: 
+        - description: Datos para modificar a del servidor
+          in: body
+          name: body
+          required: true
+          schema: 
+            $ref: "#/definitions/Server"
+      responses: 
+        200: 
+          description: "Modificación correcta"
+          schema:
+            properties:
+              metadata:
+                $ref: '#/definitions/EntityMetadata'
+              server:
+                $ref: "#/definitions/Server"
+        400: 
+          description: "Incumplimiento de precondiciones (parámetros faltantes)"
+          schema: 
+            $ref: "#/definitions/Error"
+        404: 
+          description: "No existe el recurso solicitado"
+          schema: 
+            $ref: "#/definitions/Error"
+        409:
+          description: Conflicto en el update (esta mal el valor de `_rev`)
+          schema: 
+            $ref: "#/definitions/Error"
+        500: 
+          description: "Unexpected error"
+          schema: 
+            $ref: "#/definitions/Error"
+      summary: "Actualización de información de un servidor"
+    post:
+      tags:
+        - app server
+      security:
+        - BusinessToken: []
+      description: |
+        Endpoint para resetear el token. Debe invalidar el anterior.
+      responses: 
+        201: 
+          description: "Nuevo token"
+          schema:
+            properties:
+              metadata:
+                $ref: '#/definitions/EntityMetadata'
+              server:
+                $ref: '#/definitions/CreateServerResponse'
+        400: 
+          description: "Incumplimiento de precondiciones (parámetros faltantes)"
+          schema: 
+            $ref: "#/definitions/Error"
+        500: 
+          description: "Unexpected error"
+          schema: 
+            $ref: "#/definitions/Error"
+      summary: "Resetear un token de un servidor"
+    delete:
+      tags:
+        - app server
+      security:
+        - BusinessToken: []
+      description: "Endpoint para dar de baja un servidor"
+      responses: 
+        204: 
+          description: "Baja correcta"
+        401:
+          description: Unauthorized
+          schema:
+              $ref: '#/definitions/Error'
+        404: 
+          description: "No existe el recurso solicitado"
+          schema: 
+            $ref: "#/definitions/Error"
+        500: 
+          description: "Unexpected error"
+          schema: 
+            $ref: "#/definitions/Error"
+      summary: "Eliminar un servidor"
+
+  /files:
+    get:
+      tags:
+        - files
+      security:
+        - ApplicationToken: []
+      description: |
+          Devuelve toda la información acerca de todos los archivos registrados por un application server
+      responses: 
+        200: 
+          description: "Todos los archivos perteniecientes al server indicado"
+          schema: 
+            properties: 
+              metadata: 
+                $ref: "#/definitions/CollectionMetadata"
+              servers: 
+                items: 
+                  $ref: '#/definitions/File'
+        401:
+          description: Unauthorized
+          schema:
+              $ref: '#/definitions/Error'
+        500: 
+          description: "Unexpected error"
+          schema: 
+            $ref: "#/definitions/Error"
+      summary: "Listado de archivos de un application servers"
+    post:
+      tags:
+        - files
+      security:
+        - BusinessToken: []
+      description: |
+        Endpoint para dar de alta un archivo. Se ignorarán los campos de id, _rev
+      parameters: 
+        - description: "Datos para dar de alta un archivo"
+          in: body
+          name: body
+          required: true
+          schema: 
+            $ref: "#/definitions/File"
+      responses: 
+        201: 
+          description: "Alta correcta"
+          schema:
+            properties:
+              metadata:
+                $ref: '#/definitions/EntityMetadata'
+              server:
+                $ref: '#/definitions/File'
+        400: 
+          description: "Incumplimiento de precondiciones (parámetros faltantes)"
+          schema: 
+            $ref: "#/definitions/Error"
+        500: 
+          description: "Unexpected error"
+          schema: 
+            $ref: "#/definitions/Error"
+      summary: "Dar de un archivo asociado a un application server"
+      
+  /files/{fileId}:
+    parameters: 
+      - description: "Identificador del archivo"
+        in: path
+        name: fileId
+        required: true
+        type: string
+    get:
+      tags:
+        - files
+      security:
+        - BusinessToken: []
+      description: "Devuelve toda la información del archivo solicitado"
+      responses: 
+        200: 
+          description: "Información del archivo"
+          schema: 
+            properties: 
+              metadata: 
+                $ref: "#/definitions/EntityMetadata"
+              server: 
+                $ref: "#/definitions/File"
+        401:
+          description: Unauthorized
+          schema:
+              $ref: '#/definitions/Error'
+        404: 
+          description: "Archivo inexistente"
+          schema: 
+            $ref: "#/definitions/Error"
+        500: 
+          description: "Unexpected error"
+          schema: 
+            $ref: "#/definitions/Error"
+      summary: "Obtener información de un archivo"
+    put:
+      tags:
+        - files
+      security:
+        - BusinessToken: []
+      description: |
+        Modificación de los datos de un archivo. Se ignorarán los campos de `id`, `createdTime` y `updatedTime`
+      parameters: 
+        - description: Datos para modificar a del servidor
+          in: body
+          name: body
+          required: true
+          schema: 
+            $ref: "#/definitions/File"
+      responses: 
+        200: 
+          description: "Modificación correcta"
+          schema:
+            properties:
+              metadata:
+                $ref: '#/definitions/EntityMetadata'
+              server:
+                $ref: "#/definitions/File"
+        400: 
+          description: "Incumplimiento de precondiciones (parámetros faltantes)"
+          schema: 
+            $ref: "#/definitions/Error"
+        404: 
+          description: "No existe el recurso solicitado"
+          schema: 
+            $ref: "#/definitions/Error"
+        409:
+          description: Conflicto en el update (esta mal el valor de `_rev`)
+          schema: 
+            $ref: "#/definitions/Error"
+        500: 
+          description: "Unexpected error"
+          schema: 
+            $ref: "#/definitions/Error"
+      summary: "Actualización de información de un archivo"
+    delete:
+      tags:
+        - files
+      security:
+        - BusinessToken: []
+      description: "Endpoint para dar de baja un archivo"
+      responses: 
+        204: 
+          description: "Baja correcta"
+        401:
+          description: Unauthorized
+          schema:
+              $ref: '#/definitions/Error'
+        404: 
+          description: "No existe el recurso solicitado"
+          schema: 
+            $ref: "#/definitions/Error"
+        500: 
+          description: "Unexpected error"
+          schema: 
+            $ref: "#/definitions/Error"
+      summary: "Eliminar un archivo "
+  /files/upload:
+    post:
+      tags:
+        - files
+      security:
+        - ApplicationToken: []        
+      consumes:
+        - multipart/form-data
+      description: "Endpoint para dar de baja un archivo"        
+      parameters:
+        - in: formData
+          name: file
+          required: true
+          type: file
+          format: binary
+          description: Archivo que se desea subir al servidor
+        - in: formData
+          name: metadata
+          required: true
+          type: string
+          format: json
+          description: Informacion asociada al archivo (mismo json que POST /files )
+      responses: 
+        200: 
+          description: "Información del archivo"
+          schema: 
+            properties: 
+              metadata: 
+                $ref: "#/definitions/EntityMetadata"
+              server: 
+                $ref: "#/definitions/File"
+        401:
+          description: Unauthorized
+          schema:
+              $ref: '#/definitions/Error'
+        400: 
+          description: "Incumplimiento de precondiciones (parámetros faltantes)"
+          schema: 
+            $ref: "#/definitions/Error"
+        500: 
+          description: "Unexpected error"
+          schema: 
+            $ref: "#/definitions/Error"        
+            
+definitions:
+  Version:
+    type: string
+    description: Versión de la api
+  Id:
+    type: string
+    description: |
+      Se guarda como un string, pero podría ser un número
+      es dependiente de la implementación.
+  Timestamp:
+    type: number
+    description: |
+      Tiempo en epoch      
+  Ref:
+    type: string
+    description: |
+      Hash que es utilizado para prevenir colosiones.
+      Cuando se crea un elemento, se debe pasar un valor de undefined (o no debe estar).
+      Al actualizar, el servidor chequeará que este valor sea igual al guardado, de no coincidir,
+      significa que otro actualizó el recurso, por ende, la actualización debe fallar.
+  Error: 
+    properties: 
+      code: 
+        format: int32
+        type: integer
+      message: 
+        type: string
+    type: object
+  EntityMetadata:
+    properties:
+      version:
+        $ref: '#/definitions/Version'
+  CollectionMetadata: 
+    properties: 
+      total:
+        description: Cantidad de elementos existentes
+        type: integer
+      version: 
+        $ref: '#/definitions/Version'
+    type: object
+
+  ApplicationUserCredentials:
+    type: object
+    properties: 
+      username: 
+        type: string
+      password:
+        description: Debe estar presente la contraseña o el token de fb.
+        type: string
+        format: password
+      facebookAuthToken:
+        type: string
+        description: Token de autenticación de facebook. Debe estar presente la contraseña o el token de fb.
+  CreateServerResponse:
+    properties:
+      server:
+        $ref: '#/definitions/Server'
+      token:
+        $ref: '#/definitions/Token'
+  Server:
+    properties:
+      id:
+        $ref: '#/definitions/Id'
+      _rev:
+        $ref: '#/definitions/Ref'
+      createdBy:
+        $ref: '#/definitions/Id'
+      createdTime:
+        $ref: '#/definitions/Timestamp'
+      name:
+        type: string
+        description: Nombre del application server
+      lastConnection:
+        $ref: '#/definitions/Timestamp'
+  BusinessUserCredentials:
+    properties:
+      username:
+        type: string
+      password:
+        type: string
+        format: password
+  Token:
+    properties:
+      expiresAt:
+        $ref: '#/definitions/Timestamp'
+      token:  
+        type: string
+        description: Token de autenticación
+  ApplicationUser: 
+    properties:
+      id:
+        $ref: '#/definitions/Id'
+      _rev:
+        $ref: '#/definitions/Ref'
+      applicationOwner:
+        $ref: '#/definitions/Id'
+      username: 
+        description: Nombre del usuario en la aplicación
+        type: string
+  ApplicationUserWithPassword: 
+    properties:
+      id:
+        $ref: '#/definitions/Id'
+      _rev:
+        $ref: '#/definitions/Ref'
+      password:
+        type: string
+      applicationOwner:
+        $ref: '#/definitions/Id'
+      username: 
+        description: Nombre del usuario en la aplicación
+        type: string     
+  File:
+    properties:
+      id:
+        $ref: '#/definitions/Id'
+      _rev:
+        $ref: '#/definitions/Ref'        
+      createdTime:
+        $ref: '#/definitions/Timestamp'
+        description: fecha de creación
+      updatedTime:
+        description: fecha de actualización
+        $ref: '#/definitions/Timestamp'
+      size:
+        type: number
+        description: tamaño del archivo
+      filename:
+        description: nombre del archivo
+        type: string
+      resource:
+        description: url absoluta para poder acceder al recurso físico (archivo)
+        type: string
