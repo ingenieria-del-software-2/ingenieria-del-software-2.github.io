@@ -2034,15 +2034,126 @@ _El alcance específico de cada checkpoint se acuerda con el corrector asignado 
 
 **Al finalizar el trabajo**, el grupo debe haber implementado:
 
-- **Todas las historias obligatorias** (ver [Historias obligatorias](./historias-obligatorias.md)), cumpliendo sus criterios de aceptación.
+- **Todas las historias obligatorias** (ver [Historias obligatorias](#historias-obligatorias)), cumpliendo sus criterios de aceptación.
 - **Todos los Requisitos No Funcionales** definidos en este documento.
-- **Un mínimo de puntos en historias optativas** según la cantidad de integrantes del grupo (ver [Historias optativas](./historias-optativas-pack.md)).
-
-_El alcance específico de cada checkpoint se acuerda con el corrector asignado al inicio de cada período._
+- **Un mínimo de puntos en historias optativas** según la cantidad de integrantes del grupo (ver [Historias optativas](#historias-optativas)).
 
 ---
 
-## Material de referencia
+## Historias obligatorias
 
-Ver [referencias-tecnicas.md](./referencias-tecnicas.md) para el glosario completo de conceptos técnicos, referencias y lo que la cátedra entiende por cada uno.
+Este catálogo define el alcance funcional obligatorio. Los puntos expresan complejidad relativa con escala Fibonacci y contemplan la implementación de las historias de usuario final en la aplicación mobile y el cliente web, y las historias de staff en el backoffice.
+
+Los puntos no reemplazan los Requisitos No Funcionales: todos los RNF del enunciado, incluidos los tres clientes, forman parte obligatoria de la entrega y fueron considerados al calibrar este núcleo.
+
+| #  | Historia                                      | Épica            | Puntos | Motivo de obligatoriedad                              |
+| -- | ---------------------------------------------- | ---------------- | -----: | ----------------------------------------------------- |
+| 1  | Registro de usuarios                          | Usuarios         |      3 | Identidad base del sistema                            |
+| 2  | Login con email y contraseña                 | Usuarios         |      2 | Acceso, cierre de sesión y continuidad de la sesión   |
+| 3  | Recupero de contraseña                       | Usuarios         |      3 | Recuperación segura, no enumeración y rate limiting   |
+| 4  | Edición de perfil                            | Perfil           |      2 | Gestión de la identidad visible                       |
+| 5  | Visualización de perfil propio               | Perfil           |      1 | Acceso a los datos y preferencias propios             |
+| 6  | Crear servidor                               | Servidores       |      3 | Entrada al flujo central de comunidades               |
+| 7  | Generar invitación                           | Servidores       |      5 | Ingreso con expiración, límite de usos y revocación   |
+| 8  | Unirse a servidor vía invitación             | Servidores       |      3 | Crecimiento y membresía de comunidades                |
+| 9  | Abandonar servidor                           | Servidores       |      2 | Control del usuario sobre su membresía                |
+| 10 | Transferir propiedad del servidor            | Servidores       |      3 | Salida coherente del owner y continuidad del servidor |
+| 11 | Crear canal                                  | Canales          |      3 | Organización mínima del servidor                      |
+| 12 | Editar canal                                 | Canales          |      2 | Gestión del espacio de comunicación                   |
+| 13 | Eliminar canal                               | Canales          |      2 | Ciclo de vida completo de canales                     |
+| 14 | Organizar canales en categorías              | Canales          |      3 | Navegación de servidores con múltiples canales        |
+| 15 | Enviar mensaje en un canal                   | Mensajería       |      8 | Comunicación central en tiempo real y multiinstancia  |
+| 16 | Historial y reconexión                       | Mensajería       |     13 | Persistencia, paginación y recuperación sin pérdidas  |
+| 17 | Unirse a canal de voz de servidor            | Canal de Voz     |     11 | Riesgo técnico principal y comunicación de voz real   |
+| 18 | Salir de canal de voz                        | Canal de Voz     |      1 | Ciclo básico de una sesión de voz                     |
+| 19 | Silenciar micrófono propio                   | Canal de Voz     |      1 | Control mínimo durante una sesión                     |
+| 20 | Ver participantes conectados                 | Canal de Voz     |      3 | Presencia sincronizada en la sesión                   |
+| 21 | Crear rol                                    | Roles y Permisos |      3 | Base del modelo de autorización del servidor          |
+| 22 | Editar permisos de un rol                    | Roles y Permisos |      5 | Autorización efectiva y consistente                   |
+| 23 | Asignar rol a un miembro                     | Roles y Permisos |      3 | Aplicación del modelo de permisos                     |
+| 24 | Definir rol por defecto para nuevos miembros | Roles y Permisos |      2 | Permisos seguros desde el ingreso                     |
+| 25 | Banear miembro del servidor                  | Moderación       |      3 | Prevención de reingreso de usuarios abusivos          |
+| 26 | Revocar baneo                                | Moderación       |      2 | Reversibilidad de las decisiones de moderación        |
+| 27 | Ver notificaciones no leídas                 | Notificaciones   |      3 | Seguimiento de actividad relevante                    |
+| 28 | Marcar notificaciones como leídas            | Notificaciones   |      1 | Gestión del estado de lectura                         |
+| 29 | Suspender usuario a nivel plataforma         | Administración   |      3 | Control global de abuso y revocación de sesiones      |
+| 30 | Reactivar usuario suspendido                 | Administración   |      1 | Reversibilidad de la suspensión                       |
+| 31 | Ver listado de usuarios con filtros          | Administración   |      2 | Entrada operativa para gestionar cuentas              |
+| 32 | Ver listado de servidores de la plataforma   | Administración   |      2 | Visibilidad operativa del backoffice                  |
+
+**Puntaje total obligatorio: 104 pts.**
+
+---
+
+## Historias optativas
+
+Este catálogo define el alcance funcional optativo. Cada historia tiene puntos de complejidad relativa en escala Fibonacci. El grupo puede elegir libremente las historias que le resulten más convenientes, siempre que alcance el mínimo correspondiente según su tamaño y respete todas las dependencias.
+
+Salvo que una historia indique expresamente una plataforma particular, las optativas de usuario final seleccionadas deben implementarse tanto en la aplicación mobile como en el cliente web. Las optativas de staff deben implementarse en el backoffice. Cualquier excepción debe acordarse con el corrector al comprometer el alcance y quedar registrada en el backlog.
+
+| #  | Historia                                              | Épica            | Puntos | Dependencias |
+| -- | ----------------------------------------------------- | ---------------- | -----: | ------------ |
+| 33 | Login con proveedor federado                         | Usuarios         |      5 | Login con email y contraseña |
+| 34 | Registro con PIN                                     | Usuarios         |      2 | Registro de usuarios y aplicación mobile |
+| 35 | Autenticación de dos factores (2FA)                   | Usuarios         |      5 | Login con email y contraseña |
+| 36 | Visualización de perfil público                      | Perfil           |      2 | Visualización de perfil propio |
+| 37 | Estado de actividad                                  | Perfil           |      5 | Mensajería en tiempo real y sesiones autenticadas |
+| 38 | Estado personalizado                                 | Perfil           |      2 | Edición de perfil |
+| 39 | Administrar configuración del servidor               | Servidores       |      3 | Crear servidor |
+| 40 | Eliminar servidor                                    | Servidores       |      5 | Administrar configuración del servidor |
+| 41 | Reordenar canales                                    | Canales          |      2 | Organizar canales en categorías |
+| 42 | Enviar mensaje directo (DM)                          | Mensajería       |      8 | Bloquear y desbloquear usuarios; sesiones e historial de mensajería |
+| 43 | Bloquear y desbloquear usuarios                      | Mensajería       |      3 | Usuarios; complementa mensajes directos |
+| 44 | Editar mensaje                                       | Mensajería       |      3 | Enviar mensaje en un canal o DM |
+| 45 | Eliminar mensaje                                     | Mensajería       |      3 | Enviar mensaje en un canal o DM |
+| 46 | Menciones                                            | Mensajería       |      5 | Mensajería, roles y notificaciones |
+| 47 | Adjuntar archivos en mensajes                        | Mensajería       |      5 | Mensajería y almacenamiento externo de objetos |
+| 48 | Reacciones con emoji                                 | Mensajería       |      3 | Enviar mensaje en un canal |
+| 49 | Buscar mensajes                                      | Mensajería       |      5 | Historial y reconexión; autorización por canal o DM |
+| 50 | Iniciar y recibir llamada de voz privada             | Canal de Voz     |     13 | Mensajes directos y flujo de voz operativo |
+| 51 | Indicador de quién está hablando                     | Canal de Voz     |      3 | Unirse a canal de voz de servidor |
+| 52 | Silenciar a otro participante localmente             | Canal de Voz     |      2 | Unirse a canal de voz de servidor |
+| 53 | Compartir pantalla                                   | Canal de Voz     |      8 | Flujo de voz operativo |
+| 54 | Video en llamada                                     | Canal de Voz     |      8 | Flujo de voz operativo |
+| 55 | Eliminar rol                                         | Roles y Permisos |      3 | Crear, asignar y editar roles |
+| 56 | Reordenar jerarquía de roles                         | Roles y Permisos |      3 | Crear rol y asignar rol a un miembro |
+| 57 | Sobrescribir permisos de un rol en un canal específico | Roles y Permisos |    5 | Editar permisos de un rol y gestión de canales |
+| 58 | Ver miembros por rol                                 | Roles y Permisos |      2 | Asignar rol a un miembro |
+| 59 | Expulsar miembro del servidor                        | Moderación       |      3 | Roles y membresía del servidor |
+| 60 | Silenciar temporalmente a un miembro                 | Moderación       |      5 | Roles, mensajería y voz |
+| 61 | Ver registro de auditoría de moderación              | Moderación       |      3 | Acciones de moderación |
+| 62 | Reportar mensaje o usuario                           | Moderación       |      5 | Mensajería y backoffice |
+| 63 | Filtro automático de palabras prohibidas            | Moderación       |      3 | Enviar mensaje en un canal |
+| 64 | Silenciar notificaciones de un canal o servidor      | Notificaciones   |      3 | Notificaciones obligatorias |
+| 65 | Configurar preferencias de notificación             | Notificaciones   |      3 | Notificaciones obligatorias |
+| 66 | Notificaciones push                                  | Notificaciones   |      5 | Configurar preferencias y aplicación mobile |
+| 67 | Centro de notificaciones con historial               | Notificaciones   |      5 | Notificaciones obligatorias |
+| 68 | Eliminar servidor desde el backoffice                | Administración   |      5 | Listado de servidores y eliminación en cascada |
+| 69 | Suspender servidor completo                          | Administración   |      5 | Listado de servidores de la plataforma |
+| 70 | Ver métricas de actividad de un servidor             | Métricas         |      5 | Eventos de membresía y mensajería |
+| 71 | Ver métricas globales de la plataforma               | Métricas         |      5 | Eventos globales y acceso de staff |
+| 72 | Gráfico de crecimiento de miembros                   | Métricas         |      3 | Métricas de actividad de un servidor |
+| 73 | Exportar métricas a CSV                              | Métricas         |      3 | Métricas de servidor o globales |
+| 74 | Estado de la plataforma e incidentes                 | Métricas         |      5 | Backoffice y health checks de los RNF |
+| 75 | Gestionar emojis personalizados del servidor         | Monetización     |      5 | Administración del servidor y almacenamiento de objetos |
+| 76 | Suscribirse a Plan Premium                           | Monetización     |     13 | Adjuntos, perfil, reacciones, emojis y pagos externos |
+| 77 | Cancelar suscripción Premium                         | Monetización     |      3 | Suscribirse a Plan Premium |
+| 78 | Comprar puntos                                       | Monetización     |      8 | Integración con pagos externos |
+| 79 | Usar puntos para boostear un servidor                | Monetización     |     13 | Comprar puntos y membresía de servidor |
+| 80 | Ver beneficios de servidor boosteado                 | Monetización     |      3 | Usar puntos para boostear y gestionar emojis |
+| 81 | Ver expediente de investigación de usuario o servidor | Administración   |      5 | Reportar mensaje o usuario |
+
+**Puntaje optativo disponible: 229 pts.**
+
+---
+
+## Mínimo de puntos por tamaño de equipo
+
+| Integrantes | Mínimo optativas | % del pool optativo | Total mínimo |
+| :---------: | :--------------: | :-----------------: | :----------: |
+| 4           | 48 pts           | 21,0%               | 152 pts      |
+| 5           | 80 pts           | 34,9%               | 184 pts      |
+| 6           | 112 pts          | 48,9%               | 216 pts      |
+
+El total mínimo considera los 104 puntos obligatorios. Los RNF completos, la aplicación mobile, el cliente web de usuario final y el backoffice también son obligatorios y no otorgan puntos adicionales.
 
