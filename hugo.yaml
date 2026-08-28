@@ -1,13 +1,23 @@
 # Hugo configuration file
 title: "Ingeniería del Software 2"
 defaultContentLanguage: es
-languageCode: es-AR
+locale: es-AR
 
 languages:
   es:
-    languageCode: es-AR
-    languageName: Español
+    locale: es-AR
+    label: Español
     weight: 1
+
+security:
+  exec:
+    allow:
+      - '^(dart-)?sass$'
+      - '^go$'
+      - '^git$'
+      - '^node$'
+      - '^postcss$'
+      - '^tailwindcss$'
 
 # Import the hextra theme as a module
 module:

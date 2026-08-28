@@ -1,5 +1,5 @@
 <div class="max-w-3xl mx-auto px-4 py-8">
-  {{ $start := time site.Data.fechas.inicio }}
+  {{ $start := time hugo.Data.fechas.inicio }}
   {{ $year := int ($start.Format "2006") }}
   {{ $semester := cond (le (int ($start.Format "1")) 6) 1 2 }}
   {{ $previousYear := cond (eq $semester 1) (sub $year 1) $year }}

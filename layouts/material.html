@@ -190,7 +190,7 @@
       <aside
         class="hidden lg:block lg:col-span-3 xl:col-span-2 border-r border-gray-100 dark:border-slate-800 sticky top-16 overflow-y-auto py-8 pr-6 scrollbar-thin"
       >
-        {{ with .Site.Data.material.youtube_channel }}
+        {{ with hugo.Data.material.youtube_channel }}
         <div class="mb-2 pl-4">
             <a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-3 px-3 py-3 w-full border-l-2 border-red-500 bg-gray-50/80 dark:bg-slate-800/50 hover:bg-red-50/80 dark:hover:bg-red-950/30 transition-colors">
                 <svg class="w-5 h-5 text-red-600 dark:text-red-500 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M21.582 6.186a2.6 2.6 0 0 0-1.838-1.839C18.125 3.9 12 3.9 12 3.9s-6.125 0-7.744.447A2.6 2.6 0 0 0 2.418 6.186C2 7.805 2 12 2 12s0 4.195.418 5.814a2.6 2.6 0 0 0 1.838 1.839C5.875 20.1 12 20.1 12 20.1s6.125 0 7.744-.447a2.6 2.6 0 0 0 1.838-1.839C22 16.195 22 12 22 12s0-4.195-.418-5.814zM10 15.464V8.536L16 12l-6 3.464z"/></svg>
@@ -201,7 +201,7 @@
             </a>
         </div>
         {{ end }}
-        {{ with .Site.Data.material.hall_of_fame }}
+        {{ with hugo.Data.material.hall_of_fame }}
         <div class="mb-8 pl-4">
             <button
                 class="nav-item group flex w-full min-w-0 cursor-pointer items-center gap-3 border-l-2 border-transparent px-3 py-2.5 text-left text-text-muted transition-colors hover:border-slate-200 hover:bg-gray-50/50 hover:text-primary data-[active=true]:border-amber-400/60 data-[active=true]:bg-gray-50/80 data-[active=true]:text-primary dark:text-slate-300 dark:hover:border-slate-700 dark:hover:bg-slate-800/30 dark:hover:text-slate-100 dark:data-[active=true]:border-amber-400/40 dark:data-[active=true]:bg-slate-800/50 dark:data-[active=true]:text-white"
@@ -221,7 +221,7 @@
             Temario
           </h3>
           <div class="space-y-1">
-            {{ range $index, $section := .Site.Data.material.sections }}
+            {{ range $index, $section := hugo.Data.material.sections }}
             <button 
                 class="nav-item w-full min-w-0 flex items-center justify-between px-3 py-3 text-[12px] font-sans border-l-2 transition-colors cursor-pointer text-text-muted dark:text-slate-300 hover:text-primary dark:hover:text-slate-200 hover:bg-gray-50/50 dark:hover:bg-slate-800/30 border-transparent data-[active=true]:text-primary data-[active=true]:dark:text-white data-[active=true]:bg-gray-50/80 data-[active=true]:dark:bg-slate-800 data-[active=true]:border-slate-300 data-[active=true]:dark:border-accent data-[active=true]:font-semibold" 
                 data-section="{{ $section.id }}"
@@ -239,14 +239,14 @@
         <!-- Mobile Navigation (Compact Pill-style Toolbar) -->
         <div id="mobile-nav-wrapper" class="lg:hidden relative z-10 bg-white/90 dark:bg-slate-950/90 backdrop-blur-md border-b border-gray-100 dark:border-slate-800 -mx-4 px-4 md:-mx-6 md:px-6 mb-6">
             <div id="mobile-nav-container" class="flex flex-wrap items-center gap-2 py-3 scrollbar-none [scrollbar-width:none]">
-                {{ with .Site.Data.material.youtube_channel }}
+                {{ with hugo.Data.material.youtube_channel }}
                 <a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="shrink-0 flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-transparent text-slate-600 dark:text-slate-300 border border-red-200/80 dark:border-red-500/25 hover:bg-red-50/50 dark:hover:bg-red-950/20 transition-colors" title="Canal de YouTube">
                     <svg class="w-3.5 h-3.5 text-red-600 dark:text-red-500" viewBox="0 0 24 24" fill="currentColor"><path d="M21.582 6.186a2.6 2.6 0 0 0-1.838-1.839C18.125 3.9 12 3.9 12 3.9s-6.125 0-7.744.447A2.6 2.6 0 0 0 2.418 6.186C2 7.805 2 12 2 12s0 4.195.418 5.814a2.6 2.6 0 0 0 1.838 1.839C5.875 20.1 12 20.1 12 20.1s6.125 0 7.744-.447a2.6 2.6 0 0 0 1.838-1.839C22 16.195 22 12 22 12s0-4.195-.418-5.814zM10 15.464V8.536L16 12l-6 3.464z"/></svg>
                     <span class="text-[10px] font-sans font-bold uppercase tracking-tight">YouTube</span>
                 </a>
                 <div class="w-px h-4 bg-gray-200 dark:bg-slate-700 shrink-0 mx-1"></div>
                 {{ end }}
-                {{ with .Site.Data.material.hall_of_fame }}
+                {{ with hugo.Data.material.hall_of_fame }}
                 <a
                   href="#{{ .id }}"
                   data-section="{{ .id }}"
@@ -259,7 +259,7 @@
                 <div class="mx-1 h-4 w-px shrink-0 bg-gray-200 dark:bg-slate-700"></div>
                 {{ end }}
 
-                {{ range $index, $section := .Site.Data.material.sections }}
+                {{ range $index, $section := hugo.Data.material.sections }}
                 <a
                   href="#{{ .id }}"
                   data-section="{{ .id }}"
@@ -273,12 +273,12 @@
         </div>
 
         <div class="md:flex-1 md:min-h-0">
-            {{ range $index, $section := .Site.Data.material.sections }}
+            {{ range $index, $section := hugo.Data.material.sections }}
             <div id="desktop-section-{{ $section.id }}" data-panel="{{ $section.id }}" class="section-panel material-section-panel" {{ if ne $index 0 }}hidden{{ end }}>
                 {{ template "section-content" $section }}
             </div>
             {{ end }}
-            {{ with .Site.Data.material.hall_of_fame }}
+            {{ with hugo.Data.material.hall_of_fame }}
             <div id="desktop-section-{{ .id }}" data-panel="{{ .id }}" class="section-panel material-section-panel" hidden>
                 {{ template "hall-of-fame-content" . }}
             </div>
