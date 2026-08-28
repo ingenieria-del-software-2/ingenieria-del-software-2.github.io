@@ -33,6 +33,7 @@ sections:
       - url: "https://www.youtube.com/watch?v=ahXyvBG0764"
       - url: "https://www.youtube.com/watch?v=mdIaWXSsCPA"
       - url: "https://www.youtube.com/watch?v=ADmTGjp1UXg"
+      - url: "https://www.youtube.com/watch?v=n1CF-Rr8k78"
     resources:
       - title: "Technical Debt"
         url: "https://martinfowler.com/bliki/TechnicalDebt.html"
