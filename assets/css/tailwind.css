@@ -55,6 +55,134 @@
     box-shadow: 0 0 0 4px rgb(56 189 248 / 0.2);
 }
 
+.timeline-tooltip {
+    --tooltip-accent: #cbd5e1;
+    --tooltip-x: -50%;
+    --tooltip-caret-x: 50%;
+    position: absolute;
+    bottom: calc(100% + 0.75rem);
+    left: 50%;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.45rem 0.625rem;
+    border: 1px solid rgb(255 255 255 / 0.12);
+    border-radius: 0.2rem;
+    background: rgb(15 23 42 / 0.96);
+    box-shadow: 0 0.5rem 1.5rem rgb(15 23 42 / 0.16);
+    color: #fff;
+    line-height: 1;
+    pointer-events: none;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(var(--tooltip-x), 0.25rem) scale(0.97);
+    transform-origin: var(--tooltip-caret-x) bottom;
+    transition: opacity 140ms ease, transform 180ms cubic-bezier(0.16, 1, 0.3, 1), visibility 0s linear 180ms;
+}
+
+.timeline-tooltip::before {
+    flex: none;
+    width: 0.125rem;
+    height: 0.75rem;
+    border-radius: 9999px;
+    background: var(--tooltip-accent);
+    content: "";
+}
+
+.timeline-tooltip::after {
+    position: absolute;
+    bottom: -0.25rem;
+    left: var(--tooltip-caret-x);
+    width: 0.5rem;
+    height: 0.25rem;
+    background: inherit;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    content: "";
+    transform: translateX(-50%);
+}
+
+.timeline-tooltip-label {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+.timeline-tooltip-date {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    opacity: 0.72;
+}
+
+.timeline-tooltip-label::after {
+    margin-left: 0.45rem;
+    content: "·";
+    opacity: 0.42;
+}
+
+.timeline-tooltip--gestion { --tooltip-accent: #fb7185; }
+.timeline-tooltip--devops { --tooltip-accent: #38bdf8; }
+.timeline-tooltip--arquitectura { --tooltip-accent: #fb923c; }
+
+.timeline-point:hover > .timeline-tooltip,
+.timeline-point:focus-visible > .timeline-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(var(--tooltip-x), 0) scale(1);
+    transition-delay: 80ms, 80ms, 0s;
+}
+
+.dark .timeline-tooltip {
+    border-color: rgb(203 213 225 / 0.7);
+    background: rgb(241 245 249 / 0.96);
+    box-shadow: 0 0.5rem 1.5rem rgb(0 0 0 / 0.3);
+    color: #0f172a;
+}
+
+.timeline-point[data-label="Checkpoint 3"] > .timeline-tooltip,
+.timeline-point[data-role="end"] > .timeline-tooltip {
+    --tooltip-x: 0;
+    --tooltip-caret-x: calc(100% - 0.75rem);
+    right: 0;
+    left: auto;
+}
+
+.material-cta-progress {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    transform: rotate(-90deg);
+    transform-origin: center;
+    transition: stroke-dashoffset 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.material-cta-play {
+    transform-origin: center;
+    transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.material-cta:hover .material-cta-progress,
+.material-cta:focus-visible .material-cta-progress {
+    stroke-dashoffset: 0.38;
+}
+
+.material-cta:hover .material-cta-play,
+.material-cta:focus-visible .material-cta-play {
+    transform: translateX(0.35px);
+}
+
+.material-cta:active .material-cta-progress {
+    stroke-dashoffset: 0;
+    transition-duration: 80ms;
+}
+
+.material-cta:active .material-cta-play {
+    transform: translateX(0.6px) scale(0.92);
+}
+
 @keyframes home-fade-in-up {
     from {
         opacity: 0;
@@ -80,6 +208,29 @@
         animation: none;
         transform: none;
     }
+
+    .material-cta-progress,
+    .material-cta-play,
+    .timeline-tooltip {
+        transition: none;
+    }
+}
+
+@media (hover: none) {
+    .timeline-point:focus > .timeline-tooltip {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(var(--tooltip-x), 0) scale(1);
+    }
+}
+
+@media (max-width: 639px) {
+    .timeline-point[data-label="TP individual"] > .timeline-tooltip {
+        --tooltip-x: 0;
+        --tooltip-caret-x: 0.75rem;
+        left: 0;
+    }
+
 }
 
 .bg-engineering {
