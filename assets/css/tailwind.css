@@ -270,6 +270,73 @@
     -webkit-mask-image: radial-gradient(circle var(--glow-radius, 120px) at var(--mouse-x, -100%) var(--mouse-y, -100%), black, transparent);
 }
 
+#team-page {
+    isolation: isolate;
+}
+
+#team-page > main {
+    position: relative;
+    z-index: 1;
+}
+
+#team-page::before {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    background-image: radial-gradient(rgb(2 132 199 / 0.95) 0.8px, transparent 0.8px);
+    background-position: 0 0;
+    background-size: 40px 40px;
+    content: "";
+    opacity: 0;
+    pointer-events: none;
+    mask-image: linear-gradient(to bottom, transparent 38%, black 47%, black 53%, transparent 62%);
+    mask-position: 0 100%;
+    mask-repeat: no-repeat;
+    mask-size: 100% 300%;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 38%, black 47%, black 53%, transparent 62%);
+    -webkit-mask-position: 0 100%;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 300%;
+    animation: team-dots-invitation 8s linear infinite;
+}
+
+.dark #team-page::before {
+    background-image: radial-gradient(rgb(56 189 248 / 0.98) 0.8px, transparent 0.8px);
+}
+
+@keyframes team-dots-invitation {
+    0% {
+        opacity: 0;
+        mask-position: 0 75%;
+        -webkit-mask-position: 0 75%;
+    }
+    4% {
+        opacity: 0.34;
+        mask-position: 0 75%;
+        -webkit-mask-position: 0 75%;
+    }
+    50% {
+        opacity: 0.26;
+        mask-position: 0 25%;
+        -webkit-mask-position: 0 25%;
+    }
+    58% {
+        opacity: 0;
+        mask-position: 0 25%;
+        -webkit-mask-position: 0 25%;
+    }
+    59%, 100% {
+        opacity: 0;
+        mask-position: 0 75%;
+        -webkit-mask-position: 0 75%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #team-page::before {
+        animation: none;
+    }
+}
 
 /* MÁSCARA UNIFICADA */
 .mask-unified {
@@ -381,6 +448,19 @@
 
 .dark .section-scroll:hover::-webkit-scrollbar-thumb {
     background-color: rgba(148, 163, 184, 0.56);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    #team-grid .team-card[data-reveal="true"] {
+        transition-duration: 420ms;
+        transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* Keep the active portrait dominant without adding movement to the grid. */
+    #team-grid:has(.team-card:is(:hover, :focus-within))
+        .team-card[data-reveal="true"]:not(:hover):not(:focus-within) {
+        opacity: 0.97;
+    }
 }
 
 @media (min-width: 768px) {

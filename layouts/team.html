@@ -32,7 +32,7 @@
         >
           {{ range hugo.Data.team.team }}
           <article
-             class="group relative min-w-0 opacity-0 translate-y-2 transition-[opacity,transform] duration-500 ease-out data-[reveal=true]:opacity-100 data-[reveal=true]:translate-y-0 motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0"
+             class="team-card group relative min-w-0 opacity-0 translate-y-2 transition-[opacity,transform] duration-500 ease-out data-[reveal=true]:opacity-100 data-[reveal=true]:translate-y-0 motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0"
           >
             <div
               class="relative aspect-[4/5] rounded-2xl overflow-hidden mb-4 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 transition-all duration-300 group-hover:-translate-y-0.5 group-focus-within:-translate-y-0.5 group-hover:border-accent/45 group-focus-within:border-accent/45 dark:group-hover:border-accent/60 dark:group-focus-within:border-accent/60 group-hover:shadow-xl group-focus-within:shadow-xl group-hover:shadow-accent/10 group-focus-within:shadow-accent/10"
@@ -48,18 +48,18 @@
                 class="absolute inset-0 bg-gradient-to-t from-slate-900/50 via-slate-900/15 to-transparent opacity-50 md:opacity-0 md:group-hover:opacity-100 md:group-focus-within:opacity-100 transition-opacity duration-150"
               ></div>
               
-              <div class="absolute right-4 bottom-4 flex flex-row-reverse gap-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:group-focus-within:opacity-100 transition-opacity duration-150">
-                  {{ if .mail }}
-                  <a href="mailto:{{ .mail }}" aria-label="Enviar email a {{ .name }}" class="cursor-pointer w-11 h-11 flex items-center justify-center rounded-full border border-white/35 bg-slate-950/55 text-slate-100/90 shadow-sm transition-[background-color,border-color,color,box-shadow] duration-150 hover:border-white/70 hover:bg-slate-950/85 hover:text-white hover:shadow-md focus-visible:border-white/70 focus-visible:bg-slate-950/85 focus-visible:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900/70">
-                      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
-                        <path d="M2.25 6.75A2.25 2.25 0 0 1 4.5 4.5h15a2.25 2.25 0 0 1 2.25 2.25v10.5A2.25 2.25 0 0 1 19.5 19.5h-15a2.25 2.25 0 0 1-2.25-2.25V6.75Zm1.653-.75 8.097 6.154L20.097 6H3.903Zm16.347 1.884-7.341 5.58a1.5 1.5 0 0 1-1.818 0L3.75 7.884V17.25c0 .414.336.75.75.75h15a.75.75 0 0 0 .75-.75V7.884Z" />
-                      </svg>
-                  </a>
-                  {{ end }}
+              <div class="absolute right-4 bottom-4 flex gap-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:group-focus-within:opacity-100 transition-opacity duration-150">
                   {{ if .github }}
                   <a href="https://github.com/{{ .github }}" target="_blank" rel="noopener noreferrer" aria-label="GitHub de {{ .name }}" class="cursor-pointer w-11 h-11 flex items-center justify-center rounded-full border border-white/35 bg-slate-950/55 text-slate-100/90 shadow-sm transition-[background-color,border-color,color,box-shadow] duration-150 hover:border-white/70 hover:bg-slate-950/85 hover:text-white hover:shadow-md focus-visible:border-white/70 focus-visible:bg-slate-950/85 focus-visible:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900/70">
                       <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
                         <path d="M12 .5C5.65.5.5 5.77.5 12.27c0 5.2 3.3 9.61 7.88 11.17.58.11.79-.26.79-.57v-2.02c-3.2.71-3.88-1.58-3.88-1.58-.52-1.37-1.28-1.73-1.28-1.73-1.04-.73.08-.72.08-.72 1.16.08 1.77 1.23 1.77 1.23 1.02 1.81 2.68 1.29 3.33.99.1-.76.4-1.29.72-1.59-2.55-.3-5.24-1.31-5.24-5.85 0-1.29.45-2.35 1.2-3.18-.12-.3-.52-1.52.11-3.17 0 0 .98-.32 3.2 1.21a10.8 10.8 0 0 1 5.83 0c2.22-1.53 3.2-1.21 3.2-1.21.63 1.65.23 2.87.11 3.17.75.83 1.2 1.89 1.2 3.18 0 4.55-2.69 5.54-5.26 5.84.41.37.77 1.1.77 2.23v3.31c0 .31.21.69.8.57A11.77 11.77 0 0 0 23.5 12.27C23.5 5.77 18.35.5 12 .5Z" />
+                      </svg>
+                  </a>
+                  {{ end }}
+                  {{ if .mail }}
+                  <a href="mailto:{{ .mail }}" aria-label="Enviar email a {{ .name }}" class="cursor-pointer w-11 h-11 flex items-center justify-center rounded-full border border-white/35 bg-slate-950/55 text-slate-100/90 shadow-sm transition-[background-color,border-color,color,box-shadow] duration-150 hover:border-white/70 hover:bg-slate-950/85 hover:text-white hover:shadow-md focus-visible:border-white/70 focus-visible:bg-slate-950/85 focus-visible:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900/70">
+                      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                        <path d="M2.25 6.75A2.25 2.25 0 0 1 4.5 4.5h15a2.25 2.25 0 0 1 2.25 2.25v10.5A2.25 2.25 0 0 1 19.5 19.5h-15a2.25 2.25 0 0 1-2.25-2.25V6.75Zm1.653-.75 8.097 6.154L20.097 6H3.903Zm16.347 1.884-7.341 5.58a1.5 1.5 0 0 1-1.818 0L3.75 7.884V17.25c0 .414.336.75.75.75h15a.75.75 0 0 0 .75-.75V7.884Z" />
                       </svg>
                   </a>
                   {{ end }}
