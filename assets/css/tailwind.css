@@ -271,7 +271,19 @@
 }
 
 #team-page {
+    --glow-opacity: 0.22;
+    background-attachment: fixed;
+    background-position: 0 14px;
     isolation: isolate;
+}
+
+#team-page.bg-engineering::after {
+    background-image: radial-gradient(rgb(2 132 199 / 0.95) 0.8px, transparent 0.8px);
+    background-position: 0 14px;
+}
+
+.dark #team-page.bg-engineering::after {
+    background-image: radial-gradient(rgb(56 189 248 / 0.98) 0.8px, transparent 0.8px);
 }
 
 #team-page > main {
@@ -284,7 +296,8 @@
     z-index: 0;
     inset: 0;
     background-image: radial-gradient(rgb(2 132 199 / 0.95) 0.8px, transparent 0.8px);
-    background-position: 0 0;
+    background-attachment: fixed;
+    background-position: 0 14px;
     background-size: 40px 40px;
     content: "";
     opacity: 0;
@@ -461,6 +474,14 @@
         .team-card[data-reveal="true"]:not(:hover):not(:focus-within) {
         opacity: 0.97;
     }
+}
+
+#team-page[data-image-reveal="true"] .team-photo {
+    opacity: 0;
+}
+
+#team-page[data-image-reveal="true"] .team-photo[data-loaded="true"] {
+    opacity: 1;
 }
 
 @media (min-width: 768px) {
