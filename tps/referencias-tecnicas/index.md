@@ -57,6 +57,8 @@ WebSocket mantiene una conexión bidireccional entre el cliente y el servidor. A
 
 En Pub/Sub, los productores publican eventos en un *topic* sin conocer a los consumidores. Cada consumidor se suscribe a los temas que le interesan. Esto permite que varias instancias de un servicio compartan eventos aunque cada una mantenga sus propias conexiones con los clientes.
 
+Aunque esta sección está bajo "Mensajería en tiempo real", el mismo patrón es el mecanismo general para comunicar servicios backend entre sí de forma asíncrona — no se limita a la entrega de mensajes de chat. Cualquier efecto secundario que un servicio necesite avisarle a otro (por ejemplo, notificar una acción de moderación, o actualizar una vista denormalizada) es un caso típico de Pub/Sub, con el mismo abanico de brokers listado abajo.
+
 Las alternativas cambian según las garantías de entrega y persistencia que necesite el sistema:
 
 - [RabbitMQ](https://www.rabbitmq.com/tutorials/tutorial-three-python) es un *message broker* con colas persistentes.
@@ -96,6 +98,13 @@ Una saga coordina una transacción que atraviesa varios servicios sin usar una t
 
 - [Saga Pattern en Microservices.io](https://microservices.io/patterns/data/saga.html)
 - [Saga Orchestration vs Choreography](https://microservices.io/post/microservices/2019/07/09/developing-sagas-part-1.html)
+
+### Outbox Pattern
+
+Cuando un servicio escribe en su base de datos y necesita publicar un evento sobre ese cambio, las dos operaciones no son atómicas por defecto: el broker puede fallar después de confirmar la escritura en la base, o viceversa. El Outbox Pattern resuelve esto guardando el evento en una tabla de la misma base de datos, dentro de la misma transacción que el cambio de negocio. Un proceso aparte (o un mecanismo de *change data capture*) lee esa tabla y publica los eventos al broker, reintentando hasta confirmar la entrega. Es el complemento habitual de Saga y Pub/Sub para no perder eventos silenciosamente.
+
+- [Transactional Outbox, Microservices.io](https://microservices.io/patterns/data/transactional-outbox.html)
+- [Reliable Microservices Data Exchange with the Outbox Pattern, Debezium](https://debezium.io/blog/2019/02/19/reliable-microservices-data-exchange-with-the-outbox-pattern/)
 
 ### Circuit Breaker
 
@@ -219,6 +228,12 @@ REST es un estilo arquitectónico para sistemas distribuidos. En una API HTTP se
 
 - [REST en la tesis de Roy Fielding](https://ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm)
 - [HTTP Status Codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status)
+
+### Contratos de eventos
+
+Los endpoints REST se documentan con OpenAPI, pero un evento publicado a un broker (ver Pub/Sub) también es un contrato entre servicios: el consumidor depende de su forma tanto como del formato de una respuesta HTTP. Documentar cada evento (nombre del topic, esquema del payload, versión) evita que un cambio en el productor rompa a un consumidor en silencio. AsyncAPI es el equivalente de OpenAPI para este caso.
+
+- [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
 
 ---
 
