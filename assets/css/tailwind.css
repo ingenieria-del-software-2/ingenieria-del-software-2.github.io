@@ -1,4 +1,6 @@
-@import "tailwindcss";
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -268,6 +270,16 @@
     background-image: radial-gradient(#38bdf8 1px, transparent 1px);
     mask-image: radial-gradient(circle var(--glow-radius, 120px) at var(--mouse-x, -100%) var(--mouse-y, -100%), black, transparent);
     -webkit-mask-image: radial-gradient(circle var(--glow-radius, 120px) at var(--mouse-x, -100%) var(--mouse-y, -100%), black, transparent);
+}
+
+#material-page {
+    --glow-opacity: 0.6;
+    --glow-radius: 180px;
+}
+
+html.hx\:overflow-hidden:has(#material-page) #mobile-nav-wrapper,
+html.hx\:overflow-hidden:has(#material-page) .hextra-nav-container {
+    display: none !important;
 }
 
 #team-page {

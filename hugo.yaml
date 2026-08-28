@@ -77,12 +77,12 @@ menu:
       pageRef: "/programa"
       weight: 4
 
-    - name: "TPs"
-      pageRef: "/tps"
-      weight: 5
-
     - name: "Material"
       pageRef: "/material"
+      weight: 5
+
+    - name: "TPs"
+      pageRef: "/tps"
       weight: 6
 
     - name: "Encuestas"
@@ -90,7 +90,7 @@ menu:
       weight: 7
 
     - name: "Contacto"
-      pageRef: "/contact"
+      url: "#contacto"
       weight: 8
 
     # - name: "Buscar"

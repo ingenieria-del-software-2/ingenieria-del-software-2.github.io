@@ -1,0 +1,53 @@
+<nav id="contacto" class="contact-footer" aria-label="Canales de contacto">
+  <div class="contact-footer-links">
+    <a class="contact-footer-link" href="https://discord.gg/wDvn7zVvQb" target="_blank" rel="noopener noreferrer" aria-label="Discord de la materia">
+      {{- partial "utils/icon.html" (dict "name" "discord" "attributes" `aria-hidden="true"`) -}}
+      <span>Discord</span>
+    </a>
+    <a class="contact-footer-link" href="https://github.com/ingenieria-del-software-2" target="_blank" rel="noopener noreferrer" aria-label="GitHub de la materia">
+      {{- partial "utils/icon.html" (dict "name" "github" "attributes" `aria-hidden="true"`) -}}
+      <span>GitHub</span>
+    </a>
+    <a class="contact-footer-link" href="{{ hugo.Data.material.youtube_channel }}" target="_blank" rel="noopener noreferrer" aria-label="YouTube de la materia">
+      {{- partial "utils/icon.html" (dict "name" "youtube" "attributes" `aria-hidden="true"`) -}}
+      <span>YouTube</span>
+    </a>
+  </div>
+</nav>
+
+<script>
+  (() => {
+    const footer = document.getElementById('contacto');
+    if (!footer) return;
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const mobileViewport = window.matchMedia('(max-width: 767px)');
+    let highlightTimer;
+    let reducedMotionTimer;
+
+    const highlightContacts = () => {
+      footer.classList.remove('contact-footer--cue');
+      void footer.offsetWidth;
+      footer.classList.add('contact-footer--cue');
+
+      if (reducedMotion.matches) {
+        clearTimeout(reducedMotionTimer);
+        reducedMotionTimer = window.setTimeout(() => {
+          footer.classList.remove('contact-footer--cue');
+        }, 1500);
+      }
+    };
+
+    document.addEventListener('click', (event) => {
+      if (!event.target.closest('a[href="#contacto"]')) return;
+
+      clearTimeout(highlightTimer);
+      highlightTimer = window.setTimeout(
+        highlightContacts,
+        mobileViewport.matches ? 280 : 0
+      );
+    });
+
+    if (window.location.hash === '#contacto') highlightContacts();
+  })();
+</script>
