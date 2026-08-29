@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240" role="img" aria-label="Discordia">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5865F2" />
+      <stop offset="100%" stop-color="#3B3F9E" />
+    </linearGradient>
+  </defs>
+
+  <!-- Rounded chat-bubble body -->
+  <path d="M40 30 H200 a30 30 0 0 1 30 30 V150 a30 30 0 0 1 -30 30 H90 L55 210 L58 176 H40 a30 30 0 0 1 -30 -30 V60 a30 30 0 0 1 30 -30 Z" fill="url(#bg)" />
+
+  <!-- Stylized "D" monogram -->
+  <path d="M85 65 h34 c33 0 55 22 55 55 s-22 55 -55 55 h-34 z M113 90 h6 c19 0 30 12 30 30 s-11 30 -30 30 h-6 z" fill="#F5F5FF" fill-rule="evenodd" />
+
+  <!-- Presence / voice dots -->
+  <circle cx="205" cy="55" r="9" fill="#3BA55D" />
+  <circle cx="205" cy="55" r="9" fill="none" stroke="#F5F5FF" stroke-width="3" />
+</svg>
