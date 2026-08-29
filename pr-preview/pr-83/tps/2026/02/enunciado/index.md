@@ -18,27 +18,120 @@ Para quienes quieren más, Discordia ofrece un plan Premium con beneficios indiv
 
 **1. Usuarios** — Gestión de cuentas: registro, acceso y recuperación.
 
+- [Registro de usuarios](#registro-de-usuarios)
+- [Login con email y contraseña](#login-con-email-y-contraseña)
+- [Recupero de contraseña](#recupero-de-contraseña)
+- [Login con proveedor federado](#login-con-proveedor-federado)
+- [Registro con PIN](#registro-con-pin)
+- [Autenticación de dos factores (2FA)](#autenticación-de-dos-factores-2fa)
+
 **2. Perfil** — Identidad del usuario dentro de la plataforma.
+
+- [Edición de perfil](#edición-de-perfil)
+- [Visualización de perfil propio](#visualización-de-perfil-propio)
+- [Visualización de perfil público](#visualización-de-perfil-público)
+- [Estado de actividad](#estado-de-actividad)
+- [Estado personalizado](#estado-personalizado)
 
 **3. Servidores** — Creación, invitación y administración de comunidades.
 
+- [Crear servidor](#crear-servidor)
+- [Generar invitación](#generar-invitación)
+- [Unirse a servidor vía invitación](#unirse-a-servidor-vía-invitación)
+- [Administrar configuración del servidor](#administrar-configuración-del-servidor)
+- [Abandonar servidor](#abandonar-servidor)
+- [Eliminar servidor](#eliminar-servidor)
+- [Transferir propiedad del servidor](#transferir-propiedad-del-servidor)
+
 **4. Canales** — Organización de un servidor en canales de texto y voz.
+
+- [Crear canal](#crear-canal)
+- [Editar canal](#editar-canal)
+- [Eliminar canal](#eliminar-canal)
+- [Organizar canales en categorías](#organizar-canales-en-categorías)
+- [Reordenar canales](#reordenar-canales)
 
 **5. Mensajería** — Mensajes en tiempo real dentro de un canal o en conversaciones directas (DMs), con historial y menciones.
 
+- [Enviar mensaje en un canal](#enviar-mensaje-en-un-canal)
+- [Enviar mensaje directo (DM)](#enviar-mensaje-directo-dm)
+- [Bloquear y desbloquear usuarios](#bloquear-y-desbloquear-usuarios)
+- [Editar mensaje](#editar-mensaje)
+- [Eliminar mensaje](#eliminar-mensaje)
+- [Historial y reconexión](#historial-y-reconexión)
+- [Menciones](#menciones)
+- [Adjuntar archivos en mensajes](#adjuntar-archivos-en-mensajes)
+- [Reacciones con emoji](#reacciones-con-emoji)
+- [Buscar mensajes](#buscar-mensajes)
+
 **6. Canal de Voz** — Unirse y participar de una conversación de voz en vivo, tanto en canales de servidor como en llamadas privadas 1 a 1.
+
+- [Unirse a canal de voz de servidor](#unirse-a-canal-de-voz-de-servidor)
+- [Salir de canal de voz](#salir-de-canal-de-voz)
+- [Silenciar micrófono propio](#silenciar-micrófono-propio)
+- [Ver participantes conectados](#ver-participantes-conectados)
+- [Iniciar y recibir llamada de voz privada](#iniciar-y-recibir-llamada-de-voz-privada)
+- [Indicador de quién está hablando](#indicador-de-quién-está-hablando)
+- [Silenciar a otro participante localmente](#silenciar-a-otro-participante-localmente)
+- [Compartir pantalla](#compartir-pantalla)
+- [Video en llamada](#video-en-llamada)
 
 **7. Roles y Permisos** — Organización interna de cada servidor.
 
+- [Crear rol](#crear-rol)
+- [Editar permisos de un rol](#editar-permisos-de-un-rol)
+- [Asignar rol a un miembro](#asignar-rol-a-un-miembro)
+- [Definir rol por defecto para nuevos miembros](#definir-rol-por-defecto-para-nuevos-miembros)
+- [Eliminar rol](#eliminar-rol)
+- [Reordenar jerarquía de roles](#reordenar-jerarquía-de-roles)
+- [Sobrescribir permisos de un rol en un canal específico](#sobrescribir-permisos-de-un-rol-en-un-canal-específico)
+- [Ver miembros por rol](#ver-miembros-por-rol)
+
 **8. Moderación** — Herramientas para mantener sano un servidor.
+
+- [Expulsar miembro del servidor](#expulsar-miembro-del-servidor)
+- [Banear miembro del servidor](#banear-miembro-del-servidor)
+- [Revocar baneo](#revocar-baneo)
+- [Silenciar temporalmente a un miembro](#silenciar-temporalmente-a-un-miembro)
+- [Ver registro de auditoría de moderación](#ver-registro-de-auditoría-de-moderación)
+- [Reportar mensaje o usuario](#reportar-mensaje-o-usuario)
+- [Filtro automático de palabras prohibidas](#filtro-automático-de-palabras-prohibidas)
 
 **9. Notificaciones** — Menciones, mensajes directos y actividad relevante.
 
+- [Ver notificaciones no leídas](#ver-notificaciones-no-leídas)
+- [Marcar notificaciones como leídas](#marcar-notificaciones-como-leídas)
+- [Silenciar notificaciones de un canal o servidor](#silenciar-notificaciones-de-un-canal-o-servidor)
+- [Configurar preferencias de notificación](#configurar-preferencias-de-notificación)
+- [Notificaciones push](#notificaciones-push)
+- [Centro de notificaciones con historial](#centro-de-notificaciones-con-historial)
+
 **10. Administración** — Backoffice para la gestión de usuarios, servidores e investigación de la plataforma.
+
+- [Suspender usuario a nivel plataforma](#suspender-usuario-a-nivel-plataforma)
+- [Reactivar usuario suspendido](#reactivar-usuario-suspendido)
+- [Ver listado de servidores de la plataforma](#ver-listado-de-servidores-de-la-plataforma)
+- [Eliminar servidor desde el backoffice](#eliminar-servidor-desde-el-backoffice)
+- [Ver listado de usuarios con filtros](#ver-listado-de-usuarios-con-filtros)
+- [Suspender servidor completo](#suspender-servidor-completo)
+- [Ver expediente de investigación de usuario o servidor](#ver-expediente-de-investigación-de-usuario-o-servidor)
 
 **11. Métricas** — Indicadores de actividad de la plataforma, estado e incidentes.
 
+- [Ver métricas de actividad de un servidor](#ver-métricas-de-actividad-de-un-servidor)
+- [Ver métricas globales de la plataforma](#ver-métricas-globales-de-la-plataforma)
+- [Gráfico de crecimiento de miembros](#gráfico-de-crecimiento-de-miembros)
+- [Exportar métricas a CSV](#exportar-métricas-a-csv)
+- [Estado de la plataforma e incidentes](#estado-de-la-plataforma-e-incidentes)
+
 **12. Monetización** — Plan Premium, compra de puntos y boost de servidor.
+
+- [Gestionar emojis personalizados del servidor](#gestionar-emojis-personalizados-del-servidor)
+- [Suscribirse a Plan Premium](#suscribirse-a-plan-premium)
+- [Cancelar suscripción Premium](#cancelar-suscripción-premium)
+- [Comprar puntos](#comprar-puntos)
+- [Usar puntos para boostear un servidor](#usar-puntos-para-boostear-un-servidor)
+- [Ver beneficios de servidor boosteado](#ver-beneficios-de-servidor-boosteado)
 
 ---
 
