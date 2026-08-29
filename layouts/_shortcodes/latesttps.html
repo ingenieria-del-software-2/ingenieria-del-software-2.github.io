@@ -2,14 +2,11 @@
   {{ $start := time hugo.Data.fechas.inicio }}
   {{ $year := int ($start.Format "2006") }}
   {{ $semester := cond (le (int ($start.Format "1")) 6) 1 2 }}
-  {{ $previousYear := cond (eq $semester 1) (sub $year 1) $year }}
-  {{ $previousSemester := cond (eq $semester 1) 2 1 }}
   {{ $currentPattern := printf `^tps/%d/0?%d/` $year $semester }}
-  {{ $previousPattern := printf `^tps/historico/%d/0?%d/` $previousYear $previousSemester }}
 
   <ul class="list-disc list-inside space-y-2">
     {{ range where .Site.RegularPages "Section" "tps" }}
-      {{ if or (findRE $currentPattern .File.Path) (findRE $previousPattern .File.Path) }}
+      {{ if findRE $currentPattern .File.Path }}
         <li>
           <a href="{{ .Permalink }}" class="text-blue-600 hover:text-blue-800 transition-colors">
             {{ .Title }}
