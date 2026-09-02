@@ -78,6 +78,9 @@ sections:
       - url: "https://www.youtube.com/watch?v=2epGB2R4Z3A"
       - url: "https://www.youtube.com/watch?v=PUZzj8_KmPQ"
       - url: "https://www.youtube.com/watch?v=HS88fDWu0no"
+      - url: "https://www.youtube.com/watch?v=G0EG2OXmLJY"
+        title: "2C2026 - TA049 - Ingeniería del Software II - Clase 4 Asincronismo y mensajería"
+      - url: "https://www.youtube.com/watch?v=Y3ICxoQiWeo"
     resources:
       - title: "C4 Model"
         url: "https://c4model.com/"
@@ -124,6 +127,7 @@ sections:
       - url: "https://www.youtube.com/watch?v=Og3jFsy0JXk"
       - url: "https://www.youtube.com/watch?v=yNStEV0oGEc"
       - url: "https://www.youtube.com/watch?v=l7vEzGkCsQM"
+      - url: "https://www.youtube.com/watch?v=2tA04Gn-FLQ"
     resources:
       - title: "What is DevOps (AWS)"
         url: "https://aws.amazon.com/devops/"
