@@ -1,0 +1,11 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ingeniería del Software 2 – Clases 2020-1C React Workshop</title><link>https://ingenieria-del-software-2.github.io/pr-preview/pr-85/tags/clases-2020-1c-react-workshop/</link><description>Recent content in Clases 2020-1C React Workshop on Ingeniería del Software 2</description><generator>Hugo -- gohugo.io</generator><language>es-AR</language><lastBuildDate>Thu, 14 May 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://ingenieria-del-software-2.github.io/pr-preview/pr-85/tags/clases-2020-1c-react-workshop/index.xml" rel="self" type="application/rss+xml"/><item><title>Clase react</title><link>https://ingenieria-del-software-2.github.io/pr-preview/pr-85/blog/2020-05-14-clase-5/</link><pubDate>Thu, 14 May 2020 00:00:00 +0000</pubDate><guid>https://ingenieria-del-software-2.github.io/pr-preview/pr-85/blog/2020-05-14-clase-5/</guid><description>
+&lt;p&gt;En esta clase se realizo un workshop como introduccion a React. Pueden encontrar el material en el siguiente repositorio
+&lt;a href="https://github.com/MaxiSuppes/intro-react"target="_blank" rel="noopener"&gt;Workshop&lt;/a&gt;&lt;/p&gt;
+&lt;style&gt;
+.responsive-wrap iframe{ max-width: 100%;}
+&lt;/style&gt;
+&lt;div class="responsive-wrap"&gt;
+&lt;!-- this is the embed code provided by Google --&gt;
+&lt;iframe src="https://docs.google.com/presentation/d/1744McYIL_TiGuWIKE5yRwPGwwwFgn8uoLSt_N75ISZg/embed?start=false&amp;loop=false&amp;delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"&gt;&lt;/iframe&gt;
+&lt;!-- Google embed ends --&gt;
+&lt;/div&gt;</description></item></channel></rss>

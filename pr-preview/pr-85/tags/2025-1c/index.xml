@@ -1,0 +1,58 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ingeniería del Software 2 – 2025-1C</title><link>https://ingenieria-del-software-2.github.io/pr-preview/pr-85/tags/2025-1c/</link><description>Recent content in 2025-1C on Ingeniería del Software 2</description><generator>Hugo -- gohugo.io</generator><language>es-AR</language><lastBuildDate>Thu, 13 Mar 2025 17:10:00 +0000</lastBuildDate><atom:link href="https://ingenieria-del-software-2.github.io/pr-preview/pr-85/tags/2025-1c/index.xml" rel="self" type="application/rss+xml"/><item><title>Ajustes en el contrato del enunciado del TP1C 2025</title><link>https://ingenieria-del-software-2.github.io/pr-preview/pr-85/blog/2025-03-13-trabajo-practico-1c-2025-typo/</link><pubDate>Thu, 13 Mar 2025 17:10:00 +0000</pubDate><guid>https://ingenieria-del-software-2.github.io/pr-preview/pr-85/blog/2025-03-13-trabajo-practico-1c-2025-typo/</guid><description>
+&lt;p&gt;Detectamos una inconsistencia en la especificación OpenAPI del enunciado original para la creación de cursos (&lt;code&gt;POST /courses&lt;/code&gt;). Inicialmente, el contrato requería que el &lt;code&gt;id&lt;/code&gt; fuera un UUID, cuando en realidad &lt;strong&gt;solo los extras evaluaban su uso&lt;/strong&gt;. Para alinearlo con los requisitos base, &lt;strong&gt;se corrigió el contrato para que el identificador sea un número entero en la versión estándar&lt;/strong&gt;.&lt;/p&gt;
+&lt;h3&gt;📌 &lt;strong&gt;¿Qué cambiamos?&lt;/strong&gt;&lt;span class="hx:absolute hx:-mt-20" id="-qué-cambiamos"&gt;&lt;/span&gt;
+&lt;a href="#-qu%c3%a9-cambiamos" class="subheading-anchor" aria-label="Enlace permanente a esta sección"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Antes&lt;/strong&gt;: Se exigía que el &lt;code&gt;id&lt;/code&gt; fuera un &lt;code&gt;string&lt;/code&gt; con formato UUID.&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-json" data-lang="json"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;data&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;id&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;550e8400-e29b-41d4-a716-446655440000&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;title&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Curso de prueba&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Descripción del curso&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copiar código"
+aria-label="Copiar código"
+data-copied-label="¡Copiado!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Ahora&lt;/strong&gt;: El &lt;code&gt;id&lt;/code&gt; vuelve a ser un &lt;code&gt;integer&lt;/code&gt; en la versión base del enunciado.&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-json" data-lang="json"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;data&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;id&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;title&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Curso de prueba&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nt"&gt;&amp;#34;description&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;Descripción del curso&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copiar código"
+aria-label="Copiar código"
+data-copied-label="¡Copiado!"
+&gt;
+&lt;div class="hextra-copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="hextra-success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;🔍 &lt;strong&gt;¿Qué significa este cambio?&lt;/strong&gt;&lt;span class="hx:absolute hx:-mt-20" id="-qué-significa-este-cambio"&gt;&lt;/span&gt;
+&lt;a href="#-qu%c3%a9-significa-este-cambio" class="subheading-anchor" aria-label="Enlace permanente a esta sección"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;En la versión estándar, el &lt;code&gt;id&lt;/code&gt; de los cursos será numérico (&lt;code&gt;integer&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Solo si se implementa el extra de UUID&lt;/strong&gt;, el &lt;code&gt;id&lt;/code&gt; pasará a ser un &lt;code&gt;string&lt;/code&gt; con formato UUID.&lt;/li&gt;
+&lt;li&gt;La especificación OpenAPI fue actualizada para reflejar esto correctamente.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;⚠️ &lt;strong&gt;¡IMPORTANTE!&lt;/strong&gt;&lt;br&gt;
+Si ya empezaste tu implementación con UUID v4, &lt;strong&gt;no es necesario cambiar nada&lt;/strong&gt;, ya que &lt;strong&gt;era parte del extra&lt;/strong&gt; y sigue siendo una solución válida. 🚀&lt;/p&gt;
+&lt;p&gt;Gracias por el feedback y las preguntas, seguimos mejorando el enunciado para mayor claridad. 🚀&lt;/p&gt;</description></item></channel></rss>
