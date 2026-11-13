@@ -1,5 +1,7 @@
 ---
 date: "2026-09-07T00:00:00Z"
+aliases:
+  - /blog/2025-09-11-cloud-computing/
 title: "Guía de cátedra 2026: Cloud Computing"
 description: "Guía de cátedra sobre cloud computing para 2026: proveedores, free tiers, stacks recomendados, despliegue y criterios de costo para los proyectos."
 tags:
