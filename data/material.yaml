@@ -349,6 +349,135 @@ sections:
         url: "https://aws.amazon.com/architecture/well-architected/"
         type: "link"
 
+  - id: produccion
+    title: De TP a Producción
+    description: Qué le falta a un sistema que ya despliega para operar con usuarios reales. Operación, seguridad, legal y negocio.
+    topics:
+      - slis, slos y error budgets
+      - alertas por síntomas
+      - feature flags, canary y blue/green
+      - backups y rollback
+      - incidentes y postmortems
+      - threat modeling y owasp
+      - datos personales (ley 25.326)
+      - moderación de contenido
+      - costos por usuario y finops
+      - pricing y métricas de producto
+      - publicación en tiendas
+    videos:
+      - url: "https://www.youtube.com/watch?v=tEylFyxbDLE"
+      - url: "https://www.youtube.com/watch?v=lJ8ydIuPFeU"
+      - url: "https://www.youtube.com/watch?v=CZ3wIuvmHeM"
+      - url: "https://www.youtube.com/watch?v=2S0k12uZR14"
+      - url: "https://www.youtube.com/watch?v=oWZbWzAyHAE"
+      - url: "https://www.youtube.com/watch?v=jwXlo9gy_k4"
+      - url: "https://www.youtube.com/watch?v=fdD4y4Civp4"
+      - url: "https://www.youtube.com/watch?v=VNxBZ7ka5J0"
+    resources:
+      - title: "De TP a Producción (Guía Cátedra)"
+        url: "https://ingenieria-del-software-2.github.io/blog/2026-11-11-de-tp-a-produccion/"
+        type: "link"
+      # Operación y confiabilidad
+      - title: "Operación: Service Level Objectives (Google SRE Book)"
+        url: "https://sre.google/sre-book/service-level-objectives/"
+        type: "link"
+      - title: "Operación: Implementing SLOs (Google SRE Workbook)"
+        url: "https://sre.google/workbook/implementing-slos/"
+        type: "link"
+      - title: "Operación: Monitoring Distributed Systems (Google SRE Book)"
+        url: "https://sre.google/sre-book/monitoring-distributed-systems/"
+        type: "link"
+      - title: "Operación: Is It Time to Version Observability? (Charity Majors)"
+        url: "https://charity.wtf/p/is-it-time-to-version-observability-signs-point-to-yes"
+        type: "link"
+      - title: "Operación: Feature Toggles (Martin Fowler)"
+        url: "https://martinfowler.com/articles/feature-toggles.html"
+        type: "link"
+      - title: "Operación: Canary Release (Martin Fowler)"
+        url: "https://martinfowler.com/bliki/CanaryRelease.html"
+        type: "link"
+      - title: "Operación: Online Migrations at Scale (Stripe)"
+        url: "https://stripe.com/blog/online-migrations"
+        type: "link"
+      - title: "Operación: Postmortem de la caída de base de datos (GitLab, 2017)"
+        url: "https://about.gitlab.com/blog/2017/02/10/postmortem-of-database-outage-of-january-31/"
+        type: "link"
+      - title: "Operación: Postmortem Culture (Google SRE Workbook)"
+        url: "https://sre.google/workbook/postmortem-culture/"
+        type: "link"
+      - title: "Operación: Incident Management Handbook (Atlassian)"
+        url: "https://www.atlassian.com/incident-management/handbook"
+        type: "link"
+      - title: "Operación: How Complex Systems Fail (Richard Cook)"
+        url: "https://how.complexsystems.fail/"
+        type: "link"
+      - title: "Operación: Colección de postmortems públicos (Dan Luu)"
+        url: "https://github.com/danluu/post-mortems"
+        type: "link"
+      - title: "Operación: Choose Boring Technology (Dan McKinley)"
+        url: "https://mcfunley.com/choose-boring-technology"
+        type: "link"
+      # Seguridad
+      - title: "Seguridad: OWASP Top 10"
+        url: "https://owasp.org/www-project-top-ten/"
+        type: "link"
+      - title: "Seguridad: OWASP API Security Top 10 (2023)"
+        url: "https://owasp.org/API-Security/editions/2023/en/0x11-t10/"
+        type: "link"
+      - title: "Seguridad: OWASP ASVS"
+        url: "https://owasp.org/www-project-application-security-verification-standard/"
+        type: "link"
+      - title: "Seguridad: OWASP Cheat Sheet Series"
+        url: "https://cheatsheetseries.owasp.org/"
+        type: "link"
+      - title: "Seguridad: Threat Modeling, las cuatro preguntas (Adam Shostack)"
+        url: "https://github.com/adamshostack/4QuestionFrame"
+        type: "link"
+      - title: "Seguridad: SLSA, seguridad de la cadena de suministro"
+        url: "https://slsa.dev/"
+        type: "link"
+      # Legal y confianza
+      - title: "Legal: Ley 25.326 de Protección de Datos Personales"
+        url: "https://www.argentina.gob.ar/normativa/nacional/64790/texto"
+        type: "link"
+      - title: "Legal: AAIP, Datos Personales"
+        url: "https://www.argentina.gob.ar/aaip/datospersonales"
+        type: "link"
+      - title: "Legal: Disposición 954/2025, botón de baja y de arrepentimiento"
+        url: "https://www.boletinoficial.gob.ar/detalleAviso/primera/330827/20250904"
+        type: "link"
+      - title: "Legal: Santa Clara Principles (moderación de contenido)"
+        url: "https://santaclaraprinciples.org/"
+        type: "link"
+      - title: "Legal: App Store Review Guidelines (Apple)"
+        url: "https://developer.apple.com/app-store/review/guidelines/"
+        type: "link"
+      - title: "Legal: Política de contenido generado por usuarios (Google Play)"
+        url: "https://support.google.com/googleplay/android-developer/answer/9876937"
+        type: "link"
+      # Negocio y producto
+      - title: "Negocio: What is FinOps (FinOps Foundation)"
+        url: "https://www.finops.org/introduction/what-is-finops/"
+        type: "link"
+      - title: "Negocio: Cost Optimization Pillar (AWS Well-Architected)"
+        url: "https://docs.aws.amazon.com/wellarchitected/latest/cost-optimization-pillar/welcome.html"
+        type: "link"
+      - title: "Negocio: Why We're Leaving the Cloud (DHH)"
+        url: "https://world.hey.com/dhh/why-we-re-leaving-the-cloud-654b47e0"
+        type: "link"
+      - title: "Negocio: 16 Startup Metrics (a16z)"
+        url: "https://a16z.com/16-startup-metrics/"
+        type: "link"
+      - title: "Negocio: Do Things That Don't Scale (Paul Graham)"
+        url: "https://paulgraham.com/ds.html"
+        type: "link"
+      - title: "Negocio: Tarifas de servicio de Google Play"
+        url: "https://support.google.com/googleplay/android-developer/answer/112622"
+        type: "link"
+      - title: "Negocio: Requisitos de prueba para cuentas nuevas de Google Play"
+        url: "https://support.google.com/googleplay/android-developer/answer/14151465"
+        type: "link"
+
   - id: databases
     title: Bases de Datos
     description: Bases de datos relacionales y NoSQL, modelado de datos y persistencia.
